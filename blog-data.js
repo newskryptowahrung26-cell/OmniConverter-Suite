@@ -79,8 +79,29 @@ export const blogArticles = [
         </table>
       </div>
 
-      <h3 style="margin-top:1.25rem;">Why Does 1/3 Cup Weight Change by Ingredient?</h3>
-      <p>Volume (cups) tells you how much physical space an ingredient occupies, whereas mass (grams) tells you how heavy it is. Aerated, powdery dry ingredients like flour are much lighter per cup than dense liquids like honey or syrup.</p>
+      <h3 style="margin-top:1.5rem;">Frequently Asked Questions (FAQs)</h3>
+      <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.75rem;">
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1rem;">
+          <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.35rem; color:var(--text-main);">Q1: How many grams is 1/3 cup of liquid?</h4>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.5; margin:0;">
+            1/3 cup of liquid (such as water, milk, or juice) equals <strong>78.86 grams</strong> (commonly rounded to 79 grams or 2.67 US fluid ounces) because water has a standard density of 1 gram per milliliter.
+          </p>
+        </div>
+
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1rem;">
+          <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.35rem; color:var(--text-main);">Q2: How many tablespoons are in 1/3 cup?</h4>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.5; margin:0;">
+            There are exactly <strong>5.33 tablespoons</strong> (or 5 tablespoons plus 1 teaspoon) in 1/3 US cup.
+          </p>
+        </div>
+
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1rem;">
+          <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.35rem; color:var(--text-main);">Q3: Why is 1/3 cup of flour lighter than 1/3 cup of sugar?</h4>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.5; margin:0;">
+            Grams measure weight (mass) while cups measure volume. All-purpose flour is fluffy and aerated, weighing only <strong>40 grams</strong> per 1/3 cup, whereas granulated white sugar is dense and crystalline, weighing <strong>67 grams</strong> per 1/3 cup.
+          </p>
+        </div>
+      </div>
 
       <p style="margin-top: 1.25rem;">
         👉 <strong>Need precise recipe calculations?</strong> Use our interactive <a href="volume-capacity.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Volume & Capacity Tool</a> or <a href="weight-mass.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Weight & Mass Tool</a> to convert any cup fraction or gram measurement instantly!
