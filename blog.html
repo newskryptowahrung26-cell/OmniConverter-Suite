@@ -45,17 +45,17 @@
     </div>
   </header>
 
-  <main>
-    <!-- Header Title Banner -->
-    <section class="content-section" style="margin-top:1.5rem; text-align:center; padding: 2rem 1.5rem;">
-      <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; letter-spacing: -0.025em;">OmniConverter Articles & Guides</h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Browse conversion reference guides, baking measurements, currency calculations, and technology updates.</p>
+  <main style="max-width: 1200px; margin: 1.5rem auto;">
+    <!-- Compact Title Header -->
+    <section style="text-align: center; margin-bottom: 1.25rem; padding: 0 1rem;">
+      <h1 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 0.35rem; letter-spacing: -0.025em; color: var(--text-main);">OmniConverter Articles & Guides</h1>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Conversion reference guides, baking measurements, currency calculations, and technology updates.</p>
     </section>
 
-    <!-- Blog Search Bar & Category Filter Pills -->
+    <!-- Blog Search Bar & Single-Line Category Filter Pills -->
     <section class="blog-controls-wrapper">
       <div class="blog-search-box">
-        <svg class="blog-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="blog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
@@ -75,19 +75,45 @@
       </div>
     </section>
 
-    <!-- Standardized Blog Articles Grid (Compact Cards) -->
+    <!-- 01 Latest Featured Hero Article Section -->
+    <section style="padding: 0 1rem; margin-bottom: 1.75rem;" id="featuredSection">
+      <div class="blog-hero-card" style="padding: 1.75rem;">
+        <div>
+          <span class="blog-hero-badge">🔥 01 Latest Article</span>
+          <h2 class="blog-hero-title" style="font-size: 1.6rem; margin-bottom: 0.6rem;">
+            <a href="1-3-a-cup-in-grams.html" class="open-article-link" data-id="1-3-cup-in-grams-kitchen-conversion-guide">How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide</a>
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.85rem;">
+            Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.
+          </p>
+          <div class="blog-meta-bar" style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <span>🍳 Kitchen & Culinary</span>
+            <span>•</span>
+            <span>⏱️ 4 min read</span>
+            <span>•</span>
+            <span>📅 Sept 15, 2026</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: flex-end;">
+          <a href="1-3-a-cup-in-grams.html" class="btn-convert open-article-link" data-id="1-3-cup-in-grams-kitchen-conversion-guide" style="text-decoration: none; padding: 0.65rem 1.25rem; font-size: 0.9rem; font-weight: 700;">
+            Read Full Guide &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Remaining Articles Grid (Strictly 6 Articles Per Page) -->
     <section class="blog-cards-grid" id="blogGrid"></section>
 
     <!-- Pagination Controls Bar -->
     <section class="pagination-wrapper" id="paginationWrapper">
-      <div class="page-info" id="pageInfo">Showing 1-6 of 9 articles</div>
+      <div class="page-info" id="pageInfo">Showing 1-6 of articles</div>
       <div class="pagination-controls" id="paginationControls">
         <button type="button" id="prevPageBtn" class="page-btn" disabled>&larr; Previous</button>
         <div id="pageNumbers" style="display: flex; gap: 0.35rem;"></div>
         <button type="button" id="nextPageBtn" class="page-btn">Next &rarr;</button>
       </div>
     </section>
-
   </main>
 
   <!-- Full Article Modal Reader -->
@@ -138,7 +164,10 @@
 
       function renderArticles() {
         const filtered = getFilteredArticles();
-        const totalItems = filtered.length;
+        
+        // 01 Latest Article is featured at top, remaining articles paginated in grid below
+        const remainingArticles = (currentCategory === 'All' && !currentQuery) ? filtered.slice(1) : filtered;
+        const totalItems = remainingArticles.length;
         const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
 
         if (currentPage > totalPages) currentPage = totalPages;
@@ -146,15 +175,15 @@
 
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-        const pageArticles = filtered.slice(startIndex, endIndex);
+        const pageArticles = remainingArticles.slice(startIndex, endIndex);
 
         blogGrid.innerHTML = '';
 
-        if (totalItems === 0) {
+        if (totalItems === 0 && filtered.length === 0) {
           blogGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">No articles found</h3>
-              <p>Try clearing your search term or selecting another category.</p>
+            <div style="grid-column: 1 / -1; text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem;">No articles found</h3>
+              <p style="font-size: 0.9rem;">Try clearing your search term or selecting another category.</p>
             </div>
           `;
           pageInfo.textContent = 'Showing 0 articles';
@@ -164,30 +193,31 @@
           return;
         }
 
-        // Render Page Articles (Standardized Compact Cards)
+        // Render Grid Articles (Standardized Compact Cards - Max 6 per page)
         pageArticles.forEach(item => {
           const card = document.createElement('article');
           card.className = 'blog-card';
+          card.style.padding = '1.25rem';
           card.innerHTML = `
             <div>
-              <div class="blog-card-header">
+              <div class="blog-card-header" style="margin-bottom: 0.6rem;">
                 <span class="blog-card-tag">${item.category}</span>
-                <span class="blog-card-icon">${item.icon || '📄'}</span>
+                <span class="blog-card-icon" style="font-size: 1.25rem;">${item.icon || '📄'}</span>
               </div>
-              <h2 class="blog-card-title">
+              <h3 class="blog-card-title" style="font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.35;">
                 <a href="${item.slug}" class="open-article-link" data-id="${item.id}">${item.title}</a>
-              </h2>
-              <p class="blog-card-summary">${item.summary}</p>
+              </h3>
+              <p class="blog-card-summary" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 1rem;">${item.summary}</p>
             </div>
-            <div class="blog-card-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">${item.readTime || '3 min read'} • ${new Date(item.publicationDate).toLocaleDateString()}</span>
-              <a href="${item.slug}" class="blog-btn-read open-article-link" data-id="${item.id}">Read Post &rarr;</a>
+            <div class="blog-card-footer" style="padding-top: 0.75rem;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);">${item.readTime || '3 min read'}</span>
+              <a href="${item.slug}" class="blog-btn-read open-article-link" data-id="${item.id}" style="font-size: 0.85rem;">Read Post &rarr;</a>
             </div>
           `;
           blogGrid.appendChild(card);
         });
 
-        // Update Pagination Info & Controls
+        // Update Pagination Controls
         pageInfo.textContent = `Showing ${startIndex + 1}-${endIndex} of ${totalItems} articles`;
         prevPageBtn.disabled = (currentPage === 1);
         nextPageBtn.disabled = (currentPage === totalPages);
@@ -197,11 +227,13 @@
         for (let i = 1; i <= totalPages; i++) {
           const numBtn = document.createElement('button');
           numBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+          numBtn.style.padding = '0.35rem 0.75rem';
+          numBtn.style.fontSize = '0.85rem';
           numBtn.textContent = i;
           numBtn.addEventListener('click', () => {
             currentPage = i;
             renderArticles();
-            window.scrollTo({ top: 300, behavior: 'smooth' });
+            window.scrollTo({ top: 250, behavior: 'smooth' });
           });
           pageNumbers.appendChild(numBtn);
         }
@@ -225,12 +257,12 @@
 
       function openArticleModal(article) {
         modalBody.innerHTML = `
-          <span class="formula-badge">${article.category} • ${article.readTime}</span>
-          <h1 style="font-size: 1.8rem; font-weight: 800; margin: 0.75rem 0 1rem 0; color: var(--text-main);">${article.title}</h1>
-          <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--card-border);">
+          <span class="formula-badge" style="font-size: 0.85rem;">${article.category} • ${article.readTime}</span>
+          <h1 style="font-size: 1.6rem; font-weight: 800; margin: 0.75rem 0 1rem 0; color: var(--text-main);">${article.title}</h1>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--card-border);">
             Published by <strong>${article.author}</strong> on ${new Date(article.publicationDate).toLocaleDateString()}
           </div>
-          <div style="line-height: 1.7; font-size: 1.05rem; color: var(--text-main);">
+          <div style="line-height: 1.65; font-size: 1rem; color: var(--text-main);">
             ${article.content}
           </div>
         `;
@@ -271,28 +303,20 @@
         if (currentPage > 1) {
           currentPage--;
           renderArticles();
-          window.scrollTo({ top: 300, behavior: 'smooth' });
+          window.scrollTo({ top: 250, behavior: 'smooth' });
         }
       });
 
       nextPageBtn.addEventListener('click', () => {
         const filtered = getFilteredArticles();
-        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        const remaining = (currentCategory === 'All' && !currentQuery) ? filtered.slice(1) : filtered;
+        const totalPages = Math.ceil(remaining.length / itemsPerPage);
         if (currentPage < totalPages) {
           currentPage++;
           renderArticles();
-          window.scrollTo({ top: 300, behavior: 'smooth' });
+          window.scrollTo({ top: 250, behavior: 'smooth' });
         }
       });
-
-      // Check URL Hash for deep links
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-        const targetArticle = blogArticles.find(a => a.id === hash || a.slug.includes(hash));
-        if (targetArticle) {
-          openArticleModal(targetArticle);
-        }
-      }
 
       // Initial Render
       renderArticles();
