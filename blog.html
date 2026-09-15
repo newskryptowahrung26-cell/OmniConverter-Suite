@@ -75,45 +75,18 @@
       </div>
     </section>
 
-    <!-- 01 Latest Featured Hero Article Section -->
-    <section style="padding: 0 1rem; margin-bottom: 1.75rem;" id="featuredSection">
-      <div class="blog-hero-card" style="padding: 1.75rem;">
-        <div>
-          <span class="blog-hero-badge">🔥 01 Latest Article</span>
-          <h2 class="blog-hero-title" style="font-size: 1.6rem; margin-bottom: 0.6rem;">
-            <a href="1-3-a-cup-in-grams.html" class="open-article-link" data-id="1-3-cup-in-grams-kitchen-conversion-guide">How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide</a>
-          </h2>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.85rem;">
-            Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.
-          </p>
-          <div class="blog-meta-bar" style="margin-top: 0.5rem; font-size: 0.85rem;">
-            <span>🍳 Kitchen & Culinary</span>
-            <span>•</span>
-            <span>⏱️ 4 min read</span>
-            <span>•</span>
-            <span>📅 Sept 15, 2026</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; justify-content: flex-end;">
-          <a href="1-3-a-cup-in-grams.html" class="btn-convert open-article-link" data-id="1-3-cup-in-grams-kitchen-conversion-guide" style="text-decoration: none; padding: 0.65rem 1.25rem; font-size: 0.9rem; font-weight: 700;">
-            Read Full Guide &rarr;
-          </a>
-        </div>
+    <!-- Remaining Articles Grid -->
+    <section class="blog-cards-grid" id="blogGrid">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-xl);">
+        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📝</div>
+        <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">No Published Articles</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">Check back soon for upcoming conversion guides, technical updates, and tutorials.</p>
+        <a href="index.html" class="btn-convert" style="display: inline-block; text-decoration: none; padding: 0.65rem 1.5rem; font-weight: 700;">Return to Tools Home &rarr;</a>
       </div>
     </section>
-
-    <!-- Remaining Articles Grid (Strictly 6 Articles Per Page) -->
-    <section class="blog-cards-grid" id="blogGrid"></section>
 
     <!-- Pagination Controls Bar -->
-    <section class="pagination-wrapper" id="paginationWrapper">
-      <div class="page-info" id="pageInfo">Showing 1-6 of articles</div>
-      <div class="pagination-controls" id="paginationControls">
-        <button type="button" id="prevPageBtn" class="page-btn" disabled>&larr; Previous</button>
-        <div id="pageNumbers" style="display: flex; gap: 0.35rem;"></div>
-        <button type="button" id="nextPageBtn" class="page-btn">Next &rarr;</button>
-      </div>
-    </section>
+    <section class="pagination-wrapper" id="paginationWrapper" style="display: none;"></section>
   </main>
 
   <!-- Full Article Modal Reader -->
