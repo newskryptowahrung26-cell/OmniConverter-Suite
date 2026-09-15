@@ -50,19 +50,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Official Blog Hub & Article Guides -->
-  <url>
-    <loc>https://omniconverter.co.uk/blog.html</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://omniconverter.co.uk/1-3-a-cup-in-grams.html</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
 
   <!-- HTML Sitemap & Trust Pages -->
   <url>
