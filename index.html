@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniConverter - Free All-in-One Unit & File Converter</title>
+  <meta name="description" content="Convert Temperature, Weight/Mass, Volume, Length/Distance, Time, Images (PNG, JPEG, WebP, BMP), and Data files (JSON, CSV, HTML) instantly online for free. Fast, private & accurate.">
+  <link rel="canonical" href="https://temperatureconverter.org/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://temperatureconverter.org/">
+  <meta property="og:title" content="OmniConverter - Instant Online Unit & File Converter Suite">
+  <meta property="og:description" content="All-in-one free unit converter for temperature, weight, volume, length, time, images, and document format conversions.">
+  <meta property="og:site_name" content="OmniConverter Suite">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OmniConverter - Universal Unit & Media Tools">
+  <meta name="twitter:description" content="Instant unit and browser-native file converter tools. Safe, client-side, zero installation required.">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "OmniConverter Suite",
+    "url": "https://temperatureconverter.org/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "description": "Free online all-in-one converter tool supporting Temperature, Weight/Mass, Volume, Length/Distance, Time/Duration, Images, and Documents.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo" aria-label="OmniConverter Suite Home">
+        <svg viewBox="0 0 24 24">
+          <path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3-10a1 1 0 0 1 1 1v7h-2V4a1 1 0 0 1 1-1z"/>
+        </svg>
+        <span>OmniConverter</span>
+      </a>
+
+      <!-- Tool Navigation Tabs -->
+      <nav class="nav-tabs" aria-label="Converter category navigation">
+        <button type="button" id="tabTemp" class="tab-btn active">Temperature</button>
+        <button type="button" id="tabWeight" class="tab-btn">Weight & Mass</button>
+        <button type="button" id="tabVolume" class="tab-btn">Volume & Capacity</button>
+        <button type="button" id="tabLength" class="tab-btn">Length & Distance</button>
+        <button type="button" id="tabTime" class="tab-btn">Time & Duration</button>
+        <button type="button" id="tabFiles" class="tab-btn">File & Media</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+    
+    <!-- ================= TEMPERATURE TAB ================= -->
+    <div id="contentTemp" class="tool-tab-content active">
+      <section class="converter-card">
+        <h1 class="converter-title">Temperature Converter</h1>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="tempInput">Temperature Value</label>
+            <input type="number" id="tempInput" class="input-field" placeholder="Enter value..." step="any" value="32">
+          </div>
+          <div class="input-group">
+            <label for="fromSelect">From Unit</label>
+            <select id="fromSelect" class="select-field" aria-label="From Unit"></select>
+          </div>
+          <button type="button" id="swapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="toSelect">To Unit</label>
+            <select id="toSelect" class="select-field" aria-label="To Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="convertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="clearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="resultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Result</span>
+              <div id="resultValue" class="result-value">0 °C</div>
+            </div>
+            <button type="button" id="copyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="formulaText">°C = (°F − 32) × 5/9</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="explanationText">Subtract 32 from 32 °F to get 0 °C.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Temperature Converter</h2>
+        <p>Convert values across Celsius (°C), Fahrenheit (°F), Kelvin (K), Rankine (°R), Réaumur (°Ré), Rømer (°Rø), Newton (°N), and Delisle (°De) with live exact calculations.</p>
+      </article>
+    </div>
+
+    <!-- ================= WEIGHT & MASS TAB ================= -->
+    <div id="contentWeight" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Weight & Mass Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="weightInput">Weight / Mass Value</label>
+            <input type="number" id="weightInput" class="input-field" placeholder="Enter weight..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="weightFromSelect">From Unit</label>
+            <select id="weightFromSelect" class="select-field" aria-label="From Weight Unit"></select>
+          </div>
+          <button type="button" id="weightSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="weightToSelect">To Unit</label>
+            <select id="weightToSelect" class="select-field" aria-label="To Weight Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="weightConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="weightClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="weightResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Weight</span>
+              <div id="weightResultValue" class="result-value">2.204623 lb</div>
+            </div>
+            <button type="button" id="weightCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="weightFormulaText">lb = kg × 2.20462</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="weightExplanationText">Multiply 1 kg by 2.204623.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Weight & Mass Converter</h2>
+        <p>Supports Kilograms (kg), Grams (g), Milligrams (mg), Metric Tons (t), Pounds (lb), Ounces (oz), Stones (st), US Tons, Imperial Tons, and Carats.</p>
+      </article>
+    </div>
+
+    <!-- ================= VOLUME & CAPACITY TAB ================= -->
+    <div id="contentVolume" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Volume & Capacity Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="volumeInput">Volume Value</label>
+            <input type="number" id="volumeInput" class="input-field" placeholder="Enter volume..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="volumeFromSelect">From Unit</label>
+            <select id="volumeFromSelect" class="select-field" aria-label="From Volume Unit"></select>
+          </div>
+          <button type="button" id="volumeSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="volumeToSelect">To Unit</label>
+            <select id="volumeToSelect" class="select-field" aria-label="To Volume Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="volumeConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="volumeClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="volumeResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Volume</span>
+              <div id="volumeResultValue" class="result-value">0.264172 gal</div>
+            </div>
+            <button type="button" id="volumeCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="volumeFormulaText">gal = L × 0.264172</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="volumeExplanationText">Multiply 1 L by 0.264172.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Volume & Capacity Converter</h2>
+        <p>Convert between Liters (L), Milliliters (mL), Cubic Meters (m³), US Gallons (gal), Quarts (qt), Pints (pt), Cups, Fluid Ounces (fl oz), Tablespoons, and Teaspoons.</p>
+      </article>
+    </div>
+
+    <!-- ================= LENGTH & DISTANCE TAB ================= -->
+    <div id="contentLength" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Length & Distance Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="lengthInput">Length / Distance Value</label>
+            <input type="number" id="lengthInput" class="input-field" placeholder="Enter length..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="lengthFromSelect">From Unit</label>
+            <select id="lengthFromSelect" class="select-field" aria-label="From Length Unit"></select>
+          </div>
+          <button type="button" id="lengthSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="lengthToSelect">To Unit</label>
+            <select id="lengthToSelect" class="select-field" aria-label="To Length Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="lengthConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="lengthClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="lengthResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Distance</span>
+              <div id="lengthResultValue" class="result-value">0.621371 mi</div>
+            </div>
+            <button type="button" id="lengthCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="lengthFormulaText">mi = km × 0.621371</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="lengthExplanationText">Multiply 1 km by 0.621371.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Length & Distance Converter</h2>
+        <p>Convert between Meters (m), Kilometers (km), Centimeters (cm), Millimeters (mm), Micrometers (μm), Nanometers (nm), Miles (mi), Yards (yd), Feet (ft), Inches (in), and Nautical Miles (nmi).</p>
+      </article>
+    </div>
+
+    <!-- ================= TIME & DURATION TAB ================= -->
+    <div id="contentTime" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Time & Duration Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="timeInput">Time / Duration Value</label>
+            <input type="number" id="timeInput" class="input-field" placeholder="Enter duration..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="timeFromSelect">From Unit</label>
+            <select id="timeFromSelect" class="select-field" aria-label="From Time Unit"></select>
+          </div>
+          <button type="button" id="timeSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="timeToSelect">To Unit</label>
+            <select id="timeToSelect" class="select-field" aria-label="To Time Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="timeConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="timeClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="timeResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Duration</span>
+              <div id="timeResultValue" class="result-value">60 min</div>
+            </div>
+            <button type="button" id="timeCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="timeFormulaText">min = hr × 60</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="timeExplanationText">Multiply 1 hr by 60.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Time & Duration Converter</h2>
+        <p>Convert between Seconds (s), Milliseconds (ms), Microseconds (μs), Nanoseconds (ns), Minutes (min), Hours (hr), Days (d), Weeks (wk), Months (mo), and Years (yr).</p>
+      </article>
+    </div>
+
+    <!-- ================= FILE & MEDIA TAB ================= -->
+    <div id="contentFiles" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Client-Side Image Format Converter</h2>
+        <div class="input-group" style="margin-bottom: 1rem;">
+          <label for="imageFileInput">Select Image File (PNG, JPG, WebP, BMP)</label>
+          <input type="file" id="imageFileInput" class="input-field" accept="image/*">
+        </div>
+        <div class="input-group" style="margin-bottom: 1.5rem;">
+          <label for="targetImageFormat">Convert To Format</label>
+          <select id="targetImageFormat" class="select-field">
+            <option value="image/png">PNG (.png)</option>
+            <option value="image/jpeg">JPEG (.jpg)</option>
+            <option value="image/webp">WebP (.webp)</option>
+            <option value="image/bmp">BMP (.bmp)</option>
+          </select>
+        </div>
+        <button type="button" id="convertImageBtn" class="btn-convert">Convert Image</button>
+        <div id="imageResultArea"></div>
+      </section>
+
+      <section class="converter-card">
+        <h2 class="converter-title">Document & Data Format Converter</h2>
+        <div class="input-group" style="margin-bottom: 1rem;">
+          <label for="docInputText">Paste Content (JSON, CSV, or Text)</label>
+          <textarea id="docInputText" class="input-field" style="height: 120px; font-family: monospace;" placeholder='[{"name":"John","age":30}]'></textarea>
+        </div>
+        <div class="input-group" style="margin-bottom: 1.5rem;">
+          <label for="docConversionType">Select Conversion Mode</label>
+          <select id="docConversionType" class="select-field">
+            <option value="json2csv">JSON to CSV (.csv)</option>
+            <option value="csv2json">CSV to JSON (.json)</option>
+            <option value="txt2html">Plain Text to HTML (.html)</option>
+          </select>
+        </div>
+        <button type="button" id="convertDocBtn" class="btn-convert">Convert Document</button>
+        <div id="docResultArea"></div>
+      </section>
+    </div>
+
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <footer>
+    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. 100% Client-Side & Private.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
