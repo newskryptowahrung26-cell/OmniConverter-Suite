@@ -3,6 +3,8 @@ import { convertWeight, WEIGHT_UNITS } from './weight-converter.js';
 import { convertVolume, VOLUME_UNITS } from './volume-converter.js';
 import { convertLength, LENGTH_UNITS } from './length-converter.js';
 import { convertTime, TIME_UNITS } from './time-converter.js';
+import { convertArea, AREA_UNITS } from './area-converter.js';
+import { convertSpeed, SPEED_UNITS } from './speed-converter.js';
 import { convertImageFile, convertTextDocument } from './file-converter.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     volume: { btn: document.getElementById('tabVolume'), content: document.getElementById('contentVolume') },
     length: { btn: document.getElementById('tabLength'), content: document.getElementById('contentLength') },
     time: { btn: document.getElementById('tabTime'), content: document.getElementById('contentTime') },
+    area: { btn: document.getElementById('tabArea'), content: document.getElementById('contentArea') },
+    speed: { btn: document.getElementById('tabSpeed'), content: document.getElementById('contentSpeed') },
     files: { btn: document.getElementById('tabFiles'), content: document.getElementById('contentFiles') }
   };
 
@@ -178,7 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
     unitsObj: TIME_UNITS, convertFn: convertTime, defaultFrom: 'hr', defaultTo: 'min'
   });
 
-  // --- CLIENT-SIDE FILE CONVERTER UI ---
+  setupConverter({
+    inputId: 'areaInput', fromId: 'areaFromSelect', toId: 'areaToSelect',
+    swapId: 'areaSwapBtn', convertId: 'areaConvertBtn', clearId: 'areaClearBtn',
+    resultContainerId: 'areaResultContainer', resultValueId: 'areaResultValue',
+    formulaTextId: 'areaFormulaText', explanationTextId: 'areaExplanationText', copyBtnId: 'areaCopyBtn',
+    unitsObj: AREA_UNITS, convertFn: convertArea, defaultFrom: 'm2', defaultTo: 'ft2'
+  });
+
+  setupConverter({
+    inputId: 'speedInput', fromId: 'speedFromSelect', toId: 'speedToSelect',
+    swapId: 'speedSwapBtn', convertId: 'speedConvertBtn', clearId: 'speedClearBtn',
+    resultContainerId: 'speedResultContainer', resultValueId: 'speedResultValue',
+    formulaTextId: 'speedFormulaText', explanationTextId: 'speedExplanationText', copyBtnId: 'speedCopyBtn',
+    unitsObj: SPEED_UNITS, convertFn: convertSpeed, defaultFrom: 'kmh', defaultTo: 'mph'
+  });
+
+  // Client-side file converter controller
   const imageInput = document.getElementById('imageFileInput');
   const targetImageFormat = document.getElementById('targetImageFormat');
   const convertImageBtn = document.getElementById('convertImageBtn');
@@ -191,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const res = await convertImageFile(file, targetImageFormat.value);
         imageResultArea.innerHTML = `
-          <div style="margin-top: 1rem; padding: 1rem; background: #eff6ff; border-radius: 8px;">
+          <div style="margin-top: 1rem; padding: 1rem; background: var(--primary-light); border-radius: 8px;">
             <p><strong>Conversion Complete!</strong> (${(res.size/1024).toFixed(1)} KB)</p>
             <a href="${res.downloadUrl}" download="${res.filename}" class="btn-convert" style="display:inline-block; margin-top:0.5rem; text-decoration:none;">Download ${res.filename}</a>
           </div>
@@ -215,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (res.error) return alert(res.error);
 
       docResultArea.innerHTML = `
-        <div style="margin-top: 1rem; padding: 1rem; background: #eff6ff; border-radius: 8px;">
+        <div style="margin-top: 1rem; padding: 1rem; background: var(--primary-light); border-radius: 8px;">
           <p><strong>File Generated Successfully!</strong></p>
           <a href="${res.downloadUrl}" download="${res.filename}" class="btn-convert" style="display:inline-block; margin-top:0.5rem; text-decoration:none;">Download ${res.filename}</a>
         </div>

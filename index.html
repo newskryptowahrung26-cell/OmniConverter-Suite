@@ -4,26 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OmniConverter - Free All-in-One Unit & File Converter</title>
-  <meta name="description" content="Convert Temperature, Weight/Mass, Volume, Length/Distance, Time, Images (PNG, JPEG, WebP, BMP), and Data files (JSON, CSV, HTML) instantly online for free. Fast, private & accurate.">
+  <meta name="description" content="Convert Temperature, Weight/Mass, Volume, Length, Time, Area, Speed, Images, and Documents instantly online for free. Fast, private & accurate.">
   <link rel="canonical" href="https://temperatureconverter.org/">
   <link rel="author" type="text/plain" href="llms.txt">
   
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://temperatureconverter.org/">
   <meta property="og:title" content="OmniConverter - Instant Online Unit & File Converter Suite">
-  <meta property="og:description" content="All-in-one free unit converter for temperature, weight, volume, length, time, images, and document format conversions.">
+  <meta property="og:description" content="All-in-one free unit converter for temperature, weight, volume, length, time, area, speed, images, and document format conversions.">
   <meta property="og:site_name" content="OmniConverter Suite">
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OmniConverter - Universal Unit & Media Tools">
   <meta name="twitter:description" content="Instant unit and browser-native file converter tools. Safe, client-side, zero installation required.">
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- WebSite Structured Data with Search -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,7 +34,6 @@
   }
   </script>
 
-  <!-- WebApplication Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,7 +43,7 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "description": "Free online all-in-one converter tool supporting Temperature, Weight/Mass, Volume, Length/Distance, Time/Duration, Images, and Documents.",
+    "description": "Free online all-in-one converter tool supporting Temperature, Weight/Mass, Volume, Length, Time, Area, Speed, Images, and Documents.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -76,15 +71,15 @@
         <button type="button" id="tabVolume" class="tab-btn">Volume & Capacity</button>
         <button type="button" id="tabLength" class="tab-btn">Length & Distance</button>
         <button type="button" id="tabTime" class="tab-btn">Time & Duration</button>
+        <button type="button" id="tabArea" class="tab-btn">Area</button>
+        <button type="button" id="tabSpeed" class="tab-btn">Speed</button>
         <button type="button" id="tabFiles" class="tab-btn">File & Media</button>
         <a href="blog.html" class="tab-btn" style="text-decoration:none;">Blog</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
   <main>
-    
     <!-- ================= TEMPERATURE TAB ================= -->
     <div id="contentTemp" class="tool-tab-content active">
       <section class="converter-card">
@@ -124,11 +119,6 @@
           <div class="explanation-box"><strong>Calculation Step:</strong> <span id="explanationText">Subtract 32 from 32 °F to get 0 °C.</span></div>
         </div>
       </section>
-
-      <article class="content-section">
-        <h2>Temperature Converter</h2>
-        <p>Convert values across Celsius (°C), Fahrenheit (°F), Kelvin (K), Rankine (°R), Réaumur (°Ré), Rømer (°Rø), Newton (°N), and Delisle (°De) with live exact calculations.</p>
-      </article>
     </div>
 
     <!-- ================= WEIGHT & MASS TAB ================= -->
@@ -295,6 +285,88 @@
       </section>
     </div>
 
+    <!-- ================= AREA TAB ================= -->
+    <div id="contentArea" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Area Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="areaInput">Area Value</label>
+            <input type="number" id="areaInput" class="input-field" placeholder="Enter area..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="areaFromSelect">From Unit</label>
+            <select id="areaFromSelect" class="select-field" aria-label="From Area Unit"></select>
+          </div>
+          <button type="button" id="areaSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="areaToSelect">To Unit</label>
+            <select id="areaToSelect" class="select-field" aria-label="To Area Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="areaConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="areaClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="areaResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Area</span>
+              <div id="areaResultValue" class="result-value">10.76391 ft²</div>
+            </div>
+            <button type="button" id="areaCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="areaFormulaText">ft² = m² × 10.7639</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="areaExplanationText">Multiply 1 m² by 10.76391.</span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= SPEED TAB ================= -->
+    <div id="contentSpeed" class="tool-tab-content">
+      <section class="converter-card">
+        <h2 class="converter-title">Speed Converter</h2>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="speedInput">Speed Value</label>
+            <input type="number" id="speedInput" class="input-field" placeholder="Enter speed..." step="any" value="100">
+          </div>
+          <div class="input-group">
+            <label for="speedFromSelect">From Unit</label>
+            <select id="speedFromSelect" class="select-field" aria-label="From Speed Unit"></select>
+          </div>
+          <button type="button" id="speedSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="speedToSelect">To Unit</label>
+            <select id="speedToSelect" class="select-field" aria-label="To Speed Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="speedConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="speedClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="speedResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Speed</span>
+              <div id="speedResultValue" class="result-value">62.137119 mph</div>
+            </div>
+            <button type="button" id="speedCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="speedFormulaText">mph = km/h × 0.621371</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="speedExplanationText">Multiply 100 km/h by 0.621371.</span></div>
+        </div>
+      </section>
+    </div>
+
     <!-- ================= FILE & MEDIA TAB ================= -->
     <div id="contentFiles" class="tool-tab-content">
       <section class="converter-card">
@@ -335,7 +407,6 @@
       </section>
     </div>
 
-    <!-- LLM API / Index Info Box -->
     <aside class="content-section" style="margin-top: 2rem;">
       <h2>AI & LLM Indexing Standard</h2>
       <p>This web suite exposes machine-readable technical specs for AI assistants, LLMs, and web crawlers.</p>
