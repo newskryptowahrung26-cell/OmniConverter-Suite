@@ -1,6 +1,6 @@
 # OmniConverter Web Suite
 
-> OmniConverter is a free, fast, private, zero-dependency, client-side web utility for converting unit measurements (Temperature, Weight & Mass, Volume & Capacity, Length & Distance, Time & Duration, Area, Speed) and client-side file media formats (Image, Document, Data).
+> OmniConverter is a free, fast, private, zero-dependency, client-side web utility for converting unit measurements (Temperature, Weight & Mass, Volume & Capacity, Time & Duration, Area, Speed) and client-side file media formats (Image, Document, Data).
 
 ## Key Features & Capabilities
 - **Instant Browser Calculations**: All mathematical unit conversions execute in $O(1)$ time in the user's web browser without server requests.
@@ -9,9 +9,9 @@
 - **Accessibility & SEO**: Semantic HTML5 markup, WCAG AAA contrast ratios, keyboard navigation, and JSON-LD structured data.
 
 ## Documentation & Primary Routes
-- [/index.html](https://temperatureconverter.org/index.html): Interactive unit converter calculator suite for Temperature, Weight, Volume, Length, Time, Area, and Speed.
-- [/blog.html](https://temperatureconverter.org/blog.html): Educational guides, unit conversion formulas, and physics explanations.
-- [/llms-full.txt](https://temperatureconverter.org/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
+- [/index.html](https://omniconverter.com/index.html): Interactive unit converter calculator suite for Temperature, Weight, Volume, Time, Area, and Speed.
+- [/news.html](https://omniconverter.com/news.html): Product newsroom and feature release announcements.
+- [/llms-full.txt](https://omniconverter.com/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
 ## Core Conversion Formulas Summary
 

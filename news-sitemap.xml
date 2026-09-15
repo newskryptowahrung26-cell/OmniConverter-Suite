@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://temperatureconverter.org/news.html</loc>
+    <loc>https://omniconverter.com/news.html</loc>
     <news:news>
       <news:publication>
         <news:name>OmniConverter Newsroom</news:name>
@@ -13,7 +13,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://temperatureconverter.org/news.html</loc>
+    <loc>https://omniconverter.com/news.html</loc>
     <news:news>
       <news:publication>
         <news:name>OmniConverter Technical Press</news:name>
