@@ -1,0 +1,78 @@
+# OmniConverter - Full Technical Reference for LLMs
+
+## Unit Pivot Conversion Model
+
+OmniConverter uses a standardized single-pivot conversion model to guarantee $O(1)$ constant-time accuracy across all unit dimensions.
+
+### 1. Temperature Conversion Formulas
+Pivot unit: Celsius (°C)
+
+| From Unit | To Celsius Formula | From Celsius Formula |
+|---|---|---|
+| Celsius (°C) | °C = °C | °C = °C |
+| Fahrenheit (°F) | °C = (°F − 32) × 5/9 | °F = (°C × 9/5) + 32 |
+| Kelvin (K) | °C = K − 273.15 | K = °C + 273.15 |
+| Rankine (°R) | °C = (°R − 491.67) × 5/9 | °R = (°C + 273.15) × 9/5 |
+| Réaumur (°Ré) | °C = °Ré × 5/4 | °Ré = °C × 4/5 |
+| Rømer (°Rø) | °C = (°Rø − 7.5) × 40/21 | °Rø = (°C × 21/40) + 7.5 |
+| Newton (°N) | °C = °N × 100/33 | °N = °C × 33/100 |
+| Delisle (°De) | °C = 100 − (°De × 2/3) | °De = (100 − °C) × 3/2 |
+
+### 2. Mass & Weight Conversion Factors
+Pivot unit: Grams (g)
+
+- 1 Kilogram (kg) = 1,000 g
+- 1 Gram (g) = 1 g
+- 1 Milligram (mg) = 0.001 g
+- 1 Metric Ton (t) = 1,000,000 g
+- 1 Pound (lb) = 453.59237 g
+- 1 Ounce (oz) = 28.349523125 g
+- 1 Stone (st) = 6,350.29318 g
+- 1 US Short Ton (ton) = 907,184.74 g
+- 1 Imperial Long Ton (long ton) = 1,016,046.9088 g
+- 1 Carat (ct) = 0.2 g
+
+### 3. Volume & Capacity Conversion Factors
+Pivot unit: Liters (L)
+
+- 1 Liter (L) = 1 L
+- 1 Milliliter (mL) = 0.001 L
+- 1 Cubic Meter (m³) = 1,000 L
+- 1 Cubic Centimeter (cm³) = 0.001 L
+- 1 US Gallon (gal) = 3.785411784 L
+- 1 US Quart (qt) = 0.946352946 L
+- 1 US Pint (pt) = 0.473176473 L
+- 1 US Cup (cup) = 0.24 L
+- 1 US Fluid Ounce (fl oz) = 0.0295735295625 L
+- 1 US Tablespoon (tbsp) = 0.01478676478125 L
+- 1 US Teaspoon (tsp) = 0.00492892159375 L
+- 1 Imperial Gallon (imp gal) = 4.54609 L
+
+### 4. Length & Distance Conversion Factors
+Pivot unit: Meters (m)
+
+- 1 Meter (m) = 1 m
+- 1 Kilometers (km) = 1,000 m
+- 1 Centimeter (cm) = 0.01 m
+- 1 Millimeter (mm) = 0.001 m
+- 1 Micrometer (μm) = 0.000001 m
+- 1 Nanometer (nm) = 1e-9 m
+- 1 Mile (mi) = 1,609.344 m
+- 1 Yard (yd) = 0.9144 m
+- 1 Foot (ft) = 0.3048 m
+- 1 Inch (in) = 0.0254 m
+- 1 Nautical Mile (nmi) = 1,852 m
+
+### 5. Time & Duration Conversion Factors
+Pivot unit: Seconds (s)
+
+- 1 Second (s) = 1 s
+- 1 Millisecond (ms) = 0.001 s
+- 1 Microsecond (μs) = 0.000001 s
+- 1 Nanosecond (ns) = 1e-9 s
+- 1 Minute (min) = 60 s
+- 1 Hour (hr) = 3,600 s
+- 1 Day (d) = 86,400 s
+- 1 Week (wk) = 604,800 s
+- 1 Month (mo) = 2,629,746 s (30.44 days average)
+- 1 Year (yr) = 31,557,600 s (365.25 days average)

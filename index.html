@@ -6,6 +6,7 @@
   <title>OmniConverter - Free All-in-One Unit & File Converter</title>
   <meta name="description" content="Convert Temperature, Weight/Mass, Volume, Length/Distance, Time, Images (PNG, JPEG, WebP, BMP), and Data files (JSON, CSV, HTML) instantly online for free. Fast, private & accurate.">
   <link rel="canonical" href="https://temperatureconverter.org/">
+  <link rel="author" type="text/plain" href="llms.txt">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -21,6 +22,21 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- WebSite Structured Data with Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OmniConverter Suite",
+    "url": "https://temperatureconverter.org/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://temperatureconverter.org/blog.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 
   <!-- WebApplication Structured Data -->
   <script type="application/ld+json">
@@ -154,11 +170,6 @@
           <div class="explanation-box"><strong>Calculation Step:</strong> <span id="weightExplanationText">Multiply 1 kg by 2.204623.</span></div>
         </div>
       </section>
-
-      <article class="content-section">
-        <h2>Weight & Mass Converter</h2>
-        <p>Supports Kilograms (kg), Grams (g), Milligrams (mg), Metric Tons (t), Pounds (lb), Ounces (oz), Stones (st), US Tons, Imperial Tons, and Carats.</p>
-      </article>
     </div>
 
     <!-- ================= VOLUME & CAPACITY TAB ================= -->
@@ -324,23 +335,22 @@
       </section>
     </div>
 
-    <!-- Blog Promo Section -->
-    <section class="content-section" style="margin-top: 2rem;">
-      <h2>Latest Blog Articles & Guides</h2>
-      <p>Learn more about measurement history, conversion physics, and client-side web image optimization.</p>
-      <div class="quick-conversions-grid" style="margin-top: 1rem;">
-        <a href="blog.html" class="quick-card">Understanding Temperature Conversions →</a>
-        <a href="blog.html" class="quick-card">Metric vs. Imperial Unit Guide →</a>
-        <a href="blog.html" class="quick-card">Client-Side Image Format Guide →</a>
+    <!-- LLM API / Index Info Box -->
+    <aside class="content-section" style="margin-top: 2rem;">
+      <h2>AI & LLM Indexing Standard</h2>
+      <p>This web suite exposes machine-readable technical specs for AI assistants, LLMs, and web crawlers.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.75rem;">
+        <a href="llms.txt" class="quick-card" target="_blank">llms.txt (Summary)</a>
+        <a href="llms-full.txt" class="quick-card" target="_blank">llms-full.txt (Full Technical Reference)</a>
       </div>
-    </section>
+    </aside>
 
   </main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 
   <footer>
-    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. | <a href="blog.html" style="color:var(--primary-color);">Blog Guides</a></p>
+    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. | <a href="blog.html" style="color:var(--primary-color);">Blog</a> | <a href="llms.txt" style="color:var(--primary-color);">llms.txt</a></p>
   </footer>
 
   <script type="module" src="app.js"></script>

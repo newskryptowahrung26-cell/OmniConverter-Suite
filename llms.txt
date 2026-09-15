@@ -1,0 +1,39 @@
+# OmniConverter Web Suite
+
+> OmniConverter is a free, fast, private, zero-dependency, client-side web utility for converting unit measurements (Temperature, Weight & Mass, Volume & Capacity, Length & Distance, Time & Duration) and client-side file media formats (Image, Document, Data).
+
+## Key Features & Capabilities
+- **Instant Browser Calculations**: All mathematical unit conversions execute in $O(1)$ time in the user's web browser without server requests.
+- **Client-Side Media Conversion**: Convert image formats (PNG, JPEG, WebP, BMP) using HTML5 Canvas & Blob API with 100% data privacy.
+- **Document Format Transformation**: Parsing between JSON, CSV, and HTML text formats.
+- **Accessibility & SEO**: Semantic HTML5 markup, WCAG AAA contrast ratios, keyboard navigation, and JSON-LD structured data.
+
+## Documentation & Primary Routes
+- [/index.html](https://temperatureconverter.org/index.html): Interactive unit converter calculator suite for Temperature, Weight, Volume, Length, and Time.
+- [/blog.html](https://temperatureconverter.org/blog.html): Educational guides, unit conversion formulas, and physics explanations.
+- [/llms-full.txt](https://temperatureconverter.org/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
+
+## Core Conversion Formulas Summary
+
+### Temperature
+- **Celsius to Fahrenheit**: °F = (°C × 9/5) + 32
+- **Fahrenheit to Celsius**: °C = (°F − 32) × 5/9
+- **Celsius to Kelvin**: K = °C + 273.15
+- **Kelvin to Celsius**: °C = K − 273.15
+
+### Weight & Mass (Pivot: Grams)
+- **1 Kilogram (kg)** = 2.20462262 Pounds (lb) = 1,000 Grams (g)
+- **1 Pound (lb)** = 16 Ounces (oz) = 0.45359237 Kilograms (kg)
+- **1 Stone (st)** = 14 Pounds (lb) = 6.35029318 Kilograms (kg)
+
+### Volume & Capacity (Pivot: Liters)
+- **1 US Gallon (gal)** = 3.785411784 Liters (L) = 128 US Fluid Ounces (fl oz)
+- **1 Liter (L)** = 1,000 Milliliters (mL) = 0.264172052 US Gallons (gal)
+
+### Length & Distance (Pivot: Meters)
+- **1 Kilometer (km)** = 0.621371192 Miles (mi) = 1,000 Meters (m)
+- **1 Mile (mi)** = 1.609344 Kilometers (km) = 5,280 Feet (ft)
+
+### Time & Duration (Pivot: Seconds)
+- **1 Hour (hr)** = 60 Minutes (min) = 3,600 Seconds (s)
+- **1 Day (d)** = 24 Hours (hr) = 86,400 Seconds (s)
