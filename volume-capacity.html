@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volume & Capacity Converter - Liters, Milliliters, Gallons, Cups & Fl Oz | OmniConverter</title>
+  <meta name="description" content="Free instant online Volume & Capacity Converter. Convert values across Liters (L), Milliliters (mL), US Gallons (gal), Quarts, Pints, Cups, and Fluid Ounces (fl oz).">
+  <link rel="canonical" href="https://omniconverter.com/volume-capacity.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Volume & Capacity Converter - OmniConverter",
+    "url": "https://omniconverter.com/volume-capacity.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript.",
+    "description": "Free online volume conversion tool for Liters, Milliliters, Gallons, Quarts, Pints, Cups, and Fluid Ounces.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" aria-label="OmniConverter Home">
+        <img src="logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <span>OmniConverter</span>
+      </a>
+
+      <nav class="nav-tabs" aria-label="Converter category navigation">
+        <a href="temperature.html" class="tab-btn">Temperature</a>
+        <a href="weight-mass.html" class="tab-btn">Weight & Mass</a>
+        <a href="volume-capacity.html" class="tab-btn active">Volume & Capacity</a>
+        <a href="time-duration.html" class="tab-btn">Time & Duration</a>
+        <a href="area.html" class="tab-btn">Area</a>
+        <a href="speed.html" class="tab-btn">Speed</a>
+        <a href="file-media.html" class="tab-btn">File & Media</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="contentVolume" class="tool-tab-content active">
+      <section class="converter-card">
+        <h1 class="converter-title">Volume & Capacity Converter</h1>
+        <div class="converter-grid">
+          <div class="input-group">
+            <label for="volumeInput">Volume Value</label>
+            <input type="number" id="volumeInput" class="input-field" placeholder="Enter volume..." step="any" value="1">
+          </div>
+          <div class="input-group">
+            <label for="volumeFromSelect">From Unit</label>
+            <select id="volumeFromSelect" class="select-field" aria-label="From Volume Unit"></select>
+          </div>
+          <button type="button" id="volumeSwapBtn" class="btn-swap" title="Swap Units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
+            </svg>
+          </button>
+          <div class="input-group">
+            <label for="volumeToSelect">To Unit</label>
+            <select id="volumeToSelect" class="select-field" aria-label="To Volume Unit"></select>
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="volumeConvertBtn" class="btn-convert">Convert</button>
+          <button type="button" id="volumeClearBtn" class="btn-clear">Clear / Reset</button>
+        </div>
+        <div id="volumeResultContainer" class="result-container" style="display: none;" aria-live="polite">
+          <div class="result-main">
+            <div class="result-text-group">
+              <span class="result-label">Converted Volume</span>
+              <div id="volumeResultValue" class="result-value">0.264172 gal</div>
+            </div>
+            <button type="button" id="volumeCopyBtn" class="btn-copy">Copy Result</button>
+          </div>
+          <div class="formula-box"><strong>Formula:</strong> <span id="volumeFormulaText">gal = L × 0.264172</span></div>
+          <div class="explanation-box"><strong>Calculation Step:</strong> <span id="volumeExplanationText">Multiply 1 L by 0.264172.</span></div>
+        </div>
+      </section>
+
+      <article class="content-section">
+        <h2>Volume & Capacity Conversion Reference</h2>
+        <p>Convert liquid volume and 3D space measurements instantly: Liters, Milliliters, US Gallons, Quarts, Pints, Cups, Tablespoons, Teaspoons, Fluid Ounces, Cubic Meters, and Cubic Feet.</p>
+      </article>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <footer>
+    <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="index.html" style="color:var(--primary-600);">Home</a> | <a href="blog.html" style="color:var(--primary-600);">Blog</a> | <a href="sitemap.html" style="color:var(--primary-600);">Sitemap</a> | <a href="privacy-policy.html" style="color:var(--primary-600);">Privacy</a> | <a href="terms.html" style="color:var(--primary-600);">Terms</a></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

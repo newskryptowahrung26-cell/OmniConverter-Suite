@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File & Media Converter - In-Browser PNG, JPG, WebP & Document Parsing | OmniConverter</title>
+  <meta name="description" content="Free 100% private client-side File & Media Converter. Convert PNG, JPEG, WebP, BMP image formats and JSON, CSV, Text document data directly in browser memory without server uploads.">
+  <link rel="canonical" href="https://omniconverter.com/file-media.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "File & Media Converter - OmniConverter",
+    "url": "https://omniconverter.com/file-media.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript.",
+    "description": "100% private in-browser image format converter and JSON/CSV document transformer.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" aria-label="OmniConverter Home">
+        <img src="logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <span>OmniConverter</span>
+      </a>
+
+      <nav class="nav-tabs" aria-label="Converter category navigation">
+        <a href="temperature.html" class="tab-btn">Temperature</a>
+        <a href="weight-mass.html" class="tab-btn">Weight & Mass</a>
+        <a href="volume-capacity.html" class="tab-btn">Volume & Capacity</a>
+        <a href="time-duration.html" class="tab-btn">Time & Duration</a>
+        <a href="area.html" class="tab-btn">Area</a>
+        <a href="speed.html" class="tab-btn">Speed</a>
+        <a href="file-media.html" class="tab-btn active">File & Media</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="contentFiles" class="tool-tab-content active">
+      <section class="converter-card">
+        <h1 class="converter-title">Client-Side Image Format Converter</h1>
+        <div class="input-group" style="margin-bottom: 1rem;">
+          <label for="imageFileInput">Select Image File (PNG, JPG, WebP, BMP)</label>
+          <input type="file" id="imageFileInput" class="input-field" accept="image/*">
+        </div>
+        <div class="input-group" style="margin-bottom: 1.5rem;">
+          <label for="targetImageFormat">Convert To Format</label>
+          <select id="targetImageFormat" class="select-field">
+            <option value="image/png">PNG (.png)</option>
+            <option value="image/jpeg">JPEG (.jpg)</option>
+            <option value="image/webp">WebP (.webp)</option>
+            <option value="image/bmp">BMP (.bmp)</option>
+          </select>
+        </div>
+        <button type="button" id="convertImageBtn" class="btn-convert">Convert Image</button>
+        <div id="imageResultArea"></div>
+      </section>
+
+      <section class="converter-card">
+        <h2 class="converter-title">Document & Data Format Converter</h2>
+        <div class="input-group" style="margin-bottom: 1rem;">
+          <label for="docInputText">Paste Content (JSON, CSV, or Text)</label>
+          <textarea id="docInputText" class="input-field" style="height: 120px; font-family: monospace;" placeholder='[{"name":"John","age":30}]'></textarea>
+        </div>
+        <div class="input-group" style="margin-bottom: 1.5rem;">
+          <label for="docConversionType">Select Conversion Mode</label>
+          <select id="docConversionType" class="select-field">
+            <option value="json2csv">JSON to CSV (.csv)</option>
+            <option value="csv2json">CSV to JSON (.json)</option>
+            <option value="txt2html">Plain Text to HTML (.html)</option>
+          </select>
+        </div>
+        <button type="button" id="convertDocBtn" class="btn-convert">Convert Document</button>
+        <div id="docResultArea"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <footer>
+    <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="index.html" style="color:var(--primary-600);">Home</a> | <a href="blog.html" style="color:var(--primary-600);">Blog</a> | <a href="sitemap.html" style="color:var(--primary-600);">Sitemap</a> | <a href="privacy-policy.html" style="color:var(--primary-600);">Privacy</a> | <a href="terms.html" style="color:var(--primary-600);">Terms</a></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
