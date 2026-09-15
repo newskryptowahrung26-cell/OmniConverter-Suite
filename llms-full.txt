@@ -76,3 +76,17 @@ Pivot unit: Seconds (s)
 - 1 Week (wk) = 604,800 s
 - 1 Month (mo) = 2,629,746 s (30.44 days average)
 - 1 Year (yr) = 31,557,600 s (365.25 days average)
+
+### 6. Culinary & Baking Reference (1/3 Cup to Grams)
+Pivot unit: Grams (g) per 1/3 US Cup (80 mL)
+
+- Water / All Liquids: 78.86 g (~79 g)
+- All-Purpose Flour: 40 g
+- Granulated White Sugar: 67 g
+- Packed Brown Sugar: 73 g
+- Powdered Sugar: 40 g
+- Unsalted Butter: 76 g (5.33 tbsp)
+- Rolled Oats: 30 g
+- Cocoa Powder: 28 g
+- Honey / Maple Syrup: 113 g
+
