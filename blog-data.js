@@ -13,6 +13,8 @@ export const blogArticles = [
     readTime: '4 min read',
     icon: '🍳',
     featured: true,
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'baking measurement flour',
     summary: 'Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.',
     content: `
       <p>Converting recipe measurements when baking can be confusing, especially when working with fractional cups. One of the most frequently searched culinary conversions worldwide is <strong>1 3 a cup in grams</strong> (1/3 cup in grams).</p>
