@@ -10,7 +10,8 @@
 
 ## Documentation & Primary Routes
 - [/index.html](https://omniconverter.com/index.html): Interactive unit converter calculator suite for Temperature, Weight, Volume, Time, Area, and Speed.
-- [/news.html](https://omniconverter.com/news.html): Product newsroom and feature release announcements.
+- [/blog.html](https://omniconverter.com/blog.html): Official blog, culinary guides, and feature release updates.
+- [/1-3-a-cup-in-grams.html](https://omniconverter.com/1-3-a-cup-in-grams.html): Kitchen conversion guide for 1/3 cup in grams.
 - [/llms-full.txt](https://omniconverter.com/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
 ## Core Conversion Formulas Summary

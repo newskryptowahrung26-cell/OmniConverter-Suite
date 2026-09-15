@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://omniconverter.com/sitemap.xml
-Sitemap: https://omniconverter.com/news-sitemap.xml
+Sitemap: https://omniconverter.com/blog-sitemap.xml

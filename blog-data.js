@@ -1,15 +1,15 @@
 /**
- * OmniConverter News & Announcements Repository
+ * OmniConverter Official Blog & Article Repository
  */
 
-export const newsArticles = [
+export const blogArticles = [
   {
     id: '1-3-cup-in-grams-kitchen-conversion-guide',
     title: 'How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide',
-    slug: '1-3-a-cup-in-grams',
+    slug: '1-3-a-cup-in-grams.html',
+    category: 'Kitchen & Culinary',
     publicationDate: '2026-09-15T18:00:00Z',
-    publicationName: 'OmniConverter Culinary Guide',
-    language: 'en',
+    author: 'OmniConverter Culinary Team',
     summary: 'Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.',
     content: `
       <p>Converting recipe measurements when baking can be confusing, especially when working with fractional cups. One of the most frequently searched culinary conversions is <strong>1 3 a cup in grams</strong> (1/3 cup in grams).</p>
@@ -29,17 +29,16 @@ export const newsArticles = [
         <li><strong>Honey / Maple Syrup:</strong> 1/3 cup = <strong>113 grams</strong></li>
       </ul>
 
-      <h3>Why Does 1/3 Cup Weight Change by Ingredient?</h3>
-      <p>Volume (cups) tells you how much space an ingredient occupies, whereas mass (grams) tells you how heavy it is. Aerated, powdery ingredients like flour are much lighter per cup than dense liquids like honey or syrup. For accurate baking success, using a digital kitchen scale alongside our <a href="index.html">OmniConverter Volume & Mass Tools</a> ensures exact measurements every time.</p>
+      <p><a href="1-3-a-cup-in-grams.html" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1/3 cup in grams article &rarr;</a></p>
     `
   },
   {
     id: 'omniconverter-suite-launch',
     title: 'OmniConverter Web Suite Officially Launches Client-Side Conversion Platform',
-    slug: 'omniconverter-suite-launch',
+    slug: 'blog.html#launch',
+    category: 'Product Updates',
     publicationDate: '2026-09-15T10:00:00Z',
-    publicationName: 'OmniConverter Newsroom',
-    language: 'en',
+    author: 'OmniConverter Engineering',
     summary: 'OmniConverter introduces a zero-server, 100% private in-browser utility suite supporting Temperature, Weight, Volume, Time, Area, Speed, Images, and Documents.',
     content: `
       <p><strong>NEW YORK, NY — September 15, 2026</strong> — OmniConverter today announced the official release of its universal client-side unit and media conversion suite. Designed for privacy-conscious users, researchers, and developers, the web app operates completely inside the user's browser.</p>
@@ -58,10 +57,10 @@ export const newsArticles = [
   {
     id: 'llms-txt-standard-support-added',
     title: 'OmniConverter Implements Machine-Readable LLMs.txt Standard for AI Assistants',
-    slug: 'llms-txt-standard-support-added',
+    slug: 'blog.html#llms-txt',
+    category: 'Technology & AI',
     publicationDate: '2026-09-14T14:30:00Z',
-    publicationName: 'OmniConverter Technical Press',
-    language: 'en',
+    author: 'OmniConverter Tech Team',
     summary: 'OmniConverter integrates the llms.txt standard to provide machine-readable conversion specs directly to AI agents and LLM search crawlers.',
     content: `
       <p><strong>SAN FRANCISCO, CA — September 14, 2026</strong> — OmniConverter has added full compliance for the emerging <code>llms.txt</code> standard, allowing AI assistants such as ChatGPT, Claude, and Perplexity to index technical conversion specifications efficiently.</p>

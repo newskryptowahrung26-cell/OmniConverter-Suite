@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-  <title>OmniConverter News & Updates</title>
-  <link>https://omniconverter.com/news.html</link>
-  <description>Official announcements, unit converter updates, and press releases from OmniConverter.</description>
+  <title>OmniConverter Blog & Articles</title>
+  <link>https://omniconverter.com/blog.html</link>
+  <description>Official guides, measurement articles, unit converter updates, and press releases from OmniConverter.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 15 Sep 2026 10:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 18:00:00 GMT</lastBuildDate>
+  <item>
+    <title>How Much is 1 3 a Cup in Grams? Kitchen Conversion &amp; Baking Guide</title>
+    <link>https://omniconverter.com/1-3-a-cup-in-grams.html</link>
+    <description>Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.</description>
+    <pubDate>Tue, 15 Sep 2026 18:00:00 GMT</pubDate>
+    <guid>https://omniconverter.com/1-3-a-cup-in-grams.html</guid>
+  </item>
   <item>
     <title>OmniConverter Web Suite Officially Launches Client-Side Conversion Platform</title>
-    <link>https://omniconverter.com/news.html</link>
+    <link>https://omniconverter.com/blog.html#launch</link>
     <description>OmniConverter introduces a zero-server, 100% private in-browser utility suite supporting Temperature, Weight, Volume, Time, Area, Speed, Images, and Documents.</description>
     <pubDate>Tue, 15 Sep 2026 10:00:00 GMT</pubDate>
-    <guid>https://omniconverter.com/news.html#launch</guid>
+    <guid>https://omniconverter.com/blog.html#launch</guid>
   </item>
   <item>
     <title>OmniConverter Implements Machine-Readable LLMs.txt Standard for AI Assistants</title>
-    <link>https://omniconverter.com/news.html</link>
+    <link>https://omniconverter.com/blog.html#llms-txt</link>
     <description>OmniConverter integrates the llms.txt standard to provide machine-readable conversion specs directly to AI agents and LLM search crawlers.</description>
     <pubDate>Mon, 14 Sep 2026 14:30:00 GMT</pubDate>
-    <guid>https://omniconverter.com/news.html#llms-txt</guid>
+    <guid>https://omniconverter.com/blog.html#llms-txt</guid>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniConverter Blog - Conversion Guides, Tech & Culinary Insights</title>
+  <meta name="description" content="Official blog for OmniConverter. Explore baking guides, culinary conversion charts, client-side utility tutorials, and product updates.">
+  <link rel="canonical" href="https://omniconverter.com/blog.html">
+  <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="feed.xml">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "OmniConverter Blog",
+    "url": "https://omniconverter.com/blog.html",
+    "description": "Guides, measurement articles, and tech updates from the OmniConverter team.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "OmniConverter",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://omniconverter.com/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" aria-label="OmniConverter Home">
+        <img src="logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <span>OmniConverter</span>
+      </a>
+
+      <nav class="nav-tabs">
+        <a href="index.html" class="tab-btn" style="text-decoration:none;">Tools</a>
+        <a href="blog.html" class="tab-btn active" style="text-decoration:none;">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section" style="margin-top:1rem;">
+      <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">OmniConverter Blog</h1>
+      <p style="color:var(--text-muted); font-size:1.1rem;">Kitchen measurement guides, conversion tips, and official product insights.</p>
+    </section>
+
+    <div id="blogGrid" style="display:flex; flex-direction:column; gap:1.5rem;"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="index.html" style="color:var(--primary-600);">Home</a> | <a href="blog.html" style="color:var(--primary-600);">Blog</a> | <a href="sitemap.html" style="color:var(--primary-600);">HTML Sitemap</a> | <a href="feed.xml" style="color:var(--primary-600);">RSS Feed</a></p>
+  </footer>
+
+  <script type="module">
+    import { blogArticles } from './blog-data.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const blogGrid = document.getElementById('blogGrid');
+      blogArticles.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'content-section';
+        card.id = item.id;
+        card.innerHTML = `
+          <span class="formula-badge" style="font-size:0.85rem;">${item.category} • ${item.author} • ${new Date(item.publicationDate).toLocaleDateString()}</span>
+          <h2 style="font-size:1.6rem; margin:0.5rem 0 0.75rem 0;">
+            <a href="${item.slug}" style="color:inherit; text-decoration:none;">${item.title}</a>
+          </h2>
+          <div style="line-height:1.7; font-size:1.05rem; color:var(--text-muted);">${item.content}</div>
+        `;
+        blogGrid.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
