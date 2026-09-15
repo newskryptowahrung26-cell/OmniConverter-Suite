@@ -30,3 +30,7 @@
 - **1 Kilometer per Hour (km/h)** = 0.277778 m/s
 - **1 Mile per Hour (mph)** = 0.44704 m/s
 - **1 Mach (sea level)** = 343 m/s
+- [1 Bar to PSI Conversion Guide & Formula](https://omniconverter.co.uk/blog/1-bar-to-psi-conversion)
+- [1 Cup Milk in Milliliters: Exact Fluid Volume Guide](https://omniconverter.co.uk/blog/1-cup-milk-in-milliliters)
+- [100 USD to AUD Exchange Rate & Currency Guide](https://omniconverter.co.uk/blog/100-usd-to-aud)
+- [100 Fahrenheit to Celsius Conversion & Temperature Guide](https://omniconverter.co.uk/blog/100-fahrenheit-to-celsius)
