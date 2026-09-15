@@ -5,7 +5,7 @@
 export const blogArticles = [
   {
     id: '1-3-cup-in-grams-kitchen-conversion-guide',
-    title: 'How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide',
+    title: '1 3 a Cup in Grams: Exact Kitchen & Baking Conversion Guide',
     slug: '1-3-a-cup-in-grams.html',
     category: 'Kitchen & Culinary',
     publicationDate: '2026-09-15T18:00:00Z',
