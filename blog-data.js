@@ -6,7 +6,7 @@ export const blogArticles = [
   {
     id: '1-3-cup-to-grams',
     title: '1/3 Cup to Grams: Exact Kitchen & Baking Conversion Guide',
-    slug: '1-3-cup-to-grams',
+    slug: 'blog/1-3-cup-to-grams',
     category: 'Kitchen & Culinary',
     publicationDate: '2026-09-15T18:00:00Z',
     author: 'OmniConverter Culinary Team',
@@ -109,7 +109,7 @@ export const blogArticles = [
         👉 <strong>Need precise recipe calculations?</strong> Use our interactive <a href="volume-capacity.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Volume & Capacity Tool</a> or <a href="weight-mass.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Weight & Mass Tool</a> to convert any cup fraction or gram measurement instantly!
       </p>
 
-      <p><a href="1-3-cup-to-grams" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1/3 cup to grams article page &rarr;</a></p>
+      <p><a href="/blog/1-3-cup-to-grams" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1/3 cup to grams article page &rarr;</a></p>
     `
   }
 ];
