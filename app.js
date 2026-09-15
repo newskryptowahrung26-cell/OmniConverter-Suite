@@ -40,6 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Handle URL hash tab switching (e.g., index.html#volume, index.html#weight)
+  function handleHashTab() {
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash && tabs[hash]) {
+      switchTab(hash);
+      const activeEl = tabs[hash].content;
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  handleHashTab();
+  window.addEventListener('hashchange', handleHashTab);
+
   // --- UNIT CONVERTER SETUP FACTORY ---
   function setupConverter(cfg) {
     const tempInput = document.getElementById(cfg.inputId);
