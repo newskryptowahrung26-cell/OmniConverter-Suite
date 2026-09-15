@@ -46,48 +46,10 @@
   </header>
 
   <main>
-    <!-- Featured Hero Article Banner -->
-    <section class="blog-hero-section">
-      <article class="blog-hero-card">
-        <div>
-          <span class="blog-hero-badge">⭐ Featured Guide</span>
-          <h1 class="blog-hero-title">
-            <a href="1-3-a-cup-in-grams.html">How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide</a>
-          </h1>
-          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
-            Converting recipe measurements when baking can be confusing. Discover the exact weight of <strong>1 3 a cup in grams (1/3 cup in grams)</strong> for flour, sugar, butter, oats, and liquid volume conversions.
-          </p>
-          <div class="blog-meta-bar">
-            <span>🍳 Kitchen & Culinary</span>
-            <span>•</span>
-            <span>⏱️ 4 min read</span>
-            <span>•</span>
-            <span>📅 Sept 15, 2026</span>
-          </div>
-          <div style="margin-top: 1.5rem;">
-            <a href="1-3-a-cup-in-grams.html" class="btn-convert" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.8rem 1.6rem; font-weight: 700;">
-              Read Full Article & Tables &rarr;
-            </a>
-          </div>
-        </div>
-        <div style="background: rgba(99, 102, 241, 0.06); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(99, 102, 241, 0.15);">
-          <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary-600);">Quick Reference Preview</h3>
-          <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; list-style: none; padding-left: 0;">
-            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
-              <span>Water / Liquids:</span> <strong>79 grams</strong>
-            </li>
-            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
-              <span>All-Purpose Flour:</span> <strong>40 grams</strong>
-            </li>
-            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
-              <span>White Sugar:</span> <strong>67 grams</strong>
-            </li>
-            <li style="display: flex; justify-space-between: space-between; padding: 0.35rem 0;">
-              <span>Unsalted Butter:</span> <strong>76 grams</strong>
-            </li>
-          </ul>
-        </div>
-      </article>
+    <!-- Header Title Banner -->
+    <section class="content-section" style="margin-top:1.5rem; text-align:center; padding: 2rem 1.5rem;">
+      <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; letter-spacing: -0.025em;">OmniConverter Articles & Guides</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Browse conversion reference guides, baking measurements, currency calculations, and technology updates.</p>
     </section>
 
     <!-- Blog Search Bar & Category Filter Pills -->
@@ -97,7 +59,7 @@
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="blogSearchInput" class="blog-search-input" placeholder="Search articles, recipes, or tech updates...">
+        <input type="text" id="blogSearchInput" class="blog-search-input" placeholder="Search articles by keyword or category...">
       </div>
 
       <div class="category-filter-bar" id="categoryFilterBar">
@@ -113,8 +75,18 @@
       </div>
     </section>
 
-    <!-- Blog Articles Grid -->
+    <!-- Standardized Blog Articles Grid (Compact Cards) -->
     <section class="blog-cards-grid" id="blogGrid"></section>
+
+    <!-- Pagination Controls Bar -->
+    <section class="pagination-wrapper" id="paginationWrapper">
+      <div class="page-info" id="pageInfo">Showing 1-6 of 9 articles</div>
+      <div class="pagination-controls" id="paginationControls">
+        <button type="button" id="prevPageBtn" class="page-btn" disabled>&larr; Previous</button>
+        <div id="pageNumbers" style="display: flex; gap: 0.35rem;"></div>
+        <button type="button" id="nextPageBtn" class="page-btn">Next &rarr;</button>
+      </div>
+    </section>
 
     <!-- RSS & Subscription Callout Section -->
     <section style="max-width: 1200px; margin: 2rem auto 3.5rem auto; padding: 0 1rem;">
@@ -133,12 +105,20 @@
     </section>
   </main>
 
+  <!-- Full Article Modal Reader -->
+  <div id="articleModal" class="article-modal-backdrop" aria-hidden="true">
+    <div class="article-modal-content">
+      <button type="button" id="modalCloseBtn" class="article-modal-close" aria-label="Close Article">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="index.html" style="color:var(--primary-600);">Home</a> | <a href="blog.html" style="color:var(--primary-600);">Blog</a> | <a href="sitemap.html" style="color:var(--primary-600);">HTML Sitemap</a> | <a href="feed.xml" style="color:var(--primary-600);">RSS Feed</a></p>
   </footer>
 
-  <!-- Dynamic Filtering & Render Script -->
+  <!-- Dynamic Filtering, Pagination & Reader Modal Script -->
   <script type="module">
     import { blogArticles } from './blog-data.js';
 
@@ -146,14 +126,22 @@
       const blogGrid = document.getElementById('blogGrid');
       const searchInput = document.getElementById('blogSearchInput');
       const categoryPills = document.querySelectorAll('.category-pill');
+      const prevPageBtn = document.getElementById('prevPageBtn');
+      const nextPageBtn = document.getElementById('nextPageBtn');
+      const pageInfo = document.getElementById('pageInfo');
+      const pageNumbers = document.getElementById('pageNumbers');
+      
+      const modal = document.getElementById('articleModal');
+      const modalBody = document.getElementById('modalBody');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
 
       let currentCategory = 'All';
       let currentQuery = '';
+      let currentPage = 1;
+      const itemsPerPage = 6;
 
-      function renderArticles() {
-        blogGrid.innerHTML = '';
-
-        const filtered = blogArticles.filter(item => {
+      function getFilteredArticles() {
+        return blogArticles.filter(item => {
           const matchesCategory = (currentCategory === 'All' || item.category === currentCategory);
           const matchesQuery = !currentQuery || 
             item.title.toLowerCase().includes(currentQuery) || 
@@ -161,18 +149,38 @@
             item.category.toLowerCase().includes(currentQuery);
           return matchesCategory && matchesQuery;
         });
+      }
 
-        if (filtered.length === 0) {
+      function renderArticles() {
+        const filtered = getFilteredArticles();
+        const totalItems = filtered.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+        const pageArticles = filtered.slice(startIndex, endIndex);
+
+        blogGrid.innerHTML = '';
+
+        if (totalItems === 0) {
           blogGrid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
               <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">No articles found</h3>
               <p>Try clearing your search term or selecting another category.</p>
             </div>
           `;
+          pageInfo.textContent = 'Showing 0 articles';
+          prevPageBtn.disabled = true;
+          nextPageBtn.disabled = true;
+          pageNumbers.innerHTML = '';
           return;
         }
 
-        filtered.forEach(item => {
+        // Render Page Articles (Standardized Compact Cards)
+        pageArticles.forEach(item => {
           const card = document.createElement('article');
           card.className = 'blog-card';
           card.innerHTML = `
@@ -182,34 +190,124 @@
                 <span class="blog-card-icon">${item.icon || '📄'}</span>
               </div>
               <h2 class="blog-card-title">
-                <a href="${item.slug}">${item.title}</a>
+                <a href="${item.slug}" class="open-article-link" data-id="${item.id}">${item.title}</a>
               </h2>
               <p class="blog-card-summary">${item.summary}</p>
             </div>
             <div class="blog-card-footer">
               <span style="font-size: 0.85rem; color: var(--text-muted);">${item.readTime || '3 min read'} • ${new Date(item.publicationDate).toLocaleDateString()}</span>
-              <a href="${item.slug}" class="blog-btn-read">Read Post &rarr;</a>
+              <a href="${item.slug}" class="blog-btn-read open-article-link" data-id="${item.id}">Read Post &rarr;</a>
             </div>
           `;
           blogGrid.appendChild(card);
         });
+
+        // Update Pagination Info & Controls
+        pageInfo.textContent = `Showing ${startIndex + 1}-${endIndex} of ${totalItems} articles`;
+        prevPageBtn.disabled = (currentPage === 1);
+        nextPageBtn.disabled = (currentPage === totalPages);
+
+        // Render Page Number Buttons
+        pageNumbers.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+          const numBtn = document.createElement('button');
+          numBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+          numBtn.textContent = i;
+          numBtn.addEventListener('click', () => {
+            currentPage = i;
+            renderArticles();
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+          });
+          pageNumbers.appendChild(numBtn);
+        }
+
+        // Attach Modal Event Handlers
+        document.querySelectorAll('.open-article-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href.endsWith('.html') && href !== 'blog.html' && !href.includes('#')) {
+              return; // Allow navigation to standalone HTML pages like 1-3-a-cup-in-grams.html
+            }
+            e.preventDefault();
+            const articleId = link.getAttribute('data-id');
+            const article = blogArticles.find(a => a.id === articleId);
+            if (article) {
+              openArticleModal(article);
+            }
+          });
+        });
       }
 
-      // Filter Pill Click Handlers
+      function openArticleModal(article) {
+        modalBody.innerHTML = `
+          <span class="formula-badge">${article.category} • ${article.readTime}</span>
+          <h1 style="font-size: 1.8rem; font-weight: 800; margin: 0.75rem 0 1rem 0; color: var(--text-main);">${article.title}</h1>
+          <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--card-border);">
+            Published by <strong>${article.author}</strong> on ${new Date(article.publicationDate).toLocaleDateString()}
+          </div>
+          <div style="line-height: 1.7; font-size: 1.05rem; color: var(--text-main);">
+            ${article.content}
+          </div>
+        `;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      modalCloseBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // Filter Pill Handlers
       categoryPills.forEach(pill => {
         pill.addEventListener('click', () => {
           categoryPills.forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
           currentCategory = pill.getAttribute('data-category');
+          currentPage = 1;
           renderArticles();
         });
       });
 
-      // Search Input Handler
+      // Search Handler
       searchInput.addEventListener('input', (e) => {
         currentQuery = e.target.value.trim().toLowerCase();
+        currentPage = 1;
         renderArticles();
       });
+
+      // Pagination Button Handlers
+      prevPageBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderArticles();
+          window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+      });
+
+      nextPageBtn.addEventListener('click', () => {
+        const filtered = getFilteredArticles();
+        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderArticles();
+          window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+      });
+
+      // Check URL Hash for deep links
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const targetArticle = blogArticles.find(a => a.id === hash || a.slug.includes(hash));
+        if (targetArticle) {
+          openArticleModal(targetArticle);
+        }
+      }
 
       // Initial Render
       renderArticles();
