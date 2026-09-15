@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://temperatureconverter.org/sitemap.xml
+Sitemap: https://temperatureconverter.org/news-sitemap.xml

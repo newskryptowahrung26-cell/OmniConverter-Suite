@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://temperatureconverter.org/news.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter Newsroom</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-15</news:publication_date>
+      <news:title>OmniConverter Web Suite Officially Launches Client-Side Conversion Platform</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://temperatureconverter.org/news.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter Technical Press</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-14</news:publication_date>
+      <news:title>OmniConverter Implements Machine-Readable LLMs.txt Standard for AI Assistants</news:title>
+    </news:news>
+  </url>
+</urlset>
