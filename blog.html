@@ -145,9 +145,7 @@
       function renderArticles() {
         const filtered = getFilteredArticles();
         
-        // 01 Latest Article is featured at top, remaining articles paginated in grid below
-        const remainingArticles = (currentCategory === 'All' && !currentQuery) ? filtered.slice(1) : filtered;
-        const totalItems = remainingArticles.length;
+        const totalItems = filtered.length;
         const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
 
         if (currentPage > totalPages) currentPage = totalPages;
@@ -155,15 +153,17 @@
 
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-        const pageArticles = remainingArticles.slice(startIndex, endIndex);
+        const pageArticles = filtered.slice(startIndex, endIndex);
 
         blogGrid.innerHTML = '';
 
-        if (totalItems === 0 && filtered.length === 0) {
+        if (totalItems === 0) {
           blogGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
-              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem;">No articles found</h3>
-              <p style="font-size: 0.9rem;">Try clearing your search term or selecting another category.</p>
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-xl);">
+              <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📝</div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">No Articles Found</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">There are currently no articles matching your query. Check back soon for upcoming conversion guides!</p>
+              <a href="index.html" class="btn-convert" style="display: inline-block; text-decoration: none; padding: 0.65rem 1.5rem; font-weight: 700;">Return to Tools Home &rarr;</a>
             </div>
           `;
           pageInfo.textContent = 'Showing 0 articles';
