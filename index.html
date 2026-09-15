@@ -54,6 +54,47 @@
     }
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are my files uploaded to a server when using OmniConverter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. OmniConverter executes all unit calculations, image conversions, and document transformations 100% locally in your web browser using HTML5 Canvas, Web Audio, and JavaScript Blob APIs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert 1/3 cup to grams for baking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1/3 cup weight depends on ingredient density: Water is ~79 grams, all-purpose flour is 40 grams, white sugar is 67 grams, brown sugar is 73 grams, and butter is 76 grams."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is OmniConverter free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, OmniConverter is completely free with zero registration required, zero software installations, and zero file upload limits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many kilograms are in 1 stone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "1 stone equals exactly 6.35029 kilograms (or 14 pounds)."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -370,8 +411,32 @@
       </section>
     </div>
 
-    <!-- ================= HOMEPAGE LATEST PUBLISHED ARTICLES GRID ================= -->
+    <!-- ================= PLATFORM FEATURE HIGHLIGHTS ================= -->
     <section class="content-section" style="margin-top: 2.5rem;">
+      <h2 style="text-align: center; border: none; padding: 0; margin-bottom: 1.5rem;">Why Use OmniConverter?</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem;">
+        <div style="background: rgba(99, 102, 241, 0.05); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(99, 102, 241, 0.15);">
+          <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">🔒</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0.35rem;">100% Client-Side Privacy</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">All calculations, image conversions, and document parsing run locally in your browser. Zero file uploads.</p>
+        </div>
+
+        <div style="background: rgba(6, 182, 212, 0.05); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(6, 182, 212, 0.15);">
+          <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">⚡</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0.35rem;">Instant Live Formulas</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Get real-time mathematical conversions for Temperature, Weight, Volume, Time, Area, and Speed in O(1) time.</p>
+        </div>
+
+        <div style="background: rgba(16, 185, 129, 0.05); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(16, 185, 129, 0.15);">
+          <div style="font-size: 1.75rem; margin-bottom: 0.5rem;">📱</div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0.35rem;">Mobile & WCAG Optimized</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Fully responsive, keyboard navigable, high-contrast dark mode support, and screen reader ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOMEPAGE LATEST PUBLISHED ARTICLES GRID ================= -->
+    <section class="content-section" style="margin-top: 2rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 2px solid rgba(99, 102, 241, 0.15); padding-bottom: 0.75rem;">
         <h2 style="margin: 0; border: none; padding: 0;">Latest Published Articles & Guides</h2>
         <a href="blog.html" style="color: var(--primary-600); font-weight: 700; text-decoration: none;">View All Articles &rarr;</a>
@@ -413,6 +478,40 @@
           <div style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.35;">Private MP4 Video to MP3 Converter</div>
           <div style="font-size: 0.88rem; color: var(--text-muted); font-weight: 400; line-height: 1.5;">100% private in-browser audio extraction without cloud uploads.</div>
         </a>
+      </div>
+    </section>
+
+    <!-- ================= FREQUENTLY ASKED QUESTIONS (FAQ) SECTION ================= -->
+    <section class="content-section" style="margin-top: 2rem;">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+        <details style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; cursor: pointer;">
+          <summary style="font-weight: 800; font-size: 1.05rem; color: var(--text-main);">Are my files uploaded to a server when using OmniConverter?</summary>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+            No. OmniConverter executes all unit calculations, image format conversions (WebP, PNG, JPEG), and document transformations (JSON, CSV, Text) 100% locally in your web browser using HTML5 Canvas, Web Audio, and JavaScript Blob APIs.
+          </p>
+        </details>
+
+        <details style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; cursor: pointer;">
+          <summary style="font-weight: 800; font-size: 1.05rem; color: var(--text-main);">How do I convert 1/3 cup to grams for baking?</summary>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+            1/3 cup weight depends on ingredient density: Water is ~79 grams, all-purpose flour is 40 grams, white sugar is 67 grams, brown sugar is 73 grams, and unsalted butter is 76 grams. Read our full <a href="1-3-a-cup-in-grams.html" style="color:var(--primary-600); font-weight:700;">1/3 Cup in Grams Baking Guide</a>.
+          </p>
+        </details>
+
+        <details style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; cursor: pointer;">
+          <summary style="font-weight: 800; font-size: 1.05rem; color: var(--text-main);">Is OmniConverter free to use?</summary>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+            Yes, OmniConverter is completely free with zero subscription fees, zero registration requirements, zero software installations, and zero file size limits.
+          </p>
+        </details>
+
+        <details style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; cursor: pointer;">
+          <summary style="font-weight: 800; font-size: 1.05rem; color: var(--text-main);">How many kilograms are in 1 stone?</summary>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">
+            1 stone equals exactly 6.35029 kilograms (or 14 pounds). You can convert any stone or weight value live using our <a href="index.html#weight" style="color:var(--primary-600); font-weight:700;">Weight & Mass Converter Tool</a>.
+          </p>
+        </details>
       </div>
     </section>
 
