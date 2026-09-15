@@ -6,6 +6,7 @@
   <title>OmniConverter Blog - Unit Conversion Guides & Articles</title>
   <meta name="description" content="Explore expert articles on unit conversions, measurement history, metric vs imperial comparisons, and client-side media optimization.">
   <link rel="canonical" href="https://temperatureconverter.org/blog.html">
+  <link rel="author" type="text/plain" href="llms.txt">
   
   <meta property="og:type" content="website">
   <meta property="og:title" content="OmniConverter Blog - Educational Guides & Tutorials">
@@ -61,7 +62,7 @@
       <!-- Populated dynamically via JS -->
     </div>
 
-    <!-- Article Reader Modal/View -->
+    <!-- Article Reader View -->
     <div id="articleModal" class="content-section" style="display: none; margin-top: 2rem;">
       <button type="button" id="closeArticleBtn" class="btn-clear" style="margin-bottom: 1rem;">← Back to Articles</button>
       <div id="articleBody"></div>
@@ -69,7 +70,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 OmniConverter Suite. All rights reserved.</p>
+    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. | <a href="privacy-policy.html" style="color:var(--primary-600);">Privacy Policy</a> | <a href="terms.html" style="color:var(--primary-600);">Terms</a> | <a href="about.html" style="color:var(--primary-600);">About</a> | <a href="contact.html" style="color:var(--primary-600);">Contact</a></p>
   </footer>
 
   <script type="module">
@@ -105,7 +106,7 @@
             <span class="formula-badge" style="font-size:0.8rem; margin:0 0 0.5rem 0;">${post.category} • ${post.readTime}</span>
             <h2 style="font-size:1.25rem; margin-bottom:0.5rem; border:none; padding:0;">${post.title}</h2>
             <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1rem;">${post.summary}</p>
-            <span style="color:var(--primary-color); font-weight:600; font-size:0.9rem;">Read Article →</span>
+            <span style="color:var(--primary-600); font-weight:600; font-size:0.9rem;">Read Article →</span>
           `;
           card.addEventListener('click', () => openArticle(post));
           blogGrid.appendChild(card);

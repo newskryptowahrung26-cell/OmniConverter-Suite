@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - OmniConverter</title>
+  <meta name="description" content="Contact the OmniConverter team for feedback, feature requests, or technical inquiries.">
+  <link rel="canonical" href="https://temperatureconverter.org/contact.html">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo" aria-label="OmniConverter Home">
+        <svg viewBox="0 0 24 24"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3-10a1 1 0 0 1 1 1v7h-2V4a1 1 0 0 1 1-1z"/></svg>
+        <span>OmniConverter</span>
+      </a>
+      <nav class="nav-tabs">
+        <a href="index.html" class="tab-btn" style="text-decoration:none;">Tools</a>
+        <a href="blog.html" class="tab-btn" style="text-decoration:none;">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="content-section" style="margin-top:1rem;">
+      <h1>Contact Us</h1>
+      <p style="color:var(--text-muted); margin-bottom:1.5rem;">Have questions, feedback, or a new unit conversion request? Send us a message below.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Your message has been recorded.');" style="display:flex; flex-direction:column; gap:1.25rem; max-width:600px;">
+        <div class="input-group">
+          <label for="contactName">Your Name</label>
+          <input type="text" id="contactName" class="input-field" placeholder="John Doe" required>
+        </div>
+        <div class="input-group">
+          <label for="contactEmail">Your Email Address</label>
+          <input type="email" id="contactEmail" class="input-field" placeholder="john@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" class="input-field" style="height:140px;" placeholder="How can we help you?" required></textarea>
+        </div>
+        <button type="submit" class="btn-convert" style="max-width:200px;">Send Message</button>
+      </form>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. | <a href="privacy-policy.html" style="color:var(--primary-600);">Privacy Policy</a> | <a href="terms.html" style="color:var(--primary-600);">Terms</a> | <a href="about.html" style="color:var(--primary-600);">About</a> | <a href="contact.html" style="color:var(--primary-600);">Contact</a></p>
+  </footer>
+</body>
+</html>
