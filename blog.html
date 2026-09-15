@@ -93,7 +93,14 @@
     </section>
 
     <!-- Pagination Controls Bar -->
-    <section class="pagination-wrapper" id="paginationWrapper" style="display: none;"></section>
+    <section class="pagination-wrapper" id="paginationWrapper" style="display: none;">
+      <div class="page-info" id="pageInfo">Showing 0 articles</div>
+      <div class="pagination-controls">
+        <button type="button" class="btn-page" id="prevPageBtn" disabled>&larr; Previous</button>
+        <div class="page-numbers" id="pageNumbers"></div>
+        <button type="button" class="btn-page" id="nextPageBtn" disabled>Next &rarr;</button>
+      </div>
+    </section>
   </main>
 
   <!-- Full Article Modal Reader -->
@@ -117,6 +124,7 @@
       const blogGrid = document.getElementById('blogGrid');
       const searchInput = document.getElementById('blogSearchInput');
       const categoryPills = document.querySelectorAll('.category-pill');
+      const paginationWrapper = document.getElementById('paginationWrapper');
       const prevPageBtn = document.getElementById('prevPageBtn');
       const nextPageBtn = document.getElementById('nextPageBtn');
       const pageInfo = document.getElementById('pageInfo');
@@ -148,6 +156,10 @@
         const totalItems = filtered.length;
         const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
 
+        if (paginationWrapper) {
+          paginationWrapper.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+
         if (currentPage > totalPages) currentPage = totalPages;
         if (currentPage < 1) currentPage = 1;
 
@@ -166,10 +178,10 @@
               <a href="index.html" class="btn-convert" style="display: inline-block; text-decoration: none; padding: 0.65rem 1.5rem; font-weight: 700;">Return to Tools Home &rarr;</a>
             </div>
           `;
-          pageInfo.textContent = 'Showing 0 articles';
-          prevPageBtn.disabled = true;
-          nextPageBtn.disabled = true;
-          pageNumbers.innerHTML = '';
+          if (pageInfo) pageInfo.textContent = 'Showing 0 articles';
+          if (prevPageBtn) prevPageBtn.disabled = true;
+          if (nextPageBtn) nextPageBtn.disabled = true;
+          if (pageNumbers) pageNumbers.innerHTML = '';
           return;
         }
 
