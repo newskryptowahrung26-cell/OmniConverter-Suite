@@ -4,6 +4,88 @@
 
 export const blogArticles = [
   {
+    id: '1-4-cup-is-ml',
+    title: '1 4 Cup is mL: Exact Liquid & Dry Measurement Guide',
+    slug: 'blog/1-4-cup-is-ml',
+    category: 'Kitchen & Culinary',
+    publicationDate: '2026-09-15T20:30:00Z',
+    author: 'OmniConverter Culinary Team',
+    readTime: '3 min read',
+    icon: '🥛',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'measuring cup liquid ml',
+    summary: 'Find out exactly how much 1 4 cup is mL in cooking and baking. Quick conversion table for US cups, Metric cups, tablespoons, and fluid ounces.',
+    content: `
+      <p>Whether you are following an international recipe or baking at home, knowing exactly how much <strong>1 4 cup is mL</strong> (1/4 cup in milliliters) is essential for culinary precision.</p>
+
+      <p>In standard US Customary recipes, <strong>1/4 cup is equal to 59.15 mL</strong> (commonly rounded to <strong>60 mL</strong> for convenient kitchen measuring).</p>
+
+      <h3>Quick Reference Table: 1/4 Cup to mL Across Standards</h3>
+      <div class="table-wrapper">
+        <table class="conversion-table">
+          <thead>
+            <tr>
+              <th>Cup Standard</th>
+              <th>1/4 Cup in mL (Exact)</th>
+              <th>Rounded Kitchen Value</th>
+              <th>Tablespoon Equivalent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>US Customary Cup</td>
+              <td><strong>59.15 mL</strong></td>
+              <td>60 mL</td>
+              <td>4 tbsp</td>
+            </tr>
+            <tr>
+              <td>US Legal Cup (Nutrition Labels)</td>
+              <td><strong>60.00 mL</strong></td>
+              <td>60 mL</td>
+              <td>4 tbsp</td>
+            </tr>
+            <tr>
+              <td>Metric Cup (AU, NZ, Commonwealth)</td>
+              <td><strong>62.50 mL</strong></td>
+              <td>62.5 mL</td>
+              <td>4.16 tbsp</td>
+            </tr>
+            <tr>
+              <td>Imperial / UK Cup (Traditional)</td>
+              <td><strong>71.03 mL</strong></td>
+              <td>71 mL</td>
+              <td>4.8 tbsp</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:1.5rem;">Frequently Asked Questions (FAQs)</h3>
+      <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:0.75rem;">
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1rem;">
+          <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.35rem; color:var(--text-main);">Q1: How many mL is 1/4 cup of liquid?</h4>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.5; margin:0;">
+            1/4 US customary cup of liquid equals <strong>59.15 mL</strong>, standardly rounded to <strong>60 mL</strong> in recipes.
+          </p>
+        </div>
+
+        <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1rem;">
+          <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.35rem; color:var(--text-main);">Q2: How many tablespoons are in 1/4 cup?</h4>
+          <p style="color:var(--text-muted); font-size:0.92rem; line-height:1.5; margin:0;">
+            There are exactly <strong>4 US tablespoons</strong> (or 12 US teaspoons) in a 1/4 cup.
+          </p>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.25rem;">
+        👉 <strong>Need precise recipe calculations?</strong> Use our interactive <a href="/volume-capacity.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Volume & Capacity Tool</a> or <a href="/weight-mass.html" style="color:var(--primary-600); font-weight:700;">OmniConverter Weight & Mass Tool</a> to convert any cup fraction or mL measurement instantly!
+      </p>
+
+      <p><a href="/blog/1-4-cup-is-ml" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1/4 cup is mL article page &rarr;</a></p>
+    `
+  },
+  {
     id: '1-3-cup-to-grams',
     title: '1/3 Cup to Grams: Exact Kitchen & Baking Conversion Guide',
     slug: 'blog/1-3-cup-to-grams',
