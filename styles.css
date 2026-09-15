@@ -891,4 +891,113 @@ footer {
   color: var(--primary-600);
 }
 
+/* ==========================================================================
+   Smallpdf-Style Homepage CSS (Hero & Colorful Tool Grid)
+   ========================================================================== */
+
+.smallpdf-hero {
+  text-align: center;
+  padding: 3rem 1rem 2.5rem 1rem;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.smallpdf-hero-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.smallpdf-hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 450;
+  max-width: 720px;
+  margin: 0 auto 2rem auto;
+}
+
+.smallpdf-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.smallpdf-tool-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.smallpdf-tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.smallpdf-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.icon-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.icon-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.icon-emerald { background: linear-gradient(135deg, #10b981, #059669); }
+.icon-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.icon-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+.icon-cyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.icon-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.icon-pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+.smallpdf-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.smallpdf-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.smallpdf-card-action {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.smallpdf-tool-card:hover .smallpdf-card-action {
+  color: var(--primary-700);
+}
+
+
 
