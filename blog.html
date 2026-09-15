@@ -235,8 +235,8 @@
         document.querySelectorAll('.open-article-link').forEach(link => {
           link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            if (href.endsWith('.html') && href !== 'blog.html' && !href.includes('#')) {
-              return; // Allow navigation to standalone HTML pages like 1-3-a-cup-in-grams.html
+            if (href && href !== 'blog.html' && href !== 'blog' && !href.includes('#')) {
+              return; // Allow navigation to standalone article pages like 1-3-a-cup-in-grams
             }
             e.preventDefault();
             const articleId = link.getAttribute('data-id');
