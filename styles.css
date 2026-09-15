@@ -999,5 +999,46 @@ footer {
   color: var(--primary-700);
 }
 
+/* ==========================================================================
+   Clean Glassmorphic Conversion Table
+   ========================================================================== */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+}
+
+.conversion-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.conversion-table th {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text-main);
+  font-weight: 800;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--card-border);
+}
+
+.conversion-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-main);
+}
+
+.conversion-table tr:last-child td {
+  border-bottom: none;
+}
+
+.conversion-table tr:hover {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+
 
 

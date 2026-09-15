@@ -20,17 +20,64 @@ export const blogArticles = [
       <p>Because cups measure volume and grams measure weight (mass), the exact gram equivalent of 1/3 cup depends entirely on the density of the ingredient you are measuring.</p>
 
       <h3>Quick Reference Table: 1 3 a Cup in Grams by Ingredient</h3>
-      <ul>
-        <li><strong>Water / All Liquids:</strong> 1/3 cup = <strong>79 grams (78.86 g)</strong></li>
-        <li><strong>All-Purpose Flour:</strong> 1/3 cup = <strong>40 grams</strong></li>
-        <li><strong>Granulated White Sugar:</strong> 1/3 cup = <strong>67 grams</strong></li>
-        <li><strong>Packed Brown Sugar:</strong> 1/3 cup = <strong>73 grams</strong></li>
-        <li><strong>Powdered / Confectioners Sugar:</strong> 1/3 cup = <strong>40 grams</strong></li>
-        <li><strong>Unsalted Butter / Margarine:</strong> 1/3 cup = <strong>76 grams (5.3 tablespoons)</strong></li>
-        <li><strong>Rolled Oats:</strong> 1/3 cup = <strong>30 grams</strong></li>
-        <li><strong>Cocoa Powder:</strong> 1/3 cup = <strong>28 grams</strong></li>
-        <li><strong>Honey / Maple Syrup:</strong> 1/3 cup = <strong>113 grams</strong></li>
-      </ul>
+      <div class="table-wrapper">
+        <table class="conversion-table">
+          <thead>
+            <tr>
+              <th>Ingredient</th>
+              <th>1/3 Cup in Grams</th>
+              <th>US Ounces</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Water / All Liquids</td>
+              <td><strong>78.86 g (~79 grams)</strong></td>
+              <td>2.67 oz</td>
+            </tr>
+            <tr>
+              <td>All-Purpose Flour</td>
+              <td><strong>40 grams</strong></td>
+              <td>1.41 oz</td>
+            </tr>
+            <tr>
+              <td>Granulated White Sugar</td>
+              <td><strong>67 grams</strong></td>
+              <td>2.36 oz</td>
+            </tr>
+            <tr>
+              <td>Packed Brown Sugar</td>
+              <td><strong>73 grams</strong></td>
+              <td>2.57 oz</td>
+            </tr>
+            <tr>
+              <td>Powdered Sugar</td>
+              <td><strong>40 grams</strong></td>
+              <td>1.41 oz</td>
+            </tr>
+            <tr>
+              <td>Unsalted Butter</td>
+              <td><strong>76 grams</strong></td>
+              <td>2.68 oz (5.3 tbsp)</td>
+            </tr>
+            <tr>
+              <td>Rolled Oats</td>
+              <td><strong>30 grams</strong></td>
+              <td>1.05 oz</td>
+            </tr>
+            <tr>
+              <td>Cocoa Powder</td>
+              <td><strong>28 grams</strong></td>
+              <td>0.99 oz</td>
+            </tr>
+            <tr>
+              <td>Honey / Maple Syrup</td>
+              <td><strong>113 grams</strong></td>
+              <td>3.98 oz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3 style="margin-top:1.25rem;">Why Does 1/3 Cup Weight Change by Ingredient?</h3>
       <p>Volume (cups) tells you how much physical space an ingredient occupies, whereas mass (grams) tells you how heavy it is. Aerated, powdery dry ingredients like flour are much lighter per cup than dense liquids like honey or syrup.</p>
