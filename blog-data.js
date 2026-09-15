@@ -13,7 +13,7 @@ export const blogArticles = [
     readTime: '3 min read',
     icon: '🥛',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1586797166778-7cb76a618157?auto=format&fit=crop&w=1200&q=80',
     unsplashQuery: 'measuring cup liquid ml',
     summary: 'Find out exactly how much 1 4 cup is mL in cooking and baking. Quick conversion table for US cups, Metric cups, tablespoons, and fluid ounces.',
     content: `
@@ -95,7 +95,7 @@ export const blogArticles = [
     readTime: '4 min read',
     icon: '🍳',
     featured: true,
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1588467850695-a898367ce465?auto=format&fit=crop&w=1200&q=80',
     unsplashQuery: 'baking measurement flour',
     summary: 'Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.',
     content: `
