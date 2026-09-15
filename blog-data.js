@@ -10,6 +10,9 @@ export const blogArticles = [
     category: 'Kitchen & Culinary',
     publicationDate: '2026-09-15T18:00:00Z',
     author: 'OmniConverter Culinary Team',
+    readTime: '4 min read',
+    icon: '🍳',
+    featured: true,
     summary: 'Discover the exact weight of 1 3 a cup in grams for all common baking ingredients including flour, sugar, butter, oats, and liquid volume conversions.',
     content: `
       <p>Converting recipe measurements when baking can be confusing, especially when working with fractional cups. One of the most frequently searched culinary conversions is <strong>1 3 a cup in grams</strong> (1/3 cup in grams).</p>
@@ -39,6 +42,9 @@ export const blogArticles = [
     category: 'Product Updates',
     publicationDate: '2026-09-15T10:00:00Z',
     author: 'OmniConverter Engineering',
+    readTime: '3 min read',
+    icon: '🚀',
+    featured: false,
     summary: 'OmniConverter introduces a zero-server, 100% private in-browser utility suite supporting Temperature, Weight, Volume, Time, Area, Speed, Images, and Documents.',
     content: `
       <p><strong>NEW YORK, NY — September 15, 2026</strong> — OmniConverter today announced the official release of its universal client-side unit and media conversion suite. Designed for privacy-conscious users, researchers, and developers, the web app operates completely inside the user's browser.</p>
@@ -61,9 +67,28 @@ export const blogArticles = [
     category: 'Technology & AI',
     publicationDate: '2026-09-14T14:30:00Z',
     author: 'OmniConverter Tech Team',
+    readTime: '2 min read',
+    icon: '🤖',
+    featured: false,
     summary: 'OmniConverter integrates the llms.txt standard to provide machine-readable conversion specs directly to AI agents and LLM search crawlers.',
     content: `
       <p><strong>SAN FRANCISCO, CA — September 14, 2026</strong> — OmniConverter has added full compliance for the emerging <code>llms.txt</code> standard, allowing AI assistants such as ChatGPT, Claude, and Perplexity to index technical conversion specifications efficiently.</p>
+    `
+  },
+  {
+    id: 'understanding-unit-density-volume-vs-mass',
+    title: 'Why Grams and Cups Are Not Equal: Understanding Mass vs. Volume in Cooking',
+    slug: 'blog.html#density-guide',
+    category: 'Kitchen & Culinary',
+    publicationDate: '2026-09-13T12:00:00Z',
+    author: 'OmniConverter Culinary Team',
+    readTime: '5 min read',
+    icon: '⚖️',
+    featured: false,
+    summary: 'Why does 1 cup of flour weigh 120 grams while 1 cup of sugar weighs 200 grams? Master the fundamentals of ingredient density for foolproof baking results.',
+    content: `
+      <p>One of the most common pitfalls in baking is assuming that 1 cup equals a fixed number of grams regardless of ingredient. Cups measure volumetric space, while grams measure gravitational mass.</p>
+      <p>Because flour particles trap air, 1 cup of sifted flour is far less dense than 1 cup of granulated sugar or liquid milk. Utilizing a digital scale alongside OmniConverter ensures perfect consistency in every batch.</p>
     `
   }
 ];

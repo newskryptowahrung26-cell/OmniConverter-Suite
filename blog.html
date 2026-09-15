@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniConverter Blog - Conversion Guides, Tech & Culinary Insights</title>
-  <meta name="description" content="Official blog for OmniConverter. Explore baking guides, culinary conversion charts, client-side utility tutorials, and product updates.">
+  <title>OmniConverter Blog - Kitchen Guides, Baking & Tech Articles</title>
+  <meta name="description" content="Explore culinary conversion charts, 1/3 cup in grams baking guides, privacy-first tech updates, and unit calculation insights on the official OmniConverter Blog.">
   <link rel="canonical" href="https://omniconverter.com/blog.html">
   <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="feed.xml">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -30,6 +30,7 @@
   </script>
 </head>
 <body>
+  <!-- Header Navigation -->
   <header>
     <div class="header-container">
       <a href="index.html" class="logo" aria-label="OmniConverter Home">
@@ -37,7 +38,7 @@
         <span>OmniConverter</span>
       </a>
 
-      <nav class="nav-tabs">
+      <nav class="nav-tabs" aria-label="Main Navigation">
         <a href="index.html" class="tab-btn" style="text-decoration:none;">Tools</a>
         <a href="blog.html" class="tab-btn active" style="text-decoration:none;">Blog</a>
       </nav>
@@ -45,36 +46,168 @@
   </header>
 
   <main>
-    <section class="content-section" style="margin-top:1rem;">
-      <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">OmniConverter Blog</h1>
-      <p style="color:var(--text-muted); font-size:1.1rem;">Kitchen measurement guides, conversion tips, and official product insights.</p>
+    <!-- Featured Hero Article Banner -->
+    <section class="blog-hero-section">
+      <article class="blog-hero-card">
+        <div>
+          <span class="blog-hero-badge">⭐ Featured Guide</span>
+          <h1 class="blog-hero-title">
+            <a href="1-3-a-cup-in-grams.html">How Much is 1 3 a Cup in Grams? Kitchen Conversion & Baking Guide</a>
+          </h1>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
+            Converting recipe measurements when baking can be confusing. Discover the exact weight of <strong>1 3 a cup in grams (1/3 cup in grams)</strong> for flour, sugar, butter, oats, and liquid volume conversions.
+          </p>
+          <div class="blog-meta-bar">
+            <span>🍳 Kitchen & Culinary</span>
+            <span>•</span>
+            <span>⏱️ 4 min read</span>
+            <span>•</span>
+            <span>📅 Sept 15, 2026</span>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="1-3-a-cup-in-grams.html" class="btn-convert" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 0.8rem 1.6rem; font-weight: 700;">
+              Read Full Article & Tables &rarr;
+            </a>
+          </div>
+        </div>
+        <div style="background: rgba(99, 102, 241, 0.06); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(99, 102, 241, 0.15);">
+          <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--primary-600);">Quick Reference Preview</h3>
+          <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; list-style: none; padding-left: 0;">
+            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
+              <span>Water / Liquids:</span> <strong>79 grams</strong>
+            </li>
+            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
+              <span>All-Purpose Flour:</span> <strong>40 grams</strong>
+            </li>
+            <li style="display: flex; justify-space-between: space-between; border-bottom: 1px solid var(--card-border); padding: 0.35rem 0;">
+              <span>White Sugar:</span> <strong>67 grams</strong>
+            </li>
+            <li style="display: flex; justify-space-between: space-between; padding: 0.35rem 0;">
+              <span>Unsalted Butter:</span> <strong>76 grams</strong>
+            </li>
+          </ul>
+        </div>
+      </article>
     </section>
 
-    <div id="blogGrid" style="display:flex; flex-direction:column; gap:1.5rem;"></div>
+    <!-- Blog Search Bar & Category Filter Pills -->
+    <section class="blog-controls-wrapper">
+      <div class="blog-search-box">
+        <svg class="blog-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="blogSearchInput" class="blog-search-input" placeholder="Search articles, recipes, or tech updates...">
+      </div>
+
+      <div class="category-filter-bar" id="categoryFilterBar">
+        <button type="button" class="category-pill active" data-category="All">All Articles</button>
+        <button type="button" class="category-pill" data-category="Kitchen & Culinary">Kitchen & Culinary</button>
+        <button type="button" class="category-pill" data-category="Product Updates">Product Updates</button>
+        <button type="button" class="category-pill" data-category="Technology & AI">Tech & AI</button>
+      </div>
+    </section>
+
+    <!-- Blog Articles Grid -->
+    <section class="blog-cards-grid" id="blogGrid"></section>
+
+    <!-- RSS & Subscription Callout Section -->
+    <section style="max-width: 1200px; margin: 2rem auto 3.5rem auto; padding: 0 1rem;">
+      <div style="background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: var(--radius-xl); padding: 2rem; text-align: center; box-shadow: var(--shadow-sm);">
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; border: none; padding: 0;">Stay Updated with OmniConverter</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 1.25rem auto;">Follow our RSS feed for new kitchen conversion charts, baking guides, and client-side web utility updates.</p>
+        <a href="feed.xml" target="_blank" class="quick-card" style="display: inline-flex; align-items: center; gap: 0.5rem; width: auto; font-size: 0.95rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 11a9 9 0 0 1 9 9"></path>
+            <path d="M4 4a16 16 0 0 1 16 16"></path>
+            <circle cx="5" cy="19" r="1"></circle>
+          </svg>
+          Subscribe via RSS Feed (feed.xml)
+        </a>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="index.html" style="color:var(--primary-600);">Home</a> | <a href="blog.html" style="color:var(--primary-600);">Blog</a> | <a href="sitemap.html" style="color:var(--primary-600);">HTML Sitemap</a> | <a href="feed.xml" style="color:var(--primary-600);">RSS Feed</a></p>
   </footer>
 
+  <!-- Dynamic Filtering & Render Script -->
   <script type="module">
     import { blogArticles } from './blog-data.js';
 
     document.addEventListener('DOMContentLoaded', () => {
       const blogGrid = document.getElementById('blogGrid');
-      blogArticles.forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'content-section';
-        card.id = item.id;
-        card.innerHTML = `
-          <span class="formula-badge" style="font-size:0.85rem;">${item.category} • ${item.author} • ${new Date(item.publicationDate).toLocaleDateString()}</span>
-          <h2 style="font-size:1.6rem; margin:0.5rem 0 0.75rem 0;">
-            <a href="${item.slug}" style="color:inherit; text-decoration:none;">${item.title}</a>
-          </h2>
-          <div style="line-height:1.7; font-size:1.05rem; color:var(--text-muted);">${item.content}</div>
-        `;
-        blogGrid.appendChild(card);
+      const searchInput = document.getElementById('blogSearchInput');
+      const categoryPills = document.querySelectorAll('.category-pill');
+
+      let currentCategory = 'All';
+      let currentQuery = '';
+
+      function renderArticles() {
+        blogGrid.innerHTML = '';
+
+        const filtered = blogArticles.filter(item => {
+          const matchesCategory = (currentCategory === 'All' || item.category === currentCategory);
+          const matchesQuery = !currentQuery || 
+            item.title.toLowerCase().includes(currentQuery) || 
+            item.summary.toLowerCase().includes(currentQuery) ||
+            item.category.toLowerCase().includes(currentQuery);
+          return matchesCategory && matchesQuery;
+        });
+
+        if (filtered.length === 0) {
+          blogGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">No articles found</h3>
+              <p>Try clearing your search term or selecting another category.</p>
+            </div>
+          `;
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'blog-card';
+          card.innerHTML = `
+            <div>
+              <div class="blog-card-header">
+                <span class="blog-card-tag">${item.category}</span>
+                <span class="blog-card-icon">${item.icon || '📄'}</span>
+              </div>
+              <h2 class="blog-card-title">
+                <a href="${item.slug}">${item.title}</a>
+              </h2>
+              <p class="blog-card-summary">${item.summary}</p>
+            </div>
+            <div class="blog-card-footer">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">${item.readTime || '3 min read'} • ${new Date(item.publicationDate).toLocaleDateString()}</span>
+              <a href="${item.slug}" class="blog-btn-read">Read Post &rarr;</a>
+            </div>
+          `;
+          blogGrid.appendChild(card);
+        });
+      }
+
+      // Filter Pill Click Handlers
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          categoryPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentCategory = pill.getAttribute('data-category');
+          renderArticles();
+        });
       });
+
+      // Search Input Handler
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = e.target.value.trim().toLowerCase();
+        renderArticles();
+      });
+
+      // Initial Render
+      renderArticles();
     });
   </script>
 </body>
