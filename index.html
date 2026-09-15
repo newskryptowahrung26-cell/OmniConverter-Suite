@@ -46,14 +46,14 @@
   <!-- Header -->
   <header>
     <div class="header-container">
-      <a href="#" class="logo" aria-label="OmniConverter Suite Home">
+      <a href="index.html" class="logo" aria-label="OmniConverter Suite Home">
         <svg viewBox="0 0 24 24">
           <path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3-10a1 1 0 0 1 1 1v7h-2V4a1 1 0 0 1 1-1z"/>
         </svg>
         <span>OmniConverter</span>
       </a>
 
-      <!-- Tool Navigation Tabs -->
+      <!-- Navigation Tabs -->
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <button type="button" id="tabTemp" class="tab-btn active">Temperature</button>
         <button type="button" id="tabWeight" class="tab-btn">Weight & Mass</button>
@@ -61,6 +61,7 @@
         <button type="button" id="tabLength" class="tab-btn">Length & Distance</button>
         <button type="button" id="tabTime" class="tab-btn">Time & Duration</button>
         <button type="button" id="tabFiles" class="tab-btn">File & Media</button>
+        <a href="blog.html" class="tab-btn" style="text-decoration:none;">Blog</a>
       </nav>
     </div>
   </header>
@@ -83,7 +84,7 @@
           </div>
           <button type="button" id="swapBtn" class="btn-swap" title="Swap Units">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/>
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L13 16"/>
             </svg>
           </button>
           <div class="input-group">
@@ -199,11 +200,6 @@
           <div class="explanation-box"><strong>Calculation Step:</strong> <span id="volumeExplanationText">Multiply 1 L by 0.264172.</span></div>
         </div>
       </section>
-
-      <article class="content-section">
-        <h2>Volume & Capacity Converter</h2>
-        <p>Convert between Liters (L), Milliliters (mL), Cubic Meters (m³), US Gallons (gal), Quarts (qt), Pints (pt), Cups, Fluid Ounces (fl oz), Tablespoons, and Teaspoons.</p>
-      </article>
     </div>
 
     <!-- ================= LENGTH & DISTANCE TAB ================= -->
@@ -245,11 +241,6 @@
           <div class="explanation-box"><strong>Calculation Step:</strong> <span id="lengthExplanationText">Multiply 1 km by 0.621371.</span></div>
         </div>
       </section>
-
-      <article class="content-section">
-        <h2>Length & Distance Converter</h2>
-        <p>Convert between Meters (m), Kilometers (km), Centimeters (cm), Millimeters (mm), Micrometers (μm), Nanometers (nm), Miles (mi), Yards (yd), Feet (ft), Inches (in), and Nautical Miles (nmi).</p>
-      </article>
     </div>
 
     <!-- ================= TIME & DURATION TAB ================= -->
@@ -291,11 +282,6 @@
           <div class="explanation-box"><strong>Calculation Step:</strong> <span id="timeExplanationText">Multiply 1 hr by 60.</span></div>
         </div>
       </section>
-
-      <article class="content-section">
-        <h2>Time & Duration Converter</h2>
-        <p>Convert between Seconds (s), Milliseconds (ms), Microseconds (μs), Nanoseconds (ns), Minutes (min), Hours (hr), Days (d), Weeks (wk), Months (mo), and Years (yr).</p>
-      </article>
     </div>
 
     <!-- ================= FILE & MEDIA TAB ================= -->
@@ -338,12 +324,23 @@
       </section>
     </div>
 
+    <!-- Blog Promo Section -->
+    <section class="content-section" style="margin-top: 2rem;">
+      <h2>Latest Blog Articles & Guides</h2>
+      <p>Learn more about measurement history, conversion physics, and client-side web image optimization.</p>
+      <div class="quick-conversions-grid" style="margin-top: 1rem;">
+        <a href="blog.html" class="quick-card">Understanding Temperature Conversions →</a>
+        <a href="blog.html" class="quick-card">Metric vs. Imperial Unit Guide →</a>
+        <a href="blog.html" class="quick-card">Client-Side Image Format Guide →</a>
+      </div>
+    </section>
+
   </main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 
   <footer>
-    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. 100% Client-Side & Private.</p>
+    <p>&copy; 2026 OmniConverter Web Suite. All rights reserved. | <a href="blog.html" style="color:var(--primary-color);">Blog Guides</a></p>
   </footer>
 
   <script type="module" src="app.js"></script>
