@@ -4,6 +4,82 @@
 
 export const blogArticles = [
   {
+    id: '1-bar-to-psi-conversion',
+    title: '1 Bar to PSI Conversion: Exact Pressure Measurement Guide',
+    slug: 'blog/1-bar-to-psi-conversion',
+    category: 'Product & Tech',
+    publicationDate: '2026-09-15T20:45:00Z',
+    author: 'OmniConverter Engineering Team',
+    readTime: '3 min read',
+    icon: '⚙️',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'pressure gauge bar psi',
+    summary: 'Convert 1 bar to PSI accurately. Learn the exact pressure formula, conversion table for bar, PSI, kPa, and atmospheres for tire pressure and engineering.',
+    content: `
+      <p>Understanding pressure measurement units is crucial whether checking tire inflation, monitoring scuba tanks, or operating industrial pneumatic systems. A common technical query is <strong>1 bar to PSI conversion</strong>.</p>
+      <p>By definition, <strong>1 bar equals 14.5038 PSI</strong> (Pounds per Square Inch). Conversely, 1 PSI equals approximately 0.0689476 bar.</p>
+      <p><a href="/blog/1-bar-to-psi-conversion" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1 bar to PSI article page &rarr;</a></p>
+    `
+  },
+  {
+    id: '1-cup-milk-in-milliliters',
+    title: '1 Cup Milk in Milliliters: Exact Dairy & Baking Conversion Guide',
+    slug: 'blog/1-cup-milk-in-milliliters',
+    category: 'Kitchen & Culinary',
+    publicationDate: '2026-09-15T20:40:00Z',
+    author: 'OmniConverter Culinary Team',
+    readTime: '3 min read',
+    icon: '🥛',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'milk glass liquid ml',
+    summary: 'Find out exactly how much 1 cup milk in milliliters is for US cups, Metric cups, and UK recipes. Complete liquid dairy conversion chart.',
+    content: `
+      <p>Measuring liquid ingredients accurately is essential when baking cakes, breads, or custards. A frequent question in culinary conversions is <strong>1 cup milk in milliliters</strong>.</p>
+      <p>In US Customary recipes, <strong>1 cup of milk equals 236.59 mL</strong> (rounded to <strong>240 mL</strong> in standard American baking). In Metric recipes, 1 Metric cup equals <strong>250 mL</strong>.</p>
+      <p><a href="/blog/1-cup-milk-in-milliliters" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 1 cup milk in mL article page &rarr;</a></p>
+    `
+  },
+  {
+    id: '100-usd-to-aud',
+    title: '100 USD to AUD: US Dollar to Australian Dollar Exchange Guide',
+    slug: 'blog/100-usd-to-aud',
+    category: 'Currency & Forex',
+    publicationDate: '2026-09-15T20:35:00Z',
+    author: 'OmniConverter Forex Team',
+    readTime: '3 min read',
+    icon: '💵',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'us dollar australian dollar forex',
+    summary: 'Convert 100 USD to AUD accurately. Understand US Dollar to Australian Dollar exchange rates, currency conversion tables, and travel finance tips.',
+    content: `
+      <p>Whether traveling to Australia, shopping online from US retailers, or sending money internationally, converting <strong>100 USD to AUD</strong> is one of the most frequently searched foreign exchange queries worldwide.</p>
+      <p>Because global currency markets fluctuate constantly, <strong>$100 USD typically equals between $150.00 AUD and $155.00 AUD</strong> based on central bank benchmark rates.</p>
+      <p><a href="/blog/100-usd-to-aud" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 100 USD to AUD article page &rarr;</a></p>
+    `
+  },
+  {
+    id: '100-fahrenheit-to-celsius',
+    title: '100 Fahrenheit to Celsius: Exact Temperature Conversion Guide',
+    slug: 'blog/100-fahrenheit-to-celsius',
+    category: 'Temperature & Cooking',
+    publicationDate: '2026-09-15T20:32:00Z',
+    author: 'OmniConverter Technical Team',
+    readTime: '3 min read',
+    icon: '🌡️',
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?auto=format&fit=crop&w=1200&q=80',
+    unsplashQuery: 'thermometer temperature celsius fahrenheit',
+    summary: 'Convert 100 Fahrenheit to Celsius (°F to °C). Exact mathematical formula, temperature conversion table, fever thresholds, and oven cooking temperatures.',
+    content: `
+      <p>Converting between Fahrenheit (°F) and Celsius (°C) is essential for weather forecasting, body temperature monitoring, and culinary recipes. One of the most frequently searched temperature queries is <strong>100 fahrenheit to celsius</strong>.</p>
+      <p>Using the mathematical conversion formula <code>°C = (°F − 32) × 5/9</code>, <strong>100°F is equal to 37.78°C</strong>.</p>
+      <p><a href="/blog/100-fahrenheit-to-celsius" style="color:var(--primary-600); font-weight:700;">Read full comprehensive 100 Fahrenheit to Celsius article page &rarr;</a></p>
+    `
+  },
+  {
     id: '1-4-cup-is-ml',
     title: '1 4 Cup is mL: Exact Liquid & Dry Measurement Guide',
     slug: 'blog/1-4-cup-is-ml',
