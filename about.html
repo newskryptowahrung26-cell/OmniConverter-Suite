@@ -16,6 +16,11 @@
         <span>OmniConverter</span>
       </a>
 
+      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
+        <span>Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="index.html" class="tab-btn">Home</a>
         <a href="temperature.html" class="tab-btn">Temperature</a>
