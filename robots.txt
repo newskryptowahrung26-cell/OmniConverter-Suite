@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Allow crawlers to see all external analytics resources
+# (Ahrefs analytics, Google Tag Manager, etc. are not blocked)
+
 Sitemap: https://www.omniconverter.co.uk/sitemap.xml
