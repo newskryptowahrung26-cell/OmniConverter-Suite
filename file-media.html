@@ -22,17 +22,23 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="styles.css">
 
+  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "File & Media Converter - OmniConverter",
-    "url": "https://omniconverter.co.uk/file-media.html",
+    "@type": "SoftwareApplication",
+    "name": "File & Media Converter",
+    "url": "https://omniconverter.co.uk/file-media",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript.",
-    "description": "100% private in-browser image format converter and JSON/CSV document transformer.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "description": "Free online file converter for image formats, JSON, CSV, and text documents.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 </head>
@@ -102,7 +108,25 @@
         <div id="docResultArea"></div>
       </section>
     </div>
-  </main>
+  
+    <article class="content-section" style="margin-top:2rem;">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Browser-Native File & Document Format Conversion</h2>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Converting image assets and structured text files between formats is essential for web developers, graphic designers, content editors, and data analysts. OmniConverter provides private, client-side format transformations directly inside your web browser.
+      </p>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Supported File Transformations</h3>
+      <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
+        <li><strong>Image Conversions:</strong> Convert PNG, JPEG, WebP, and BMP images seamlessly with client-side Canvas rendering.</li>
+        <li><strong>Data Format Parsing:</strong> Transform JSON data structures into CSV spreadsheets and plain text formats instantly.</li>
+        <li><strong>Privacy Guarantee:</strong> Zero remote file uploads; all conversion tasks execute entirely inside your local device memory.</li>
+      </ul>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Frequently Asked Questions (FAQs)</h3>
+      <div style="margin-bottom:1.5rem;">
+        <p><strong>Q: Are my files uploaded to a server?</strong><br>A: No. OmniConverter processes all image and document conversions locally in your browser memory using HTML5 APIs.</p>
+      </div>
+    </article>
+  
+</main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 

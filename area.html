@@ -22,17 +22,23 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="styles.css">
 
+  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Area Converter - OmniConverter",
-    "url": "https://omniconverter.co.uk/area.html",
+    "@type": "SoftwareApplication",
+    "name": "Area Converter",
+    "url": "https://omniconverter.co.uk/area",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript.",
-    "description": "Free online area measurement conversion tool for Square Meters, Hectares, Acres, and Square Feet.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "description": "Free online area converter tool for square feet, meters, acres, and hectares.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 </head>
@@ -108,7 +114,27 @@
         <p>Convert surface area measurements instantly: Square Meters, Square Kilometers, Hectares, Acres, Square Feet, Square Yards, Square Inches, and Square Miles.</p>
       </article>
     </div>
-  </main>
+  
+    <article class="content-section" style="margin-top:2rem;">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Land & Surface Area Measurement Guide</h2>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Area measurements measure two-dimensional surface space. Across real estate transactions, architectural floor planning, agricultural land management, interior design, and construction estimations, converting between square feet, square meters, acres, and hectares is critical for precise spatial evaluation.
+      </p>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Key Area Conversion Multipliers</h3>
+      <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
+        <li><strong>1 Square Meter (m²)</strong> = 10.7639 Square Feet (sq ft)</li>
+        <li><strong>1 Acre</strong> = 43,560 Square Feet = 4,046.86 Square Meters</li>
+        <li><strong>1 Hectare (ha)</strong> = 10,000 Square Meters = 2.47105 Acres</li>
+        <li><strong>1 Square Kilometer (km²)</strong> = 100 Hectares = 0.386102 Square Miles</li>
+      </ul>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Frequently Asked Questions (FAQs)</h3>
+      <div style="margin-bottom:1.5rem;">
+        <p><strong>Q: How many square feet in an acre?</strong><br>A: One acre equals exactly 43,560 square feet.</p>
+        <p><strong>Q: How do I convert sq ft to sq meters?</strong><br>A: Multiply square feet by 0.092903 to calculate square meters.</p>
+      </div>
+    </article>
+  
+</main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 

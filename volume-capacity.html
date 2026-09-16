@@ -22,17 +22,23 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="styles.css">
 
+  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Volume & Capacity Converter - OmniConverter",
-    "url": "https://omniconverter.co.uk/volume-capacity.html",
+    "@type": "SoftwareApplication",
+    "name": "Volume & Capacity Converter",
+    "url": "https://omniconverter.co.uk/volume-capacity",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript.",
-    "description": "Free online volume conversion tool for Liters, Milliliters, Gallons, Quarts, Pints, Cups, and Fluid Ounces.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "description": "Free online volume converter tool for liters, gallons, cups, and milliliters.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 </head>
@@ -108,7 +114,72 @@
         <p>Convert liquid volume and 3D space measurements instantly: Liters, Milliliters, US Gallons, Quarts, Pints, Cups, Tablespoons, Teaspoons, Fluid Ounces, Cubic Meters, and Cubic Feet.</p>
       </article>
     </div>
-  </main>
+  
+    <article class="content-section" style="margin-top:2rem;">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Volume and Capacity Measurement Guide</h2>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Volume calculations determine three-dimensional space capacity. Across culinary baking, fluid mechanics, beverage distribution, automotive engine displacement, and pool maintenance, converting between US customary liquid units and metric capacity standards is essential.
+      </p>
+
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Key Volume Conversion Multipliers</h3>
+      <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
+        <li><strong>1 Liter (L)</strong> = 1,000 Milliliters (mL) = 33.814 fluid ounces (fl oz)</li>
+        <li><strong>1 US Liquid Gallon</strong> = 3.78541 Liters = 128 US fluid ounces</li>
+        <li><strong>1 Imperial UK Gallon</strong> = 4.54609 Liters = 160 UK fluid ounces</li>
+        <li><strong>1 US Cup</strong> = 236.588 Milliliters = 8 US fluid ounces</li>
+        <li><strong>1 Metric Cup</strong> = 250 Milliliters</li>
+      </ul>
+
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Liquid Volume Comparison Table</h3>
+      <div style="overflow-x:auto; margin-bottom:1.5rem;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.95rem; text-align:left;">
+          <thead>
+            <tr style="background:var(--bg-elevated); border-bottom:2px solid var(--border-color);">
+              <th style="padding:0.75rem;">Unit</th>
+              <th style="padding:0.75rem;">Milliliters (mL)</th>
+              <th style="padding:0.75rem;">Liters (L)</th>
+              <th style="padding:0.75rem;">US Fluid Ounces</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.75rem;">1 Teaspoon (tsp)</td>
+              <td style="padding:0.75rem;">4.92892 mL</td>
+              <td style="padding:0.75rem;">0.00493 L</td>
+              <td style="padding:0.75rem;">0.16667 fl oz</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.75rem;">1 Tablespoon (tbsp)</td>
+              <td style="padding:0.75rem;">14.7868 mL</td>
+              <td style="padding:0.75rem;">0.01479 L</td>
+              <td style="padding:0.75rem;">0.50000 fl oz</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.75rem;">1 US Cup</td>
+              <td style="padding:0.75rem;">236.588 mL</td>
+              <td style="padding:0.75rem;">0.23659 L</td>
+              <td style="padding:0.75rem;">8.00000 fl oz</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.75rem;">1 Liter (L)</td>
+              <td style="padding:0.75rem;">1000.00 mL</td>
+              <td style="padding:0.75rem;">1.00000 L</td>
+              <td style="padding:0.75rem;">33.8140 fl oz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Frequently Asked Questions (FAQs)</h3>
+      <div style="margin-bottom:1.5rem;">
+        <p><strong>Q: How many mL in a cup?</strong><br>
+        A: A standard US customary cup equals 236.588 mL, while a standard metric cup equals 250 mL.</p>
+        <p><strong>Q: Why is a UK gallon different from a US gallon?</strong><br>
+        A: The US gallon is based on the historic 231 cubic inch wine gallon, whereas the UK Imperial gallon is based on 10 pounds of water volume.</p>
+      </div>
+    </article>
+  
+</main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 

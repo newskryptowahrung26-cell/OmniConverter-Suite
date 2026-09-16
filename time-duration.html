@@ -22,17 +22,23 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="styles.css">
 
+  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Time & Duration Converter - OmniConverter",
-    "url": "https://omniconverter.co.uk/time-duration.html",
+    "@type": "SoftwareApplication",
+    "name": "Time & Duration Converter",
+    "url": "https://omniconverter.co.uk/time-duration",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript.",
-    "description": "Free online time duration conversion tool for Seconds, Minutes, Hours, Days, Weeks, Months, and Years.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "description": "Free online time converter tool for hours, minutes, seconds, days, and milliseconds.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 </head>
@@ -108,7 +114,27 @@
         <p>Convert time intervals and duration units instantly: Milliseconds, Seconds, Minutes, Hours, Days, Weeks, Months, Years, Decades, and Centuries.</p>
       </article>
     </div>
-  </main>
+  
+    <article class="content-section" style="margin-top:2rem;">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Time & Duration Conversion Guide</h2>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Time duration calculations determine precise interval measurements across software engineering, event scheduling, project management, aviation flight timing, and physics calculations. Converting between seconds, minutes, hours, days, weeks, and milliseconds is essential for accurate international timezone alignment and technical benchmarks.
+      </p>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Standard Time Equivalents</h3>
+      <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
+        <li><strong>1 Minute</strong> = 60 Seconds = 60,000 Milliseconds</li>
+        <li><strong>1 Hour</strong> = 60 Minutes = 3,600 Seconds</li>
+        <li><strong>1 Day</strong> = 24 Hours = 1,440 Minutes = 86,400 Seconds</li>
+        <li><strong>1 Week</strong> = 7 Days = 168 Hours = 10,080 Minutes</li>
+      </ul>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Frequently Asked Questions (FAQs)</h3>
+      <div style="margin-bottom:1.5rem;">
+        <p><strong>Q: How many seconds are in a full day?</strong><br>A: A standard solar day contains exactly 86,400 seconds.</p>
+        <p><strong>Q: How do I convert hours into minutes?</strong><br>A: Multiply the total number of hours by 60.</p>
+      </div>
+    </article>
+  
+</main>
 
   <div id="toast" class="toast" aria-live="polite"></div>
 
