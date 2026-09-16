@@ -2,7 +2,7 @@
 <rss version="2.0">
 <channel>
   <title>OmniConverter Blog & Articles</title>
-  <link>https://omniconverter.co.uk/blog.html</link>
+  <link>https://omniconverter.co.uk/blog</link>
   <description>Official guides, measurement articles, unit converter updates, and press releases from OmniConverter.</description>
   <language>en-us</language>
   <lastBuildDate>Tue, 15 Sep 2026 18:00:00 GMT</lastBuildDate>
@@ -22,17 +22,17 @@
   </item>
   <item>
     <title>OmniConverter Web Suite Officially Launches Client-Side Conversion Platform</title>
-    <link>https://omniconverter.co.uk/blog.html#launch</link>
+    <link>https://omniconverter.co.uk/blog#launch</link>
     <description>OmniConverter introduces a zero-server, 100% private in-browser utility suite supporting Temperature, Weight, Volume, Time, Area, Speed, Images, and Documents.</description>
     <pubDate>Tue, 15 Sep 2026 10:00:00 GMT</pubDate>
-    <guid>https://omniconverter.co.uk/blog.html#launch</guid>
+    <guid>https://omniconverter.co.uk/blog#launch</guid>
   </item>
   <item>
     <title>OmniConverter Implements Machine-Readable LLMs.txt Standard for AI Assistants</title>
-    <link>https://omniconverter.co.uk/blog.html#llms-txt</link>
+    <link>https://omniconverter.co.uk/blog#llms-txt</link>
     <description>OmniConverter integrates the llms.txt standard to provide machine-readable conversion specs directly to AI agents and LLM search crawlers.</description>
     <pubDate>Mon, 14 Sep 2026 14:30:00 GMT</pubDate>
-    <guid>https://omniconverter.co.uk/blog.html#llms-txt</guid>
+    <guid>https://omniconverter.co.uk/blog#llms-txt</guid>
   </item>
     <item>
       <title>1 Bar to PSI Conversion Guide & Formula</title>
