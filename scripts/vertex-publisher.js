@@ -4,14 +4,12 @@ const path = require('path');
 const https = require('https');
 const { execSync } = require('child_process');
 
-// Helper to fetch high-resolution topic-matched photo from Unsplash API
+// Unsplash helper
 function getUnsplashPhoto(query, accessKey) {
   return new Promise((resolve) => {
     if (!accessKey) {
-      console.log('No Unsplash API key provided. Using fallback image.');
       return resolve('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80');
     }
-
     const searchUrl = `https://api.unsplash.com/search/photos?page=1&per_page=1&query=${encodeURIComponent(query)}&client_id=${accessKey}`;
     https.get(searchUrl, (res) => {
       let data = '';
@@ -20,22 +18,25 @@ function getUnsplashPhoto(query, accessKey) {
         try {
           const parsed = JSON.parse(data);
           if (parsed.results && parsed.results.length > 0) {
-            const rawUrl = parsed.results[0].urls.regular;
-            console.log(`✔ Found dynamic Unsplash photo for "${query}": ${rawUrl.substring(0, 60)}...`);
-            return resolve(rawUrl);
+            return resolve(parsed.results[0].urls.regular);
           }
         } catch (e) {}
-        console.log('Unsplash search returned no results. Using fallback image.');
         resolve('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80');
       });
-    }).on('error', () => {
-      resolve('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80');
-    });
+    }).on('error', () => resolve('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80'));
   });
 }
 
+function slugify(text) {
+  return text.toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-')
+    .trim();
+}
+
 async function main() {
-  console.log('=== Running Gemini API + Unsplash Auto-Publisher ===');
+  console.log('=== Running Anti-Cannibalized Google Sheet Keyword Auto-Publisher ===');
 
   const apiKey = process.env.GEMINI_API_KEY;
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY;
@@ -45,25 +46,51 @@ async function main() {
     process.exit(1);
   }
 
-  // Predefined continuous keyword queue
-  const keywordQueue = [
-    { slug: '70-fahrenheit-to-celsius', title: '70 Fahrenheit to Celsius', category: 'Temperature Guide', searchQuery: 'room thermometer' },
-    { slug: '1-liter-to-gallons', title: '1 Liter to Gallons', category: 'Volume & Capacity Guide', searchQuery: 'water jug measuring' },
-    { slug: '150-lbs-to-kg', title: '150 LBS to KG', category: 'Weight & Mass Guide', searchQuery: 'barbell gym weights' },
-    { slug: '100-kmh-to-mph', title: '100 KM/H to MPH', category: 'Speed Conversion Guide', searchQuery: 'car speedometer' }
-  ];
+  // 1. Fetch Google Sheet Keywords directly via public CSV export
+  const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/1ViVyX1fdyJqIoA-qMoz9-jrPjR-IFHCT/export?format=csv';
+  console.log('Fetching live keyword list from Google Sheet...');
 
+  let rawKeywords = [];
+  try {
+    const csvData = execSync(`node -e "const https=require('https'); function get(url){https.get(url,res=>{if(res.statusCode>=300&&res.statusCode<400&&res.headers.location){return get(res.headers.location);} let d=''; res.on('data',c=>d+=c); res.on('end',()=>console.log(d));});} get('${sheetCsvUrl}');"`).toString();
+    rawKeywords = csvData.split('\n').map(l => l.trim()).filter(l => l.length > 0 && l !== 'Keyword');
+  } catch (e) {
+    console.warn('Could not fetch remote Google Sheet CSV directly, loading local queue backup...');
+  }
+
+  if (rawKeywords.length === 0 && fs.existsSync('keywords.csv')) {
+    rawKeywords = fs.readFileSync('keywords.csv', 'utf8').split('\n').map(l => l.trim()).filter(l => l.length > 0 && l !== 'Keyword');
+  }
+
+  console.log(`Loaded ${rawKeywords.length} total keywords from Google Sheet.`);
+
+  // 2. Scan published articles to prevent duplicate/cannibalized content
   const publishedFiles = fs.readdirSync('blog').filter(f => f.endsWith('.html')).map(f => f.replace('.html', ''));
-  const nextTarget = keywordQueue.find(item => !publishedFiles.includes(item.slug)) || keywordQueue[0];
+  console.log(`Currently Published Articles Count: ${publishedFiles.length}`);
 
-  console.log(`Targeting Article: ${nextTarget.title} (${nextTarget.slug})`);
+  // Find next keyword in sheet that is NOT published yet and NOT cannibalizing existing topics
+  let selectedTarget = null;
+  for (const rawKw of rawKeywords) {
+    const slug = slugify(rawKw);
+    if (!publishedFiles.includes(slug)) {
+      selectedTarget = { rawKw, slug };
+      break;
+    }
+  }
 
-  // 1. Fetch topic-matched photo from Unsplash API
-  const imageUrl = await getUnsplashPhoto(nextTarget.searchQuery, unsplashKey);
+  if (!selectedTarget) {
+    console.log('All keywords from Google Sheet are currently published! No action needed.');
+    return;
+  }
 
-  // 2. Generate Content using Google GenAI SDK (Gemini 1.5 Pro)
+  console.log(`✔ Anti-Cannibalization Check Passed. Selected Target: "${selectedTarget.rawKw}" (${selectedTarget.slug})`);
+
+  // 3. Fetch topic-matched Unsplash photo
+  const imageUrl = await getUnsplashPhoto(selectedTarget.rawKw, unsplashKey);
+
+  // 4. Generate Content via Gemini 1.5 Pro
   const ai = new GoogleGenAI({ apiKey });
-  const prompt = `Write a comprehensive, professional 1,000-word SEO article for the keyword: "${nextTarget.title}".
+  const prompt = `Write a comprehensive, professional 1,000-word SEO article for the keyword target: "${selectedTarget.rawKw}".
   Requirements:
   - Return ONLY raw HTML article body content starting with paragraphs and headings.
   - Do NOT wrap response in markdown backticks \`\`\`html.
@@ -72,7 +99,7 @@ async function main() {
   - Include a detailed comparison table with class "conversion-table" inside class "table-wrapper".
   - Include a section titled "Frequently Asked Questions (FAQs)" with 3 Q&A pairs.`;
 
-  console.log('Calling Gemini API via GoogleGenAI SDK...');
+  console.log('Generating 1,000-word article via Gemini API...');
   const response = await ai.models.generateContent({
     model: 'gemini-1.5-pro',
     contents: prompt
@@ -81,7 +108,8 @@ async function main() {
   let articleBodyHtml = response.text || '';
   articleBodyHtml = articleBodyHtml.replace(/```html/gi, '').replace(/```/g, '').trim();
 
-  // 3. Assemble complete web page
+  // 5. Build full HTML page
+  const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
   const fullPageHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,9 +125,9 @@ async function main() {
     gtag('config', 'G-0KPY6T7PFD');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${nextTarget.title}: Conversion Guide | OmniConverter</title>
-  <meta name="description" content="Convert ${nextTarget.title} accurately. Detailed step-by-step mathematical conversion formulas, reference tables, and FAQs.">
-  <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${nextTarget.slug}">
+  <title>${title} | OmniConverter</title>
+  <meta name="description" content="Accurate step-by-step conversion for ${selectedTarget.rawKw} with exact formulas and reference tables.">
+  <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/logo.png">
   <link rel="stylesheet" href="/styles.css">
@@ -126,9 +154,9 @@ async function main() {
   </header>
   <main class="main-container">
     <article class="content-section" style="margin-top:1.5rem;">
-      <span class="formula-badge">${nextTarget.category}: ${nextTarget.title}</span>
-      <h1 style="font-size:2.1rem; font-weight:800; margin:0.75rem 0 1rem 0;">${nextTarget.title}</h1>
-      <img src="${imageUrl}" alt="${nextTarget.title}" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager">
+      <span class="formula-badge">Conversion Guide: ${title}</span>
+      <h1 style="font-size:2.1rem; font-weight:800; margin:0.75rem 0 1rem 0;">${title}</h1>
+      <img src="${imageUrl}" alt="${title}" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
     </article>
   </main>
@@ -140,11 +168,11 @@ async function main() {
 </body>
 </html>`;
 
-  const outPath = path.join('blog', `${nextTarget.slug}.html`);
+  const outPath = path.join('blog', `${selectedTarget.slug}.html`);
   fs.writeFileSync(outPath, fullPageHtml, 'utf8');
   console.log(`✔ Article generated & saved: ${outPath}`);
 
-  // 4. Update blog-data.js and sitemaps
+  // 6. Update blog-data.js and sitemaps
   execSync('node scratch/rebuild_blog_data.js');
   console.log('✔ blog-data.js & sitemaps updated.');
 }
