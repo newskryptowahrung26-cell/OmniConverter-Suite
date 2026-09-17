@@ -114,15 +114,13 @@ function rebuildBlogData() {
 
   const blogDataContent = [
     `// Automatically synchronized blog data (Total: ${posts.length} articles)`,
-    `export const BLOG_POSTS = [`,
+    `const BLOG_POSTS = [`,
     postsJs,
     `];`,
     ``,
-    `// Global fallback so blog.html <script src> (non-module) can also read articles`,
-    `if (typeof window !== 'undefined') {`,
-    `  window.BLOG_POSTS = BLOG_POSTS;`,
-    `  window.blogArticles = BLOG_POSTS;`,
-    `}`,
+    `// Make articles available globally for blog.html`,
+    `window.BLOG_POSTS = BLOG_POSTS;`,
+    `window.blogArticles = BLOG_POSTS;`,
     ``
   ].join('\n');
 

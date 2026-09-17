@@ -169,7 +169,9 @@
     <!-- Dual ES Module & Global Fallback Script Loader -->
   <script src="/blog-data.js"></script>
   <script type="module">
-    import { BLOG_POSTS, blogArticles } from '/blog-data.js';
+    // BLOG_POSTS and blogArticles are set on window by blog-data.js plain script above
+    const BLOG_POSTS = window.BLOG_POSTS || [];
+    const blogArticles = window.blogArticles || [];
 
     document.addEventListener('DOMContentLoaded', () => {
       const blogGrid = document.getElementById('blogGrid');

@@ -1,5 +1,5 @@
 ﻿// Automatically synchronized blog data (Total: 15 articles)
-export const BLOG_POSTS = [
+const BLOG_POSTS = [
   {
     "id": "1-3-cup-to-grams",
     "slug": "1-3-cup-to-grams",
@@ -212,5 +212,6 @@ export const BLOG_POSTS = [
   }
 ];
 
-// Global fallback for non-module script tags
-if (typeof window !== 'undefined') { window.BLOG_POSTS = BLOG_POSTS; window.blogArticles = BLOG_POSTS; }
+// Make articles available globally for blog.html
+window.BLOG_POSTS = BLOG_POSTS;
+window.blogArticles = BLOG_POSTS;
