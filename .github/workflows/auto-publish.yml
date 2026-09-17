@@ -1,0 +1,44 @@
+name: Vertex AI & Google Drive Auto-Publisher
+
+on:
+  schedule:
+    # Runs every 6 hours automatically (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows manual trigger button in GitHub UI
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Install Dependencies
+        run: |
+          npm install @google-cloud/vertexai googleapis google-auth-library
+
+      - name: Run Auto-Publisher
+        env:
+          GCP_PROJECT_ID: '${{ secrets.GCP_PROJECT_ID }}'
+          GDRIVE_FOLDER_ID: '${{ secrets.GDRIVE_FOLDER_ID }}'
+        run: |
+          node scripts/vertex-publisher.js
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-published new article via Vertex AI & Google Drive" || exit 0
+          git push origin main
