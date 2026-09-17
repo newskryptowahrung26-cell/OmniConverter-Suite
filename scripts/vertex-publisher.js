@@ -100,10 +100,19 @@ async function main() {
   - Include a section titled "Frequently Asked Questions (FAQs)" with 3 Q&A pairs.`;
 
   console.log('Generating 1,000-word article via Gemini API...');
-  const response = await ai.models.generateContent({
-    model: 'gemini-1.5-pro',
-    contents: prompt
-  });
+  let response;
+  try {
+    response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt
+    });
+  } catch (err) {
+    console.log(`Primary model gemini-2.5-flash encountered error: ${err.message}. Trying fallback model gemini-2.5-pro...`);
+    response = await ai.models.generateContent({
+      model: 'gemini-2.5-pro',
+      contents: prompt
+    });
+  }
 
   let articleBodyHtml = response.text || '';
   articleBodyHtml = articleBodyHtml.replace(/```html/gi, '').replace(/```/g, '').trim();
