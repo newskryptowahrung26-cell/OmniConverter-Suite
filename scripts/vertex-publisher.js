@@ -353,6 +353,74 @@ Rules:
   const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
   const year = new Date().getFullYear();
 
+  // Detect appropriate converter tool link based on keyword
+  let toolLink = '/';
+  let toolTitle = 'OmniConverter Universal Conversion Tools Suite';
+  let toolDesc = 'Perform instant weight, volume, temperature, duration, speed, and unit conversions with zero ads or tracking.';
+  let toolBtnText = 'Explore All Converters &rarr;';
+
+  const kwLower = selectedTarget.rawKw.toLowerCase();
+  if (kwLower.includes('fahrenheit') || kwLower.includes('celsius') || kwLower.includes('kelvin') || kwLower.includes('temperature')) {
+    toolLink = '/temperature';
+    toolTitle = 'Interactive Temperature & Heat Unit Converter';
+    toolDesc = 'Convert Fahrenheit, Celsius, Kelvin, and Rankine with instant thermodynamic formulas and live calculations.';
+    toolBtnText = 'Open Temperature Converter &rarr;';
+  } else if (kwLower.includes('kg') || kwLower.includes('pound') || kwLower.includes('lbs') || kwLower.includes('gram') || kwLower.includes('ounce') || kwLower.includes('stone') || kwLower.includes('weight') || kwLower.includes('mass')) {
+    toolLink = '/weight-mass';
+    toolTitle = 'Interactive Weight & Mass Converter Calculator';
+    toolDesc = 'Convert kilograms, pounds, ounces, stones, and grams instantly with verified conversion ratios.';
+    toolBtnText = 'Open Weight & Mass Converter &rarr;';
+  } else if (kwLower.includes('cup') || kwLower.includes('liter') || kwLower.includes('litre') || kwLower.includes('ml') || kwLower.includes('gallon') || kwLower.includes('tsp') || kwLower.includes('tbsp') || kwLower.includes('volume')) {
+    toolLink = '/volume-capacity';
+    toolTitle = 'Interactive Kitchen Volume & Mass Converter';
+    toolDesc = 'Switch between cups, grams, milliliters, fluid ounces, and kilograms instantly with our live calculator.';
+    toolBtnText = 'Open Volume Converter &rarr;';
+  } else if (kwLower.includes('mph') || kwLower.includes('kmh') || kwLower.includes('speed') || kwLower.includes('knot') || kwLower.includes('velocity')) {
+    toolLink = '/speed';
+    toolTitle = 'Interactive Speed & Velocity Converter Calculator';
+    toolDesc = 'Convert miles per hour, kilometers per hour, knots, and meters per second instantly with real-time speed formulas.';
+    toolBtnText = 'Open Speed Converter &rarr;';
+  } else if (kwLower.includes('hour') || kwLower.includes('minute') || kwLower.includes('second') || kwLower.includes('time') || kwLower.includes('day')) {
+    toolLink = '/time-duration';
+    toolTitle = 'Interactive Time & Duration Converter Calculator';
+    toolDesc = 'Convert hours, minutes, seconds, milliseconds, days, and weeks accurately.';
+    toolBtnText = 'Open Time Converter &rarr;';
+  } else if (kwLower.includes('area') || kwLower.includes('acre') || kwLower.includes('hectare') || kwLower.includes('sq ft') || kwLower.includes('square')) {
+    toolLink = '/area';
+    toolTitle = 'Interactive Area & Land Measure Converter';
+    toolDesc = 'Convert square feet, square meters, acres, hectares, and square kilometers with live precision.';
+    toolBtnText = 'Open Area Converter &rarr;';
+  }
+
+  const toolCalloutHtml = `
+      <!-- Relevant Interactive Converter Callout Box -->
+      <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div style="max-width: 680px;">
+          <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">${toolTitle}</h3>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">${toolDesc}</p>
+        </div>
+        <a href="${toolLink}" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">${toolBtnText}</a>
+      </div>`;
+
+  // Select 3-4 other published articles for cross-linking
+  const otherArticles = publishedFiles.filter(f => f !== selectedTarget.slug).slice(0, 4);
+  const crossLinksHtml = otherArticles.length > 0 ? `
+    <!-- CROSS_LINKS_BLOCK -->
+    <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
+      <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
+        <strong>Related Conversion Guides:</strong> 
+        ${otherArticles.map(s => `<a href="/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${s.replace(/-/g, ' ').replace(/\\b\\w/g, l => l.toUpperCase())}</a>`).join(' &bull; ')}
+      </p>
+    </div>` : '';
+
+  // Inject tool callout box after the quick summary box or first heading
+  if (articleBodyHtml.includes('</div>')) {
+    const firstDivClose = articleBodyHtml.indexOf('</div>') + 6;
+    articleBodyHtml = articleBodyHtml.slice(0, firstDivClose) + '\n' + toolCalloutHtml + '\n' + articleBodyHtml.slice(firstDivClose);
+  } else {
+    articleBodyHtml = toolCalloutHtml + '\n' + articleBodyHtml;
+  }
+
   const fullPageHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -396,6 +464,7 @@ Rules:
       <img src="${imageUrl}" alt="${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
     </article>
+    ${crossLinksHtml}
   </main>
   <footer class="footer">
     <div class="footer-container">
