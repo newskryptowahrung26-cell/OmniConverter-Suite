@@ -223,6 +223,41 @@ ${blogEntries}
       console.warn(`Could not sync sitemap.html: ${e.message}`);
     }
   }
+
+  // Update feed.xml RSS for Google News Producer / Publisher Center
+  try {
+    const feedItems = posts.map(p => {
+      const cleanTitle = p.fullTitle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cleanSummary = p.summary.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const url = `https://www.omniconverter.co.uk/blog/${p.slug}`;
+      const pubDate = new Date().toUTCString();
+      return `    <item>
+      <title>${cleanTitle}</title>
+      <link>${url}</link>
+      <guid>${url}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${cleanSummary}</description>
+    </item>`;
+    }).join('\n');
+
+    const feedXml = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OmniConverter Blog &amp; Guides</title>
+    <link>https://www.omniconverter.co.uk/blog</link>
+    <description>Accurate unit measurement guides, currency exchange rates, culinary conversions, and technology tutorials from OmniConverter.</description>
+    <language>en-gb</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="https://www.omniconverter.co.uk/feed.xml" rel="self" type="application/rss+xml" />
+${feedItems}
+  </channel>
+</rss>
+`;
+    fs.writeFileSync('feed.xml', feedXml, 'utf8');
+    console.log(`[OK] feed.xml RSS updated for Google News with ${posts.length} articles.`);
+  } catch (e) {
+    console.warn(`Could not sync feed.xml: ${e.message}`);
+  }
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
