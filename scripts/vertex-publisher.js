@@ -207,6 +207,22 @@ ${blogEntries}
 `;
   fs.writeFileSync('sitemap.xml', sitemapXml, 'utf8');
   console.log(`[OK] sitemap.xml rebuilt with ${posts.length} blog entries.`);
+
+  // Update sitemap.html blog list if file exists
+  if (fs.existsSync('sitemap.html')) {
+    try {
+      let sitemapHtml = fs.readFileSync('sitemap.html', 'utf8');
+      const blogListHtml = posts.map(p => `        <li><a href="/blog/${p.slug}" style="color:var(--primary-600); font-weight:600;">${p.fullTitle}</a></li>`).join('\n');
+      sitemapHtml = sitemapHtml.replace(
+        /<h2>3\. Blog &.*?<\/h2>[\s\S]*?<\/ul>/i,
+        `<h2>3. Blog & Conversion Guides</h2>\n      <ul style="margin-left:1.5rem; margin-bottom:1.5rem; line-height:1.8;">\n        <li><a href="/blog" style="color:var(--primary-600); font-weight:700;">OmniConverter Blog Hub</a></li>\n${blogListHtml}\n      </ul>`
+      );
+      fs.writeFileSync('sitemap.html', sitemapHtml, 'utf8');
+      console.log(`[OK] sitemap.html synchronized with ${posts.length} articles.`);
+    } catch (e) {
+      console.warn(`Could not sync sitemap.html: ${e.message}`);
+    }
+  }
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
