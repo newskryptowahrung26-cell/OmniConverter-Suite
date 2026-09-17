@@ -80,6 +80,10 @@ async function main() {
       .join('-');
   }
 
+  // Scan published articles to prevent duplicate/cannibalized content
+  const publishedFiles = fs.readdirSync('blog').filter(f => f.endsWith('.html')).map(f => f.replace('.html', ''));
+  console.log(`Currently Published Articles Count: ${publishedFiles.length}`);
+
   // Build signatures of all currently published articles
   const publishedSignatures = publishedFiles.map(f => getTopicSignature(f.replace(/-/g, ' ')));
 
