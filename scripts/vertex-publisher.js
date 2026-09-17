@@ -20,12 +20,52 @@ function slugify(text) {
     .trim();
 }
 
+// Unit synonym map — normalize variant spellings to canonical forms
+const UNIT_SYNONYMS = {
+  'fahrenheit': 'f', 'celsius': 'c', 'centigrade': 'c', 'kelvin': 'k',
+  'kilogram': 'kg', 'kilograms': 'kg', 'kilo': 'kg', 'kilos': 'kg',
+  'pound': 'lb', 'pounds': 'lb', 'lbs': 'lb',
+  'gram': 'g', 'grams': 'g',
+  'ounce': 'oz', 'ounces': 'oz',
+  'stone': 'st', 'stones': 'st',
+  'litre': 'l', 'litres': 'l', 'liter': 'l', 'liters': 'l',
+  'milliliter': 'ml', 'milliliters': 'ml', 'millilitre': 'ml', 'millilitres': 'ml',
+  'gallon': 'gal', 'gallons': 'gal',
+  'cup': 'cup', 'cups': 'cup',
+  'teaspoon': 'tsp', 'teaspoons': 'tsp',
+  'tablespoon': 'tbsp', 'tablespoons': 'tbsp',
+  'mile': 'mi', 'miles': 'mi', 'mph': 'mph',
+  'kilometer': 'km', 'kilometers': 'km', 'kilometre': 'km', 'kilometres': 'km', 'kmh': 'kmh',
+  'meter': 'm', 'meters': 'm', 'metre': 'm', 'metres': 'm',
+  'foot': 'ft', 'feet': 'ft',
+  'inch': 'in', 'inches': 'in',
+  'psi': 'psi', 'bar': 'bar',
+  'dollar': 'usd', 'dollars': 'usd', 'usd': 'usd',
+  'euro': 'eur', 'euros': 'eur',
+  'pound': 'gbp', 'gbp': 'gbp',
+  'aud': 'aud', 'vnd': 'vnd', 'krw': 'krw',
+};
+
+const STOP_WORDS = new Set([
+  'a','an','the','to','in','is','of','for','into','how','many',
+  'much','what','convert','from','are','does','between','and','or',
+  'i','my','do','get','make','use','with','at','by','as','on'
+]);
+
 function getTopicSignature(text) {
   return text.toLowerCase()
-    .replace(/\b(a|an|the|to|in|is|of|for|into|how|many|much|what|convert|from|are|does)\b/g, '')
-    .replace(/[^\w\s]/g, '')
+    // Normalize fractions like 1/3 -> 1-3
+    .replace(/(\d+)\/(\d+)/g, '$1-$2')
+    // Normalize number words
+    .replace(/\bone\b/g, '1').replace(/\btwo\b/g, '2').replace(/\bthree\b/g, '3')
+    .replace(/\bfour\b/g, '4').replace(/\bfive\b/g, '5').replace(/\bten\b/g, '10')
+    .replace(/[^\w\s-]/g, ' ')
     .split(/\s+/)
     .filter(w => w.length > 0)
+    // Normalize unit synonyms
+    .map(w => UNIT_SYNONYMS[w] || w)
+    // Remove stop words
+    .filter(w => !STOP_WORDS.has(w) && w.length > 0)
     .sort()
     .join('-');
 }
