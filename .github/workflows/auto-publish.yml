@@ -1,4 +1,4 @@
-name: Vertex AI & Google Drive Auto-Publisher
+name: Gemini & Unsplash Auto-Publisher
 
 on:
   schedule:
@@ -19,19 +19,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
-
       - name: Install Dependencies
         run: |
-          npm install @google-cloud/vertexai googleapis google-auth-library
+          npm install @google/genai
 
       - name: Run Auto-Publisher
         env:
-          GCP_PROJECT_ID: '${{ secrets.GCP_PROJECT_ID }}'
-          GDRIVE_FOLDER_ID: '${{ secrets.GDRIVE_FOLDER_ID }}'
+          GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}'
+          UNSPLASH_ACCESS_KEY: '${{ secrets.UNSPLASH_ACCESS_KEY }}'
         run: |
           node scripts/vertex-publisher.js
 
@@ -40,5 +35,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Auto-published new article via Vertex AI & Google Drive" || exit 0
+          git commit -m "Auto-published new article via Gemini API & Unsplash API" || exit 0
           git push origin main
