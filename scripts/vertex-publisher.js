@@ -69,22 +69,40 @@ async function main() {
 
   console.log(`Loaded ${rawKeywords.length} total keywords from Google Sheet.`);
 
-  // 2. Scan published articles to prevent duplicate/cannibalized content
-  const publishedFiles = fs.readdirSync('blog').filter(f => f.endsWith('.html')).map(f => f.replace('.html', ''));
-  console.log(`Currently Published Articles Count: ${publishedFiles.length}`);
+  // Canonical topic signature helper to detect similar keywords (e.g., "1 3 a cup in grams" vs "1 3 cup to grams")
+  function getTopicSignature(text) {
+    return text.toLowerCase()
+      .replace(/\b(a|an|the|to|in|is|of|for|into|how|many|much|what|convert)\b/g, '')
+      .replace(/[^\w\s]/g, '')
+      .split(/\s+/)
+      .filter(w => w.length > 0)
+      .sort()
+      .join('-');
+  }
+
+  // Build signatures of all currently published articles
+  const publishedSignatures = publishedFiles.map(f => getTopicSignature(f.replace(/-/g, ' ')));
 
   // Find next keyword in sheet that is NOT published yet and NOT cannibalizing existing topics
   let selectedTarget = null;
   for (const rawKw of rawKeywords) {
     const slug = slugify(rawKw);
-    if (!publishedFiles.includes(slug)) {
+    const signature = getTopicSignature(rawKw);
+
+    // Check exact slug AND normalized topic signature against published articles
+    const isExactDuplicate = publishedFiles.includes(slug);
+    const isSimilarTopic = publishedSignatures.includes(signature);
+
+    if (!isExactDuplicate && !isSimilarTopic) {
       selectedTarget = { rawKw, slug };
       break;
+    } else {
+      console.log(`[Anti-Cannibalization] Skipping similar/duplicate keyword: "${rawKw}" (Matches published topic)`);
     }
   }
 
   if (!selectedTarget) {
-    console.log('All keywords from Google Sheet are currently published! No action needed.');
+    console.log('All keywords from Google Sheet are currently published or covered by similar topics! No action needed.');
     return;
   }
 
