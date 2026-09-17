@@ -98,22 +98,61 @@ function fetchUrl(url, redirects) {
   });
 }
 
-function getUnsplashPhoto(query, accessKey) {
+function getUnsplashPhoto(query, accessKey, usedPhotoIds = new Set()) {
   return new Promise((resolve) => {
-    const fallback = 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80';
-    if (!accessKey) return resolve(fallback);
-    const searchUrl = `https://api.unsplash.com/search/photos?page=1&per_page=1&query=${encodeURIComponent(query)}&client_id=${accessKey}`;
+    // Curated high-res unique backup photos across multiple domains
+    const fallbackList = [
+      'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80'
+    ];
+
+    function pickFallback() {
+      for (const fb of fallbackList) {
+        const idMatch = fb.match(/photo-([a-zA-Z0-9_-]+)/);
+        const id = idMatch ? idMatch[1] : fb;
+        if (!usedPhotoIds.has(id)) {
+          return fb;
+        }
+      }
+      return fallbackList[0];
+    }
+
+    if (!accessKey) return resolve(pickFallback());
+
+    // Request up to 10 photos per query so we have choices if top results were already used
+    const searchUrl = `https://api.unsplash.com/search/photos?page=1&per_page=10&query=${encodeURIComponent(query)}&client_id=${accessKey}`;
     https.get(searchUrl, (res) => {
       let data = '';
       res.on('data', chunk => { data += chunk; });
       res.on('end', () => {
         try {
           const parsed = JSON.parse(data);
-          if (parsed.results && parsed.results.length > 0) return resolve(parsed.results[0].urls.regular);
+          if (parsed.results && parsed.results.length > 0) {
+            // Find the first result whose ID hasn't been used in any existing article
+            for (const item of parsed.results) {
+              const photoId = item.id;
+              const photoUrl = item.urls && (item.urls.regular || item.urls.full);
+              if (photoUrl) {
+                const idMatch = photoUrl.match(/photo-([a-zA-Z0-9_-]+)/);
+                const extractedId = idMatch ? idMatch[1] : photoId;
+                if (!usedPhotoIds.has(photoId) && !usedPhotoIds.has(extractedId)) {
+                  console.log(`[OK] Selected unique Unsplash photo ID: ${photoId}`);
+                  return resolve(photoUrl);
+                }
+              }
+            }
+            console.warn('[Notice] All top Unsplash results for this query were already used on the site. Using unused fallback.');
+          }
         } catch (e) {}
-        resolve(fallback);
+        resolve(pickFallback());
       });
-    }).on('error', () => resolve(fallback));
+    }).on('error', () => resolve(pickFallback()));
   });
 }
 
@@ -386,9 +425,25 @@ async function main() {
   const selectedTarget = eligibleTargets[randomIndex];
   console.log(`[OK] Selected: "${selectedTarget.rawKw}" -> ${selectedTarget.slug}`);
 
-  // 3. Unsplash photo
-  const imageUrl = await getUnsplashPhoto(selectedTarget.rawKw, unsplashKey);
-  console.log(`[OK] Photo fetched.`);
+  // Collect all currently used Unsplash photo IDs from published articles
+  const usedPhotoIds = new Set();
+  publishedFiles.forEach(f => {
+    try {
+      const content = fs.readFileSync(path.join('blog', `${f}.html`), 'utf8');
+      const matches = content.matchAll(/<img[^>]+src="([^"]+)"/gi);
+      for (const m of matches) {
+        if (m[1] && m[1].includes('unsplash.com')) {
+          const photoIdMatch = m[1].match(/photo-([a-zA-Z0-9_-]+)/);
+          if (photoIdMatch) usedPhotoIds.add(photoIdMatch[1]);
+        }
+      }
+    } catch (e) {}
+  });
+  console.log(`Tracked ${usedPhotoIds.size} already-used Unsplash photo IDs to prevent duplicate image reuse.`);
+
+  // 3. Unsplash photo (guaranteed unique)
+  const imageUrl = await getUnsplashPhoto(selectedTarget.rawKw, unsplashKey, usedPhotoIds);
+  console.log(`[OK] Unique photo fetched: ${imageUrl.substring(0, 60)}...`);
 
   // 4. Generate article — dynamic model discovery + static fallback
   const ai = new GoogleGenAI({ apiKey });
