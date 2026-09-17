@@ -126,8 +126,33 @@ async function main() {
   - Include a detailed comparison table with class "conversion-table" inside class "table-wrapper".
   - Include a section titled "Frequently Asked Questions (FAQs)" with 3 Q&A pairs.`;
 
-  console.log('Generating 1,000-word article via Gemini API...');
-  const modelCandidates = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'];
+  console.log('Fetching active models from Gemini API...');
+  let modelCandidates = [];
+  try {
+    const listRes = await ai.models.list();
+    if (listRes && listRes.models) {
+      modelCandidates = listRes.models
+        .map(m => m.name.replace(/^models\//, ''))
+        .filter(name => name.includes('gemini') && !name.includes('embedding') && !name.includes('imagen') && !name.includes('audio') && !name.includes('realtime'));
+      console.log(`Discovered ${modelCandidates.length} active Gemini text models:`, modelCandidates);
+    }
+  } catch (e) {
+    console.warn(`Could not list models dynamically: ${e.message}`);
+  }
+
+  // Backup static fallback model list
+  if (modelCandidates.length === 0) {
+    modelCandidates = [
+      'gemini-3.6-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-3.1-pro-preview',
+      'gemini-2.5-flash',
+      'gemini-2.5-pro',
+      'gemini-1.5-flash',
+      'gemini-1.5-pro'
+    ];
+  }
+
   let response = null;
   let lastError = null;
 
