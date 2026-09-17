@@ -258,6 +258,58 @@ ${feedItems}
   } catch (e) {
     console.warn(`Could not sync feed.xml: ${e.message}`);
   }
+
+  // Update llms.txt AI assistant directory
+  try {
+    const articlesList = posts.map(p => `- [${p.fullTitle}](https://www.omniconverter.co.uk/blog/${p.slug}): ${p.summary}`).join('\n');
+    const llmsContent = `# OmniConverter Web Suite
+
+> OmniConverter is a free, fast, private, zero-dependency, client-side web utility for converting unit measurements (Temperature, Weight & Mass, Volume & Capacity, Time & Duration, Area, Speed) and client-side file media formats (Image, Document, Data).
+
+## Key Features & Capabilities
+- **Instant Browser Calculations**: All mathematical unit conversions execute in O(1) time in the user's web browser without server requests.
+- **Client-Side Media Conversion**: Convert image formats (PNG, JPEG, WebP, BMP) using HTML5 Canvas & Blob API with 100% data privacy.
+- **Document Format Transformation**: Parsing between JSON, CSV, and HTML text formats.
+- **Accessibility & SEO**: Semantic HTML5 markup, WCAG AAA contrast ratios, keyboard navigation, and JSON-LD structured data.
+
+## Documentation & Primary Routes
+- [/index.html](https://www.omniconverter.co.uk/): Interactive unit converter calculator suite for Temperature, Weight, Volume, Time, Area, and Speed.
+- [/temperature](https://www.omniconverter.co.uk/temperature): Temperature Converter (Celsius, Fahrenheit, Kelvin, Rankine, Réaumur).
+- [/weight-mass](https://www.omniconverter.co.uk/weight-mass): Weight & Mass Converter (kg, lbs, oz, grams, stones).
+- [/volume-capacity](https://www.omniconverter.co.uk/volume-capacity): Volume & Capacity Converter (liters, gallons, cups, ml, fl oz).
+- [/time-duration](https://www.omniconverter.co.uk/time-duration): Time & Duration Converter (hours, minutes, seconds, days, weeks).
+- [/area](https://www.omniconverter.co.uk/area): Area Converter (square meters, square feet, acres, hectares).
+- [/speed](https://www.omniconverter.co.uk/speed): Speed Converter (mph, km/h, knots, m/s).
+- [/file-media](https://www.omniconverter.co.uk/file-media): Client-side image and document converter.
+- [/blog](https://www.omniconverter.co.uk/blog): Official blog hub and conversion guides.
+- [/sitemap.xml](https://www.omniconverter.co.uk/sitemap.xml): XML sitemap for search engines.
+- [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
+- [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
+
+## Published Articles & Guides Directory (${posts.length} Articles)
+${articlesList}
+
+## Core Conversion Formulas Summary
+
+### Temperature
+- **Celsius to Fahrenheit**: °F = (°C × 9/5) + 32
+- **Fahrenheit to Celsius**: °C = (°F − 32) × 5/9
+
+### Area (Pivot: Square Meters m²)
+- **1 Square Kilometer (km²)** = 1,000,000 Square Meters (m²)
+- **1 Hectare (ha)** = 10,000 Square Meters (m²)
+- **1 Acre (ac)** = 43,560 Square Feet (ft²)
+
+### Speed (Pivot: Meters per Second m/s)
+- **1 Kilometer per Hour (km/h)** = 0.277778 m/s
+- **1 Mile per Hour (mph)** = 0.44704 m/s
+- **1 Mach (sea level)** = 343 m/s
+`;
+    fs.writeFileSync('llms.txt', llmsContent, 'utf8');
+    console.log(`[OK] llms.txt synchronized with ${posts.length} articles.`);
+  } catch (e) {
+    console.warn(`Could not sync llms.txt: ${e.message}`);
+  }
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
