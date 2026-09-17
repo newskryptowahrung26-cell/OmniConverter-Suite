@@ -105,18 +105,27 @@ async function main() {
   - Include a section titled "Frequently Asked Questions (FAQs)" with 3 Q&A pairs.`;
 
   console.log('Generating 1,000-word article via Gemini API...');
-  let response;
-  try {
-    response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt
-    });
-  } catch (err) {
-    console.log(`Primary model gemini-2.5-flash encountered error: ${err.message}. Trying fallback model gemini-2.5-pro...`);
-    response = await ai.models.generateContent({
-      model: 'gemini-2.5-pro',
-      contents: prompt
-    });
+  const modelCandidates = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'];
+  let response = null;
+  let lastError = null;
+
+  for (const model of modelCandidates) {
+    try {
+      console.log(`Trying model: ${model}...`);
+      response = await ai.models.generateContent({
+        model: model,
+        contents: prompt
+      });
+      console.log(`Successfully generated article with model: ${model}`);
+      break;
+    } catch (err) {
+      console.warn(`Model ${model} failed: ${err.message}`);
+      lastError = err;
+    }
+  }
+
+  if (!response) {
+    throw new Error(`All Gemini model candidates failed. Last error: ${lastError ? lastError.message : 'Unknown error'}`);
   }
 
   let articleBodyHtml = response.text || '';
