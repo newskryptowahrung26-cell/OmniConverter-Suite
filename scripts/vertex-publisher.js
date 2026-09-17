@@ -34,8 +34,8 @@ const UNIT_SYNONYMS = {
   'cup': 'cup', 'cups': 'cup',
   'teaspoon': 'tsp', 'teaspoons': 'tsp',
   'tablespoon': 'tbsp', 'tablespoons': 'tbsp',
-  'mile': 'mi', 'miles': 'mi', 'mph': 'mph',
-  'kilometer': 'km', 'kilometers': 'km', 'kilometre': 'km', 'kilometres': 'km', 'kmh': 'kmh',
+  'mile': 'mi', 'miles': 'mi', 'mph': 'mi',
+  'kilometer': 'km', 'kilometers': 'km', 'kilometre': 'km', 'kilometres': 'km', 'kmh': 'km', 'kph': 'km',
   'meter': 'm', 'meters': 'm', 'metre': 'm', 'metres': 'm',
   'foot': 'ft', 'feet': 'ft',
   'inch': 'in', 'inches': 'in',
@@ -47,9 +47,21 @@ const UNIT_SYNONYMS = {
 };
 
 const STOP_WORDS = new Set([
+  // Articles & prepositions
   'a','an','the','to','in','is','of','for','into','how','many',
   'much','what','convert','from','are','does','between','and','or',
-  'i','my','do','get','make','use','with','at','by','as','on'
+  'i','my','do','get','make','use','with','at','by','as','on',
+  // Time units used as connectors (e.g. "miles per hour")
+  'per','hour','hours','minute','minutes','second','seconds',
+  // Generic SEO filler words that don't change the topic
+  'conversion','converting','converted','converts',
+  'guide','guides','calculator','calculate','calculation','calculations',
+  'chart','charts','table','tables','formula','formulas',
+  'complete','quick','easy','simple','free','online','fast',
+  'exact','accurate','official','standard','reference',
+  'vs','versus','compared','comparison','difference',
+  'step','steps','way','ways','method','methods',
+  'learn','know','find','check','see','understand',
 ]);
 
 function getTopicSignature(text) {
