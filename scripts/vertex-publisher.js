@@ -250,7 +250,7 @@ async function main() {
     process.exit(1);
   }
 
-  // 2. Anti-cannibalization
+  // 2. Anti-cannibalization with Random Selection
   const publishedFiles = fs.readdirSync('blog')
     .filter(f => f.endsWith('.html'))
     .map(f => f.replace('.html', ''));
@@ -261,20 +261,26 @@ async function main() {
     publishedFiles.map(f => getTopicSignature(f.replace(/-/g, ' ')))
   );
 
-  let selectedTarget = null;
+  // Filter all eligible keywords that pass anti-cannibalization
+  const eligibleTargets = [];
   for (const rawKw of rawKeywords) {
     const slug = slugify(rawKw);
     const sig = getTopicSignature(rawKw);
     if (!publishedSlugs.has(slug) && !publishedSignatures.has(sig)) {
-      selectedTarget = { rawKw, slug };
-      break;
+      eligibleTargets.push({ rawKw, slug });
     }
   }
 
-  if (!selectedTarget) {
-    console.log('All keywords already covered. Nothing to publish.');
+  console.log(`Found ${eligibleTargets.length} eligible unpublished keyword candidates.`);
+
+  if (eligibleTargets.length === 0) {
+    console.log('All keywords already covered or cannibalized. Nothing to publish.');
     return;
   }
+
+  // Pick a random keyword from eligible candidates
+  const randomIndex = Math.floor(Math.random() * eligibleTargets.length);
+  const selectedTarget = eligibleTargets[randomIndex];
   console.log(`[OK] Selected: "${selectedTarget.rawKw}" -> ${selectedTarget.slug}`);
 
   // 3. Unsplash photo
