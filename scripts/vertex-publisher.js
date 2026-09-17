@@ -1,4 +1,4 @@
-﻿/**
+/**
  * OmniConverter Auto-Publisher — Complete Permanent Rewrite
  * Fixes: missing rebuild_blog_data.js, stale model names, variable scope errors,
  * header row keyword injection, and all runtime crashes.
@@ -112,12 +112,22 @@ function rebuildBlogData() {
     "content": ${JSON.stringify(p.content)}
   }`).join(',\n');
 
-  fs.writeFileSync(
-    'blog-data.js',
-    `// Automatically synchronized blog data (Total: ${posts.length} articles)\nexport const BLOG_POSTS = [\n${postsJs}\n];\n`,
-    'utf8'
-  );
-  console.log(`[OK] blog-data.js rebuilt with ${posts.length} articles.`);
+  const blogDataContent = [
+    `// Automatically synchronized blog data (Total: ${posts.length} articles)`,
+    `export const BLOG_POSTS = [`,
+    postsJs,
+    `];`,
+    ``,
+    `// Global fallback so blog.html <script src> (non-module) can also read articles`,
+    `if (typeof window !== 'undefined') {`,
+    `  window.BLOG_POSTS = BLOG_POSTS;`,
+    `  window.blogArticles = BLOG_POSTS;`,
+    `}`,
+    ``
+  ].join('\n');
+
+  fs.writeFileSync('blog-data.js', blogDataContent, 'utf8');
+  console.log(`[OK] blog-data.js rebuilt with ${posts.length} articles + window globals.`);
 
   const blogEntries = posts
     .map(p => `  <url><loc>https://www.omniconverter.co.uk/blog/${p.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`)
