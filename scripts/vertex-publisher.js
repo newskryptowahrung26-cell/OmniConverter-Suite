@@ -53,13 +53,18 @@ async function main() {
   let rawKeywords = [];
   try {
     const csvData = execSync(`node -e "const https=require('https'); function get(url){https.get(url,res=>{if(res.statusCode>=300&&res.statusCode<400&&res.headers.location){return get(res.headers.location);} let d=''; res.on('data',c=>d+=c); res.on('end',()=>console.log(d));});} get('${sheetCsvUrl}');"`).toString();
-    rawKeywords = csvData.split('\n').map(l => l.trim()).filter(l => l.length > 0 && l !== 'Keyword');
+    rawKeywords = csvData.split('\n')
+      .map(l => l.replace(/^"|"$/g, '').trim())
+      .filter(l => l.length > 0 && l.toLowerCase() !== 'keyword');
   } catch (e) {
     console.warn('Could not fetch remote Google Sheet CSV directly, loading local queue backup...');
   }
 
   if (rawKeywords.length === 0 && fs.existsSync('keywords.csv')) {
-    rawKeywords = fs.readFileSync('keywords.csv', 'utf8').split('\n').map(l => l.trim()).filter(l => l.length > 0 && l !== 'Keyword');
+    rawKeywords = fs.readFileSync('keywords.csv', 'utf8')
+      .split('\n')
+      .map(l => l.replace(/^"|"$/g, '').trim())
+      .filter(l => l.length > 0 && l.toLowerCase() !== 'keyword');
   }
 
   console.log(`Loaded ${rawKeywords.length} total keywords from Google Sheet.`);
