@@ -16,6 +16,10 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 
+// Global Date & Year - available across all functions and template scopes permanently
+const today = new Date().toISOString().split('T')[0];
+const year = new Date().getFullYear();
+
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
 function slugify(text) {
