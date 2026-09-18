@@ -22,9 +22,10 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (19 Articles)
+## Published Articles & Guides Directory (20 Articles)
 - [300 Dollars In Gbp](https://www.omniconverter.co.uk/blog/300-dollars-in-gbp): Step-by-step conversion guide for 300 dollars in gbp with formulas, tables, and FAQs.
 - [Indonesia Cu](https://www.omniconverter.co.uk/blog/indonesia-cu): Step-by-step conversion guide for indonesia cu with formulas, tables, and FAQs.
+- [Korean To Aud](https://www.omniconverter.co.uk/blog/korean-to-aud): Step-by-step conversion guide for korean to aud with formulas, tables, and FAQs.
 - [1 Aud To Vnd](https://www.omniconverter.co.uk/blog/1-aud-to-vnd): Step-by-step conversion guide for 1 aud to vnd with formulas, tables, and FAQs.
 - [1 Billion Korean Won To Gbp](https://www.omniconverter.co.uk/blog/1-billion-korean-won-to-gbp): Step-by-step conversion guide for 1 billion korean won to gbp with formulas, tables, and FAQs.
 - [How To Change File Format](https://www.omniconverter.co.uk/blog/how-to-change-file-format): Step-by-step conversion guide for how to change file format with formulas, tables, and FAQs.
