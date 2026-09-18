@@ -191,7 +191,7 @@ function rebuildBlogData() {
     const content = articleMatch ? articleMatch[1].trim() : '';
 
     return { slug, fullTitle, summary, pubDate, image, content };
-  });
+  }).sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
   const postsJs = posts.map(p => `  {
     "id": ${JSON.stringify(p.slug)},

@@ -234,6 +234,10 @@
             (item.summary && item.summary.toLowerCase().includes(currentQuery)) ||
             (item.category && item.category.toLowerCase().includes(currentQuery));
           return matchesCategory && matchesQuery;
+        }).sort((a, b) => {
+          const dateA = new Date(a.publicationDate || a.date || '1970-01-01').getTime();
+          const dateB = new Date(b.publicationDate || b.date || '1970-01-01').getTime();
+          return dateB - dateA; // Newest first (descending)
         });
       }
 
