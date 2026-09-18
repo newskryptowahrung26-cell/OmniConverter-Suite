@@ -190,7 +190,36 @@ function rebuildBlogData() {
     const articleMatch = raw.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
     const content = articleMatch ? articleMatch[1].trim() : '';
 
-    return { slug, fullTitle, summary, pubDate, image, content };
+    // Automatically determine topic category based on slug and title
+    const s = slug.toLowerCase();
+    const t = fullTitle.toLowerCase();
+    let category = "Conversion Guide";
+    let icon = "📊";
+
+    if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen')) {
+      category = "Kitchen & Culinary";
+      icon = "🍳";
+    } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex')) {
+      category = "Currency & Forex";
+      icon = "💱";
+    } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass')) {
+      category = "Weight & Mass";
+      icon = "⚖️";
+    } else if (s.includes('celsius') || s.includes('fahrenheit') || s.includes('kelvin') || s.includes('temperature') || t.includes('celsius') || t.includes('fahrenheit')) {
+      category = "Temperature & Cooking";
+      icon = "🌡️";
+    } else if (s.includes('gallon') || s.includes('litres') || s.includes('liter') || s.includes('ml') || s.includes('bar-to-psi') || s.includes('volume') || t.includes('volume') || t.includes('pressure')) {
+      category = "Volume & Geometry";
+      icon = "🧪";
+    } else if (s.includes('mph') || s.includes('kmh') || s.includes('speed') || s.includes('velocity')) {
+      category = "Product & Tech";
+      icon = "⚡";
+    } else if (s.includes('file') || s.includes('format') || s.includes('media')) {
+      category = "File & Media Tools";
+      icon = "📁";
+    }
+
+    return { slug, fullTitle, summary, pubDate, image, content, category, icon };
   }).sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
   const postsJs = posts.map(p => `  {
@@ -199,10 +228,10 @@ function rebuildBlogData() {
     "title": ${JSON.stringify(p.fullTitle)},
     "date": ${JSON.stringify(p.pubDate)},
     "publicationDate": ${JSON.stringify(p.pubDate)},
-    "category": "Conversion Guide",
+    "category": ${JSON.stringify(p.category)},
     "author": "OmniConverter Editorial Team",
     "readTime": "4 min read",
-    "icon": "📊",
+    "icon": ${JSON.stringify(p.icon)},
     "image": ${JSON.stringify(p.image)},
     "summary": ${JSON.stringify(p.summary)},
     "content": ${JSON.stringify(p.content)}
@@ -654,7 +683,11 @@ Rules:
   console.log('=== Auto-Publisher complete! ===');
 }
 
-main().catch(err => {
-  console.error('Execution Error:', err.message || String(err));
-  process.exit(1);
-});
+module.exports = { rebuildBlogData, main };
+
+if (require.main === module) {
+  main().catch(err => {
+    console.error('Execution Error:', err.message || String(err));
+    process.exit(1);
+  });
+}

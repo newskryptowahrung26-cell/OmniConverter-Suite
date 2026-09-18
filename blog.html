@@ -213,19 +213,39 @@
             matchesCategory = true;
           } else {
             const itemCat = (item.category || '').toLowerCase();
+            const itemTitle = (item.title || '').toLowerCase();
+            const itemSlug = (item.slug || '').toLowerCase();
+            const combined = `${itemCat} ${itemTitle} ${itemSlug}`;
             const targetCat = currentCategory.toLowerCase();
-            if (targetCat.includes('kitchen') || targetCat.includes('culinary')) {
-              matchesCategory = itemCat.includes('culinary') || itemCat.includes('baking') || itemCat.includes('kitchen') || itemCat.includes('cup') || itemCat.includes('milk');
+
+            if (itemCat === targetCat) {
+              matchesCategory = true;
+            } else if (targetCat.includes('kitchen') || targetCat.includes('culinary')) {
+              matchesCategory = itemCat.includes('kitchen') || itemCat.includes('culinary') ||
+                /\b(cup|cups|tsp|tbsp|milk|baking|tablespoon|teaspoon|grams?)\b/i.test(combined);
             } else if (targetCat.includes('currency') || targetCat.includes('forex')) {
-              matchesCategory = itemCat.includes('currency') || itemCat.includes('forex') || itemCat.includes('usd') || itemCat.includes('aud');
+              matchesCategory = itemCat.includes('currency') || itemCat.includes('forex') ||
+                /\b(usd|aud|vnd|won|gbp|cu|currency|forex|dollar|euro|exchange|money|rate)\b/i.test(combined);
             } else if (targetCat.includes('weight') || targetCat.includes('mass')) {
-              matchesCategory = itemCat.includes('weight') || itemCat.includes('mass') || itemCat.includes('grams');
+              matchesCategory = itemCat.includes('weight') || itemCat.includes('mass') ||
+                /\b(kg|lbs|stone|gram|grams|mass|weight|pound|pounds|ounce|ounces)\b/i.test(combined);
             } else if (targetCat.includes('temperature') || targetCat.includes('cooking')) {
-              matchesCategory = itemCat.includes('temperature') || itemCat.includes('fahrenheit') || itemCat.includes('celsius');
-            } else if (targetCat.includes('volume') || targetCat.includes('geometry') || targetCat.includes('capacity')) {
-              matchesCategory = itemCat.includes('volume') || itemCat.includes('capacity') || itemCat.includes('pressure') || itemCat.includes('ml');
+              matchesCategory = itemCat.includes('temperature') || itemCat.includes('cooking') ||
+                /\b(temperature|celsius|fahrenheit|kelvin|degrees?)\b/i.test(combined);
+            } else if (targetCat.includes('volume') || targetCat.includes('geometry')) {
+              matchesCategory = itemCat.includes('volume') || itemCat.includes('geometry') ||
+                /\b(volume|capacity|gallon|gallons|litres?|liters?|ml|milliliters?|psi|bar)\b/i.test(combined);
+            } else if (targetCat.includes('file') || targetCat.includes('media')) {
+              matchesCategory = itemCat.includes('file') || itemCat.includes('media') ||
+                /\b(file|format|media|convert|extension)\b/i.test(combined);
+            } else if (targetCat.includes('product') || targetCat.includes('tech') || targetCat.includes('speed')) {
+              matchesCategory = itemCat.includes('product') || itemCat.includes('tech') || itemCat.includes('speed') ||
+                /\b(speed|mph|kmh|km\/h|velocity)\b/i.test(combined);
+            } else if (targetCat.includes('time') || targetCat.includes('timezones')) {
+              matchesCategory = itemCat.includes('time') ||
+                /\b(time|timezone|hour|hours|minute|minutes|duration)\b/i.test(combined);
             } else {
-              matchesCategory = itemCat.includes(targetCat);
+              matchesCategory = combined.includes(targetCat);
             }
           }
 
