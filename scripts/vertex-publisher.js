@@ -391,6 +391,9 @@ ${articlesList}
 async function main() {
   console.log('=== OmniConverter Auto-Publisher ===');
 
+  const today = new Date().toISOString().split('T')[0];
+  const year = new Date().getFullYear();
+
   const apiKey = process.env.GEMINI_API_KEY;
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY;
 
@@ -550,7 +553,6 @@ Rules:
 
   // 5. Build HTML page
   const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
-  const year = new Date().getFullYear();
 
   // Detect appropriate converter tool link based on keyword
   let toolLink = '/';
