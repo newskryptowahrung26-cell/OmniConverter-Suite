@@ -5,6 +5,7 @@
  */
 
 const { GoogleGenAI } = require('@google/genai');
+const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
@@ -679,6 +680,27 @@ Rules:
 
   // 6. Rebuild blog-data.js + sitemap.xml inline
   rebuildBlogData();
+
+  // 7. Auto-Notify Google Indexing API for Instant Crawling
+  try {
+    const keyPath = path.join(__dirname, '..', 'service-account.json');
+    if (fs.existsSync(keyPath)) {
+      const auth = new google.auth.GoogleAuth({
+        keyFile: keyPath,
+        scopes: ['https://www.googleapis.com/auth/indexing']
+      });
+      const indexing = google.indexing({ version: 'v3', auth: await auth.getClient() });
+      const fullArticleUrl = `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`;
+      const res = await indexing.urlNotifications.publish({
+        requestBody: { url: fullArticleUrl, type: 'URL_UPDATED' }
+      });
+      console.log(`[OK] Instant Indexing Request sent to Google: ${fullArticleUrl}`);
+    } else {
+      console.log('[INFO] service-account.json not found, skipped Google Indexing API notify.');
+    }
+  } catch (indexErr) {
+    console.warn(`[WARN] Google Indexing API notify error:`, indexErr.message || indexErr);
+  }
 
   console.log('=== Auto-Publisher complete! ===');
 }

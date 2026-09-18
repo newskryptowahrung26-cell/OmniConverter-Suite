@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 *.log
+service-account.json
+*service-account*.json
+
