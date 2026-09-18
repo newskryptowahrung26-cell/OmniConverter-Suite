@@ -177,6 +177,11 @@ function rebuildBlogData() {
     const descMatch = raw.match(/<meta name="description" content="([^"]+)"/i);
     const summary = descMatch ? descMatch[1] : 'Comprehensive conversion guide.';
 
+    // Extract true permanent publication date from article metadata
+    const metaDateMatch = raw.match(/<meta\s+name="article:published_time"\s+content="([^"]+)"/i);
+    const jsonLdDateMatch = raw.match(/"datePublished":\s*"([^"]+)"/);
+    const pubDate = (metaDateMatch && metaDateMatch[1]) || (jsonLdDateMatch && jsonLdDateMatch[1]) || today;
+
     const imgMatch = raw.match(/<img[^>]+src="(https:\/\/images\.unsplash[^"]+)"/i);
     const image = imgMatch
       ? imgMatch[1]
@@ -185,15 +190,15 @@ function rebuildBlogData() {
     const articleMatch = raw.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
     const content = articleMatch ? articleMatch[1].trim() : '';
 
-    return { slug, fullTitle, summary, image, content };
+    return { slug, fullTitle, summary, pubDate, image, content };
   });
 
   const postsJs = posts.map(p => `  {
     "id": ${JSON.stringify(p.slug)},
     "slug": ${JSON.stringify(p.slug)},
     "title": ${JSON.stringify(p.fullTitle)},
-    "date": ${JSON.stringify(today)},
-    "publicationDate": ${JSON.stringify(today)},
+    "date": ${JSON.stringify(p.pubDate)},
+    "publicationDate": ${JSON.stringify(p.pubDate)},
     "category": "Conversion Guide",
     "author": "OmniConverter Editorial Team",
     "readTime": "4 min read",
@@ -219,7 +224,7 @@ function rebuildBlogData() {
   console.log(`[OK] blog-data.js rebuilt with ${posts.length} articles + window globals.`);
 
   const blogEntries = posts
-    .map(p => `  <url><loc>https://www.omniconverter.co.uk/blog/${p.slug}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`)
+    .map(p => `  <url><loc>https://www.omniconverter.co.uk/blog/${p.slug}</loc><lastmod>${p.pubDate}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`)
     .join('\n');
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -598,6 +603,7 @@ Rules:
   <title>${title} | OmniConverter</title>
   <meta name="description" content="Step-by-step conversion guide for ${selectedTarget.rawKw} with formulas, tables, and FAQs.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles.css">
 </head>
