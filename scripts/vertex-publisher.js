@@ -5,7 +5,12 @@
  */
 
 const { GoogleGenAI } = require('@google/genai');
-const { google } = require('googleapis');
+let google = null;
+try {
+  google = require('googleapis').google;
+} catch (e) {
+  // Optional on environments without googleapis installed
+}
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
