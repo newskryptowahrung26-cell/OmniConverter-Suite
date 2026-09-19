@@ -22,7 +22,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (21 Articles)
+## Published Articles & Guides Directory (22 Articles)
+- [71 Pounds To Kg](https://www.omniconverter.co.uk/blog/71-pounds-to-kg): Step-by-step conversion guide for 71 pounds to kg with formulas, tables, and FAQs.
 - [300 Dollars In Gbp](https://www.omniconverter.co.uk/blog/300-dollars-in-gbp): Step-by-step conversion guide for 300 dollars in gbp with formulas, tables, and FAQs.
 - [Converter Application Download](https://www.omniconverter.co.uk/blog/converter-application-download): Step-by-step conversion guide for converter application download with formulas, tables, and FAQs.
 - [Indonesia Cu](https://www.omniconverter.co.uk/blog/indonesia-cu): Step-by-step conversion guide for indonesia cu with formulas, tables, and FAQs.
