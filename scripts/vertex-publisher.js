@@ -270,6 +270,7 @@ function rebuildBlogData() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url><loc>https://www.omniconverter.co.uk/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/length</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/temperature</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/weight-mass</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/volume-capacity</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -600,6 +601,11 @@ Rules:
     toolTitle = 'Interactive Area & Land Measure Converter';
     toolDesc = 'Convert square feet, square meters, acres, hectares, and square kilometers with live precision.';
     toolBtnText = 'Open Area Converter &rarr;';
+  } else if (kwLower.includes('meter') || kwLower.includes('feet') || kwLower.includes('foot') || kwLower.includes('inch') || kwLower.includes('yard') || kwLower.includes('mile') || kwLower.includes('mm') || kwLower.includes('cm') || kwLower.includes('length') || kwLower.includes('height') || kwLower.includes('distance')) {
+    toolLink = '/length';
+    toolTitle = 'Interactive Length & Distance Converter';
+    toolDesc = 'Convert meters, feet, inches, centimeters, millimeters, yards, and height measurements instantly with exact formulas.';
+    toolBtnText = 'Open Length Converter &rarr;';
   }
 
   const toolCalloutHtml = `
