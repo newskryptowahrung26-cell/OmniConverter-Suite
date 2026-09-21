@@ -22,7 +22,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (32 Articles)
+## Published Articles & Guides Directory (33 Articles)
+- [199 Usd In Aud](https://www.omniconverter.co.uk/blog/199-usd-in-aud): Step-by-step conversion guide for 199 usd in aud with formulas, tables, and FAQs.
 - [80 Kilo Lbs](https://www.omniconverter.co.uk/blog/80-kilo-lbs): Step-by-step conversion guide for 80 kilo lbs with formulas, tables, and FAQs.
 - [Mastercard Foreign Exchange Rate](https://www.omniconverter.co.uk/blog/mastercard-foreign-exchange-rate): Step-by-step conversion guide for mastercard foreign exchange rate with formulas, tables, and FAQs.
 - [10 Billion Won To Gbp](https://www.omniconverter.co.uk/blog/10-billion-won-to-gbp): Step-by-step conversion guide for 10 billion won to gbp with formulas, tables, and FAQs.
