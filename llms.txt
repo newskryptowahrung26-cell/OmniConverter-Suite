@@ -22,7 +22,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (30 Articles)
+## Published Articles & Guides Directory (31 Articles)
+- [80 Kilo Lbs](https://www.omniconverter.co.uk/blog/80-kilo-lbs): Step-by-step conversion guide for 80 kilo lbs with formulas, tables, and FAQs.
 - [10 Billion Won To Gbp](https://www.omniconverter.co.uk/blog/10-billion-won-to-gbp): Step-by-step conversion guide for 10 billion won to gbp with formulas, tables, and FAQs.
 - [32 Usd To Gbp](https://www.omniconverter.co.uk/blog/32-usd-to-gbp): Step-by-step conversion guide for 32 usd to gbp with formulas, tables, and FAQs.
 - [Convert File Type To Pdf](https://www.omniconverter.co.uk/blog/convert-file-type-to-pdf): Step-by-step conversion guide for convert file type to pdf with formulas, tables, and FAQs.
