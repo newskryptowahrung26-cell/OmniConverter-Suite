@@ -215,6 +215,9 @@ function rebuildBlogData() {
     } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass')) {
       category = "Weight & Mass";
       icon = "⚖️";
+    } else if (s.includes('meter') || s.includes('inch') || s.includes('feet') || s.includes('foot') || s.includes('cm') || s.includes('mm') || s.includes('yard') || s.includes('length') || s.includes('height')) {
+      category = "Length & Distance";
+      icon = "📏";
     } else if (s.includes('celsius') || s.includes('fahrenheit') || s.includes('kelvin') || s.includes('temperature') || t.includes('celsius') || t.includes('fahrenheit')) {
       category = "Temperature & Cooking";
       icon = "🌡️";
@@ -358,6 +361,7 @@ ${feedItems}
 
 ## Documentation & Primary Routes
 - [/index.html](https://www.omniconverter.co.uk/): Interactive unit converter calculator suite for Temperature, Weight, Volume, Time, Area, and Speed.
+- [/length](https://www.omniconverter.co.uk/length): Length & Distance Converter (meters, feet, inches, cm, mm, yards, height).
 - [/temperature](https://www.omniconverter.co.uk/temperature): Temperature Converter (Celsius, Fahrenheit, Kelvin, Rankine, Réaumur).
 - [/weight-mass](https://www.omniconverter.co.uk/weight-mass): Weight & Mass Converter (kg, lbs, oz, grams, stones).
 - [/volume-capacity](https://www.omniconverter.co.uk/volume-capacity): Volume & Capacity Converter (liters, gallons, cups, ml, fl oz).
@@ -661,15 +665,20 @@ Rules:
         <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
         <span>OmniConverter</span>
       </a>
-      <nav class="nav-tabs" aria-label="Main Navigation">
+      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
+        <span>Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="/" class="tab-btn">Home</a>
+        <a href="/length" class="tab-btn">Length &amp; Distance</a>
         <a href="/temperature" class="tab-btn">Temperature</a>
         <a href="/weight-mass" class="tab-btn">Weight &amp; Mass</a>
-        <a href="/volume-capacity" class="tab-btn">Volume</a>
-        <a href="/time-duration" class="tab-btn">Time</a>
+        <a href="/volume-capacity" class="tab-btn">Volume &amp; Capacity</a>
+        <a href="/time-duration" class="tab-btn">Time &amp; Duration</a>
         <a href="/area" class="tab-btn">Area</a>
         <a href="/speed" class="tab-btn">Speed</a>
-        <a href="/file-media" class="tab-btn">File Converter</a>
+        <a href="/file-media" class="tab-btn">File &amp; Media</a>
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
     </div>

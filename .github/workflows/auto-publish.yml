@@ -1,8 +1,8 @@
-﻿name: Gemini & Unsplash Auto-Publisher
+name: Gemini & Unsplash Auto-Publisher
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 0 * * *' # Daily 1 article every 24 hours (00:00 UTC)
   workflow_dispatch:
 
 permissions:

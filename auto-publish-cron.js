@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 console.log('====================================================');
-console.log(`[${new Date().toISOString()}] Automated 6-Hour Publisher Triggered`);
+console.log(`[${new Date().toISOString()}] Automated Daily (24-Hour) Publisher Triggered`);
 console.log('====================================================');
 
 // Keyword-Specific Image Map (Verified 200 OK & Strictly Relevant to Topic)
