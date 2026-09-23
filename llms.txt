@@ -22,7 +22,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (37 Articles)
+## Published Articles & Guides Directory (38 Articles)
+- [Convertor Or Converter](https://www.omniconverter.co.uk/blog/convertor-or-converter): Step-by-step conversion guide for convertor or converter with formulas, tables, and FAQs.
 - [12 Degrees Celsius To Fahrenheit](https://www.omniconverter.co.uk/blog/12-degrees-celsius-to-fahrenheit): Step-by-step conversion guide for 12 degrees celsius to fahrenheit with formulas, tables, and FAQs.
 - [170lbs In Stone](https://www.omniconverter.co.uk/blog/170lbs-in-stone): Step-by-step conversion guide for 170lbs in stone with formulas, tables, and FAQs.
 - [20 Pounds Sterling In Australian Dollars](https://www.omniconverter.co.uk/blog/20-pounds-sterling-in-australian-dollars): Step-by-step conversion guide for 20 pounds sterling in australian dollars with formulas, tables, and FAQs.
