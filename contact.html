@@ -19,6 +19,28 @@
   <meta name="description" content="Get in touch with the OmniConverter team for feedback, feature requests, or technical support via our online contact form.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/contact">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.omniconverter.co.uk/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://www.omniconverter.co.uk/contact"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -49,6 +71,13 @@
   </header>
 
   <main>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <span class="breadcrumb-current" aria-current="page">Contact</span>
+    </nav>
     <article class="content-section" style="margin-top:1rem;">
       <h1>Contact Us</h1>
       <p style="color:var(--text-muted); margin-bottom:1rem;">Have questions, feedback, or a new unit conversion request? Reach out to us directly or send a message below.</p>

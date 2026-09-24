@@ -52,6 +52,28 @@
     }
   }
   </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.omniconverter.co.uk/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "File & Media",
+        "item": "https://www.omniconverter.co.uk/file-media"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -82,6 +104,13 @@
   </header>
 
   <main>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <span class="breadcrumb-current" aria-current="page">File & Media</span>
+    </nav>
     <div id="contentFiles" class="tool-tab-content active">
       <section class="converter-card">
         <h1 class="converter-title">Client-Side Image Format Converter</h1>

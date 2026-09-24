@@ -673,6 +673,44 @@ Rules:
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": ${JSON.stringify(title)},
+      "description": "Step-by-step conversion guide for ${selectedTarget.rawKw} with formulas, tables, and FAQs.",
+      "url": "https://www.omniconverter.co.uk/blog/${selectedTarget.slug}",
+      "datePublished": "${today}",
+      "image": "${imageUrl}",
+      "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.omniconverter.co.uk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.omniconverter.co.uk/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": ${JSON.stringify(title)},
+          "item": "https://www.omniconverter.co.uk/blog/${selectedTarget.slug}"
+        }
+      ]
+    }
+  ]
+  </script>
 </head>
 <body>
   <header>
@@ -700,7 +738,14 @@ Rules:
     </div>
   </header>
   <main class="main-container">
-    <article class="content-section" style="margin-top:1.5rem;">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <a href="/blog">Blog</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <span class="breadcrumb-current" aria-current="page">${title}</span>
+    </nav>
+    <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">Conversion Guide: ${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
       <img src="${imageUrl}" alt="${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
