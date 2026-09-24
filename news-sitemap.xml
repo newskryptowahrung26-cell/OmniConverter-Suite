@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://www.omniconverter.co.uk/blog/currency-for-turkish-lira</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24</news:publication_date>
+      <news:title>Currency For Turkish Lira</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/blog/currency-jpy-to-inr</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24</news:publication_date>
+      <news:title>Currency Jpy To Inr</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/blog/convertor-or-converter</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-23</news:publication_date>
+      <news:title>Convertor Or Converter</news:title>
+    </news:news>
+  </url>
+</urlset>

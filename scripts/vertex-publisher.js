@@ -362,6 +362,43 @@ ${feedItems}
     console.warn(`Could not sync feed.xml: ${e.message}`);
   }
 
+  // Generate official Google News Sitemap (news-sitemap.xml) for articles published in the last 48 hours
+  try {
+    const twoDaysAgo = Date.now() - (48 * 60 * 60 * 1000);
+    // Filter posts from last 48 hours, or at least the 3 most recent articles
+    let recentNewsPosts = posts.filter(p => new Date(p.pubDate).getTime() >= twoDaysAgo);
+    if (recentNewsPosts.length === 0) {
+      recentNewsPosts = posts.slice(0, 3);
+    }
+
+    const newsEntries = recentNewsPosts.map(p => {
+      const cleanTitle = p.fullTitle.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      const pubDateIso = new Date(p.pubDate).toISOString().split('T')[0];
+      return `  <url>
+    <loc>https://www.omniconverter.co.uk/blog/${p.slug}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>${pubDateIso}</news:publication_date>
+      <news:title>${cleanTitle}</news:title>
+    </news:news>
+  </url>`;
+    }).join('\n');
+
+    const newsSitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${newsEntries}
+</urlset>
+`;
+    fs.writeFileSync('news-sitemap.xml', newsSitemapXml, 'utf8');
+    console.log(`[OK] news-sitemap.xml synchronized with ${recentNewsPosts.length} articles for Google News.`);
+  } catch (e) {
+    console.warn(`Could not sync news-sitemap.xml: ${e.message}`);
+  }
+
   // Update llms.txt AI assistant directory
   try {
     const articlesList = posts.map(p => `- [${p.fullTitle}](https://www.omniconverter.co.uk/blog/${p.slug}): ${p.summary}`).join('\n');
@@ -677,13 +714,22 @@ Rules:
   [
     {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "NewsArticle",
       "headline": ${JSON.stringify(title)},
       "description": "Step-by-step conversion guide for ${selectedTarget.rawKw} with formulas, tables, and FAQs.",
       "url": "https://www.omniconverter.co.uk/blog/${selectedTarget.slug}",
       "datePublished": "${today}",
-      "image": "${imageUrl}",
-      "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" }
+      "dateModified": "${today}",
+      "image": ["${imageUrl}"],
+      "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OmniConverter",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.omniconverter.co.uk/logo.png"
+        }
+      }
     },
     {
       "@context": "https://schema.org",
