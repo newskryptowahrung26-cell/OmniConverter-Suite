@@ -185,7 +185,7 @@ try {
   </main>
   <footer class="footer">
     <div class="footer-container">
-      <p>&copy; 2026 OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a> | <a href="/llms-full.txt">AI Knowledge Base</a></p>
+      <p>&copy; 2026 OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
 </body>
@@ -237,8 +237,7 @@ try {
     'https://www.omniconverter.co.uk/contact',
     'https://www.omniconverter.co.uk/sitemap',
     'https://www.omniconverter.co.uk/privacy-policy',
-    'https://www.omniconverter.co.uk/terms',
-    'https://www.omniconverter.co.uk/llms-full.txt'
+    'https://www.omniconverter.co.uk/terms'
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(u => `  <url><loc>${u}</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`).join('\n')}\n</urlset>`;
