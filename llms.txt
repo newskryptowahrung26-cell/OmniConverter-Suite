@@ -23,8 +23,9 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (39 Articles)
+## Published Articles & Guides Directory (40 Articles)
 - [Currency For Turkish Lira](https://www.omniconverter.co.uk/blog/currency-for-turkish-lira): Step-by-step conversion guide for currency for turkish lira with formulas, tables, and FAQs.
+- [Currency Jpy To Inr](https://www.omniconverter.co.uk/blog/currency-jpy-to-inr): Step-by-step conversion guide for currency jpy to inr with formulas, tables, and FAQs.
 - [Convertor Or Converter](https://www.omniconverter.co.uk/blog/convertor-or-converter): Step-by-step conversion guide for convertor or converter with formulas, tables, and FAQs.
 - [12 Degrees Celsius To Fahrenheit](https://www.omniconverter.co.uk/blog/12-degrees-celsius-to-fahrenheit): Step-by-step conversion guide for 12 degrees celsius to fahrenheit with formulas, tables, and FAQs.
 - [170lbs In Stone](https://www.omniconverter.co.uk/blog/170lbs-in-stone): Step-by-step conversion guide for 170lbs in stone with formulas, tables, and FAQs.
