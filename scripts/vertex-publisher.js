@@ -311,6 +311,22 @@ ${blogEntries}
     }
   }
 
+  // Update blog.html static links block so search engines discover all articles directly in raw HTML
+  if (fs.existsSync('blog.html')) {
+    try {
+      let blogHtml = fs.readFileSync('blog.html', 'utf8');
+      const staticListHtml = posts.map(p => `        <li><a href="/blog/${p.slug}" style="color:var(--primary-600); font-weight:600;">${p.fullTitle}</a></li>`).join('\n');
+      blogHtml = blogHtml.replace(
+        /<!-- ORPHAN_LINKS_BLOCK -->[\s\S]*?<\/section>/i,
+        `<!-- ORPHAN_LINKS_BLOCK -->\n    <section class="content-section" style="margin-top:2rem;">\n      <h2 style="font-size:1.2rem; font-weight:800; margin-bottom:1rem;">Complete Directory of Conversion Guides (${posts.length} Guides)</h2>\n      <ul style="line-height:1.9; color:var(--text-muted); padding-left:1.5rem; display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:0.4rem;">\n${staticListHtml}\n      </ul>\n    </section>`
+      );
+      fs.writeFileSync('blog.html', blogHtml, 'utf8');
+      console.log(`[OK] blog.html synchronized with ${posts.length} static links.`);
+    } catch (e) {
+      console.warn(`Could not sync blog.html: ${e.message}`);
+    }
+  }
+
   // Update feed.xml RSS for Google News Producer / Publisher Center
   try {
     const feedItems = posts.map(p => {
