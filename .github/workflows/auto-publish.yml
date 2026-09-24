@@ -1,8 +1,9 @@
 name: Gemini & Unsplash Auto-Publisher
 
+# Auto-posting paused by user request. Re-enable schedule when user gives go-ahead.
 on:
-  schedule:
-    - cron: '0 0 * * *' # Daily 1 article every 24 hours (00:00 UTC)
+  # schedule:
+  #   - cron: '0 0 * * *' # Daily 1 article every 24 hours (00:00 UTC)
   workflow_dispatch:
 
 permissions:
