@@ -453,6 +453,235 @@ ${articlesList}
   }
 }
 
+// ─── INTERACTIVE IN-PAGE CONVERTER GENERATOR ──────────────────────────────────
+function getInteractiveWidget(rawKw, category, toolLink) {
+  const kw = rawKw.toLowerCase();
+  let units = [];
+  let defaultFrom = '';
+  let defaultTo = '';
+  let defaultVal = '1';
+
+  const numMatch = kw.match(/\b(\d+(?:\.\d+)?)\b/);
+  if (numMatch) {
+    defaultVal = numMatch[1];
+  }
+
+  if (kw.includes('fahrenheit') || kw.includes('celsius') || kw.includes('kelvin') || category.toLowerCase().includes('temperature')) {
+    units = [
+      { id: 'F', name: 'Fahrenheit (°F)' },
+      { id: 'C', name: 'Celsius (°C)' },
+      { id: 'K', name: 'Kelvin (K)' },
+      { id: 'R', name: 'Rankine (°R)' }
+    ];
+    defaultFrom = kw.includes('celsius') && !kw.startsWith('fahrenheit') ? 'C' : 'F';
+    defaultTo = defaultFrom === 'F' ? 'C' : 'F';
+    if (!numMatch) defaultVal = '50';
+  } else if (kw.includes('kg') || kw.includes('pound') || kw.includes('lbs') || kw.includes('gram') || kw.includes('ounce') || kw.includes('stone') || category.toLowerCase().includes('weight')) {
+    units = [
+      { id: 'kg', name: 'Kilograms (kg)' },
+      { id: 'lb', name: 'Pounds (lbs)' },
+      { id: 'oz', name: 'Ounces (oz)' },
+      { id: 'g', name: 'Grams (g)' },
+      { id: 'st', name: 'Stones (st)' }
+    ];
+    defaultFrom = (kw.includes('pound') || kw.includes('lbs')) ? 'lb' : 'kg';
+    defaultTo = defaultFrom === 'kg' ? 'lb' : 'kg';
+    if (!numMatch) defaultVal = '100';
+  } else if (kw.includes('cup') || kw.includes('liter') || kw.includes('litre') || kw.includes('ml') || kw.includes('gallon') || category.toLowerCase().includes('volume')) {
+    units = [
+      { id: 'ml', name: 'Milliliters (mL)' },
+      { id: 'l', name: 'Liters (L)' },
+      { id: 'cup', name: 'US Cups (cup)' },
+      { id: 'gal', name: 'US Gallons (gal)' },
+      { id: 'floz', name: 'Fluid Ounces (fl oz)' },
+      { id: 'tbsp', name: 'Tablespoons (tbsp)' },
+      { id: 'tsp', name: 'Teaspoons (tsp)' }
+    ];
+    defaultFrom = kw.includes('cup') ? 'cup' : (kw.includes('liter') || kw.includes('litre') ? 'l' : 'ml');
+    defaultTo = defaultFrom === 'ml' ? 'cup' : 'ml';
+    if (!numMatch) defaultVal = '500';
+  } else if (kw.includes('mph') || kw.includes('kmh') || kw.includes('knot') || category.toLowerCase().includes('speed')) {
+    units = [
+      { id: 'mph', name: 'Miles per hour (mph)' },
+      { id: 'kmh', name: 'Kilometers per hour (km/h)' },
+      { id: 'ms', name: 'Meters per second (m/s)' },
+      { id: 'knot', name: 'Knots (kn)' }
+    ];
+    defaultFrom = kw.includes('mph') ? 'mph' : 'kmh';
+    defaultTo = defaultFrom === 'kmh' ? 'mph' : 'kmh';
+    if (!numMatch) defaultVal = '100';
+  } else if (kw.includes('meter') || kw.includes('feet') || kw.includes('foot') || kw.includes('inch') || kw.includes('cm') || kw.includes('mile') || category.toLowerCase().includes('length')) {
+    units = [
+      { id: 'm', name: 'Meters (m)' },
+      { id: 'km', name: 'Kilometers (km)' },
+      { id: 'ft', name: 'Feet (ft)' },
+      { id: 'in', name: 'Inches (in)' },
+      { id: 'cm', name: 'Centimeters (cm)' },
+      { id: 'mm', name: 'Millimeters (mm)' },
+      { id: 'yd', name: 'Yards (yd)' },
+      { id: 'mi', name: 'Miles (mi)' }
+    ];
+    defaultFrom = (kw.includes('feet') || kw.includes('foot')) ? 'ft' : (kw.includes('inch') ? 'in' : 'm');
+    defaultTo = defaultFrom === 'm' ? 'ft' : 'm';
+    if (!numMatch) defaultVal = '10';
+  } else if (kw.includes('hour') || kw.includes('minute') || kw.includes('second') || category.toLowerCase().includes('time')) {
+    units = [
+      { id: 'hr', name: 'Hours (hr)' },
+      { id: 'min', name: 'Minutes (min)' },
+      { id: 'sec', name: 'Seconds (sec)' },
+      { id: 'day', name: 'Days (day)' }
+    ];
+    defaultFrom = kw.includes('hour') ? 'hr' : 'min';
+    defaultTo = defaultFrom === 'hr' ? 'min' : 'hr';
+    if (!numMatch) defaultVal = '24';
+  } else {
+    units = [
+      { id: 'sqm', name: 'Square Meters (m²)' },
+      { id: 'sqft', name: 'Square Feet (sq ft)' },
+      { id: 'acre', name: 'Acres (ac)' },
+      { id: 'ha', name: 'Hectares (ha)' }
+    ];
+    defaultFrom = 'sqm';
+    defaultTo = 'sqft';
+    if (!numMatch) defaultVal = '100';
+  }
+
+  const widgetHtml = `
+      <!-- Embedded Live Interactive In-Page Calculator -->
+      <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Live In-Page Conversion Calculator</h3>
+          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Instant Calculation</span>
+        </div>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Type any number below to calculate instant results with certified conversion ratios:</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
+          <div>
+            <label for="liveToolInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Enter Value</label>
+            <input type="number" id="liveToolInput" value="${defaultVal}" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">From Unit</label>
+            <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              ${units.map(u => `<option value="${u.id}" ${u.id === defaultFrom ? 'selected' : ''}>${u.name}</option>`).join('\n              ')}
+            </select>
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center;">
+            <button type="button" id="liveToolSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Swap Units</button>
+          </div>
+          <div>
+            <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">To Unit</label>
+            <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              ${units.map(u => `<option value="${u.id}" ${u.id === defaultTo ? 'selected' : ''}>${u.name}</option>`).join('\n              ')}
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Converted Result</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">--</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Live formula calculation</div>
+          </div>
+          <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1.25rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
+        </div>
+      </div>`;
+
+  const widgetScript = `
+  <script>
+  (function() {
+    const input = document.getElementById('liveToolInput');
+    const fromSel = document.getElementById('liveToolFromUnit');
+    const toSel = document.getElementById('liveToolToUnit');
+    const swapBtn = document.getElementById('liveToolSwapBtn');
+    const resVal = document.getElementById('liveToolResultVal');
+    const formulaText = document.getElementById('liveToolFormulaText');
+    const copyBtn = document.getElementById('liveToolCopyBtn');
+
+    const rates = {
+      g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125, st: 6350.29318,
+      ml: 1, l: 1000, cup: 236.5882365, gal: 3785.411784, floz: 29.5735295625, tbsp: 14.78676478125, tsp: 4.92892159375,
+      m: 1, km: 1000, cm: 0.01, mm: 0.001, ft: 0.3048, in: 0.0254, yd: 0.9144, mi: 1609.344,
+      kmh: 1, mph: 1.609344, ms: 3.6, knot: 1.852,
+      sec: 1, min: 60, hr: 3600, day: 86400,
+      sqm: 1, sqft: 0.09290304, acre: 4046.8564224, ha: 10000
+    };
+
+    function convertTemp(val, from, to) {
+      let k;
+      if (from === 'C') k = val + 273.15;
+      else if (from === 'F') k = (val - 32) * 5/9 + 273.15;
+      else if (from === 'K') k = val;
+      else if (from === 'R') k = val * 5/9;
+
+      if (to === 'C') return k - 273.15;
+      if (to === 'F') return (k - 273.15) * 9/5 + 32;
+      if (to === 'K') return k;
+      if (to === 'R') return k * 9/5;
+      return k;
+    }
+
+    function calculate() {
+      if (!input || !resVal || !formulaText) return;
+      const val = parseFloat(input.value);
+      if (isNaN(val)) {
+        resVal.textContent = '--';
+        formulaText.textContent = 'Please enter a valid numeric value.';
+        return;
+      }
+      const from = fromSel ? fromSel.value : '';
+      const to = toSel ? toSel.value : '';
+
+      let result;
+      if (['F','C','K','R'].includes(from) && ['F','C','K','R'].includes(to)) {
+        result = convertTemp(val, from, to);
+        formulaText.textContent = val + ' ' + from + ' = ' + result.toFixed(2) + ' ' + to;
+      } else if (rates[from] && rates[to]) {
+        const inBase = val * rates[from];
+        result = inBase / rates[to];
+        formulaText.textContent = val + ' ' + from + ' × (' + rates[from] + ' / ' + rates[to] + ') = ' + result.toFixed(4) + ' ' + to;
+      } else {
+        result = val;
+        formulaText.textContent = val + ' ' + from + ' = ' + result + ' ' + to;
+      }
+
+      const formatted = Math.abs(result % 1) < 1e-4 ? result.toFixed(0) : (Math.abs(result) > 100 ? result.toFixed(2) : result.toFixed(4));
+      resVal.textContent = formatted + ' ' + to;
+    }
+
+    if (input && fromSel && toSel) {
+      input.addEventListener('input', calculate);
+      fromSel.addEventListener('change', calculate);
+      toSel.addEventListener('change', calculate);
+    }
+
+    if (swapBtn) {
+      swapBtn.addEventListener('click', function() {
+        const temp = fromSel.value;
+        fromSel.value = toSel.value;
+        toSel.value = temp;
+        calculate();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async function() {
+        try {
+          await navigator.clipboard.writeText(resVal.textContent);
+          const orig = copyBtn.textContent;
+          copyBtn.textContent = '✓ Copied!';
+          setTimeout(() => { copyBtn.textContent = orig; }, 2000);
+        } catch(e) {}
+      });
+    }
+
+    calculate();
+  })();
+  </script>`;
+
+  return { widgetHtml, widgetScript };
+}
+
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -584,15 +813,62 @@ async function main() {
 
   const allCandidates = [...new Set([...modelCandidates, ...staticFallbacks])];
 
-  const prompt = `Write a professional 1,000-word SEO article for keyword: "${selectedTarget.rawKw}".
-Rules:
-- Return ONLY raw HTML body content starting with <p> or <h2>.
-- No markdown code fences.
-- Include a Quick Summary box: <div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;">
-- Include conversion formulas in: <div style="background:var(--bg-elevated); padding:1rem 1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0;">
-- Include comparison table: <div class="table-wrapper"><table class="conversion-table">...</table></div>
-- Include FAQ section with 3 Q&A using <h4> and <p> tags.
-- Minimum 900 words.`;
+  const prompt = `You are a world-class technical SEO copywriter and expert mathematician writing an authoritative reference guide for the search query: "${selectedTarget.rawKw}".
+
+Your mission is to definitively rank #1 on Google by performing a comprehensive competitor content gap audit against top competing search results (such as Study.com, Cuemath, RapidTables, Calculator.net, and MetricConversions), and answering every primary, secondary, and semantic intent that competitors leave unanswered.
+
+CRITICAL INSTRUCTIONS & FORMATTING RULES:
+1. Return ONLY raw HTML body content starting with an introductory <p> tag. Do NOT include markdown code fences (\`\`\`html).
+2. DO NOT include <h1>, <head>, or <body> tags (they are provided by the template).
+
+3. SECTION 1: INTRODUCTION & DIRECT FEATURED SNIPPET ANSWER BOX:
+   - Start with 1-2 introductory sentences defining the conversion, its origin systems (metric, US customary, or British imperial), and why people calculate it.
+   - IMMEDIATELY follow with this exact Quick Summary Answer box (engineered to capture Google Position 0 / Featured Snippets):
+     <div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;">
+       <h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Quick Summary Answer</h3>
+       <p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">
+         [Target Query] = [Exact Direct Answer with Unit]
+       </p>
+       <p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">
+         [Alternative standard units, fractions/decimals, or key benchmark context]
+       </p>
+     </div>
+
+4. SECTION 2: STEP-BY-STEP MATHEMATICAL FORMULA & CALCULATION:
+   - Use <h2>The Exact Mathematical Conversion Formula</h2>.
+   - Provide the certified conversion formula in a styled code box:
+     <div style="background:var(--bg-elevated); padding:1rem 1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0;">...</div>
+   - Provide clear, numbered step-by-step calculations (<ol> with <li>) showing the arithmetic breakdown.
+   - Show BOTH decimal division/multiplication and rational fraction calculation methods where applicable.
+
+5. SECTION 3: TRAVELER'S / RAPID MENTAL MATH SHORTCUT (COMPETITOR GAP #1):
+   - Provide a practical mental arithmetic trick or rule-of-thumb that people can calculate in their head without a calculator. Explain how close the mental approximation is to the exact answer.
+
+6. SECTION 4: COMPREHENSIVE MULTI-POINT CONVERSION REFERENCE TABLE:
+   - Use <h2>Comprehensive Conversion Reference Table</h2>.
+   - Include an HTML table wrapped in <div class="table-wrapper"><table class="conversion-table">...</table></div>.
+   - Map at least 8 to 10 milestone values around the target keyword, with columns for: Input Unit, Converted Unit, Secondary Common Unit, and Practical Real-World Benchmark Context for each row.
+
+7. SECTION 5: REAL-WORLD SENSORY, PRACTICAL OR INDUSTRY CONTEXT (COMPETITOR GAP #2):
+   - What does this value mean in practical daily life?
+   - If temperature: What does it feel like? What should you wear? Athletic running performance? Cold water shock or food storage danger zones? Thermostat heating savings?
+   - If weight/mass: Body weight benchmarks, gym barbell plate standards, airline luggage limits, culinary cooking substitutions?
+   - If volume/liquid: Kitchen recipe cups/spoons, baking density differences (water vs milk vs flour), fluid ounce standards?
+   - If speed/distance: Highway speed limits, braking stopping distances, walking/running paces, aviation knots?
+
+8. SECTION 6: COMMON CALCULATION MISTAKES & HOW TO AVOID THEM (COMPETITOR GAP #3):
+   - Highlight common conversion pitfalls (e.g. confusing US customary vs UK imperial units, rounding errors too early, reversing multiplication and division, fluid oz vs dry weight oz).
+
+9. SECTION 7: FREQUENTLY ASKED QUESTIONS (FAQS) (COMPETITOR GAP #4):
+   - Use <h2>Frequently Asked Questions (FAQs)</h2>.
+   - Container: <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1.25rem 1.5rem; margin:1.5rem 0;">
+   - Provide 4 to 6 in-depth FAQs addressing real "People Also Ask" search queries.
+   - Each FAQ must strictly use <h4> for the question and <p> for the answer.
+
+10. SECTION 8: CONCLUSION:
+    - A brief, helpful 2-sentence summary reiterating the conversion ratio and encouraging the reader to bookmark or use the calculator.
+
+Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and engaging human editorial tone.`;
 
   let response = null;
   let lastError = null;
@@ -626,44 +902,55 @@ Rules:
   let toolTitle = 'OmniConverter Universal Conversion Tools Suite';
   let toolDesc = 'Perform instant weight, volume, temperature, duration, speed, and unit conversions with zero ads or tracking.';
   let toolBtnText = 'Explore All Converters &rarr;';
+  let category = 'General Guide';
 
   const kwLower = selectedTarget.rawKw.toLowerCase();
   if (kwLower.includes('fahrenheit') || kwLower.includes('celsius') || kwLower.includes('kelvin') || kwLower.includes('temperature')) {
     toolLink = '/temperature';
+    category = 'Temperature';
     toolTitle = 'Interactive Temperature & Heat Unit Converter';
     toolDesc = 'Convert Fahrenheit, Celsius, Kelvin, and Rankine with instant thermodynamic formulas and live calculations.';
     toolBtnText = 'Open Temperature Converter &rarr;';
   } else if (kwLower.includes('kg') || kwLower.includes('pound') || kwLower.includes('lbs') || kwLower.includes('gram') || kwLower.includes('ounce') || kwLower.includes('stone') || kwLower.includes('weight') || kwLower.includes('mass')) {
     toolLink = '/weight-mass';
+    category = 'Weight & Mass';
     toolTitle = 'Interactive Weight & Mass Converter Calculator';
     toolDesc = 'Convert kilograms, pounds, ounces, stones, and grams instantly with verified conversion ratios.';
     toolBtnText = 'Open Weight & Mass Converter &rarr;';
   } else if (kwLower.includes('cup') || kwLower.includes('liter') || kwLower.includes('litre') || kwLower.includes('ml') || kwLower.includes('gallon') || kwLower.includes('tsp') || kwLower.includes('tbsp') || kwLower.includes('volume')) {
     toolLink = '/volume-capacity';
+    category = 'Volume & Capacity';
     toolTitle = 'Interactive Kitchen Volume & Mass Converter';
     toolDesc = 'Switch between cups, grams, milliliters, fluid ounces, and kilograms instantly with our live calculator.';
     toolBtnText = 'Open Volume Converter &rarr;';
   } else if (kwLower.includes('mph') || kwLower.includes('kmh') || kwLower.includes('speed') || kwLower.includes('knot') || kwLower.includes('velocity')) {
     toolLink = '/speed';
+    category = 'Speed';
     toolTitle = 'Interactive Speed & Velocity Converter Calculator';
     toolDesc = 'Convert miles per hour, kilometers per hour, knots, and meters per second instantly with real-time speed formulas.';
     toolBtnText = 'Open Speed Converter &rarr;';
   } else if (kwLower.includes('hour') || kwLower.includes('minute') || kwLower.includes('second') || kwLower.includes('time') || kwLower.includes('day')) {
     toolLink = '/time-duration';
+    category = 'Time & Duration';
     toolTitle = 'Interactive Time & Duration Converter Calculator';
     toolDesc = 'Convert hours, minutes, seconds, milliseconds, days, and weeks accurately.';
     toolBtnText = 'Open Time Converter &rarr;';
   } else if (kwLower.includes('area') || kwLower.includes('acre') || kwLower.includes('hectare') || kwLower.includes('sq ft') || kwLower.includes('square')) {
     toolLink = '/area';
+    category = 'Area';
     toolTitle = 'Interactive Area & Land Measure Converter';
     toolDesc = 'Convert square feet, square meters, acres, hectares, and square kilometers with live precision.';
     toolBtnText = 'Open Area Converter &rarr;';
   } else if (kwLower.includes('meter') || kwLower.includes('feet') || kwLower.includes('foot') || kwLower.includes('inch') || kwLower.includes('yard') || kwLower.includes('mile') || kwLower.includes('mm') || kwLower.includes('cm') || kwLower.includes('length') || kwLower.includes('height') || kwLower.includes('distance')) {
     toolLink = '/length';
+    category = 'Length & Distance';
     toolTitle = 'Interactive Length & Distance Converter';
     toolDesc = 'Convert meters, feet, inches, centimeters, millimeters, yards, and height measurements instantly with exact formulas.';
     toolBtnText = 'Open Length Converter &rarr;';
   }
+
+  // Generate in-page live converter widget
+  const { widgetHtml, widgetScript } = getInteractiveWidget(selectedTarget.rawKw, category, toolLink);
 
   const toolCalloutHtml = `
       <!-- Relevant Interactive Converter Callout Box -->
@@ -686,13 +973,87 @@ Rules:
       </p>
     </div>` : '';
 
-  // Inject tool callout box after the quick summary box or first heading
+  // Inject tool callout box and in-page live widget after the quick summary box or first heading
   if (articleBodyHtml.includes('</div>')) {
     const firstDivClose = articleBodyHtml.indexOf('</div>') + 6;
-    articleBodyHtml = articleBodyHtml.slice(0, firstDivClose) + '\n' + toolCalloutHtml + '\n' + articleBodyHtml.slice(firstDivClose);
+    articleBodyHtml = articleBodyHtml.slice(0, firstDivClose) + '\n' + toolCalloutHtml + '\n' + widgetHtml + '\n' + articleBodyHtml.slice(firstDivClose);
   } else {
-    articleBodyHtml = toolCalloutHtml + '\n' + articleBodyHtml;
+    articleBodyHtml = toolCalloutHtml + '\n' + widgetHtml + '\n' + articleBodyHtml;
   }
+
+  // Extract FAQs for Schema.org FAQPage
+  const faqList = [];
+  const faqRegex = /<h4[^>]*>([\s\S]*?)<\/h4>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
+  let fMatch;
+  while ((fMatch = faqRegex.exec(articleBodyHtml)) !== null) {
+    const q = fMatch[1].replace(/<[^>]+>/g, '').trim();
+    const a = fMatch[2].replace(/<[^>]+>/g, '').trim();
+    if (q && a) {
+      faqList.push({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": a
+        }
+      });
+    }
+  }
+
+  const jsonLdSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": title,
+      "description": `Comprehensive conversion guide for ${selectedTarget.rawKw} with formulas, tables, mental math shortcuts, and interactive calculator.`,
+      "url": `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`,
+      "datePublished": today,
+      "dateModified": today,
+      "image": [imageUrl],
+      "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OmniConverter",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.omniconverter.co.uk/logo.png"
+        }
+      }
+    }
+  ];
+
+  if (faqList.length > 0) {
+    jsonLdSchemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqList
+    });
+  }
+
+  jsonLdSchemas.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.omniconverter.co.uk/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.omniconverter.co.uk/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`
+      }
+    ]
+  });
 
   const fullPageHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -705,57 +1066,14 @@ Rules:
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} | OmniConverter</title>
-  <meta name="description" content="Step-by-step conversion guide for ${selectedTarget.rawKw} with formulas, tables, and FAQs.">
+  <meta name="description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="https://www.omniconverter.co.uk/feed.xml">
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles.css">
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": ${JSON.stringify(title)},
-      "description": "Step-by-step conversion guide for ${selectedTarget.rawKw} with formulas, tables, and FAQs.",
-      "url": "https://www.omniconverter.co.uk/blog/${selectedTarget.slug}",
-      "datePublished": "${today}",
-      "dateModified": "${today}",
-      "image": ["${imageUrl}"],
-      "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
-      "publisher": {
-        "@type": "Organization",
-        "name": "OmniConverter",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.omniconverter.co.uk/logo.png"
-        }
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.omniconverter.co.uk/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://www.omniconverter.co.uk/blog"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": ${JSON.stringify(title)},
-          "item": "https://www.omniconverter.co.uk/blog/${selectedTarget.slug}"
-        }
-      ]
-    }
-  ]
+  ${JSON.stringify(jsonLdSchemas, null, 2)}
   </script>
 </head>
 <body>
@@ -804,6 +1122,7 @@ Rules:
       <p>&copy; ${year} OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
+  ${widgetScript}
 </body>
 </html>`;
 
