@@ -5,6 +5,7 @@ import { convertLength } from './length-converter.js';
 import { convertTime } from './time-converter.js';
 import { convertTextDocument } from './file-converter.js';
 import { convertCurrency, DEFAULT_RATES } from './currency-converter.js';
+import { convertTemperature, convertAllScales, convertDeltaTemperature } from './converter.js';
 
 test('Volume & Capacity conversions', () => {
   assert.equal(convertVolume(1, 'l', 'ml').result, 1000);
@@ -56,3 +57,25 @@ test('Currency conversions (USD, AUD, EUR, GBP)', () => {
   assert.ok(!convEurGbp.error);
   assert.ok(convEurGbp.rate > 0.8 && convEurGbp.rate < 0.9);
 });
+
+test('Temperature conversions, All Scales, and Delta T', () => {
+  assert.equal(convertTemperature(0, 'C', 'F').result, 32);
+  assert.equal(convertTemperature(100, 'C', 'F').result, 212);
+  assert.equal(convertTemperature(-40, 'C', 'F').result, -40);
+  assert.equal(convertTemperature(0, 'K', 'C').result, -273.15);
+  assert.equal(convertTemperature(37, 'C', 'K').result, 310.15);
+  assert.equal(convertTemperature(0, 'C', 'R').result, 491.67);
+
+  const delta10C = convertDeltaTemperature(10, 'C', 'F');
+  assert.equal(delta10C.result, 18);
+
+  const delta18F = convertDeltaTemperature(18, 'F', 'C');
+  assert.equal(delta18F.result, 10);
+
+  const allScales0C = convertAllScales(0, 'C');
+  assert.equal(allScales0C.F.value, 32);
+  assert.equal(allScales0C.K.value, 273.15);
+  assert.equal(allScales0C.R.value, 491.67);
+  assert.equal(allScales0C.Re.value, 0);
+});
+

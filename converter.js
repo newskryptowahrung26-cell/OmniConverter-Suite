@@ -164,3 +164,112 @@ export function getStepByStepExplanation(val, fromUnit, toUnit, rawResult) {
     }
   }
 }
+
+/**
+ * Convert temperature across ALL 8 units simultaneously for multi-scale view.
+ */
+export function convertAllScales(value, fromUnit) {
+  if (value === '' || value === null || value === undefined) return null;
+  const num = Number(value);
+  if (isNaN(num)) return null;
+  const c = toCelsius(num, fromUnit);
+  if (isNaN(c)) return null;
+
+  const results = {};
+  for (const [key, meta] of Object.entries(UNITS)) {
+    const raw = fromCelsius(c, key);
+    const rounded = Math.abs(raw) < 1e-6 && raw !== 0
+      ? Number(raw.toPrecision(6))
+      : Number(Math.round(raw + 'e4') + 'e-4');
+    results[key] = {
+      unit: key,
+      name: meta.name,
+      symbol: meta.symbol,
+      raw,
+      value: rounded,
+      formatted: `${formatNumber(rounded)} ${meta.symbol}`
+    };
+  }
+  return results;
+}
+
+/**
+ * Temperature difference (ΔT) converter.
+ * In temperature change, baseline zero offsets cancel out:
+ * 1 Δ°C = 1 ΔK = 1.8 Δ°F = 1.8 Δ°R = 0.8 Δ°Ré = 0.525 Δ°Rø = 0.33 Δ°N = 1.5 Δ°De
+ */
+export function convertDeltaTemperature(value, fromUnit, toUnit) {
+  if (value === '' || value === null || value === undefined) return null;
+  const val = Number(value);
+  if (isNaN(val)) return { error: 'Invalid numeric input' };
+
+  if (!UNITS[fromUnit] || !UNITS[toUnit]) {
+    return { error: 'Invalid unit specified' };
+  }
+
+  // Convert fromUnit delta to delta Celsius
+  let deltaC;
+  switch (fromUnit) {
+    case 'C':
+    case 'K':
+      deltaC = val;
+      break;
+    case 'F':
+    case 'R':
+      deltaC = val * 5 / 9;
+      break;
+    case 'Re':
+      deltaC = val * 5 / 4;
+      break;
+    case 'Ro':
+      deltaC = val * 40 / 21;
+      break;
+    case 'N':
+      deltaC = val * 100 / 33;
+      break;
+    case 'De':
+      deltaC = val * 2 / 3;
+      break;
+    default:
+      return { error: 'Unsupported unit' };
+  }
+
+  // Convert delta Celsius to target unit delta
+  let targetDelta;
+  switch (toUnit) {
+    case 'C':
+    case 'K':
+      targetDelta = deltaC;
+      break;
+    case 'F':
+    case 'R':
+      targetDelta = deltaC * 9 / 5;
+      break;
+    case 'Re':
+      targetDelta = deltaC * 4 / 5;
+      break;
+    case 'Ro':
+      targetDelta = deltaC * 21 / 40;
+      break;
+    case 'N':
+      targetDelta = deltaC * 33 / 100;
+      break;
+    case 'De':
+      targetDelta = deltaC * 3 / 2;
+      break;
+    default:
+      return { error: 'Unsupported unit' };
+  }
+
+  const rounded = Number(Math.round(targetDelta + 'e4') + 'e-4');
+  return {
+    inputValue: val,
+    fromUnit,
+    toUnit,
+    result: rounded,
+    formattedResult: `${formatNumber(rounded)} Δ${UNITS[toUnit].symbol}`,
+    formula: `Δ${UNITS[toUnit].symbol} ratio calculation (Offsets cancel out for ΔT)`,
+    explanation: `A temperature shift of ${val} Δ${UNITS[fromUnit].symbol} equals a change of ${formatNumber(rounded)} Δ${UNITS[toUnit].symbol}. Zero-point baseline offsets (+32, +273.15) do not apply to temperature differences.`
+  };
+}
+
