@@ -273,6 +273,7 @@ function rebuildBlogData() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url><loc>https://www.omniconverter.co.uk/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/currency</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/length</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/temperature</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/weight-mass</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -414,6 +415,7 @@ ${newsEntries}
 
 ## Documentation & Primary Routes
 - [/index.html](https://www.omniconverter.co.uk/): Interactive unit converter calculator suite for Temperature, Weight, Volume, Time, Area, and Speed.
+- [/currency](https://www.omniconverter.co.uk/currency): Currency Converter & Forex Calculator (USD, AUD, EUR, GBP, CAD, JPY, and 35+ currencies).
 - [/length](https://www.omniconverter.co.uk/length): Length & Distance Converter (meters, feet, inches, cm, mm, yards, height).
 - [/temperature](https://www.omniconverter.co.uk/temperature): Temperature Converter (Celsius, Fahrenheit, Kelvin, Rankine, Réaumur).
 - [/weight-mass](https://www.omniconverter.co.uk/weight-mass): Weight & Mass Converter (kg, lbs, oz, grams, stones).
@@ -534,6 +536,20 @@ function getInteractiveWidget(rawKw, category, toolLink) {
     defaultFrom = kw.includes('hour') ? 'hr' : 'min';
     defaultTo = defaultFrom === 'hr' ? 'min' : 'hr';
     if (!numMatch) defaultVal = '24';
+  } else if (kw.includes('usd') || kw.includes('aud') || kw.includes('vnd') || kw.includes('gbp') || kw.includes('won') || kw.includes('rupiah') || kw.includes('currency') || kw.includes('forex') || category.toLowerCase().includes('currency')) {
+    units = [
+      { id: 'USD', name: 'US Dollar ($)' },
+      { id: 'AUD', name: 'Australian Dollar (A$)' },
+      { id: 'EUR', name: 'Euro (€)' },
+      { id: 'GBP', name: 'British Pound (£)' },
+      { id: 'CAD', name: 'Canadian Dollar (C$)' },
+      { id: 'JPY', name: 'Japanese Yen (¥)' },
+      { id: 'INR', name: 'Indian Rupee (₹)' },
+      { id: 'VND', name: 'Vietnamese Dong (₫)' }
+    ];
+    defaultFrom = kw.includes('aud') && !kw.includes('to aud') ? 'AUD' : (kw.includes('gbp') ? 'GBP' : (kw.includes('eur') ? 'EUR' : 'USD'));
+    defaultTo = defaultFrom === 'USD' ? (kw.includes('aud') ? 'AUD' : (kw.includes('gbp') ? 'GBP' : 'EUR')) : 'USD';
+    if (!numMatch) defaultVal = '5';
   } else {
     units = [
       { id: 'sqm', name: 'Square Meters (m²)' },
@@ -636,6 +652,11 @@ function getInteractiveWidget(rawKw, category, toolLink) {
       if (['F','C','K','R'].includes(from) && ['F','C','K','R'].includes(to)) {
         result = convertTemp(val, from, to);
         formulaText.textContent = val + ' ' + from + ' = ' + result.toFixed(2) + ' ' + to;
+      } else if (['USD','AUD','EUR','GBP','CAD','JPY','INR','VND'].includes(from) && ['USD','AUD','EUR','GBP','CAD','JPY','INR','VND'].includes(to)) {
+        const fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.49, INR: 95.93, VND: 25936.55 };
+        const rate = fx[to] / fx[from];
+        result = val * rate;
+        formulaText.textContent = '1 ' + from + ' = ' + (rate >= 1 ? rate.toFixed(4) : rate.toPrecision(4)) + ' ' + to;
       } else if (rates[from] && rates[to]) {
         const inBase = val * rates[from];
         result = inBase / rates[to];
@@ -905,7 +926,13 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
   let category = 'General Guide';
 
   const kwLower = selectedTarget.rawKw.toLowerCase();
-  if (kwLower.includes('fahrenheit') || kwLower.includes('celsius') || kwLower.includes('kelvin') || kwLower.includes('temperature')) {
+  if (kwLower.includes('usd') || kwLower.includes('aud') || kwLower.includes('vnd') || kwLower.includes('gbp') || kwLower.includes('won') || kwLower.includes('rupiah') || kwLower.includes('currency') || kwLower.includes('forex') || kwLower.includes('exchange rate')) {
+    toolLink = '/currency';
+    category = 'Currency & Forex';
+    toolTitle = 'Interactive Real-Time Currency Converter';
+    toolDesc = 'Convert USD, AUD, EUR, GBP, CAD, JPY, and 35+ world currencies with live mid-market exchange rates and dynamic conversion tables.';
+    toolBtnText = 'Open Currency Converter &rarr;';
+  } else if (kwLower.includes('fahrenheit') || kwLower.includes('celsius') || kwLower.includes('kelvin') || kwLower.includes('temperature')) {
     toolLink = '/temperature';
     category = 'Temperature';
     toolTitle = 'Interactive Temperature & Heat Unit Converter';
@@ -1091,6 +1118,7 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
       </button>
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="/" class="tab-btn">Home</a>
+        <a href="/currency" class="tab-btn">Currency</a>
         <a href="/length" class="tab-btn">Length &amp; Distance</a>
         <a href="/temperature" class="tab-btn">Temperature</a>
         <a href="/weight-mass" class="tab-btn">Weight &amp; Mass</a>

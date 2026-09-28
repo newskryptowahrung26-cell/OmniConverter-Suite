@@ -90,3 +90,12 @@ Pivot unit: Grams (g) per 1/3 US Cup (80 mL)
 - Cocoa Powder: 28 g
 - Honey / Maple Syrup: 113 g
 
+### 7. Foreign Exchange & Currency Conversion
+Pivot unit: United States Dollar (USD)
+
+- Method: Cross-currency triangular conversion via USD base pivot.
+- Formula: `Target Amount = Source Amount × (Target Rate / Source Rate)`
+- Inverse Formula: `1 Target = (Source Rate / Target Rate) Source`
+- Supported Currencies (35+): USD ($), AUD (A$), EUR (€), GBP (£), CAD (C$), JPY (¥), INR (₹), PKR (₨), VND (₫), KRW (₩), CNY (¥), CHF (CHF), NZD (NZ$), SGD (S$), HKD (HK$), AED, SAR, MXN, BRL, ZAR, TRY, THB, MYR, IDR, PHP, SEK, NOK, DKK, PLN, CZK, ILS, HUF, TWD, KWD, BHD, QAR.
+- Live Data Sync: Real-time wholesale interbank mid-market exchange rates via open.er-api.com feeds.
+

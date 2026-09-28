@@ -4,6 +4,7 @@ import { convertVolume } from './volume-converter.js';
 import { convertLength } from './length-converter.js';
 import { convertTime } from './time-converter.js';
 import { convertTextDocument } from './file-converter.js';
+import { convertCurrency, DEFAULT_RATES } from './currency-converter.js';
 
 test('Volume & Capacity conversions', () => {
   assert.equal(convertVolume(1, 'l', 'ml').result, 1000);
@@ -36,4 +37,22 @@ test('Text document conversions (JSON ↔ CSV)', () => {
   const jsonRes = convertTextDocument(csvInput, 'csv2json');
   assert.ok(!jsonRes.error);
   assert.equal(jsonRes.filename, 'converted.json');
+});
+
+test('Currency conversions (USD, AUD, EUR, GBP)', () => {
+  const conv5UsdAud = convertCurrency(5, 'USD', 'AUD', DEFAULT_RATES);
+  assert.ok(!conv5UsdAud.error);
+  assert.equal(conv5UsdAud.inputValue, 5);
+  assert.equal(conv5UsdAud.fromCur, 'USD');
+  assert.equal(conv5UsdAud.toCur, 'AUD');
+  assert.equal(conv5UsdAud.formattedResult, 'A$7.13 AUD');
+
+  const conv100AudUsd = convertCurrency(100, 'AUD', 'USD', DEFAULT_RATES);
+  assert.ok(!conv100AudUsd.error);
+  assert.equal(conv100AudUsd.formattedResult, '$70.14 USD');
+
+  // Test cross-currency without USD as source or target (e.g., EUR to GBP)
+  const convEurGbp = convertCurrency(100, 'EUR', 'GBP', DEFAULT_RATES);
+  assert.ok(!convEurGbp.error);
+  assert.ok(convEurGbp.rate > 0.8 && convEurGbp.rate < 0.9);
 });
