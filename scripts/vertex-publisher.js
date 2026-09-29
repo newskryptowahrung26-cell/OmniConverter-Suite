@@ -64,6 +64,15 @@ function sanitizeLatexMath(text) {
     return p1;
   });
   s = s.replace(/\\\$/g, '$');
+
+  // Convert any accidental "— Error: +0.2%" into positive accuracy phrases
+  s = s.replace(/—\s*Error:\s*(\+|-)?(\d+(?:\.\d+)?%)/gi, (m, sign, pct) => {
+    const num = parseFloat(pct);
+    const acc = (100 - num).toFixed(1).replace(/\.0$/, '');
+    return `, ${acc}% accurate`;
+  });
+  s = s.replace(/<em>The Error:<\/em>/g, '<em>The Common Mistake:</em>');
+
   return s;
 }
 
@@ -900,7 +909,7 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
    - Show BOTH decimal division/multiplication and rational fraction calculation methods where applicable.
 
 5. SECTION 3: TRAVELER'S / RAPID MENTAL MATH SHORTCUT (COMPETITOR GAP #1):
-   - Provide a practical mental arithmetic trick or rule-of-thumb that people can calculate in their head without a calculator. Explain how close the mental approximation is to the exact answer.
+   - Provide a practical mental arithmetic trick or rule-of-thumb that people can calculate in their head without a calculator. State how accurate it is using positive wording (e.g. "99.8% accurate" or "within 0.2% of exact calculation"). NEVER use the phrase "Error:" or "— Error:" as visitors mistake it for a software failure.
 
 6. SECTION 4: COMPREHENSIVE MULTI-POINT CONVERSION REFERENCE TABLE:
    - Use <h2>Comprehensive Conversion Reference Table</h2>.
@@ -916,6 +925,7 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
 
 8. SECTION 6: COMMON CALCULATION MISTAKES & HOW TO AVOID THEM (COMPETITOR GAP #3):
    - Highlight common conversion pitfalls (e.g. confusing US customary vs UK imperial units, rounding errors too early, reversing multiplication and division, fluid oz vs dry weight oz).
+   - Label each item "The Common Mistake:" and "The Solution:" (do NOT label it "The Error:").
 
 9. SECTION 7: FREQUENTLY ASKED QUESTIONS (FAQS) (COMPETITOR GAP #4):
    - Use <h2>Frequently Asked Questions (FAQs)</h2>.
