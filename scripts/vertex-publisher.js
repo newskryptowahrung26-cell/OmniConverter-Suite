@@ -1258,6 +1258,35 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
     console.warn(`[WARN] Google Indexing API notify error:`, indexErr.message || indexErr);
   }
 
+  // 8. Auto-Notify IndexNow API (Bing, Yandex, Naver, Seznam) for Instant Crawling
+  try {
+    const fullArticleUrl = `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`;
+    const indexNowPayload = JSON.stringify({
+      host: 'www.omniconverter.co.uk',
+      key: '6fdaa0c92ff04f4286f61604e0fd86dd',
+      keyLocation: 'https://www.omniconverter.co.uk/6fdaa0c92ff04f4286f61604e0fd86dd.txt',
+      urlList: [fullArticleUrl]
+    });
+
+    const indexNowReq = https.request({
+      hostname: 'api.indexnow.org',
+      port: 443,
+      path: '/IndexNow',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Length': Buffer.byteLength(indexNowPayload)
+      }
+    }, (res) => {
+      console.log(`[OK] Instant IndexNow Request sent to Bing/IndexNow: HTTP ${res.statusCode}`);
+    });
+    indexNowReq.on('error', (e) => console.warn('[WARN] IndexNow notification error:', e.message));
+    indexNowReq.write(indexNowPayload);
+    indexNowReq.end();
+  } catch (inErr) {
+    console.warn(`[WARN] IndexNow notification error:`, inErr.message || inErr);
+  }
+
   console.log('=== Auto-Publisher complete! ===');
 }
 
