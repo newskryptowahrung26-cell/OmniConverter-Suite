@@ -30,6 +30,43 @@ function slugify(text) {
     .trim();
 }
 
+function sanitizeLatexMath(text) {
+  if (!text) return text;
+  let s = text;
+  // Convert fractions \frac{a}{b} -> (a / b)
+  while (/\\frac\s*\{([^{}]+)\}\s*\{([^{}]+)\}/.test(s)) {
+    s = s.replace(/\\frac\s*\{([^{}]+)\}\s*\{([^{}]+)\}/g, '($1 / $2)');
+  }
+  // Convert delimiters
+  s = s.replace(/\\left\(/g, '(').replace(/\\right\)/g, ')');
+  s = s.replace(/\\left\[/g, '[').replace(/\\right\]/g, ']');
+  // Convert formatting
+  s = s.replace(/\\mathbf\s*\{([^{}]+)\}/g, '<strong>$1</strong>');
+  s = s.replace(/\\text\s*\{([^{}]+)\}/g, '$1');
+  // Convert symbols
+  s = s.replace(/\\times\b/g, '×');
+  s = s.replace(/\\div\b/g, '÷');
+  s = s.replace(/\\approx\b/g, '≈');
+  s = s.replace(/\\pm\b/g, '±');
+  s = s.replace(/\\cdot\b/g, '·');
+  s = s.replace(/\\thrice\b/g, '×');
+  s = s.replace(/\\Delta\b/g, 'Δ');
+  // Subscripts & Superscripts inside formulas
+  s = s.replace(/([A-Za-z0-9])_\{([^{}]+)\}/g, '$1<sub>$2</sub>');
+  s = s.replace(/([A-Za-z0-9])\^\{([^{}]+)\}/g, '$1<sup>$2</sup>');
+  s = s.replace(/([A-Za-z0-9])\^([0-9]+)/g, '$1<sup>$2</sup>');
+  // Strip LaTeX math delimiters $$...$$ and \( \)
+  s = s.replace(/\$\$([\s\S]*?)\$\$/g, '$1');
+  s = s.replace(/\\\(/g, '').replace(/\\\)/g, '');
+  // Strip inline $...$ wrappers if they wrap math formulas
+  s = s.replace(/\$([^\$\n]+?)\$/g, (m, p1) => {
+    if (/^\d[\d,\.]*$/.test(p1.trim())) return `$${p1}`;
+    return p1;
+  });
+  s = s.replace(/\\\$/g, '$');
+  return s;
+}
+
 // Unit synonym map — normalize variant spellings to canonical forms
 const UNIT_SYNONYMS = {
   'fahrenheit': 'f', 'celsius': 'c', 'centigrade': 'c', 'kelvin': 'k',
@@ -889,6 +926,18 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
 10. SECTION 8: CONCLUSION:
     - A brief, helpful 2-sentence summary reiterating the conversion ratio and encouraging the reader to bookmark or use the calculator.
 
+11. MANDATORY FORMULA & MATHEMATICAL TYPOGRAPHY RULES:
+    - NEVER output raw LaTeX formatting (NO \\frac, NO \\text, NO \\times, NO \\mathbf, NO \\approx, NO $, NO $$).
+    - Standard web browsers CANNOT render LaTeX syntax and will display broken code to users.
+    - ALWAYS format mathematical formulas and equations using clean Unicode and native semantic HTML:
+      * Use '×' (multiplication symbol) for multiplication (e.g. 5 × 100,000).
+      * Use '÷' or '/' for division (e.g. 500,000 ÷ 83.50 or (A / B)).
+      * Use '≈' for approximation.
+      * Use '±' for tolerance.
+      * Use <sup> for exponents and powers (e.g. 10<sup>5</sup>).
+      * Use <sub> for subscripts (e.g. R<sub>INR/USD</sub>).
+      * Use <strong> and <em> for variables and emphasis.
+
 Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and engaging human editorial tone.`;
 
   let response = null;
@@ -914,6 +963,7 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
 
   let articleBodyHtml = response.text
     .replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+  articleBodyHtml = sanitizeLatexMath(articleBodyHtml);
 
   // 5. Build HTML page
   const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
@@ -926,7 +976,7 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
   let category = 'General Guide';
 
   const kwLower = selectedTarget.rawKw.toLowerCase();
-  if (kwLower.includes('usd') || kwLower.includes('aud') || kwLower.includes('vnd') || kwLower.includes('gbp') || kwLower.includes('won') || kwLower.includes('rupiah') || kwLower.includes('currency') || kwLower.includes('forex') || kwLower.includes('exchange rate')) {
+  if (kwLower.includes('usd') || kwLower.includes('aud') || kwLower.includes('vnd') || kwLower.includes('gbp') || kwLower.includes('won') || kwLower.includes('rupiah') || kwLower.includes('currency') || kwLower.includes('forex') || kwLower.includes('exchange rate') || kwLower.includes('lakh') || kwLower.includes('crore') || kwLower.includes('inr') || kwLower.includes('rupee') || kwLower.includes('pkr') || kwLower.includes('bdt')) {
     toolLink = '/currency';
     category = 'Currency & Forex';
     toolTitle = 'Interactive Real-Time Currency Converter';
@@ -1091,6 +1141,7 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
   <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
   <meta name="msvalidate.01" content="25038A8801D42437BBC34723A41AC6C4" />
   <meta name="google-site-verification" content="Cpl786DxZO0l5hjxd_D5KE5RGWKFuJ9EVSh5n6Msm7M" />
+  <meta name="google-site-verification" content="aoZ6vOmLyc0slj01NK1N91iwSnk2of6HUO_JjMskszE" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KPY6T7PFD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1101,6 +1152,19 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles.css">
+
+  <!-- OpenGraph & Social Cards -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <meta property="og:title" content="${title} | OmniConverter">
+  <meta property="og:description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
+  <meta property="og:site_name" content="OmniConverter">
+  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title} | OmniConverter">
+  <meta name="twitter:description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
+  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+
   <script type="application/ld+json">
   ${JSON.stringify(jsonLdSchemas, null, 2)}
   </script>
