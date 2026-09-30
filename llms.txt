@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (43 Articles)
+## Published Articles & Guides Directory (44 Articles)
+- [180lbs In Stone](https://www.omniconverter.co.uk/blog/180lbs-in-stone): Convert 180lbs in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [Convert Lakh To Usd](https://www.omniconverter.co.uk/blog/convert-lakh-to-usd): Convert convert lakh to usd accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [5 USD to AUD: Exact Exchange Rate, Calculation Steps & FX Guide](https://www.omniconverter.co.uk/blog/5-usd-to-aud): Convert 5 USD to AUD with live mid-market exchange rates, exact formula steps, comparison tables, and fee-free money transfer insights.
 - [3 Cups In Ml](https://www.omniconverter.co.uk/blog/3-cups-in-ml): Convert 3 cups in ml accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
