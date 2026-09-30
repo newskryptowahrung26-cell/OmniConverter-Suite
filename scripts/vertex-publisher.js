@@ -1263,8 +1263,8 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
     const fullArticleUrl = `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`;
     const indexNowPayload = JSON.stringify({
       host: 'www.omniconverter.co.uk',
-      key: '6fdaa0c92ff04f4286f61604e0fd86dd',
-      keyLocation: 'https://www.omniconverter.co.uk/6fdaa0c92ff04f4286f61604e0fd86dd.txt',
+      key: '25038A8801D42437BBC34723A41AC6C4',
+      keyLocation: 'https://www.omniconverter.co.uk/25038A8801D42437BBC34723A41AC6C4.txt',
       urlList: [fullArticleUrl]
     });
 

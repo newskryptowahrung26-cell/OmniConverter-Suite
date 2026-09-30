@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 const INDEXNOW_HOST = 'www.omniconverter.co.uk';
-const INDEXNOW_KEY = '6fdaa0c92ff04f4286f61604e0fd86dd';
+const INDEXNOW_KEY = '25038A8801D42437BBC34723A41AC6C4';
 const KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`;
 
 export async function submitToIndexNow(urlList) {
@@ -24,40 +24,50 @@ export async function submitToIndexNow(urlList) {
     urlList: urlList
   });
 
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: 'api.indexnow.org',
-      port: 443,
-      path: '/IndexNow',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Content-Length': Buffer.byteLength(payload)
-      }
-    };
+  const endpoints = [
+    { hostname: 'api.indexnow.org', path: '/IndexNow' },
+    { hostname: 'www.bing.com', path: '/indexnow' }
+  ];
 
-    const req = https.request(options, (res) => {
-      let body = '';
-      res.on('data', (chunk) => body += chunk);
-      res.on('end', () => {
-        if (res.statusCode === 200 || res.statusCode === 202) {
-          console.log(`[IndexNow OK] Successfully submitted ${urlList.length} URL(s) (HTTP ${res.statusCode})`);
-          resolve({ status: res.statusCode, body });
-        } else {
-          console.warn(`[IndexNow WARN] HTTP ${res.statusCode}: ${body || 'No response body'}`);
-          resolve({ status: res.statusCode, body });
+  const results = [];
+  for (const ep of endpoints) {
+    await new Promise((resolve) => {
+      const options = {
+        hostname: ep.hostname,
+        port: 443,
+        path: ep.path,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Content-Length': Buffer.byteLength(payload)
         }
+      };
+
+      const req = https.request(options, (res) => {
+        let body = '';
+        res.on('data', (chunk) => body += chunk);
+        res.on('end', () => {
+          if (res.statusCode === 200 || res.statusCode === 202) {
+            console.log(`[IndexNow OK @ ${ep.hostname}] Submitted ${urlList.length} URL(s) (HTTP ${res.statusCode})`);
+            results.push({ endpoint: ep.hostname, status: res.statusCode });
+          } else {
+            console.warn(`[IndexNow WARN @ ${ep.hostname}] HTTP ${res.statusCode}: ${body || 'No response body'}`);
+            results.push({ endpoint: ep.hostname, status: res.statusCode, body });
+          }
+          resolve();
+        });
       });
-    });
 
-    req.on('error', (e) => {
-      console.error(`[IndexNow ERROR] ${e.message}`);
-      reject(e);
-    });
+      req.on('error', (e) => {
+        console.error(`[IndexNow ERROR @ ${ep.hostname}] ${e.message}`);
+        resolve();
+      });
 
-    req.write(payload);
-    req.end();
-  });
+      req.write(payload);
+      req.end();
+    });
+  }
+  return results;
 }
 
 // CLI runner: node scripts/submit-indexnow.js [--all] or [url1 url2 ...]
