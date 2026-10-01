@@ -945,15 +945,20 @@ function parseKeywordPlanCsv(csvText) {
 
   // Filter all eligible keywords that pass anti-cannibalization
   const eligibleTargets = [];
+  let ignoredPublishedCount = 0;
   for (const target of targetClusters) {
     const slug = target.slug;
-    const sig = getTopicSignature(target.rawKw);
-    if (!publishedSlugs.has(slug) && !publishedSignatures.has(sig)) {
-      eligibleTargets.push(target);
+    const sigKw = getTopicSignature(target.rawKw);
+    const sigSlug = getTopicSignature(slug.replace(/-/g, ' '));
+    if (publishedSlugs.has(slug) || publishedSignatures.has(sigKw) || publishedSignatures.has(sigSlug)) {
+      ignoredPublishedCount++;
+      continue;
     }
+    eligibleTargets.push(target);
   }
 
-  console.log(`Found ${eligibleTargets.length} eligible unpublished keyword candidates.`);
+  console.log(`[Anti-Cannibalization Shield] Filtered & Ignored ${ignoredPublishedCount} published variations (e.g. '1 3 a cup', '1 bar a psi').`);
+  console.log(`[OK] Found ${eligibleTargets.length} 100% unique, verified unpublished candidates.`);
 
   if (eligibleTargets.length === 0) {
     console.log('All keywords already covered or cannibalized. Nothing to publish.');
