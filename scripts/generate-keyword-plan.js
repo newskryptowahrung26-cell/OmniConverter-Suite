@@ -12,38 +12,45 @@ const existingSlugs = fs.existsSync(blogDir)
   ? fs.readdirSync(blogDir).filter(f => f.endsWith('.html')).map(f => f.replace('.html', ''))
   : [];
 
-// Canonical normalization function
-export function getCanonicalConcept(kw) {
-  let s = kw.toLowerCase().trim();
+// 2. Strict Entity Signature Normalization Function
+// Strips filler words (a, an, the, of, in, to, conversion, calculator), normalizes units, fractions, and sorts tokens
+export function getEntitySignature(str) {
+  let s = str.toLowerCase();
 
-  // Normalize numbers attached to letters (e.g. 100f -> 100 f, 3kg -> 3 kg, 140lbs -> 140 lbs)
-  s = s.replace(/(\d+)([a-zA-Z]+)/g, '$1 $2').replace(/([a-zA-Z]+)(\d+)/g, '$1 $2');
+  // Replace symbols and punctuation
+  s = s.replace(/[\/\\_-]/g, ' ');
+  s = s.replace(/[^a-z0-9\s]/g, ' ');
 
-  // Remove question prefixes and filler words
-  s = s.replace(/^(how many|how much|what is|convert|calculate|formula for|difference between|how to convert|calculator for)\s+/, '');
-  s = s.replace(/\b(is what|in a|as a|into a|in to|to a|equals|is equal to)\b/g, ' to ');
+  // Separate numbers from letters (e.g. 170lbs -> 170 lbs, 100f -> 100 f, 1/3 -> 1 3)
+  s = s.replace(/([0-9]+)([a-z]+)/g, '$1 $2').replace(/([a-z]+)([0-9]+)/g, '$1 $2');
 
-  // Standardize connectors
-  s = s.replace(/\b(in|into|is|as|to)\b/g, ' to ');
+  // Strip filler words, articles, and generic converter suffixes
+  s = s.replace(/\b(a|an|the|of|for|to|in|into|is|as|at|by|per|from|and|or|how|many|much|what|is what|equal|equals|conversion|converter|calculator|calculate|converting|converted|guide|steps|formula|difference|today|now)\b/g, ' ');
 
-  // Standardize common unit synonyms
-  const unitSynonyms = [
-    // Pressure & Engineering
-    [/\b(pounds per square inch|pound per square inch)\b/g, 'psi'],
-    [/\b(bars|bar)\b/g, 'bar'],
+  // Standardize number words
+  s = s.replace(/\bone\b/g, '1')
+       .replace(/\btwo\b/g, '2')
+       .replace(/\bthree\b/g, '3')
+       .replace(/\bfour\b/g, '4')
+       .replace(/\bfive\b/g, '5')
+       .replace(/\bsix\b/g, '6')
+       .replace(/\bseven\b/g, '7')
+       .replace(/\beight\b/g, '8')
+       .replace(/\bnine\b/g, '9')
+       .replace(/\bten\b/g, '10')
+       .replace(/\bhalf\b/g, '1 2')
+       .replace(/\bquarter\b/g, '1 4')
+       .replace(/\bthird\b/g, '3');
 
-    // Temperature
-    [/\b(fahrenheit|deg f|degree f|degrees f)\b/g, 'f'],
-    [/\b(celsius|centigrade|celcius|deg c|degree c|degrees c)\b/g, 'c'],
-
-    // Weight & Mass
+  // Standardize units & currencies
+  const unitMap = [
+    [/\b(fahrenheit|deg f|degrees f|degree f)\b/g, 'f'],
+    [/\b(celsius|centigrade|celcius|deg c|degrees c|degree c)\b/g, 'c'],
     [/\b(kilograms|kilogram|kilos|kilo)\b/g, 'kg'],
     [/\b(pounds|pound|lbs|lb)\b/g, 'lbs'],
     [/\b(stones|stone|st)\b/g, 'stone'],
     [/\b(grams|gram|g)\b/g, 'g'],
     [/\b(ounces|ounce|oz)\b/g, 'oz'],
-
-    // Cooking & Volume
     [/\b(milliliters|milliliter|millilitres|millilitre)\b/g, 'ml'],
     [/\b(liters|liter|litres|litre|l)\b/g, 'liters'],
     [/\b(quarts|quart|qt)\b/g, 'quart'],
@@ -52,8 +59,6 @@ export function getCanonicalConcept(kw) {
     [/\b(teaspoons|teaspoon|tsp)\b/g, 'tsp'],
     [/\b(tablespoons|tablespoon|tbsp)\b/g, 'tbsp'],
     [/\b(fluid ounces|fluid ounce|fl oz)\b/g, 'fl oz'],
-
-    // Length & Distance
     [/\b(meters|meter|metres|metre|mtr|m)\b/g, 'meter'],
     [/\b(centimeters|centimeter|centimetres|centimetre)\b/g, 'cm'],
     [/\b(millimeters|millimeter|millimetres|millimetre)\b/g, 'mm'],
@@ -62,8 +67,10 @@ export function getCanonicalConcept(kw) {
     [/\b(yards|yard|yd)\b/g, 'yard'],
     [/\b(miles|mile)\b/g, 'miles'],
     [/\b(kilometers|kilometer|kilometres|kilometre|km)\b/g, 'km'],
-
-    // Currency
+    [/\b(miles per hour)\b/g, 'mph'],
+    [/\b(kilometers per hour)\b/g, 'kmh'],
+    [/\b(pounds per square inch)\b/g, 'psi'],
+    [/\b(bars|bar)\b/g, 'bar'],
     [/\b(australian dollars|australian dollar|aussie dollar|aussie dollars)\b/g, 'aud'],
     [/\b(us dollars|us dollar|american dollar|american dollars|dollars|dollar)\b/g, 'usd'],
     [/\b(british pounds|british pound|pound sterling|pounds sterling)\b/g, 'gbp'],
@@ -74,31 +81,27 @@ export function getCanonicalConcept(kw) {
     [/\b(euros|euro)\b/g, 'eur'],
     [/\b(canadian dollars|canadian dollar)\b/g, 'cad'],
     [/\b(egyptian pounds|egyptian pound)\b/g, 'egp'],
-
-    // Time Zone
     [/\b(time zones|time zone|timezones|timezone)\b/g, 'timezone']
   ];
 
-  for (const [pattern, replacement] of unitSynonyms) {
+  for (const [pattern, replacement] of unitMap) {
     s = s.replace(pattern, replacement);
   }
 
-  // Clean extra spaces, non-alphanumeric, and multiple spaces
-  s = s.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
-  s = s.replace(/\bto\s+to\b/g, 'to');
-  return s;
+  // Tokenize, sort, dedupe
+  const tokens = [...new Set(s.split(/\s+/).filter(t => t.length > 0))].sort();
+  return tokens.join('-');
 }
 
-const existingConceptMap = new Map();
-const existingNormSet = new Set();
+const publishedSignatures = new Map();
 existingSlugs.forEach(slug => {
-  const concept = getCanonicalConcept(slug.replace(/-/g, ' '));
-  existingConceptMap.set(concept, slug);
-  existingNormSet.add(slug.replace(/-/g, ' ').toLowerCase());
-  existingNormSet.add(slug.toLowerCase());
+  const sig = getEntitySignature(slug);
+  publishedSignatures.set(sig, slug);
 });
 
-// 2. Read raw keywords CSV
+console.log(`Loaded ${existingSlugs.length} published articles mapping to ${publishedSignatures.size} entity signatures.`);
+
+// 3. Read raw keywords CSV
 const rawPath = path.join(rootDir, 'scripts', 'raw-keywords.csv');
 if (!fs.existsSync(rawPath)) {
   console.error('raw-keywords.csv not found!');
@@ -112,7 +115,7 @@ const rawLines = fs.readFileSync(rawPath, 'utf8')
 
 console.log(`Processing ${rawLines.length} total raw keywords...`);
 
-// 3. Category classification logic
+// 4. Category classification logic
 function classifyCategory(kw) {
   const l = kw.toLowerCase();
 
@@ -217,7 +220,7 @@ function classifyCategory(kw) {
   };
 }
 
-// 4. Slug Generator
+// 5. Clean Slug Generator
 function createCleanSlug(kw) {
   let s = kw.toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
@@ -230,7 +233,7 @@ function createCleanSlug(kw) {
   return s;
 }
 
-// 5. Generate Target Title
+// 6. Generate Target Title
 function createTargetTitle(kw, category) {
   const words = kw.split(' ').map(w => {
     if (['in', 'to', 'is', 'a', 'of', 'for', 'and', 'the'].includes(w)) return w;
@@ -262,7 +265,7 @@ function createTargetTitle(kw, category) {
   return `${mainPhrase}: Conversion Formula, Steps & Online Calculator`;
 }
 
-// 6. Featured Snippet Directive for Google & Bing #1 Rank
+// 7. Featured Snippet Directive for Google & Bing #1 Rank
 function createSnippetStrategy(kw, category) {
   if (category.includes('Cooking') || category.includes('Volume')) {
     return 'State exact answer in bold in first sentence (e.g. "[Value] equals exactly [Result]"). Include a 3-column conversion table (Cup / mL / Fl Oz) and step-by-step ratio.';
@@ -295,91 +298,76 @@ function determinePriority(kw) {
   return 'P3 - Long-Tail Semantic Extension';
 }
 
-// 7. Cluster Keywords by Canonical Concept
-const conceptClusters = new Map();
+// 8. Group keywords by strict entity signature
+const entityClusters = new Map();
+let publishedIgnoredCount = 0;
 
-rawLines.forEach((kw, index) => {
-  const concept = getCanonicalConcept(kw);
-  if (!conceptClusters.has(concept)) {
-    conceptClusters.set(concept, []);
+rawLines.forEach((kw) => {
+  const sig = getEntitySignature(kw);
+
+  // USER DIRECTIVE: "1 3 a cup in grams, 1 Bar to PSI, 1 bar a psi is type k keywords ko ignore kero q k ye to already published bhi hen"
+  if (publishedSignatures.has(sig)) {
+    publishedIgnoredCount++;
+    return; // Completely ignore and remove already published topics
   }
-  conceptClusters.get(concept).push({ kw, index });
+
+  if (!entityClusters.has(sig)) {
+    entityClusters.set(sig, []);
+  }
+  entityClusters.get(sig).push(kw);
 });
 
-console.log(`Clustered into ${conceptClusters.size} unique canonical concepts.`);
+console.log(`Ignored & Removed ${publishedIgnoredCount} keywords matching already published blog posts.`);
+console.log(`Formed ${entityClusters.size} unique entity clusters from remaining unpublished keywords.`);
 
 const processedRows = [];
-let skippedAlreadyPublishedCount = 0;
+const uniqueArticlesList = [];
 
-// Track exact seen keywords to detect duplicate rows in sheet
-const seenExactKeywords = new Map(); // kw.toLowerCase() -> count
+entityClusters.forEach((items, sig) => {
+  // Sort items to pick cleanest primary keyword:
+  // Prefer phrases without filler words like "a", "is", "what is" for primary slug
+  items.sort((a, b) => {
+    const aPenalty = /\b(a|is|what|how|convert|calculator)\b/i.test(a) ? 10 : 0;
+    const bPenalty = /\b(a|is|what|how|convert|calculator)\b/i.test(b) ? 10 : 0;
+    return (a.length + aPenalty) - (b.length + bPenalty);
+  });
 
-conceptClusters.forEach((items, concept) => {
-  const isExistingPost = existingConceptMap.has(concept);
-
-  // USER REQUIREMENT: "jo already publish ho gae hen un ko remove ker do"
-  // Completely skip all keywords that belong to already published live blog posts!
-  if (isExistingPost) {
-    skippedAlreadyPublishedCount += items.length;
-    return;
-  }
-
-  const primaryKw = items[0].kw;
+  const primaryKw = items[0];
   const primaryCatInfo = classifyCategory(primaryKw);
   const targetSlug = createCleanSlug(primaryKw);
 
-  items.forEach((item, idx) => {
-    const rawKw = item.kw;
-    const catInfo = classifyCategory(rawKw);
-    const kwLower = rawKw.toLowerCase();
-    const seenTimes = seenExactKeywords.get(kwLower) || 0;
-    seenExactKeywords.set(kwLower, seenTimes + 1);
+  items.forEach((kw, idx) => {
+    const isPrimary = idx === 0;
+    const catInfo = classifyCategory(kw);
+    const priority = determinePriority(kw);
 
-    const isExactDuplicate = seenTimes > 0;
-    const isPrimaryInCluster = idx === 0 && !isExactDuplicate;
-
-    let contentType = '';
-    let role = '';
-    let actionNeeded = '';
-    let priority = determinePriority(rawKw);
-
-    // New Article Cluster (Unpublished)
-    if (isPrimaryInCluster) {
-      contentType = 'New High-Priority Blog Post';
-      role = 'Primary Target Keyword (Pillar)';
-      actionNeeded = `Publish new pillar guide with calculator embed and schema: ${createTargetTitle(rawKw, catInfo.category)}`;
-    } else if (isExactDuplicate) {
-      contentType = 'Supporting LSI / Semantic Variant';
-      role = 'Consolidated Duplicate Query';
-      actionNeeded = `Exact duplicate in sheet: consolidated into canonical target /blog/${targetSlug} (prevents duplicate pages)`;
-      priority = 'P3 - Long-Tail Semantic Extension';
-    } else {
-      contentType = 'Supporting LSI / Semantic Variant';
-      role = 'LSI / Semantic Support Keyword';
-      actionNeeded = `Include as H2/H3 subheading, comparison table entry, or FAQ inside /blog/${targetSlug} to capture long-tail searches`;
-      priority = 'P2 - Core Cluster Authority';
-    }
-
-    processedRows.push({
-      keyword: rawKw,
+    const row = {
+      keyword: kw,
       category: catInfo.category,
-      canonicalConcept: concept,
-      contentType,
+      entitySignature: sig,
+      contentType: isPrimary ? 'New High-Priority Blog Post' : 'Supporting LSI / Semantic Variant',
       targetUrlOrSlug: `/blog/${targetSlug}`,
-      role,
-      actionNeeded,
+      role: isPrimary ? 'Primary Target Keyword (Pillar)' : 'LSI / Semantic Support Keyword',
+      actionNeeded: isPrimary
+        ? `Publish new pillar guide with calculator embed and schema: ${createTargetTitle(primaryKw, catInfo.category)}`
+        : `Include as H2/H3 subheading, comparison table entry, or FAQ inside /blog/${targetSlug} to capture long-tail searches without cannibalization`,
       searchIntent: catInfo.category.includes('Cooking') ? 'Kitchen Recipe Conversion' : (catInfo.category.includes('Currency') ? 'Forex Transaction / Travel' : 'Direct Numerical Calculation'),
       priority,
       internalToolLink: catInfo.toolLink,
-      snippetStrategy: createSnippetStrategy(rawKw, catInfo.category)
-    });
+      snippetStrategy: createSnippetStrategy(kw, catInfo.category)
+    };
+
+    processedRows.push(row);
+    if (isPrimary) {
+      uniqueArticlesList.push(row);
+    }
   });
 });
 
-console.log(`Skipped ${skippedAlreadyPublishedCount} already published keywords.`);
-console.log(`Generated strategy rows for ${processedRows.length} UNPUBLISHED keywords to write.`);
+console.log(`Generated strategy rows for ${processedRows.length} total unpublished keywords.`);
+console.log(`Found exactly ${uniqueArticlesList.length} 100% unique pillar articles to write.`);
 
-// 8. Generate CSV File
+// 9. Generate CSV File
 function escapeCsv(val) {
   if (val === undefined || val === null) return '""';
   const str = String(val).replace(/"/g, '""');
@@ -406,7 +394,7 @@ for (const row of processedRows) {
   csvLines.push([
     escapeCsv(row.keyword),
     escapeCsv(row.category),
-    escapeCsv(row.canonicalConcept),
+    escapeCsv(row.entitySignature),
     escapeCsv(row.contentType),
     escapeCsv(row.targetUrlOrSlug),
     escapeCsv(row.role),
@@ -431,13 +419,19 @@ try {
   console.warn('Could not copy to Downloads:', err.message);
 }
 
+// Also update keywords.csv backup in repo
+try {
+  fs.copyFileSync(outCsvPath, path.join(rootDir, 'keywords.csv'));
+  console.log('Successfully updated local keywords.csv backup.');
+} catch (err) {}
+
 // Summary stats
 const summary = {
   totalUnpublishedKeywords: processedRows.length,
-  newPillarArticlesToWrite: processedRows.filter(r => r.contentType === 'New High-Priority Blog Post').length,
-  lsiSemanticVariants: processedRows.filter(r => r.contentType === 'Supporting LSI / Semantic Variant').length,
-  alreadyPublishedRemoved: skippedAlreadyPublishedCount
+  uniquePillarArticlesToWrite: uniqueArticlesList.length,
+  lsiSemanticVariantsToIntegrate: processedRows.length - uniqueArticlesList.length,
+  alreadyPublishedIgnoredAndRemoved: publishedIgnoredCount
 };
 
-console.log('\n=== STRATEGY EXECUTION SUMMARY (UNPUBLISHED ONLY) ===');
+console.log('\n=== STRATEGY EXECUTION SUMMARY (STRICT ZERO-DUPLICATION) ===');
 console.table(summary);

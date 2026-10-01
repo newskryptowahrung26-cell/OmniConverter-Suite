@@ -80,38 +80,38 @@ function createWorkSheet(headers, rows) {
   return ws;
 }
 
-// Sheet 1: Master Plan (All Unpublished 5,282 keywords)
-const wsMaster = createWorkSheet(headers, dataRows);
-XLSX.utils.book_append_sheet(wb, wsMaster, 'All Unpublished Plan');
-
-// Sheet 2: New Pillar Articles Only (3,872 unique articles to write)
+// Sheet 1: Unique Pillar Articles to Write (Zero Duplicates, Zero Published)
 const pillarRows = dataRows.filter(r => r[3] === 'New High-Priority Blog Post');
 const wsPillars = createWorkSheet(headers, pillarRows);
-XLSX.utils.book_append_sheet(wb, wsPillars, 'Pillar Articles to Write');
+XLSX.utils.book_append_sheet(wb, wsPillars, 'Unique Articles to Write');
 
-// Sheet 3: P1 Quick Wins (Low KD High-Volume Calculation Queries)
-const p1Rows = dataRows.filter(r => r[8].includes('P1'));
+// Sheet 2: P1 Quick Wins (Top ROI High Volume / Low KD Calculation Queries)
+const p1Rows = pillarRows.filter(r => r[8].includes('P1'));
 const wsP1 = createWorkSheet(headers, p1Rows);
 XLSX.utils.book_append_sheet(wb, wsP1, 'P1 Quick Wins');
 
-// Sheet 4: LSI & Semantic Support Variants
+// Sheet 3: LSI & Semantic Support Variants
 const lsiRows = dataRows.filter(r => r[3] === 'Supporting LSI / Semantic Variant');
 const wsLsi = createWorkSheet(headers, lsiRows);
 XLSX.utils.book_append_sheet(wb, wsLsi, 'LSI & FAQ Variants');
 
-// Sheet 5: Category Summary / Overview
+// Sheet 4: Category Summary / Overview
 const catSummary = {};
 pillarRows.forEach(r => {
   const cat = r[1];
   catSummary[cat] = (catSummary[cat] || 0) + 1;
 });
-const summaryHeaders = ['Category', 'Pillar Articles to Write', 'Associated Core Tool Page'];
+const summaryHeaders = ['Category', 'Unique Pillar Articles to Write', 'Associated Core Tool Page'];
 const summaryRows = Object.entries(catSummary).map(([cat, count]) => {
   const toolLink = dataRows.find(r => r[1] === cat)?.[9] || '';
   return [cat, count, toolLink];
 });
 const wsSummary = createWorkSheet(summaryHeaders, summaryRows);
 XLSX.utils.book_append_sheet(wb, wsSummary, 'Category Overview');
+
+// Sheet 5: Master Plan (All Unpublished 5,258 rows)
+const wsMaster = createWorkSheet(headers, dataRows);
+XLSX.utils.book_append_sheet(wb, wsMaster, 'All Unpublished Plan');
 
 // Write Excel File (.xlsx)
 XLSX.writeFile(wb, excelPath);
