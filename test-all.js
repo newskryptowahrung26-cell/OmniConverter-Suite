@@ -6,6 +6,7 @@ import { convertTime } from './time-converter.js';
 import { convertTextDocument } from './file-converter.js';
 import { convertCurrency, DEFAULT_RATES } from './currency-converter.js';
 import { convertTemperature, convertAllScales, convertDeltaTemperature } from './converter.js';
+import { convertTimeZone, generate24HourMeetingPlanner, WORLD_CITIES } from './timezone-converter.js';
 
 test('Volume & Capacity conversions', () => {
   assert.equal(convertVolume(1, 'l', 'ml').result, 1000);
@@ -77,5 +78,36 @@ test('Temperature conversions, All Scales, and Delta T', () => {
   assert.equal(allScales0C.K.value, 273.15);
   assert.equal(allScales0C.R.value, 491.67);
   assert.equal(allScales0C.Re.value, 0);
+});
+
+test('Worldwide Time Zone & Clock conversions', () => {
+  assert.ok(WORLD_CITIES.length >= 50);
+
+  // New York (EDT, UTC-4) to Karachi (PKT, UTC+5)
+  const nyToKarachi = convertTimeZone('2026-10-01', '10:00', 'America/New_York', 'Asia/Karachi');
+  assert.equal(nyToKarachi.target.time12, '7:00 PM');
+  assert.equal(nyToKarachi.target.time24, '19:00');
+  assert.equal(nyToKarachi.diffHours, 9);
+  assert.equal(nyToKarachi.diffMinutes, 540);
+  assert.equal(nyToKarachi.dayOffsetLabel, 'Same calendar day');
+
+  // London (BST, UTC+1) to Tokyo (JST, UTC+9)
+  const londonToTokyo = convertTimeZone('2026-10-01', '14:00', 'Europe/London', 'Asia/Tokyo');
+  assert.equal(londonToTokyo.target.time12, '10:00 PM');
+  assert.equal(londonToTokyo.diffHours, 8);
+
+  // New York to Sydney across International Date Line (+1 day)
+  const nyToSydney = convertTimeZone('2026-10-01', '20:00', 'America/New_York', 'Australia/Sydney');
+  assert.ok(nyToSydney.dayOffsetLabel.includes('+1 day ahead'));
+
+  // Half-hour offset: London to New Delhi (IST, UTC+5:30)
+  const londonToDelhi = convertTimeZone('2026-10-01', '12:00', 'Europe/London', 'Asia/Kolkata');
+  assert.equal(londonToDelhi.diffMinutes, 270); // 4.5 hours ahead in Oct (BST UTC+1 vs IST UTC+5.5)
+
+  // 24-hour visual meeting planner
+  const meetingSlots = generate24HourMeetingPlanner('2026-10-01', 'Europe/London', 'Asia/Karachi');
+  assert.equal(meetingSlots.length, 24);
+  const goodSlots = meetingSlots.filter(s => s.meetingRating === 'good');
+  assert.ok(goodSlots.length >= 3);
 });
 
