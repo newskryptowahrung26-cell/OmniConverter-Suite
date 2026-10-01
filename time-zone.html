@@ -815,8 +815,8 @@
 
     // State
     let is24Hour = false;
-    let selectedFromTz = 'Europe/London';
-    let selectedToTz = 'Asia/Karachi';
+    let selectedFromTz = 'America/New_York';
+    let selectedToTz = 'Europe/London';
 
     // DOM Elements
     const fromSelect = document.getElementById('fromTimezone');
@@ -853,37 +853,30 @@
       'Australia/Sydney'
     ];
 
-    // Initialize Local Time & Dropdowns
+    // Initialize Local Time & Dropdowns (Default: USA to London)
     function init() {
-      // Auto-detect browser timezone
-      try {
-        const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        if (localTz && WORLD_CITIES.some(c => c.id === localTz)) {
-          selectedFromTz = localTz;
-        } else if (localTz) {
-          // Add custom local timezone at the top
-          WORLD_CITIES.unshift({
-            id: localTz,
-            city: `Local Time (${localTz.split('/').pop().replace(/_/g, ' ')})`,
-            country: 'My Device',
-            flag: '📍',
-            region: 'Local',
-            code: 'LOCAL',
-            defaultOffset: '+00:00',
-            keywords: 'local current my device'
-          });
-          selectedFromTz = localTz;
-        }
-      } catch (e) {}
+      selectedFromTz = 'America/New_York';
+      selectedToTz = 'Europe/London';
 
-      // Set initial Date & Time
+      // Set initial Date & Time according to USA (New York) local time
       const now = new Date();
-      dateInput.value = now.toISOString().slice(0, 10);
-      const curH = String(now.getHours()).padStart(2, '0');
-      const curM = String(now.getMinutes()).padStart(2, '0');
-      timeInput.value = `${curH}:${curM}`;
+      const usaDate = new Intl.DateTimeFormat('en-CA', {
+        timeZone: selectedFromTz,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(now);
+      dateInput.value = usaDate;
 
-      // Populate Dropdowns
+      const usaTime = new Intl.DateTimeFormat('en-US', {
+        timeZone: selectedFromTz,
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).format(now);
+      timeInput.value = usaTime;
+
+      // Populate Dropdowns with USA -> London pre-selected
       populateSelect(fromSelect, selectedFromTz);
       populateSelect(toSelect, selectedToTz);
 
@@ -1212,8 +1205,21 @@
 
     btnNow.addEventListener('click', () => {
       const n = new Date();
-      dateInput.value = n.toISOString().slice(0, 10);
-      timeInput.value = `${String(n.getHours()).padStart(2, '0')}:${String(n.getMinutes()).padStart(2, '0')}`;
+      const curFromTz = fromSelect.value || 'America/New_York';
+      const curDate = new Intl.DateTimeFormat('en-CA', {
+        timeZone: curFromTz,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(n);
+      const curTime = new Intl.DateTimeFormat('en-US', {
+        timeZone: curFromTz,
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).format(n);
+      dateInput.value = curDate;
+      timeInput.value = curTime;
       performConversion();
     });
 
@@ -1221,10 +1227,36 @@
       try {
         const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         if (localTz) {
+          if (!WORLD_CITIES.some(c => c.id === localTz)) {
+            WORLD_CITIES.unshift({
+              id: localTz,
+              city: `Local Time (${localTz.split('/').pop().replace(/_/g, ' ')})`,
+              country: 'My Device',
+              flag: '📍',
+              region: 'Local',
+              code: 'LOCAL',
+              defaultOffset: '+00:00',
+              keywords: 'local current my device'
+            });
+            populateSelect(fromSelect, localTz);
+          }
           fromSelect.value = localTz;
+          selectedFromTz = localTz;
           const n = new Date();
-          dateInput.value = n.toISOString().slice(0, 10);
-          timeInput.value = `${String(n.getHours()).padStart(2, '0')}:${String(n.getMinutes()).padStart(2, '0')}`;
+          const localDate = new Intl.DateTimeFormat('en-CA', {
+            timeZone: localTz,
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          }).format(n);
+          const localTime = new Intl.DateTimeFormat('en-US', {
+            timeZone: localTz,
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }).format(n);
+          dateInput.value = localDate;
+          timeInput.value = localTime;
           performConversion();
         }
       } catch (e) {}
