@@ -104,21 +104,76 @@
         <a href="mailto:info.omniconverter@gmail.com" style="color:var(--primary-600); font-weight:700; margin-left:0.5rem;">info.omniconverter@gmail.com</a>
       </div>
 
-      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Your message has been sent to info.omniconverter@gmail.com.');" style="display:flex; flex-direction:column; gap:1.25rem; max-width:600px;">
+      <form id="contactForm" action="https://formsubmit.co/info.omniconverter@gmail.com" method="POST" style="display:flex; flex-direction:column; gap:1.25rem; max-width:600px;">
+        <!-- FormSubmit Security & Routing Configuration -->
+        <input type="hidden" name="_subject" value="New Contact Inquiry - OmniConverter">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
         <div class="input-group">
           <label for="contactName">Your Name</label>
-          <input type="text" id="contactName" class="input-field" placeholder="John Doe" required>
+          <input type="text" id="contactName" name="name" class="input-field" placeholder="John Doe" required>
         </div>
         <div class="input-group">
           <label for="contactEmail">Your Email Address</label>
-          <input type="email" id="contactEmail" class="input-field" placeholder="john@example.com" required>
+          <input type="email" id="contactEmail" name="email" class="input-field" placeholder="john@example.com" required>
         </div>
         <div class="input-group">
           <label for="contactMessage">Message</label>
-          <textarea id="contactMessage" class="input-field" style="height:140px;" placeholder="How can we help you?" required></textarea>
+          <textarea id="contactMessage" name="message" class="input-field" style="height:140px;" placeholder="How can we help you?" required></textarea>
         </div>
-        <button type="submit" class="btn-convert" style="max-width:200px;">Send Message</button>
+        
+        <div id="formStatus" style="display:none; padding:0.85rem 1.15rem; border-radius:var(--radius-md); font-size:0.95rem; font-weight:600; line-height:1.5;"></div>
+
+        <button type="submit" id="submitBtn" class="btn-convert" style="max-width:200px;">Send Message</button>
       </form>
+
+      <script>
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'var(--bg-elevated)';
+            formStatus.style.color = 'var(--text-muted)';
+            formStatus.style.border = '1px solid var(--border-color)';
+            formStatus.textContent = 'Sending your message to info.omniconverter@gmail.com...';
+
+            try {
+              const formData = new FormData(contactForm);
+              const response = await fetch('https://formsubmit.co/ajax/info.omniconverter@gmail.com', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json'
+                },
+                body: formData
+              });
+
+              const result = await response.json();
+              if (response.ok && result.success !== 'false') {
+                formStatus.style.background = '#ecfdf5';
+                formStatus.style.color = '#065f46';
+                formStatus.style.border = '1px solid #a7f3d0';
+                formStatus.innerHTML = '<strong>✓ Message Sent!</strong> Thank you for reaching out. Your message has been delivered to info.omniconverter@gmail.com and our team will respond shortly.';
+                contactForm.reset();
+              } else {
+                contactForm.submit();
+              }
+            } catch (err) {
+              contactForm.submit();
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }
+          });
+        }
+      </script>
     </article>
   
     <article class="content-section" style="margin-top:2rem;">
