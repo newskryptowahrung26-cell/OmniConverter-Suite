@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-// 1. Read existing blog slugs
+// 1. Read existing published blog slugs
 const blogDir = path.join(rootDir, 'blog');
 const existingSlugs = fs.existsSync(blogDir)
   ? fs.readdirSync(blogDir).filter(f => f.endsWith('.html')).map(f => f.replace('.html', ''))
@@ -90,9 +90,12 @@ export function getCanonicalConcept(kw) {
 }
 
 const existingConceptMap = new Map();
+const existingNormSet = new Set();
 existingSlugs.forEach(slug => {
   const concept = getCanonicalConcept(slug.replace(/-/g, ' '));
   existingConceptMap.set(concept, slug);
+  existingNormSet.add(slug.replace(/-/g, ' ').toLowerCase());
+  existingNormSet.add(slug.toLowerCase());
 });
 
 // 2. Read raw keywords CSV
@@ -306,18 +309,24 @@ rawLines.forEach((kw, index) => {
 console.log(`Clustered into ${conceptClusters.size} unique canonical concepts.`);
 
 const processedRows = [];
+let skippedAlreadyPublishedCount = 0;
 
 // Track exact seen keywords to detect duplicate rows in sheet
 const seenExactKeywords = new Map(); // kw.toLowerCase() -> count
 
 conceptClusters.forEach((items, concept) => {
   const isExistingPost = existingConceptMap.has(concept);
-  const targetSlug = isExistingPost
-    ? existingConceptMap.get(concept)
-    : createCleanSlug(items[0].kw);
+
+  // USER REQUIREMENT: "jo already publish ho gae hen un ko remove ker do"
+  // Completely skip all keywords that belong to already published live blog posts!
+  if (isExistingPost) {
+    skippedAlreadyPublishedCount += items.length;
+    return;
+  }
 
   const primaryKw = items[0].kw;
   const primaryCatInfo = classifyCategory(primaryKw);
+  const targetSlug = createCleanSlug(primaryKw);
 
   items.forEach((item, idx) => {
     const rawKw = item.kw;
@@ -334,38 +343,21 @@ conceptClusters.forEach((items, concept) => {
     let actionNeeded = '';
     let priority = determinePriority(rawKw);
 
-    if (isExistingPost) {
-      contentType = 'Existing Published Article';
-      if (isPrimaryInCluster && !isExactDuplicate) {
-        role = 'Primary Keyword (Already Published)';
-        actionNeeded = 'Maintain Position #1: verify internal links and FAQ schema';
-        priority = 'P1 - Live Maintenance (Already Published)';
-      } else if (isExactDuplicate) {
-        role = 'Consolidated Duplicate Query';
-        actionNeeded = `Exact duplicate in sheet: consolidated into existing live article /blog/${targetSlug} (no new page needed)`;
-        priority = 'P3 - Long-Tail Semantic Extension';
-      } else {
-        role = 'LSI / Semantic Support Keyword';
-        actionNeeded = `Inject into /blog/${targetSlug} as secondary H2/H3 subheading or FAQ to rank without cannibalization`;
-        priority = 'P2 - Core Cluster Authority';
-      }
+    // New Article Cluster (Unpublished)
+    if (isPrimaryInCluster) {
+      contentType = 'New High-Priority Blog Post';
+      role = 'Primary Target Keyword (Pillar)';
+      actionNeeded = `Publish new pillar guide with calculator embed and schema: ${createTargetTitle(rawKw, catInfo.category)}`;
+    } else if (isExactDuplicate) {
+      contentType = 'Supporting LSI / Semantic Variant';
+      role = 'Consolidated Duplicate Query';
+      actionNeeded = `Exact duplicate in sheet: consolidated into canonical target /blog/${targetSlug} (prevents duplicate pages)`;
+      priority = 'P3 - Long-Tail Semantic Extension';
     } else {
-      // New Article Cluster
-      if (isPrimaryInCluster) {
-        contentType = 'New High-Priority Blog Post';
-        role = 'Primary Target Keyword (Pillar)';
-        actionNeeded = `Publish new pillar guide with calculator embed and schema: ${createTargetTitle(rawKw, catInfo.category)}`;
-      } else if (isExactDuplicate) {
-        contentType = 'Supporting LSI / Semantic Variant';
-        role = 'Consolidated Duplicate Query';
-        actionNeeded = `Exact duplicate in sheet: consolidated into canonical target /blog/${targetSlug} (prevents duplicate pages)`;
-        priority = 'P3 - Long-Tail Semantic Extension';
-      } else {
-        contentType = 'Supporting LSI / Semantic Variant';
-        role = 'LSI / Semantic Support Keyword';
-        actionNeeded = `Include as H2/H3 subheading, comparison table entry, or FAQ inside /blog/${targetSlug} to capture long-tail searches`;
-        priority = 'P2 - Core Cluster Authority';
-      }
+      contentType = 'Supporting LSI / Semantic Variant';
+      role = 'LSI / Semantic Support Keyword';
+      actionNeeded = `Include as H2/H3 subheading, comparison table entry, or FAQ inside /blog/${targetSlug} to capture long-tail searches`;
+      priority = 'P2 - Core Cluster Authority';
     }
 
     processedRows.push({
@@ -384,7 +376,8 @@ conceptClusters.forEach((items, concept) => {
   });
 });
 
-console.log(`Generated strategy rows for all ${processedRows.length} keywords.`);
+console.log(`Skipped ${skippedAlreadyPublishedCount} already published keywords.`);
+console.log(`Generated strategy rows for ${processedRows.length} UNPUBLISHED keywords to write.`);
 
 // 8. Generate CSV File
 function escapeCsv(val) {
@@ -429,14 +422,22 @@ const outCsvPath = path.join(rootDir, 'omniconverter-keyword-strategy-plan.csv')
 fs.writeFileSync(outCsvPath, csvLines.join('\n'), 'utf8');
 console.log(`Successfully generated downloadable plan at: ${outCsvPath}`);
 
+// Copy directly to user's Windows Downloads directory
+const userDownloadsPath = 'C:\\Users\\NDCOM\\Downloads\\omniconverter-keyword-strategy-plan.csv';
+try {
+  fs.copyFileSync(outCsvPath, userDownloadsPath);
+  console.log(`Successfully copied to user Downloads at: ${userDownloadsPath}`);
+} catch (err) {
+  console.warn('Could not copy to Downloads:', err.message);
+}
+
 // Summary stats
 const summary = {
-  totalKeywords: processedRows.length,
-  newPillarArticles: processedRows.filter(r => r.contentType === 'New High-Priority Blog Post').length,
-  existingArticles: processedRows.filter(r => r.contentType === 'Existing Published Article').length,
+  totalUnpublishedKeywords: processedRows.length,
+  newPillarArticlesToWrite: processedRows.filter(r => r.contentType === 'New High-Priority Blog Post').length,
   lsiSemanticVariants: processedRows.filter(r => r.contentType === 'Supporting LSI / Semantic Variant').length,
-  consolidatedDuplicates: processedRows.filter(r => r.role === 'Consolidated Duplicate Query').length
+  alreadyPublishedRemoved: skippedAlreadyPublishedCount
 };
 
-console.log('\n=== STRATEGY EXECUTION SUMMARY ===');
+console.log('\n=== STRATEGY EXECUTION SUMMARY (UNPUBLISHED ONLY) ===');
 console.table(summary);
