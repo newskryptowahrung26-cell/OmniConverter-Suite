@@ -765,35 +765,115 @@ async function main() {
     process.exit(1);
   }
 
+// ─── CSV KEYWORD PLAN PARSER ──────────────────────────────────────────────────
+
+function parseKeywordPlanCsv(csvText) {
+  const lines = csvText.split(/\r?\n/).filter(l => l.trim().length > 0);
+  if (lines.length === 0) return [];
+
+  const headerLine = lines[0];
+  const isMultiColumn = headerLine.includes(',') && (
+    headerLine.toLowerCase().includes('canonical') || 
+    headerLine.toLowerCase().includes('content_type') || 
+    headerLine.toLowerCase().includes('role')
+  );
+
+  if (!isMultiColumn) {
+    return lines
+      .map(l => l.replace(/^"|"$/g, '').trim())
+      .filter(l => l.length > 0 && l.toLowerCase() !== 'keyword')
+      .map(kw => ({
+        rawKw: kw,
+        slug: slugify(kw),
+        category: null,
+        priority: 'P2',
+        toolLink: null,
+        snippetStrategy: null,
+        lsiKeywords: []
+      }));
+  }
+
+  function parseLine(line) {
+    const row = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (inQuotes && line[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (c === ',' && !inQuotes) {
+        row.push(cur.trim());
+        cur = '';
+      } else {
+        cur += c;
+      }
+    }
+    row.push(cur.trim());
+    return row;
+  }
+
+  const rows = lines.slice(1).map(parseLine);
+  const clusters = new Map();
+
+  for (const r of rows) {
+    if (r.length < 5) continue;
+    const [kw, category, cluster, contentType, targetSlug, role, action, intent, priority, toolLink, snippetStrategy] = r;
+    const cleanSlug = (targetSlug || '').replace(/^\/blog\//, '').replace(/\.html$/, '').trim() || slugify(kw);
+    if (!cleanSlug) continue;
+
+    if (!clusters.has(cleanSlug)) {
+      clusters.set(cleanSlug, {
+        rawKw: kw,
+        slug: cleanSlug,
+        category: category || null,
+        cluster: cluster || null,
+        priority: priority || 'P2',
+        toolLink: toolLink ? toolLink.replace('https://www.omniconverter.co.uk', '') : null,
+        snippetStrategy: snippetStrategy || null,
+        lsiKeywords: []
+      });
+    }
+
+    if ((contentType && contentType.includes('LSI')) || (role && role.includes('LSI'))) {
+      clusters.get(cleanSlug).lsiKeywords.push(kw);
+    } else if ((contentType && contentType.includes('High-Priority')) || (role && role.includes('Primary'))) {
+      clusters.get(cleanSlug).rawKw = kw;
+    }
+  }
+
+  return Array.from(clusters.values());
+}
+
   // 1. Load keywords
   const sheetCsvUrl = 'https://docs.google.com/spreadsheets/d/1ViVyX1fdyJqIoA-qMoz9-jrPjR-IFHCT/export?format=csv';
   console.log('Fetching keywords from Google Sheet...');
 
-  let rawKeywords = [];
+  let targetClusters = [];
   try {
     const csvData = await fetchUrl(sheetCsvUrl);
-    rawKeywords = csvData.split('\n')
-      .map(l => l.replace(/^"|"$/g, '').replace(/\r/g, '').trim())
-      .filter(l => l.length > 0 && l.toLowerCase() !== 'keyword');
-    console.log(`Loaded ${rawKeywords.length} keywords from Google Sheet.`);
+    targetClusters = parseKeywordPlanCsv(csvData);
+    console.log(`Loaded ${targetClusters.length} candidate clusters from Google Sheet.`);
   } catch (e) {
     console.warn(`Sheet fetch failed: ${e.message}`);
   }
 
-  if (rawKeywords.length === 0 && fs.existsSync('keywords.csv')) {
-    rawKeywords = fs.readFileSync('keywords.csv', 'utf8')
-      .split('\n')
-      .map(l => l.replace(/^"|"$/g, '').replace(/\r/g, '').trim())
-      .filter(l => l.length > 0 && l.toLowerCase() !== 'keyword');
-    console.log(`Loaded ${rawKeywords.length} keywords from local backup.`);
+  if (targetClusters.length === 0 && fs.existsSync('keywords.csv')) {
+    const csvData = fs.readFileSync('keywords.csv', 'utf8');
+    targetClusters = parseKeywordPlanCsv(csvData);
+    console.log(`Loaded ${targetClusters.length} candidate clusters from local backup.`);
   }
 
-  if (rawKeywords.length === 0) {
+  if (targetClusters.length === 0) {
     console.error('ERROR: No keywords found.');
     process.exit(1);
   }
 
-  // 2. Anti-cannibalization with Random Selection
+  // 2. Anti-cannibalization with Priority Selection
   const publishedFiles = fs.readdirSync('blog')
     .filter(f => f.endsWith('.html'))
     .map(f => f.replace('.html', ''));
@@ -806,11 +886,11 @@ async function main() {
 
   // Filter all eligible keywords that pass anti-cannibalization
   const eligibleTargets = [];
-  for (const rawKw of rawKeywords) {
-    const slug = slugify(rawKw);
-    const sig = getTopicSignature(rawKw);
+  for (const target of targetClusters) {
+    const slug = target.slug;
+    const sig = getTopicSignature(target.rawKw);
     if (!publishedSlugs.has(slug) && !publishedSignatures.has(sig)) {
-      eligibleTargets.push({ rawKw, slug });
+      eligibleTargets.push(target);
     }
   }
 
@@ -821,10 +901,17 @@ async function main() {
     return;
   }
 
-  // Pick a random keyword from eligible candidates
-  const randomIndex = Math.floor(Math.random() * eligibleTargets.length);
-  const selectedTarget = eligibleTargets[randomIndex];
-  console.log(`[OK] Selected: "${selectedTarget.rawKw}" -> ${selectedTarget.slug}`);
+  // Priority selection: Pick from P1 (High Volume / Quick Win) first if available!
+  const p1Candidates = eligibleTargets.filter(t => (t.priority || '').includes('P1'));
+  const pool = p1Candidates.length > 0 ? p1Candidates : eligibleTargets;
+  console.log(`Selecting candidate from pool of ${pool.length} ${p1Candidates.length > 0 ? 'P1 Quick-Win' : 'eligible'} targets.`);
+
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  const selectedTarget = pool[randomIndex];
+  console.log(`[OK] Selected: "${selectedTarget.rawKw}" -> /blog/${selectedTarget.slug} (${selectedTarget.priority})`);
+  if (selectedTarget.lsiKeywords && selectedTarget.lsiKeywords.length > 0) {
+    console.log(`[LSI] Integrated secondary keywords (${selectedTarget.lsiKeywords.length}): ${selectedTarget.lsiKeywords.join(', ')}`);
+  }
 
   // Collect all currently used Unsplash photo IDs from published articles
   const usedPhotoIds = new Set();
@@ -948,7 +1035,16 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
       * Use <sub> for subscripts (e.g. R<sub>INR/USD</sub>).
       * Use <strong> and <em> for variables and emphasis.
 
-Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and engaging human editorial tone.`;
+Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and engaging human editorial tone.
+${selectedTarget.lsiKeywords && selectedTarget.lsiKeywords.length > 0 ? `
+12. MANDATORY LSI & SEMANTIC KEYWORDS TO INTEGRATE:
+    You MUST naturally integrate these secondary search queries as H2/H3 subheadings, conversion table entries, or FAQ questions to dominate related search variants:
+    ${selectedTarget.lsiKeywords.map(k => `* "${k}"`).join('\n    ')}
+` : ''}
+${selectedTarget.snippetStrategy ? `
+13. FEATURED SNIPPET STRATEGY FOR POSITION #1:
+    ${selectedTarget.snippetStrategy}
+` : ''}`;
 
   let response = null;
   let lastError = null;
@@ -1033,7 +1129,20 @@ Minimum length: 1,000+ words. Written with absolute authority, clean HTML, and e
     category = 'Length & Distance';
     toolTitle = 'Interactive Length & Distance Converter';
     toolDesc = 'Convert meters, feet, inches, centimeters, millimeters, yards, and height measurements instantly with exact formulas.';
-    toolBtnText = 'Open Length Converter &rarr;';
+  } else if (kwLower.includes('time zone') || kwLower.includes('timezone') || kwLower.includes('gmt') || kwLower.includes('utc') || kwLower.includes('clock') || kwLower.includes('time is') || kwLower.includes('current time')) {
+    toolLink = '/time-zone';
+    category = 'Time Zone & World Clock';
+    toolTitle = 'Interactive Worldwide Time Zone & Clock Converter';
+    toolDesc = 'Convert time zones, compare country hours, plan international meetings, and view live world clocks.';
+    toolBtnText = 'Open Time Zone Converter &rarr;';
+  }
+
+  // Use explicit toolLink and category from keyword plan if available
+  if (selectedTarget.toolLink) {
+    toolLink = selectedTarget.toolLink;
+  }
+  if (selectedTarget.category) {
+    category = selectedTarget.category;
   }
 
   // Generate in-page live converter widget
