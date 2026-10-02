@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (46 Articles)
+## Published Articles & Guides Directory (47 Articles)
+- [14 Stone In Pounds](https://www.omniconverter.co.uk/blog/14-stone-in-pounds): Convert 14 stone in pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [15 Meters To Feet](https://www.omniconverter.co.uk/blog/15-meters-to-feet): Convert 15 meters to feet accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [16 Ounces To Milliliters](https://www.omniconverter.co.uk/blog/16-ounces-to-milliliters): Convert 16 ounces to milliliters accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [180lbs In Stone](https://www.omniconverter.co.uk/blog/180lbs-in-stone): Convert 180lbs in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
