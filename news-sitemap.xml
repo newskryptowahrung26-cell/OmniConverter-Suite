@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/165-lbs-to-kg</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03</news:publication_date>
+      <news:title>165 Lbs To Kg</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/14-stone-in-pounds</loc>
     <news:news>
       <news:publication>
@@ -10,28 +21,6 @@
       </news:publication>
       <news:publication_date>2026-10-02</news:publication_date>
       <news:title>14 Stone In Pounds</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/15-meters-to-feet</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-01</news:publication_date>
-      <news:title>15 Meters To Feet</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/16-ounces-to-milliliters</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-01</news:publication_date>
-      <news:title>16 Ounces To Milliliters</news:title>
     </news:news>
   </url>
 </urlset>
