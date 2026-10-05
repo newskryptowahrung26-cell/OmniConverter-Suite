@@ -84,30 +84,8 @@ ptBlog.forEach(f => {
 fs.writeFileSync(path.join(rootDir, 'sitemap-pt.xml'), buildUrlSet(ptUrls), 'utf8');
 console.log(`sitemap-pt.xml generated with ${ptUrls.size} URLs!`);
 
-// 5. Master Sitemap Index (sitemap.xml)
-const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-en.xml</loc>
-    <lastmod>2026-10-05</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-es.xml</loc>
-    <lastmod>2026-10-05</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-de.xml</loc>
-    <lastmod>2026-10-05</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-pt.xml</loc>
-    <lastmod>2026-10-05</lastmod>
-  </sitemap>
-</sitemapindex>
-`;
+// 5. Master Unified Sitemap (sitemap.xml with all 274 URLs)
+const allUrls = new Set([...enUrls, ...esUrls, ...deUrls, ...ptUrls]);
+fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), buildUrlSet(allUrls), 'utf8');
+console.log(`Master sitemap.xml unified with all ${allUrls.size} URLs!`);
 
-fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapIndex, 'utf8');
-console.log('Master sitemap.xml index generated successfully!');
-
-// Total URLs
-console.log(`Total URLs mapped across all 4 language sitemaps: ${enUrls.size + esUrls.size + deUrls.size + ptUrls.size}`);
