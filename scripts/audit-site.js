@@ -227,12 +227,14 @@ if (!fs.existsSync(sitemapPath)) {
     let urlPath;
     if (relPath === 'index.html') {
       urlPath = 'https://www.omniconverter.co.uk/';
+    } else if (relPath.endsWith('/index.html')) {
+      urlPath = `https://www.omniconverter.co.uk/${relPath.replace(/\/index\.html$/, '/')}`;
     } else if (relPath.endsWith('.html')) {
       urlPath = `https://www.omniconverter.co.uk/${relPath.replace(/\.html$/, '')}`;
     }
     const withHtml = `https://www.omniconverter.co.uk/${relPath}`;
 
-    const found = locMatches.some(loc => loc === urlPath || loc === withHtml || (urlPath === 'https://www.omniconverter.co.uk/' && loc === 'https://www.omniconverter.co.uk'));
+    const found = locMatches.some(loc => loc === urlPath || loc === withHtml || (urlPath === 'https://www.omniconverter.co.uk/' && loc === 'https://www.omniconverter.co.uk') || (urlPath.endsWith('/') && loc === urlPath.slice(0, -1)));
     if (!found) {
       issues.sitemap.push(`Page missing from sitemap.xml: ${relPath} (expected ${urlPath})`);
     }
@@ -245,6 +247,8 @@ if (!fs.existsSync(sitemapPath)) {
       let p = u.pathname;
       if (p === '/' || p === '') {
         p = '/index.html';
+      } else if (p.endsWith('/')) {
+        p = p + 'index.html';
       } else if (!p.endsWith('.html')) {
         p = p + '.html';
       }

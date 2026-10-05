@@ -11,6 +11,7 @@
   <url><loc>https://www.omniconverter.co.uk/area</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/speed</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/file-media</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/time-zone</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <!-- Blog -->
   <url><loc>https://www.omniconverter.co.uk/blog</loc><lastmod>2026-10-05</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.omniconverter.co.uk/blog/1500-usd-to-aud</loc><lastmod>2026-10-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -69,4 +70,28 @@
   <url><loc>https://www.omniconverter.co.uk/sitemap</loc><lastmod>2026-10-05</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://www.omniconverter.co.uk/privacy-policy</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://www.omniconverter.co.uk/terms</loc><lastmod>2026-10-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Spanish (ES) Section -->
+  <url><loc>https://www.omniconverter.co.uk/es/</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/temperature</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/length</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/weight-mass</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/volume-capacity</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/currency</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/area</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/speed</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/time-duration</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/time-zone</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/file-media</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/about</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/contact</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/privacy-policy</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/terms</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/sitemap</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog/15-metros-a-pies</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog/100-kg-a-libras</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog/10-celsius-a-fahrenheit</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog/60-mph-a-kmh</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.omniconverter.co.uk/es/blog/1-galon-en-litros</loc><lastmod>2026-10-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
