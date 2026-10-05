@@ -702,6 +702,11 @@ const BLOG_POSTS = [
   }
 ];
 
-// Make articles available globally for blog.html
-window.BLOG_POSTS = BLOG_POSTS;
-window.blogArticles = BLOG_POSTS;
+// Make articles available globally for blog.html and Node.js
+if (typeof window !== 'undefined') {
+  window.BLOG_POSTS = BLOG_POSTS;
+  window.blogArticles = BLOG_POSTS;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { BLOG_POSTS, blogArticles: BLOG_POSTS };
+}
