@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/1500-usd-to-aud</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05</news:publication_date>
+      <news:title>1500 Usd To Aud</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/65-kg-pounds</loc>
     <news:news>
       <news:publication>
@@ -10,17 +21,6 @@
       </news:publication>
       <news:publication_date>2026-10-04</news:publication_date>
       <news:title>65 Kg Pounds</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/165-lbs-to-kg</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-03</news:publication_date>
-      <news:title>165 Lbs To Kg</news:title>
     </news:news>
   </url>
 </urlset>
