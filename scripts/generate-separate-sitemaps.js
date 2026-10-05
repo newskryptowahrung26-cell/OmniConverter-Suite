@@ -84,8 +84,31 @@ ptBlog.forEach(f => {
 fs.writeFileSync(path.join(rootDir, 'sitemap-pt.xml'), buildUrlSet(ptUrls), 'utf8');
 console.log(`sitemap-pt.xml generated with ${ptUrls.size} URLs!`);
 
-// 5. Master Unified Sitemap (sitemap.xml with all 274 URLs)
-const allUrls = new Set([...enUrls, ...esUrls, ...deUrls, ...ptUrls]);
-fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), buildUrlSet(allUrls), 'utf8');
-console.log(`Master sitemap.xml unified with all ${allUrls.size} URLs!`);
+// 5. Master Unified Sitemap Index (sitemap.xml is a clean <sitemapindex>, NO duplicate URLs)
+const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-en.xml</loc>
+    <lastmod>2026-10-05</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-es.xml</loc>
+    <lastmod>2026-10-05</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-de.xml</loc>
+    <lastmod>2026-10-05</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-pt.xml</loc>
+    <lastmod>2026-10-05</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/news-sitemap.xml</loc>
+    <lastmod>2026-10-05</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapIndexXml, 'utf8');
+console.log('Master sitemap.xml configured as standard <sitemapindex>!');
 

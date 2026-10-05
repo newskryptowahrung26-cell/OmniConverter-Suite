@@ -311,7 +311,10 @@ function rebuildBlogData() {
     let category = "Conversion Guide";
     let icon = "📊";
 
-    if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen')) {
+    if (s.includes('bigha') || s.includes('guntha') || s.includes('gaj') || s.includes('tola') || s.includes('crore') || s.includes('lakh')) {
+      category = "Indian Units & Land";
+      icon = "🇮🇳";
+    } else if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen')) {
       category = "Kitchen & Culinary";
       icon = "🍳";
     } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex')) {
@@ -440,13 +443,37 @@ function rebuildBlogData() {
     }
   }
 
-  const allUrls = new Set([...enUrls, ...esUrls, ...deUrls, ...ptUrls]);
-  fs.writeFileSync('sitemap.xml', generateUrlSet(allUrls), 'utf8');
   fs.writeFileSync('sitemap-en.xml', generateUrlSet(enUrls), 'utf8');
   fs.writeFileSync('sitemap-es.xml', generateUrlSet(esUrls), 'utf8');
   fs.writeFileSync('sitemap-de.xml', generateUrlSet(deUrls), 'utf8');
   fs.writeFileSync('sitemap-pt.xml', generateUrlSet(ptUrls), 'utf8');
-  console.log(`[OK] All 5 sitemaps synchronized (Total: ${allUrls.size} URLs across EN, ES, DE, PT).`);
+
+  const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-en.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-es.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-de.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/sitemap-pt.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.omniconverter.co.uk/news-sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+  fs.writeFileSync('sitemap.xml', sitemapIndexXml, 'utf8');
+  console.log(`[OK] All sub-sitemaps generated and unified under master sitemap.xml index.`);
 
   // Update sitemap.html blog list if file exists
   if (fs.existsSync('sitemap.html')) {

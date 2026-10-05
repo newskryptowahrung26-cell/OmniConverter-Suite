@@ -2,8 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.omniconverter.co.uk/sitemap.xml
-Sitemap: https://www.omniconverter.co.uk/sitemap-en.xml
-Sitemap: https://www.omniconverter.co.uk/sitemap-es.xml
-Sitemap: https://www.omniconverter.co.uk/sitemap-de.xml
-Sitemap: https://www.omniconverter.co.uk/sitemap-pt.xml
 Sitemap: https://www.omniconverter.co.uk/news-sitemap.xml
