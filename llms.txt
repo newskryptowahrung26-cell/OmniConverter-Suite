@@ -24,13 +24,14 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (55 Articles)
+## Published Articles & Guides Directory (56 Articles)
 - [1 Bigha in Square Feet (Land Guide)](https://www.omniconverter.co.uk/blog/1-bigha-in-square-feet): How many square feet are in 1 Bigha? Complete verified state-wise conversion table for UP, Bihar, Punjab, Haryana, Rajasthan, West Bengal, and MP.
 - [1 Crore in Millions (Number Guide)](https://www.omniconverter.co.uk/blog/1-crore-in-millions): Convert 1 Crore to Millions and Billions. Learn the exact zeros, commas, and currency value of Crore in USD, EUR, and international banking.
 - [1 Gaj in Square Feet (Land Guide)](https://www.omniconverter.co.uk/blog/1-gaj-in-square-feet): Convert 1 Gaj to square feet and square meters. Learn why 1 Gaj equals exactly 9 square feet (1 square yard) in Indian property deeds.
 - [1 Guntha in Sq Ft (Land Guide)](https://www.omniconverter.co.uk/blog/1-guntha-in-sq-ft): How many square feet are in 1 Guntha? Convert Guntha to Sq Ft, Square Yards, Bigha, and Acres for Maharashtra, Karnataka, Gujarat, and Telangana.
 - [1 Tola in Grams (Gold Weight Guide)](https://www.omniconverter.co.uk/blog/1-tola-in-grams): How many grams are in 1 Tola? Learn the exact difference between the 10-gram modern metric Tola and 11.6638-gram traditional Vedic Tola for gold purchase.
 - [1500 Usd To Aud](https://www.omniconverter.co.uk/blog/1500-usd-to-aud): Convert 1500 usd to aud accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
+- [95 Usd To Gbp](https://www.omniconverter.co.uk/blog/95-usd-to-gbp): Convert 95 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [65 Kg Pounds](https://www.omniconverter.co.uk/blog/65-kg-pounds): Convert 65 kg pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [165 Lbs To Kg](https://www.omniconverter.co.uk/blog/165-lbs-to-kg): Convert 165 lbs to kg accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [14 Stone In Pounds](https://www.omniconverter.co.uk/blog/14-stone-in-pounds): Convert 14 stone in pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
@@ -66,10 +67,10 @@
 - [1 Aud To Vnd](https://www.omniconverter.co.uk/blog/1-aud-to-vnd): Step-by-step conversion guide for 1 aud to vnd with formulas, tables, and FAQs.
 - [1 Billion Korean Won To Gbp](https://www.omniconverter.co.uk/blog/1-billion-korean-won-to-gbp): Step-by-step conversion guide for 1 billion korean won to gbp with formulas, tables, and FAQs.
 - [How To Change File Format](https://www.omniconverter.co.uk/blog/how-to-change-file-format): Step-by-step conversion guide for how to change file format with formulas, tables, and FAQs.
-- [1 Gallon in Litres: Liquid Volume Guide](https://www.omniconverter.co.uk/blog/1-gallon-in-litres): Convert 1 gallon to litres accurately. Detailed fluid volume conversion guide for US liquid gallons, Imperial UK gallons, and liter conversion tables.
-- [1 Stone in KG: Body Weight Conversion Guide](https://www.omniconverter.co.uk/blog/1-stone-in-kg): Convert 1 stone to kg accurately. Complete body weight conversion guide with step-by-step formulas and reference charts for stone, kg, pounds, and ounces.
-- [1 TSP is How Many mL? Teaspoon Volume Guide](https://www.omniconverter.co.uk/blog/1-tsp-is-ml): Find out exactly how many mL is 1 TSP. Complete kitchen teaspoon volume conversion guide with tables for US, Metric, and UK teaspoons.
-- [10 Celsius is What Fahrenheit? Temp Guide](https://www.omniconverter.co.uk/blog/10-celsius-is-what-fahrenheit): Convert 10 degrees Celsius to Fahrenheit accurately. Step-by-step mathematical conversion formula, weather reference charts, and temperature benchmarks.
+- [1 Gallon in Litres Guide](https://www.omniconverter.co.uk/blog/1-gallon-in-litres): Convert 1 gallon to litres accurately. Detailed fluid volume conversion guide for US liquid gallons, Imperial UK gallons, and liter conversion tables.
+- [1 Stone in KG Guide](https://www.omniconverter.co.uk/blog/1-stone-in-kg): Convert 1 stone to kg accurately. Complete body weight conversion guide with step-by-step formulas and reference charts for stone, kg, pounds, and ounces.
+- [1 TSP in mL Guide](https://www.omniconverter.co.uk/blog/1-tsp-is-ml): Find out exactly how many mL is 1 TSP. Complete kitchen teaspoon volume conversion guide with tables for US, Metric, and UK teaspoons.
+- [10 Celsius in Fahrenheit](https://www.omniconverter.co.uk/blog/10-celsius-is-what-fahrenheit): Convert 10 degrees Celsius to Fahrenheit accurately. Step-by-step mathematical conversion formula, weather reference charts, and temperature benchmarks.
 - [100 KG to LBS: Kilograms to Pounds Guide](https://www.omniconverter.co.uk/blog/100-kg-to-lbs): Convert 100 kg to lbs accurately. Weight conversion guide with stones breakdown, gym weight standards, and exact mass formulas.
 - [50 Fahrenheit to Celsius: Temperature Guide](https://www.omniconverter.co.uk/blog/50-fahrenheit-to-celsius): Convert 50 degrees Fahrenheit to Celsius accurately. Detailed temperature conversion guide with step-by-step mathematical formulas, weather benchmarks,.
 - [500 mL to Cups: Liquid Volume Conversion](https://www.omniconverter.co.uk/blog/500-ml-to-cups): Convert 500 mL to US, Metric, and Imperial cups. Complete culinary volume breakdown for liquid cooking and measuring cups.
