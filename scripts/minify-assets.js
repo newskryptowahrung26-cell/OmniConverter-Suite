@@ -11,7 +11,7 @@ for (const file of blogDataFiles) {
     if (match) {
       try {
         const json = JSON.parse(match[1]);
-        const minified = `const BLOG_POSTS=${JSON.stringify(json)};`;
+        const minified = `const BLOG_POSTS=${JSON.stringify(json)};window.BLOG_POSTS=BLOG_POSTS;window.blogArticles=BLOG_POSTS;`;
         fs.writeFileSync(file, minified, 'utf8');
         console.log(`Minified ${file}: ${content.length} -> ${minified.length} bytes (${Math.round((1 - minified.length/content.length)*100)}% reduction)`);
       } catch (e) {

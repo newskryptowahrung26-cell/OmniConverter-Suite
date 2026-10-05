@@ -27,7 +27,7 @@ if (!fs.existsSync('robots.txt')) {
   issues.push('[ROBOTS.TXT] Missing robots.txt');
 } else {
   const robots = fs.readFileSync('robots.txt', 'utf8');
-  ['sitemap.xml', 'sitemap-en.xml', 'sitemap-es.xml', 'sitemap-de.xml', 'sitemap-pt.xml'].forEach(sm => {
+  ['sitemap.xml', 'news-sitemap.xml'].forEach(sm => {
     if (!robots.includes(sm)) {
       issues.push(`[ROBOTS.TXT] robots.txt missing declaration for ${sm}`);
     }
