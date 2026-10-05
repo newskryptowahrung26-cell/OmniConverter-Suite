@@ -219,7 +219,27 @@ if (!fs.existsSync(sitemapPath)) {
   issues.sitemap.push('sitemap.xml is missing');
 } else {
   const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-  const locMatches = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
+  let locMatches = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
+
+  if (sitemapContent.includes('<sitemapindex')) {
+    const childLocs = [];
+    for (const smLoc of locMatches) {
+      try {
+        const u = new URL(smLoc);
+        const smFile = path.join(rootDir, path.basename(u.pathname));
+        if (fs.existsSync(smFile)) {
+          const subContent = fs.readFileSync(smFile, 'utf8');
+          const subLocs = [...subContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
+          childLocs.push(...subLocs);
+        } else {
+          issues.sitemap.push(`Sitemap index references missing file: ${smLoc} -> ${smFile}`);
+        }
+      } catch (e) {
+        issues.sitemap.push(`Invalid sitemap index loc: ${smLoc}`);
+      }
+    }
+    locMatches = childLocs;
+  }
 
   // Check if every HTML page is in sitemap.xml
   for (const filePath of htmlFiles) {
