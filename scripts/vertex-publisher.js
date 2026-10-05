@@ -313,7 +313,7 @@ function rebuildBlogData() {
 
     if (s.includes('bigha') || s.includes('guntha') || s.includes('gaj') || s.includes('tola') || s.includes('crore') || s.includes('lakh')) {
       category = "Indian Units & Land";
-      icon = "🇮🇳";
+      icon = "";
     } else if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen')) {
       category = "Kitchen & Culinary";
       icon = "🍳";
@@ -448,32 +448,9 @@ function rebuildBlogData() {
   fs.writeFileSync('sitemap-de.xml', generateUrlSet(deUrls), 'utf8');
   fs.writeFileSync('sitemap-pt.xml', generateUrlSet(ptUrls), 'utf8');
 
-  const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-en.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-es.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-de.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/sitemap-pt.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.omniconverter.co.uk/news-sitemap.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-</sitemapindex>
-`;
-  fs.writeFileSync('sitemap.xml', sitemapIndexXml, 'utf8');
-  console.log(`[OK] All sub-sitemaps generated and unified under master sitemap.xml index.`);
+  const allUrls = new Set([...enUrls, ...esUrls, ...deUrls, ...ptUrls]);
+  fs.writeFileSync('sitemap.xml', generateUrlSet(allUrls), 'utf8');
+  console.log(`[OK] All sub-sitemaps and master sitemap.xml generated with ${allUrls.size} URLs.`);
 
   // Update sitemap.html blog list if file exists
   if (fs.existsSync('sitemap.html')) {
@@ -1515,6 +1492,8 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       </button>
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="/" class="tab-btn">Home</a>
+        <a href="/indian-units" class="tab-btn">Indian Units</a>
+        <a href="/time-zone" class="tab-btn">Time Zone</a>
         <a href="/currency" class="tab-btn">Currency</a>
         <a href="/length" class="tab-btn">Length</a>
         <a href="/temperature" class="tab-btn">Temperature</a>
@@ -1527,13 +1506,13 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
       <div class="lang-switcher" aria-label="Language Selector">
-        <span class="active" title="English">🇬🇧 EN</span>
+        <span class="active" title="English">EN</span>
         <span class="lang-sep">|</span>
-        <a href="${esArticle ? `/es/blog/${esArticle.slug}` : '/es/blog'}" title="Español">🇪🇸 ES</a>
+        <a href="${esArticle ? `/es/blog/${esArticle.slug}` : '/es/blog'}" title="Español">ES</a>
         <span class="lang-sep">|</span>
-        <a href="${deArticle ? `/de/blog/${deArticle.slug}` : '/de/blog'}" title="Deutsch">🇩🇪 DE</a>
+        <a href="${deArticle ? `/de/blog/${deArticle.slug}` : '/de/blog'}" title="Deutsch">DE</a>
         <span class="lang-sep">|</span>
-        <a href="${ptArticle ? `/pt/blog/${ptArticle.slug}` : '/pt/blog'}" title="Português">🇧🇷 PT</a>
+        <a href="${ptArticle ? `/pt/blog/${ptArticle.slug}` : '/pt/blog'}" title="Português">PT</a>
       </div>
     </div>
   </header>
@@ -1606,10 +1585,10 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <a href="/es/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menú</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <nav class="nav-tabs" aria-label="Navegación de categorías">
-        <a href="/es/" class="tab-btn">Inicio</a><a href="/indian-units" class="tab-btn">🇮🇳 Unidades Indias</a><a href="/es/time-zone" class="tab-btn">Zonas Horarias</a><a href="/es/currency" class="tab-btn">Divisas</a><a href="/es/length" class="tab-btn">Longitud</a><a href="/es/temperature" class="tab-btn">Temperatura</a><a href="/es/weight-mass" class="tab-btn">Masa</a><a href="/es/volume-capacity" class="tab-btn">Capacidad</a><a href="/es/time-duration" class="tab-btn">Duración</a><a href="/es/area" class="tab-btn">Área</a><a href="/es/speed" class="tab-btn">Velocidad</a><a href="/es/file-media" class="tab-btn">Archivos</a><a href="/es/blog" class="tab-btn active">Blog</a>
+        <a href="/es/" class="tab-btn">Inicio</a><a href="/indian-units" class="tab-btn">Unidades Indias</a><a href="/es/time-zone" class="tab-btn">Zonas Horarias</a><a href="/es/currency" class="tab-btn">Divisas</a><a href="/es/length" class="tab-btn">Longitud</a><a href="/es/temperature" class="tab-btn">Temperatura</a><a href="/es/weight-mass" class="tab-btn">Masa</a><a href="/es/volume-capacity" class="tab-btn">Capacidad</a><a href="/es/time-duration" class="tab-btn">Duración</a><a href="/es/area" class="tab-btn">Área</a><a href="/es/speed" class="tab-btn">Velocidad</a><a href="/es/file-media" class="tab-btn">Archivos</a><a href="/es/blog" class="tab-btn active">Blog</a>
       </nav>
       <div class="lang-switcher" aria-label="Selector de idioma">
-        <a href="/blog/${selectedTarget.slug}" title="English">🇬🇧 EN</a><span class="lang-sep">|</span><span class="active" title="Español">🇪🇸 ES</span><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">🇩🇪 DE</a><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">🇧🇷 PT</a>
+        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><span class="active" title="Español">ES</span><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>
       </div>
     </div>
   </header>
@@ -1667,10 +1646,10 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <a href="/de/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menü</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <nav class="nav-tabs" aria-label="Kategorie-Navigation">
-        <a href="/de/" class="tab-btn">Startseite</a><a href="/indian-units" class="tab-btn">🇮🇳 Indische Einheiten</a><a href="/de/time-zone" class="tab-btn">Zeitzone</a><a href="/de/currency" class="tab-btn">Währung</a><a href="/de/length" class="tab-btn">Länge</a><a href="/de/temperature" class="tab-btn">Temperatur</a><a href="/de/weight-mass" class="tab-btn">Gewicht</a><a href="/de/volume-capacity" class="tab-btn">Volumen</a><a href="/de/time-duration" class="tab-btn">Zeit</a><a href="/de/area" class="tab-btn">Fläche</a><a href="/de/speed" class="tab-btn">Geschwindigkeit</a><a href="/de/file-media" class="tab-btn">Dateien</a><a href="/de/blog" class="tab-btn active">Blog</a>
+        <a href="/de/" class="tab-btn">Startseite</a><a href="/indian-units" class="tab-btn">Indische Einheiten</a><a href="/de/time-zone" class="tab-btn">Zeitzone</a><a href="/de/currency" class="tab-btn">Währung</a><a href="/de/length" class="tab-btn">Länge</a><a href="/de/temperature" class="tab-btn">Temperatur</a><a href="/de/weight-mass" class="tab-btn">Gewicht</a><a href="/de/volume-capacity" class="tab-btn">Volumen</a><a href="/de/time-duration" class="tab-btn">Zeit</a><a href="/de/area" class="tab-btn">Fläche</a><a href="/de/speed" class="tab-btn">Geschwindigkeit</a><a href="/de/file-media" class="tab-btn">Dateien</a><a href="/de/blog" class="tab-btn active">Blog</a>
       </nav>
       <div class="lang-switcher" aria-label="Sprachauswahl">
-        <a href="/blog/${selectedTarget.slug}" title="English">🇬🇧 EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">🇪🇸 ES</a><span class="lang-sep">|</span><span class="active" title="Deutsch">🇩🇪 DE</span><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">🇧🇷 PT</a>
+        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">ES</a><span class="lang-sep">|</span><span class="active" title="Deutsch">DE</span><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>
       </div>
     </div>
   </header>
@@ -1728,10 +1707,10 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <a href="/pt/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menu</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <nav class="nav-tabs" aria-label="Navegação por categorias">
-        <a href="/pt/" class="tab-btn">Início</a><a href="/indian-units" class="tab-btn">🇮🇳 Unidades Indianas</a><a href="/pt/time-zone" class="tab-btn">Fuso Horário</a><a href="/pt/currency" class="tab-btn">Moedas</a><a href="/pt/length" class="tab-btn">Comprimento</a><a href="/pt/temperature" class="tab-btn">Temperatura</a><a href="/pt/weight-mass" class="tab-btn">Peso</a><a href="/pt/volume-capacity" class="tab-btn">Volume</a><a href="/pt/time-duration" class="tab-btn">Tempo</a><a href="/pt/area" class="tab-btn">Área</a><a href="/pt/speed" class="tab-btn">Velocidade</a><a href="/pt/file-media" class="tab-btn">Arquivos</a><a href="/pt/blog" class="tab-btn active">Blog</a>
+        <a href="/pt/" class="tab-btn">Início</a><a href="/indian-units" class="tab-btn">Unidades Indianas</a><a href="/pt/time-zone" class="tab-btn">Fuso Horário</a><a href="/pt/currency" class="tab-btn">Moedas</a><a href="/pt/length" class="tab-btn">Comprimento</a><a href="/pt/temperature" class="tab-btn">Temperatura</a><a href="/pt/weight-mass" class="tab-btn">Peso</a><a href="/pt/volume-capacity" class="tab-btn">Volume</a><a href="/pt/time-duration" class="tab-btn">Tempo</a><a href="/pt/area" class="tab-btn">Área</a><a href="/pt/speed" class="tab-btn">Velocidade</a><a href="/pt/file-media" class="tab-btn">Arquivos</a><a href="/pt/blog" class="tab-btn active">Blog</a>
       </nav>
       <div class="lang-switcher" aria-label="Seletor de idioma">
-        <a href="/blog/${selectedTarget.slug}" title="English">🇬🇧 EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">🇪🇸 ES</a><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">🇩🇪 DE</a><span class="lang-sep">|</span><span class="active" title="Português">🇧🇷 PT</span>
+        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">ES</a><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a><span class="lang-sep">|</span><span class="active" title="Português">PT</span>
       </div>
     </div>
   </header>
