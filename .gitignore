@@ -4,3 +4,7 @@ node_modules/
 service-account.json
 *service-account*.json
 
+scripts/automation-drive-sheet.*
+scripts/raw-keywords.csv
+scripts/inspect-drive-xlsx.js
+scripts/test-publisher-*.js
