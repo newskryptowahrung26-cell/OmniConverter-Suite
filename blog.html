@@ -201,17 +201,17 @@
     </article>
   
 
-    <!-- ORPHAN_LINKS_BLOCK -->
+    <!-- DIRECTORY_BLOCK -->
     <section class="content-section" style="margin-top:2rem;">
       <h2 style="font-size:1.2rem; font-weight:800; margin-bottom:1rem;">Complete Directory of Conversion Guides (56 Guides)</h2>
       <ul style="line-height:1.9; color:var(--text-muted); padding-left:1.5rem; display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:0.4rem;">
+        <li><a href="/blog/95-usd-to-gbp" style="color:var(--primary-600); font-weight:600;">95 Usd To Gbp</a></li>
+        <li><a href="/blog/1500-usd-to-aud" style="color:var(--primary-600); font-weight:600;">1500 Usd To Aud</a></li>
         <li><a href="/blog/1-bigha-in-square-feet" style="color:var(--primary-600); font-weight:600;">1 Bigha in Square Feet (Land Guide)</a></li>
         <li><a href="/blog/1-crore-in-millions" style="color:var(--primary-600); font-weight:600;">1 Crore in Millions (Number Guide)</a></li>
         <li><a href="/blog/1-gaj-in-square-feet" style="color:var(--primary-600); font-weight:600;">1 Gaj in Square Feet (Land Guide)</a></li>
         <li><a href="/blog/1-guntha-in-sq-ft" style="color:var(--primary-600); font-weight:600;">1 Guntha in Sq Ft (Land Guide)</a></li>
         <li><a href="/blog/1-tola-in-grams" style="color:var(--primary-600); font-weight:600;">1 Tola in Grams (Gold Weight Guide)</a></li>
-        <li><a href="/blog/1500-usd-to-aud" style="color:var(--primary-600); font-weight:600;">1500 Usd To Aud</a></li>
-        <li><a href="/blog/95-usd-to-gbp" style="color:var(--primary-600); font-weight:600;">95 Usd To Gbp</a></li>
         <li><a href="/blog/65-kg-pounds" style="color:var(--primary-600); font-weight:600;">65 Kg Pounds</a></li>
         <li><a href="/blog/165-lbs-to-kg" style="color:var(--primary-600); font-weight:600;">165 Lbs To Kg</a></li>
         <li><a href="/blog/14-stone-in-pounds" style="color:var(--primary-600); font-weight:600;">14 Stone In Pounds</a></li>
@@ -369,7 +369,8 @@
         }).sort((a, b) => {
           const dateA = new Date(a.publicationDate || a.date || '1970-01-01').getTime();
           const dateB = new Date(b.publicationDate || b.date || '1970-01-01').getTime();
-          return dateB - dateA; // Newest first (descending)
+          if (dateB !== dateA) return dateB - dateA;
+          return (a.order || 0) - (b.order || 0);
         });
       }
 
