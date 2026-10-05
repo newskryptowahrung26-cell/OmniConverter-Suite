@@ -52,7 +52,7 @@ const BLOG_POSTS = [
     "author": "OmniConverter Editorial Team",
     "readTime": "4 min read",
     "icon": "🇮🇳",
-    "image": "https://images.unsplash.com/photo-1524813686514-a57563d77d66?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
     "summary": "How many square feet are in 1 Guntha? Convert Guntha to Sq Ft, Square Yards, Bigha, and Acres for Maharashtra, Karnataka, Gujarat, and Telangana.",
     "content": "<span class=\"formula-badge\">Official Indian Unit Calculation Guide</span>\n      <h1 style=\"font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;\">1 Guntha in Square Feet (Land Measurement Guide)</h1>\n      <p>In Maharashtra, Karnataka, Gujarat, Goa, and Telangana, the <strong>Guntha (गुंठा)</strong> is the standard legal revenue unit for residential and agricultural plots.</p>\n    <div style=\"background:var(--bg-elevated); border-left:4px solid var(--primary-600); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;\">\n      <h3 style=\"margin:0 0 0.5rem 0; font-size:1.15rem; color:var(--text-main);\">Quick Summary Answer</h3>\n      <p style=\"margin:0; font-size:1.3rem; font-weight:800; color:var(--primary-600);\">1 Guntha = Exactly 1,089 Square Feet (sq ft)</p>\n      <p style=\"margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-muted);\">40 Gunthas equal exactly 1 Acre (43,560 sq ft). 1 Guntha also equals 121 Square Yards (Gaj).</p>\n    </div>"
   },

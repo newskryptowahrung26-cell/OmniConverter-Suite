@@ -37,7 +37,7 @@ const imageMap = {
     alt: 'Architectural blueprint and construction measuring tools for land surveying'
   },
   '1-guntha-in-sq-ft': {
-    image: 'https://images.unsplash.com/photo-1524813686514-a57563d77d66?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
     alt: 'Rural land surveying and property plots for Guntha measurement'
   },
   '1-tola-in-grams': {
