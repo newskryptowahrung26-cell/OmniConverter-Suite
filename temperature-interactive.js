@@ -1,7 +1,3 @@
-/**
- * Enhanced Interactive Features for Temperature Converter Page
- * Multi-scale live grid, Quick Presets, and Temperature Difference (ΔT) Mode.
- */
 import {
   UNITS,
   toCelsius,
@@ -11,7 +7,6 @@ import {
   convertDeltaTemperature,
   formatNumber
 } from './converter.js';
-
 document.addEventListener('DOMContentLoaded', () => {
   const tempInput = document.getElementById('tempInput');
   const fromSelect = document.getElementById('fromSelect');
@@ -25,19 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const modeAbsoluteBtn = document.getElementById('modeAbsoluteBtn');
   const modeDeltaBtn = document.getElementById('modeDeltaBtn');
   const modeDesc = document.getElementById('modeDesc');
-
   let currentMode = 'absolute'; // 'absolute' | 'delta'
-
-  // Update Multi-Scale Grid
   function updateAllScalesGrid(val, fromUnit) {
     if (!allScalesGrid) return;
     if (val === '' || isNaN(Number(val))) {
       allScalesGrid.style.display = 'none';
       return;
     }
-
     if (currentMode === 'delta') {
-      // In Delta mode, calculate delta for all units
       let html = '';
       for (const [key, meta] of Object.entries(UNITS)) {
         const res = convertDeltaTemperature(val, fromUnit, key);
@@ -53,13 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
       allScalesGrid.innerHTML = html;
       allScalesGrid.style.display = 'grid';
     } else {
-      // Absolute mode
       const allResults = convertAllScales(val, fromUnit);
       if (!allResults) {
         allScalesGrid.style.display = 'none';
         return;
       }
-
       let html = '';
       for (const [key, item] of Object.entries(allResults)) {
         const isCurrent = key === fromUnit;
@@ -74,8 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       allScalesGrid.innerHTML = html;
       allScalesGrid.style.display = 'grid';
     }
-
-    // Attach copy event listeners
     allScalesGrid.querySelectorAll('.copy-scale-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const valToCopy = btn.getAttribute('data-val');
@@ -97,8 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  // Handle Mode Switch
   function setMode(mode) {
     currentMode = mode;
     if (mode === 'delta') {
@@ -130,8 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modeDesc.innerHTML = '<strong>Absolute Temperature Mode:</strong> Standard thermometer readings with fixed scale zero points (0 °C = 32 °F = 273.15 K).';
       }
     }
-
-    // Trigger update
     if (tempInput) {
       const val = tempInput.value.trim();
       if (val !== '') {
@@ -156,21 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-
   if (modeAbsoluteBtn) modeAbsoluteBtn.addEventListener('click', () => setMode('absolute'));
   if (modeDeltaBtn) modeDeltaBtn.addEventListener('click', () => setMode('delta'));
-
-  // Quick Preset Buttons
   document.querySelectorAll('.temp-preset-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const val = btn.getAttribute('data-val');
       const unit = btn.getAttribute('data-unit');
       const targetUnit = btn.getAttribute('data-target') || (unit === 'C' ? 'F' : 'C');
-
       if (tempInput) tempInput.value = val;
       if (fromSelect) fromSelect.value = unit;
       if (toSelect) toSelect.value = targetUnit;
-
       if (currentMode === 'delta') {
         const res = convertDeltaTemperature(val, unit, targetUnit);
         if (res && !res.error) {
@@ -188,12 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if (resultContainer) resultContainer.style.display = 'block';
         }
       }
-
       updateAllScalesGrid(val, unit);
     });
   });
-
-  // Listen to input and change events
   if (tempInput) {
     tempInput.addEventListener('input', () => {
       const val = tempInput.value.trim();
@@ -209,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateAllScalesGrid(val, fromSelect.value);
     });
   }
-
   if (fromSelect) {
     fromSelect.addEventListener('change', () => {
       const val = tempInput.value.trim();
@@ -225,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateAllScalesGrid(val, fromSelect.value);
     });
   }
-
   if (toSelect) {
     toSelect.addEventListener('change', () => {
       const val = tempInput.value.trim();
@@ -240,8 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // Initial calculation on load
   setTimeout(() => {
     if (tempInput && tempInput.value.trim() !== '') {
       updateAllScalesGrid(tempInput.value.trim(), fromSelect ? fromSelect.value : 'C');
