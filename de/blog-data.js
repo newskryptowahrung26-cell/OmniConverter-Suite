@@ -1,5 +1,20 @@
-// Synchronisierte Blogdaten auf Deutsch (Gesamt: 51 Artikel)
+// Synchronisierte Blogdaten auf Deutsch (Gesamt: 52 Artikel)
 const BLOG_POSTS = [
+  {
+    "id": "1500-usd-in-gbp",
+    "slug": "/de/blog/1500-usd-in-gbp",
+    "title": "1500 USD in GBP",
+    "date": "2026-10-06",
+    "publicationDate": "2026-10-06T00:13:39.515Z",
+    "category": "Währung & Devisen",
+    "categoryKey": "Currency & Forex",
+    "author": "OmniConverter Redaktionsteam",
+    "readTime": "4 Min. Lesezeit",
+    "icon": "💱",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+    "summary": "Konvertieren Sie 1500 USD in GBP präzise mit Schritt-für-Schritt-Formeln, mentalen Rechentricks, Umrechnungstabellen und Live-Rechner.",
+    "order": 0
+  },
   {
     "id": "95-usd-in-gbp",
     "slug": "/de/blog/95-usd-in-gbp",
@@ -13,7 +28,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     "summary": "Rechne 95 usd in gbp präzise um – mit Schritt-für-Schritt-Formeln, Kopfrechentricks, Umrechnungstabellen und Live-Rechner.",
-    "order": 0
+    "order": 1
   },
   {
     "id": "1500-usd-in-aud",
@@ -28,7 +43,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1670071479248-cc25dfd919a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUwMCUyMHVzZCUyMHRvJTIwYXVkfGVufDB8fHx8MTc5MTE1OTE2OXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 1500 US-Dollar in Australische Dollar (AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 1
+    "order": 2
   },
   {
     "id": "65-kg-in-pfund",
@@ -43,7 +58,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1664352603314-6047584b3e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8NjUlMjBrZyUyMHBvdW5kc3xlbnwwfHx8fDE3OTEwODMxNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 65 Kilogramm in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 2
+    "order": 3
   },
   {
     "id": "165-pfund-in-kg",
@@ -58,7 +73,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1689514226761-336eaf77e311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MTY1JTIwbGJzJTIwdG8lMjBrZ3xlbnwwfHx8fDE3OTA5ODYzMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 165 Pfund (lbs) in Kilogramm. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 3
+    "order": 4
   },
   {
     "id": "14-stone-in-pfund",
@@ -73,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1592899436433-8abe4656570c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTQlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc5MDg5OTk0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 14 Stone in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 4
+    "order": 5
   },
   {
     "id": "15-meter-in-fuss",
@@ -88,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "https://images.unsplash.com/photo-1600518386631-1deefa2dc398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUlMjBtZXRlcnMlMjB0byUyMGZlZXR8ZW58MHx8fHwxNzkwODQxMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 15 Meter in Fuß. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 5
+    "order": 6
   },
   {
     "id": "16-unzen-in-milliliter",
@@ -103,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "https://images.unsplash.com/photo-1523621509625-54893aa665ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTYlMjBvdW5jZXMlMjB0byUyMG1pbGxpbGl0ZXJzfGVufDB8fHx8MTc5MDgxMzU3Mnww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 16 Unzen in Milliliter (fl oz in ml). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 6
+    "order": 7
   },
   {
     "id": "180-pfund-in-stone",
@@ -118,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1629878734837-9506604e605a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTgwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTA3MjcxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 180 Pfund (lbs) in Stone. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 7
+    "order": 8
   },
   {
     "id": "lakh-in-usd-umrechnen",
@@ -133,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1593672715438-d88a70629abe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMGxha2glMjB0byUyMHVzZHxlbnwwfHx8fDE3OTA2NDA3Nzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Lakh in US-Dollar umrechnen. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 8
+    "order": 9
   },
   {
     "id": "5-usd-in-aud",
@@ -148,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 5 US-Dollar in Australische Dollar (AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 9
+    "order": 10
   },
   {
     "id": "3-tassen-in-ml",
@@ -163,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1570784331625-907b0c979f63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MyUyMGN1cHMlMjBpbiUyMG1sfGVufDB8fHx8MTc5MDUxMjc4OHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 3 Tassen in Milliliter. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 10
+    "order": 11
   },
   {
     "id": "waehrung-jpy-in-inr",
@@ -178,7 +193,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für Japanischer Yen in Indische Rupien (JPY in INR). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 11
+    "order": 12
   },
   {
     "id": "waehrung-tuerkische-lira",
@@ -193,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1579807102908-396b3b737800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y3VycmVuY3klMjBmb3IlMjB0dXJraXNoJTIwbGlyYXxlbnwwfHx8fDE3OTAyMDkwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Währung Türkische Lira (TRY). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 12
+    "order": 13
   },
   {
     "id": "convertor-oder-converter",
@@ -208,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1595428316411-9e9669619c4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydG9yJTIwb3IlMjBjb252ZXJ0ZXJ8ZW58MHx8fHwxNzkwMTIyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Convertor oder Converter? Richtige Schreibweise. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 13
+    "order": 14
   },
   {
     "id": "12-grad-celsius-in-fahrenheit",
@@ -223,7 +238,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "https://images.unsplash.com/photo-1740560516658-5a94b0b715ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTIlMjBkZWdyZWVzJTIwY2Vsc2l1cyUyMHRvJTIwZmFocmVuaGVpdHxlbnwwfHx8fDE3OTAwNTc2NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 12 Grad Celsius in Fahrenheit. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 14
+    "order": 15
   },
   {
     "id": "170-pfund-in-stone",
@@ -238,7 +253,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1709247389603-ba5c59e86199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTcwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTAwNzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 170 Pfund (lbs) in Stone. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 15
+    "order": 16
   },
   {
     "id": "20-britische-pfund-in-australische-dollar",
@@ -253,7 +268,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 20 Britische Pfund in Australische Dollar (GBP in AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 16
+    "order": 17
   },
   {
     "id": "199-usd-in-aud",
@@ -268,7 +283,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1593672755342-741a7f868732?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTk5JTIwdXNkJTIwaW4lMjBhdWR8ZW58MHx8fHwxNzg5OTkyNzc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 199 US-Dollar in Australische Dollar (AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 17
+    "order": 18
   },
   {
     "id": "2000-dollar-in-pfund",
@@ -283,7 +298,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1607166602071-847b7d110781?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MjAwMCUyMGRvbGxhcnMlMjBpbiUyMHBvdW5kc3xlbnwwfHx8fDE3OTAwMTQzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 2000 US-Dollar in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 18
+    "order": 19
   },
   {
     "id": "80-kilo-in-pfund",
@@ -298,7 +313,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ODAlMjBraWxvJTIwbGJzfGVufDB8fHx8MTc4OTk0OTcwMHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 80 Kilo in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 19
+    "order": 20
   },
   {
     "id": "mastercard-wechselkurse",
@@ -313,7 +328,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1589758438368-0ad531db3366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8bWFzdGVyY2FyZCUyMGZvcmVpZ24lMjBleGNoYW5nZSUyMHJhdGV8ZW58MHx8fHwxNzg5OTcxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Mastercard Wechselkurse und Auslandsgebühren. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 20
+    "order": 21
   },
   {
     "id": "10-milliarden-won-in-gbp",
@@ -328,7 +343,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1703319953489-996cf05b6958?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTAlMjBiaWxsaW9uJTIwd29uJTIwdG8lMjBnYnB8ZW58MHx8fHwxNzg5ODg0NzkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 10 Milliarden Won in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 21
+    "order": 22
   },
   {
     "id": "32-usd-in-gbp",
@@ -343,7 +358,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1703437874457-560d410f82fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzIlMjB1c2QlMjB0byUyMGdicHxlbnwwfHx8fDE3ODk5Mjc5MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 32 US-Dollar in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 22
+    "order": 23
   },
   {
     "id": "dateityp-in-pdf-umwandeln",
@@ -358,7 +373,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1596299786121-66852dfb4b61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMGZpbGUlMjB0eXBlJTIwdG8lMjBwZGZ8ZW58MHx8fHwxNzg5ODYzMzI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Dateityp in PDF umwandeln. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 23
+    "order": 24
   },
   {
     "id": "pdf-formular-umwandeln",
@@ -373,7 +388,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1631651693480-97f1132e333d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMHBkZiUyMGZvcm18ZW58MHx8fHwxNzg5OTAxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für PDF-Formular umwandeln. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 24
+    "order": 25
   },
   {
     "id": "wochenrechner",
@@ -388,7 +403,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1648201637025-1c77b9be3013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8d2Vla3MlMjBjYWxjdWxhdG9yfGVufDB8fHx8MTc4OTkwNjM3MXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Wochenrechner: Wochen und Tage berechnen. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 25
+    "order": 26
   },
   {
     "id": "13-stone-in-pfund",
@@ -403,7 +418,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1646829873498-e874cfa27933?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTMlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc4OTg0MTQ5OXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 13 Stone in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 26
+    "order": 27
   },
   {
     "id": "71-pfund-in-kg",
@@ -418,7 +433,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1559724087-a45f6a7a35d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzElMjBwb3VuZHMlMjB0byUyMGtnfGVufDB8fHx8MTc4OTc3Njg2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 71 Pfund (lbs) in Kilogramm. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 27
+    "order": 28
   },
   {
     "id": "dateiumwandler",
@@ -433,7 +448,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1569235186275-626cb53b83ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ZmlsZSUyMGNoYW5nZXJ8ZW58MHx8fHwxNzg5ODE5OTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Dateiumwandler und Formatwechsler. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 28
+    "order": 29
   },
   {
     "id": "rupiah-in-aud",
@@ -448,7 +463,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1619149808494-d9a0a7eba166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8cnVwaWFoJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzg5Nzk4Mzk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Indonesische Rupiah in Australische Dollar (IDR in AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 29
+    "order": 30
   },
   {
     "id": "300-dollar-in-gbp",
@@ -463,7 +478,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1703925153970-0e2e3a899e66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzAwJTIwZG9sbGFycyUyMGluJTIwZ2JwfGVufDB8fHx8MTc4OTcxMzUyOHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 300 US-Dollar in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 30
+    "order": 31
   },
   {
     "id": "indonesische-waehrung-ratgeber",
@@ -478,7 +493,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Indonesische Währung: Ratgeber zur Rupiah (IDR). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 31
+    "order": 32
   },
   {
     "id": "koreanischer-won-in-aud",
@@ -493,7 +508,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für Koreanischer Won in Australische Dollar (AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 32
+    "order": 33
   },
   {
     "id": "umrechner-app-herunterladen",
@@ -508,7 +523,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1663124178703-d2d6a333e6c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydGVyJTIwYXBwbGljYXRpb24lMjBkb3dubG9hZHxlbnwwfHx8fDE3ODk3NTUxMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Umrechner-App herunterladen. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 33
+    "order": 34
   },
   {
     "id": "1-aud-in-vnd",
@@ -523,7 +538,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1608731433809-149763562571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MSUyMGF1ZCUyMHRvJTIwdm5kfGVufDB8fHx8MTc4OTY0NzQ5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 1 AUD in VND (Australischer Dollar in Vietnamesische Dong). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 34
+    "order": 35
   },
   {
     "id": "1-milliarde-won-in-gbp",
@@ -538,7 +553,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Milliarde Won in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 35
+    "order": 36
   },
   {
     "id": "dateiformat-aendern-anleitung",
@@ -553,7 +568,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1699275303864-67b6e1e11706?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aG93JTIwdG8lMjBjaGFuZ2UlMjBmaWxlJTIwZm9ybWF0fGVufDB8fHx8MTc4OTY2ODc5OHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Dateiformat ändern: Anleitung Schritt für Schritt. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 36
+    "order": 37
   },
   {
     "id": "1-gallone-in-liter",
@@ -568,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Gallone in Liter. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "1-stone-in-kg",
@@ -583,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Stone in Kilogramm. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "1-teeloeffel-in-ml",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Teelöffel in Milliliter (TL in ml). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "10-celsius-in-fahrenheit",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "https://images.unsplash.com/photo-1516431883659-655d41c09bf9?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 10 Grad Celsius in Fahrenheit. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "100-kg-in-pfund",
@@ -628,7 +643,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 100 Kilogramm in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "50-fahrenheit-in-celsius",
@@ -643,7 +658,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 50 Grad Fahrenheit in Celsius. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 42
+    "order": 43
   },
   {
     "id": "500-ml-in-tassen",
@@ -658,7 +673,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 500 Milliliter in Tassen. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 43
+    "order": 44
   },
   {
     "id": "60-mph-in-kmh",
@@ -673,7 +688,7 @@ const BLOG_POSTS = [
     "icon": "⚡",
     "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 60 MPH in KM/H (Meilen in km/h). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 44
+    "order": 45
   },
   {
     "id": "1-3-tasse-in-gramm",
@@ -688,7 +703,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1588467850695-a898367ce465?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1/3 Tasse in Gramm. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 45
+    "order": 46
   },
   {
     "id": "1-4-tasse-in-ml",
@@ -703,7 +718,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1/4 Tasse in Milliliter. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 46
+    "order": 47
   },
   {
     "id": "1-bar-in-psi",
@@ -718,7 +733,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Bar in PSI (Druckumrechnung). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 47
+    "order": 48
   },
   {
     "id": "1-tasse-milch-in-ml",
@@ -733,7 +748,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 1 Tasse Milch in Milliliter. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 48
+    "order": 49
   },
   {
     "id": "100-fahrenheit-in-celsius",
@@ -748,7 +763,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 100 Grad Fahrenheit in Celsius. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 49
+    "order": 50
   },
   {
     "id": "100-usd-in-aud",
@@ -763,7 +778,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80",
     "summary": "Genaue Anleitung für 100 US-Dollar in Australische Dollar (AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 50
+    "order": 51
   }
 ];
 

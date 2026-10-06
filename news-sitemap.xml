@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/1500-usd-to-gbp</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-06</news:publication_date>
+      <news:title>1500 Usd To Gbp</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/95-usd-to-gbp</loc>
     <news:news>
       <news:publication>
@@ -76,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-10-05</news:publication_date>
       <news:title>1 Tola in Grams (Gold Weight Guide)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/65-kg-pounds</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-04</news:publication_date>
-      <news:title>65 Kg Pounds</news:title>
     </news:news>
   </url>
 </urlset>
