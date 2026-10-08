@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (58 Articles)
+## Published Articles & Guides Directory (59 Articles)
+- [4 Meters To Feet](https://www.omniconverter.co.uk/blog/4-meters-to-feet): Convert 4 meters to feet accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [2000 Usd To Gbp](https://www.omniconverter.co.uk/blog/2000-usd-to-gbp): Convert 2000 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [1500 Usd To Gbp](https://www.omniconverter.co.uk/blog/1500-usd-to-gbp): Convert 1500 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [95 Usd To Gbp](https://www.omniconverter.co.uk/blog/95-usd-to-gbp): Convert 95 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
