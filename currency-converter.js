@@ -124,9 +124,12 @@ export async function fetchLiveRates() {
           ? new Date(data.time_last_update_utc).toLocaleDateString('en-GB', {
               day: 'numeric',
               month: 'short',
-              year: 'numeric'
-            })
-          : new Date().toLocaleDateString('en-GB');
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              timeZone: 'UTC'
+            }) + ' UTC'
+          : new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + ' UTC';
 
         try {
           localStorage.setItem(CACHE_KEY, JSON.stringify(data.rates));

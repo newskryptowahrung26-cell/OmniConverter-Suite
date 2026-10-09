@@ -57,7 +57,7 @@ allFiles.forEach(f => {
 
 const orphanPages = [];
 urlToInlinks.forEach((inlinks, url) => {
-  if (inlinks.size === 0 && url !== '/') {
+  if (inlinks.size === 0 && url !== '/' && url !== '/404') {
     orphanPages.push({ url, inlinks: inlinks.size });
   }
 });

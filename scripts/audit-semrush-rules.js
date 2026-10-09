@@ -43,6 +43,7 @@ if (!fs.existsSync('robots.txt')) {
 
 // 3. Audit each HTML file
 for (const file of htmlFiles) {
+  if (file === '404.html' || file.endsWith('/404.html') || file.endsWith('\\404.html')) continue;
   const content = fs.readFileSync(file, 'utf8');
   
   // Title tag
