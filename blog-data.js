@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/blog/2000-usd-to-aud",
     "title": "2000 Usd To Aud",
     "date": "2026-10-09",
-    "publicationDate": "2026-10-09T00:15:45.313Z",
+    "publicationDate": "2026-10-09T00:00:00Z",
     "category": "Currency & Forex",
     "categoryKey": "Currency & Forex",
     "author": "OmniConverter Editorial Team",

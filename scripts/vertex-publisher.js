@@ -1356,10 +1356,9 @@ ${selectedTarget.snippetStrategy ? `
   let esArticle = null, deArticle = null, ptArticle = null;
   const urlsToNotify = [`https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`];
 
-  try {
-    console.log('[Auto-Publisher] Translating article into ES, DE, and PT using Gemini...');
-    const transPrompt = `You are a native technical translator and SEO localization expert for OmniConverter.
-Translate the following English conversion guide into Spanish (es), German (de), and Brazilian Portuguese (pt).
+  async function translateArticleForLang(langCode, langName) {
+    const prompt = `You are a native technical translator and SEO localization expert for OmniConverter.
+Translate the following English conversion guide into ${langName} (${langCode}).
 
 English Title: "${title}"
 English Slug: "${selectedTarget.slug}"
@@ -1370,57 +1369,46 @@ ${articleBodyHtml}
 
 Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
 {
-  "es": {
-    "title": "Spanish Title",
-    "slug": "spanish-url-slug",
-    "description": "Spanish meta description under 160 characters",
-    "bodyHtml": "Translated Spanish HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
-  },
-  "de": {
-    "title": "German Title",
-    "slug": "german-url-slug",
-    "description": "German meta description under 160 characters",
-    "bodyHtml": "Translated German HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
-  },
-  "pt": {
-    "title": "Portuguese Title",
-    "slug": "portuguese-url-slug",
-    "description": "Portuguese meta description under 160 characters",
-    "bodyHtml": "Translated Portuguese HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
-  }
+  "title": "${langName} Title (SEO friendly)",
+  "slug": "${langCode}-url-slug",
+  "description": "${langName} meta description under 160 characters",
+  "bodyHtml": "Translated ${langName} HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
 }`;
 
-    let transResp = null;
     for (const model of allCandidates) {
       try {
-        transResp = await ai.models.generateContent({ model, contents: transPrompt });
-        if (transResp && transResp.text) break;
+        const resp = await ai.models.generateContent({ model, contents: prompt });
+        if (resp && resp.text) {
+          const clean = resp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+          const parsed = JSON.parse(clean);
+          if (parsed && parsed.title && parsed.bodyHtml) {
+            parsed.slug = slugify(parsed.slug || parsed.title);
+            return parsed;
+          }
+        }
       } catch (e) {
         // try next candidate
       }
     }
+    return null;
+  }
 
-    if (transResp && transResp.text) {
-      const cleanJson = transResp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
-      const locData = JSON.parse(cleanJson);
-      if (locData.es && locData.de && locData.pt) {
-        esArticle = locData.es;
-        deArticle = locData.de;
-        ptArticle = locData.pt;
+  try {
+    console.log('[Auto-Publisher] Translating article into ES, DE, and PT using Gemini (independent requests)...');
+    esArticle = await translateArticleForLang('es', 'Spanish');
+    if (esArticle) console.log(`[OK] Spanish translation ready: ${esArticle.slug}`);
 
-        esArticle.slug = slugify(esArticle.slug || esArticle.title);
-        deArticle.slug = slugify(deArticle.slug || deArticle.title);
-        ptArticle.slug = slugify(ptArticle.slug || ptArticle.title);
+    deArticle = await translateArticleForLang('de', 'German');
+    if (deArticle) console.log(`[OK] German translation ready: ${deArticle.slug}`);
 
-        urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
-        urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
-        urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
+    ptArticle = await translateArticleForLang('pt', 'Portuguese');
+    if (ptArticle) console.log(`[OK] Portuguese translation ready: ${ptArticle.slug}`);
 
-        console.log(`[OK] Multilingual translations prepared: ES (${esArticle.slug}), DE (${deArticle.slug}), PT (${ptArticle.slug})`);
-      }
-    }
+    if (esArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
+    if (deArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
+    if (ptArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
   } catch (transErr) {
-    console.warn('[WARN] Multilingual translation error (falling back to English):', transErr.message);
+    console.warn('[WARN] Multilingual translation error:', transErr.message);
   }
 
   // Detect appropriate converter tool link based on keyword
