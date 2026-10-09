@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/es/blog/4-metros-a-pies",
     "title": "4 Metros a Pies",
     "date": "2026-10-08",
-    "publicationDate": "2026-10-08T00:13:04.362Z",
+    "publicationDate": "2026-10-08T00:00:00Z",
     "category": "Longitud y Distancia",
     "categoryKey": "Length & Distance",
     "author": "Equipo Editorial OmniConverter",

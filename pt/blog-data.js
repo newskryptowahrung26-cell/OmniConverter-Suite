@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/pt/blog/4-metros-para-pes",
     "title": "4 Metros para Pés",
     "date": "2026-10-08",
-    "publicationDate": "2026-10-08T00:13:04.362Z",
+    "publicationDate": "2026-10-08T00:00:00Z",
     "category": "Comprimento e Distância",
     "categoryKey": "Length & Distance",
     "author": "Equipe Editorial OmniConverter",

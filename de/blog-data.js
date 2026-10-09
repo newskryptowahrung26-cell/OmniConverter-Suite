@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/de/blog/4-meter-in-fuss",
     "title": "4 Meter in Fuß",
     "date": "2026-10-08",
-    "publicationDate": "2026-10-08T00:13:04.362Z",
+    "publicationDate": "2026-10-08T00:00:00Z",
     "category": "Länge & Distanz",
     "categoryKey": "Length & Distance",
     "author": "OmniConverter Redaktionsteam",
