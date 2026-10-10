@@ -35,7 +35,7 @@ if (!fs.existsSync('robots.txt')) {
 }
 
 // 2. Sitemap files exist
-['sitemap.xml', 'sitemap-en.xml', 'sitemap-es.xml', 'sitemap-de.xml', 'sitemap-pt.xml'].forEach(sm => {
+['sitemap.xml', 'news-sitemap.xml'].forEach(sm => {
   if (!fs.existsSync(sm)) {
     issues.push(`[SITEMAP] File ${sm} is missing`);
   }

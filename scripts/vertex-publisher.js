@@ -499,28 +499,10 @@ function rebuildBlogData() {
   }
 
   const enPosts = processBlogDirectory('en');
-  const esPosts = processBlogDirectory('es');
-  const dePosts = processBlogDirectory('de');
-  const ptPosts = processBlogDirectory('pt');
 
-  // Write all 4 blog-data.js files
+  // Write English blog-data.js
   fs.writeFileSync('blog-data.js', `// Automatically synchronized blog data (Total: ${enPosts.length} articles)\nconst BLOG_POSTS = ${JSON.stringify(enPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
   console.log(`[OK] blog-data.js rebuilt with ${enPosts.length} articles.`);
-
-  if (esPosts.length > 0) {
-    fs.writeFileSync('es/blog-data.js', `// Datos sincronizados del blog en Español (Total: ${esPosts.length} artículos)\nconst BLOG_POSTS = ${JSON.stringify(esPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
-    console.log(`[OK] es/blog-data.js rebuilt with ${esPosts.length} articles.`);
-  }
-
-  if (dePosts.length > 0) {
-    fs.writeFileSync('de/blog-data.js', `// Synchronisierte Blogdaten auf Deutsch (Gesamt: ${dePosts.length} Artikel)\nconst BLOG_POSTS = ${JSON.stringify(dePosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
-    console.log(`[OK] de/blog-data.js rebuilt with ${dePosts.length} articles.`);
-  }
-
-  if (ptPosts.length > 0) {
-    fs.writeFileSync('pt/blog-data.js', `// Dados sincronizados do blog em Português (Total: ${ptPosts.length} artigos)\nconst BLOG_POSTS = ${JSON.stringify(ptPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
-    console.log(`[OK] pt/blog-data.js rebuilt with ${ptPosts.length} articles.`);
-  }
 
   // Update static directory blocks in blog hub HTML files
   function updateHubDirectory(hubFile, posts, lang) {
@@ -548,17 +530,14 @@ function rebuildBlogData() {
   }
 
   updateHubDirectory('blog.html', enPosts, 'en');
-  updateHubDirectory('es/blog.html', esPosts, 'es');
-  updateHubDirectory('de/blog.html', dePosts, 'de');
-  updateHubDirectory('pt/blog.html', ptPosts, 'pt');
 
-  // Dynamic multilingual sitemap generation for EN, ES, DE, PT
+  // English-only sitemap generation
   function generateUrlSet(urls) {
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
     for (const u of urls) {
       let prio = '0.8';
       let freq = 'weekly';
-      if (u === 'https://www.omniconverter.co.uk/' || u.endsWith('/es/') || u.endsWith('/de/') || u.endsWith('/pt/')) {
+      if (u === 'https://www.omniconverter.co.uk/') {
         prio = '1.0';
         freq = 'daily';
       } else if (u.includes('/privacy-policy') || u.includes('/terms') || u.includes('/sitemap') || u.includes('/about') || u.includes('/contact')) {
@@ -572,7 +551,7 @@ function rebuildBlogData() {
   }
 
   const enUrls = new Set();
-  const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+  const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== '404.html');
   rootFiles.forEach(f => {
     const p = f === 'index.html' ? '/' : `/${f.replace('.html', '')}`;
     enUrls.add(`https://www.omniconverter.co.uk${p}`);
@@ -583,53 +562,8 @@ function rebuildBlogData() {
     });
   }
 
-  const esUrls = new Set();
-  if (fs.existsSync('es')) {
-    fs.readdirSync('es').filter(f => f.endsWith('.html')).forEach(f => {
-      const p = f === 'index.html' ? '/es/' : `/es/${f.replace('.html', '')}`;
-      esUrls.add(`https://www.omniconverter.co.uk${p}`);
-    });
-    if (fs.existsSync('es/blog')) {
-      fs.readdirSync('es/blog').filter(f => f.endsWith('.html')).forEach(f => {
-        esUrls.add(`https://www.omniconverter.co.uk/es/blog/${f.replace('.html', '')}`);
-      });
-    }
-  }
-
-  const deUrls = new Set();
-  if (fs.existsSync('de')) {
-    fs.readdirSync('de').filter(f => f.endsWith('.html')).forEach(f => {
-      const p = f === 'index.html' ? '/de/' : `/de/${f.replace('.html', '')}`;
-      deUrls.add(`https://www.omniconverter.co.uk${p}`);
-    });
-    if (fs.existsSync('de/blog')) {
-      fs.readdirSync('de/blog').filter(f => f.endsWith('.html')).forEach(f => {
-        deUrls.add(`https://www.omniconverter.co.uk/de/blog/${f.replace('.html', '')}`);
-      });
-    }
-  }
-
-  const ptUrls = new Set();
-  if (fs.existsSync('pt')) {
-    fs.readdirSync('pt').filter(f => f.endsWith('.html')).forEach(f => {
-      const p = f === 'index.html' ? '/pt/' : `/pt/${f.replace('.html', '')}`;
-      ptUrls.add(`https://www.omniconverter.co.uk${p}`);
-    });
-    if (fs.existsSync('pt/blog')) {
-      fs.readdirSync('pt/blog').filter(f => f.endsWith('.html')).forEach(f => {
-        ptUrls.add(`https://www.omniconverter.co.uk/pt/blog/${f.replace('.html', '')}`);
-      });
-    }
-  }
-
-  fs.writeFileSync('sitemap-en.xml', generateUrlSet(enUrls), 'utf8');
-  fs.writeFileSync('sitemap-es.xml', generateUrlSet(esUrls), 'utf8');
-  fs.writeFileSync('sitemap-de.xml', generateUrlSet(deUrls), 'utf8');
-  fs.writeFileSync('sitemap-pt.xml', generateUrlSet(ptUrls), 'utf8');
-
-  const allUrls = new Set([...enUrls, ...esUrls, ...deUrls, ...ptUrls]);
-  fs.writeFileSync('sitemap.xml', generateUrlSet(allUrls), 'utf8');
-  console.log(`[OK] All sub-sitemaps and master sitemap.xml generated with ${allUrls.size} URLs.`);
+  fs.writeFileSync('sitemap.xml', generateUrlSet(enUrls), 'utf8');
+  console.log(`[OK] Master English sitemap.xml generated with ${enUrls.size} URLs.`);
 
   // Update sitemap.html blog list if file exists
   if (fs.existsSync('sitemap.html')) {
@@ -1352,64 +1286,8 @@ ${selectedTarget.snippetStrategy ? `
   // 5. Build HTML page
   const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
 
-  // 5b. Multi-Language Auto-Localization (Spanish, German, Portuguese) via Gemini
-  let esArticle = null, deArticle = null, ptArticle = null;
+  // 5b. Single English Article Mode
   const urlsToNotify = [`https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`];
-
-  async function translateArticleForLang(langCode, langName) {
-    const prompt = `You are a native technical translator and SEO localization expert for OmniConverter.
-Translate the following English conversion guide into ${langName} (${langCode}).
-
-English Title: "${title}"
-English Slug: "${selectedTarget.slug}"
-English Description: "Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator."
-
-English HTML Article Body:
-${articleBodyHtml}
-
-Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
-{
-  "title": "${langName} Title (SEO friendly)",
-  "slug": "${langCode}-url-slug",
-  "description": "${langName} meta description under 160 characters",
-  "bodyHtml": "Translated ${langName} HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
-}`;
-
-    for (const model of allCandidates) {
-      try {
-        const resp = await ai.models.generateContent({ model, contents: prompt });
-        if (resp && resp.text) {
-          const clean = resp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
-          const parsed = JSON.parse(clean);
-          if (parsed && parsed.title && parsed.bodyHtml) {
-            parsed.slug = slugify(parsed.slug || parsed.title);
-            return parsed;
-          }
-        }
-      } catch (e) {
-        // try next candidate
-      }
-    }
-    return null;
-  }
-
-  try {
-    console.log('[Auto-Publisher] Translating article into ES, DE, and PT using Gemini (independent requests)...');
-    esArticle = await translateArticleForLang('es', 'Spanish');
-    if (esArticle) console.log(`[OK] Spanish translation ready: ${esArticle.slug}`);
-
-    deArticle = await translateArticleForLang('de', 'German');
-    if (deArticle) console.log(`[OK] German translation ready: ${deArticle.slug}`);
-
-    ptArticle = await translateArticleForLang('pt', 'Portuguese');
-    if (ptArticle) console.log(`[OK] Portuguese translation ready: ${ptArticle.slug}`);
-
-    if (esArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
-    if (deArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
-    if (ptArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
-  } catch (transErr) {
-    console.warn('[WARN] Multilingual translation error:', transErr.message);
-  }
 
   // Detect appropriate converter tool link based on keyword
   let toolLink = '/';
@@ -1604,11 +1482,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <title>${title} | OmniConverter</title>
   <meta name="description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  ${esArticle ? `<link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">` : ''}
-  ${deArticle ? `<link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">` : ''}
-  ${ptArticle ? `<link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">` : ''}
-  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="https://www.omniconverter.co.uk/feed.xml">
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -1656,15 +1529,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         <a href="/file-media" class="tab-btn">Files</a>
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
-      <div class="lang-switcher" aria-label="Language Selector">
-        <span class="active" title="English">EN</span>
-        <span class="lang-sep">|</span>
-        <a href="${esArticle ? `/es/blog/${esArticle.slug}` : '/es/blog'}" title="Español">ES</a>
-        <span class="lang-sep">|</span>
-        <a href="${deArticle ? `/de/blog/${deArticle.slug}` : '/de/blog'}" title="Deutsch">DE</a>
-        <span class="lang-sep">|</span>
-        <a href="${ptArticle ? `/pt/blog/${ptArticle.slug}` : '/pt/blog'}" title="Português">PT</a>
-      </div>
     </div>
   </header>
   <main class="main-container">
@@ -1695,199 +1559,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   const outPath = path.join('blog', `${selectedTarget.slug}.html`);
   fs.writeFileSync(outPath, fullPageHtml, 'utf8');
   console.log(`[OK] English article saved: ${outPath}`);
-
-  // Write Localized Article Files if generated
-  if (esArticle && deArticle && ptArticle) {
-    try {
-      // 1. Spanish Page
-      const esHtml = `<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766868021895107" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-4766868021895107">
-  <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${esArticle.title} | OmniConverter">
-  <meta name="twitter:description" content="${esArticle.description}">
-  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:title" content="${esArticle.title} | OmniConverter">
-  <meta property="og:description" content="${esArticle.description}">
-  <meta property="og:url" content="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
-  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="OmniConverter">
-  <link rel="stylesheet" href="/styles.css">
-  <title>${esArticle.title} | OmniConverter</title>
-  <meta name="description" content="${esArticle.description}">
-  <meta name="article:published_time" content="${today}">
-  <link rel="canonical" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
-  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
-  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
-  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <a href="/es/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
-      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menú</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <nav class="nav-tabs" aria-label="Navegación de categorías">
-        <a href="/es/" class="tab-btn">Inicio</a><a href="/indian-units" class="tab-btn">Unidades Indias</a><a href="/es/time-zone" class="tab-btn">Zonas Horarias</a><a href="/es/currency" class="tab-btn">Divisas</a><a href="/es/length" class="tab-btn">Longitud</a><a href="/es/temperature" class="tab-btn">Temperatura</a><a href="/es/weight-mass" class="tab-btn">Masa</a><a href="/es/volume-capacity" class="tab-btn">Capacidad</a><a href="/es/time-duration" class="tab-btn">Duración</a><a href="/es/area" class="tab-btn">Área</a><a href="/es/speed" class="tab-btn">Velocidad</a><a href="/es/file-media" class="tab-btn">Archivos</a><a href="/es/blog" class="tab-btn active">Blog</a>
-      </nav>
-      <div class="lang-switcher" aria-label="Selector de idioma">
-        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><span class="active" title="Español">ES</span><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>
-      </div>
-    </div>
-  </header>
-  <main class="main-container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/es/">Inicio</a><span class="breadcrumb-separator">&rsaquo;</span><a href="/es/blog">Blog</a><span class="breadcrumb-separator">&rsaquo;</span><span class="breadcrumb-current" aria-current="page">${esArticle.title}</span></nav>
-    <article class="content-section" style="margin-top:0.75rem;">
-      <span class="formula-badge">Guía de Conversión: ${esArticle.title}</span>
-      <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${esArticle.title}</h1>
-      <img src="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}" alt="${esArticle.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
-      ${esArticle.bodyHtml}
-    </article>
-  </main>
-  <footer class="footer"><div class="footer-container"><p>&copy; ${year} OmniConverter Suite. Todos los derechos reservados. | <a href="/es/blog">Blog</a> | <a href="/es/sitemap">Mapa del Sitio</a> | <a href="/es/privacy-policy">Privacidad</a> | <a href="/es/terms">Términos</a> | <a href="/es/about">Nosotros</a> | <a href="/es/contact">Contacto</a></p></div></footer>
-  ${widgetScript}
-</body>
-</html>`;
-      const esOut = path.join('es', 'blog', `${esArticle.slug}.html`);
-      fs.writeFileSync(esOut, esHtml, 'utf8');
-      console.log(`[OK] Spanish article saved: ${esOut}`);
-
-      // 2. German Page
-      const deHtml = `<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766868021895107" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-4766868021895107">
-  <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${deArticle.title} | OmniConverter">
-  <meta name="twitter:description" content="${deArticle.description}">
-  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:title" content="${deArticle.title} | OmniConverter">
-  <meta property="og:description" content="${deArticle.description}">
-  <meta property="og:url" content="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
-  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="OmniConverter">
-  <link rel="stylesheet" href="/styles.css">
-  <title>${deArticle.title} | OmniConverter</title>
-  <meta name="description" content="${deArticle.description}">
-  <meta name="article:published_time" content="${today}">
-  <link rel="canonical" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
-  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
-  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
-  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <a href="/de/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
-      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menü</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <nav class="nav-tabs" aria-label="Kategorie-Navigation">
-        <a href="/de/" class="tab-btn">Startseite</a><a href="/indian-units" class="tab-btn">Indische Einheiten</a><a href="/de/time-zone" class="tab-btn">Zeitzone</a><a href="/de/currency" class="tab-btn">Währung</a><a href="/de/length" class="tab-btn">Länge</a><a href="/de/temperature" class="tab-btn">Temperatur</a><a href="/de/weight-mass" class="tab-btn">Gewicht</a><a href="/de/volume-capacity" class="tab-btn">Volumen</a><a href="/de/time-duration" class="tab-btn">Zeit</a><a href="/de/area" class="tab-btn">Fläche</a><a href="/de/speed" class="tab-btn">Geschwindigkeit</a><a href="/de/file-media" class="tab-btn">Dateien</a><a href="/de/blog" class="tab-btn active">Blog</a>
-      </nav>
-      <div class="lang-switcher" aria-label="Sprachauswahl">
-        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">ES</a><span class="lang-sep">|</span><span class="active" title="Deutsch">DE</span><span class="lang-sep">|</span><a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>
-      </div>
-    </div>
-  </header>
-  <main class="main-container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/de/">Startseite</a><span class="breadcrumb-separator">&rsaquo;</span><a href="/de/blog">Blog</a><span class="breadcrumb-separator">&rsaquo;</span><span class="breadcrumb-current" aria-current="page">${deArticle.title}</span></nav>
-    <article class="content-section" style="margin-top:0.75rem;">
-      <span class="formula-badge">Umrechnungsratgeber: ${deArticle.title}</span>
-      <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${deArticle.title}</h1>
-      <img src="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}" alt="${deArticle.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
-      ${deArticle.bodyHtml}
-    </article>
-  </main>
-  <footer class="footer"><div class="footer-container"><p>&copy; ${year} OmniConverter Suite. Alle Rechte vorbehalten. | <a href="/de/blog">Blog</a> | <a href="/de/sitemap">Sitemap</a> | <a href="/de/privacy-policy">Datenschutz</a> | <a href="/de/terms">AGB</a> | <a href="/de/about">Über uns</a> | <a href="/de/contact">Kontakt</a></p></div></footer>
-  ${widgetScript}
-</body>
-</html>`;
-      const deOut = path.join('de', 'blog', `${deArticle.slug}.html`);
-      fs.writeFileSync(deOut, deHtml, 'utf8');
-      console.log(`[OK] German article saved: ${deOut}`);
-
-      // 3. Portuguese Page
-      const ptHtml = `<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766868021895107" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-4766868021895107">
-  <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${ptArticle.title} | OmniConverter">
-  <meta name="twitter:description" content="${ptArticle.description}">
-  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:title" content="${ptArticle.title} | OmniConverter">
-  <meta property="og:description" content="${ptArticle.description}">
-  <meta property="og:url" content="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="OmniConverter">
-  <link rel="stylesheet" href="/styles.css">
-  <title>${ptArticle.title} | OmniConverter</title>
-  <meta name="description" content="${ptArticle.description}">
-  <meta name="article:published_time" content="${today}">
-  <link rel="canonical" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
-  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
-  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <a href="/pt/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
-      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menu</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <nav class="nav-tabs" aria-label="Navegação por categorias">
-        <a href="/pt/" class="tab-btn">Início</a><a href="/indian-units" class="tab-btn">Unidades Indianas</a><a href="/pt/time-zone" class="tab-btn">Fuso Horário</a><a href="/pt/currency" class="tab-btn">Moedas</a><a href="/pt/length" class="tab-btn">Comprimento</a><a href="/pt/temperature" class="tab-btn">Temperatura</a><a href="/pt/weight-mass" class="tab-btn">Peso</a><a href="/pt/volume-capacity" class="tab-btn">Volume</a><a href="/pt/time-duration" class="tab-btn">Tempo</a><a href="/pt/area" class="tab-btn">Área</a><a href="/pt/speed" class="tab-btn">Velocidade</a><a href="/pt/file-media" class="tab-btn">Arquivos</a><a href="/pt/blog" class="tab-btn active">Blog</a>
-      </nav>
-      <div class="lang-switcher" aria-label="Seletor de idioma">
-        <a href="/blog/${selectedTarget.slug}" title="English">EN</a><span class="lang-sep">|</span><a href="/es/blog/${esArticle.slug}" title="Español">ES</a><span class="lang-sep">|</span><a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a><span class="lang-sep">|</span><span class="active" title="Português">PT</span>
-      </div>
-    </div>
-  </header>
-  <main class="main-container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/pt/">Início</a><span class="breadcrumb-separator">&rsaquo;</span><a href="/pt/blog">Blog</a><span class="breadcrumb-separator">&rsaquo;</span><span class="breadcrumb-current" aria-current="page">${ptArticle.title}</span></nav>
-    <article class="content-section" style="margin-top:0.75rem;">
-      <span class="formula-badge">Guia de Conversão: ${ptArticle.title}</span>
-      <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${ptArticle.title}</h1>
-      <img src="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}" alt="${ptArticle.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
-      ${ptArticle.bodyHtml}
-    </article>
-  </main>
-  <footer class="footer"><div class="footer-container"><p>&copy; ${year} OmniConverter Suite. Todos os direitos reservados. | <a href="/pt/blog">Blog</a> | <a href="/pt/sitemap">Mapa do Site</a> | <a href="/pt/privacy-policy">Privacidade</a> | <a href="/pt/terms">Termos</a> | <a href="/pt/about">Sobre</a> | <a href="/pt/contact">Contato</a></p></div></footer>
-  ${widgetScript}
-</body>
-</html>`;
-      const ptOut = path.join('pt', 'blog', `${ptArticle.slug}.html`);
-      fs.writeFileSync(ptOut, ptHtml, 'utf8');
-      console.log(`[OK] Portuguese article saved: ${ptOut}`);
-    } catch (locErr) {
-      console.warn('[WARN] Error writing localized articles:', locErr.message);
-    }
-  }
 
   // 6. Rebuild blog-data.js + sitemap.xml inline
   rebuildBlogData();
