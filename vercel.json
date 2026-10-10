@@ -1,6 +1,28 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/:lang(es|de|pt)/currency", "destination": "/currency", "permanent": true },
+    { "source": "/:lang(es|de|pt)/temperature", "destination": "/temperature", "permanent": true },
+    { "source": "/:lang(es|de|pt)/length", "destination": "/length", "permanent": true },
+    { "source": "/:lang(es|de|pt)/weight-mass", "destination": "/weight-mass", "permanent": true },
+    { "source": "/:lang(es|de|pt)/volume-capacity", "destination": "/volume-capacity", "permanent": true },
+    { "source": "/:lang(es|de|pt)/time-duration", "destination": "/time-duration", "permanent": true },
+    { "source": "/:lang(es|de|pt)/time-zone", "destination": "/time-zone", "permanent": true },
+    { "source": "/:lang(es|de|pt)/area", "destination": "/area", "permanent": true },
+    { "source": "/:lang(es|de|pt)/speed", "destination": "/speed", "permanent": true },
+    { "source": "/:lang(es|de|pt)/file-media", "destination": "/file-media", "permanent": true },
+    { "source": "/:lang(es|de|pt)/indian-units", "destination": "/indian-units", "permanent": true },
+    { "source": "/:lang(es|de|pt)/about", "destination": "/about", "permanent": true },
+    { "source": "/:lang(es|de|pt)/contact", "destination": "/contact", "permanent": true },
+    { "source": "/:lang(es|de|pt)/privacy-policy", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/:lang(es|de|pt)/terms", "destination": "/terms", "permanent": true },
+    { "source": "/:lang(es|de|pt)/sitemap", "destination": "/sitemap", "permanent": true },
+    { "source": "/:lang(es|de|pt)/blog", "destination": "/blog", "permanent": true },
+    { "source": "/:lang(es|de|pt)/blog/:slug*", "destination": "/blog", "permanent": true },
+    { "source": "/:lang(es|de|pt)", "destination": "/", "permanent": true },
+    { "source": "/:lang(es|de|pt)/:path*", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/feed.xml",
