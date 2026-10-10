@@ -2,10 +2,6 @@ const fs = require('fs');
 
 const files = [
   'sitemap.xml',
-  'sitemap-en.xml',
-  'sitemap-es.xml',
-  'sitemap-de.xml',
-  'sitemap-pt.xml',
   'news-sitemap.xml'
 ];
 

@@ -35,7 +35,7 @@ allFiles.forEach(file => {
     if (cleanTarget === '') cleanTarget = '/';
 
     // Check assets or pages
-    if (cleanTarget.endsWith('.css') || cleanTarget.endsWith('.png') || cleanTarget.endsWith('.ico') || cleanTarget.endsWith('.xml') || cleanTarget.endsWith('.txt')) {
+    if (cleanTarget.endsWith('.css') || cleanTarget.endsWith('.png') || cleanTarget.endsWith('.ico') || cleanTarget.endsWith('.xml') || cleanTarget.endsWith('.txt') || cleanTarget.endsWith('.json')) {
       const assetPath = cleanTarget.replace(/^\//, '');
       if (!fs.existsSync(assetPath)) {
         brokenLinks.push({ file, link: target });
