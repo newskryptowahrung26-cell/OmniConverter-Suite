@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (64 Articles)
+## Published Articles & Guides Directory (65 Articles)
+- [5 Lbs In Kg: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/5-lbs-in-kg): Convert 5 lbs in kg with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.
 - [700 Pounds To Aud](https://www.omniconverter.co.uk/blog/700-pounds-to-aud): Convert 700 pounds to aud accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [220 Pounds In Stone](https://www.omniconverter.co.uk/blog/220-pounds-in-stone): Convert 220 pounds in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
 - [104 Kg Pounds](https://www.omniconverter.co.uk/blog/104-kg-pounds): Convert 104 kg pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.
