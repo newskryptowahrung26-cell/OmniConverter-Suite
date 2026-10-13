@@ -1337,13 +1337,18 @@ ${articleBodyHtml}
 
 CRITICAL HIGH-CTR LOCALIZATION INSTRUCTIONS:
 1. "title": Must be high-CTR, compelling, natural native phrasing (e.g. Spanish: "[Término]: Fórmula Exacta y Calculadora", German: "[Begriff]: Exakte Formel & Rechner", Portuguese: "[Termo]: Fórmula Exata e Conversor"). Keep title UNDER 60 characters so it never truncates on Google SERP.
-2. "description": High-converting, clickable meta description between 120 and 155 characters that triggers high search CTR.
-3. "bodyHtml": Translated native ${langName} HTML keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup intact.
+2. "slug": Must be a clean, natural, native URL slug for ${langName} in lowercase hyphenated format matching native search queries. For example:
+   - Spanish: "5-libras-a-kg", "10-celsius-a-fahrenheit", "1-taza-de-leche-en-ml"
+   - German: "5-pfund-in-kg", "10-celsius-in-fahrenheit", "1-tasse-milch-in-ml"
+   - Portuguese: "5-libras-para-kg", "10-celsius-para-fahrenheit", "1-xicara-de-leite-em-ml"
+   Use ONLY lowercase letters, numbers, and hyphens. Do NOT use special characters, accents, or umlauts.
+3. "description": High-converting, clickable meta description between 120 and 155 characters that triggers high search CTR.
+4. "bodyHtml": Translated native ${langName} HTML keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup intact.
 
 Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
 {
   "title": "${langName} High-CTR Title (under 60 chars)",
-  "slug": "${selectedTarget.slug}",
+  "slug": "${langName} native clean URL slug",
   "description": "${langName} high-converting meta description (120-155 chars)",
   "bodyHtml": "Translated ${langName} HTML body"
 }`;
@@ -1355,7 +1360,16 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
           const clean = resp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
           const parsed = JSON.parse(clean);
           if (parsed && parsed.title && parsed.bodyHtml) {
-            parsed.slug = selectedTarget.slug;
+            let localizedSlug = parsed.slug || selectedTarget.slug;
+            // Clean and sanitize slug
+            localizedSlug = localizedSlug.toLowerCase()
+              .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+            if (!localizedSlug || localizedSlug.length < 3) {
+              localizedSlug = selectedTarget.slug;
+            }
+            parsed.slug = localizedSlug;
             return parsed;
           }
         }
@@ -1803,7 +1817,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
               "@type": "ListItem",
               "position": 2,
               "name": cfg.blogText,
-              "item": "https://www.omniconverter.co.uk/blog"
+              "item": `https://www.omniconverter.co.uk/${cfg.lang}/blog`
             },
             {
               "@type": "ListItem",
@@ -1884,7 +1898,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         <a href="/${cfg.lang}/area" class="tab-btn">Area</a>
         <a href="/${cfg.lang}/speed" class="tab-btn">Speed</a>
         <a href="/${cfg.lang}/file-media" class="tab-btn">Files</a>
-        <a href="/blog" class="tab-btn active">Blog</a>
+        <a href="/${cfg.lang}/blog" class="tab-btn active">Blog</a>
       </nav>
       <div class="lang-switcher" aria-label="Language Selector">
         <a href="/blog/${selectedTarget.slug}" title="English">EN</a>
@@ -1901,7 +1915,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/${cfg.lang}/">${cfg.homeText}</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
-      <a href="/blog">${cfg.blogText}</a>
+      <a href="/${cfg.lang}/blog">${cfg.blogText}</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
       <span class="breadcrumb-current" aria-current="page">${cfg.data.title}</span>
     </nav>

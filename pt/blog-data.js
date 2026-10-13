@@ -1,16 +1,16 @@
 // Dados sincronizados do blog em Português (Total: 57 artigos)
 const BLOG_POSTS = [
   {
-    "id": "5-lbs-in-kg",
-    "slug": "/pt/blog/5-lbs-in-kg",
+    "id": "5-libras-para-kg",
+    "slug": "/pt/blog/5-libras-para-kg",
     "title": "5 Lbs em Kg: Fórmula Exata e Conversor",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
-    "category": "Peso & Massa",
-    "categoryKey": "Weight & Mass",
+    "category": "Moedas & Câmbio",
+    "categoryKey": "Currency & Forex",
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
-    "icon": "⚖️",
+    "icon": "💱",
     "image": "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80",
     "summary": "Converta 5 lbs em kg com exatidão. Descubra a fórmula matemática oficial, atalhos mentais práticos, tabela de referência e conversor instantâneo.",
     "order": 0

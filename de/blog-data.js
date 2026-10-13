@@ -1,8 +1,8 @@
 // Synchronisierte Blogdaten auf Deutsch (Gesamt: 57 Artikel)
 const BLOG_POSTS = [
   {
-    "id": "5-lbs-in-kg",
-    "slug": "/de/blog/5-lbs-in-kg",
+    "id": "5-pfund-in-kg",
+    "slug": "/de/blog/5-pfund-in-kg",
     "title": "5 Lbs in Kg: Exakte Formel & Live-Rechner",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
