@@ -36,7 +36,7 @@ function getAllValidUrls() {
     }
   }
 
-  // 3. Localized Tools (ES, DE, PT)
+  // 3. Localized Tools & Blogs (ES, DE, PT)
   const languages = ['es', 'de', 'pt'];
   for (const lang of languages) {
     const langDir = path.join(rootDir, lang);
@@ -51,6 +51,20 @@ function getAllValidUrls() {
             priority: f === 'index.html' ? '0.9' : (['about.html', 'contact.html', 'terms.html', 'privacy-policy.html', 'sitemap.html'].includes(f) ? '0.4' : '0.7'),
             changefreq: f === 'index.html' ? 'daily' : (['about.html', 'contact.html', 'terms.html', 'privacy-policy.html', 'sitemap.html'].includes(f) ? 'monthly' : 'weekly')
           });
+        }
+      }
+      const langBlogDir = path.join(langDir, 'blog');
+      if (fs.existsSync(langBlogDir)) {
+        const blogFiles = fs.readdirSync(langBlogDir);
+        for (const f of blogFiles) {
+          if (f.endsWith('.html')) {
+            const slug = f.replace('.html', '');
+            urls.push({
+              loc: `https://www.omniconverter.co.uk/${lang}/blog/${slug}`,
+              priority: '0.8',
+              changefreq: 'weekly'
+            });
+          }
         }
       }
     }

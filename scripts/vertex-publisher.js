@@ -550,20 +550,34 @@ function rebuildBlogData() {
     return xml;
   }
 
-  const enUrls = new Set();
+  const allSiteUrls = new Set();
   const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== '404.html');
   rootFiles.forEach(f => {
     const p = f === 'index.html' ? '/' : `/${f.replace('.html', '')}`;
-    enUrls.add(`https://www.omniconverter.co.uk${p}`);
+    allSiteUrls.add(`https://www.omniconverter.co.uk${p}`);
   });
   if (fs.existsSync('blog')) {
     fs.readdirSync('blog').filter(f => f.endsWith('.html')).forEach(f => {
-      enUrls.add(`https://www.omniconverter.co.uk/blog/${f.replace('.html', '')}`);
+      allSiteUrls.add(`https://www.omniconverter.co.uk/blog/${f.replace('.html', '')}`);
     });
   }
+  ['es', 'de', 'pt'].forEach(lang => {
+    if (fs.existsSync(lang)) {
+      fs.readdirSync(lang).filter(f => f.endsWith('.html') && f !== '404.html' && f !== 'blog.html').forEach(f => {
+        const p = f === 'index.html' ? `/${lang}/` : `/${lang}/${f.replace('.html', '')}`;
+        allSiteUrls.add(`https://www.omniconverter.co.uk${p}`);
+      });
+      const langBlogDir = path.join(lang, 'blog');
+      if (fs.existsSync(langBlogDir)) {
+        fs.readdirSync(langBlogDir).filter(f => f.endsWith('.html')).forEach(f => {
+          allSiteUrls.add(`https://www.omniconverter.co.uk/${lang}/blog/${f.replace('.html', '')}`);
+        });
+      }
+    }
+  });
 
-  fs.writeFileSync('sitemap.xml', generateUrlSet(enUrls), 'utf8');
-  console.log(`[OK] Master English sitemap.xml generated with ${enUrls.size} URLs.`);
+  fs.writeFileSync('sitemap.xml', generateUrlSet(allSiteUrls), 'utf8');
+  console.log(`[OK] Master sitemap.xml generated with ${allSiteUrls.size} URLs.`);
 
   // Update sitemap.html blog list if file exists
   if (fs.existsSync('sitemap.html')) {
@@ -1286,8 +1300,64 @@ ${selectedTarget.snippetStrategy ? `
   // 5. Build HTML page
   const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
 
-  // 5b. Single English Article Mode
+  // 5b. Localized Articles Translation via Gemini (ES, DE, PT)
+  let esArticle = null, deArticle = null, ptArticle = null;
   const urlsToNotify = [`https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`];
+
+  async function translateArticleForLang(langCode, langName) {
+    const prompt = `You are a native technical translator and SEO localization expert for OmniConverter.
+Translate the following English conversion guide into ${langName} (${langCode}).
+
+English Title: "${title}"
+English Slug: "${selectedTarget.slug}"
+English Description: "Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator."
+
+English HTML Article Body:
+${articleBodyHtml}
+
+Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
+{
+  "title": "${langName} Title (SEO friendly)",
+  "slug": "${selectedTarget.slug}",
+  "description": "${langName} meta description under 160 characters",
+  "bodyHtml": "Translated ${langName} HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
+}`;
+
+    for (const model of allCandidates) {
+      try {
+        const resp = await ai.models.generateContent({ model, contents: prompt });
+        if (resp && resp.text) {
+          const clean = resp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+          const parsed = JSON.parse(clean);
+          if (parsed && parsed.title && parsed.bodyHtml) {
+            parsed.slug = selectedTarget.slug;
+            return parsed;
+          }
+        }
+      } catch (e) {
+        // try next candidate
+      }
+    }
+    return null;
+  }
+
+  try {
+    console.log('[Auto-Publisher] Translating new article into ES, DE, and PT using Gemini...');
+    esArticle = await translateArticleForLang('es', 'Spanish');
+    if (esArticle) console.log(`[OK] Spanish translation ready: ${esArticle.slug}`);
+
+    deArticle = await translateArticleForLang('de', 'German');
+    if (deArticle) console.log(`[OK] German translation ready: ${deArticle.slug}`);
+
+    ptArticle = await translateArticleForLang('pt', 'Portuguese');
+    if (ptArticle) console.log(`[OK] Portuguese translation ready: ${ptArticle.slug}`);
+
+    if (esArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
+    if (deArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
+    if (ptArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
+  } catch (transErr) {
+    console.warn('[WARN] Translation module error:', transErr.message);
+  }
 
   // Detect appropriate converter tool link based on keyword
   let toolLink = '/';
@@ -1482,6 +1552,11 @@ ${selectedTarget.snippetStrategy ? `
   <title>${title} | OmniConverter</title>
   <meta name="description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  ${esArticle ? `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
+  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
+  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
+  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">` : ''}
   <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="https://www.omniconverter.co.uk/feed.xml">
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -1532,6 +1607,15 @@ ${selectedTarget.snippetStrategy ? `
         <a href="/file-media" class="tab-btn">Files</a>
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
+      ${esArticle ? `<div class="lang-switcher" aria-label="Language Selector">
+        <span class="active" title="English">EN</span>
+        <span class="lang-sep">|</span>
+        <a href="/es/blog/${esArticle.slug}" title="Español">ES</a>
+        <span class="lang-sep">|</span>
+        <a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a>
+        <span class="lang-sep">|</span>
+        <a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>
+      </div>` : ''}
     </div>
   </header>
   <main class="main-container">
@@ -1593,6 +1677,240 @@ ${selectedTarget.snippetStrategy ? `
   const outPath = path.join('blog', `${selectedTarget.slug}.html`);
   fs.writeFileSync(outPath, fullPageHtml, 'utf8');
   console.log(`[OK] English article saved: ${outPath}`);
+
+  // 5c. Write Localized Articles (ES, DE, PT)
+  if (esArticle && deArticle && ptArticle) {
+    const localizedConfigs = [
+      {
+        lang: 'es',
+        name: 'Spanish',
+        data: esArticle,
+        homeText: 'Inicio',
+        blogText: 'Blog',
+        badgePrefix: 'Guía de Conversión:',
+        ctaBoxText: '⚡ Transferencias Rápidas y Cotizaciones de Divisas Disponibles',
+        ctaBtnText: 'Ver Ofertas en Vivo &rarr;',
+        footerRights: `&copy; ${year} OmniConverter Suite. Todos los derechos reservados. | <a href="/es/sitemap">Mapa del Sitio</a> | <a href="/es/about">Nosotros</a> | <a href="/es/privacy-policy">Privacidad</a> | <a href="/es/terms">Términos</a> | <a href="/es/contact">Contacto</a>`
+      },
+      {
+        lang: 'de',
+        name: 'German',
+        data: deArticle,
+        homeText: 'Startseite',
+        blogText: 'Blog',
+        badgePrefix: 'Umrechnungsratgeber:',
+        ctaBoxText: '⚡ Schnelle Überweisungen & Exklusive Wechselkurs-Angebote Verfügbar',
+        ctaBtnText: 'Live-Angebote Prüfen &rarr;',
+        footerRights: `&copy; ${year} OmniConverter Suite. Alle Rechte vorbehalten. | <a href="/de/sitemap">Sitemap</a> | <a href="/de/about">Über uns</a> | <a href="/de/privacy-policy">Datenschutz</a> | <a href="/de/terms">AGB</a> | <a href="/de/contact">Kontakt</a>`
+      },
+      {
+        lang: 'pt',
+        name: 'Portuguese',
+        data: ptArticle,
+        homeText: 'Início',
+        blogText: 'Blog',
+        badgePrefix: 'Guia de Conversão:',
+        ctaBoxText: '⚡ Transferências Rápidas e Cotações Exclusivas Disponíveis',
+        ctaBtnText: 'Ver Ofertas em Tempo Real &rarr;',
+        footerRights: `&copy; ${year} OmniConverter Suite. Todos os direitos reservados. | <a href="/pt/sitemap">Mapa do Site</a> | <a href="/pt/about">Sobre</a> | <a href="/pt/privacy-policy">Privacidade</a> | <a href="/pt/terms">Termos</a> | <a href="/pt/contact">Contato</a>`
+      }
+    ];
+
+    for (const cfg of localizedConfigs) {
+      const langDir = path.join(cfg.lang, 'blog');
+      if (!fs.existsSync(langDir)) {
+        fs.mkdirSync(langDir, { recursive: true });
+      }
+
+      const langSchemas = [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": cfg.data.title,
+          "description": cfg.data.description,
+          "url": `https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}`,
+          "datePublished": today,
+          "dateModified": today,
+          "image": [imageUrl],
+          "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "OmniConverter",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.omniconverter.co.uk/logo.png"
+            }
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": cfg.homeText,
+              "item": `https://www.omniconverter.co.uk/${cfg.lang}/`
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": cfg.blogText,
+              "item": "https://www.omniconverter.co.uk/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": cfg.data.title,
+              "item": `https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}`
+            }
+          ]
+        }
+      ];
+
+      const localizedHtml = `<!DOCTYPE html>
+<html lang="${cfg.lang}">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766868021895107" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-4766868021895107">
+  <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
+  <meta name="msvalidate.01" content="25038A8801D42437BBC34723A41AC6C4" />
+  <meta name="google-site-verification" content="Cpl786DxZO0l5hjxd_D5KE5RGWKFuJ9EVSh5n6Msm7M" />
+  <meta name="google-site-verification" content="aoZ6vOmLyc0slj01NK1N91iwSnk2of6HUO_JjMskszE" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KPY6T7PFD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${cfg.data.title} | OmniConverter</title>
+  <meta name="description" content="${cfg.data.description}">
+  <link rel="canonical" href="https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}">
+  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
+  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
+  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
+  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="https://www.omniconverter.co.uk/feed.xml">
+  <meta name="article:published_time" content="${today}">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- OpenGraph & Social Cards -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}">
+  <meta property="og:title" content="${cfg.data.title} | OmniConverter">
+  <meta property="og:description" content="${cfg.data.description}">
+  <meta property="og:site_name" content="OmniConverter">
+  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${cfg.data.title} | OmniConverter">
+  <meta name="twitter:description" content="${cfg.data.description}">
+  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+
+  <script type="application/ld+json">
+  ${JSON.stringify(langSchemas, null, 2)}
+  </script>
+  <!-- Ad Network Global Monetizers -->
+  <script src="https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js"></script>
+  <script src="https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/${cfg.lang}/" class="logo" aria-label="OmniConverter Home">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <span>OmniConverter</span>
+      </a>
+      <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
+        <span>Menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav-tabs" aria-label="Converter category navigation">
+        <a href="/${cfg.lang}/" class="tab-btn">${cfg.homeText}</a>
+        <a href="/indian-units" class="tab-btn">Indian Units</a>
+        <a href="/${cfg.lang}/time-zone" class="tab-btn">Time Zone</a>
+        <a href="/${cfg.lang}/currency" class="tab-btn">Currency</a>
+        <a href="/${cfg.lang}/length" class="tab-btn">Length</a>
+        <a href="/${cfg.lang}/temperature" class="tab-btn">Temperature</a>
+        <a href="/${cfg.lang}/weight-mass" class="tab-btn">Weight</a>
+        <a href="/${cfg.lang}/volume-capacity" class="tab-btn">Volume</a>
+        <a href="/${cfg.lang}/time-duration" class="tab-btn">Time</a>
+        <a href="/${cfg.lang}/area" class="tab-btn">Area</a>
+        <a href="/${cfg.lang}/speed" class="tab-btn">Speed</a>
+        <a href="/${cfg.lang}/file-media" class="tab-btn">Files</a>
+        <a href="/blog" class="tab-btn active">Blog</a>
+      </nav>
+      <div class="lang-switcher" aria-label="Language Selector">
+        <a href="/blog/${selectedTarget.slug}" title="English">EN</a>
+        <span class="lang-sep">|</span>
+        ${cfg.lang === 'es' ? '<span class="active" title="Español">ES</span>' : `<a href="/es/blog/${esArticle.slug}" title="Español">ES</a>`}
+        <span class="lang-sep">|</span>
+        ${cfg.lang === 'de' ? '<span class="active" title="Deutsch">DE</span>' : `<a href="/de/blog/${deArticle.slug}" title="Deutsch">DE</a>`}
+        <span class="lang-sep">|</span>
+        ${cfg.lang === 'pt' ? '<span class="active" title="Português">PT</span>' : `<a href="/pt/blog/${ptArticle.slug}" title="Português">PT</a>`}
+      </div>
+    </div>
+  </header>
+  <main class="main-container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/${cfg.lang}/">${cfg.homeText}</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <a href="/blog">${cfg.blogText}</a>
+      <span class="breadcrumb-separator">&rsaquo;</span>
+      <span class="breadcrumb-current" aria-current="page">${cfg.data.title}</span>
+    </nav>
+    <article class="content-section" style="margin-top:0.75rem;">
+      <span class="formula-badge">${cfg.badgePrefix} ${cfg.data.title}</span>
+      <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${cfg.data.title}</h1>
+      <img src="${imageUrl}" alt="${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      ${cfg.data.bodyHtml}
+
+      <!-- Bottom Monetization Section -->
+      <!-- Sponsored High-CTR Direct Link Banner -->
+      <div class="sponsored-smartlink-box" style="margin: 2rem 0 1.5rem 0; padding: 1rem 1.25rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08)); border: 1px dashed var(--primary-500, #6366f1); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-main, #1e293b);">
+          ${cfg.ctaBoxText}
+        </div>
+        <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-block; padding: 0.55rem 1.15rem; background: var(--primary-600, #4f46e5); color: #ffffff; font-size: 0.9rem; font-weight: 700; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);">
+          ${cfg.ctaBtnText}
+        </a>
+      </div>
+
+      <!-- High-CPM 728x90 Banner -->
+      <div class="ad-banner-slot" style="margin: 2rem auto; text-align: center; min-height: 90px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+        <script>
+          atOptions = {
+            'key' : '2ca98c99e53d3a8c6988fb21535d63d9',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/2ca98c99e53d3a8c6988fb21535d63d9/invoke.js"></script>
+      </div>
+
+      <!-- In-Content Native Ad Container -->
+      <div class="ad-native-slot" style="margin: 2rem auto 1rem auto; text-align: center; max-width: 100%; min-height: 120px;">
+        <script async="async" data-cfasync="false" src="https://pl31760931.profitableratecpmnetwork.com/6af35b8a30cb38f675be2353f8953c6b/invoke.js"></script>
+        <div id="container-6af35b8a30cb38f675be2353f8953c6b"></div>
+      </div>
+    </article>
+    ${crossLinksHtml}
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <p>${cfg.footerRights}</p>
+    </div>
+  </footer>
+  ${widgetScript}
+</body>
+</html>`;
+
+      const langOutPath = path.join(langDir, `${cfg.data.slug}.html`);
+      fs.writeFileSync(langOutPath, localizedHtml, 'utf8');
+      console.log(`[OK] ${cfg.name} article saved: ${langOutPath}`);
+    }
+  }
 
   // 6. Rebuild blog-data.js + sitemap.xml inline
   rebuildBlogData();
