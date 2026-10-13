@@ -1,10 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "redirects": [
-    { "source": "/:lang(es|de|pt)/blog", "destination": "/blog", "permanent": true },
-    { "source": "/:lang(es|de|pt)/blog/:slug*", "destination": "/blog", "permanent": true }
-  ],
+  "redirects": [],
   "headers": [
     {
       "source": "/feed.xml",

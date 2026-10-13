@@ -9,6 +9,12 @@ let localizedFiles = [];
   if (fs.existsSync(dir)) {
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.html')).map(f => path.join(dir, f));
     localizedFiles = localizedFiles.concat(files);
+
+    const blogSubDir = path.join(dir, 'blog');
+    if (fs.existsSync(blogSubDir)) {
+      const blogSubFiles = fs.readdirSync(blogSubDir).filter(f => f.endsWith('.html')).map(f => path.join(blogSubDir, f));
+      localizedFiles = localizedFiles.concat(blogSubFiles);
+    }
   }
 });
 
