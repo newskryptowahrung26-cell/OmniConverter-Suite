@@ -1297,30 +1297,46 @@ ${selectedTarget.snippetStrategy ? `
     .replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
   articleBodyHtml = sanitizeLatexMath(articleBodyHtml);
 
-  // 5. Build HTML page
-  const title = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
+  // 5. Build HTML page with High-CTR Title & Description
+  const rawTitle = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
+  // High-CTR title format: "[Query]: Exact Formula & Live Calculator"
+  let title = `${rawTitle}: Exact Formula & Live Calculator`;
+  if (title.length > 60) {
+    title = `${rawTitle}: Formula & Calculator`;
+  }
+  if (title.length > 60) {
+    title = `${rawTitle} | Conversion Guide`;
+  }
+
+  const metaDesc = `Convert ${selectedTarget.rawKw} with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.`;
 
   // 5b. Localized Articles Translation via Gemini (ES, DE, PT)
   let esArticle = null, deArticle = null, ptArticle = null;
   const urlsToNotify = [`https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`];
 
   async function translateArticleForLang(langCode, langName) {
-    const prompt = `You are a native technical translator and SEO localization expert for OmniConverter.
+    const prompt = `You are a native technical translator and high-CTR SEO localization expert for OmniConverter.
 Translate the following English conversion guide into ${langName} (${langCode}).
 
+English Target Keyword: "${rawTitle}"
 English Title: "${title}"
 English Slug: "${selectedTarget.slug}"
-English Description: "Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator."
+English Description: "${metaDesc}"
 
 English HTML Article Body:
 ${articleBodyHtml}
 
+CRITICAL HIGH-CTR LOCALIZATION INSTRUCTIONS:
+1. "title": Must be high-CTR, compelling, natural native phrasing (e.g. Spanish: "[Término]: Fórmula Exacta y Calculadora", German: "[Begriff]: Exakte Formel & Rechner", Portuguese: "[Termo]: Fórmula Exata e Conversor"). Keep title UNDER 60 characters so it never truncates on Google SERP.
+2. "description": High-converting, clickable meta description between 120 and 155 characters that triggers high search CTR.
+3. "bodyHtml": Translated native ${langName} HTML keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup intact.
+
 Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
 {
-  "title": "${langName} Title (SEO friendly)",
+  "title": "${langName} High-CTR Title (under 60 chars)",
   "slug": "${selectedTarget.slug}",
-  "description": "${langName} meta description under 160 characters",
-  "bodyHtml": "Translated ${langName} HTML body keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup"
+  "description": "${langName} high-converting meta description (120-155 chars)",
+  "bodyHtml": "Translated ${langName} HTML body"
 }`;
 
     for (const model of allCandidates) {
@@ -1550,7 +1566,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} | OmniConverter</title>
-  <meta name="description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
+  <meta name="description" content="${metaDesc}">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   ${esArticle ? `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
@@ -1566,12 +1582,12 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   <meta property="og:title" content="${title} | OmniConverter">
-  <meta property="og:description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
+  <meta property="og:description" content="${metaDesc}">
   <meta property="og:site_name" content="OmniConverter">
   <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title} | OmniConverter">
-  <meta name="twitter:description" content="Convert ${selectedTarget.rawKw} accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.">
+  <meta name="twitter:description" content="${metaDesc}">
   <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
 
   <script type="application/ld+json">
@@ -1629,6 +1645,28 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">Conversion Guide: ${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
+
+      <!-- High-CTR Utility Action Bar -->
+      <div class="high-ctr-action-card" style="margin: 1.25rem 0 1.75rem 0; padding: 1.15rem 1.35rem; background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08)); border: 1.5px solid rgba(79, 70, 229, 0.25); border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem;">
+          <div>
+            <div style="font-size: 1rem; font-weight: 800; color: var(--text-main, #0f172a); display: flex; align-items: center; gap: 0.5rem;">
+              <span style="display:inline-block; width:10px; height:10px; background:#10b981; border-radius:50%; box-shadow: 0 0 8px #10b981;"></span>
+              <span>Need the Full Formula & Offline Conversion Table?</span>
+            </div>
+            <p style="margin: 0.25rem 0 0 0; font-size: 0.88rem; color: var(--text-muted, #64748b);">Download verified offline reference charts, calculation formulas, and live deals.</p>
+          </div>
+          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+            <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.15rem; background: #4f46e5; color: #ffffff; font-weight: 700; font-size: 0.88rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35); transition: transform 0.15s ease;">
+              <span>📥 Download Chart (Free)</span>
+            </a>
+            <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.15rem; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 0.88rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25); transition: transform 0.15s ease;">
+              <span>⚡ Live Deals &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <img src="${imageUrl}" alt="${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
 
