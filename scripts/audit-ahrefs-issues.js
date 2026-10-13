@@ -58,6 +58,11 @@ allFiles.forEach(f => {
 const orphanPages = [];
 urlToInlinks.forEach((inlinks, url) => {
   if (inlinks.size === 0 && url !== '/' && url !== '/404') {
+    const filePath = url.slice(1) + '.html';
+    if (fs.existsSync(filePath)) {
+      const c = fs.readFileSync(filePath, 'utf8');
+      if (c.includes('http-equiv="refresh"')) return;
+    }
     orphanPages.push({ url, inlinks: inlinks.size });
   }
 });

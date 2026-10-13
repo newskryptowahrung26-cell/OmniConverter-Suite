@@ -58,6 +58,8 @@ function getAllValidUrls() {
         const blogFiles = fs.readdirSync(langBlogDir);
         for (const f of blogFiles) {
           if (f.endsWith('.html')) {
+            const raw = fs.readFileSync(path.join(langBlogDir, f), 'utf8');
+            if (raw.includes('http-equiv="refresh"')) continue; // Skip redirect placeholders
             const slug = f.replace('.html', '');
             urls.push({
               loc: `https://www.omniconverter.co.uk/${lang}/blog/${slug}`,

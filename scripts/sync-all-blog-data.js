@@ -140,7 +140,10 @@ function processBlogDirectory(lang) {
 
   const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
 
-  const posts = files.map(filename => {
+  const posts = files.filter(filename => {
+    const raw = fs.readFileSync(path.join(dir, filename), 'utf8');
+    return !raw.includes('http-equiv="refresh"');
+  }).map(filename => {
     const slug = filename.replace('.html', '');
     const raw = fs.readFileSync(path.join(dir, filename), 'utf8');
 

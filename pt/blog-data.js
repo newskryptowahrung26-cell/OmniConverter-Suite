@@ -61,8 +61,8 @@ const BLOG_POSTS = [
     "order": 3
   },
   {
-    "id": "2000-usd-to-gbp",
-    "slug": "/pt/blog/2000-usd-to-gbp",
+    "id": "2000-usd-para-gbp",
+    "slug": "/pt/blog/2000-usd-para-gbp",
     "title": "2000 USD para GBP (Dólar para Libra)",
     "date": "2026-10-07",
     "publicationDate": "2026-10-07T00:00:00Z",

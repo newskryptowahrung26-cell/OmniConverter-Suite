@@ -427,7 +427,10 @@ function rebuildBlogData() {
 
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
 
-    const posts = files.map(filename => {
+    const posts = files.filter(filename => {
+      const raw = fs.readFileSync(path.join(dir, filename), 'utf8');
+      return !raw.includes('http-equiv="refresh"');
+    }).map(filename => {
       const slug = filename.replace('.html', '');
       const raw = fs.readFileSync(path.join(dir, filename), 'utf8');
 
@@ -579,6 +582,8 @@ function rebuildBlogData() {
       const langBlogDir = path.join(lang, 'blog');
       if (fs.existsSync(langBlogDir)) {
         fs.readdirSync(langBlogDir).filter(f => f.endsWith('.html')).forEach(f => {
+          const raw = fs.readFileSync(path.join(langBlogDir, f), 'utf8');
+          if (raw.includes('http-equiv="refresh"')) return;
           allSiteUrls.add(`https://www.omniconverter.co.uk/${lang}/blog/${f.replace('.html', '')}`);
         });
       }
