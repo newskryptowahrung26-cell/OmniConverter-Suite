@@ -3,7 +3,16 @@ const path = require('path');
 
 const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
 const blogFiles = fs.readdirSync('blog').filter(f => f.endsWith('.html')).map(f => path.join('blog', f));
-const allFiles = rootFiles.concat(blogFiles);
+
+let localizedFiles = [];
+['es', 'de', 'pt'].forEach(dir => {
+  if (fs.existsSync(dir)) {
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.html')).map(f => path.join(dir, f));
+    localizedFiles = localizedFiles.concat(files);
+  }
+});
+
+const allFiles = rootFiles.concat(blogFiles).concat(localizedFiles);
 
 let totalLinks = 0;
 let brokenLinks = [];
@@ -18,6 +27,15 @@ blogFiles.forEach(f => {
   const norm = '/' + f.replace(/\\/g, '/').replace('.html', '');
   existingPages.add(norm);
   existingPages.add(norm + '.html');
+});
+localizedFiles.forEach(f => {
+  const norm = '/' + f.replace(/\\/g, '/').replace('.html', '');
+  existingPages.add(norm);
+  existingPages.add(norm + '.html');
+  if (norm.endsWith('/index')) {
+    existingPages.add(norm.replace(/\/index$/, '/'));
+    existingPages.add(norm.replace(/\/index$/, ''));
+  }
 });
 
 allFiles.forEach(file => {
