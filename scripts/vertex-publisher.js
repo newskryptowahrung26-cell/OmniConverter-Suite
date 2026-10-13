@@ -499,10 +499,16 @@ function rebuildBlogData() {
   }
 
   const enPosts = processBlogDirectory('en');
+  const esPosts = processBlogDirectory('es');
+  const dePosts = processBlogDirectory('de');
+  const ptPosts = processBlogDirectory('pt');
 
-  // Write English blog-data.js
+  // Write English and localized blog-data.js files
   fs.writeFileSync('blog-data.js', `// Automatically synchronized blog data (Total: ${enPosts.length} articles)\nconst BLOG_POSTS = ${JSON.stringify(enPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
-  console.log(`[OK] blog-data.js rebuilt with ${enPosts.length} articles.`);
+  fs.writeFileSync('es/blog-data.js', `// Datos sincronizados del blog en Español (Total: ${esPosts.length} artículos)\nconst BLOG_POSTS = ${JSON.stringify(esPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
+  fs.writeFileSync('de/blog-data.js', `// Synchronisierte Blogdaten auf Deutsch (Gesamt: ${dePosts.length} Artikel)\nconst BLOG_POSTS = ${JSON.stringify(dePosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
+  fs.writeFileSync('pt/blog-data.js', `// Dados sincronizados do blog em Português (Total: ${ptPosts.length} artigos)\nconst BLOG_POSTS = ${JSON.stringify(ptPosts, null, 2)};\n\nwindow.BLOG_POSTS = BLOG_POSTS;\nwindow.blogArticles = BLOG_POSTS;\n`, 'utf8');
+  console.log(`[OK] blog-data.js files rebuilt across EN (${enPosts.length}), ES (${esPosts.length}), DE (${dePosts.length}), and PT (${ptPosts.length}).`);
 
   // Update static directory blocks in blog hub HTML files
   function updateHubDirectory(hubFile, posts, lang) {
@@ -530,6 +536,9 @@ function rebuildBlogData() {
   }
 
   updateHubDirectory('blog.html', enPosts, 'en');
+  updateHubDirectory('es/blog.html', esPosts, 'es');
+  updateHubDirectory('de/blog.html', dePosts, 'de');
+  updateHubDirectory('pt/blog.html', ptPosts, 'pt');
 
   // English-only sitemap generation
   function generateUrlSet(urls) {
