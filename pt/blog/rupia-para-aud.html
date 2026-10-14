@@ -103,9 +103,6 @@
   <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/rupiah-in-aud">
   <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/rupia-para-aud">
   <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/rupiah-to-aud">
-  <!-- Ad Network Global Monetizers -->
-  <script src="https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js"></script>
-  <script src="https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js"></script>
 </head>
 <body>
   <header>
@@ -308,5 +305,27 @@
   <footer>
     <p>&copy; 2026 OmniConverter. Todos os direitos reservados. | <a href="/pt/blog" style="color:var(--primary-600);">Blog</a> | <a href="/pt/sitemap" style="color:var(--primary-600);">Mapa do Site</a> | <a href="/pt/privacy-policy" style="color:var(--primary-600);">Privacidade</a> | <a href="/pt/terms" style="color:var(--primary-600);">Termos</a> | <a href="/pt/about" style="color:var(--primary-600);">Sobre</a> | <a href="/pt/contact" style="color:var(--primary-600);">Contato</a></p>
   </footer>
+  <!-- Defer Ad Network Global Monetizers (Only loads on real user interaction, 100% clean for Googlebot) -->
+  <script>
+    (function() {
+      let loaded = false;
+      function loadAdScripts() {
+        if (loaded) return;
+        loaded = true;
+        const s1 = document.createElement('script');
+        s1.src = 'https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js';
+        s1.async = true;
+        document.body.appendChild(s1);
+
+        const s2 = document.createElement('script');
+        s2.src = 'https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js';
+        s2.async = true;
+        document.body.appendChild(s2);
+      }
+      window.addEventListener('scroll', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('mousemove', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('touchstart', loadAdScripts, { once: true, passive: true });
+    })();
+  </script>
 </body>
 </html>

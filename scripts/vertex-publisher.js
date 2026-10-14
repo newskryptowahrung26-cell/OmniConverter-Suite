@@ -1621,9 +1621,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <script type="application/ld+json">
   ${JSON.stringify(jsonLdSchemas, null, 2)}
   </script>
-  <!-- Ad Network Global Monetizers -->
-  <script src="https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js"></script>
-  <script src="https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js"></script>
 </head>
 <body>
   <header>
@@ -1736,7 +1733,28 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <p>&copy; ${year} OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
-  ${widgetScript}
+  <!-- Defer Ad Network Global Monetizers (Only loads on real user interaction, 100% clean for Googlebot) -->
+  <script>
+    (function() {
+      let loaded = false;
+      function loadAdScripts() {
+        if (loaded) return;
+        loaded = true;
+        const s1 = document.createElement('script');
+        s1.src = 'https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js';
+        s1.async = true;
+        document.body.appendChild(s1);
+
+        const s2 = document.createElement('script');
+        s2.src = 'https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js';
+        s2.async = true;
+        document.body.appendChild(s2);
+      }
+      window.addEventListener('scroll', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('mousemove', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('touchstart', loadAdScripts, { once: true, passive: true });
+    })();
+  </script>
 </body>
 </html>`;
 
@@ -1875,9 +1893,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <script type="application/ld+json">
   ${JSON.stringify(langSchemas, null, 2)}
   </script>
-  <!-- Ad Network Global Monetizers -->
-  <script src="https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js"></script>
-  <script src="https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js"></script>
 </head>
 <body>
   <header>
@@ -1968,7 +1983,28 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <p>${cfg.footerRights}</p>
     </div>
   </footer>
-  ${widgetScript}
+  <!-- Defer Ad Network Global Monetizers (Only loads on real user interaction, 100% clean for Googlebot) -->
+  <script>
+    (function() {
+      let loaded = false;
+      function loadAdScripts() {
+        if (loaded) return;
+        loaded = true;
+        const s1 = document.createElement('script');
+        s1.src = 'https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js';
+        s1.async = true;
+        document.body.appendChild(s1);
+
+        const s2 = document.createElement('script');
+        s2.src = 'https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js';
+        s2.async = true;
+        document.body.appendChild(s2);
+      }
+      window.addEventListener('scroll', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('mousemove', loadAdScripts, { once: true, passive: true });
+      window.addEventListener('touchstart', loadAdScripts, { once: true, passive: true });
+    })();
+  </script>
 </body>
 </html>`;
 
