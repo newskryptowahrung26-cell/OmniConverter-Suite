@@ -143,6 +143,7 @@ function validateSchemaItem(item, url, errors) {
   if (item['@type'] === 'SoftwareApplication') {
     if (!item.name) errors.push({ url, error: 'SoftwareApplication missing name' });
     if (!item.applicationCategory) errors.push({ url, error: 'SoftwareApplication missing applicationCategory' });
+    if (!item.aggregateRating && !item.review) errors.push({ url, error: 'SoftwareApplication missing aggregateRating or review (Google Rich Results Error)' });
   }
 }
 console.log(`Total schema validation issues: ${schemaErrors.length}`);
