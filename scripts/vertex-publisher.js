@@ -1217,6 +1217,7 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
 
 3. SECTION 1: INTRODUCTION & DIRECT FEATURED SNIPPET ANSWER BOX:
    - Start with 1-2 introductory sentences defining the conversion, its origin systems (metric, US customary, or British imperial), and why people calculate it.
+   - MANDATORY INTERNAL LINKING: Naturally embed 1 contextual text hyperlink inside the first 2 paragraphs pointing to our official converter tool: <a href="${selectedTarget.toolLink || '/currency'}" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">[natural anchor phrase]</a>.
    - IMMEDIATELY follow with this exact Quick Summary Answer box (engineered to capture Google Position 0 / Featured Snippets):
      <div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;">
        <h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Quick Summary Answer</h3>
