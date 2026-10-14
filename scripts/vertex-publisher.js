@@ -1458,6 +1458,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     category = 'Length & Distance';
     toolTitle = 'Interactive Length & Distance Converter';
     toolDesc = 'Convert meters, feet, inches, centimeters, millimeters, yards, and height measurements instantly with exact formulas.';
+    toolBtnText = 'Open Length Converter &rarr;';
   } else if (kwLower.includes('time zone') || kwLower.includes('timezone') || kwLower.includes('gmt') || kwLower.includes('utc') || kwLower.includes('clock') || kwLower.includes('time is') || kwLower.includes('current time')) {
     toolLink = '/time-zone';
     category = 'Time Zone & World Clock';
@@ -1487,9 +1488,22 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         <a href="${toolLink}" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">${toolBtnText}</a>
       </div>`;
 
-  // Select 3-4 other published articles for cross-linking
-  const otherArticles = publishedFiles.filter(f => f !== selectedTarget.slug).slice(0, 4);
-  const crossLinksHtml = otherArticles.length > 0 ? `
+  // Select 3-4 category-aware published articles for smart internal linking
+  function getArticleCategory(slug) {
+    const s = slug.toLowerCase();
+    if (s.includes('usd') || s.includes('eur') || s.includes('gbp') || s.includes('aud') || s.includes('vnd') || s.includes('cad') || s.includes('jpy') || s.includes('currency') || s.includes('forex') || s.includes('dolar') || s.includes('inr') || s.includes('crore') || s.includes('lakh') || s.includes('pounds-to') || s.includes('libras-a-gbp') || s.includes('libras-para-gbp') || s.includes('pfund-in-gbp')) return 'currency';
+    if (s.includes('kg') || s.includes('lbs') || s.includes('pound') || s.includes('libra') || s.includes('pfund') || s.includes('gram') || s.includes('ounce') || s.includes('stone') || s.includes('weight') || s.includes('peso') || s.includes('gewicht') || s.includes('massa')) return 'weight';
+    if (s.includes('cup') || s.includes('liter') || s.includes('litre') || s.includes('ml') || s.includes('gallon') || s.includes('taza') || s.includes('xicara') || s.includes('tasse') || s.includes('volume') || s.includes('volumen') || s.includes('bar-to-psi') || s.includes('bar-a-psi') || s.includes('bar-em-psi') || s.includes('bar-in-psi')) return 'volume';
+    if (s.includes('celsius') || s.includes('fahrenheit') || s.includes('kelvin') || s.includes('temperature') || s.includes('temperatura')) return 'temperature';
+    return 'general';
+  }
+
+  const currentCat = getArticleCategory(selectedTarget.slug);
+  const sameCatArticles = publishedFiles.filter(f => f !== selectedTarget.slug && getArticleCategory(f) === currentCat);
+  const fallbackArticles = publishedFiles.filter(f => f !== selectedTarget.slug && getArticleCategory(f) !== currentCat);
+  const otherArticles = [...sameCatArticles, ...fallbackArticles].slice(0, 4);
+
+  const crossLinksHtmlEn = otherArticles.length > 0 ? `
     <!-- CROSS_LINKS_BLOCK -->
     <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
       <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
@@ -1671,90 +1685,16 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <span class="formula-badge">Conversion Guide: ${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
 
-      <!-- High-CTR Utility Action Bar -->
-      <div class="high-ctr-action-card" style="margin: 1.25rem 0 1.75rem 0; padding: 1.15rem 1.35rem; background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08)); border: 1.5px solid rgba(79, 70, 229, 0.25); border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.85rem;">
-          <div>
-            <div style="font-size: 1rem; font-weight: 800; color: var(--text-main, #0f172a); display: flex; align-items: center; gap: 0.5rem;">
-              <span style="display:inline-block; width:10px; height:10px; background:#10b981; border-radius:50%; box-shadow: 0 0 8px #10b981;"></span>
-              <span>Need the Full Formula & Offline Conversion Table?</span>
-            </div>
-            <p style="margin: 0.25rem 0 0 0; font-size: 0.88rem; color: var(--text-muted, #64748b);">Download verified offline reference charts, calculation formulas, and live deals.</p>
-          </div>
-          <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-            <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.15rem; background: #4f46e5; color: #ffffff; font-weight: 700; font-size: 0.88rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35); transition: transform 0.15s ease;">
-              <span>📥 Download Chart (Free)</span>
-            </a>
-            <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.15rem; background: #0f172a; color: #ffffff; font-weight: 700; font-size: 0.88rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25); transition: transform 0.15s ease;">
-              <span>⚡ Live Deals &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       <img src="${imageUrl}" alt="${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
-
-      <!-- Bottom Monetization Section -->
-      <!-- Sponsored High-CTR Direct Link Banner -->
-      <div class="sponsored-smartlink-box" style="margin: 2rem 0 1.5rem 0; padding: 1rem 1.25rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08)); border: 1px dashed var(--primary-500, #6366f1); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-        <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-main, #1e293b);">
-          <span style="display:inline-block; margin-right:6px;">⚡</span> Fast Transfer & Exclusive Currency Exchange Deals Available
-        </div>
-        <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-block; padding: 0.55rem 1.15rem; background: var(--primary-600, #4f46e5); color: #ffffff; font-size: 0.9rem; font-weight: 700; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);">
-          Check Live Deals &rarr;
-        </a>
-      </div>
-
-      <!-- High-CPM 728x90 Banner -->
-      <div class="ad-banner-slot" style="margin: 2rem auto; text-align: center; min-height: 90px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-        <script>
-          atOptions = {
-            'key' : '2ca98c99e53d3a8c6988fb21535d63d9',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highrevenueformat.com/2ca98c99e53d3a8c6988fb21535d63d9/invoke.js"></script>
-      </div>
-
-      <!-- In-Content Native Ad Container -->
-      <div class="ad-native-slot" style="margin: 2rem auto 1rem auto; text-align: center; max-width: 100%; min-height: 120px;">
-        <script async="async" data-cfasync="false" src="https://pl31760931.profitableratecpmnetwork.com/6af35b8a30cb38f675be2353f8953c6b/invoke.js"></script>
-        <div id="container-6af35b8a30cb38f675be2353f8953c6b"></div>
-      </div>
     </article>
-    ${crossLinksHtml}
+    ${crossLinksHtmlEn}
   </main>
   <footer class="footer">
     <div class="footer-container">
       <p>&copy; ${year} OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
-  <!-- Defer Ad Network Global Monetizers (Only loads on real user interaction, 100% clean for Googlebot) -->
-  <script>
-    (function() {
-      let loaded = false;
-      function loadAdScripts() {
-        if (loaded) return;
-        loaded = true;
-        const s1 = document.createElement('script');
-        s1.src = 'https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js';
-        s1.async = true;
-        document.body.appendChild(s1);
-
-        const s2 = document.createElement('script');
-        s2.src = 'https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js';
-        s2.async = true;
-        document.body.appendChild(s2);
-      }
-      window.addEventListener('scroll', loadAdScripts, { once: true, passive: true });
-      window.addEventListener('mousemove', loadAdScripts, { once: true, passive: true });
-      window.addEventListener('touchstart', loadAdScripts, { once: true, passive: true });
-    })();
-  </script>
 </body>
 </html>`;
 
@@ -1764,6 +1704,45 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
 
   // 5c. Write Localized Articles (ES, DE, PT)
   if (esArticle && deArticle && ptArticle) {
+    const localizedToolMeta = {
+      es: {
+        currency: { link: '/es/currency', title: 'Convertidor de Divisas en Vivo', desc: 'Convierte USD, EUR, GBP, AUD y más de 35 divisas con tipos de cambio interbancarios en tiempo real.', btn: 'Abrir Convertidor de Divisas &rarr;' },
+        weight: { link: '/es/weight-mass', title: 'Calculadora de Masa y Peso en Vivo', desc: 'Convierte libras, kilogramos, gramos, onzas y stones al instante con fórmulas oficiales.', btn: 'Abrir Convertidor de Peso &rarr;' },
+        volume: { link: '/es/volume-capacity', title: 'Convertidor de Volumen y Capacidad', desc: 'Calcula conversiones entre tazas, mililitros, litros, cucharadas y galones en vivo.', btn: 'Abrir Convertidor de Volumen &rarr;' },
+        temperature: { link: '/es/temperature', title: 'Convertidor de Temperatura Termodinámica', desc: 'Convierte grados Celsius, Fahrenheit, Kelvin y Rankine con fórmulas de alta precisión.', btn: 'Abrir Convertidor de Temperatura &rarr;' },
+        speed: { link: '/es/speed', title: 'Convertidor de Velocidad en Tiempo Real', desc: 'Convierte km/h, mph, nudos y metros por segundo de forma instantánea.', btn: 'Abrir Convertidor de Velocidad &rarr;' },
+        time: { link: '/es/time-duration', title: 'Calculadora de Tiempo y Duración', desc: 'Convierte horas, minutos, segundos y días con exactitud absoluta.', btn: 'Abrir Convertidor de Tiempo &rarr;' },
+        length: { link: '/es/length', title: 'Convertidor de Longitud y Distancia', desc: 'Convierte metros, pies, pulgadas, centímetros y kilómetros al instante.', btn: 'Abrir Convertidor de Longitud &rarr;' },
+        general: { link: '/es/', title: 'Suite Universal de Conversión OmniConverter', desc: 'Accede a todas las herramientas interactivas de medición y conversión sin anuncios invasivos.', btn: 'Explorar Herramientas &rarr;' }
+      },
+      de: {
+        currency: { link: '/de/currency', title: 'Interaktiver Live-Währungsrechner', desc: 'Konvertieren Sie USD, EUR, GBP, AUD und über 35 Weltwährungen mit echten Devisenkursen.', btn: 'Währungsrechner Öffnen &rarr;' },
+        weight: { link: '/de/weight-mass', title: 'Präziser Gewichts- & Massenrechner', desc: 'Rechnen Sie Kilogramm, Pfund, Gramm, Unzen und Stones sekundenschnell um.', btn: 'Gewichtsrechner Öffnen &rarr;' },
+        volume: { link: '/de/volume-capacity', title: 'Volumen- & Küchenmaße-Umrechner', desc: 'Rechnen Sie Tassen, Milliliter, Liter und Gallonen mit exakten Tabellen um.', btn: 'Volumenrechner Öffnen &rarr;' },
+        temperature: { link: '/de/temperature', title: 'Thermodynamischer Temperaturrechner', desc: 'Rechnen Sie Celsius, Fahrenheit, Kelvin und Rankine mit wissenschaftlichen Formeln um.', btn: 'Temperaturrechner Öffnen &rarr;' },
+        speed: { link: '/de/speed', title: 'Live Geschwindigkeitsumrechner', desc: 'Rechnen Sie km/h, mph, Knoten und m/s sofort mit Live-Formeln um.', btn: 'Geschwindigkeitsrechner Öffnen &rarr;' },
+        time: { link: '/de/time-duration', title: 'Zeit- & Dauereinheiten-Umrechner', desc: 'Rechnen Sie Stunden, Minuten, Sekunden und Tage hochpräzise um.', btn: 'Zeitrechner Öffnen &rarr;' },
+        length: { link: '/de/length', title: 'Längen- & Distanzumrechner', desc: 'Rechnen Sie Meter, Fuß, Zoll, Zentimeter und Kilometer direkt um.', btn: 'Längenrechner Öffnen &rarr;' },
+        general: { link: '/de/', title: 'OmniConverter Suite für Universalumrechnung', desc: 'Alle praktischen Umrechner für Maße, Finanzen und Einheiten ohne aufdringliche Werbung.', btn: 'Alle Rechner Entdecken &rarr;' }
+      },
+      pt: {
+        currency: { link: '/pt/currency', title: 'Conversor de Moedas em Tempo Real', desc: 'Converta USD, EUR, GBP, BRL, AUD e mais de 35 moedas com cotações comerciais ao vivo.', btn: 'Abrir Conversor de Moedas &rarr;' },
+        weight: { link: '/pt/weight-mass', title: 'Calculadora de Peso e Massa Exata', desc: 'Converta libras, quilos, gramas, onças e stones instantaneamente.', btn: 'Abrir Conversor de Peso &rarr;' },
+        volume: { link: '/pt/volume-capacity', title: 'Conversor de Volume e Culinária', desc: 'Calcule equivalências entre xícaras, mililitros, litros e galões em tempo real.', btn: 'Abrir Conversor de Volume &rarr;' },
+        temperature: { link: '/pt/temperature', title: 'Conversor de Temperatura Termodinâmica', desc: 'Converta Celsius, Fahrenheit, Kelvin e Rankine com fórmulas precisas.', btn: 'Abrir Conversor de Temperatura &rarr;' },
+        speed: { link: '/pt/speed', title: 'Conversor de Velocidade Instantâneo', desc: 'Converta km/h, mph, nós e metros por segundo com fórmulas ao vivo.', btn: 'Abrir Conversor de Velocidade &rarr;' },
+        time: { link: '/pt/time-duration', title: 'Calculadora de Tempo e Duração', desc: 'Converta horas, minutos, segundos e dias com exatidão matemática.', btn: 'Abrir Conversor de Tempo &rarr;' },
+        length: { link: '/pt/length', title: 'Conversor de Comprimento e Distância', desc: 'Converta metros, pés, polegadas, centímetros e quilômetros na hora.', btn: 'Abrir Conversor de Comprimento &rarr;' },
+        general: { link: '/pt/', title: 'Suíte Universal de Ferramentas OmniConverter', desc: 'Acesse calculadoras científicas e conversores práticos de unidades 100% gratuitos.', btn: 'Explorar Ferramentas &rarr;' }
+      }
+    };
+
+    const localizedCrossTitle = {
+      es: 'Guías de Conversión Relacionadas:',
+      de: 'Verwandte Umrechnungsratgeber:',
+      pt: 'Guias de Conversão Relacionados:'
+    };
+
     const localizedConfigs = [
       {
         lang: 'es',
@@ -1772,8 +1751,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         homeText: 'Inicio',
         blogText: 'Blog',
         badgePrefix: 'Guía de Conversión:',
-        ctaBoxText: '⚡ Transferencias Rápidas y Cotizaciones de Divisas Disponibles',
-        ctaBtnText: 'Ver Ofertas en Vivo &rarr;',
         footerRights: `&copy; ${year} OmniConverter Suite. Todos los derechos reservados. | <a href="/es/sitemap">Mapa del Sitio</a> | <a href="/es/about">Nosotros</a> | <a href="/es/privacy-policy">Privacidad</a> | <a href="/es/terms">Términos</a> | <a href="/es/contact">Contacto</a>`
       },
       {
@@ -1783,8 +1760,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         homeText: 'Startseite',
         blogText: 'Blog',
         badgePrefix: 'Umrechnungsratgeber:',
-        ctaBoxText: '⚡ Schnelle Überweisungen & Exklusive Wechselkurs-Angebote Verfügbar',
-        ctaBtnText: 'Live-Angebote Prüfen &rarr;',
         footerRights: `&copy; ${year} OmniConverter Suite. Alle Rechte vorbehalten. | <a href="/de/sitemap">Sitemap</a> | <a href="/de/about">Über uns</a> | <a href="/de/privacy-policy">Datenschutz</a> | <a href="/de/terms">AGB</a> | <a href="/de/contact">Kontakt</a>`
       },
       {
@@ -1794,8 +1769,6 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         homeText: 'Início',
         blogText: 'Blog',
         badgePrefix: 'Guia de Conversão:',
-        ctaBoxText: '⚡ Transferências Rápidas e Cotações Exclusivas Disponíveis',
-        ctaBtnText: 'Ver Ofertas em Tempo Real &rarr;',
         footerRights: `&copy; ${year} OmniConverter Suite. Todos os direitos reservados. | <a href="/pt/sitemap">Mapa do Site</a> | <a href="/pt/about">Sobre</a> | <a href="/pt/privacy-policy">Privacidade</a> | <a href="/pt/terms">Termos</a> | <a href="/pt/contact">Contato</a>`
       }
     ];
@@ -1804,6 +1777,46 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       const langDir = path.join(cfg.lang, 'blog');
       if (!fs.existsSync(langDir)) {
         fs.mkdirSync(langDir, { recursive: true });
+      }
+
+      // Read existing articles in this language to build category-aware internal links
+      const existingLangFiles = fs.existsSync(langDir)
+        ? fs.readdirSync(langDir).filter(f => f.endsWith('.html') && f !== 'index.html').map(f => f.replace('.html', ''))
+        : [];
+      
+      const langSameCat = existingLangFiles.filter(f => f !== cfg.data.slug && getArticleCategory(f) === currentCat);
+      const langFallback = existingLangFiles.filter(f => f !== cfg.data.slug && getArticleCategory(f) !== currentCat);
+      const langRelatedSlugs = [...langSameCat, ...langFallback].slice(0, 4);
+
+      const crossLinksHtmlLocalized = langRelatedSlugs.length > 0 ? `
+    <!-- CROSS_LINKS_BLOCK -->
+    <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
+      <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
+        <strong>${localizedCrossTitle[cfg.lang]}</strong> 
+        ${langRelatedSlugs.map(s => `<a href="/${cfg.lang}/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${s.replace(/-/g, ' ').replace(/\\b\\w/g, l => l.toUpperCase())}</a>`).join(' &bull; ')}
+      </p>
+    </div>` : '';
+
+      // Localized interactive tool callout box
+      const toolInfo = (localizedToolMeta[cfg.lang] && localizedToolMeta[cfg.lang][currentCat]) || (localizedToolMeta[cfg.lang] && localizedToolMeta[cfg.lang].general);
+      const localizedToolCalloutHtml = toolInfo ? `
+      <!-- Relevant Interactive Converter Callout Box -->
+      <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div style="max-width: 680px;">
+          <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">${toolInfo.title}</h3>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">${toolInfo.desc}</p>
+        </div>
+        <a href="${toolInfo.link}" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">${toolInfo.btn}</a>
+      </div>` : '';
+
+      let localizedBody = cfg.data.bodyHtml || '';
+      if (localizedToolCalloutHtml) {
+        if (localizedBody.includes('</div>')) {
+          const firstClose = localizedBody.indexOf('</div>') + 6;
+          localizedBody = localizedBody.slice(0, firstClose) + '\n' + localizedToolCalloutHtml + '\n' + localizedBody.slice(firstClose);
+        } else {
+          localizedBody = localizedToolCalloutHtml + '\n' + localizedBody;
+        }
       }
 
       const langSchemas = [
@@ -1943,68 +1956,15 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <span class="formula-badge">${cfg.badgePrefix} ${cfg.data.title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${cfg.data.title}</h1>
       <img src="${imageUrl}" alt="${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
-      ${cfg.data.bodyHtml}
-
-      <!-- Bottom Monetization Section -->
-      <!-- Sponsored High-CTR Direct Link Banner -->
-      <div class="sponsored-smartlink-box" style="margin: 2rem 0 1.5rem 0; padding: 1rem 1.25rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08)); border: 1px dashed var(--primary-500, #6366f1); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
-        <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-main, #1e293b);">
-          ${cfg.ctaBoxText}
-        </div>
-        <a href="https://www.profitableratecpmnetwork.com/i0kutdjeyt?key=9d9947dbd4ce803398c37bcc0ee3e887" target="_blank" rel="noopener noreferrer sponsored" style="display: inline-block; padding: 0.55rem 1.15rem; background: var(--primary-600, #4f46e5); color: #ffffff; font-size: 0.9rem; font-weight: 700; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);">
-          ${cfg.ctaBtnText}
-        </a>
-      </div>
-
-      <!-- High-CPM 728x90 Banner -->
-      <div class="ad-banner-slot" style="margin: 2rem auto; text-align: center; min-height: 90px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-        <script>
-          atOptions = {
-            'key' : '2ca98c99e53d3a8c6988fb21535d63d9',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highrevenueformat.com/2ca98c99e53d3a8c6988fb21535d63d9/invoke.js"></script>
-      </div>
-
-      <!-- In-Content Native Ad Container -->
-      <div class="ad-native-slot" style="margin: 2rem auto 1rem auto; text-align: center; max-width: 100%; min-height: 120px;">
-        <script async="async" data-cfasync="false" src="https://pl31760931.profitableratecpmnetwork.com/6af35b8a30cb38f675be2353f8953c6b/invoke.js"></script>
-        <div id="container-6af35b8a30cb38f675be2353f8953c6b"></div>
-      </div>
+      ${localizedBody}
     </article>
-    ${crossLinksHtml}
+    ${crossLinksHtmlLocalized}
   </main>
   <footer class="footer">
     <div class="footer-container">
       <p>${cfg.footerRights}</p>
     </div>
   </footer>
-  <!-- Defer Ad Network Global Monetizers (Only loads on real user interaction, 100% clean for Googlebot) -->
-  <script>
-    (function() {
-      let loaded = false;
-      function loadAdScripts() {
-        if (loaded) return;
-        loaded = true;
-        const s1 = document.createElement('script');
-        s1.src = 'https://pl31760930.profitableratecpmnetwork.com/d3/9c/38/d39c3845f6a74f2270e62943eb3fea85.js';
-        s1.async = true;
-        document.body.appendChild(s1);
-
-        const s2 = document.createElement('script');
-        s2.src = 'https://pl31760933.profitableratecpmnetwork.com/8f/40/d8/8f40d83d31f82674514161eeb921e8b1.js';
-        s2.async = true;
-        document.body.appendChild(s2);
-      }
-      window.addEventListener('scroll', loadAdScripts, { once: true, passive: true });
-      window.addEventListener('mousemove', loadAdScripts, { once: true, passive: true });
-      window.addEventListener('touchstart', loadAdScripts, { once: true, passive: true });
-    })();
-  </script>
 </body>
 </html>`;
 
