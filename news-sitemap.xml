@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/67-usd-to-gbp</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>67 Usd To Gbp: Exact Formula &amp; Live Calculator</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/150-usd-to-aud</loc>
     <news:news>
       <news:publication>
@@ -10,28 +21,6 @@
       </news:publication>
       <news:publication_date>2026-10-14</news:publication_date>
       <news:title>150 Usd To Aud: Exact Formula &amp; Live Calculator</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/5-lbs-in-kg</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-13</news:publication_date>
-      <news:title>5 Lbs In Kg: Exact Formula &amp; Live Calculator</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/700-pounds-to-aud</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-13</news:publication_date>
-      <news:title>700 Pounds To Aud</news:title>
     </news:news>
   </url>
 </urlset>
