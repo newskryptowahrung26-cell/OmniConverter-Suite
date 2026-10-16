@@ -1,11 +1,41 @@
 // Automatically synchronized blog data (Total: 67 articles)
 const BLOG_POSTS = [
   {
+    "id": "20-gbp-aud",
+    "slug": "/blog/20-gbp-aud",
+    "title": "20 Gbp Aud: Exact Formula & Live Calculator",
+    "date": "2026-10-16",
+    "publicationDate": "2026-10-16T00:20:19.817Z",
+    "category": "Currency & Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "OmniConverter Editorial Team",
+    "readTime": "4 min read",
+    "icon": "💱",
+    "image": "https://images.unsplash.com/photo-1609152490680-74583ad665b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MjAlMjBnYnAlMjBhdWR8ZW58MHx8fHwxNzkyMTA5ODc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "summary": "Convert 20 gbp aud with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "order": 0
+  },
+  {
+    "id": "1-aud-to-vnd",
+    "slug": "/blog/1-aud-to-vnd",
+    "title": "1 Aud To Vnd",
+    "date": "2026-10-15",
+    "publicationDate": "2026-10-15T00:00:00Z",
+    "category": "Currency & Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "OmniConverter Editorial Team",
+    "readTime": "4 min read",
+    "icon": "💱",
+    "image": "https://www.omniconverter.co.uk/logo.png",
+    "summary": "Convert 1 AUD to Vietnamese Dong (VND) with live mid-market exchange rates, bank transfer fees analysis, ATM withdrawal advice, and conversion tables.",
+    "order": 1
+  },
+  {
     "id": "67-usd-to-gbp",
     "slug": "/blog/67-usd-to-gbp",
     "title": "67 Usd To Gbp: Exact Formula & Live Calculator",
     "date": "2026-10-15",
-    "publicationDate": "2026-10-15T00:21:09.653Z",
+    "publicationDate": "2026-10-15T00:00:00Z",
     "category": "Currency & Forex",
     "categoryKey": "Currency & Forex",
     "author": "OmniConverter Editorial Team",
@@ -13,7 +43,37 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 67 usd to gbp with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
-    "order": 0
+    "order": 2
+  },
+  {
+    "id": "convert-file-type-to-pdf",
+    "slug": "/blog/convert-file-type-to-pdf",
+    "title": "Convert File Type To Pdf",
+    "date": "2026-10-15",
+    "publicationDate": "2026-10-15T00:00:00Z",
+    "category": "File & Media Tools",
+    "categoryKey": "File & Media Tools",
+    "author": "OmniConverter Editorial Team",
+    "readTime": "4 min read",
+    "icon": "📁",
+    "image": "https://www.omniconverter.co.uk/logo.png",
+    "summary": "Comprehensive technical guide on how to convert Word, Excel, PowerPoint, JPG, PNG, and HTML file types into ISO-compliant PDFs.",
+    "order": 3
+  },
+  {
+    "id": "convert-pdf-form",
+    "slug": "/blog/convert-pdf-form",
+    "title": "Convert Pdf Form",
+    "date": "2026-10-15",
+    "publicationDate": "2026-10-15T00:00:00Z",
+    "category": "File & Media Tools",
+    "categoryKey": "File & Media Tools",
+    "author": "OmniConverter Editorial Team",
+    "readTime": "4 min read",
+    "icon": "📁",
+    "image": "https://www.omniconverter.co.uk/logo.png",
+    "summary": "Complete guide to converting static, scanned, and flat PDF forms into interactive fillable forms and spreadsheet data pipelines.",
+    "order": 4
   },
   {
     "id": "150-usd-to-aud",
@@ -28,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1593672740624-38a34ff53d5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8MTUwJTIwdXNkJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkxOTM3MjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 150 usd to aud with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
-    "order": 1
+    "order": 5
   },
   {
     "id": "5-lbs-in-kg",
@@ -43,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 5 lbs in kg with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
-    "order": 2
+    "order": 6
   },
   {
     "id": "700-pounds-to-aud",
@@ -58,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1591033594798-33227a05780d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzAwJTIwcG91bmRzJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkxODUwNTMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 700 pounds to aud accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 3
+    "order": 7
   },
   {
     "id": "220-pounds-in-stone",
@@ -73,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1722336156323-eed902cf432a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MjIwJTIwcG91bmRzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTE3NjQwNDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 220 pounds in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 4
+    "order": 8
   },
   {
     "id": "104-kg-pounds",
@@ -88,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1689514226730-c0fbca1345c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8NXx8MTA0JTIwa2clMjBwb3VuZHN8ZW58MHx8fHwxNzkxNjc3NTcyfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 104 kg pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 5
+    "order": 9
   },
   {
     "id": "70kg-in-stone",
@@ -103,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1620914695139-9507be60a425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzBrZyUyMGluJTIwc3RvbmV8ZW58MHx8fHwxNzkxNTkxMjAxfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 70kg in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 6
+    "order": 10
   },
   {
     "id": "2000-usd-to-aud",
@@ -118,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 2000 usd to aud accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 7
+    "order": 11
   },
   {
     "id": "4-meters-to-feet",
@@ -133,22 +193,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "https://images.unsplash.com/photo-1606120312321-d65083a14576?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NCUyMG1ldGVycyUyMHRvJTIwZmVldHxlbnwwfHx8fDE3OTE0MTgzMzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 4 meters to feet accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 8
-  },
-  {
-    "id": "2000-usd-to-gbp",
-    "slug": "/blog/2000-usd-to-gbp",
-    "title": "2000 Usd To Gbp",
-    "date": "2026-10-07",
-    "publicationDate": "2026-10-07T00:00:00Z",
-    "category": "Currency & Forex",
-    "categoryKey": "Currency & Forex",
-    "author": "OmniConverter Editorial Team",
-    "readTime": "4 min read",
-    "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1517232117795-40c9d8212a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8NXx8MjAwMCUyMHVzZCUyMHRvJTIwZ2JwfGVufDB8fHx8MTc5MTMzMjAwNXww&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Convert 2000 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 9
+    "order": 12
   },
   {
     "id": "1500-usd-to-gbp",
@@ -163,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 1500 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 10
+    "order": 13
   },
   {
     "id": "95-usd-to-gbp",
@@ -178,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 95 usd to gbp accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 11
+    "order": 14
   },
   {
     "id": "1500-usd-to-aud",
@@ -193,7 +238,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1670071479248-cc25dfd919a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUwMCUyMHVzZCUyMHRvJTIwYXVkfGVufDB8fHx8MTc5MTE1OTE2OXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 1500 usd to aud accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 12
+    "order": 15
   },
   {
     "id": "1-bigha-in-square-feet",
@@ -208,7 +253,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
     "summary": "How many square feet are in 1 Bigha? Complete verified state-wise conversion table for UP, Bihar, Punjab, Haryana, Rajasthan, West Bengal, and MP.",
-    "order": 13
+    "order": 16
   },
   {
     "id": "1-crore-in-millions",
@@ -223,7 +268,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 1 Crore to Millions and Billions. Learn the exact zeros, commas, and currency value of Crore in USD, EUR, and international banking.",
-    "order": 14
+    "order": 17
   },
   {
     "id": "1-gaj-in-square-feet",
@@ -238,7 +283,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convert 1 Gaj to square feet and square meters. Learn why 1 Gaj equals exactly 9 square feet (1 square yard) in Indian property deeds.",
-    "order": 15
+    "order": 18
   },
   {
     "id": "1-guntha-in-sq-ft",
@@ -253,7 +298,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
     "summary": "How many square feet are in 1 Guntha? Convert Guntha to Sq Ft, Square Yards, Bigha, and Acres for Maharashtra, Karnataka, Gujarat, and Telangana.",
-    "order": 16
+    "order": 19
   },
   {
     "id": "1-tola-in-grams",
@@ -268,7 +313,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&q=80",
     "summary": "How many grams are in 1 Tola? Learn the exact difference between the 10-gram modern metric Tola and 11.6638-gram traditional Vedic Tola for gold purchase.",
-    "order": 17
+    "order": 20
   },
   {
     "id": "65-kg-pounds",
@@ -283,7 +328,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1664352603314-6047584b3e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8NjUlMjBrZyUyMHBvdW5kc3xlbnwwfHx8fDE3OTEwODMxNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 65 kg pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 18
+    "order": 21
   },
   {
     "id": "165-lbs-to-kg",
@@ -298,7 +343,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1689514226761-336eaf77e311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MTY1JTIwbGJzJTIwdG8lMjBrZ3xlbnwwfHx8fDE3OTA5ODYzMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 165 lbs to kg accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 19
+    "order": 22
   },
   {
     "id": "14-stone-in-pounds",
@@ -313,7 +358,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1592899436433-8abe4656570c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTQlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc5MDg5OTk0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 14 stone in pounds accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 20
+    "order": 23
   },
   {
     "id": "15-meters-to-feet",
@@ -328,7 +373,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "https://images.unsplash.com/photo-1600518386631-1deefa2dc398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUlMjBtZXRlcnMlMjB0byUyMGZlZXR8ZW58MHx8fHwxNzkwODQxMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 15 meters to feet accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 21
+    "order": 24
   },
   {
     "id": "16-ounces-to-milliliters",
@@ -343,12 +388,12 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "https://images.unsplash.com/photo-1523621509625-54893aa665ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTYlMjBvdW5jZXMlMjB0byUyMG1pbGxpbGl0ZXJzfGVufDB8fHx8MTc5MDgxMzU3Mnww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert 16 ounces to milliliters accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 22
+    "order": 25
   },
   {
     "id": "180lbs-in-stone",
     "slug": "/blog/180lbs-in-stone",
-    "title": "180lbs In Stone",
+    "title": "180 Pounds in Stone: 12 st 12 lb (12.86 st)",
     "date": "2026-09-30",
     "publicationDate": "2026-09-30T00:00:00Z",
     "category": "Weight & Mass",
@@ -357,8 +402,8 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1629878734837-9506604e605a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTgwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTA3MjcxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Convert 180lbs in stone accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 23
+    "summary": "Convert 180 pounds in stone (12 st 12 lb / 81.65 kg) with exact mathematical formulas, BMI benchmarks, mental math shortcuts, and live interactive calculator.",
+    "order": 26
   },
   {
     "id": "convert-lakh-to-usd",
@@ -373,7 +418,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "https://images.unsplash.com/photo-1593672715438-d88a70629abe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMGxha2glMjB0byUyMHVzZHxlbnwwfHx8fDE3OTA2NDA3Nzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Convert convert lakh to usd accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 24
+    "order": 27
   },
   {
     "id": "5-usd-to-aud",
@@ -388,7 +433,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Convert 5 USD to AUD with live mid-market exchange rates, exact formula steps, comparison tables, and fee-free money transfer insights.",
-    "order": 25
+    "order": 28
   },
   {
     "id": "3-cups-in-ml",
@@ -403,7 +448,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Convert 3 cups in ml accurately with step-by-step mathematical formulas, mental math shortcuts, conversion tables, and live calculator.",
-    "order": 26
+    "order": 29
   },
   {
     "id": "currency-for-turkish-lira",
@@ -418,7 +463,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for currency for turkish lira with formulas, tables, and FAQs.",
-    "order": 27
+    "order": 30
   },
   {
     "id": "currency-jpy-to-inr",
@@ -433,7 +478,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for currency jpy to inr with formulas, tables, and FAQs.",
-    "order": 28
+    "order": 31
   },
   {
     "id": "convertor-or-converter",
@@ -448,7 +493,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for convertor or converter with formulas, tables, and FAQs.",
-    "order": 29
+    "order": 32
   },
   {
     "id": "12-degrees-celsius-to-fahrenheit",
@@ -463,7 +508,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 12 degrees celsius to fahrenheit with formulas, tables, and FAQs.",
-    "order": 30
+    "order": 33
   },
   {
     "id": "170lbs-in-stone",
@@ -478,7 +523,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 170lbs in stone with formulas, tables, and FAQs.",
-    "order": 31
+    "order": 34
   },
   {
     "id": "20-pounds-sterling-in-australian-dollars",
@@ -493,7 +538,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 20 pounds sterling in australian dollars with formulas, tables, and FAQs.",
-    "order": 32
+    "order": 35
   },
   {
     "id": "199-usd-in-aud",
@@ -508,12 +553,12 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 199 usd in aud with formulas, tables, and FAQs.",
-    "order": 33
+    "order": 36
   },
   {
     "id": "2000-dollars-in-pounds",
     "slug": "/blog/2000-dollars-in-pounds",
-    "title": "2000 Dollars In Pounds",
+    "title": "2000 Dollars in Pounds: Live USD to GBP",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
     "category": "Currency & Forex",
@@ -522,8 +567,8 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Step-by-step conversion guide for 2000 dollars in pounds with formulas, tables, and FAQs.",
-    "order": 34
+    "summary": "Convert 2000 dollars in pounds (USD to GBP). See live mid-market exchange rates (~£1,510 GBP), fee comparison, historical trends, and instant converter.",
+    "order": 37
   },
   {
     "id": "80-kilo-lbs",
@@ -538,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 80 kilo lbs with formulas, tables, and FAQs.",
-    "order": 35
+    "order": 38
   },
   {
     "id": "mastercard-foreign-exchange-rate",
@@ -553,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for mastercard foreign exchange rate with formulas, tables, and FAQs.",
-    "order": 36
+    "order": 39
   },
   {
     "id": "10-billion-won-to-gbp",
@@ -568,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 10 billion won to gbp with formulas, tables, and FAQs.",
-    "order": 37
+    "order": 40
   },
   {
     "id": "32-usd-to-gbp",
@@ -583,37 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 32 usd to gbp with formulas, tables, and FAQs.",
-    "order": 38
-  },
-  {
-    "id": "convert-file-type-to-pdf",
-    "slug": "/blog/convert-file-type-to-pdf",
-    "title": "Convert File Type To Pdf",
-    "date": "2026-09-20",
-    "publicationDate": "2026-09-20T00:00:00Z",
-    "category": "File & Media Tools",
-    "categoryKey": "File & Media Tools",
-    "author": "OmniConverter Editorial Team",
-    "readTime": "4 min read",
-    "icon": "📁",
-    "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Step-by-step conversion guide for convert file type to pdf with formulas, tables, and FAQs.",
-    "order": 39
-  },
-  {
-    "id": "convert-pdf-form",
-    "slug": "/blog/convert-pdf-form",
-    "title": "Convert Pdf Form",
-    "date": "2026-09-20",
-    "publicationDate": "2026-09-20T00:00:00Z",
-    "category": "File & Media Tools",
-    "categoryKey": "File & Media Tools",
-    "author": "OmniConverter Editorial Team",
-    "readTime": "4 min read",
-    "icon": "📁",
-    "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Step-by-step conversion guide for convert pdf form with formulas, tables, and FAQs.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "weeks-calculator",
@@ -628,12 +643,12 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for weeks calculator with formulas, tables, and FAQs.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "13-stone-in-pounds",
     "slug": "/blog/13-stone-in-pounds",
-    "title": "13 Stone In Pounds",
+    "title": "13 Stone in Pounds: 182 lb (and 82.55 kg)",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
     "category": "Currency & Forex",
@@ -642,8 +657,8 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Step-by-step conversion guide for 13 stone in pounds with formulas, tables, and FAQs.",
-    "order": 42
+    "summary": "Convert 13 stone in pounds: exactly 182 lbs (82.55 kg). Includes stone-and-pounds table (13 st 1 lb to 13 st 13 lb), BMI benchmarks, and live calculator.",
+    "order": 43
   },
   {
     "id": "71-pounds-to-kg",
@@ -658,7 +673,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 71 pounds to kg with formulas, tables, and FAQs.",
-    "order": 43
+    "order": 44
   },
   {
     "id": "file-changer",
@@ -673,7 +688,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for file changer with formulas, tables, and FAQs.",
-    "order": 44
+    "order": 45
   },
   {
     "id": "rupiah-to-aud",
@@ -688,7 +703,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for rupiah to aud with formulas, tables, and FAQs.",
-    "order": 45
+    "order": 46
   },
   {
     "id": "300-dollars-in-gbp",
@@ -703,7 +718,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for 300 dollars in gbp with formulas, tables, and FAQs.",
-    "order": 46
+    "order": 47
   },
   {
     "id": "converter-application-download",
@@ -718,7 +733,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for converter application download with formulas, tables, and FAQs.",
-    "order": 47
+    "order": 48
   },
   {
     "id": "indonesia-cu",
@@ -733,7 +748,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for indonesia cu with formulas, tables, and FAQs.",
-    "order": 48
+    "order": 49
   },
   {
     "id": "korean-to-aud",
@@ -748,21 +763,6 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://www.omniconverter.co.uk/logo.png",
     "summary": "Step-by-step conversion guide for korean to aud with formulas, tables, and FAQs.",
-    "order": 49
-  },
-  {
-    "id": "1-aud-to-vnd",
-    "slug": "/blog/1-aud-to-vnd",
-    "title": "1 Aud To Vnd",
-    "date": "2026-09-17",
-    "publicationDate": "2026-09-17T00:00:00Z",
-    "category": "Currency & Forex",
-    "categoryKey": "Currency & Forex",
-    "author": "OmniConverter Editorial Team",
-    "readTime": "4 min read",
-    "icon": "💱",
-    "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Step-by-step conversion guide for 1 aud to vnd with formulas, tables, and FAQs.",
     "order": 50
   },
   {
@@ -828,7 +828,7 @@ const BLOG_POSTS = [
   {
     "id": "1-tsp-is-ml",
     "slug": "/blog/1-tsp-is-ml",
-    "title": "1 TSP in mL Guide",
+    "title": "How Many mL in a Teaspoon? 1 tsp to mL",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -837,7 +837,7 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Find out exactly how many mL is 1 TSP. Complete kitchen teaspoon volume conversion guide with tables for US, Metric, and UK teaspoons.",
+    "summary": "How many mL in a teaspoon? Exactly 5 mL (UK Metric) and 4.93 mL (US Customary). Essential culinary and medical dosing conversion guide with live calculator.",
     "order": 55
   },
   {
@@ -888,7 +888,7 @@ const BLOG_POSTS = [
   {
     "id": "500-ml-to-cups",
     "slug": "/blog/500-ml-to-cups",
-    "title": "500 mL to Cups: Liquid Volume Conversion",
+    "title": "500 mL to Cups: How Many Cups is 500 mL?",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -897,7 +897,7 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "https://www.omniconverter.co.uk/logo.png",
-    "summary": "Convert 500 mL to US, Metric, and Imperial cups. Complete culinary volume breakdown for liquid cooking and measuring cups.",
+    "summary": "Convert 500 mL to cups: Exactly 2.00 UK Metric cups or 2.11 US cups (16.9 fl oz / 1.06 US pints). Includes liquid measuring guide, tables, and live calculator.",
     "order": 59
   },
   {
