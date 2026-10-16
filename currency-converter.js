@@ -43,6 +43,13 @@ export const CURRENCY_UNITS = {
   QAR: { name: 'Qatari Riyal', symbol: 'QR', flag: '🇶🇦', code: 'QAR', decimals: 2 }
 };
 
+export const POPULAR_CURRENCIES = Object.keys(CURRENCY_UNITS).map(code => ({
+  code,
+  name: CURRENCY_UNITS[code].name,
+  symbol: CURRENCY_UNITS[code].symbol,
+  flag: CURRENCY_UNITS[code].flag
+}));
+
 export const DEFAULT_RATES = {
   USD: 1,
   AUD: 1.4258,
@@ -168,7 +175,7 @@ export function formatCurrencyValue(val, code) {
   }).format(val);
 }
 
-export function convertCurrency(value, fromCur, toCur, customRates = null) {
+export function convertCurrency(value, fromCur, toCur, customRates = null, feePercent = 0) {
   if (value === '' || value === null || value === undefined) return null;
   const numericValue = Number(value);
   if (isNaN(numericValue) || numericValue < 0) return { error: 'Please enter a valid positive amount' };
@@ -189,7 +196,8 @@ export function convertCurrency(value, fromCur, toCur, customRates = null) {
   // USD -> fromCur rate = fromRate; USD -> toCur rate = toRate
   // 1 fromCur = (toRate / fromRate) toCur
   const exchangeRate = toRate / fromRate;
-  const rawResult = numericValue * exchangeRate;
+  const feeMultiplier = feePercent > 0 ? (100 - feePercent) / 100 : 1;
+  const rawResult = numericValue * exchangeRate * feeMultiplier;
   const inverseRate = fromRate / toRate;
 
   const fromUnit = CURRENCY_UNITS[fromCur] || { name: fromCur, symbol: fromCur, flag: '🌐', decimals: 2 };
