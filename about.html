@@ -155,18 +155,23 @@
   
 
     <section class="content-section" style="margin-top:2rem;">
-      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Editorial Standards & Measurement Authorities</h2>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Editorial Standards, Metrology Governance & Error Reporting</h2>
       <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
-        To guarantee 100% calculation accuracy and provide high-value reference material, all formulas and constant multipliers published on OmniConverter are derived from recognized national and international metrology authorities:
+        To ensure high mathematical fidelity and reliable reference material, all conversion formulas and physical multipliers on OmniConverter are calibrated against recognized national and international metrology authorities:
       </p>
       <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
         <li><strong>National Institute of Standards and Technology (NIST):</strong> Special Publication 811 (Guide for the Use of the International System of Units).</li>
-        <li><strong>International Bureau of Weights and Measures (BIPM):</strong> The International System of Units (SI) Broshure standards.</li>
-        <li><strong>ISO 80000 Series:</strong> Quantities and units standardization across physics, chemistry, engineering, and digital storage.</li>
-        <li><strong>Foreign Exchange Mid-Market Benchmarks:</strong> Central bank reference rates and live financial market mid-market feeds.</li>
+        <li><strong>International Bureau of Weights and Measures (BIPM):</strong> The International System of Units (SI Brochure, 9th edition).</li>
+        <li><strong>ISO 80000 Series:</strong> Quantities and units standardization across physics, mechanics, thermodynamics, and data storage.</li>
+        <li><strong>Central Bank & FX Wholesale Feeds:</strong> Live interbank rates (via open.er-api.com) and European Central Bank (ECB) reference rates.</li>
       </ul>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.25rem 0 0.5rem 0;">Precision & Rounding Conventions</h3>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Calculations use IEEE 754 double-precision floating-point arithmetic. Standard unit conversions are rounded dynamically to 4 to 6 significant decimal places for readability, while financial foreign exchange conversions follow ISO 4217 standard currency decimal specifications (e.g. 2 decimal places for USD/EUR/GBP, 0 decimals for JPY/VND, and 3 decimals for KWD/BHD).
+      </p>
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.25rem 0 0.5rem 0;">Quality Control & Error Reporting</h3>
       <p style="line-height:1.7; color:var(--text-muted);">
-        Every conversion guide undergoes technical peer-review by our editorial team to ensure factual correctness, mental calculation validation, and practical real-world relevance.
+        Every conversion guide undergoes technical review prior to publication. If you spot a discrepancy, rounding anomaly, or outdated formula, please notify our editorial board via our <a href="/contact" style="color:var(--primary-600); font-weight:700; text-decoration:underline;">Contact Page</a>. Reported issues are reviewed and patched within 48 business hours.
       </p>
     </section>
 

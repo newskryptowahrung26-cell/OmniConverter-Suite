@@ -232,9 +232,12 @@
             <h1 class="converter-title" style="margin:0;">Currency Converter & Exchange Rate Calculator</h1>
             <p style="margin:0.25rem 0 0 0; font-size:0.95rem; color:var(--text-muted);">Real-time wholesale interbank rates with Visa, Mastercard, and commercial bank fee estimators.</p>
           </div>
-          <div id="rateStatusBadge" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.75rem; background:rgba(16, 185, 129, 0.1); color:#059669; border:1px solid rgba(16, 185, 129, 0.25); border-radius:9999px; font-size:0.82rem; font-weight:600;">
-            <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; animation: pulse 2s infinite;"></span>
-            <span id="rateStatusText">Live Mid-Market Rates</span>
+          <div id="rateStatusBadge" style="display:inline-flex; flex-direction:column; align-items:flex-end; gap:0.25rem;">
+            <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.75rem; background:rgba(16, 185, 129, 0.1); color:#059669; border:1px solid rgba(16, 185, 129, 0.25); border-radius:9999px; font-size:0.82rem; font-weight:600;">
+              <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; animation: pulse 2s infinite;"></span>
+              <span id="rateStatusText">Live Mid-Market Rates (open.er-api.com)</span>
+            </div>
+            <span id="rateTimestampSubtitle" style="font-size:0.75rem; color:var(--text-muted);">Source: Open Exchange Feed (Updated hourly)</span>
           </div>
         </div>
 
@@ -792,8 +795,14 @@
           liveRates = res.rates;
           if (rateStatusText) {
             rateStatusText.textContent = res.isLive 
-              ? `Live Mid-Market Rates (${res.lastUpdate})`
+              ? `Live Mid-Market Rates`
               : 'Reliable Reference Rates';
+          }
+          const subEl = document.getElementById('rateTimestampSubtitle');
+          if (subEl) {
+            subEl.textContent = res.isLive 
+              ? `Feed: open.er-api.com • Last synced: ${res.lastUpdate}`
+              : 'Offline Mode: High-precision baseline rates active';
           }
           performConversion();
         }
