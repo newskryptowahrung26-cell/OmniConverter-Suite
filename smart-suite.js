@@ -17,8 +17,7 @@
 
     applyTheme(currentTheme);
 
-    // Locate header-container or lang-switcher to inject toggle
-    const langSwitcher = document.querySelector('.lang-switcher') || document.querySelector('.header-container');
+    const langSwitcher = document.querySelector('.lang-switcher');
     if (!langSwitcher || document.getElementById('theme-toggle-btn')) return;
 
     const toggleBtn = document.createElement('button');
@@ -29,16 +28,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: 1px solid var(--card-border, #e2e8f0);
       background: var(--card-bg, rgba(255,255,255,0.8));
       color: var(--text-main, #0f172a);
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: all 0.2s ease;
       margin-left: 6px;
+      padding: 0;
+      flex-shrink: 0;
     `;
     toggleBtn.innerHTML = currentTheme === 'dark' ? '☀️' : '🌙';
     toggleBtn.title = currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
@@ -52,11 +53,8 @@
       toggleBtn.title = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
     });
 
-    if (langSwitcher.classList.contains('lang-switcher')) {
-      langSwitcher.parentNode.insertBefore(toggleBtn, langSwitcher.nextSibling);
-    } else {
-      langSwitcher.appendChild(toggleBtn);
-    }
+    // Append INSIDE lang-switcher pill so it never floats or breaks the layout
+    langSwitcher.appendChild(toggleBtn);
   }
 
   function applyTheme(theme) {
@@ -92,38 +90,36 @@
     const isPortuguese = window.location.pathname.startsWith('/pt/');
 
     let searchPlaceholder = 'Search units, currencies & tools... (Ctrl + K)';
-    let searchTitle = 'Quick Search & Instant Converter';
     if (isSpanish) searchPlaceholder = 'Buscar unidades, divisas y herramientas... (Ctrl + K)';
     else if (isGerman) searchPlaceholder = 'Einheiten, Währungen & Tools suchen... (Ctrl + K)';
     else if (isPortuguese) searchPlaceholder = 'Buscar unidades, moedas e ferramentas... (Ctrl + K)';
 
-    // Add quick search button in header if not present
-    const headerContainer = document.querySelector('.header-container');
-    if (headerContainer && !document.getElementById('header-search-btn')) {
+    // Insert Search button directly inside .nav-tabs as first clean tab item
+    const navTabs = document.querySelector('.nav-tabs');
+    if (navTabs && !document.getElementById('header-search-btn')) {
       const searchTrigger = document.createElement('button');
       searchTrigger.id = 'header-search-btn';
       searchTrigger.type = 'button';
+      searchTrigger.className = 'tab-btn';
       searchTrigger.setAttribute('aria-label', 'Open Quick Search');
       searchTrigger.style.cssText = `
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 5px 12px;
-        background: var(--bg-surface, rgba(255,255,255,0.7));
-        border: 1px solid var(--card-border, #cbd5e1);
-        border-radius: 20px;
+        gap: 5px;
+        padding: 0.35rem 0.65rem;
+        border-radius: var(--radius-lg, 14px);
         font-size: 0.82rem;
-        color: var(--text-muted, #64748b);
+        font-weight: 700;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary-600, #4f46e5);
+        border: 1px solid rgba(99, 102, 241, 0.25);
         cursor: pointer;
-        transition: all 0.2s ease;
+        flex-shrink: 0;
       `;
-      searchTrigger.innerHTML = `<span>🔍</span> <span>Search</span> <kbd style="background:rgba(0,0,0,0.08); padding:1px 4px; border-radius:4px; font-size:0.75rem;">Ctrl K</kbd>`;
+      searchTrigger.innerHTML = `<span>🔍</span> <span>Search</span> <kbd style="background:rgba(99,102,241,0.15); padding:1px 4px; border-radius:4px; font-size:0.7rem; font-family:monospace;">Ctrl K</kbd>`;
       
       searchTrigger.addEventListener('click', openSearchModal);
-      const navTabs = document.querySelector('.nav-tabs');
-      if (navTabs) {
-        navTabs.parentNode.insertBefore(searchTrigger, navTabs);
-      }
+      navTabs.insertBefore(searchTrigger, navTabs.firstChild);
     }
 
     // Keyboard shortcut listener (Ctrl + K / Cmd + K)
@@ -244,23 +240,19 @@
     const isPortuguese = window.location.pathname.startsWith('/pt/');
 
     let historyTitle = '🕒 Recent Conversions & Favorites';
-    let saveFavText = '⭐ Favorite';
     let clearHistText = 'Clear';
     let emptyText = 'No recent conversions yet. Compute any value above!';
 
     if (isSpanish) {
       historyTitle = '🕒 Conversiones Recientes y Favoritos';
-      saveFavText = '⭐ Guardar';
       clearHistText = 'Limpiar';
       emptyText = 'No hay conversiones recientes.';
     } else if (isGerman) {
       historyTitle = '🕒 Letzte Umrechnungen & Favoriten';
-      saveFavText = '⭐ Merken';
       clearHistText = 'Löschen';
       emptyText = 'Noch keine Umrechnungen gespeichert.';
     } else if (isPortuguese) {
       historyTitle = '🕒 Conversões Recentes e Favoritos';
-      saveFavText = '⭐ Salvar';
       clearHistText = 'Limpar';
       emptyText = 'Nenhuma conversão recente gravada.';
     }
@@ -288,7 +280,6 @@
         <div id="historyItemsList" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
       `;
 
-      // Insert right after the calculator container
       const parentContainer = liveResult.closest('div[style*="background:var(--bg-elevated)"]') || liveResult.closest('.converter-card') || liveResult.parentElement;
       if (parentContainer && parentContainer.parentNode) {
         parentContainer.parentNode.insertBefore(historyBox, parentContainer.nextSibling);
@@ -321,7 +312,6 @@
         history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
       } catch (e) {}
 
-      // Deduplicate
       history = history.filter(h => h.title !== item.title);
       history.unshift(item);
       if (history.length > 6) history = history.slice(0, 6);
@@ -362,7 +352,6 @@
       });
     }
 
-    // Debounced recording on user input
     let timer = null;
     if (inputVal) {
       inputVal.addEventListener('input', () => {

@@ -7,7 +7,6 @@
 
   // 1. Interactive "Did You Know?" Fact Card
   function initRealWorldFactCard() {
-    // Look for in-page calculator result container
     const liveResult = document.getElementById('liveToolResultVal') || document.getElementById('liveResultVal') || document.getElementById('resultValue');
     const inputVal = document.getElementById('liveToolInput') || document.getElementById('liveTempInput') || document.getElementById('tempInput') || document.getElementById('weightInput') || document.getElementById('currencyInput');
     const fromUnit = document.getElementById('liveToolFromUnit') || document.getElementById('liveFromUnit') || document.getElementById('fromSelect') || document.getElementById('weightFromSelect') || document.getElementById('currencyFromSelect');
@@ -15,11 +14,9 @@
 
     if (!liveResult) return;
 
-    // Determine Language
     const path = window.location.pathname;
     const lang = path.startsWith('/es/') ? 'es' : (path.startsWith('/de/') ? 'de' : (path.startsWith('/pt/') ? 'pt' : 'en'));
 
-    // Check if card container already exists
     let factBox = document.getElementById('omniconverter-fact-card');
     if (!factBox) {
       factBox = document.createElement('div');
@@ -35,11 +32,10 @@
         align-items: center;
         gap: 0.75rem;
         font-size: 0.88rem;
-        color: var(--text-main, #1e293b);
+        color: var(--text-main, #0f172a);
         transition: all 0.2s ease;
       `;
 
-      // Insert right after the calculator result box
       const parentContainer = liveResult.closest('div[style*="background:var(--bg-surface)"]') || liveResult.parentElement;
       if (parentContainer && parentContainer.parentNode) {
         parentContainer.parentNode.insertBefore(factBox, parentContainer.nextSibling);
@@ -55,7 +51,6 @@
       let factText = '';
       let emoji = '💡';
 
-      // Temperature Logic
       if (from === 'F' || from === 'C' || from === 'K' || path.includes('fahrenheit') || path.includes('celsius')) {
         let tempC = (from === 'F') ? (num - 32) * (5 / 9) : (from === 'K' ? num - 273.15 : num);
         emoji = '🌡️';
@@ -79,16 +74,13 @@
           else if (tempC > 23 && tempC <= 38) factText = `A ${tempC.toFixed(1)}°C o dia é quente e ensolarado; 37°C é a média do corpo humano saudável.`;
           else factText = `A ${tempC.toFixed(1)}°C temos temperaturas elevadas culinárias ou industriais.`;
         } else {
-          // English Default
           if (tempC <= 0) factText = `At ${tempC.toFixed(1)}°C (32°F or below), water freezes solid into ice. Emperor penguins routinely forage in these conditions.`;
           else if (tempC > 0 && tempC <= 12) factText = `At ${tempC.toFixed(1)}°C (~50°F), the air is brisk and crisp. It matches the traditional underground wine cellar temperature!`;
           else if (tempC > 12 && tempC <= 23) factText = `At ${tempC.toFixed(1)}°C (55–73°F), you are in optimal indoor living and office thermostat comfort range.`;
           else if (tempC > 23 && tempC <= 38) factText = `At ${tempC.toFixed(1)}°C (75–100°F), it feels like a warm beach day. 37°C (98.6°F) is normal human body core temperature.`;
           else factText = `At ${tempC.toFixed(1)}°C, thermal energy is high. Specialty filter coffee brews best at 91–96°C (195–205°F).`;
         }
-      }
-      // Weight / Stone Logic
-      else if (from === 'LB' || from === 'KG' || from === 'ST' || path.includes('stone') || path.includes('pound') || path.includes('kg')) {
+      } else if (from === 'LB' || from === 'KG' || from === 'ST' || path.includes('stone') || path.includes('pound') || path.includes('kg')) {
         let weightKg = (from === 'LB') ? num * 0.453592 : (from === 'ST' ? num * 6.35029 : num);
         emoji = '⚖️';
 
@@ -101,9 +93,7 @@
         } else {
           factText = `${num} ${from || 'lbs'} is ~${weightKg.toFixed(1)} kg. Fun benchmark: this is roughly equivalent to the weight of ${(weightKg / 5.4).toFixed(1)} standard bowling balls or an adult kangaroo!`;
         }
-      }
-      // Currency Logic
-      else if (from === 'USD' || from === 'GBP' || from === 'EUR' || from === 'AUD' || path.includes('usd') || path.includes('gbp')) {
+      } else if (from === 'USD' || from === 'GBP' || from === 'EUR' || from === 'AUD' || path.includes('usd') || path.includes('gbp')) {
         emoji = '💰';
         if (lang === 'es') {
           factText = `Consejo Inteligente: Al pagar con tarjeta en el extranjero, selecciona siempre cobrar en moneda local para evitar recargos bancarios del 3% al 6%.`;
@@ -134,12 +124,14 @@
     if (fromUnit) fromUnit.addEventListener('change', updateFact);
     if (toUnit) toUnit.addEventListener('change', updateFact);
 
-    // Initial render
     updateFact();
   }
 
-  // 2. Mobile Sticky Quick-Convert Bar (appears on scroll)
+  // 2. Mobile-Only Sticky Quick-Convert Bar (Hides cleanly when footer is in view)
   function initMobileQuickConvertBar() {
+    // Only show on smaller mobile/tablet screens (< 768px)
+    if (window.innerWidth >= 768) return;
+
     const liveResult = document.getElementById('liveToolResultVal') || document.getElementById('liveResultVal') || document.getElementById('resultValue');
     const inputVal = document.getElementById('liveToolInput') || document.getElementById('liveTempInput') || document.getElementById('tempInput') || document.getElementById('weightInput') || document.getElementById('currencyInput');
     const fromUnit = document.getElementById('liveToolFromUnit') || document.getElementById('liveFromUnit') || document.getElementById('fromSelect') || document.getElementById('weightFromSelect') || document.getElementById('currencyFromSelect');
@@ -167,11 +159,11 @@
       background: #0f172a;
       color: #ffffff;
       border-top: 2px solid #4f46e5;
-      padding: 10px 16px;
+      padding: 8px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       z-index: 99990;
       box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
       transform: translateY(110%);
@@ -181,15 +173,21 @@
 
     bar.innerHTML = `
       <div style="display: flex; align-items: baseline; gap: 8px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-        <span id="quickBarFrom" style="font-size: 0.95rem; color: #94a3b8; font-weight: 600;">50°F =</span>
-        <span id="quickBarTo" style="font-size: 1.15rem; font-weight: 800; color: #38bdf8;">10.00 °C</span>
+        <span id="quickBarFrom" style="font-size: 0.88rem; color: #94a3b8; font-weight: 600;">50°F =</span>
+        <span id="quickBarTo" style="font-size: 1.05rem; font-weight: 800; color: #38bdf8;">10.00 °C</span>
       </div>
-      <button id="quickBarScrollBtn" style="background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; border: none; padding: 7px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(79,70,229,0.4);">
+      <button id="quickBarScrollBtn" style="background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(79,70,229,0.4);">
         ${btnText}
       </button>
     `;
 
     document.body.appendChild(bar);
+
+    // Add safe padding to footer so content never gets obscured
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.style.paddingBottom = '5rem';
+    }
 
     function syncQuickBar() {
       const qFrom = document.getElementById('quickBarFrom');
@@ -208,15 +206,17 @@
     if (fromUnit) fromUnit.addEventListener('change', syncQuickBar);
     if (toUnit) toUnit.addEventListener('change', syncQuickBar);
 
-    // Initial sync
     syncQuickBar();
 
-    // Scroll trigger: show when scrolled past the calculator
     let isBarVisible = false;
     window.addEventListener('scroll', () => {
       const calcRect = liveResult.getBoundingClientRect();
-      // If calculator top is above the viewport by 150px
-      if (calcRect.bottom < 50 && window.scrollY > 400) {
+      const footerRect = footer ? footer.getBoundingClientRect() : null;
+
+      // Check if user reached near footer: hide bar cleanly
+      const isFooterVisible = footerRect && footerRect.top < window.innerHeight;
+
+      if (calcRect.bottom < 50 && window.scrollY > 400 && !isFooterVisible) {
         if (!isBarVisible) {
           syncQuickBar();
           bar.style.transform = 'translateY(0)';
