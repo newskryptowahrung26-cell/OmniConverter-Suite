@@ -222,11 +222,13 @@
           <div>
             <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">From Unit</label>
             <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              <option value="kg" >Kilograms (kg)</option>
-              <option value="lb" selected>Pounds (lbs)</option>
-              <option value="oz" >Ounces (oz)</option>
-              <option value="g" >Grams (g)</option>
-              <option value="st" >Stones (st)</option>
+              <option value="GBP" selected>British Pound (£ GBP)</option>
+              <option value="USD">US Dollar ($ USD)</option>
+              <option value="AUD">Australian Dollar ($ AUD)</option>
+              <option value="EUR">Euro (€ EUR)</option>
+              <option value="CAD">Canadian Dollar ($ CAD)</option>
+              <option value="INR">Indian Rupee (₹ INR)</option>
+              <option value="VND">Vietnamese Dong (₫ VND)</option>
             </select>
           </div>
           <div style="display:flex; justify-content:center; align-items:center;">
@@ -235,11 +237,13 @@
           <div>
             <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">To Unit</label>
             <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              <option value="kg" selected>Kilograms (kg)</option>
-              <option value="lb" >Pounds (lbs)</option>
-              <option value="oz" >Ounces (oz)</option>
-              <option value="g" >Grams (g)</option>
-              <option value="st" >Stones (st)</option>
+              <option value="AUD" selected>Australian Dollar ($ AUD)</option>
+              <option value="GBP">British Pound (£ GBP)</option>
+              <option value="USD">US Dollar ($ USD)</option>
+              <option value="EUR">Euro (€ EUR)</option>
+              <option value="CAD">Canadian Dollar ($ CAD)</option>
+              <option value="INR">Indian Rupee (₹ INR)</option>
+              <option value="VND">Vietnamese Dong (₫ VND)</option>
             </select>
           </div>
         </div>
@@ -247,8 +251,8 @@
         <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
           <div>
             <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Converted Result</div>
-            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">--</div>
-            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Live formula calculation</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">1320.88 AUD</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">1 GBP = 1.8870 AUD</div>
           </div>
           <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1.25rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
         </div>
