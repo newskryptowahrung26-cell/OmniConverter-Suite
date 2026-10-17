@@ -72,6 +72,34 @@
   </script>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#4f46e5">
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Início",
+        "item": "https://www.omniconverter.co.uk/pt/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.omniconverter.co.uk/pt/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "4 Metros para Pés",
+        "item": "https://www.omniconverter.co.uk/pt/blog/4-metros-para-pes"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -396,5 +424,6 @@
   
   <script src="/pwa-installer.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
+  <script src="/embed-share-engine.js" defer></script>
 </body>
 </html>

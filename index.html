@@ -77,7 +77,7 @@
 }
   </script>
 
-  <!-- Schema.org WebSite for Google Sitelinks -->
+    <!-- Schema.org WebSite for Google Sitelinks Searchbox -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -85,6 +85,11 @@
     "name": "OmniConverter",
     "alternateName": ["OmniConverter Suite", "OmniConverter UK", "omniconverter.co.uk"],
     "url": "https://www.omniconverter.co.uk/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.omniconverter.co.uk/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
     "description": "Universal online unit and media file converter suite."
   }
   </script>
@@ -768,5 +773,6 @@
   
   <script src="/pwa-installer.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
+  <script src="/embed-share-engine.js" defer></script>
 </body>
 </html>

@@ -35,6 +35,28 @@
   <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/temperature">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#4f46e5">
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://www.omniconverter.co.uk/de/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Temperatur-Umrechner: Celsius, Fahrenheit, Kelvin & Rankine",
+        "item": "https://www.omniconverter.co.uk/de/temperature"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -316,5 +338,6 @@
   <script src="/pwa-installer.js" defer></script>
   <script src="/problem-solvers.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
+  <script src="/embed-share-engine.js" defer></script>
 </body>
 </html>
