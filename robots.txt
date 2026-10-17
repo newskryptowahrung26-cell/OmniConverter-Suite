@@ -3,7 +3,6 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://www.omniconverter.co.uk/sitemap.xml
-Sitemap: https://www.omniconverter.co.uk/news-sitemap.xml
 
 # LLM & AI Agents Index
 # See https://www.omniconverter.co.uk/llms.txt for machine-readable context

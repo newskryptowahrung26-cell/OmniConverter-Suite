@@ -161,8 +161,8 @@
 
       
       <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
-        <span>✍️ <strong>Autor:</strong> Chef Claire Hastings</span>
-        <span>🔬 <strong>Revisado por:</strong> Sarah Jenkins, MSc</span>
+        <span>✍️ <strong>Autor:</strong> Marcus Vance, Analista de Câmbio</span>
+        <span>🔬 <strong>Revisado por:</strong> Conselho Editorial Financeiro</span>
         <span>📅 <strong>Última revisão: Outubro de 2026</strong></span>
         <span>⏱️ 4 min de leitura</span>
       </div>
@@ -189,45 +189,50 @@
       <!-- Embedded Live Interactive In-Page Calculator -->
       <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
-          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Calculadora Interativa ao Vivo</h3>
-          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Cálculo Instantâneo</span>
+          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Calculadora de Câmbio em Tempo Real (JPY para INR)</h3>
+          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Cotação Comercial</span>
         </div>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Converta valores entre Iene Japonês, Rúpia Indiana, Dólar e principais divisas globais:</p>
 
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
           <div>
             <label for="liveToolInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Inserir Valor</label>
-            <input type="number" id="liveToolInput" value="250" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
+            <input type="number" id="liveToolInput" value="100" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
           </div>
           <div>
             <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">De</label>
             <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
-          <option value="ml" selected>Mililitros (mL)</option>
-          <option value="cup_metric">Metric Cup (250 mL)</option>
-          <option value="cup_us">US Cup (236.6 mL)</option>
-          <option value="floz">Fluid Ounces (fl oz)</option>
-          <option value="tbsp">Cucharadas / Esslöffel (tbsp)</option>
-          <option value="tsp">Cucharaditas / Teelöffel (tsp)</option>
-        
+              <option value="JPY" selected>Iene Japonês (¥ JPY)</option>
+              <option value="INR">Rúpia Indiana (₹ INR)</option>
+              <option value="USD">Dólar Americano ($ USD)</option>
+              <option value="EUR">Euro (€ EUR)</option>
+              <option value="GBP">Libra Esterlina (£ GBP)</option>
             </select>
           </div>
           <div style="display:flex; justify-content:center; align-items:center;">
-            <button type="button" id="liveToolSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Trocar Unidades</button>
+            <button type="button" id="liveToolSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Trocar Moedas</button>
           </div>
           <div>
             <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Para</label>
             <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
-          <option value="cup_metric" selected>Metric Cup (250 mL)</option>
-          <option value="cup_us">US Cup (236.6 mL)</option>
-          <option value="ml">Mililitros (mL)</option>
-          <option value="floz">Fluid Ounces (fl oz)</option>
-          <option value="tbsp">Cucharadas / Esslöffel (tbsp)</option>
-          <option value="tsp">Cucharaditas / Teelöffel (tsp)</option>
-        
+              <option value="INR" selected>Rúpia Indiana (₹ INR)</option>
+              <option value="JPY">Iene Japonês (¥ JPY)</option>
+              <option value="USD">Dólar Americano ($ USD)</option>
+              <option value="EUR">Euro (€ EUR)</option>
+              <option value="GBP">Libra Esterlina (£ GBP)</option>
             </select>
           </div>
         </div>
+
+        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Resultado Convertido</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">60.91 INR</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">100 JPY = 60.91 INR (Cotação Comercial)</div>
+          </div>
+          <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1.25rem; font-weight:700; border:none; cursor:pointer;">📋 Copiar Resultado</button>
+        </div>
+      </div>
 
         <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
           <div>
