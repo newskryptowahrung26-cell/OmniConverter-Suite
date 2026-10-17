@@ -198,6 +198,69 @@
       
 
       </section>
+      <!-- Specialized Real-Life Tool: Travel Fee Loss Calculator -->
+      <section class="converter-card" style="margin-top:2rem; background:linear-gradient(135deg, rgba(79, 70, 229, 0.04), rgba(16, 185, 129, 0.04)); border:1px solid var(--card-border); border-top:4px solid #4f46e5; border-radius:var(--radius-xl); padding:1.75rem; box-shadow:0 10px 25px -5px rgba(0,0,0,0.06);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem;">
+          <div>
+            <h2 style="font-size:1.4rem; font-weight:800; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--text-main);">
+              <span>✈️</span> ✈️ Estimador de Taxas Ocultas de Cartão e Saque no Exterior
+            </h2>
+            <p style="margin:0.35rem 0 0 0; font-size:0.92rem; color:var(--text-muted);">Calcule a margem de lucro dos bancos, tarifas fixas de caixas eletrônicos no exterior e quanto dinheiro você realmente perde em conversões de viagem.</p>
+          </div>
+          <span style="font-size:0.8rem; background:rgba(79, 70, 229, 0.15); color:#4f46e5; border:1px solid rgba(79, 70, 229, 0.3); padding:0.3rem 0.75rem; border-radius:999px; font-weight:700;">Guia do Viajante</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1.25rem;">
+          <div>
+            <label for="travelSpendInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Valor do Saque / Gasto</label>
+            <input type="number" id="travelSpendInput" class="input-field" value="500" step="10" style="width:100%; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="travelBaseCurr" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Sua Moeda de Origem</label>
+            <select id="travelBaseCurr" class="select-field" style="width:100%;">
+              <option value="USD" selected>USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="AUD">AUD (A$)</option>
+              <option value="CAD">CAD (C$)</option>
+            </select>
+          </div>
+          <div>
+            <label for="travelBankMarkup" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Tipo de Cartão / Spread</label>
+            <select id="travelBankMarkup" class="select-field" style="width:100%;">
+              <option value="0.5">Cartão de Viagem Wise / Revolut (0,5%)</option>
+              <option value="3.0" selected>Cartão de Banco Tradicional Crédito/Débito (3,0%)</option>
+              <option value="5.5">Câmbio de Aeroporto / Caixa Eletrônico DCC (5,5%)</option>
+            </select>
+          </div>
+          <div>
+            <label for="travelAtmFixedFee" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Taxa Fixa do Caixa Eletrônico</label>
+            <input type="number" id="travelAtmFixedFee" class="input-field" value="5" step="1" style="width:100%; box-sizing:border-box;">
+          </div>
+        </div>
+
+        <button type="button" id="calcTravelFeeBtn" class="btn-convert" style="width:100%; margin-bottom:1.5rem; background:linear-gradient(135deg, #4f46e5, #6366f1); border:none; box-shadow:0 4px 12px rgba(79,70,229,0.3);">Calcular Perda Total em Taxas</button>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.75rem; margin-bottom:1rem;">
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Total Perdido em Tarifas</div>
+            <div id="outTotalLostFee" style="font-size:1.6rem; font-weight:800; color:#ef4444;">USD 20.00</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Valor Realmente Disponível</div>
+            <div id="outTrueAmountReceived" style="font-size:1.4rem; font-weight:800; color:#10b981;">USD 480.00</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Custo Oculto Efetivo</div>
+            <div id="outLossPercentBadge" style="font-size:1.3rem; font-weight:800; color:#f59e0b;">4.0%</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-elevated); padding:0.85rem 1rem; border-radius:var(--radius-md); font-size:0.88rem; color:var(--text-muted); display:flex; align-items:center; gap:0.5rem;">
+          <span>🚨 <strong>Dica de Viagem:</strong></span>
+          <span id="outTravelTip" style="color:var(--text-main); font-weight:600;">Sempre escolha pagar ou sacar na moeda local do país visitado para escapar da cobrança abusiva de 4% a 7% da Conversão Dinâmica (DCC)!</span>
+        </div>
+      </section>
     </div>
   
     <article class="content-section" style="margin-top:2.5rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:2rem 1.75rem;">
@@ -384,5 +447,6 @@
   </div>
   
   <script src="/pwa-installer.js" defer></script>
+  <script src="/problem-solvers.js" defer></script>
 </body>
 </html>

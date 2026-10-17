@@ -147,6 +147,69 @@
       
 
       </section>
+      <!-- Specialized Real-Life Tool: Oven Baking Converter -->
+      <section class="converter-card" style="margin-top:2rem; background:linear-gradient(135deg, rgba(245, 158, 11, 0.04), rgba(239, 68, 68, 0.04)); border:1px solid var(--card-border); border-top:4px solid #f59e0b; border-radius:var(--radius-xl); padding:1.75rem; box-shadow:0 10px 25px -5px rgba(0,0,0,0.06);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem;">
+          <div>
+            <h2 style="font-size:1.4rem; font-weight:800; margin:0; display:flex; align-items:center; gap:0.5rem; color:var(--text-main);">
+              <span>🧑‍🍳</span> 🧑‍🍳 Calculadora de Temperatura de Horno (Convencional vs Ventilador)
+            </h2>
+            <p style="margin:0.35rem 0 0 0; font-size:0.92rem; color:var(--text-muted);">Convierte temperaturas de recetas entre Horno Tradicional, Horno de Convección (Ventilador), Fahrenheit, Celsius y Marcas de Gas (Gas Mark).</p>
+          </div>
+          <span style="font-size:0.8rem; background:rgba(245, 158, 11, 0.15); color:#d97706; border:1px solid rgba(245, 158, 11, 0.3); padding:0.3rem 0.75rem; border-radius:999px; font-weight:700;">Precisión Culinaria</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1.25rem;">
+          <div>
+            <label for="ovenTempInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Temperatura de la Receta</label>
+            <input type="number" id="ovenTempInput" class="input-field" value="350" step="5" style="width:100%; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="ovenSourceScale" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Escala</label>
+            <select id="ovenSourceScale" class="select-field" style="width:100%;">
+              <option value="F" selected>Fahrenheit (°F)</option>
+              <option value="C">Celsius (°C)</option>
+            </select>
+          </div>
+          <div>
+            <label for="ovenSourceType" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Tipo de Horno en la Receta</label>
+            <select id="ovenSourceType" class="select-field" style="width:100%;">
+              <option value="conventional" selected>Horno Convencional / Eléctrico Estándar</option>
+              <option value="fan">Horno de Convección / Ventilador</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" id="calcOvenBtn" class="btn-convert" style="width:100%; margin-bottom:1.5rem; background:linear-gradient(135deg, #f59e0b, #d97706); border:none; box-shadow:0 4px 12px rgba(245,158,11,0.3);">Calcular Ajuste Exacto del Horno</button>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:0.75rem; margin-bottom:1rem;">
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Convencional °C</div>
+            <div id="outConvC" style="font-size:1.35rem; font-weight:800; color:var(--text-main);">177 °C</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Horno Ventilador (°C)</div>
+            <div id="outFanC" style="font-size:1.35rem; font-weight:800; color:#059669;">157 °C</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Convencional °F</div>
+            <div id="outConvF" style="font-size:1.35rem; font-weight:800; color:var(--text-main);">350 °F</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Horno Ventilador (°F)</div>
+            <div id="outFanF" style="font-size:1.35rem; font-weight:800; color:#059669;">315 °F</div>
+          </div>
+          <div style="background:var(--bg-surface); padding:1rem; border-radius:var(--radius-lg); border:1px solid var(--card-border); text-align:center;">
+            <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:0.25rem;">Gas Mark (Reino Unido)</div>
+            <div id="outGasMark" style="font-size:1.35rem; font-weight:800; color:#6366f1;">4 (Gas 4)</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-elevated); padding:0.85rem 1rem; border-radius:var(--radius-md); font-size:0.88rem; color:var(--text-muted); display:flex; align-items:center; gap:0.5rem;">
+          <span>💡 <strong>Ideal para:</strong></span>
+          <span id="outOvenRecommend" style="color:var(--text-main); font-weight:600;">Bizcochos clásicos, galletas, repostería y asados estándar</span>
+        </div>
+      </section>
     </div>
   
     
@@ -244,5 +307,6 @@
   </div>
   
   <script src="/pwa-installer.js" defer></script>
+  <script src="/problem-solvers.js" defer></script>
 </body>
 </html>
