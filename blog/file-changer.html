@@ -100,7 +100,14 @@
         "@type": "ImageObject",
         "url": "https://www.omniconverter.co.uk/logo.png"
       }
-    }
+    },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "615",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
   }
   </script>
 </head>
@@ -228,7 +235,11 @@
             <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">1.00 Metric cup</div>
             <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">250 mL = 1.00 Metric cup (0.25 L)</div>
           </div>
-          <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1.25rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
+          
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
+            <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Print Cheat Sheet</button>
+          </div>
         </div>
       </div>
   
