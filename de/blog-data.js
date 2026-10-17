@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/de/blog/100-usd-in-australische-dollar",
     "title": "100 USD in Australische Dollar: Formel & Rechner",
     "date": "2026-10-17",
-    "publicationDate": "2026-10-17T02:51:42.020Z",
+    "publicationDate": "2026-10-17T00:00:00Z",
     "category": "Währung & Devisen",
     "categoryKey": "Currency & Forex",
     "author": "OmniConverter Redaktionsteam",
@@ -108,7 +108,7 @@ const BLOG_POSTS = [
   {
     "id": "5-pfund-in-kg",
     "slug": "/de/blog/5-pfund-in-kg",
-    "title": "5 Lbs in Kg: Exakte Formel & Live-Rechner",
+    "title": "5 lbs in kg: Exakte Formel & Live-Rechner",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
     "category": "Gewicht & Masse",
@@ -183,7 +183,7 @@ const BLOG_POSTS = [
   {
     "id": "1500-usd-in-gbp",
     "slug": "/de/blog/1500-usd-in-gbp",
-    "title": "1500 USD in GBP",
+    "title": "1500 USD in GBP umrechnen: 1.500 US-Dollar in Britische Pfund (£)",
     "date": "2026-10-06",
     "publicationDate": "2026-10-06T00:00:00Z",
     "category": "Währung & Devisen",
@@ -192,13 +192,13 @@ const BLOG_POSTS = [
     "readTime": "4 Min. Lesezeit",
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
-    "summary": "Konvertieren Sie 1500 USD in GBP präzise mit Schritt-für-Schritt-Formeln, mentalen Rechentricks, Umrechnungstabellen und Live-Rechner.",
+    "summary": "Rechnen Sie 1.500 US-Dollar (USD) in Britische Pfund (GBP) um (~1.185 £). Mit aktuellem Wechselkursrechner, Gebührenvergleich und Umrechnungstabelle.",
     "order": 12
   },
   {
     "id": "95-usd-in-gbp",
     "slug": "/de/blog/95-usd-in-gbp",
-    "title": "95 Usd in Gbp",
+    "title": "95 USD in GBP umrechnen: Wie viel sind 95 US-Dollar in Britischen Pfund?",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T12:07:34Z",
     "category": "Währung & Devisen",
@@ -207,7 +207,7 @@ const BLOG_POSTS = [
     "readTime": "4 Min. Lesezeit",
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    "summary": "Rechne 95 usd in gbp präzise um – mit Schritt-für-Schritt-Formeln, Kopfrechentricks, Umrechnungstabellen und Live-Rechner.",
+    "summary": "95 US-Dollar (USD) entsprechen rund 75,05 Britischen Pfund (GBP). Nutzen Sie unseren Live-Währungsrechner und die Umrechnungstabelle für USD in GBP.",
     "order": 13
   },
   {
@@ -501,11 +501,11 @@ const BLOG_POSTS = [
     "title": "Mastercard Wechselkurse und Auslandsgebühren: Formel & Re...",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
-    "category": "Umrechnungsratgeber",
-    "categoryKey": "Conversion Guide",
+    "category": "Währung & Devisen",
+    "categoryKey": "Currency & Forex",
     "author": "OmniConverter Redaktionsteam",
     "readTime": "4 Min. Lesezeit",
-    "icon": "📊",
+    "icon": "💱",
     "image": "https://images.unsplash.com/photo-1589758438368-0ad531db3366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8bWFzdGVyY2FyZCUyMGZvcmVpZ24lMjBleGNoYW5nZSUyMHJhdGV8ZW58MHx8fHwxNzg5OTcxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Mastercard Wechselkurse und Auslandsgebühren. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
     "order": 33
@@ -541,6 +541,21 @@ const BLOG_POSTS = [
     "order": 35
   },
   {
+    "id": "indonesische-waehrung-ratgeber",
+    "slug": "/de/blog/indonesische-waehrung-ratgeber",
+    "title": "Indonesische Währung: Ratgeber zur Rupiah (IDR): Formel &...",
+    "date": "2026-09-20",
+    "publicationDate": "2026-09-20T00:00:00Z",
+    "category": "Währung & Devisen",
+    "categoryKey": "Currency & Forex",
+    "author": "OmniConverter Redaktionsteam",
+    "readTime": "4 Min. Lesezeit",
+    "icon": "💱",
+    "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "summary": "Genaue Anleitung für Indonesische Währung: Ratgeber zur Rupiah (IDR). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
+    "order": 36
+  },
+  {
     "id": "wochenrechner",
     "slug": "/de/blog/wochenrechner",
     "title": "Wochenrechner: Wochen und Tage berechnen: Formel & Rechner",
@@ -553,7 +568,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1648201637025-1c77b9be3013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8d2Vla3MlMjBjYWxjdWxhdG9yfGVufDB8fHx8MTc4OTkwNjM3MXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Wochenrechner: Wochen und Tage berechnen. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 36
+    "order": 37
   },
   {
     "id": "13-stone-in-pfund",
@@ -568,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1646829873498-e874cfa27933?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTMlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc4OTg0MTQ5OXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 13 Stone in Pfund (lbs). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "71-pfund-in-kg",
@@ -583,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1559724087-a45f6a7a35d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzElMjBwb3VuZHMlMjB0byUyMGtnfGVufDB8fHx8MTc4OTc3Njg2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 71 Pfund (lbs) in Kilogramm. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "dateiumwandler",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1569235186275-626cb53b83ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ZmlsZSUyMGNoYW5nZXJ8ZW58MHx8fHwxNzg5ODE5OTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Dateiumwandler und Formatwechsler. Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "rupiah-in-aud",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1619149808494-d9a0a7eba166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8cnVwaWFoJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzg5Nzk4Mzk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für Indonesische Rupiah in Australische Dollar (IDR in AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "300-dollar-in-gbp",
@@ -628,21 +643,6 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1703925153970-0e2e3a899e66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzAwJTIwZG9sbGFycyUyMGluJTIwZ2JwfGVufDB8fHx8MTc4OTcxMzUyOHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Genaue Anleitung für 300 US-Dollar in Britische Pfund (GBP). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
-    "order": 41
-  },
-  {
-    "id": "indonesische-waehrung-ratgeber",
-    "slug": "/de/blog/indonesische-waehrung-ratgeber",
-    "title": "Indonesische Währung: Ratgeber zur Rupiah (IDR): Formel &...",
-    "date": "2026-09-18",
-    "publicationDate": "2026-09-18T00:00:00Z",
-    "category": "Währung & Devisen",
-    "categoryKey": "Currency & Forex",
-    "author": "OmniConverter Redaktionsteam",
-    "readTime": "4 Min. Lesezeit",
-    "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Genaue Anleitung für Indonesische Währung: Ratgeber zur Rupiah (IDR). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
     "order": 42
   },
   {

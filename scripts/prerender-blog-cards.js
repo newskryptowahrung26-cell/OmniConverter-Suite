@@ -98,20 +98,19 @@ configs.forEach(cfg => {
   vm.runInNewContext(jsCode, sandbox);
   const posts = sandbox.window.BLOG_POSTS || [];
 
-  // Filter out offtopic
-  const validPosts = posts.filter(p => {
-    const slugName = (p.slug || '').replace(/^\/([a-z]{2}\/)?blog\//, '');
-    return !cfg.offtopic.includes(slugName);
-  });
+  const validPosts = posts;
 
   const cardsHtml = validPosts.slice(0, 12).map(renderCard).join('\n');
 
   let html = fs.readFileSync(cfg.htmlPath, 'utf8');
 
+  // Clear inline var offtopic = [...] in blog.html so client-side JS count matches static HTML count
+  html = html.replace(/var\s+offtopic\s*=\s*\[[\s\S]*?\];/g, 'var offtopic = [];');
+
   // Replace <section class="blog-cards-grid" id="blogGrid"> ... </section>
   const gridRegex = /(<section class="blog-cards-grid" id="blogGrid">)[\s\S]*?(<\/section>)/;
   if (gridRegex.test(html)) {
-    html = html.replace(gridRegex, `$1\n${cardsHtml}\n    $2`);
+    html = html.replace(gridRegex, (_, p1, p2) => `${p1}\n${cardsHtml}\n    ${p2}`);
     console.log(`[${cfg.lang}] Injected ${Math.min(12, validPosts.length)} prerendered cards into #blogGrid`);
   } else {
     console.warn(`[${cfg.lang}] #blogGrid not found in HTML`);
@@ -120,7 +119,7 @@ configs.forEach(cfg => {
   // Update initial pagination text
   const pageInfoRegex = /(<div class="page-info" id="pageInfo">)[\s\S]*?(<\/div>)/;
   if (pageInfoRegex.test(html)) {
-    html = html.replace(pageInfoRegex, `$1${cfg.pageInfoText(validPosts.length)}$2`);
+    html = html.replace(pageInfoRegex, (_, p1, p2) => `${p1}${cfg.pageInfoText(validPosts.length)}${p2}`);
   }
 
   // Ensure paginationWrapper is visible if validPosts.length > 0

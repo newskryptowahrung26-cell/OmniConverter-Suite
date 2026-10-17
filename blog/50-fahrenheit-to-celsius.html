@@ -55,13 +55,10 @@
       "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1200&q=80"
     ],
     "author": {
-      "@type": "Person",
-      "name": "Dr. Oliver Bennett",
-      "jobTitle": "Thermodynamics & Measurement Specialist"
+      "@type": "Organization", "name": "OmniConverter Editorial Team"
     },
     "editor": {
-      "@type": "Person",
-      "name": "Sarah Jenkins, MSc"
+      "@type": "Organization", "name": "OmniConverter Technical Review Board"
     },
     "publisher": {
       "@type": "Organization",
@@ -238,8 +235,8 @@
       
       <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1200&q=80" alt="Thermometer reading 50 degrees Fahrenheit outdoor weather" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager">
       <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
-        <span>✍️ <strong>Author:</strong> Dr. Oliver Bennett</span>
-        <span>🔬 <strong>Reviewed by:</strong> Sarah Jenkins, MSc</span>
+        <span>✍️ <strong>Author:</strong> OmniConverter Editorial Team</span>
+        <span>🔬 <strong>Reviewed by:</strong> OmniConverter Technical Review Board</span>
         <span>📅 <strong>Last Reviewed:</strong> October 2026</span>
         <span>⏱️ 4 min read</span>
       </div>
@@ -297,8 +294,8 @@
       <!-- Relevant Interactive Converter Callout Box -->
       <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
         <div style="max-width: 680px;">
-          <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">Interactive Temperature Converter Calculator</h3>
-          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Convert degrees Fahrenheit, Celsius, Kelvin, and Rankine instantly with real-time temperature formulas.</p>
+          <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">Interactive Temperature Scale Converter</h3>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Convert between Celsius, Fahrenheit, Kelvin, and Rankine scales instantly.</p>
         </div>
         <a href="/temperature" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">Open Temperature Converter &rarr;</a>
       </div>
@@ -336,63 +333,26 @@
         While this shortcut is approximate for high or low temperatures, at <strong>exactly 50°F</strong> it is 100% mathematically exact!
       </p>
 
-      <!-- Embedded Live Interactive Mini-Calculator -->
-      <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
-          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Live In-Page Temperature Converter</h3>
-          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Real-Time</span>
-        </div>
-        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Type any temperature value below to instantly calculate Celsius, Fahrenheit, Kelvin, and Rankine:</p>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
-          <div>
-            <label for="liveTempInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Temperature Value</label>
-            <input type="number" id="liveTempInput" value="50" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
-          </div>
-          <div>
-            <label for="liveFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">From Unit</label>
-            <select id="liveFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              <option value="F" selected>Fahrenheit (°F)</option>
-              <option value="C">Celsius (°C)</option>
-              <option value="K">Kelvin (K)</option>
-              <option value="R">Rankine (°R)</option>
-            </select>
-          </div>
-          <div style="display:flex; justify-content:center; align-items:center;">
-            <button type="button" id="liveSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Swap Units</button>
-          </div>
-          <div>
-            <label for="liveToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">To Unit</label>
-            <select id="liveToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              <option value="C" selected>Celsius (°C)</option>
-              <option value="F">Fahrenheit (°F)</option>
-              <option value="K">Kelvin (K)</option>
-              <option value="R">Rankine (°R)</option>
-            </select>
-          </div>
-        </div>
-
       <!-- Embedded Live Interactive In-Page Calculator -->
       <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Instant Temperature Live Calculator</h3>
           <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Exact Formula</span>
         </div>
-        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Enter any temperature degree value to convert between Fahrenheit, Celsius, and Kelvin:</p>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Enter any temperature degree value to convert between Fahrenheit, Celsius, Kelvin, and Rankine:</p>
 
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
           <div>
             <label for="liveToolInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Enter Value</label>
-            <input type="number" id="liveToolInput" value="100" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
+            <input type="number" id="liveToolInput" value="50" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
           </div>
           <div>
             <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">From Unit</label>
             <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
-          <option value="F" selected>Fahrenheit (°F)</option>
-          <option value="C">Celsius (°C)</option>
-          <option value="K">Kelvin (K)</option>
-        
+              <option value="F" selected>Fahrenheit (°F)</option>
+              <option value="C">Celsius (°C)</option>
+              <option value="K">Kelvin (K)</option>
+              <option value="R">Rankine (°R)</option>
             </select>
           </div>
           <div style="display:flex; justify-content:center; align-items:center;">
@@ -401,11 +361,10 @@
           <div>
             <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">To Unit</label>
             <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
-          <option value="C" selected>Celsius (°C)</option>
-          <option value="F">Fahrenheit (°F)</option>
-          <option value="K">Kelvin (K)</option>
-        
+              <option value="C" selected>Celsius (°C)</option>
+              <option value="F">Fahrenheit (°F)</option>
+              <option value="K">Kelvin (K)</option>
+              <option value="R">Rankine (°R)</option>
             </select>
           </div>
         </div>
@@ -413,25 +372,13 @@
         <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
           <div>
             <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Converted Result</div>
-            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">37.78 °C</div>
-            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">(100°F - 32) × 5/9 = 37.78°C</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">10 °C</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">50 F = 10.00 C</div>
           </div>
-          
           <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
             <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
             <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Print Cheat Sheet</button>
           </div>
-        </div>
-      </div>
-  
-
-        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-          <div>
-            <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Converted Result</div>
-            <div id="liveResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">10.00 °C</div>
-            <div id="liveFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Formula: °C = (50°F − 32) × 5/9 = 10.00 °C</div>
-          </div>
-          <button type="button" id="liveCopyBtn" class="tab-btn active" style="padding:0.6rem 1.25rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
         </div>
       </div>
 
@@ -533,23 +480,6 @@
         <p style="margin:0 0 1rem 0; color:var(--text-muted); line-height:1.7;">Multiply 10 by 1.8 (10 &times; 1.8 = 18) and then add 32: 18 + 32 = 50°F.</p>
       </div>
 
-      <div style="margin:2.5rem 0;">
-        <h2 style="font-size:1.5rem; color:var(--text-primary); margin-bottom:1rem;">In Depth Analysis, Historical Standards, and Industry Best Practices</h2>
-        <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
-          Accurate measurement unit conversions play an indispensable role in international commerce, scientific research, engineering design, aviation, healthcare, and culinary applications. Over centuries of trade development, different geographic regions evolved distinct systems of weights and measures. Understanding both historical precedents and current international standards allows developers, engineers, students, and home cooks to navigate conversions with total confidence.
-        </p>
-        <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
-          When converting values between imperial, customary, and metric standards, precision matters. Minor rounding discrepancies can accumulate rapidly across large scale operations, such as industrial chemical manufacturing, volumetric bulk storage, recipe scaling, or temperature sensitive biological experiments. Utilizing certified mathematical ratios ensures that calculations remain completely accurate and reliable.
-        </p>
-        <h3 style="font-size:1.2rem; color:var(--text-primary); margin-bottom:0.75rem;">Key Guidelines for Flawless Unit Conversions</h3>
-        <ul style="line-height:1.8; color:var(--text-muted); padding-left:1.5rem; margin-bottom:1.5rem;">
-          <li>Identify whether the baseline unit originates from US Customary standards or British Imperial standards before applying multiplication parameters.</li>
-          <li>For digital displays and software interfaces, maintain exact floating point values internally while rounding display results to two or three decimal places.</li>
-          <li>Leverage specialized interactive tools to eliminate human calculation mistakes when performing multi step conversion tasks.</li>
-          <li>Always cross verify regional terminology in international documentation to prevent systemic unit misinterpretations.</li>
-        </ul>
-      </div>
-
       <h2>Conclusion</h2>
       <p style="font-size:1rem; line-height:1.7; color:var(--text-muted);">
         Converting <strong>50 Fahrenheit to Celsius (10°C)</strong> is simple with the formula Celsius = (Fahrenheit - 32) / 1.8. Try our free <a href="/temperature" style="color:var(--primary-600); font-weight:700;">temperature converter calculator</a> or bookmark this guide for quick reference!
@@ -588,23 +518,20 @@
 
       <section class="related-guides-section" style="margin:2.5rem 0 1.5rem 0; padding:1.5rem; background:var(--bg-elevated); border:1px solid var(--card-border); border-left:4px solid var(--primary-600); border-radius:var(--radius-xl); box-shadow:0 2px 8px rgba(0,0,0,0.04);">
       <h3 style="margin:0 0 0.5rem 0; font-size:1.15rem; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:0.5rem;">
-        <span>📖</span> 📖 Related In-Depth Guides & Conversion Tools
+        <span>📖</span> Related In-Depth Guides & Conversion Tools
       </h3>
       <p style="margin:0 0 1rem 0; font-size:0.92rem; color:var(--text-muted); line-height:1.5;">Explore closely related calculation guides, verified formulas, and interactive unit converters:</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.85rem;">
-        
         <a href="/temperature" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <span>🌡️ Temperature Scale Converter</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
-
         <a href="/blog/100-fahrenheit-to-celsius" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-          <span>100 Fahrenheit to Celsius Guide</span>
+          <span>100°F to °C: Fahrenheit to Celsius Guide</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
-
-        <a href="/blog/10-celsius-is-what-fahrenheit" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-          <span>10 Celsius to Fahrenheit Guide</span>
+        <a href="/blog/12-degrees-celsius-to-fahrenheit" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+          <span>12°C to °F: 53.6°F Temperature Guide</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
       </div>
@@ -619,111 +546,6 @@
     </div>
   </footer>
 
-  <!-- Live Calculator Logic (Placed at bottom before closing body to ensure zero render-blocking) -->
-  <script>
-  (function() {
-    const input = document.getElementById('liveTempInput');
-    const fromSel = document.getElementById('liveFromUnit');
-    const toSel = document.getElementById('liveToUnit');
-    const swapBtn = document.getElementById('liveSwapBtn');
-    const resVal = document.getElementById('liveResultVal');
-    const formulaText = document.getElementById('liveFormulaText');
-    const copyBtn = document.getElementById('liveCopyBtn');
-
-    function toKelvin(val, unit) {
-      if (unit === 'C') return val + 273.15;
-      if (unit === 'F') return (val - 32) * 5/9 + 273.15;
-      if (unit === 'K') return val;
-      if (unit === 'R') return val * 5/9;
-      return val;
-    }
-
-    function fromKelvin(k, unit) {
-      if (unit === 'C') return k - 273.15;
-      if (unit === 'F') return (k - 273.15) * 9/5 + 32;
-      if (unit === 'K') return k;
-      if (unit === 'R') return k * 9/5;
-      return k;
-    }
-
-    function formatSymbol(u) {
-      if (u === 'C') return '°C';
-      if (u === 'F') return '°F';
-      if (u === 'K') return 'K';
-      if (u === 'R') return '°R';
-      return u;
-    }
-
-    function calculate() {
-      if (!input || !resVal || !formulaText) return;
-      const raw = parseFloat(input.value);
-      if (isNaN(raw)) {
-        resVal.textContent = '--';
-        formulaText.textContent = 'Please enter a valid numeric temperature.';
-        return;
-      }
-      const from = fromSel ? fromSel.value : 'F';
-      const to = toSel ? toSel.value : 'C';
-      let result;
-      let formulaStr = '';
-
-      if (from === to) {
-        result = raw;
-        formulaStr = `${raw} ${formatSymbol(from)} = ${result} ${formatSymbol(to)}`;
-      } else if (from === 'F' && to === 'C') {
-        result = (raw - 32) * 5/9;
-        formulaStr = `°C = (${raw}°F − 32) × 5/9 = ${result.toFixed(2)} °C`;
-      } else if (from === 'C' && to === 'F') {
-        result = (raw * 9/5) + 32;
-        formulaStr = `°F = (${raw}°C × 9/5) + 32 = ${result.toFixed(2)} °F`;
-      } else {
-        const k = toKelvin(raw, from);
-        result = fromKelvin(k, to);
-        formulaStr = `${raw} ${formatSymbol(from)} converted = ${result.toFixed(2)} ${formatSymbol(to)}`;
-      }
-
-      const formatted = Math.abs(result % 1) < 1e-4 ? result.toFixed(0) : result.toFixed(2);
-      resVal.textContent = `${formatted} ${formatSymbol(to)}`;
-      formulaText.textContent = formulaStr;
-    }
-
-    if (input && fromSel && toSel) {
-      input.addEventListener('input', calculate);
-      fromSel.addEventListener('change', calculate);
-      toSel.addEventListener('change', calculate);
-    }
-
-    if (swapBtn) {
-      swapBtn.addEventListener('click', function() {
-        const temp = fromSel.value;
-        fromSel.value = toSel.value;
-        toSel.value = temp;
-        calculate();
-      });
-    }
-
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async function() {
-        try {
-          await navigator.clipboard.writeText(resVal.textContent);
-          const orig = copyBtn.textContent;
-          copyBtn.textContent = '✓ Copied!';
-          setTimeout(() => { copyBtn.textContent = orig; }, 2000);
-        } catch(e) {
-          const toast = document.getElementById('toast');
-          if (toast) {
-            toast.textContent = 'Result: ' + resVal.textContent;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2000);
-          }
-        }
-      });
-    }
-
-    calculate();
-  })();
-  </script>
-
   <script>
   (function() {
     var input = document.getElementById('liveToolInput');
@@ -737,24 +559,28 @@
     if (!input || !resVal || !fromSel || !toSel) return;
 
     var ratesInBase = {
-      g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125, st: 6350.29318,
-      ml: 1, l: 1000, cup_us: 236.5882365, cup_metric: 250, floz: 29.5735295625, tbsp: 14.78676478125, tsp: 4.92892159375,
+      g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125, st: 6350.29318, tola: 11.6638038,
+      ml: 1, l: 1000, cup: 236.5882365, cup_us: 236.5882365, cup_metric: 250, gal: 3785.411784, floz: 29.5735295625, tbsp: 14.78676478125, tsp: 4.92892159375,
       m: 1, km: 1000, cm: 0.01, mm: 0.001, ft: 0.3048, in: 0.0254, yd: 0.9144, mi: 1609.344,
-      sqm: 1, sqft: 0.09290304, acre: 4046.8564224, ha: 10000, bigha_std: 2529.285264,
-      sec: 1, min: 60, hr: 3600, day: 86400
+      sqm: 1, sqft: 0.09290304, acre: 4046.8564224, ha: 10000, bigha_std: 2529.285264, guntha: 101.17, biswa: 126.46, kanal: 505.857, marla: 25.2929, gaj: 0.83612736,
+      sec: 1, min: 60, hr: 3600, day: 86400, week: 604800,
+      bar: 100000, psi: 6894.757293, kpa: 1000, atm: 101325,
+      kmh: 1, mph: 1.609344, ms: 3.6, knot: 1.852,
+      kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.49, INR: 95.93, VND: 25936.55 };
+    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
 
     function convertTemp(val, from, to) {
       var k;
       if (from === 'C') k = val + 273.15;
       else if (from === 'F') k = (val - 32) * 5/9 + 273.15;
       else if (from === 'K') k = val;
-
+      else if (from === 'R') k = val * 5/9;
       if (to === 'C') return k - 273.15;
       if (to === 'F') return (k - 273.15) * 9/5 + 32;
       if (to === 'K') return k;
+      if (to === 'R') return k * 9/5;
       return k;
     }
 
@@ -769,7 +595,7 @@
       var to = toSel.value;
 
       var result;
-      if (['F','C','K'].indexOf(from) !== -1 && ['F','C','K'].indexOf(to) !== -1) {
+      if (['F','C','K','R'].indexOf(from) !== -1 && ['F','C','K','R'].indexOf(to) !== -1) {
         result = convertTemp(val, from, to);
         formulaText.textContent = val + ' ' + from + ' = ' + result.toFixed(2) + ' ' + to;
       } else if (fx[from] && fx[to]) {

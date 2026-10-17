@@ -5,7 +5,7 @@ const BLOG_POSTS = [
     "slug": "/es/blog/100-usd-a-aud",
     "title": "100 USD a AUD: Fórmula Exacta y Conversor en Vivo",
     "date": "2026-10-17",
-    "publicationDate": "2026-10-17T02:51:42.020Z",
+    "publicationDate": "2026-10-17T00:00:00Z",
     "category": "Divisas y Forex",
     "categoryKey": "Currency & Forex",
     "author": "Equipo Editorial OmniConverter",
@@ -108,14 +108,14 @@ const BLOG_POSTS = [
   {
     "id": "5-libras-a-kg",
     "slug": "/es/blog/5-libras-a-kg",
-    "title": "5 Lbs en Kg: Fórmula Exacta y Calculadora",
+    "title": "5 lbs en kg: Fórmula Exacta y Calculadora",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80",
     "summary": "Convierte 5 lbs a kg con precisión usando fórmulas matemáticas exactas, atajos mentales, tablas de referencia y calculadora en línea.",
     "order": 7
@@ -153,7 +153,7 @@ const BLOG_POSTS = [
   {
     "id": "4-metros-a-pies",
     "slug": "/es/blog/4-metros-a-pies",
-    "title": "4 Metros a Pies",
+    "title": "4 Metros a Pies (4 m a ft): ¿Cuántos Pies Son 4 Metros? (13.12 Pies)",
     "date": "2026-10-08",
     "publicationDate": "2026-10-08T00:00:00Z",
     "category": "Longitud y Distancia",
@@ -162,7 +162,7 @@ const BLOG_POSTS = [
     "readTime": "4 min de lectura",
     "icon": "📏",
     "image": "https://images.unsplash.com/photo-1606120312321-d65083a14576?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NCUyMG1ldGVycyUyMHRvJTIwZmVldHxlbnwwfHx8fDE3OTE0MTgzMzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Convierte 4 metros a pies con precisión usando fórmulas matemáticas, atajos mentales, tablas de conversión y calculadora en línea.",
+    "summary": "4 metros equivalen exactamente a 13.1234 pies (13 pies y 1.48 pulgadas). Consulte la fórmula paso a paso, calculadora interactiva y tabla de conversión de metros a pies.",
     "order": 10
   },
   {
@@ -183,7 +183,7 @@ const BLOG_POSTS = [
   {
     "id": "1500-usd-a-gbp",
     "slug": "/es/blog/1500-usd-a-gbp",
-    "title": "1500 USD a GBP",
+    "title": "1500 USD a GBP: Convertir $1,500 Dólares a Libras Esterlinas (£)",
     "date": "2026-10-06",
     "publicationDate": "2026-10-06T00:00:00Z",
     "category": "Divisas y Forex",
@@ -192,13 +192,13 @@ const BLOG_POSTS = [
     "readTime": "4 min de lectura",
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
-    "summary": "Convierte 1500 USD a GBP con precisión usando fórmulas matemáticas, trucos mentales, tablas de conversión y calculadora en tiempo real.",
+    "summary": "Convierta $1,500 dólares estadounidenses (USD) a libras esterlinas (GBP) (~£1,185 GBP) con nuestra calculadora de divisas, fórmula y tabla de referencia.",
     "order": 12
   },
   {
     "id": "95-usd-a-gbp",
     "slug": "/es/blog/95-usd-a-gbp",
-    "title": "95 Usd a Gbp",
+    "title": "95 USD a GBP: Convertir $95 Dólares a Libras Esterlinas (£75.05)",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T12:07:34Z",
     "category": "Divisas y Forex",
@@ -207,7 +207,7 @@ const BLOG_POSTS = [
     "readTime": "4 min de lectura",
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    "summary": "Convierte 95 usd a gbp con fórmulas matemáticas paso a paso, atajos mentales, tablas de conversión y calculadora en vivo.",
+    "summary": "Convierta $95 dólares (USD) a libras esterlinas (GBP) (~£75.05 GBP). Incluye calculadora interactiva de tipo de cambio, comisiones de tarjeta y tabla de referencia.",
     "order": 13
   },
   {
@@ -228,16 +228,16 @@ const BLOG_POSTS = [
   {
     "id": "65-kg-a-libras",
     "slug": "/es/blog/65-kg-a-libras",
-    "title": "65 Kilogramos a Libras: Fórmula y Calculadora",
+    "title": "65 kg a Libras: Equivalencia Exacta (143.3 lbs), Fórmula y Tabla",
     "date": "2026-10-04",
     "publicationDate": "2026-10-04T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1664352603314-6047584b3e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8NjUlMjBrZyUyMHBvdW5kc3xlbnwwfHx8fDE3OTEwODMxNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Guía oficial para 65 Kilogramos a Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
+    "summary": "¿Cuánto es 65 kg a libras? 65 kilogramos equivalen exactamente a 143.3 libras (143.3005 lbs). Descubre la fórmula, tabla de peso corporal y calculadora instantánea.",
     "order": 15
   },
   {
@@ -246,11 +246,11 @@ const BLOG_POSTS = [
     "title": "165 Libras a Kilogramos: Fórmula y Calculadora",
     "date": "2026-10-03",
     "publicationDate": "2026-10-03T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1689514226761-336eaf77e311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MTY1JTIwbGJzJTIwdG8lMjBrZ3xlbnwwfHx8fDE3OTA5ODYzMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 165 Libras a Kilogramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 16
@@ -261,11 +261,11 @@ const BLOG_POSTS = [
     "title": "14 Stone en Libras: Fórmula y Calculadora",
     "date": "2026-10-02",
     "publicationDate": "2026-10-02T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1592899436433-8abe4656570c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTQlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc5MDg5OTk0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 14 Stone en Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 17
@@ -306,11 +306,11 @@ const BLOG_POSTS = [
     "title": "180 Libras en Stone: Fórmula y Calculadora",
     "date": "2026-09-30",
     "publicationDate": "2026-09-30T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1629878734837-9506604e605a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTgwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTA3MjcxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 180 Libras en Stone. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 20
@@ -426,11 +426,11 @@ const BLOG_POSTS = [
     "title": "170 Libras en Stone: Fórmula y Calculadora",
     "date": "2026-09-22",
     "publicationDate": "2026-09-22T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1709247389603-ba5c59e86199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTcwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTAwNzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 170 Libras en Stone. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 28
@@ -486,11 +486,11 @@ const BLOG_POSTS = [
     "title": "80 Kilos a Libras: Fórmula y Calculadora",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ODAlMjBraWxvJTIwbGJzfGVufDB8fHx8MTc4OTk0OTcwMHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 80 Kilos a Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 32
@@ -501,11 +501,11 @@ const BLOG_POSTS = [
     "title": "Tipos de Cambio y Comisiones Mastercard: Fórmula y Calcul...",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
-    "category": "Guías de Conversión",
-    "categoryKey": "Conversion Guide",
+    "category": "Divisas y Forex",
+    "categoryKey": "Currency & Forex",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "📊",
+    "icon": "💱",
     "image": "https://images.unsplash.com/photo-1589758438368-0ad531db3366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8bWFzdGVyY2FyZCUyMGZvcmVpZ24lMjBleGNoYW5nZSUyMHJhdGV8ZW58MHx8fHwxNzg5OTcxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para Tipos de Cambio y Comisiones Mastercard. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 33
@@ -556,19 +556,34 @@ const BLOG_POSTS = [
     "order": 36
   },
   {
+    "id": "guia-moneda-indonesia",
+    "slug": "/es/blog/guia-moneda-indonesia",
+    "title": "Guía de la Moneda de Indonesia (Rupia IDR): Fórmula y Cal...",
+    "date": "2026-09-20",
+    "publicationDate": "2026-09-20T00:00:00Z",
+    "category": "Guías de Conversión",
+    "categoryKey": "Conversion Guide",
+    "author": "Equipo Editorial OmniConverter",
+    "readTime": "4 min de lectura",
+    "icon": "📊",
+    "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "summary": "Guía oficial para Guía de la Moneda de Indonesia (Rupia IDR). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
+    "order": 37
+  },
+  {
     "id": "13-stone-en-libras",
     "slug": "/es/blog/13-stone-en-libras",
     "title": "13 Stone en Libras: Fórmula y Calculadora",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1646829873498-e874cfa27933?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTMlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc4OTg0MTQ5OXww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 13 Stone en Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "71-libras-a-kg",
@@ -576,14 +591,14 @@ const BLOG_POSTS = [
     "title": "71 Libras a Kilogramos: Fórmula y Calculadora",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1559724087-a45f6a7a35d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzElMjBwb3VuZHMlMjB0byUyMGtnfGVufDB8fHx8MTc4OTc3Njg2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 71 Libras a Kilogramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "cambiador-de-archivos",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "https://images.unsplash.com/photo-1569235186275-626cb53b83ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ZmlsZSUyMGNoYW5nZXJ8ZW58MHx8fHwxNzg5ODE5OTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para Cambiador de Formato de Archivos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "rupia-indonesia-a-aud",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1619149808494-d9a0a7eba166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8cnVwaWFoJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzg5Nzk4Mzk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para Rupia Indonesia a Dólar Australiano (IDR a AUD). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "300-dolares-en-gbp",
@@ -628,7 +643,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "https://images.unsplash.com/photo-1703925153970-0e2e3a899e66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzAwJTIwZG9sbGFycyUyMGluJTIwZ2JwfGVufDB8fHx8MTc4OTcxMzUyOHww&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para 300 Dólares en Libras Esterlinas (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "descargar-aplicacion-convertidor",
@@ -643,21 +658,6 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "https://images.unsplash.com/photo-1663124178703-d2d6a333e6c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydGVyJTIwYXBwbGljYXRpb24lMjBkb3dubG9hZHxlbnwwfHx8fDE3ODk3NTUxMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "summary": "Guía oficial para Descargar Aplicación de Conversión. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 42
-  },
-  {
-    "id": "guia-moneda-indonesia",
-    "slug": "/es/blog/guia-moneda-indonesia",
-    "title": "Guía de la Moneda de Indonesia (Rupia IDR): Fórmula y Cal...",
-    "date": "2026-09-18",
-    "publicationDate": "2026-09-18T00:00:00Z",
-    "category": "Guías de Conversión",
-    "categoryKey": "Conversion Guide",
-    "author": "Equipo Editorial OmniConverter",
-    "readTime": "4 min de lectura",
-    "icon": "📊",
-    "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    "summary": "Guía oficial para Guía de la Moneda de Indonesia (Rupia IDR). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 43
   },
   {
@@ -771,11 +771,11 @@ const BLOG_POSTS = [
     "title": "100 Kilogramos a Libras: Fórmula y Calculadora",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
+    "category": "Peso y Masa",
+    "categoryKey": "Weight & Mass",
     "author": "Equipo Editorial OmniConverter",
     "readTime": "4 min de lectura",
-    "icon": "💱",
+    "icon": "⚖️",
     "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80",
     "summary": "Guía oficial para 100 Kilogramos a Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 51

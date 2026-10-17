@@ -85,12 +85,12 @@ function getCategoryInfo(slug, title) {
   } else if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen') || s.includes('taza') || s.includes('tasse') || s.includes('xicara') || s.includes('milch') || s.includes('leche') || s.includes('cucharadita') || s.includes('teeloeffel') || s.includes('colher')) {
     categoryKey = "Kitchen & Culinary";
     icon = "🍳";
-  } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex') || s.includes('divisa') || s.includes('moeda') || s.includes('waehrung') || s.includes('dolar') || s.includes('dollar') || s.includes('pound') || s.includes('libra') || s.includes('rupiah') || s.includes('rupia') || s.includes('lira')) {
-    categoryKey = "Currency & Forex";
-    icon = "💱";
-  } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass') || s.includes('kilo') || s.includes('pfund') || s.includes('peso') || s.includes('massa') || s.includes('quilo')) {
+  } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass') || s.includes('kilo') || s.includes('peso') || s.includes('massa') || s.includes('quilo')) {
     categoryKey = "Weight & Mass";
     icon = "⚖️";
+  } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex') || s.includes('divisa') || s.includes('moeda') || s.includes('waehrung') || s.includes('dolar') || s.includes('dollar') || s.includes('pound') || s.includes('libra') || s.includes('pfund') || s.includes('rupiah') || s.includes('rupia') || s.includes('lira') || s.includes('mastercard')) {
+    categoryKey = "Currency & Forex";
+    icon = "💱";
   } else if (s.includes('meter') || s.includes('inch') || s.includes('feet') || s.includes('foot') || s.includes('cm') || s.includes('mm') || s.includes('yard') || s.includes('length') || s.includes('height') || s.includes('fuss') || s.includes('pie') || s.includes('pes') || s.includes('longitud') || s.includes('comprimento') || s.includes('laenge')) {
     categoryKey = "Length & Distance";
     icon = "📏";
@@ -245,14 +245,14 @@ function updateHubDirectory(hubFile, posts, lang) {
   const newSection = `<!-- DIRECTORY_BLOCK -->\n    <section class="content-section" style="margin-top:2rem;">\n      <h2 style="font-size:1.2rem; font-weight:800; margin-bottom:1rem;">${dirTitle} (${posts.length} Guides)</h2>\n      <ul style="line-height:1.9; color:var(--text-muted); padding-left:1.5rem; display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:0.4rem;">\n${listItems}\n      </ul>\n    </section>`;
 
   if (html.includes('<!-- DIRECTORY_BLOCK -->')) {
-    html = html.replace(/<!-- DIRECTORY_BLOCK -->[\s\S]*?<\/section>/i, newSection);
+    html = html.replace(/<!-- DIRECTORY_BLOCK -->[\s\S]*?<\/section>/i, () => newSection);
   } else if (/<!-- ORPHAN_LINKS_BLOCK -->[\s\S]*?<\/section>/i.test(html)) {
-    html = html.replace(/<!-- ORPHAN_LINKS_BLOCK -->[\s\S]*?<\/section>/i, newSection);
+    html = html.replace(/<!-- ORPHAN_LINKS_BLOCK -->[\s\S]*?<\/section>/i, () => newSection);
   } else {
     // Replace section containing Directori / Directory / Verzeichnis
     const dirSectionRegex = /<section class="content-section"[^>]*>\s*<h2[^>]*>[^<]*(?:Directory|Directorio|Verzeichnis|Diretório)[^<]*<\/h2>[\s\S]*?<\/section>/i;
     if (dirSectionRegex.test(html)) {
-      html = html.replace(dirSectionRegex, newSection);
+      html = html.replace(dirSectionRegex, () => newSection);
     }
   }
 

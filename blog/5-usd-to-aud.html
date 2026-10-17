@@ -42,9 +42,7 @@
     "url": "https://www.omniconverter.co.uk/blog/5-usd-to-aud",
     "datePublished": "2026-09-28",
     "author": {
-      "@type": "Person",
-      "name": "Marcus Vance",
-      "jobTitle": "Senior FX & Currency Analyst"
+      "@type": "Organization", "name": "OmniConverter Editorial Team"
     },
     "editor": {
       "@type": "Person",
@@ -206,7 +204,7 @@
       
       <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80" alt="US Dollars and Australian Dollars banknotes exchange calculation" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager">
       <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
-        <span>✍️ <strong>Author:</strong> Marcus Vance</span>
+        <span>✍️ <strong>Author:</strong> OmniConverter Editorial Team</span>
         <span>🔬 <strong>Reviewed by:</strong> Financial Editorial Board</span>
         <span>📅 <strong>Last Reviewed:</strong> October 2026</span>
         <span>⏱️ 4 min read</span>
@@ -451,28 +449,24 @@
     <!-- Related In-Depth Conversion Guides -->
     <section class="related-guides-section" style="margin:2.5rem 0 1.5rem 0; padding:1.5rem; background:var(--bg-elevated); border:1px solid var(--card-border); border-left:4px solid var(--primary-600); border-radius:var(--radius-xl); box-shadow:0 2px 8px rgba(0,0,0,0.04);">
       <h3 style="margin:0 0 0.5rem 0; font-size:1.15rem; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:0.5rem;">
-        <span>📖</span> 📖 Related In-Depth Guides & Conversion Tools
+        <span>📖</span> Related In-Depth Guides & Conversion Tools
       </h3>
       <p style="margin:0 0 1rem 0; font-size:0.92rem; color:var(--text-muted); line-height:1.5;">Explore closely related calculation guides, verified formulas, and interactive unit converters:</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.85rem;">
-        
         <a href="/currency" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <span>💱 Multi-Currency Exchange Converter Tool</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
-
         <a href="/blog/100-usd-to-aud" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <span>100 USD to AUD: US Dollar to Australian Dollar</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
-
         <a href="/blog/32-usd-to-gbp" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-          <span>32 USD to GBP: Exchange Calculation & Travel Rates</span>
+          <span>32 USD to GBP: Exchange Rate & Travel Guide</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
-
-        <a href="/blog/2000-dollars-in-pounds" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
-          <span>2000 Dollars in Pounds: Live USD to GBP</span>
+        <a href="/blog/indonesia-cu" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+          <span>Indonesia Currency Guide: Indonesian Rupiah (IDR)</span>
           <span style="color:var(--primary-600); font-weight:700;">&rarr;</span>
         </a>
       </div>
@@ -526,24 +520,28 @@
     if (!input || !resVal || !fromSel || !toSel) return;
 
     var ratesInBase = {
-      g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125, st: 6350.29318,
-      ml: 1, l: 1000, cup_us: 236.5882365, cup_metric: 250, floz: 29.5735295625, tbsp: 14.78676478125, tsp: 4.92892159375,
+      g: 1, kg: 1000, lb: 453.59237, oz: 28.349523125, st: 6350.29318, tola: 11.6638038,
+      ml: 1, l: 1000, cup: 236.5882365, cup_us: 236.5882365, cup_metric: 250, gal: 3785.411784, floz: 29.5735295625, tbsp: 14.78676478125, tsp: 4.92892159375,
       m: 1, km: 1000, cm: 0.01, mm: 0.001, ft: 0.3048, in: 0.0254, yd: 0.9144, mi: 1609.344,
-      sqm: 1, sqft: 0.09290304, acre: 4046.8564224, ha: 10000, bigha_std: 2529.285264,
-      sec: 1, min: 60, hr: 3600, day: 86400
+      sqm: 1, sqft: 0.09290304, acre: 4046.8564224, ha: 10000, bigha_std: 2529.285264, guntha: 101.17, biswa: 126.46, kanal: 505.857, marla: 25.2929, gaj: 0.83612736,
+      sec: 1, min: 60, hr: 3600, day: 86400, week: 604800,
+      bar: 100000, psi: 6894.757293, kpa: 1000, atm: 101325,
+      kmh: 1, mph: 1.609344, ms: 3.6, knot: 1.852,
+      kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.49, INR: 95.93, VND: 25936.55 };
+    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
 
     function convertTemp(val, from, to) {
       var k;
       if (from === 'C') k = val + 273.15;
       else if (from === 'F') k = (val - 32) * 5/9 + 273.15;
       else if (from === 'K') k = val;
-
+      else if (from === 'R') k = val * 5/9;
       if (to === 'C') return k - 273.15;
       if (to === 'F') return (k - 273.15) * 9/5 + 32;
       if (to === 'K') return k;
+      if (to === 'R') return k * 9/5;
       return k;
     }
 
@@ -558,7 +556,7 @@
       var to = toSel.value;
 
       var result;
-      if (['F','C','K'].indexOf(from) !== -1 && ['F','C','K'].indexOf(to) !== -1) {
+      if (['F','C','K','R'].indexOf(from) !== -1 && ['F','C','K','R'].indexOf(to) !== -1) {
         result = convertTemp(val, from, to);
         formulaText.textContent = val + ' ' + from + ' = ' + result.toFixed(2) + ' ' + to;
       } else if (fx[from] && fx[to]) {
