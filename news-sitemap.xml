@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>https://www.omniconverter.co.uk/blog/100-usd-in-australian</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17</news:publication_date>
+      <news:title>100 Usd In Australian: Exact Formula &amp; Live Calculator</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/blog/20-gbp-aud</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>20 Gbp Aud: Exact Formula &amp; Live Calculator</news:title>
+    </news:news>
+  </url>
+</urlset>
