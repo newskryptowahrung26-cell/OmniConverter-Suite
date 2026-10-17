@@ -968,10 +968,38 @@ for (const f of files) {
     html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:title" content="${title.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">`);
     html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${desc.replace(/"/g, '&quot;')}">`);
     html = html.replace(/<h1([^>]*)>[\s\S]*?<\/h1>/i, (_, g1) => `<h1${g1}>${h1.replace(/&/g, '&amp;')}</h1>`);
-    html = html.replace(/"headline":\s*"[^"]*"/, () => `"headline": "${cleanHeadline.replace(/"/g, '\\"')}"`);
-    html = html.replace(/("@type":\s*"Article"[\s\S]*?"description":\s*)"[^"]*"/, (_, p1) => `${p1}"${desc.replace(/"/g, '\\"')}"`);
+    html = html.replace(/"headline":\s*"[^\r\n]*",/, () => `"headline": "${cleanHeadline.replace(/"/g, '\\"')}",`);
+    html = html.replace(/("@type":\s*"Article"[\s\S]*?"description":\s*)"[^\r\n]*",/, (_, p1) => `${p1}"${desc.replace(/"/g, '\\"')}",`);
     html = html.replace(/<span class="breadcrumb-current" aria-current="page">[^<]*<\/span>/i, () => `<span class="breadcrumb-current" aria-current="page">${cleanHeadline.replace(/&/g, '&amp;')}</span>`);
     html = html.replace(/<span class="formula-badge">Conversion Guide: [^<]*<\/span>/i, () => `<span class="formula-badge">${cleanHeadline.replace(/&/g, '&amp;')}</span>`);
+  }
+
+  // Add JSON-LD SoftwareApplication + WebSite schema to localized homepages (es/index.html, de/index.html, pt/index.html) if missing
+  if ((r === 'es/index.html' || r === 'de/index.html' || r === 'pt/index.html') && !/application\/ld\+json/i.test(html)) {
+    const homeLd = {
+      es: { name: 'OmniConverter Conversor de Unidades y Divisas', desc: 'Suite universal gratuita de conversión de unidades, divisas, zonas horarias y archivos en línea.', url: 'https://www.omniconverter.co.uk/es/' },
+      de: { name: 'OmniConverter Einheiten- und Währungsrechner', desc: 'Kostenlose universelle Online-Suite zur Umrechnung von Einheiten, Währungen, Zeitzonen und Dateien.', url: 'https://www.omniconverter.co.uk/de/' },
+      pt: { name: 'OmniConverter Conversor de Unidades e Moedas', desc: 'Suíte universal gratuita de conversão de unidades, moedas, fusos horários e arquivos online.', url: 'https://www.omniconverter.co.uk/pt/' }
+    }[lang];
+    const ldBlock = `  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "${homeLd.name}",
+    "url": "${homeLd.url}",
+    "inLanguage": "${lang}",
+    "description": "${homeLd.desc}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "OmniConverter",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.omniconverter.co.uk/logo.png"
+      }
+    }
+  }
+  </script>\n</head>`;
+    html = html.replace('</head>', () => ldBlock);
   }
 
   // Normalize currency/unit casing in titles, H1s, breadcrumbs, and badges across all guides
@@ -987,7 +1015,7 @@ for (const f of files) {
     html = html.replace(/<h1([^>]*)>([\s\S]*?)<\/h1>/i, (_, g1, t) => `<h1${g1}>${fixCase(t)}</h1>`);
     html = html.replace(/<meta\s+property="og:title"\s+content="([^"]*)"\s*\/?>/i, (_, t) => `<meta property="og:title" content="${fixCase(t)}">`);
     html = html.replace(/<meta\s+name="twitter:title"\s+content="([^"]*)"\s*\/?>/i, (_, t) => `<meta name="twitter:title" content="${fixCase(t)}">`);
-    html = html.replace(/"headline":\s*"([^"]*)"/, (_, t) => `"headline": "${fixCase(t)}"`);
+    html = html.replace(/"headline":\s*"([^\r\n]*)",/, (_, t) => `"headline": "${fixCase(t)}",`);
     html = html.replace(/<span class="breadcrumb-current" aria-current="page">([^<]*)<\/span>/i, (_, t) => `<span class="breadcrumb-current" aria-current="page">${fixCase(t)}</span>`);
     html = html.replace(/<span class="formula-badge">([^<]*)<\/span>/i, (_, t) => `<span class="formula-badge">${fixCase(t)}</span>`);
   }
@@ -1111,6 +1139,9 @@ for (const f of files) {
     html = html.replace('href="#32-usd-to-gbp"', 'href="/blog/32-usd-to-gbp"');
     html = html.replace('href="#1-aud-to-vnd"', 'href="/blog/1-aud-to-vnd"');
   }
+
+  // Fix broken link /pt/blog/65-kg-em-libras -> /pt/blog/65-kg-para-libras
+  html = html.replace(/\/pt\/blog\/65-kg-em-libras/g, '/pt/blog/65-kg-para-libras');
 
   if (html !== orig) {
     fs.writeFileSync(f, html, 'utf8');

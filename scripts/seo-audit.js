@@ -63,6 +63,16 @@ function topicFromSlug(slug) {
 }
 
 const files = walk(ROOT);
+const validRoutes = new Set(['/']);
+for (const f of files) {
+  const r = rel(f);
+  validRoutes.add('/' + r);
+  validRoutes.add('/' + r.replace(/\.html$/, ''));
+  if (r.endsWith('/index.html')) {
+    validRoutes.add('/' + r.replace(/\/index\.html$/, ''));
+    validRoutes.add('/' + r.replace(/index\.html$/, ''));
+  }
+}
 const sitemap = fs.existsSync(path.join(ROOT, 'sitemap.xml')) ? fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8') : '';
 const rows = [];
 
@@ -100,6 +110,29 @@ for (const f of files) {
   if (kwAlts.length) issues.push('KEYWORD_ALT');
   if (/No Published Articles/.test(html)) issues.push('EMPTY_BLOG_MSG');
   if ((html.match(/<\/html>/gi) || []).length > 1 || (html.match(/<\/body>/gi) || []).length > 1) issues.push('DUP_HTML');
+
+  // Deep technical checks (JSON-LD validity, H1 count, canonical, image assets, internal links, hreflang targets)
+  if (r !== '404.html' && r !== 'pt/blog/2000-usd-to-gbp.html') {
+    const ldBlocks = [...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+    if (ldBlocks.length === 0) issues.push('NO_JSONLD');
+    for (const b of ldBlocks) {
+      try { JSON.parse(b[1]); } catch (e) { issues.push('INVALID_JSONLD'); }
+    }
+    const h1Count = (html.match(/<h1\b[^>]*>/gi) || []).length;
+    if (h1Count !== 1) issues.push(`H1_COUNT(${h1Count})`);
+    if (!/<link\s+rel=["']canonical["']/i.test(html)) issues.push('NO_CANONICAL');
+    for (const imgM of html.matchAll(/<img[^>]+src=["'](\/[^"'#?]*)["']/gi)) {
+      if (!fs.existsSync(path.join(ROOT, imgM[1]))) issues.push(`MISSING_IMG(${imgM[1]})`);
+    }
+    for (const hlM of html.matchAll(/<link[^>]+hreflang=["'][^"']+["'][^>]+href=["']https:\/\/www\.omniconverter\.co\.uk([^"']*)["']/gi)) {
+      const p = hlM[1] || '/';
+      if (!validRoutes.has(p)) issues.push(`BROKEN_HREFLANG(${p})`);
+    }
+    for (const aM of html.matchAll(/<a[^>]+href=["'](\/[^"'#?]*)["']/gi)) {
+      const p = aM[1];
+      if (!validRoutes.has(p) && !fs.existsSync(path.join(ROOT, p))) issues.push(`BROKEN_LINK(${p})`);
+    }
+  }
 
   rows.push({ r, title, h1, desc, robots, hreflangs: hreflangs.length, calcs, ctype, topic, issues });
 }
