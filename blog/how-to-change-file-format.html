@@ -110,6 +110,8 @@
       }
   }
   </script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4f46e5">
 </head>
 <body>
   <header>
@@ -503,5 +505,6 @@ pandoc document.md -o output_document.pdf --pdf-engine=wkhtmltopdf
   })();
   </script>
   
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>
