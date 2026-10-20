@@ -52,7 +52,7 @@ async function main() {
         : localSlug.replace(/-/g, ' ');
 
       const themeIdx = enOrderMap.has(enSlug) ? enOrderMap.get(enSlug) : totalGenerated;
-      const relImgPath = `/assets/blog/${lang}/${localSlug}.png`;
+      const relImgPath = `/assets/blog/${lang}/${localSlug}.png?v=2`;
       const absImgUrl = `https://www.omniconverter.co.uk${relImgPath}`;
       const diskImgPath = path.join(__dirname, '..', 'assets', 'blog', lang, `${localSlug}.png`);
 

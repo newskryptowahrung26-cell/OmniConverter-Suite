@@ -1,7 +1,7 @@
 /**
- * OmniConverter Bespoke Hero & OG Image Generator
- * Generates 100% unique, title-specific 1200x630 PNG images for every blog article
- * across EN, ES, DE, and PT, and exports generateArticleHeroImage() for vertex-publisher.js.
+ * OmniConverter Eye-Catching Editorial Hero & OG Image Generator
+ * - Strict Rule 1: ONLY the Article Title is shown (zero conversion rates, zero calculated answers, zero formula boxes).
+ * - Strict Rule 2: Vibrant, eye-catching, article-specific 3D-style vector illustrations for every single article across EN, ES, DE, and PT.
  */
 
 const fs = require('fs');
@@ -22,7 +22,7 @@ function escXml(str) {
     .replace(/'/g, '&apos;');
 }
 
-function wrapTextLines(text, maxCharsPerLine, maxLines = 2) {
+function wrapTextLines(text, maxCharsPerLine, maxLines = 3) {
   const words = String(text || '').trim().split(/\s+/);
   const lines = [];
   let cur = '';
@@ -40,8 +40,8 @@ function wrapTextLines(text, maxCharsPerLine, maxLines = 2) {
   const usedWords = lines.join(' ').split(/\s+/).filter(Boolean).length;
   const remaining = words.slice(usedWords).join(' ');
   if (remaining) {
-    if (remaining.length > maxCharsPerLine + 4) {
-      lines.push(remaining.slice(0, maxCharsPerLine + 1).trim() + '...');
+    if (remaining.length > maxCharsPerLine + 5) {
+      lines.push(remaining.slice(0, maxCharsPerLine + 2).trim() + '...');
     } else {
       lines.push(remaining);
     }
@@ -49,20 +49,20 @@ function wrapTextLines(text, maxCharsPerLine, maxLines = 2) {
   return lines.slice(0, maxLines);
 }
 
-// 12 Rich, Distinct Color Palettes
+// 12 Vibrant, High-Contrast Eye-Catching Gradients (No dull black backgrounds)
 const THEMES = [
-  { name: 'royal-cyan', bg1: '#070B14', bg2: '#0F1C36', bg3: '#0C2D48', accent: '#38BDF8', accent2: '#818CF8', badgeBg: 'rgba(56,189,248,0.15)', badgeBorder: 'rgba(56,189,248,0.45)', cardBg1: '#162238', cardBg2: '#0B1324' },
-  { name: 'emerald-gold', bg1: '#05120E', bg2: '#0A261E', bg3: '#0F382C', accent: '#34D399', accent2: '#FBBF24', badgeBg: 'rgba(52,211,153,0.15)', badgeBorder: 'rgba(52,211,153,0.45)', cardBg1: '#112A22', cardBg2: '#081712' },
-  { name: 'indigo-rose', bg1: '#0D081B', bg2: '#1B1136', bg3: '#2B1644', accent: '#A78BFA', accent2: '#F472B6', badgeBg: 'rgba(167,139,250,0.16)', badgeBorder: 'rgba(167,139,250,0.45)', cardBg1: '#21163B', cardBg2: '#110B22' },
-  { name: 'amber-obsidian', bg1: '#140E06', bg2: '#281B0B', bg3: '#38240E', accent: '#FBBF24', accent2: '#FB923C', badgeBg: 'rgba(251,191,36,0.15)', badgeBorder: 'rgba(251,191,36,0.45)', cardBg1: '#2D2010', cardBg2: '#171007' },
-  { name: 'crimson-slate', bg1: '#16070C', bg2: '#2C0F19', bg3: '#3B1422', accent: '#FB7185', accent2: '#FBBF24', badgeBg: 'rgba(251,113,133,0.15)', badgeBorder: 'rgba(251,113,133,0.45)', cardBg1: '#31131E', cardBg2: '#19090F' },
-  { name: 'teal-lime', bg1: '#051316', bg2: '#0B272D', bg3: '#10373F', accent: '#2DD4BF', accent2: '#A3E635', badgeBg: 'rgba(45,212,191,0.15)', badgeBorder: 'rgba(45,212,191,0.45)', cardBg1: '#112B31', cardBg2: '#081619' },
-  { name: 'sunset-plum', bg1: '#150B1A', bg2: '#281431', bg3: '#3A1C35', accent: '#FB923C', accent2: '#E879F9', badgeBg: 'rgba(251,146,60,0.15)', badgeBorder: 'rgba(251,146,60,0.45)', cardBg1: '#2D1833', cardBg2: '#170B1B' },
-  { name: 'cobalt-ice', bg1: '#070F1E', bg2: '#0E203E', bg3: '#15315B', accent: '#60A5FA', accent2: '#2DD4BF', badgeBg: 'rgba(96,165,250,0.15)', badgeBorder: 'rgba(96,165,250,0.45)', cardBg1: '#142646', cardBg2: '#0A1426' },
-  { name: 'jade-forest', bg1: '#06140D', bg2: '#0D291B', bg3: '#143B27', accent: '#4ADE80', accent2: '#38BDF8', badgeBg: 'rgba(74,222,128,0.15)', badgeBorder: 'rgba(74,222,128,0.45)', cardBg1: '#122E20', cardBg2: '#091810' },
-  { name: 'magenta-electric', bg1: '#140818', bg2: '#271030', bg3: '#1D1640', accent: '#E879F9', accent2: '#38BDF8', badgeBg: 'rgba(232,121,249,0.15)', badgeBorder: 'rgba(232,121,249,0.45)', cardBg1: '#251436', cardBg2: '#13091D' },
-  { name: 'copper-bronze', bg1: '#170D08', bg2: '#2C1910', bg3: '#3C2316', accent: '#F97316', accent2: '#FACC15', badgeBg: 'rgba(249,115,22,0.15)', badgeBorder: 'rgba(249,115,22,0.45)', cardBg1: '#301C13', cardBg2: '#180E09' },
-  { name: 'steel-coral', bg1: '#0A0F1A', bg2: '#162035', bg3: '#212B44', accent: '#F87171', accent2: '#60A5FA', badgeBg: 'rgba(248,113,113,0.15)', badgeBorder: 'rgba(248,113,113,0.45)', cardBg1: '#1C263D', cardBg2: '#0E1422' }
+  { name: 'electric-sapphire', bg1: '#0F2557', bg2: '#1E40AF', bg3: '#0284C7', accent: '#38BDF8', accent2: '#FDE047', glow: '#60A5FA', cardBg: 'rgba(15, 23, 42, 0.45)' },
+  { name: 'emerald-aurora',    bg1: '#064E3B', bg2: '#047857', bg3: '#0D9488', accent: '#34D399', accent2: '#FBBF24', glow: '#6EE7B7', cardBg: 'rgba(6, 46, 34, 0.45)' },
+  { name: 'royal-amethyst',    bg1: '#2E1065', bg2: '#5B21B6', bg3: '#9333EA', accent: '#E879F9', accent2: '#38BDF8', glow: '#C084FC', cardBg: 'rgba(36, 12, 78, 0.45)' },
+  { name: 'sunset-amber',      bg1: '#7C2D12', bg2: '#C2410C', bg3: '#D97706', accent: '#FDE047', accent2: '#FB7185', glow: '#FBBF24', cardBg: 'rgba(69, 24, 9, 0.45)' },
+  { name: 'crimson-magenta',   bg1: '#881337', bg2: '#BE123C', bg3: '#DB2777', accent: '#FDA4AF', accent2: '#FDE047', glow: '#FB7185', cardBg: 'rgba(76, 11, 31, 0.45)' },
+  { name: 'ocean-turquoise',   bg1: '#0F3443', bg2: '#0E7490', bg3: '#0284C7', accent: '#2DD4BF', accent2: '#FACC15', glow: '#22D3EE', cardBg: 'rgba(12, 42, 54, 0.45)' },
+  { name: 'indigo-cyber',      bg1: '#1E1B4B', bg2: '#3730A3', bg3: '#4F46E5', accent: '#818CF8', accent2: '#34D399', glow: '#A5B4FC', cardBg: 'rgba(23, 21, 58, 0.45)' },
+  { name: 'forest-lime',       bg1: '#14532D', bg2: '#15803D', bg3: '#059669', accent: '#A3E635', accent2: '#38BDF8', glow: '#4ADE80', cardBg: 'rgba(15, 58, 32, 0.45)' },
+  { name: 'plum-coral',        bg1: '#4A044E', bg2: '#86198F', bg3: '#E11D48', accent: '#F472B6', accent2: '#FDE047', glow: '#F43F5E', cardBg: 'rgba(59, 6, 62, 0.45)' },
+  { name: 'cobalt-violet',     bg1: '#172554', bg2: '#1D4ED8', bg3: '#6D28D9', accent: '#60A5FA', accent2: '#F472B6', glow: '#818CF8', cardBg: 'rgba(18, 29, 66, 0.45)' },
+  { name: 'golden-copper',     bg1: '#451A03', bg2: '#92400E', bg3: '#B45309', accent: '#FBBF24', accent2: '#38BDF8', glow: '#F59E0B', cardBg: 'rgba(54, 21, 4, 0.45)' },
+  { name: 'arctic-blue',       bg1: '#082F49', bg2: '#0369A1', bg3: '#2563EB', accent: '#7DD3FC', accent2: '#4ADE80', glow: '#38BDF8', cardBg: 'rgba(8, 38, 58, 0.45)' }
 ];
 
 function hashSlug(str) {
@@ -74,58 +74,59 @@ function hashSlug(str) {
   return Math.abs(h);
 }
 
-// Vector Flag Renderer
-function renderFlagSvg(code, x, y, w = 58, h = 40) {
+// High-Detail Rectangular Flag SVG
+function renderRectFlag(code, x, y, w = 110, h = 74, rx = 14) {
   const c = (code || '').toUpperCase();
-  const r = 6;
   let inner = '';
   if (c === 'USD') {
     inner = `
       <rect width="${w}" height="${h}" fill="#B22234"/>
-      <path d="M0,${h*0.15} H${w} M0,${h*0.31} H${w} M0,${h*0.46} H${w} M0,${h*0.62} H${w} M0,${h*0.77} H${w} M0,${h*0.92} H${w}" stroke="#fff" stroke-width="${h*0.077}"/>
-      <rect width="${w*0.44}" height="${h*0.54}" fill="#3C3B6E"/>
-      <circle cx="${w*0.1}" cy="${h*0.14}" r="1.5" fill="#fff"/><circle cx="${w*0.22}" cy="${h*0.14}" r="1.5" fill="#fff"/><circle cx="${w*0.34}" cy="${h*0.14}" r="1.5" fill="#fff"/>
-      <circle cx="${w*0.16}" cy="${h*0.27}" r="1.5" fill="#fff"/><circle cx="${w*0.28}" cy="${h*0.27}" r="1.5" fill="#fff"/>
-      <circle cx="${w*0.1}" cy="${h*0.4}" r="1.5" fill="#fff"/><circle cx="${w*0.22}" cy="${h*0.4}" r="1.5" fill="#fff"/><circle cx="${w*0.34}" cy="${h*0.4}" r="1.5" fill="#fff"/>
+      <path d="M0,${h*0.154} H${w} M0,${h*0.308} H${w} M0,${h*0.462} H${w} M0,${h*0.615} H${w} M0,${h*0.769} H${w} M0,${h*0.923} H${w}" stroke="#FFFFFF" stroke-width="${h*0.077}"/>
+      <rect width="${w*0.44}" height="${h*0.538}" fill="#3C3B6E"/>
+      <g fill="#FFFFFF">
+        <circle cx="${w*0.09}" cy="${h*0.12}" r="${h*0.032}"/><circle cx="${w*0.22}" cy="${h*0.12}" r="${h*0.032}"/><circle cx="${w*0.35}" cy="${h*0.12}" r="${h*0.032}"/>
+        <circle cx="${w*0.155}" cy="${h*0.26}" r="${h*0.032}"/><circle cx="${w*0.285}" cy="${h*0.26}" r="${h*0.032}"/>
+        <circle cx="${w*0.09}" cy="${h*0.40}" r="${h*0.032}"/><circle cx="${w*0.22}" cy="${h*0.40}" r="${h*0.032}"/><circle cx="${w*0.35}" cy="${h*0.40}" r="${h*0.032}"/>
+      </g>
     `;
   } else if (c === 'GBP' || c === 'UK') {
     inner = `
       <rect width="${w}" height="${h}" fill="#012169"/>
-      <path d="M0,0 L${w},${h} M${w},0 L0,${h}" stroke="#fff" stroke-width="7"/>
-      <path d="M0,0 L${w},${h} M${w},0 L0,${h}" stroke="#C8102E" stroke-width="3"/>
-      <path d="M${w/2},0 V${h} M0,${h/2} H${w}" stroke="#fff" stroke-width="11"/>
-      <path d="M${w/2},0 V${h} M0,${h/2} H${w}" stroke="#C8102E" stroke-width="6"/>
+      <path d="M0,0 L${w},${h} M${w},0 L0,${h}" stroke="#FFFFFF" stroke-width="${h*0.18}"/>
+      <path d="M0,0 L${w},${h} M${w},0 L0,${h}" stroke="#C8102E" stroke-width="${h*0.08}"/>
+      <path d="M${w/2},0 V${h} M0,${h/2} H${w}" stroke="#FFFFFF" stroke-width="${h*0.28}"/>
+      <path d="M${w/2},0 V${h} M0,${h/2} H${w}" stroke="#C8102E" stroke-width="${h*0.16}"/>
     `;
   } else if (c === 'AUD') {
     inner = `
       <rect width="${w}" height="${h}" fill="#00008B"/>
-      <rect width="${w*0.45}" height="${h*0.5}" fill="#012169"/>
-      <path d="M0,0 L${w*0.45},${h*0.5} M${w*0.45},0 L0,${h*0.5}" stroke="#fff" stroke-width="3.5"/>
-      <path d="M${w*0.225},0 V${h*0.5} M0,${h*0.25} H${w*0.45}" stroke="#fff" stroke-width="5.5"/>
-      <path d="M${w*0.225},0 V${h*0.5} M0,${h*0.25} H${w*0.45}" stroke="#C8102E" stroke-width="3"/>
-      <circle cx="${w*0.225}" cy="${h*0.75}" r="3.8" fill="#fff"/>
-      <circle cx="${w*0.75}" cy="${h*0.22}" r="2.2" fill="#fff"/>
-      <circle cx="${w*0.64}" cy="${h*0.44}" r="2.2" fill="#fff"/>
-      <circle cx="${w*0.86}" cy="${h*0.40}" r="2.2" fill="#fff"/>
-      <circle cx="${w*0.75}" cy="${h*0.78}" r="2.6" fill="#fff"/>
+      <rect width="${w*0.46}" height="${h*0.5}" fill="#012169"/>
+      <path d="M0,0 L${w*0.46},${h*0.5} M${w*0.46},0 L0,${h*0.5}" stroke="#FFFFFF" stroke-width="${h*0.08}"/>
+      <path d="M${w*0.23},0 V${h*0.5} M0,${h*0.25} H${w*0.46}" stroke="#FFFFFF" stroke-width="${h*0.14}"/>
+      <path d="M${w*0.23},0 V${h*0.5} M0,${h*0.25} H${w*0.46}" stroke="#C8102E" stroke-width="${h*0.08}"/>
+      <circle cx="${w*0.23}" cy="${h*0.76}" r="${h*0.09}" fill="#FFFFFF"/>
+      <circle cx="${w*0.75}" cy="${h*0.22}" r="${h*0.05}" fill="#FFFFFF"/>
+      <circle cx="${w*0.63}" cy="${h*0.45}" r="${h*0.05}" fill="#FFFFFF"/>
+      <circle cx="${w*0.86}" cy="${h*0.40}" r="${h*0.05}" fill="#FFFFFF"/>
+      <circle cx="${w*0.75}" cy="${h*0.78}" r="${h*0.06}" fill="#FFFFFF"/>
     `;
   } else if (c === 'INR') {
     inner = `
       <rect width="${w}" height="${h/3}" fill="#FF9933"/>
       <rect y="${h/3}" width="${w}" height="${h/3}" fill="#FFFFFF"/>
       <rect y="${(h*2)/3}" width="${w}" height="${h/3}" fill="#138808"/>
-      <circle cx="${w/2}" cy="${h/2}" r="${h*0.13}" fill="none" stroke="#000080" stroke-width="1.6"/>
-      <circle cx="${w/2}" cy="${h/2}" r="1.5" fill="#000080"/>
+      <circle cx="${w/2}" cy="${h/2}" r="${h*0.13}" fill="none" stroke="#000080" stroke-width="2.5"/>
+      <circle cx="${w/2}" cy="${h/2}" r="3" fill="#000080"/>
     `;
   } else if (c === 'KRW') {
     inner = `
       <rect width="${w}" height="${h}" fill="#FFFFFF"/>
-      <circle cx="${w/2}" cy="${h/2}" r="${h*0.25}" fill="#CD2E3A"/>
-      <path d="M${w/2 - h*0.25},${h/2} A${h*0.125},${h*0.125} 0 0,0 ${w/2},${h/2} A${h*0.125},${h*0.125} 0 0,1 ${w/2 + h*0.25},${h/2} A${h*0.25},${h*0.25} 0 0,1 ${w/2 - h*0.25},${h/2} Z" fill="#0047A0"/>
-      <line x1="${w*0.22}" y1="${h*0.28}" x2="${w*0.29}" y2="${h*0.18}" stroke="#000" stroke-width="2.2"/>
-      <line x1="${w*0.71}" y1="${h*0.18}" x2="${w*0.78}" y2="${h*0.28}" stroke="#000" stroke-width="2.2"/>
-      <line x1="${w*0.22}" y1="${h*0.72}" x2="${w*0.29}" y2="${h*0.82}" stroke="#000" stroke-width="2.2"/>
-      <line x1="${w*0.71}" y1="${h*0.82}" x2="${w*0.78}" y2="${h*0.72}" stroke="#000" stroke-width="2.2"/>
+      <circle cx="${w/2}" cy="${h/2}" r="${h*0.26}" fill="#CD2E3A"/>
+      <path d="M${w/2 - h*0.26},${h/2} A${h*0.13},${h*0.13} 0 0,0 ${w/2},${h/2} A${h*0.13},${h*0.13} 0 0,1 ${w/2 + h*0.26},${h/2} A${h*0.26},${h*0.26} 0 0,1 ${w/2 - h*0.26},${h/2} Z" fill="#0047A0"/>
+      <line x1="${w*0.20}" y1="${h*0.28}" x2="${w*0.28}" y2="${h*0.16}" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="${w*0.72}" y1="${h*0.16}" x2="${w*0.80}" y2="${h*0.28}" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="${w*0.20}" y1="${h*0.72}" x2="${w*0.28}" y2="${h*0.84}" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="${w*0.72}" y1="${h*0.84}" x2="${w*0.80}" y2="${h*0.72}" stroke="#0F172A" stroke-width="3.5" stroke-linecap="round"/>
     `;
   } else if (c === 'JPY') {
     inner = `
@@ -135,14 +136,14 @@ function renderFlagSvg(code, x, y, w = 58, h = 40) {
   } else if (c === 'VND') {
     inner = `
       <rect width="${w}" height="${h}" fill="#DA251D"/>
-      <polygon points="${w/2},${h*0.20} ${w*0.56},${h*0.41} ${w*0.73},${h*0.41} ${w*0.59},${h*0.54} ${w*0.64},${h*0.75} ${w/2},${h*0.62} ${w*0.36},${h*0.75} ${w*0.41},${h*0.54} ${w*0.27},${h*0.41} ${w*0.44},${h*0.41}" fill="#FFFF00"/>
+      <polygon points="${w/2},${h*0.18} ${w*0.56},${h*0.40} ${w*0.74},${h*0.40} ${w*0.60},${h*0.54} ${w*0.65},${h*0.76} ${w/2},${h*0.62} ${w*0.35},${h*0.76} ${w*0.40},${h*0.54} ${w*0.26},${h*0.40} ${w*0.44},${h*0.40}" fill="#FFFF00"/>
     `;
   } else if (c === 'TRY') {
     inner = `
       <rect width="${w}" height="${h}" fill="#E30A17"/>
-      <circle cx="${w*0.42}" cy="${h/2}" r="${h*0.25}" fill="#fff"/>
-      <circle cx="${w*0.47}" cy="${h/2}" r="${h*0.2}" fill="#E30A17"/>
-      <polygon points="${w*0.64},${h*0.38} ${w*0.67},${h*0.47} ${w*0.75},${h*0.47} ${w*0.69},${h*0.53} ${w*0.71},${h*0.62} ${w*0.64},${h*0.56} ${w*0.57},${h*0.62} ${w*0.59},${h*0.53} ${w*0.53},${h*0.47} ${w*0.61},${h*0.47}" fill="#fff"/>
+      <circle cx="${w*0.42}" cy="${h/2}" r="${h*0.25}" fill="#FFFFFF"/>
+      <circle cx="${w*0.47}" cy="${h/2}" r="${h*0.20}" fill="#E30A17"/>
+      <polygon points="${w*0.64},${h*0.38} ${w*0.67},${h*0.47} ${w*0.75},${h*0.47} ${w*0.69},${h*0.53} ${w*0.71},${h*0.62} ${w*0.64},${h*0.56} ${w*0.57},${h*0.62} ${w*0.59},${h*0.53} ${w*0.53},${h*0.47} ${w*0.61},${h*0.47}" fill="#FFFFFF"/>
     `;
   } else if (c === 'IDR') {
     inner = `
@@ -152,717 +153,477 @@ function renderFlagSvg(code, x, y, w = 58, h = 40) {
   } else {
     inner = `
       <rect width="${w}" height="${h}" fill="#003399"/>
-      <circle cx="${w/2}" cy="${h/2}" r="${h*0.28}" fill="none" stroke="#FFCC00" stroke-width="3" stroke-dasharray="3.5 3.5"/>
+      <circle cx="${w/2}" cy="${h/2}" r="${h*0.28}" fill="none" stroke="#FFCC00" stroke-width="4" stroke-dasharray="5 5"/>
     `;
   }
-  const clipId = `flag_${c}_${x}_${y}`;
+  const clipId = `rflag_${c}_${Math.round(x)}_${Math.round(y)}`;
   return `
     <g transform="translate(${x}, ${y})">
-      <defs><clipPath id="${clipId}"><rect width="${w}" height="${h}" rx="${r}"/></clipPath></defs>
+      <rect x="4" y="8" width="${w}" height="${h}" rx="${rx}" fill="rgba(0,0,0,0.35)"/>
+      <defs><clipPath id="${clipId}"><rect width="${w}" height="${h}" rx="${rx}"/></clipPath></defs>
       <g clip-path="url(#${clipId})">${inner}</g>
-      <rect width="${w}" height="${h}" rx="${r}" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <rect width="${w}" height="${h}" rx="${rx}" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.85"/>
     </g>
   `;
 }
 
-const CURRENCY_META = {
-  USD: { name: 'US Dollar', sym: '$', rateFromUsd: 1 },
-  GBP: { name: 'British Pound', sym: '£', rateFromUsd: 0.788 },
-  AUD: { name: 'Australian Dollar', sym: 'A$', rateFromUsd: 1.53 },
-  INR: { name: 'Indian Rupee', sym: '₹', rateFromUsd: 83.5 },
-  KRW: { name: 'South Korean Won', sym: '₩', rateFromUsd: 1355 },
-  JPY: { name: 'Japanese Yen', sym: '¥', rateFromUsd: 152 },
-  VND: { name: 'Vietnamese Dong', sym: '₫', rateFromUsd: 25400 },
-  TRY: { name: 'Turkish Lira', sym: '₺', rateFromUsd: 34.2 },
-  IDR: { name: 'Indonesian Rupiah', sym: 'Rp ', rateFromUsd: 15650 },
-  EUR: { name: 'Euro', sym: '€', rateFromUsd: 0.92 }
+const CURRENCY_SYM = {
+  USD: '$', GBP: '£', AUD: 'A$', INR: '₹', KRW: '₩', JPY: '¥', VND: '₫', TRY: '₺', IDR: 'Rp', EUR: '€'
 };
 
-function fmtCurrencyVal(code, amount) {
-  const meta = CURRENCY_META[code] || { sym: '' };
-  if (amount >= 1e9) {
-    return `${meta.sym}${(amount / 1e9).toFixed(0)} Billion`;
-  }
-  if (amount >= 1e6) {
-    return `${meta.sym}${Math.round(amount).toLocaleString('en-US')}`;
-  }
-  if (amount >= 1000 && (code === 'VND' || code === 'IDR' || code === 'KRW' || code === 'JPY')) {
-    return `${meta.sym}${Math.round(amount).toLocaleString('en-US')}`;
-  }
-  return `${meta.sym}${Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
-
-// Extract structured conversion metadata for any article based on its canonical English slug & localized H1
+// Analyze article purely for visual theme & illustration type (NO conversion rate numbers!)
 function analyzeArticle(enSlug, localTitle, lang = 'en') {
   const s = enSlug.toLowerCase();
   const cleanH1 = String(localTitle || '').replace(/&amp;/g, '&').trim();
   const parts = cleanH1.split(':');
   const mainHeadline = parts[0].trim();
-  const subHeadline = parts.slice(1).join(':').trim() || (
-    lang === 'es' ? 'Fórmula Exacta, Tabla de Referencia y Calculadora' :
-    lang === 'de' ? 'Exakte Formel, Referenztabelle & Live-Rechner' :
-    lang === 'pt' ? 'Fórmula Exata, Tabela de Referência e Calculadora' :
-    'Exact Formula, Reference Table & Live Calculator'
-  );
+  const subHeadline = parts.slice(1).join(':').trim();
 
-  // Explicit per-article overrides for special slugs so every single one of the 71 articles is 100% spot-on
-  const SPECIAL = {
-    '1-3-cup-to-grams': {
-      type: 'volume', badge: 'KITCHEN & CULINARY', headline: '1/3 Cup to Grams',
-      fromLabel: 'VOLUME INPUT', fromUnit: '1/3 US Cup', fromVal: '78.9 mL',
-      toLabel: 'WEIGHT IN GRAMS', toUnit: 'Water / Flour / Sugar', toVal: '78.9g / 40g / 66.7g',
-      eq: '1/3 Cup = 78.9g (Water) • 66.7g (Sugar) • 40g (Flour)',
-      formula: 'Grams = Cups × 236.59 mL × Ingredient Density (g/mL)',
-      fillPct: 0.33
-    },
-    '1-4-cup-is-ml': {
-      type: 'volume', badge: 'KITCHEN & VOLUME', headline: '1/4 Cup in mL',
-      fromLabel: 'CUP VOLUME', fromUnit: '1/4 US Customary Cup', fromVal: '0.25 Cup',
-      toLabel: 'MILLILITERS (mL)', toUnit: 'US vs Metric Cup', toVal: '59.15 mL / 62.5 mL',
-      eq: '1/4 US Cup = 59.15 mL  •  1/4 Metric Cup = 62.50 mL',
-      formula: 'mL = Cups × 236.588 mL (US)  |  Cups × 250 mL (Metric)',
-      fillPct: 0.25
-    },
-    '1-cup-milk-in-milliliters': {
-      type: 'volume', badge: 'KITCHEN & CULINARY', headline: '1 Cup Milk in mL',
-      fromLabel: 'RECIPE MEASURE', fromUnit: '1 Cup Liquid Milk', fromVal: '1.00 Cup',
-      toLabel: 'FLUID MILLILITERS', toUnit: 'US / Metric Volume', toVal: '236.59 mL / 250 mL',
-      eq: '1 US Cup Milk = 236.59 mL  •  1 Metric Cup = 250 mL',
-      formula: '1 US Cup = 236.588 mL  •  Weight ≈ 244g (at 1.03 g/mL)',
-      fillPct: 0.72
-    },
-    '1-gallon-in-litres': {
-      type: 'volume', badge: 'VOLUME & CAPACITY', headline: '1 Gallon in Litres',
-      fromLabel: 'GALLON VOLUME', fromUnit: '1 Liquid Gallon (gal)', fromVal: '1.00 gal',
-      toLabel: 'LITRES (L)', toUnit: 'US vs UK Imperial', toVal: '3.785 L / 4.546 L',
-      eq: '1 US Gallon = 3.78541 Litres  •  1 UK Gallon = 4.54609 L',
-      formula: 'Litres = US Gallons × 3.785411784',
-      fillPct: 0.80
-    },
-    '1-tsp-is-ml': {
-      type: 'volume', badge: 'KITCHEN & CULINARY', headline: '1 Teaspoon in mL',
-      fromLabel: 'SPOON MEASURE', fromUnit: '1 Teaspoon (1 tsp)', fromVal: '1.00 tsp',
-      toLabel: 'MILLILITERS (mL)', toUnit: 'Metric / US Standard', toVal: '5.00 mL / 4.93 mL',
-      eq: '1 Metric/Nutrition tsp = 5.00 mL  •  1 US tsp = 4.929 mL',
-      formula: 'mL = Teaspoons × 4.92892 (US)  |  Teaspoons × 5.0 (Metric)',
-      fillPct: 0.22
-    },
-    '16-ounces-to-milliliters': {
-      type: 'volume', badge: 'VOLUME & CAPACITY', headline: '16 oz to Milliliters',
-      fromLabel: 'FLUID OUNCES', fromUnit: '16 US fl oz (1 Pint)', fromVal: '16 fl oz',
-      toLabel: 'MILLILITERS (mL)', toUnit: 'Exact Fluid Volume', toVal: '473.18 mL',
-      eq: '16 US fl oz = 473.18 mL  •  16 UK fl oz = 454.61 mL',
-      formula: 'mL = US Fluid Ounces × 29.57353',
-      fillPct: 0.65
-    },
-    '3-cups-in-ml': {
-      type: 'volume', badge: 'KITCHEN & VOLUME', headline: '3 Cups in mL',
-      fromLabel: 'CUP MEASURE', fromUnit: '3 Cups Volume', fromVal: '3.00 Cups',
-      toLabel: 'MILLILITERS (mL)', toUnit: 'US vs Metric Cups', toVal: '709.76 mL / 750 mL',
-      eq: '3 US Cups = 709.76 mL (≈710 mL)  •  3 Metric Cups = 750 mL',
-      formula: 'mL = 3 × 236.588 mL = 709.76 mL (24 US fl oz)',
-      fillPct: 0.75
-    },
-    '500-ml-to-cups': {
-      type: 'volume', badge: 'KITCHEN & VOLUME', headline: '500 mL to Cups',
-      fromLabel: 'MILLILITERS (mL)', fromUnit: 'Metric Liquid Volume', fromVal: '500 mL',
-      toLabel: 'CUPS EQUIVALENT', toUnit: 'US vs Metric Cups', toVal: '2.11 US / 2.0 Metric',
-      eq: '500 mL = 2.113 US Cups  •  Exactly 2.00 Metric Cups',
-      formula: 'US Cups = 500 mL ÷ 236.588 = 2.1134 Cups',
-      fillPct: 0.55
-    },
-    '1-bar-to-psi-conversion': {
-      type: 'gauge', badge: 'PRESSURE & ENGINEERING', headline: '1 Bar to PSI',
-      fromLabel: 'METRIC PRESSURE', fromUnit: 'Bar (100 kPa)', fromVal: '1.00 Bar',
-      toLabel: 'IMPERIAL PRESSURE', toUnit: 'Pounds / Sq Inch', toVal: '14.5038 PSI',
-      gaugeText: '14.50 PSI', gaugeSub: '1 Bar = 100 kPa',
-      eq: '1 Bar = 14.5037738 PSI (Pounds per Square Inch)',
-      formula: 'PSI = Bar × 14.5037738  •  1 atm = 1.01325 Bar'
-    },
-    '60-mph-to-kmh': {
-      type: 'gauge', badge: 'SPEED & VELOCITY', headline: '60 MPH to KM/H',
-      fromLabel: 'IMPERIAL SPEED', fromUnit: 'Miles Per Hour', fromVal: '60 MPH',
-      toLabel: 'METRIC SPEED', toUnit: 'Kilometers Per Hour', toVal: '96.56 km/h',
-      gaugeText: '96.56 km/h', gaugeSub: '60 MPH Highway Speed',
-      eq: '60 MPH = 96.56064 km/h (26.82 Meters/Second)',
-      formula: 'km/h = MPH × 1.609344'
-    },
-    '1-bigha-in-square-feet': {
-      type: 'indian', badge: 'INDIAN LAND UNITS', headline: '1 Bigha in Sq Ft',
-      fromLabel: 'TRADITIONAL UNIT', fromUnit: '1 Pucca Bigha', fromVal: '1 Bigha',
-      toLabel: 'SQUARE FEET', toUnit: 'Standard Land Area', toVal: '27,225 sq ft',
-      eq: '1 Standard Bigha = 27,225 sq ft (UP/Bihar/Rajasthan)',
-      formula: '1 Bigha = 20 Biswa = 27,225 sq ft ≈ 0.625 Acres'
-    },
-    '1-gaj-in-square-feet': {
-      type: 'indian', badge: 'INDIAN LAND UNITS', headline: '1 Gaj in Square Feet',
-      fromLabel: 'PLOT MEASURE', fromUnit: '1 Square Gaj (Guz)', fromVal: '1 Gaj',
-      toLabel: 'SQUARE FEET', toUnit: 'Exact Area Equivalent', toVal: '9.00 sq ft',
-      eq: '1 Gaj (Square Yard) = Exactly 9 Square Feet (3 ft × 3 ft)',
-      formula: 'Square Feet = Gaj × 9  •  100 Gaj Plot = 900 sq ft'
-    },
-    '1-guntha-in-sq-ft': {
-      type: 'indian', badge: 'INDIAN LAND UNITS', headline: '1 Guntha in Sq Ft',
-      fromLabel: 'REVENUE LAND UNIT', fromUnit: '1 Guntha (Maharashtra)', fromVal: '1 Guntha',
-      toLabel: 'SQUARE FEET', toUnit: 'Exact Plot Area', toVal: '1,089 sq ft',
-      eq: '1 Guntha = Exactly 1,089 Square Feet (33 ft × 33 ft)',
-      formula: '40 Guntha = 1 Acre (43,560 sq ft)  •  1 Guntha = 101.17 m²'
-    },
-    '1-crore-in-millions': {
-      type: 'indian', badge: 'INDIAN NUMBER SYSTEM', headline: '1 Crore in Millions',
-      fromLabel: 'INDIAN NUMBERING', fromUnit: '1 Crore (1,00,00,000)', fromVal: '1 Crore',
-      toLabel: 'WESTERN NUMBERING', toUnit: 'Millions Equivalent', toVal: '10 Million',
-      eq: '1 Crore (1,00,00,000) = Exactly 10 Million (10,000,000)',
-      formula: '1 Crore = 100 Lakhs = 10 Million = 10⁷'
-    },
-    '1-tola-in-grams': {
-      type: 'weight', badge: 'BULLION & JEWELLERY', headline: '1 Tola in Grams',
-      fromLabel: 'BULLION MEASURE', fromUnit: '1 Gold/Silver Tola', fromVal: '1.00 Tola',
-      toLabel: 'METRIC MASS', toUnit: 'Bullion / British Tola', toVal: '10.00g / 11.66g',
-      eq: '1 Modern Jewellery Tola = 10.00g  •  1 Historic Tola = 11.6638g',
-      formula: 'Grams = Tola × 10.00g (Modern) or × 11.6638g (Troy)'
-    },
-    '15-meters-to-feet': {
-      type: 'length', badge: 'LENGTH & DISTANCE', headline: '15 Meters to Feet',
-      fromLabel: 'METRIC LENGTH', fromUnit: '15 Meters (m)', fromVal: '15.00 m',
-      toLabel: 'IMPERIAL LENGTH', toUnit: 'Feet & Inches', toVal: '49.21 ft (49\' 2.5")',
-      eq: '15 Meters = 49.2126 Feet (49 Feet 2.55 Inches)',
-      formula: 'Feet = Meters × 3.2808399  •  15 × 3.28084 = 49.2126 ft'
-    },
-    '4-meters-to-feet': {
-      type: 'length', badge: 'LENGTH & DISTANCE', headline: '4 Meters to Feet',
-      fromLabel: 'METRIC LENGTH', fromUnit: '4 Meters (m)', fromVal: '4.00 m',
-      toLabel: 'IMPERIAL LENGTH', toUnit: 'Feet & Inches', toVal: '13.12 ft (13\' 1.5")',
-      eq: '4 Meters = 13.1234 Feet (13 Feet 1.48 Inches)',
-      formula: 'Feet = Meters × 3.2808399  •  4 × 3.28084 = 13.1234 ft'
-    },
-    'weeks-calculator': {
-      type: 'time', badge: 'TIME & DURATION', headline: 'Weeks Calculator',
-      fromLabel: 'TIME UNIT', fromUnit: '1 Calendar Week', fromVal: '1 Week',
-      toLabel: 'EXACT BREAKDOWN', toUnit: 'Days • Hours • Minutes', toVal: '7d • 168h • 10,080m',
-      eq: '1 Week = 7 Days = 168 Hours = 10,080 Minutes',
-      formula: 'Weeks = Days ÷ 7  •  1 Year = 52.143 Weeks (365 Days)'
-    },
-    'convert-file-type-to-pdf': {
-      type: 'file', badge: 'FILE & PDF TOOLS', headline: 'Convert Any File to PDF',
-      fromLabel: 'SOURCE FORMATS', fromUnit: 'DOCX • JPG • PNG • XLSX', fromVal: 'Input File',
-      toLabel: 'UNIVERSAL OUTPUT', toUnit: 'ISO Standard Document', toVal: 'PDF Document',
-      eq: 'Convert Word, Images & Spreadsheets to Universal PDF',
-      formula: '100% Local Browser Processing • Preserves Vector Fonts & Layout'
-    },
-    'convert-pdf-form': {
-      type: 'file', badge: 'FILE & PDF TOOLS', headline: 'Convert & Flatten PDF Forms',
-      fromLabel: 'INTERACTIVE PDF', fromUnit: 'AcroForm / XFA Fields', fromVal: 'Fillable PDF',
-      toLabel: 'LOCKED ARCHIVE', toUnit: 'Flattened Static Layer', toVal: 'Read-Only PDF',
-      eq: 'Lock Fillable PDF Form Fields Into Permanent Static Text',
-      formula: 'AcroForm / XFA ➔ Flattened Print-Ready PDF/A Document'
-    },
-    'converter-application-download': {
-      type: 'file', badge: 'PRODUCT & PWA APP', headline: 'OmniConverter Web App',
-      fromLabel: 'BROWSER ENGINE', fromUnit: 'iOS • Android • Desktop', fromVal: 'Web App',
-      toLabel: 'OFFLINE CAPABLE', toUnit: 'Progressive Web App', toVal: 'Instant PWA',
-      eq: 'Install OmniConverter PWA for 100% Offline Conversions',
-      formula: 'Zero App Store Bloat • Works Offline via Service Worker'
-    },
-    'convertor-or-converter': {
-      type: 'file', badge: 'TECHNICAL USAGE GUIDE', headline: 'Converter vs Convertor',
-      fromLabel: 'STANDARD ENGLISH', fromUnit: '95% Global Usage', fromVal: 'Converter (-er)',
-      toLabel: 'SPECIALIST VARIANT', toUnit: 'IEC / UK Electrical', toVal: 'Convertor (-or)',
-      eq: '"Converter" = Standard English • "Convertor" = Technical Variant',
-      formula: 'Latin "convertere" + "-er" Suffix = Standard Modern Spelling'
-    },
-    'file-changer': {
-      type: 'file', badge: 'FILE & MEDIA TOOLS', headline: 'Online File Changer',
-      fromLabel: 'SOURCE CONTAINER', fromUnit: 'PNG • WebP • JPG • SVG', fromVal: 'Original File',
-      toLabel: 'TRUE TRANSCODING', toUnit: 'Re-Encoded Binary Header', toVal: 'Target Format',
-      eq: 'True Container Transcoding vs Renaming File Extensions',
-      formula: 'Canvas / WebAssembly Binary Re-Encoding in Browser'
-    },
-    'how-to-change-file-format': {
-      type: 'file', badge: 'FILE & MEDIA TOOLS', headline: 'Change File Formats Safely',
-      fromLabel: 'CROSS-PLATFORM', fromUnit: 'Windows • Mac • iOS • Android', fromVal: 'Source Format',
-      toLabel: 'SAFE CONVERSION', toUnit: 'Verified MIME & Header', toVal: 'Converted File',
-      eq: 'Safely Convert File Formats Across Windows, macOS & Mobile',
-      formula: 'Export / Transcode Binary Stream Without Corrupting Headers'
-    },
-    'mastercard-foreign-exchange-rate': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'Mastercard FX Rates',
-      fromCurr: 'USD', toCurr: 'EUR',
-      fromLabel: 'NETWORK BASE RATE', fromUnit: 'Mastercard Wholesale FX', fromVal: '0.2% – 0.4% Spread',
-      toLabel: 'ISSUER BANK FEE', toUnit: 'Foreign Transaction Fee', toVal: '0% vs 3.0% Markup',
-      eq: 'Total Card Rate = Mastercard Base Rate + Bank FX Markup (0%–3%)',
-      formula: 'Settlement Date Rate Applies (Not Transaction Authorization Time)'
-    },
-    'currency-for-turkish-lira': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'Turkish Lira (TRY / ₺)',
-      fromCurr: 'USD', toCurr: 'TRY',
-      fromLabel: 'MAJOR CURRENCY', fromUnit: 'USD ($) / EUR (€) / GBP (£)', fromVal: '$100.00 USD',
-      toLabel: 'TURKISH LIRA (TRY)', toUnit: ' banknotes: ₺5 – ₺200', toVal: '≈ ₺3,420 TRY',
-      eq: 'Official Currency of Turkey: Turkish Lira (TRY / Symbol: ₺)',
-      formula: 'Always Pay in Local TRY (Avoid Dynamic Currency Conversion)'
-    },
-    'indonesia-cu': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'Indonesian Rupiah (IDR)',
-      fromCurr: 'USD', toCurr: 'IDR',
-      fromLabel: 'FOREIGN CURRENCY', fromUnit: 'USD ($) / AUD (A$)', fromVal: '$100.00 USD',
-      toLabel: 'INDONESIAN RUPIAH', toUnit: 'IDR (Rp) Banknotes', toVal: 'Rp 1,565,000',
-      eq: 'Official Currency of Indonesia: Indonesian Rupiah (IDR / Rp)',
-      formula: 'Mental Math: Drop Last 4 Zeros (Rp 150,000 ≈ $10 USD)'
-    },
-    'convert-lakh-to-usd': {
-      type: 'currency', badge: 'INDIAN FOREX GUIDE', headline: '1 Lakh INR to USD',
-      fromCurr: 'INR', toCurr: 'USD',
-      fromLabel: 'INDIAN RUPEES (INR)', fromUnit: '1 Lakh (₹1,00,000)', fromVal: '₹1,00,000',
-      toLabel: 'US DOLLARS (USD)', toUnit: 'Mid-Market Equivalent', toVal: '≈ $1,197.60',
-      eq: '1 Lakh INR (₹1,00,000) ≈ $1,198 USD (at 1 USD = ₹83.50)',
-      formula: 'USD = ₹100,000 ÷ USD/INR Exchange Rate'
-    },
-    'currency-jpy-to-inr': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'JPY to INR Guide',
-      fromCurr: 'JPY', toCurr: 'INR',
-      fromLabel: 'JAPANESE YEN (JPY)', fromUnit: '¥1,000 Yen Benchmark', fromVal: '¥1,000 JPY',
-      toLabel: 'INDIAN RUPEE (INR)', toUnit: 'Mid-Market Equivalent', toVal: '≈ ₹549.00 INR',
-      eq: '100 Japanese Yen (¥100 JPY) ≈ ₹54.90 Indian Rupees (INR)',
-      formula: 'INR = JPY × (JPY/INR Rate ≈ 0.549)'
-    },
-    'korean-to-aud': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'Korean Won to AUD',
-      fromCurr: 'KRW', toCurr: 'AUD',
-      fromLabel: 'SOUTH KOREAN WON', fromUnit: '₩100,000 KRW Note', fromVal: '₩100,000 KRW',
-      toLabel: 'AUSTRALIAN DOLLAR', toUnit: 'AUD (A$) Equivalent', toVal: '≈ A$112.90 AUD',
-      eq: '₩10,000 South Korean Won (KRW) ≈ A$11.29 AUD',
-      formula: 'Shortcut: Drop 3 Zeros & Add 13% (₩10,000 ≈ A$11.30)'
-    },
-    'rupiah-to-aud': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: 'Rupiah to AUD (IDR/A$)',
-      fromCurr: 'IDR', toCurr: 'AUD',
-      fromLabel: 'INDONESIAN RUPIAH', fromUnit: 'Rp 100,000 IDR Note', fromVal: 'Rp 100,000',
-      toLabel: 'AUSTRALIAN DOLLAR', toUnit: 'Bali Travel Equivalent', toVal: '≈ A$9.78 AUD',
-      eq: 'Rp 100,000 Indonesian Rupiah (IDR) ≈ A$9.80 AUD',
-      formula: 'Bali Shortcut: Drop 4 Zeros (Rp 100,000 ≈ A$10 AUD)'
-    },
-    '1-aud-to-vnd': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: '1 AUD to VND',
-      fromCurr: 'AUD', toCurr: 'VND',
-      fromLabel: 'AUSTRALIAN DOLLAR', fromUnit: 'AUD (A$) Base Unit', fromVal: 'A$1.00 AUD',
-      toLabel: 'VIETNAMESE DONG', toUnit: 'VND (₫) Equivalent', toVal: '≈ 16,600 ₫',
-      eq: '1 Australian Dollar (AUD) ≈ 16,600 Vietnamese Dong (VND)',
-      formula: 'VND = AUD × 16,600  •  100,000 ₫ ≈ A$6.02 AUD'
-    },
-    '1-billion-korean-won-to-gbp': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: '1 Billion Won to GBP',
-      fromCurr: 'KRW', toCurr: 'GBP',
-      fromLabel: 'SOUTH KOREAN WON', fromUnit: '₩1,000,000,000 KRW', fromVal: '₩1 Billion',
-      toLabel: 'BRITISH POUNDS (GBP)', toUnit: 'Sterling (£) Value', toVal: '≈ £581,500',
-      eq: '₩1,000,000,000 KRW (1 Billion Won) ≈ £581,500 GBP',
-      formula: 'GBP = KRW ÷ 1,720 (Mid-Market KRW/GBP Rate)'
-    },
-    '10-billion-won-to-gbp': {
-      type: 'currency', badge: 'CURRENCY & FOREX', headline: '10 Billion Won to GBP',
-      fromCurr: 'KRW', toCurr: 'GBP',
-      fromLabel: 'SOUTH KOREAN WON', fromUnit: '₩10,000,000,000 KRW', fromVal: '₩10 Billion',
-      toLabel: 'BRITISH POUNDS (GBP)', toUnit: 'Sterling (£) Value', toVal: '≈ £5.82 Million',
-      eq: '₩10,000,000,000 KRW (10 Billion Won) ≈ £5,815,000 GBP',
-      formula: 'GBP = KRW ÷ 1,720 (Mid-Market KRW/GBP Rate)'
-    }
-  };
-
-  if (SPECIAL[s]) {
-    const sp = { ...SPECIAL[s] };
-    sp.displayHeadline = lang === 'en' ? sp.headline : mainHeadline;
-    sp.subHeadline = subHeadline;
-    return sp;
+  // Special non-pattern slugs
+  if (s === 'mastercard-foreign-exchange-rate') {
+    return { type: 'card_fx', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'USD', toCurr: 'EUR' };
+  }
+  if (s === 'currency-for-turkish-lira') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'TRY', toCurr: 'USD' };
+  }
+  if (s === 'indonesia-cu') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'IDR', toCurr: 'USD' };
+  }
+  if (s === 'convert-lakh-to-usd') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'INR', toCurr: 'USD' };
+  }
+  if (s === 'currency-jpy-to-inr') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'JPY', toCurr: 'INR' };
+  }
+  if (s === 'korean-to-aud') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'KRW', toCurr: 'AUD' };
+  }
+  if (s === 'rupiah-to-aud') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'IDR', toCurr: 'AUD' };
+  }
+  if (s === '1-aud-to-vnd') {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'AUD', toCurr: 'VND' };
+  }
+  if (s.includes('won-to-gbp')) {
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr: 'KRW', toCurr: 'GBP' };
   }
 
-  // Pattern 1: Currency conversion e.g. 1000-usd-to-gbp, 20-gbp-aud, 20-pounds-sterling-in-australian-dollars, 300-dollars-in-gbp, 700-pounds-to-aud
+  // Standard Currency Pairs
   const currMatch = s.match(/^(\d+)\s*-(usd|gbp|aud|eur|cad|jpy|inr|krw|vnd|dollars|pounds-sterling|pounds)-(?:(?:to|in|a|para)-)?(usd|gbp|aud|eur|cad|jpy|inr|krw|vnd|australian-dollars|australian|pounds)$/);
   if (currMatch) {
-    const amt = parseFloat(currMatch[1]);
     const rawFrom = currMatch[2];
     const rawTo = currMatch[3];
     const fromCurr = (rawFrom === 'usd' || rawFrom === 'dollars') ? 'USD' : (rawFrom.startsWith('pound') || rawFrom === 'gbp') ? 'GBP' : 'AUD';
     const toCurr = (rawTo === 'gbp' || rawTo === 'pounds') ? 'GBP' : (rawTo.startsWith('aud') || rawTo.startsWith('australian')) ? 'AUD' : 'USD';
-    const fromMeta = CURRENCY_META[fromCurr];
-    const toMeta = CURRENCY_META[toCurr];
-    const rate = +(toMeta.rateFromUsd / fromMeta.rateFromUsd).toFixed(4);
-    const converted = amt * rate;
-    return {
-      type: 'currency',
-      badge: 'CURRENCY & FOREX',
-      displayHeadline: mainHeadline,
-      subHeadline,
-      fromCurr,
-      toCurr,
-      fromLabel: `FROM ${fromCurr}`,
-      fromUnit: `${fromCurr} • ${fromMeta.name}`,
-      fromVal: fmtCurrencyVal(fromCurr, amt),
-      toLabel: `TO ${toCurr}`,
-      toUnit: `${toCurr} • ${toMeta.name}`,
-      toVal: `≈ ${fmtCurrencyVal(toCurr, converted)}`,
-      rateText: `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`,
-      eq: `${fmtCurrencyVal(fromCurr, amt)} ${fromCurr} ≈ ${fmtCurrencyVal(toCurr, converted)} ${toCurr}`,
-      formula: `Formula: ${toCurr} = ${fromCurr} × Exchange Rate (≈ ${rate})`
-    };
+    return { type: 'currency', badge: 'CURRENCY & FOREX', mainHeadline, subHeadline, fromCurr, toCurr };
   }
 
-  // Pattern 2: Temperature e.g. 10-celsius-is-what-fahrenheit, 12-degrees-celsius-to-fahrenheit, 50-fahrenheit-to-celsius, 100-fahrenheit-to-celsius
-  const tempMatch = s.match(/^(\d+).*(celsius|fahrenheit).*(celsius|fahrenheit)$/);
-  if (tempMatch) {
-    const val = parseFloat(tempMatch[1]);
-    const fromScale = tempMatch[2] === 'celsius' ? 'C' : 'F';
-    const toScale = fromScale === 'C' ? 'F' : 'C';
-    const res = fromScale === 'C' ? +((val * 9 / 5) + 32).toFixed(2) : +(((val - 32) * 5) / 9).toFixed(2);
+  // Temperature
+  if (s.includes('celsius') || s.includes('fahrenheit')) {
+    const numMatch = s.match(/^(\d+)/);
+    const num = numMatch ? parseInt(numMatch[1], 10) : 25;
+    const isFever = (num >= 36 && num <= 39) || num >= 360;
+    const isOven = num >= 150 && num <= 250;
+    const fromScale = s.indexOf('celsius') < s.indexOf('fahrenheit') ? '°C' : '°F';
+    const toScale = fromScale === '°C' ? '°F' : '°C';
     return {
       type: 'temperature',
+      subType: isFever ? 'medical' : isOven ? 'oven' : 'weather',
       badge: 'TEMPERATURE & HEAT',
-      displayHeadline: mainHeadline,
+      mainHeadline,
       subHeadline,
-      fromLabel: fromScale === 'C' ? 'CELSIUS (°C)' : 'FAHRENHEIT (°F)',
-      fromUnit: fromScale === 'C' ? 'Metric Scale' : 'Imperial Scale',
-      fromVal: `${val}°${fromScale}`,
-      toLabel: toScale === 'C' ? 'CELSIUS (°C)' : 'FAHRENHEIT (°F)',
-      toUnit: 'Exact Equivalent',
-      toVal: `${res}°${toScale}`,
-      eq: `${val}°${fromScale} = Exactly ${res}°${toScale}`,
-      formula: fromScale === 'C' ? `°F = (${val}°C × 9/5) + 32 = ${res}°F` : `°C = (${val}°F − 32) × 5/9 = ${res}°C`,
-      tempC: fromScale === 'C' ? val : res
+      u1: fromScale,
+      u2: toScale
     };
   }
 
-  // Pattern 3: Weight & Mass (kg, lbs, stone, pounds)
-  const weightMatch = s.match(/^(\d+)\s*-?(kg|kilo|lbs|pounds|stone)/);
-  if (weightMatch) {
-    const val = parseFloat(weightMatch[1]);
-    const u1 = weightMatch[2];
-    const fromIsKg = u1 === 'kg' || u1 === 'kilo';
-    const fromIsStone = u1 === 'stone';
-    const toIsStone = s.includes('stone') && !fromIsStone;
+  // Kitchen & Volume
+  if (s === '1-cup-milk-in-milliliters') {
+    return { type: 'kitchen', subType: 'milk', badge: 'KITCHEN & CULINARY', mainHeadline, subHeadline, u1: 'CUP', u2: 'ML' };
+  }
+  if (s === '1-3-cup-to-grams') {
+    return { type: 'kitchen', subType: 'baking', badge: 'KITCHEN & CULINARY', mainHeadline, subHeadline, u1: 'CUP', u2: 'GRAMS' };
+  }
+  if (s === '1-tsp-is-ml') {
+    return { type: 'kitchen', subType: 'spoon', badge: 'KITCHEN & CULINARY', mainHeadline, subHeadline, u1: 'TSP', u2: 'ML' };
+  }
+  if (s === '1-gallon-in-litres') {
+    return { type: 'kitchen', subType: 'gallon', badge: 'VOLUME & CAPACITY', mainHeadline, subHeadline, u1: 'GAL', u2: 'LITRES' };
+  }
+  if (/(cup|ml|milliliter|liter|litre|gallon|ounces|oz|tsp)/.test(s)) {
+    const u1 = s.includes('oz') || s.includes('ounce') ? 'FL OZ' : s.startsWith('500-ml') ? 'ML' : 'CUPS';
+    const u2 = s.startsWith('500-ml') ? 'CUPS' : 'ML';
+    return { type: 'kitchen', subType: 'beaker', badge: 'KITCHEN & VOLUME', mainHeadline, subHeadline, u1, u2 };
+  }
 
-    if (fromIsKg && toIsStone) {
-      const totalLbs = val * 2.20462262;
-      const st = Math.floor(totalLbs / 14);
-      const remLbs = (totalLbs - st * 14).toFixed(1);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'KILOGRAMS (kg)', fromUnit: 'SI Metric Mass', fromVal: `${val} kg`,
-        toLabel: 'STONE & POUNDS', toUnit: `${(val / 6.350293).toFixed(2)} st (${totalLbs.toFixed(1)} lbs)`, toVal: `${st} st ${remLbs} lbs`,
-        eq: `${val} kg = ${st} Stone ${remLbs} lbs (${totalLbs.toFixed(2)} lbs)`,
-        formula: `Stone = kg ÷ 6.350293  •  Pounds = kg × 2.20462`
-      };
-    } else if (fromIsKg) {
-      const lbs = (val * 2.20462262).toFixed(2);
-      const st = Math.floor(val * 2.20462262 / 14);
-      const rem = ((val * 2.20462262) - st * 14).toFixed(1);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'KILOGRAMS (kg)', fromUnit: 'Metric Weight', fromVal: `${val} kg`,
-        toLabel: 'POUNDS (lbs)', toUnit: `Also = ${st} st ${rem} lbs`, toVal: `${lbs} lbs`,
-        eq: `${val} Kilograms (kg) = ${lbs} Pounds (lbs)`,
-        formula: `lbs = ${val} kg × 2.20462262 = ${lbs} lbs`
-      };
-    } else if (fromIsStone && s.includes('kg')) {
-      const kg = (val * 6.35029318).toFixed(2);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'IMPERIAL STONE', fromUnit: `${val} Stone (${val * 14} lbs)`, fromVal: `${val} st`,
-        toLabel: 'KILOGRAMS (kg)', toUnit: 'SI Metric Mass', toVal: `${kg} kg`,
-        eq: `${val} Stone = ${kg} Kilograms (${val * 14} Pounds)`,
-        formula: `kg = Stone × 6.35029318`
-      };
-    } else if (fromIsStone) {
-      const lbs = val * 14;
-      const kg = (val * 6.35029318).toFixed(2);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'IMPERIAL STONE', fromUnit: `UK / Ireland Weight`, fromVal: `${val} Stone`,
-        toLabel: 'POUNDS & KILOS', toUnit: `${kg} Kilograms (kg)`, toVal: `${lbs} lbs`,
-        eq: `${val} Stone = Exactly ${lbs} Pounds (${kg} kg)`,
-        formula: `Pounds = ${val} Stone × 14 = ${lbs} lbs`
-      };
-    } else if (toIsStone) {
-      const st = Math.floor(val / 14);
-      const rem = Math.round(val - st * 14);
-      const kg = (val * 0.45359237).toFixed(2);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'POUNDS (lbs)', fromUnit: `Also = ${kg} kg`, fromVal: `${val} lbs`,
-        toLabel: 'STONE & POUNDS', toUnit: `${(val / 14).toFixed(2)} Stone Decimal`, toVal: `${st} st ${rem} lbs`,
-        eq: `${val} Pounds = ${st} Stone ${rem} Pounds (${kg} kg)`,
-        formula: `Stone = ${val} lbs ÷ 14 = ${st} st ${rem} lbs`
-      };
+  // Bullion / Gold
+  if (s === '1-tola-in-grams') {
+    return { type: 'gold', badge: 'BULLION & JEWELLERY', mainHeadline, subHeadline, u1: 'TOLA', u2: 'GRAMS' };
+  }
+
+  // Weight & Mass
+  if (/(kg|kilo|lbs|pounds|stone)/.test(s)) {
+    const hasStone = s.includes('stone');
+    const u1 = s.startsWith('1-') || s.startsWith('13-') || s.startsWith('14-') ? (hasStone ? 'STONE' : 'LBS') : (s.includes('kg') && s.indexOf('kg') < 6 ? 'KG' : 'LBS');
+    const u2 = hasStone && u1 !== 'STONE' ? 'STONE' : (u1 === 'KG' ? 'LBS' : 'KG');
+    return { type: 'weight', subType: hasStone ? 'scale' : 'barbell', badge: 'WEIGHT & MASS', mainHeadline, subHeadline, u1, u2 };
+  }
+
+  // Speed & Pressure
+  if (s === '60-mph-to-kmh') {
+    return { type: 'speed', badge: 'SPEED & VELOCITY', mainHeadline, subHeadline, u1: 'MPH', u2: 'KM/H' };
+  }
+  if (s === '1-bar-to-psi-conversion') {
+    return { type: 'pressure', badge: 'PRESSURE & ENGINEERING', mainHeadline, subHeadline, u1: 'BAR', u2: 'PSI' };
+  }
+
+  // Indian Land & Numbering
+  if (s.includes('bigha') || s.includes('gaj') || s.includes('guntha')) {
+    const u1 = s.includes('bigha') ? 'BIGHA' : s.includes('gaj') ? 'GAJ' : 'GUNTHA';
+    return { type: 'land', badge: 'INDIAN LAND UNITS', mainHeadline, subHeadline, u1, u2: 'SQ FT' };
+  }
+  if (s === '1-crore-in-millions') {
+    return { type: 'crore', badge: 'NUMBERING SYSTEM', mainHeadline, subHeadline, u1: 'CRORE', u2: 'MILLION' };
+  }
+
+  // Length
+  if (s.includes('meters-to-feet') || s.includes('meter') || s.includes('feet')) {
+    return { type: 'length', badge: 'LENGTH & DISTANCE', mainHeadline, subHeadline, u1: 'METERS', u2: 'FEET' };
+  }
+
+  // Time
+  if (s === 'weeks-calculator') {
+    return { type: 'time', badge: 'TIME & CALENDAR', mainHeadline, subHeadline, u1: 'WEEKS', u2: 'DAYS' };
+  }
+
+  // File / PDF / App / Spelling
+  if (s.includes('pdf')) {
+    return { type: 'pdf', badge: 'FILE & PDF TOOLS', mainHeadline, subHeadline, u1: 'FILE', u2: 'PDF' };
+  }
+  if (s === 'converter-application-download') {
+    return { type: 'app', badge: 'WEB & MOBILE APP', mainHeadline, subHeadline, u1: 'PWA', u2: 'APP' };
+  }
+  if (s === 'convertor-or-converter') {
+    return { type: 'grammar', badge: 'LANGUAGE & USAGE', mainHeadline, subHeadline, u1: '-ER', u2: '-OR' };
+  }
+  return { type: 'file', badge: 'FILE & FORMAT TOOLS', mainHeadline, subHeadline, u1: 'INPUT', u2: 'OUTPUT' };
+}
+
+// Render Eye-Catching Illustration on Right Side (x: 680..1160, y: 60..570)
+function renderArtwork(info, theme, variantIdx) {
+  const v = variantIdx % 4;
+
+  // 1. CURRENCY & FOREX (4 distinct eye-catching layouts, ZERO conversion rates!)
+  if (info.type === 'currency') {
+    const f = info.fromCurr || 'USD';
+    const t = info.toCurr || 'GBP';
+    const sym1 = CURRENCY_SYM[f] || '$';
+    const sym2 = CURRENCY_SYM[t] || '£';
+
+    if (v === 0) {
+      // Layout A: Overlapping Glowing Circular Glass Orbs + Big Flags + Gold Coins
+      return `
+        <g transform="translate(690, 65)">
+          <circle cx="220" cy="250" r="215" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-dasharray="10 8"/>
+          <circle cx="220" cy="250" r="165" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+          <!-- Top-Left Currency Orb -->
+          <g transform="translate(20, 35)">
+            <rect width="230" height="190" rx="34" fill="rgba(15,23,42,0.72)" stroke="${theme.accent}" stroke-width="3"/>
+            ${renderRectFlag(f, 60, 26, 110, 74, 14)}
+            <text x="115" y="152" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="38" font-weight="900" fill="#FFFFFF">${escXml(f)} <tspan fill="${theme.accent}">${escXml(sym1)}</tspan></text>
+          </g>
+          <!-- Bottom-Right Currency Orb -->
+          <g transform="translate(190, 265)">
+            <rect width="230" height="190" rx="34" fill="rgba(15,23,42,0.78)" stroke="${theme.accent2}" stroke-width="3"/>
+            ${renderRectFlag(t, 60, 26, 110, 74, 14)}
+            <text x="115" y="152" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="38" font-weight="900" fill="#FFFFFF">${escXml(t)} <tspan fill="${theme.accent2}">${escXml(sym2)}</tspan></text>
+          </g>
+          <!-- Center 3D Gold Exchange Badge -->
+          <g transform="translate(165, 195)">
+            <circle cx="55" cy="55" r="52" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="4"/>
+            <path d="M35,42 H75 L63,30 M75,42 L63,54 M75,68 H35 L47,56 M35,68 L47,80" fill="none" stroke="#0F172A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <!-- Floating Gold Coins -->
+          <g transform="translate(310, 55)">
+            <circle cx="48" cy="48" r="44" fill="#FBBF24" stroke="#FEF08A" stroke-width="3"/>
+            <circle cx="48" cy="48" r="34" fill="none" stroke="#B45309" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="48" y="62" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="900" fill="#78350F">${escXml(sym1)}</text>
+          </g>
+          <g transform="translate(35, 315)">
+            <circle cx="48" cy="48" r="44" fill="#38BDF8" stroke="#E0F2FE" stroke-width="3"/>
+            <circle cx="48" cy="48" r="34" fill="none" stroke="#0369A1" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="48" y="62" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="900" fill="#0C4A6E">${escXml(sym2)}</text>
+          </g>
+        </g>
+      `;
+    } else if (v === 1) {
+      // Layout B: Stylized Floating Banknotes + Twin Flag Shields + Rising Chart Wave
+      return `
+        <g transform="translate(690, 65)">
+          <!-- Decorative Rising Forex Chart Backdrop -->
+          <rect x="10" y="30" width="420" height="440" rx="36" fill="rgba(15,23,42,0.55)" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+          <path d="M35,390 Q120,340 185,360 T315,260 T400,190" fill="none" stroke="${theme.accent}" stroke-width="5" stroke-linecap="round" stroke-opacity="0.5"/>
+          <!-- Left Flag Shield -->
+          <g transform="translate(42, 70)">
+            <rect width="155" height="205" rx="26" fill="rgba(15,23,42,0.85)" stroke="${theme.accent}" stroke-width="3"/>
+            ${renderRectFlag(f, 22, 24, 110, 74, 12)}
+            <circle cx="77" cy="148" r="32" fill="${theme.accent}" fill-opacity="0.2" stroke="${theme.accent}" stroke-width="2"/>
+            <text x="77" y="160" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="900" fill="${theme.accent}">${escXml(sym1)}</text>
+          </g>
+          <!-- Right Flag Shield -->
+          <g transform="translate(242, 130)">
+            <rect width="155" height="205" rx="26" fill="rgba(15,23,42,0.85)" stroke="${theme.accent2}" stroke-width="3"/>
+            ${renderRectFlag(t, 22, 24, 110, 74, 12)}
+            <circle cx="77" cy="148" r="32" fill="${theme.accent2}" fill-opacity="0.2" stroke="${theme.accent2}" stroke-width="2"/>
+            <text x="77" y="160" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="900" fill="${theme.accent2}">${escXml(sym2)}</text>
+          </g>
+          <!-- Center Swap Circle -->
+          <circle cx="220" cy="200" r="36" fill="#FFFFFF" stroke="${theme.bg1}" stroke-width="4"/>
+          <path d="M204,192 H236 L226,182 M236,208 H204 L214,218" fill="none" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom Currency Pair Pill -->
+          <rect x="65" y="372" width="310" height="64" rx="32" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+          <text x="220" y="414" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="2">${escXml(f)}  ⇄  ${escXml(t)}</text>
+        </g>
+      `;
+    } else if (v === 2) {
+      // Layout C: Global Forex Wireframe Globe + Orbiting Flag Cards
+      return `
+        <g transform="translate(690, 65)">
+          <!-- Wireframe Globe in Center -->
+          <circle cx="220" cy="250" r="195" fill="rgba(15,23,42,0.5)" stroke="rgba(255,255,255,0.22)" stroke-width="2.5"/>
+          <ellipse cx="220" cy="250" rx="105" ry="195" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+          <ellipse cx="220" cy="250" rx="195" ry="75" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+          <line x1="25" y1="250" x2="415" y2="250" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+          <line x1="220" y1="55" x2="220" y2="445" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+          <!-- Top Flag Banner -->
+          <g transform="translate(45, 65)">
+            <rect width="350" height="125" rx="28" fill="rgba(15,23,42,0.85)" stroke="${theme.accent}" stroke-width="3"/>
+            ${renderRectFlag(f, 24, 25, 110, 74, 12)}
+            <text x="156" y="68" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="42" font-weight="900" fill="#FFFFFF">${escXml(f)}</text>
+            <text x="156" y="100" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="21" font-weight="800" fill="${theme.accent}">CURRENCY (${escXml(sym1)})</text>
+          </g>
+          <!-- Center Vertical Exchange Arrow -->
+          <circle cx="220" cy="250" r="38" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="4"/>
+          <path d="M208,236 L220,222 L232,236 M220,222 V278 M208,264 L220,278 L232,264" fill="none" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Bottom Flag Banner -->
+          <g transform="translate(45, 310)">
+            <rect width="350" height="125" rx="28" fill="rgba(15,23,42,0.85)" stroke="${theme.accent2}" stroke-width="3"/>
+            ${renderRectFlag(t, 24, 25, 110, 74, 12)}
+            <text x="156" y="68" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="42" font-weight="900" fill="#FFFFFF">${escXml(t)}</text>
+            <text x="156" y="100" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="21" font-weight="800" fill="${theme.accent2}">CURRENCY (${escXml(sym2)})</text>
+          </g>
+        </g>
+      `;
     } else {
-      const kg = (val * 0.45359237).toFixed(2);
-      const st = Math.floor(val / 14);
-      const rem = Math.round(val - st * 14);
-      return {
-        type: 'weight', badge: 'WEIGHT & MASS', displayHeadline: mainHeadline, subHeadline,
-        fromLabel: 'POUNDS (lbs)', fromUnit: `Also = ${st} st ${rem} lbs`, fromVal: `${val} lbs`,
-        toLabel: 'KILOGRAMS (kg)', toUnit: 'Exact Metric Mass', toVal: `${kg} kg`,
-        eq: `${val} Pounds (lbs) = ${kg} Kilograms (kg)`,
-        formula: `kg = ${val} lbs × 0.45359237 = ${kg} kg`
-      };
+      // Layout D: Dual Hexagonal / Diamond Medallion Cards + Gold Coin Stack
+      return `
+        <g transform="translate(690, 65)">
+          <rect x="15" y="25" width="410" height="450" rx="40" fill="rgba(15,23,42,0.52)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+          <!-- Top Dual Flags Row -->
+          <g transform="translate(45, 65)">
+            ${renderRectFlag(f, 0, 0, 135, 92, 16)}
+            <text x="67" y="132" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF">${escXml(f)}</text>
+          </g>
+          <g transform="translate(260, 65)">
+            ${renderRectFlag(t, 0, 0, 135, 92, 16)}
+            <text x="67" y="132" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF">${escXml(t)}</text>
+          </g>
+          <!-- Arrow Between Flags -->
+          <path d="M195,110 H245 M232,96 L247,110 L232,124 M208,96 L193,110 L208,124" fill="none" stroke="${theme.accent2}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Lower Visual: Big Glowing Currency Symbols & Candlestick Bars -->
+          <g transform="translate(45, 235)">
+            <rect width="350" height="190" rx="28" fill="rgba(15,23,42,0.75)" stroke="${theme.accent}" stroke-width="2.5"/>
+            <!-- Rising Candlesticks -->
+            <rect x="40" y="110" width="22" height="50" rx="6" fill="${theme.accent}" fill-opacity="0.6"/>
+            <rect x="82" y="85" width="22" height="75" rx="6" fill="${theme.accent}" fill-opacity="0.8"/>
+            <rect x="124" y="55" width="22" height="105" rx="6" fill="${theme.accent}"/>
+            <rect x="166" y="35" width="22" height="125" rx="6" fill="${theme.accent2}"/>
+            <!-- Big Coin Badge -->
+            <circle cx="272" cy="95" r="56" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="3.5"/>
+            <text x="272" y="112" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="900" fill="#0F172A">${escXml(sym1)}${escXml(sym2)}</text>
+          </g>
+        </g>
+      `;
     }
   }
 
-  // Pattern 4: Dynamic Length (meters, feet, inches, cm, km, miles)
-  const lenMatch = s.match(/^(\d+(?:\.\d+)?)\s*-(meters|meter|feet|foot|inches|inch|cm|km|miles|yards)-(?:to|in|a|para)-(meters|meter|feet|foot|inches|inch|cm|km|miles|yards)/);
-  if (lenMatch) {
-    const val = parseFloat(lenMatch[1]);
-    const u1 = lenMatch[2];
-    const u2 = lenMatch[3];
-    const isMToFt = u1.startsWith('meter') && (u2.startsWith('feet') || u2.startsWith('foot'));
-    const res = isMToFt ? (val * 3.28084).toFixed(2) + ' ft' : `${val} → ${u2.toUpperCase()}`;
-    return {
-      type: 'length', badge: 'LENGTH & DISTANCE', displayHeadline: mainHeadline, subHeadline,
-      fromLabel: u1.toUpperCase(), fromUnit: 'Input Length', fromVal: `${val} ${u1}`,
-      toLabel: u2.toUpperCase(), toUnit: 'Converted Length', toVal: res,
-      eq: `${mainHeadline} — Exact SI & Imperial Conversion`,
-      formula: isMToFt ? 'Feet = Meters × 3.2808399' : 'Exact International Length Standard (1 inch = 25.4 mm)'
-    };
-  }
-
-  // Pattern 5: Dynamic Volume (ml, cups, liters, gallons, oz, tsp, tbsp)
-  if (/(cup|ml|milliliter|liter|litre|gallon|oz|ounce|tsp|tbsp)/.test(s)) {
-    return {
-      type: 'volume', badge: 'KITCHEN & VOLUME', displayHeadline: mainHeadline, subHeadline,
-      fromLabel: 'VOLUME INPUT', fromUnit: 'US & Metric Standard', fromVal: mainHeadline.split(/\s+(?:to|in|is|a|para|em)\s+/i)[0] || mainHeadline,
-      toLabel: 'CONVERTED VOLUME', toUnit: 'Exact Fluid Equivalent', toVal: mainHeadline.split(/\s+(?:to|in|is|a|para|em)\s+/i)[1] || 'Exact Volume',
-      eq: `${mainHeadline} — US Customary & Metric Reference`,
-      formula: '1 US Cup = 236.59 mL • 1 Metric Cup = 250 mL • 1 US fl oz = 29.57 mL',
-      fillPct: 0.62
-    };
-  }
-
-  // Generic Fallback for future auto-published articles
-  return {
-    type: 'generic',
-    badge: 'CONVERSION GUIDE',
-    displayHeadline: mainHeadline,
-    subHeadline,
-    fromLabel: 'INPUT UNIT',
-    fromUnit: 'Source Measurement',
-    fromVal: mainHeadline.split(/\s+(?:to|in|a|para|em)\s+/i)[0] || 'Input',
-    toLabel: 'CONVERTED OUTPUT',
-    toUnit: 'Target Standard Unit',
-    toVal: mainHeadline.split(/\s+(?:to|in|a|para|em)\s+/i)[1] || 'Result',
-    eq: `${mainHeadline} — Exact Mathematical Reference`,
-    formula: 'Verified Against NIST & SI International Measurement Standards'
-  };
-}
-
-function renderRightPanel(info, theme) {
-  if (info.type === 'currency') {
-    const fCurr = info.fromCurr || 'USD';
-    const tCurr = info.toCurr || 'GBP';
-    const rateStr = info.rateText || 'Mid-Market Interbank Rate';
+  // 2. MASTERCARD FX CARD ILLUSTRATION
+  if (info.type === 'card_fx') {
     return `
-      <g transform="translate(715, 65)">
-        <rect width="425" height="500" rx="28" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
-        <!-- From Currency Card -->
-        <g transform="translate(30, 32)">
-          <rect width="365" height="132" rx="18" fill="rgba(7,11,20,0.75)" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-          ${renderFlagSvg(fCurr, 22, 22, 58, 40)}
-          <text x="96" y="38" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.fromLabel)}</text>
-          <text x="96" y="62" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">${escXml(info.fromUnit)}</text>
-          <text x="22" y="110" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="33" font-weight="900" fill="${theme.accent}">${escXml(info.fromVal)}</text>
+      <g transform="translate(690, 90)">
+        <!-- Tilted Background Card -->
+        <g transform="translate(40, 20) rotate(-6)">
+          <rect width="360" height="225" rx="24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
         </g>
-        <!-- Swap Badge -->
-        <g transform="translate(184, 174)">
-          <circle cx="28" cy="28" r="25" fill="${theme.accent}"/>
-          <path d="M20,22 L28,14 L36,22 M28,14 V38 M20,34 L28,42 L36,34" fill="none" stroke="#070B14" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <!-- To Currency Card -->
-        <g transform="translate(30, 240)">
-          <rect width="365" height="132" rx="18" fill="rgba(7,11,20,0.75)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-          ${renderFlagSvg(tCurr, 22, 22, 58, 40)}
-          <text x="96" y="38" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.toLabel)}</text>
-          <text x="96" y="62" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">${escXml(info.toUnit)}</text>
-          <text x="22" y="110" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="33" font-weight="900" fill="${theme.accent2}">${escXml(info.toVal)}</text>
-        </g>
-        <!-- Sparkline Trend Bar -->
-        <g transform="translate(30, 396)">
-          <rect width="365" height="72" rx="16" fill="${theme.badgeBg}" stroke="${theme.badgeBorder}" stroke-width="1"/>
-          <text x="20" y="28" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="12" font-weight="800" fill="${theme.accent}" letter-spacing="1">LIVE MID-MARKET BENCHMARK</text>
-          <text x="20" y="52" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#FFFFFF">${escXml(rateStr)}</text>
-          <path d="M235,52 L258,40 L282,45 L306,27 L328,33 L348,18" fill="none" stroke="#34D399" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="348" cy="18" r="5" fill="#34D399"/>
+        <!-- Foreground 3D Credit Card -->
+        <g transform="translate(25, 70)">
+          <rect width="380" height="240" rx="26" fill="#0F172A" stroke="${theme.accent}" stroke-width="3"/>
+          <!-- Gold EMV Chip -->
+          <rect x="34" y="42" width="62" height="48" rx="10" fill="#FBBF24" stroke="#FEF08A" stroke-width="2"/>
+          <line x1="34" y1="66" x2="96" y2="66" stroke="#92400E" stroke-width="2"/>
+          <line x1="65" y1="42" x2="65" y2="90" stroke="#92400E" stroke-width="2"/>
+          <!-- Interlocking Red & Amber Circles -->
+          <circle cx="275" cy="172" r="38" fill="#EB001B"/>
+          <circle cx="322" cy="172" r="38" fill="#F79E1B" fill-opacity="0.9"/>
+          <!-- Currency Symbols Row -->
+          <text x="34" y="155" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF">$  •  €  •  £  •  ¥</text>
+          <text x="34" y="195" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="18" font-weight="800" fill="${theme.accent}" letter-spacing="2">GLOBAL FX NETWORK</text>
         </g>
       </g>
     `;
   }
 
+  // 3. TEMPERATURE & HEAT (Medical, Oven, Weather)
   if (info.type === 'temperature') {
-    const cVal = typeof info.tempC === 'number' ? info.tempC : 20;
-    const clamped = Math.max(-10, Math.min(50, cVal));
-    const fillH = Math.round(45 + ((clamped + 10) / 60) * 140);
-    const fillY = 230 - fillH;
+    const badgeColor = info.subType === 'oven' ? '#FB923C' : info.subType === 'medical' ? '#F43F5E' : '#38BDF8';
     return `
-      <g transform="translate(715, 65)">
-        <rect width="425" height="500" rx="28" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
-        <!-- Thermometer Vector Illustration on Left of Card -->
-        <g transform="translate(34, 45)">
-          <rect x="0" y="0" width="105" height="410" rx="20" fill="rgba(7,11,20,0.65)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-          <!-- Tube -->
-          <rect x="38" y="45" width="28" height="200" rx="14" fill="#0F172A" stroke="rgba(255,255,255,0.35)" stroke-width="2.5"/>
-          <!-- Mercury Fill -->
-          <rect x="43" y="${fillY}" width="18" height="${fillH + 30}" rx="9" fill="${theme.accent}"/>
-          <!-- Bulb -->
-          <circle cx="52" cy="265" r="28" fill="${theme.accent}" stroke="rgba(255,255,255,0.4)" stroke-width="2.5"/>
-          <circle cx="44" cy="257" r="7" fill="rgba(255,255,255,0.45)"/>
-          <!-- Ticks -->
-          <g stroke="rgba(255,255,255,0.45)" stroke-width="2">
-            <line x1="72" y1="65" x2="86" y2="65"/><line x1="72" y1="95" x2="82" y2="95"/>
-            <line x1="72" y1="125" x2="86" y2="125"/><line x1="72" y1="155" x2="82" y2="155"/>
-            <line x1="72" y1="185" x2="86" y2="185"/><line x1="72" y1="215" x2="82" y2="215"/>
+      <g transform="translate(690, 65)">
+        <circle cx="220" cy="250" r="210" fill="rgba(15,23,42,0.5)" stroke="rgba(255,255,255,0.2)" stroke-width="2.5"/>
+        <!-- Giant Stylized 3D Thermometer -->
+        <g transform="translate(155, 45)">
+          <rect x="35" y="15" width="60" height="280" rx="30" fill="#0F172A" stroke="#FFFFFF" stroke-width="4"/>
+          <rect x="47" y="85" width="36" height="215" rx="18" fill="${badgeColor}"/>
+          <circle cx="65" cy="330" r="58" fill="${badgeColor}" stroke="#FFFFFF" stroke-width="5"/>
+          <circle cx="48" cy="312" r="14" fill="rgba(255,255,255,0.45)"/>
+          <!-- Scale Ticks -->
+          <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round">
+            <line x1="108" y1="60" x2="132" y2="60"/><line x1="108" y1="95" x2="124" y2="95"/>
+            <line x1="108" y1="130" x2="132" y2="130"/><line x1="108" y1="165" x2="124" y2="165"/>
+            <line x1="108" y1="200" x2="132" y2="200"/><line x1="108" y1="235" x2="124" y2="235"/>
           </g>
-          <text x="52" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" fill="#94A3B8">°C ⇄ °F</text>
-          <text x="52" y="372" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="${theme.accent}">THERMAL</text>
         </g>
-        <!-- Right Readout Stack -->
-        <g transform="translate(158, 45)">
-          <rect width="236" height="175" rx="20" fill="rgba(7,11,20,0.75)" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-          <text x="22" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.fromLabel)}</text>
-          <text x="22" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#CBD5E1">${escXml(info.fromUnit)}</text>
-          <text x="22" y="132" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="900" fill="${theme.accent}">${escXml(info.fromVal)}</text>
+        <!-- Left °C Badge -->
+        <g transform="translate(20, 155)">
+          <rect width="125" height="125" rx="28" fill="rgba(15,23,42,0.88)" stroke="${theme.accent}" stroke-width="3"/>
+          <text x="62" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="900" fill="${theme.accent}">${escXml(info.u1)}</text>
         </g>
-        <g transform="translate(158, 240)">
-          <rect width="236" height="175" rx="20" fill="rgba(7,11,20,0.75)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-          <text x="22" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.toLabel)}</text>
-          <text x="22" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#CBD5E1">${escXml(info.toUnit)}</text>
-          <text x="22" y="132" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="900" fill="${theme.accent2}">${escXml(info.toVal)}</text>
+        <!-- Right °F Badge -->
+        <g transform="translate(300, 155)">
+          <rect width="125" height="125" rx="28" fill="rgba(15,23,42,0.88)" stroke="${theme.accent2}" stroke-width="3"/>
+          <text x="62" y="82" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="900" fill="${theme.accent2}">${escXml(info.u2)}</text>
         </g>
-        <text x="276" y="458" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#94A3B8">0°C = 32°F • 100°C = 212°F</text>
       </g>
     `;
   }
 
-  if (info.type === 'volume') {
-    const pct = info.fillPct || 0.65;
-    const beakerH = 220;
-    const fillH = Math.round(beakerH * pct);
-    const fillY = 60 + (beakerH - fillH);
+  // 4. KITCHEN & VOLUME (Beaker, Milk, Baking, Gallon, Spoon)
+  if (info.type === 'kitchen') {
+    const liquidFill = info.subType === 'milk' ? '#F8FAFC' : theme.accent;
     return `
-      <g transform="translate(715, 65)">
-        <rect width="425" height="500" rx="28" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
-        <!-- Graduated Measuring Beaker Illustration -->
-        <g transform="translate(32, 36)">
-          <rect width="361" height="195" rx="18" fill="rgba(7,11,20,0.72)" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-          <!-- Beaker Glass on Left -->
-          <g transform="translate(26, 22)">
-            <rect x="0" y="0" width="96" height="150" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"/>
-            <rect x="4" y="${Math.round(150 * (1 - pct))}" width="88" height="${Math.round(150 * pct) - 4}" rx="7" fill="${theme.accent}" fill-opacity="0.45"/>
-            <line x1="62" y1="30" x2="88" y2="30" stroke="#fff" stroke-width="2" stroke-opacity="0.6"/>
-            <line x1="68" y1="60" x2="88" y2="60" stroke="#fff" stroke-width="2" stroke-opacity="0.6"/>
-            <line x1="62" y1="90" x2="88" y2="90" stroke="#fff" stroke-width="2" stroke-opacity="0.6"/>
-            <line x1="68" y1="120" x2="88" y2="120" stroke="#fff" stroke-width="2" stroke-opacity="0.6"/>
+      <g transform="translate(690, 65)">
+        <rect x="20" y="25" width="400" height="450" rx="38" fill="rgba(15,23,42,0.52)" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+        <!-- Large Graduated Kitchen Measuring Pitcher -->
+        <g transform="translate(95, 55)">
+          <path d="M25,30 L40,290 A28,28 0 0,0 68,318 H182 A28,28 0 0,0 210,290 L225,30 Z" fill="rgba(15,23,42,0.8)" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+          <!-- Pouring Lip & Handle -->
+          <path d="M12,30 H238" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+          <path d="M222,65 H258 A22,22 0 0,1 280,87 V185 A22,22 0 0,1 258,207 H215" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+          <!-- Liquid Fill Wave -->
+          <path d="M36,145 Q85,130 125,145 T214,145 L206,286 A22,22 0 0,1 184,308 H66 A22,22 0 0,1 44,286 Z" fill="${liquidFill}" fill-opacity="0.88"/>
+          <!-- Measurement Lines -->
+          <g stroke="${info.subType === 'milk' ? '#0F172A' : '#FFFFFF'}" stroke-width="3" stroke-linecap="round">
+            <line x1="65" y1="90" x2="115" y2="90"/>
+            <line x1="65" y1="135" x2="105" y2="135"/>
+            <line x1="65" y1="180" x2="115" y2="180"/>
+            <line x1="65" y1="225" x2="105" y2="225"/>
+            <line x1="65" y1="270" x2="115" y2="270"/>
           </g>
-          <text x="144" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.fromLabel)}</text>
-          <text x="144" y="76" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">${escXml(info.fromUnit)}</text>
-          <text x="144" y="138" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="900" fill="${theme.accent}">${escXml(info.fromVal)}</text>
         </g>
-        <!-- Arrow Divider -->
-        <g transform="translate(184, 240)">
-          <circle cx="28" cy="24" r="22" fill="${theme.accent}"/>
-          <path d="M20,20 L28,29 L36,20" fill="none" stroke="#070B14" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <!-- Converted Output Box -->
-        <g transform="translate(32, 296)">
-          <rect width="361" height="168" rx="18" fill="rgba(7,11,20,0.75)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-          <text x="26" y="42" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1">${escXml(info.toLabel)}</text>
-          <text x="26" y="70" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">${escXml(info.toUnit)}</text>
-          <text x="26" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="${String(info.toVal || '').length > 16 ? 27 : 33}" font-weight="900" fill="${theme.accent2}">${escXml(info.toVal)}</text>
-        </g>
+        <!-- Bottom Unit Pill -->
+        <rect x="55" y="392" width="330" height="60" rx="30" fill="rgba(15,23,42,0.85)" stroke="${theme.accent2}" stroke-width="2.5"/>
+        <text x="220" y="431" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">${escXml(info.u1)}  ⇄  ${escXml(info.u2)}</text>
       </g>
     `;
   }
 
-  if (info.type === 'gauge') {
+  // 5. GOLD BULLION (1 Tola in Grams)
+  if (info.type === 'gold') {
     return `
-      <g transform="translate(715, 65)">
-        <rect width="425" height="500" rx="28" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
-        <!-- Circular Tachometer / Pressure Dial -->
-        <g transform="translate(212, 165)">
-          <circle cx="0" cy="0" r="114" fill="rgba(7,11,20,0.82)" stroke="rgba(255,255,255,0.14)" stroke-width="2.5"/>
-          <circle cx="0" cy="0" r="92" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="14" stroke-dasharray="385 600" stroke-linecap="round" transform="rotate(150)"/>
-          <circle cx="0" cy="0" r="92" fill="none" stroke="${theme.accent}" stroke-width="14" stroke-dasharray="285 600" stroke-linecap="round" transform="rotate(150)"/>
-          <line x1="0" y1="0" x2="44" y2="-56" stroke="${theme.accent2}" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="0" cy="0" r="10" fill="#FFFFFF"/>
-          <text x="0" y="42" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="900" fill="#FFFFFF">${escXml(info.gaugeText || info.toVal)}</text>
-          <text x="0" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#94A3B8">${escXml(info.gaugeSub || '')}</text>
+      <g transform="translate(690, 65)">
+        <circle cx="220" cy="250" r="210" fill="rgba(15,23,42,0.5)" stroke="#FBBF24" stroke-width="2.5"/>
+        <!-- 3D Gold Bullion Bars Stack -->
+        <g transform="translate(65, 115)">
+          <polygon points="40,140 150,80 280,140 170,200" fill="#FDE047" stroke="#FFFFFF" stroke-width="2.5"/>
+          <polygon points="40,140 170,200 155,245 25,185" fill="#F59E0B" stroke="#FFFFFF" stroke-width="2"/>
+          <polygon points="170,200 280,140 295,185 155,245" fill="#D97706" stroke="#FFFFFF" stroke-width="2"/>
+          <text x="160" y="152" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="900" fill="#78350F">999.9 GOLD</text>
         </g>
-        <!-- Bottom Dual Cards -->
-        <g transform="translate(30, 310)">
-          <rect width="174" height="152" rx="18" fill="rgba(7,11,20,0.75)" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-          <text x="18" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="800" fill="#94A3B8">${escXml(info.fromLabel)}</text>
-          <text x="18" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#CBD5E1">${escXml(info.fromUnit)}</text>
-          <text x="18" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="900" fill="${theme.accent}">${escXml(info.fromVal)}</text>
-        </g>
-        <g transform="translate(220, 310)">
-          <rect width="175" height="152" rx="18" fill="rgba(7,11,20,0.75)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-          <text x="18" y="38" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" font-weight="800" fill="#94A3B8">${escXml(info.toLabel)}</text>
-          <text x="18" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#CBD5E1">${escXml(info.toUnit)}</text>
-          <text x="18" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="900" fill="${theme.accent2}">${escXml(info.toVal)}</text>
-        </g>
+        <rect x="60" y="365" width="320" height="62" rx="31" fill="rgba(15,23,42,0.85)" stroke="#FDE047" stroke-width="2.5"/>
+        <text x="220" y="405" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#FDE047" letter-spacing="1.5">TOLA  ⇄  GRAMS</text>
       </g>
     `;
   }
 
-  // Weight, Length, Indian Units, Time, File & Generic: Precision Dual Card + Visual Meter Bar
-  const fromValSize = String(info.fromVal || '').length > 15 ? 28 : String(info.fromVal || '').length > 11 ? 33 : 38;
-  const toValSize = String(info.toVal || '').length > 15 ? 27 : String(info.toVal || '').length > 11 ? 31 : 36;
-  let topIconSvg = '';
+  // 6. WEIGHT & MASS (Kettlebell / Barbell & Scale)
   if (info.type === 'weight') {
-    topIconSvg = `
-      <g transform="translate(295, 22)">
-        <rect x="0" y="14" width="12" height="36" rx="4" fill="${theme.accent}"/>
-        <rect x="14" y="20" width="8" height="24" rx="3" fill="${theme.accent2}"/>
-        <rect x="22" y="29" width="22" height="6" fill="#CBD5E1"/>
-        <rect x="44" y="20" width="8" height="24" rx="3" fill="${theme.accent2}"/>
-        <rect x="54" y="14" width="12" height="36" rx="4" fill="${theme.accent}"/>
-      </g>`;
-  } else if (info.type === 'indian') {
-    topIconSvg = renderFlagSvg('INR', 285, 24, 56, 38);
-  } else if (info.type === 'length') {
-    topIconSvg = `
-      <g transform="translate(275, 26)">
-        <rect width="68" height="28" rx="5" fill="rgba(255,255,255,0.1)" stroke="${theme.accent}" stroke-width="2"/>
-        <line x1="12" y1="0" x2="12" y2="12" stroke="${theme.accent}" stroke-width="2"/>
-        <line x1="24" y1="0" x2="24" y2="8" stroke="${theme.accent}" stroke-width="2"/>
-        <line x1="36" y1="0" x2="36" y2="12" stroke="${theme.accent}" stroke-width="2"/>
-        <line x1="48" y1="0" x2="48" y2="8" stroke="${theme.accent}" stroke-width="2"/>
-        <line x1="58" y1="0" x2="58" y2="12" stroke="${theme.accent}" stroke-width="2"/>
-      </g>`;
+    return `
+      <g transform="translate(690, 65)">
+        <circle cx="220" cy="250" r="210" fill="rgba(15,23,42,0.52)" stroke="rgba(255,255,255,0.22)" stroke-width="2.5"/>
+        <!-- Barbell & Gym Plates Illustration -->
+        <g transform="translate(45, 115)">
+          <rect x="10" y="88" width="330" height="24" rx="12" fill="#E2E8F0"/>
+          <rect x="35" y="25" width="36" height="150" rx="12" fill="${theme.accent}" stroke="#FFFFFF" stroke-width="3"/>
+          <rect x="78" y="45" width="28" height="110" rx="10" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="2.5"/>
+          <rect x="244" y="45" width="28" height="110" rx="10" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="2.5"/>
+          <rect x="279" y="25" width="36" height="150" rx="12" fill="${theme.accent}" stroke="#FFFFFF" stroke-width="3"/>
+        </g>
+        <!-- Unit Badges -->
+        <rect x="60" y="345" width="320" height="68" rx="34" fill="rgba(15,23,42,0.88)" stroke="${theme.accent}" stroke-width="3"/>
+        <text x="220" y="389" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="32" font-weight="900" fill="#FFFFFF" letter-spacing="2">${escXml(info.u1)}  ⇄  ${escXml(info.u2)}</text>
+      </g>
+    `;
   }
 
+  // 7. SPEED & PRESSURE GAUGE
+  if (info.type === 'speed' || info.type === 'pressure') {
+    return `
+      <g transform="translate(690, 65)">
+        <circle cx="220" cy="250" r="210" fill="rgba(15,23,42,0.65)" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+        <path d="M85,335 A165,165 0 1,1 355,335" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="26" stroke-linecap="round"/>
+        <path d="M85,335 A165,165 0 1,1 325,130" fill="none" stroke="${theme.accent}" stroke-width="26" stroke-linecap="round"/>
+        <!-- Needle -->
+        <line x1="220" y1="250" x2="310" y2="145" stroke="${theme.accent2}" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="220" cy="250" r="22" fill="#FFFFFF"/>
+        <rect x="65" y="365" width="310" height="62" rx="31" fill="rgba(15,23,42,0.9)" stroke="${theme.accent2}" stroke-width="2.5"/>
+        <text x="220" y="405" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">${escXml(info.u1)}  ⇄  ${escXml(info.u2)}</text>
+      </g>
+    `;
+  }
+
+  // 8. INDIAN LAND & CRORE
+  if (info.type === 'land' || info.type === 'crore') {
+    return `
+      <g transform="translate(690, 65)">
+        <rect x="20" y="25" width="400" height="450" rx="38" fill="rgba(15,23,42,0.58)" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+        ${renderRectFlag('INR', 165, 55, 110, 74, 14)}
+        <!-- Isometric Land / Grid Graphic -->
+        <g transform="translate(70, 155)">
+          <polygon points="150,15 285,85 150,155 15,85" fill="${theme.accent}" fill-opacity="0.35" stroke="${theme.accent}" stroke-width="4"/>
+          <line x1="82" y1="50" x2="217" y2="120" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6 6"/>
+          <line x1="217" y1="50" x2="82" y2="120" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6 6"/>
+          <circle cx="150" cy="85" r="14" fill="${theme.accent2}" stroke="#FFFFFF" stroke-width="3"/>
+        </g>
+        <rect x="55" y="365" width="330" height="64" rx="32" fill="rgba(15,23,42,0.88)" stroke="${theme.accent2}" stroke-width="2.5"/>
+        <text x="220" y="407" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="27" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">${escXml(info.u1)}  ⇄  ${escXml(info.u2)}</text>
+      </g>
+    `;
+  }
+
+  // 9. LENGTH, TIME, PDF, APP & FILE TOOLS
   return `
-    <g transform="translate(715, 65)">
-      <rect width="425" height="500" rx="28" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
-      <!-- Input Box -->
-      <g transform="translate(30, 32)">
-        <rect width="365" height="145" rx="20" fill="rgba(7,11,20,0.75)" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-        ${topIconSvg}
-        <text x="26" y="40" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1.2">${escXml(info.fromLabel)}</text>
-        <text x="26" y="68" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#CBD5E1">${escXml(info.fromUnit)}</text>
-        <text x="26" y="122" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${fromValSize}" font-weight="900" fill="${theme.accent}">${escXml(info.fromVal)}</text>
+    <g transform="translate(690, 65)">
+      <rect x="20" y="25" width="400" height="450" rx="38" fill="rgba(15,23,42,0.55)" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+      <!-- Stylized 3D Layered Icon Cards -->
+      <g transform="translate(65, 75)">
+        <rect x="0" y="20" width="145" height="175" rx="24" fill="rgba(15,23,42,0.88)" stroke="${theme.accent}" stroke-width="3"/>
+        <text x="72" y="120" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="32" font-weight="900" fill="${theme.accent}">${escXml(info.u1)}</text>
+        <rect x="165" y="60" width="145" height="175" rx="24" fill="rgba(15,23,42,0.88)" stroke="${theme.accent2}" stroke-width="3"/>
+        <text x="237" y="160" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="32" font-weight="900" fill="${theme.accent2}">${escXml(info.u2)}</text>
+        <circle cx="155" cy="128" r="32" fill="#FFFFFF" stroke="#0F172A" stroke-width="4"/>
+        <path d="M142,128 H168 M158,118 L168,128 L158,138" fill="none" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
-      <!-- Swap Icon -->
-      <g transform="translate(184, 187)">
-        <circle cx="28" cy="28" r="25" fill="${theme.accent}"/>
-        <path d="M20,22 L28,14 L36,22 M28,14 V38 M20,34 L28,42 L36,34" fill="none" stroke="#070B14" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <!-- Output Box -->
-      <g transform="translate(30, 254)">
-        <rect width="365" height="145" rx="20" fill="rgba(7,11,20,0.75)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
-        <text x="26" y="40" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="13" font-weight="800" fill="#94A3B8" letter-spacing="1.2">${escXml(info.toLabel)}</text>
-        <text x="26" y="68" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#CBD5E1">${escXml(info.toUnit)}</text>
-        <text x="26" y="122" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${toValSize}" font-weight="900" fill="${theme.accent2}">${escXml(info.toVal)}</text>
-      </g>
-      <!-- Precision Scale Bar -->
-      <g transform="translate(30, 418)">
-        <rect width="365" height="54" rx="14" fill="${theme.badgeBg}" stroke="${theme.badgeBorder}" stroke-width="1"/>
-        <circle cx="26" cy="27" r="6" fill="#34D399"/>
-        <text x="44" y="32" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">EXACT SI &amp; IMPERIAL PRECISION</text>
-      </g>
+      <rect x="55" y="370" width="330" height="62" rx="31" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      <text x="220" y="410" text-anchor="middle" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">${escXml(info.u1)}  ⇄  ${escXml(info.u2)}</text>
     </g>
   `;
 }
@@ -870,7 +631,6 @@ function renderRightPanel(info, theme) {
 const LOCALIZED_BADGES = {
   es: {
     'CURRENCY & FOREX': 'DIVISAS Y FOREX',
-    'INDIAN FOREX GUIDE': 'GUÍA DE DIVISAS',
     'WEIGHT & MASS': 'PESO Y MASA',
     'BULLION & JEWELLERY': 'ORO Y JOYERÍA',
     'TEMPERATURE & HEAT': 'TEMPERATURA',
@@ -881,18 +641,15 @@ const LOCALIZED_BADGES = {
     'SPEED & VELOCITY': 'VELOCIDAD',
     'PRESSURE & ENGINEERING': 'PRESIÓN E INGENIERÍA',
     'INDIAN LAND UNITS': 'UNIDADES DE TIERRA',
-    'INDIAN NUMBER SYSTEM': 'SISTEMA NUMÉRICO',
-    'TIME & DURATION': 'TIEMPO Y DURACIÓN',
+    'NUMBERING SYSTEM': 'SISTEMA NUMÉRICO',
+    'TIME & CALENDAR': 'TIEMPO Y CALENDARIO',
     'FILE & PDF TOOLS': 'ARCHIVOS Y PDF',
-    'FILE & MEDIA TOOLS': 'ARCHIVOS Y FORMATOS',
-    'PRODUCT & PWA APP': 'APLICACIÓN WEB PWA',
-    'TECHNICAL USAGE GUIDE': 'GUÍA TÉCNICA',
-    'CONVERSION GUIDE': 'GUÍA DE CONVERSIÓN',
-    refLabel: 'REFERENCIA DE CONVERSIÓN DIRECTA'
+    'FILE & FORMAT TOOLS': 'ARCHIVOS Y FORMATOS',
+    'WEB & MOBILE APP': 'APLICACIÓN WEB PWA',
+    'LANGUAGE & USAGE': 'GUÍA TÉCNICA'
   },
   de: {
     'CURRENCY & FOREX': 'WÄHRUNG & DEVISEN',
-    'INDIAN FOREX GUIDE': 'WÄHRUNGSRATGEBER',
     'WEIGHT & MASS': 'GEWICHT & MASSE',
     'BULLION & JEWELLERY': 'EDELMETALLE & GEWICHT',
     'TEMPERATURE & HEAT': 'TEMPERATUR',
@@ -903,18 +660,15 @@ const LOCALIZED_BADGES = {
     'SPEED & VELOCITY': 'GESCHWINDIGKEIT',
     'PRESSURE & ENGINEERING': 'DRUCK & TECHNIK',
     'INDIAN LAND UNITS': 'FLÄCHENMASSE',
-    'INDIAN NUMBER SYSTEM': 'ZAHLENSYSTEM',
-    'TIME & DURATION': 'ZEIT & DAUER',
+    'NUMBERING SYSTEM': 'ZAHLENSYSTEM',
+    'TIME & CALENDAR': 'ZEIT & KALENDER',
     'FILE & PDF TOOLS': 'DATEIEN & PDF',
-    'FILE & MEDIA TOOLS': 'DATEIFORMAT-TOOLS',
-    'PRODUCT & PWA APP': 'OFFLINE WEB-APP',
-    'TECHNICAL USAGE GUIDE': 'FACHRATGEBER',
-    'CONVERSION GUIDE': 'UMRECHNUNGSRATGEBER',
-    refLabel: 'DIREKTE UMRECHNUNGSREFERENZ'
+    'FILE & FORMAT TOOLS': 'DATEIFORMAT-TOOLS',
+    'WEB & MOBILE APP': 'OFFLINE WEB-APP',
+    'LANGUAGE & USAGE': 'FACHRATGEBER'
   },
   pt: {
     'CURRENCY & FOREX': 'MOEDAS E CÂMBIO',
-    'INDIAN FOREX GUIDE': 'GUIA DE CÂMBIO',
     'WEIGHT & MASS': 'PESO E MASSA',
     'BULLION & JEWELLERY': 'OURO E JOALHERIA',
     'TEMPERATURE & HEAT': 'TEMPERATURA',
@@ -925,14 +679,12 @@ const LOCALIZED_BADGES = {
     'SPEED & VELOCITY': 'VELOCIDADE',
     'PRESSURE & ENGINEERING': 'PRESSÃO E ENGENHARIA',
     'INDIAN LAND UNITS': 'MEDIDAS DE TERRA',
-    'INDIAN NUMBER SYSTEM': 'SISTEMA NUMÉRICO',
-    'TIME & DURATION': 'TEMPO E DURAÇÃO',
+    'NUMBERING SYSTEM': 'SISTEMA NUMÉRICO',
+    'TIME & CALENDAR': 'TEMPO E CALENDÁRIO',
     'FILE & PDF TOOLS': 'ARQUIVOS E PDF',
-    'FILE & MEDIA TOOLS': 'ARQUIVOS E FORMATOS',
-    'PRODUCT & PWA APP': 'APLICATIVO WEB PWA',
-    'TECHNICAL USAGE GUIDE': 'GUIA TÉCNICO',
-    'CONVERSION GUIDE': 'GUIA DE CONVERSÃO',
-    refLabel: 'REFERÊNCIA DE CONVERSÃO DIRETA'
+    'FILE & FORMAT TOOLS': 'ARQUIVOS E FORMATOS',
+    'WEB & MOBILE APP': 'APLICATIVO WEB PWA',
+    'LANGUAGE & USAGE': 'GUIA TÉCNICO'
   }
 };
 
@@ -942,103 +694,77 @@ async function generateArticleHeroImage({ enSlug, localSlug, title, lang = 'en',
   const theme = THEMES[idx];
 
   const badgeText = (LOCALIZED_BADGES[lang] && LOCALIZED_BADGES[lang][info.badge]) || info.badge;
-  const refLabelText = (LOCALIZED_BADGES[lang] && LOCALIZED_BADGES[lang].refLabel) || 'DIRECT CONVERSION REFERENCE';
 
-  const headlineLines = wrapTextLines(info.displayHeadline, 20, 2);
+  // Title ONLY on the left side — large, bold, super legible at any thumbnail size
+  const headlineLines = wrapTextLines(info.mainHeadline, 17, 3);
   const headlineFontSize = headlineLines.length === 1
-    ? (info.displayHeadline.length > 16 ? 54 : 62)
-    : 45;
+    ? (info.mainHeadline.length > 14 ? 64 : 74)
+    : headlineLines.length === 2
+    ? (info.mainHeadline.length > 26 ? 54 : 60)
+    : 46;
 
-  const subLines = wrapTextLines(info.subHeadline, 42, 2);
-  const eqLines = wrapTextLines(info.eq, 42, 2);
+  const subLines = info.subHeadline ? wrapTextLines(info.subHeadline, 34, 2) : [];
 
-  // Decorative background pattern varies by idx % 3
-  const bgDecor = (idx % 3 === 0)
-    ? `<circle cx="960" cy="140" r="260" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
-       <circle cx="960" cy="140" r="360" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>`
-    : (idx % 3 === 1)
-    ? `<path d="M0,520 Q360,430 720,520 T1200,490" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2.5"/>
-       <path d="M0,560 Q360,470 720,560 T1200,530" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>`
-    : `<line x1="0" y1="630" x2="630" y2="0" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>
-       <line x1="200" y1="630" x2="830" y2="0" stroke="rgba(255,255,255,0.03)" stroke-width="2"/>`;
+  // Calculate vertical centering for the title block
+  const startY = headlineLines.length === 1 ? 245 : headlineLines.length === 2 ? 215 : 195;
+  const lineStep = Math.round(headlineFontSize * 1.18);
+
+  let titleSvg = '';
+  headlineLines.forEach((line, i) => {
+    const fill = i === headlineLines.length - 1 && headlineLines.length > 1 ? theme.accent2 : '#FFFFFF';
+    titleSvg += `<text x="68" y="${startY + i * lineStep}" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${headlineFontSize}" font-weight="900" fill="${fill}" letter-spacing="-1">${escXml(line)}</text>\n`;
+  });
+
+  const subStartY = startY + (headlineLines.length - 1) * lineStep + 62;
+  subLines.forEach((sLine, j) => {
+    titleSvg += `<text x="68" y="${subStartY + j * 38}" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="27" font-weight="700" fill="rgba(255,255,255,0.88)">${escXml(sLine)}</text>\n`;
+  });
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     <defs>
       <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="${theme.bg1}"/>
-        <stop offset="52%" stop-color="${theme.bg2}"/>
+        <stop offset="50%" stop-color="${theme.bg2}"/>
         <stop offset="100%" stop-color="${theme.bg3}"/>
       </linearGradient>
-      <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="${theme.cardBg1}" stop-opacity="0.94"/>
-        <stop offset="100%" stop-color="${theme.cardBg2}" stop-opacity="0.97"/>
-      </linearGradient>
-      <radialGradient id="glow1" cx="82%" cy="28%" r="46%">
-        <stop offset="0%" stop-color="${theme.accent}" stop-opacity="0.22"/>
-        <stop offset="100%" stop-color="${theme.accent}" stop-opacity="0"/>
+      <radialGradient id="glowRight" cx="78%" cy="45%" r="48%">
+        <stop offset="0%" stop-color="${theme.glow}" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="${theme.glow}" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="glow2" cx="18%" cy="78%" r="44%">
-        <stop offset="0%" stop-color="${theme.accent2}" stop-opacity="0.18"/>
+      <radialGradient id="glowLeft" cx="15%" cy="20%" r="45%">
+        <stop offset="0%" stop-color="${theme.accent2}" stop-opacity="0.20"/>
         <stop offset="100%" stop-color="${theme.accent2}" stop-opacity="0"/>
       </radialGradient>
     </defs>
 
-    <!-- Background -->
+    <!-- Vibrant Multi-Stop Background -->
     <rect width="1200" height="630" fill="url(#bg)"/>
-    <rect width="1200" height="630" fill="url(#glow1)"/>
-    <rect width="1200" height="630" fill="url(#glow2)"/>
+    <rect width="1200" height="630" fill="url(#glowRight)"/>
+    <rect width="1200" height="630" fill="url(#glowLeft)"/>
 
-    <!-- Subtle Technical Grid -->
-    <g stroke="rgba(255,255,255,0.035)" stroke-width="1">
-      <line x1="0" y1="90" x2="1200" y2="90"/><line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="270" x2="1200" y2="270"/>
-      <line x1="0" y1="360" x2="1200" y2="360"/><line x1="0" y1="450" x2="1200" y2="450"/><line x1="0" y1="540" x2="1200" y2="540"/>
-      <line x1="150" y1="0" x2="150" y2="630"/><line x1="300" y1="0" x2="300" y2="630"/><line x1="450" y1="0" x2="450" y2="630"/>
-      <line x1="600" y1="0" x2="600" y2="630"/><line x1="750" y1="0" x2="750" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/><line x1="1050" y1="0" x2="1050" y2="630"/>
-    </g>
-    ${bgDecor}
+    <!-- Subtle Decorative Waves -->
+    <path d="M0,530 Q340,460 680,530 T1200,490" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+    <circle cx="910" cy="315" r="275" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2"/>
 
-    <!-- Category Badge -->
-    <g transform="translate(64, 68)">
-      <rect width="${Math.max(230, badgeText.length * 11 + 56)}" height="38" rx="19" fill="${theme.badgeBg}" stroke="${theme.badgeBorder}" stroke-width="1.5"/>
-      <circle cx="24" cy="19" r="6" fill="${theme.accent}"/>
-      <text x="42" y="24" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="13.5" font-weight="800" fill="${theme.accent}" letter-spacing="1.5">${escXml(badgeText)}</text>
+    <!-- Top Category Badge -->
+    <g transform="translate(68, 72)">
+      <rect width="${Math.max(245, badgeText.length * 12.5 + 58)}" height="46" rx="23" fill="rgba(15, 23, 42, 0.55)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      <circle cx="26" cy="23" r="7" fill="${theme.accent2}"/>
+      <text x="46" y="29" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" letter-spacing="1.6">${escXml(badgeText)}</text>
     </g>
 
-    <!-- Main Conversion Title -->
-    ${headlineLines.length === 1 ? `
-      <text x="64" y="184" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${headlineFontSize}" font-weight="900" fill="#FFFFFF" letter-spacing="-0.8">${escXml(headlineLines[0])}</text>
-      <text x="64" y="236" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="24.5" font-weight="600" fill="#CBD5E1">${escXml(subLines[0] || '')}</text>
-      ${subLines[1] ? `<text x="64" y="268" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="21.5" font-weight="500" fill="#94A3B8">${escXml(subLines[1])}</text>` : ''}
-    ` : `
-      <text x="64" y="164" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${headlineFontSize}" font-weight="900" fill="#FFFFFF" letter-spacing="-0.8">${escXml(headlineLines[0])}</text>
-      <text x="64" y="218" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="${headlineFontSize}" font-weight="900" fill="${theme.accent}" letter-spacing="-0.8">${escXml(headlineLines[1])}</text>
-      <text x="64" y="266" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22.5" font-weight="600" fill="#CBD5E1">${escXml(subLines[0] || '')}</text>
-    `}
-
-    <!-- Formula & Direct Answer Box -->
-    <g transform="translate(64, 326)">
-      <rect width="612" height="164" rx="22" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
-      <rect x="0" y="26" width="6" height="112" rx="3" fill="${theme.accent}"/>
-      <text x="30" y="42" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="12.5" font-weight="800" fill="${theme.accent}" letter-spacing="1.5">${escXml(refLabelText)}</text>
-      ${eqLines.length === 1 ? `
-        <text x="30" y="88" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="26.5" font-weight="800" fill="#FFFFFF">${escXml(eqLines[0])}</text>
-      ` : `
-        <text x="30" y="76" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22.5" font-weight="800" fill="#FFFFFF">${escXml(eqLines[0])}</text>
-        <text x="30" y="105" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="21.5" font-weight="700" fill="#E2E8F0">${escXml(eqLines[1])}</text>
-      `}
-      <text x="30" y="138" font-family="Consolas, monospace" font-size="16" font-weight="600" fill="#94A3B8">${escXml(info.formula)}</text>
-    </g>
+    <!-- ONLY the Article Title (No conversion rates or numbers!) -->
+    ${titleSvg}
 
     <!-- Bottom Brand Footer -->
-    <g transform="translate(64, 520)">
-      <rect width="30" height="30" rx="8" fill="${theme.accent}"/>
-      <text x="15" y="21" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="900" fill="#070B14">O</text>
-      <text x="42" y="21" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="18.5" font-weight="800" fill="#E2E8F0">OmniConverter</text>
-      <text x="190" y="21" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="16.5" font-weight="600" fill="#64748B">•  omniconverter.co.uk</text>
+    <g transform="translate(68, 515)">
+      <rect width="38" height="38" rx="10" fill="#FFFFFF"/>
+      <text x="19" y="27" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="900" fill="${theme.bg1}">O</text>
+      <text x="52" y="27" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">OmniConverter</text>
     </g>
 
-    <!-- Right Visual Illustration Panel -->
-    ${renderRightPanel(info, theme)}
+    <!-- Article-Specific Eye-Catching Illustration -->
+    ${renderArtwork(info, theme, idx)}
   </svg>`;
 
   const dir = path.dirname(outFile);
@@ -1046,9 +772,21 @@ async function generateArticleHeroImage({ enSlug, localSlug, title, lang = 'en',
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  await sharp(Buffer.from(svg))
-    .png({ palette: true, quality: 95, compressionLevel: 9 })
-    .toFile(outFile);
+  const pngBuffer = await sharp(Buffer.from(svg))
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+  for (let attempt = 0; attempt < 8; attempt++) {
+    try {
+      if (fs.existsSync(outFile)) {
+        try { fs.unlinkSync(outFile); } catch (_) {}
+      }
+      fs.writeFileSync(outFile, pngBuffer);
+      break;
+    } catch (err) {
+      if (attempt === 7) throw err;
+      await new Promise(r => setTimeout(r, 120 * (attempt + 1)));
+    }
+  }
 }
 
 module.exports = {
