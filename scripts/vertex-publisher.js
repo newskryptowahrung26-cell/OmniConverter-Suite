@@ -359,10 +359,13 @@ function rebuildBlogData() {
     } else if (s.includes('cup') || s.includes('tsp') || s.includes('tbsp') || s.includes('milk') || s.includes('baking') || t.includes('culinary') || t.includes('kitchen') || s.includes('taza') || s.includes('tasse') || s.includes('xicara') || s.includes('milch') || s.includes('leche') || s.includes('cucharadita') || s.includes('teeloeffel') || s.includes('colher')) {
       categoryKey = "Kitchen & Culinary";
       icon = "🍳";
-    } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex') || s.includes('divisa') || s.includes('moeda') || s.includes('waehrung') || s.includes('dolar') || s.includes('dollar') || s.includes('pound') || s.includes('libra') || s.includes('rupiah') || s.includes('rupia') || s.includes('lira')) {
+    } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass') || s.includes('kilo') || s.includes('peso') || s.includes('massa') || s.includes('quilo')) {
+      categoryKey = "Weight & Mass";
+      icon = "⚖️";
+    } else if (s.includes('usd') || s.includes('aud') || s.includes('vnd') || s.includes('gbp') || s.includes('won') || s.includes('cu') || s.includes('currency') || s.includes('forex') || s.includes('divisa') || s.includes('moeda') || s.includes('waehrung') || s.includes('dolar') || s.includes('dollar') || s.includes('rupiah') || s.includes('rupia') || s.includes('lira')) {
       categoryKey = "Currency & Forex";
       icon = "💱";
-    } else if (s.includes('kg') || s.includes('lbs') || s.includes('stone') || s.includes('gram') || s.includes('weight') || s.includes('mass') || t.includes('weight') || t.includes('mass') || s.includes('kilo') || s.includes('pfund') || s.includes('peso') || s.includes('massa') || s.includes('quilo')) {
+    } else if (s.includes('pound') || s.includes('libra') || s.includes('pfund')) {
       categoryKey = "Weight & Mass";
       icon = "⚖️";
     } else if (s.includes('meter') || s.includes('inch') || s.includes('feet') || s.includes('foot') || s.includes('cm') || s.includes('mm') || s.includes('yard') || s.includes('length') || s.includes('height') || s.includes('fuss') || s.includes('pie') || s.includes('pes') || s.includes('longitud') || s.includes('comprimento') || s.includes('laenge')) {
@@ -734,6 +737,26 @@ ${articlesList}
   } catch (e) {
     console.warn(`Could not sync llms.txt: ${e.message}`);
   }
+
+  // Run permanent SEO audit normalizer, blog-data sync, pre-rendered cards, and per-page lastmod sitemaps
+  try {
+    const { execFileSync } = require('child_process');
+    const postScripts = [
+      'scripts/fix-all-seo-audit.js',
+      'scripts/sync-all-blog-data.js',
+      'scripts/prerender-blog-cards.js',
+      'scripts/generate-separate-sitemaps.js',
+      'scripts/generate-unified-sitemap.js'
+    ];
+    for (const sc of postScripts) {
+      if (fs.existsSync(sc)) {
+        execFileSync(process.execPath, [sc], { stdio: 'inherit' });
+      }
+    }
+    console.log('[OK] Post-publish SEO normalizer, pre-renderer, and sitemaps synchronized.');
+  } catch (postErr) {
+    console.warn(`[WARN] Post-publish sync script warning: ${postErr.message}`);
+  }
 }
 
 // ─── INTERACTIVE IN-PAGE CONVERTER GENERATOR ──────────────────────────────────
@@ -850,7 +873,7 @@ function getInteractiveWidget(rawKw, category, toolLink) {
           <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Live In-Page Conversion Calculator</h3>
           <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Instant Calculation</span>
         </div>
-        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Type any number below to calculate instant results with certified conversion ratios:</p>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Type any number below to calculate instant results with standard conversion ratios:</p>
 
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
           <div>
@@ -1181,7 +1204,8 @@ function parseKeywordPlanCsv(csvText) {
     const pager = await ai.models.list();
     for await (const model of pager) {
       const name = (model.name || '').replace(/^models\//, '');
-      const methods = model.supportedGenerationMethods || [];
+      const methods = model.supportedGenerationMethods || model.supportedActions || [];
+      const supportsGen = methods.length === 0 || methods.includes('generateContent');
       if (
         name.includes('gemini') &&
         !name.includes('embedding') &&
@@ -1189,7 +1213,11 @@ function parseKeywordPlanCsv(csvText) {
         !name.includes('tts') &&
         !name.includes('realtime') &&
         !name.includes('aqa') &&
-        methods.includes('generateContent')
+        !name.includes('veo') &&
+        !name.includes('audio') &&
+        !name.includes('robotics') &&
+        !name.includes('computer-use') &&
+        supportsGen
       ) {
         modelCandidates.push(name);
       }
@@ -1200,9 +1228,9 @@ function parseKeywordPlanCsv(csvText) {
   }
 
   const staticFallbacks = [
+    'gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-3-flash-preview',
     'gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-pro-preview',
-    'gemini-2.5-flash-preview-05-20', 'gemini-2.5-flash', 'gemini-2.5-pro',
-    'gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'
+    'gemini-2.5-pro', 'gemini-2.0-flash'
   ];
 
   const allCandidates = [...new Set([...modelCandidates, ...staticFallbacks])];
@@ -1231,7 +1259,7 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
 
 4. SECTION 2: STEP-BY-STEP MATHEMATICAL FORMULA & CALCULATION:
    - Use <h2>The Exact Mathematical Conversion Formula</h2>.
-   - Provide the certified conversion formula in a styled code box:
+   - Provide the standard conversion formula in a styled code box:
      <div style="background:var(--bg-elevated); padding:1rem 1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0;">...</div>
    - Provide clear, numbered step-by-step calculations (<ol> with <li>) showing the arithmetic breakdown.
    - Show BOTH decimal division/multiplication and rational fraction calculation methods where applicable.
@@ -1266,6 +1294,7 @@ CRITICAL INSTRUCTIONS & FORMATTING RULES:
 
 11. MANDATORY FORMULA & MATHEMATICAL TYPOGRAPHY RULES:
     - NEVER output raw LaTeX formatting (NO \\frac, NO \\text, NO \\times, NO \\mathbf, NO \\approx, NO $, NO $$).
+    - NEVER use the words "certified", "verified against", "zero ads", or "ad-free".
     - Standard web browsers CANNOT render LaTeX syntax and will display broken code to users.
     - ALWAYS format mathematical formulas and equations using clean Unicode and native semantic HTML:
       * Use '×' (multiplication symbol) for multiplication (e.g. 5 × 100,000).
@@ -1312,9 +1341,17 @@ ${selectedTarget.snippetStrategy ? `
     .replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
   articleBodyHtml = sanitizeLatexMath(articleBodyHtml);
 
-  // 5. Build HTML page with High-CTR Title & Description
-  const rawTitle = selectedTarget.rawKw.replace(/\b\w/g, l => l.toUpperCase());
-  // High-CTR title format: "[Query]: Exact Formula & Live Calculator"
+  // 5. Build HTML page with High-CTR Title & Description and proper unit/currency casing
+  const formatDisplayKw = (str) => str
+    .replace(/\b\w/g, l => l.toUpperCase())
+    .replace(/\b(Usd|Gbp|Aud|Eur|Vnd|Jpy|Inr|Krw|Idr|Try|Cad)\b/g, m => m.toUpperCase())
+    .replace(/\bKg\b/g, 'kg')
+    .replace(/\bLbs\b/g, 'lbs')
+    .replace(/\bMl\b/g, 'mL')
+    .replace(/\bTo\b/g, 'to')
+    .replace(/\bIn\b/g, 'in');
+
+  const rawTitle = formatDisplayKw(selectedTarget.rawKw);
   let title = `${rawTitle}: Exact Formula & Live Calculator`;
   if (title.length > 60) {
     title = `${rawTitle}: Formula & Calculator`;
@@ -1323,13 +1360,76 @@ ${selectedTarget.snippetStrategy ? `
     title = `${rawTitle} | Conversion Guide`;
   }
 
-  const metaDesc = `Convert ${selectedTarget.rawKw} with 100% accuracy using certified mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.`;
+  const metaDesc = `Convert ${rawTitle} with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.`;
 
-  // 5b. Localized Articles Translation via Gemini (ES, DE, PT)
+  // 5b. Localized Articles Translation via Gemini (ES, DE, PT) with Structured JSON + Resilient Recovery + Never-Null Fallback
   let esArticle = null, deArticle = null, ptArticle = null;
   const urlsToNotify = [`https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`];
 
+  function buildLocalizedFallbackSlug(enSlug, langCode) {
+    let s = enSlug.toLowerCase();
+    if (langCode === 'es') {
+      s = s.replace(/\bpounds\b/g, 'libras').replace(/\bpound\b/g, 'libra').replace(/\bkilograms\b/g, 'kg').replace(/\bkilogram\b/g, 'kg').replace(/\bkilos\b/g, 'kilos').replace(/\bmeters\b/g, 'metros').replace(/\bfeet\b/g, 'pies').replace(/\bcups\b/g, 'tazas').replace(/\bcup\b/g, 'taza').replace(/\b-to-\b/g, '-a-').replace(/\b-in-\b/g, '-en-');
+      if (s === enSlug) s = `${enSlug}-es`;
+    } else if (langCode === 'de') {
+      s = s.replace(/\bpounds\b/g, 'pfund').replace(/\bpound\b/g, 'pfund').replace(/\bkilograms\b/g, 'kg').replace(/\bkilogram\b/g, 'kg').replace(/\bkilos\b/g, 'kilo').replace(/\bmeters\b/g, 'meter').replace(/\bfeet\b/g, 'fuss').replace(/\bcups\b/g, 'tassen').replace(/\bcup\b/g, 'tasse').replace(/\b-to-\b/g, '-in-');
+      if (s === enSlug) s = `${enSlug}-de`;
+    } else if (langCode === 'pt') {
+      s = s.replace(/\bpounds\b/g, 'libras').replace(/\bpound\b/g, 'libra').replace(/\bkilograms\b/g, 'kg').replace(/\bkilogram\b/g, 'kg').replace(/\bkilos\b/g, 'quilos').replace(/\bmeters\b/g, 'metros').replace(/\bfeet\b/g, 'pes').replace(/\bcups\b/g, 'xicaras').replace(/\bcup\b/g, 'xicara').replace(/\b-to-\b/g, '-para-').replace(/\b-in-\b/g, '-em-');
+      if (s === enSlug) s = `${enSlug}-pt`;
+    }
+    return s.replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function buildFallbackTranslation(langCode) {
+    const fbSlug = buildLocalizedFallbackSlug(selectedTarget.slug, langCode);
+    const fbTitle = langCode === 'es'
+      ? `${rawTitle}: Fórmula Exacta y Calculadora`
+      : langCode === 'de'
+      ? `${rawTitle}: Exakte Formel & Rechner`
+      : `${rawTitle}: Fórmula Exata e Conversor`;
+    const fbDesc = langCode === 'es'
+      ? `Convierta ${rawTitle} al instante con nuestra calculadora interactiva, fórmula matemática exacta y tabla de referencia.`
+      : langCode === 'de'
+      ? `Rechnen Sie ${rawTitle} sofort um: interaktiver Live-Rechner, exakte mathematische Formel und Referenztabelle.`
+      : `Converta ${rawTitle} instantaneamente com nossa calculadora interativa, fórmula matemática exata e tabela de referência.`;
+    return {
+      title: fbTitle,
+      slug: fbSlug,
+      description: fbDesc,
+      bodyHtml: articleBodyHtml
+    };
+  }
+
+  function tryParseTranslationJson(rawText) {
+    const clean = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+    try {
+      return JSON.parse(clean);
+    } catch (_) {
+      // Fallback: extract fields even if bodyHtml contains unescaped quotes or newlines
+      const titleM = clean.match(/"title"\s*:\s*"((?:\\.|[^"\\])*)"/);
+      const slugM = clean.match(/"slug"\s*:\s*"((?:\\.|[^"\\])*)"/);
+      const descM = clean.match(/"description"\s*:\s*"((?:\\.|[^"\\])*)"/);
+      const bodyStart = clean.search(/"bodyHtml"\s*:\s*"/);
+      if (titleM && bodyStart !== -1) {
+        const afterKey = clean.slice(bodyStart).replace(/^"bodyHtml"\s*:\s*"/, '');
+        const bodyRaw = afterKey.replace(/"\s*\}\s*$/, '');
+        const bodyUnescaped = bodyRaw.replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+        return {
+          title: titleM[1].replace(/\\"/g, '"'),
+          slug: slugM ? slugM[1].replace(/\\"/g, '"') : '',
+          description: descM ? descM[1].replace(/\\"/g, '"') : '',
+          bodyHtml: bodyUnescaped
+        };
+      }
+      return null;
+    }
+  }
+
   async function translateArticleForLang(langCode, langName) {
+    // Pause 2s before translation request to avoid burst RPM/TPM rate limits
+    await new Promise(r => setTimeout(r, 2000));
+
     const prompt = `You are a native technical translator and high-CTR SEO localization expert for OmniConverter.
 Translate the following English conversion guide into ${langName} (${langCode}).
 
@@ -1351,7 +1451,7 @@ CRITICAL HIGH-CTR LOCALIZATION INSTRUCTIONS:
 3. "description": High-converting, clickable meta description between 120 and 155 characters that triggers high search CTR.
 4. "bodyHtml": Translated native ${langName} HTML keeping all <h2>, <h3>, <p>, <table>, <div>, and formula markup intact.
 
-Return ONLY valid JSON matching this exact structure (no markdown fences, no extra text):
+Return ONLY valid JSON matching this exact structure:
 {
   "title": "${langName} High-CTR Title (under 60 chars)",
   "slug": "${langName} native clean URL slug",
@@ -1361,53 +1461,73 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
 
     for (const model of allCandidates) {
       try {
-        const resp = await ai.models.generateContent({ model, contents: prompt });
+        const resp = await ai.models.generateContent({
+          model,
+          contents: prompt,
+          config: {
+            responseMimeType: 'application/json',
+            responseSchema: {
+              type: 'OBJECT',
+              properties: {
+                title: { type: 'STRING' },
+                slug: { type: 'STRING' },
+                description: { type: 'STRING' },
+                bodyHtml: { type: 'STRING' }
+              },
+              required: ['title', 'slug', 'description', 'bodyHtml']
+            }
+          }
+        });
         if (resp && resp.text) {
-          const clean = resp.text.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
-          const parsed = JSON.parse(clean);
+          const parsed = tryParseTranslationJson(resp.text);
           if (parsed && parsed.title && parsed.bodyHtml) {
-            let localizedSlug = parsed.slug || selectedTarget.slug;
-            // Clean and sanitize slug
+            let localizedSlug = parsed.slug || buildLocalizedFallbackSlug(selectedTarget.slug, langCode);
             localizedSlug = localizedSlug.toLowerCase()
               .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
               .replace(/[^a-z0-9]+/g, '-')
               .replace(/^-+|-+$/g, '');
             if (!localizedSlug || localizedSlug.length < 3) {
-              localizedSlug = selectedTarget.slug;
+              localizedSlug = buildLocalizedFallbackSlug(selectedTarget.slug, langCode);
             }
             parsed.slug = localizedSlug;
+            parsed.bodyHtml = sanitizeLatexMath(parsed.bodyHtml);
             return parsed;
           }
         }
       } catch (e) {
-        // try next candidate
+        console.warn(`[WARN] Translation (${langCode}) with "${model}" failed: ${(e.message || '').split('\n')[0]}`);
       }
     }
-    return null;
+
+    console.warn(`[WARN] All models failed for ${langName} (${langCode}); using deterministic localized fallback.`);
+    return buildFallbackTranslation(langCode);
   }
 
   try {
     console.log('[Auto-Publisher] Translating new article into ES, DE, and PT using Gemini...');
     esArticle = await translateArticleForLang('es', 'Spanish');
-    if (esArticle) console.log(`[OK] Spanish translation ready: ${esArticle.slug}`);
+    console.log(`[OK] Spanish translation ready: ${esArticle.slug}`);
 
     deArticle = await translateArticleForLang('de', 'German');
-    if (deArticle) console.log(`[OK] German translation ready: ${deArticle.slug}`);
+    console.log(`[OK] German translation ready: ${deArticle.slug}`);
 
     ptArticle = await translateArticleForLang('pt', 'Portuguese');
-    if (ptArticle) console.log(`[OK] Portuguese translation ready: ${ptArticle.slug}`);
+    console.log(`[OK] Portuguese translation ready: ${ptArticle.slug}`);
 
-    if (esArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
-    if (deArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
-    if (ptArticle) urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
+    if (esArticle && esArticle.slug) urlsToNotify.push(`https://www.omniconverter.co.uk/es/blog/${esArticle.slug}`);
+    if (deArticle && deArticle.slug) urlsToNotify.push(`https://www.omniconverter.co.uk/de/blog/${deArticle.slug}`);
+    if (ptArticle && ptArticle.slug) urlsToNotify.push(`https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}`);
   } catch (transErr) {
     console.warn('[WARN] Translation module error:', transErr.message);
+    if (!esArticle) esArticle = buildFallbackTranslation('es');
+    if (!deArticle) deArticle = buildFallbackTranslation('de');
+    if (!ptArticle) ptArticle = buildFallbackTranslation('pt');
   }
 
   // Detect appropriate converter tool link based on keyword
   let toolLink = '/';
   let toolTitle = 'OmniConverter Universal Conversion Tools Suite';
-  let toolDesc = 'Perform instant weight, volume, temperature, duration, speed, and unit conversions with zero ads or tracking.';
+  let toolDesc = 'Perform instant weight, volume, temperature, duration, speed, and unit conversions with full browser privacy.';
   let toolBtnText = 'Explore All Converters &rarr;';
   let category = 'General Guide';
 
@@ -1428,7 +1548,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     toolLink = '/weight-mass';
     category = 'Weight & Mass';
     toolTitle = 'Interactive Weight & Mass Converter Calculator';
-    toolDesc = 'Convert kilograms, pounds, ounces, stones, and grams instantly with verified conversion ratios.';
+    toolDesc = 'Convert kilograms, pounds, ounces, stones, and grams instantly with standard SI conversion ratios.';
     toolBtnText = 'Open Weight & Mass Converter &rarr;';
   } else if (kwLower.includes('cup') || kwLower.includes('liter') || kwLower.includes('litre') || kwLower.includes('ml') || kwLower.includes('gallon') || kwLower.includes('tsp') || kwLower.includes('tbsp') || kwLower.includes('volume')) {
     toolLink = '/volume-capacity';
@@ -1492,8 +1612,9 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   // Select 3-4 category-aware published articles for smart internal linking
   function getArticleCategory(slug) {
     const s = slug.toLowerCase();
+    if (s.includes('stone') || s.includes('kg') || s.includes('lbs') || s.includes('kilo') || s.includes('quilo') || s.includes('gram') || s.includes('ounce') || s.includes('weight') || s.includes('peso') || s.includes('gewicht') || s.includes('massa')) return 'weight';
     if (s.includes('usd') || s.includes('eur') || s.includes('gbp') || s.includes('aud') || s.includes('vnd') || s.includes('cad') || s.includes('jpy') || s.includes('currency') || s.includes('forex') || s.includes('dolar') || s.includes('inr') || s.includes('crore') || s.includes('lakh') || s.includes('pounds-to') || s.includes('libras-a-gbp') || s.includes('libras-para-gbp') || s.includes('pfund-in-gbp')) return 'currency';
-    if (s.includes('kg') || s.includes('lbs') || s.includes('pound') || s.includes('libra') || s.includes('pfund') || s.includes('gram') || s.includes('ounce') || s.includes('stone') || s.includes('weight') || s.includes('peso') || s.includes('gewicht') || s.includes('massa')) return 'weight';
+    if (s.includes('pound') || s.includes('libra') || s.includes('pfund')) return 'weight';
     if (s.includes('cup') || s.includes('liter') || s.includes('litre') || s.includes('ml') || s.includes('gallon') || s.includes('taza') || s.includes('xicara') || s.includes('tasse') || s.includes('volume') || s.includes('volumen') || s.includes('bar-to-psi') || s.includes('bar-a-psi') || s.includes('bar-em-psi') || s.includes('bar-in-psi')) return 'volume';
     if (s.includes('celsius') || s.includes('fahrenheit') || s.includes('kelvin') || s.includes('temperature') || s.includes('temperatura')) return 'temperature';
     return 'general';
@@ -1509,7 +1630,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
       <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
         <strong>Related Conversion Guides:</strong> 
-        ${otherArticles.map(s => `<a href="/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${s.replace(/-/g, ' ').replace(/\\b\\w/g, l => l.toUpperCase())}</a>`).join(' &bull; ')}
+        ${otherArticles.map(s => `<a href="/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${formatDisplayKw(s.replace(/-/g, ' '))}</a>`).join(' &bull; ')}
       </p>
     </div>` : '';
 
@@ -1545,7 +1666,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": title,
-      "description": `Comprehensive conversion guide for ${selectedTarget.rawKw} with formulas, tables, mental math shortcuts, and interactive calculator.`,
+      "description": `Comprehensive conversion guide for ${rawTitle} with formulas, tables, mental math shortcuts, and interactive calculator.`,
       "url": `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`,
       "datePublished": today,
       "dateModified": today,
@@ -1595,6 +1716,8 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     ]
   });
 
+  const hasAllTranslations = Boolean(esArticle?.slug && deArticle?.slug && ptArticle?.slug);
+
   const fullPageHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1611,11 +1734,12 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   <title>${title} | OmniConverter</title>
   <meta name="description" content="${metaDesc}">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  ${esArticle ? `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  ${hasAllTranslations ? `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/${esArticle.slug}">
   <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/${deArticle.slug}">
   <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}">
-  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">` : ''}
+  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">` : `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
+  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">`}
   <link rel="alternate" type="application/rss+xml" title="OmniConverter Blog RSS Feed" href="https://www.omniconverter.co.uk/feed.xml">
   <meta name="article:published_time" content="${today}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -1663,7 +1787,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         <a href="/file-media" class="tab-btn">Files</a>
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
-      ${esArticle ? `<div class="lang-switcher" aria-label="Language Selector">
+      ${hasAllTranslations ? `<div class="lang-switcher" aria-label="Language Selector">
         <span class="active" title="English">EN</span>
         <span class="lang-sep">|</span>
         <a href="/es/blog/${esArticle.slug}" title="Español">ES</a>
@@ -1683,10 +1807,10 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <span class="breadcrumb-current" aria-current="page">${title}</span>
     </nav>
     <article class="content-section" style="margin-top:0.75rem;">
-      <span class="formula-badge">Conversion Guide: ${title}</span>
+      <span class="formula-badge">${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
 
-      <img src="${imageUrl}" alt="${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${imageUrl}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
     </article>
     ${crossLinksHtmlEn}
@@ -1696,6 +1820,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <p>&copy; ${year} OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
+  ${widgetScript}
 </body>
 </html>`;
 
@@ -1704,7 +1829,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
   console.log(`[OK] English article saved: ${outPath}`);
 
   // 5c. Write Localized Articles (ES, DE, PT)
-  if (esArticle && deArticle && ptArticle) {
+  if (hasAllTranslations) {
     const localizedToolMeta = {
       es: {
         currency: { link: '/es/currency', title: 'Convertidor de Divisas en Vivo', desc: 'Convierte USD, EUR, GBP, AUD y más de 35 divisas con tipos de cambio interbancarios en tiempo real.', btn: 'Abrir Convertidor de Divisas &rarr;' },
@@ -1714,7 +1839,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         speed: { link: '/es/speed', title: 'Convertidor de Velocidad en Tiempo Real', desc: 'Convierte km/h, mph, nudos y metros por segundo de forma instantánea.', btn: 'Abrir Convertidor de Velocidad &rarr;' },
         time: { link: '/es/time-duration', title: 'Calculadora de Tiempo y Duración', desc: 'Convierte horas, minutos, segundos y días con exactitud absoluta.', btn: 'Abrir Convertidor de Tiempo &rarr;' },
         length: { link: '/es/length', title: 'Convertidor de Longitud y Distancia', desc: 'Convierte metros, pies, pulgadas, centímetros y kilómetros al instante.', btn: 'Abrir Convertidor de Longitud &rarr;' },
-        general: { link: '/es/', title: 'Suite Universal de Conversión OmniConverter', desc: 'Accede a todas las herramientas interactivas de medición y conversión sin anuncios invasivos.', btn: 'Explorar Herramientas &rarr;' }
+        general: { link: '/es/', title: 'Suite Universal de Conversión OmniConverter', desc: 'Accede a todas las herramientas interactivas de medición y conversión con total privacidad.', btn: 'Explorar Herramientas &rarr;' }
       },
       de: {
         currency: { link: '/de/currency', title: 'Interaktiver Live-Währungsrechner', desc: 'Konvertieren Sie USD, EUR, GBP, AUD und über 35 Weltwährungen mit echten Devisenkursen.', btn: 'Währungsrechner Öffnen &rarr;' },
@@ -1724,7 +1849,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         speed: { link: '/de/speed', title: 'Live Geschwindigkeitsumrechner', desc: 'Rechnen Sie km/h, mph, Knoten und m/s sofort mit Live-Formeln um.', btn: 'Geschwindigkeitsrechner Öffnen &rarr;' },
         time: { link: '/de/time-duration', title: 'Zeit- & Dauereinheiten-Umrechner', desc: 'Rechnen Sie Stunden, Minuten, Sekunden und Tage hochpräzise um.', btn: 'Zeitrechner Öffnen &rarr;' },
         length: { link: '/de/length', title: 'Längen- & Distanzumrechner', desc: 'Rechnen Sie Meter, Fuß, Zoll, Zentimeter und Kilometer direkt um.', btn: 'Längenrechner Öffnen &rarr;' },
-        general: { link: '/de/', title: 'OmniConverter Suite für Universalumrechnung', desc: 'Alle praktischen Umrechner für Maße, Finanzen und Einheiten ohne aufdringliche Werbung.', btn: 'Alle Rechner Entdecken &rarr;' }
+        general: { link: '/de/', title: 'OmniConverter Suite für Universalumrechnung', desc: 'Alle praktischen Umrechner für Maße, Finanzen und Einheiten lokal im Browser.', btn: 'Alle Rechner Entdecken &rarr;' }
       },
       pt: {
         currency: { link: '/pt/currency', title: 'Conversor de Moedas em Tempo Real', desc: 'Converta USD, EUR, GBP, BRL, AUD e mais de 35 moedas com cotações comerciais ao vivo.', btn: 'Abrir Conversor de Moedas &rarr;' },
@@ -1751,6 +1876,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         data: esArticle,
         homeText: 'Inicio',
         blogText: 'Blog',
+        indianText: 'Unidades Indias (EN)',
         badgePrefix: 'Guía de Conversión:',
         footerRights: `&copy; ${year} OmniConverter Suite. Todos los derechos reservados. | <a href="/es/sitemap">Mapa del Sitio</a> | <a href="/es/about">Nosotros</a> | <a href="/es/privacy-policy">Privacidad</a> | <a href="/es/terms">Términos</a> | <a href="/es/contact">Contacto</a>`
       },
@@ -1760,6 +1886,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         data: deArticle,
         homeText: 'Startseite',
         blogText: 'Blog',
+        indianText: 'Indische Einheiten (EN)',
         badgePrefix: 'Umrechnungsratgeber:',
         footerRights: `&copy; ${year} OmniConverter Suite. Alle Rechte vorbehalten. | <a href="/de/sitemap">Sitemap</a> | <a href="/de/about">Über uns</a> | <a href="/de/privacy-policy">Datenschutz</a> | <a href="/de/terms">AGB</a> | <a href="/de/contact">Kontakt</a>`
       },
@@ -1769,6 +1896,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
         data: ptArticle,
         homeText: 'Início',
         blogText: 'Blog',
+        indianText: 'Unidades Indianas (EN)',
         badgePrefix: 'Guia de Conversão:',
         footerRights: `&copy; ${year} OmniConverter Suite. Todos os direitos reservados. | <a href="/pt/sitemap">Mapa do Site</a> | <a href="/pt/about">Sobre</a> | <a href="/pt/privacy-policy">Privacidade</a> | <a href="/pt/terms">Termos</a> | <a href="/pt/contact">Contato</a>`
       }
@@ -1794,7 +1922,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
       <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
         <strong>${localizedCrossTitle[cfg.lang]}</strong> 
-        ${langRelatedSlugs.map(s => `<a href="/${cfg.lang}/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${s.replace(/-/g, ' ').replace(/\\b\\w/g, l => l.toUpperCase())}</a>`).join(' &bull; ')}
+        ${langRelatedSlugs.map(s => `<a href="/${cfg.lang}/blog/${s}" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">${formatDisplayKw(s.replace(/-/g, ' '))}</a>`).join(' &bull; ')}
       </p>
     </div>` : '';
 
@@ -1814,9 +1942,9 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       if (localizedToolCalloutHtml) {
         if (localizedBody.includes('</div>')) {
           const firstClose = localizedBody.indexOf('</div>') + 6;
-          localizedBody = localizedBody.slice(0, firstClose) + '\n' + localizedToolCalloutHtml + '\n' + localizedBody.slice(firstClose);
+          localizedBody = localizedBody.slice(0, firstClose) + '\n' + localizedToolCalloutHtml + '\n' + widgetHtml + '\n' + localizedBody.slice(firstClose);
         } else {
-          localizedBody = localizedToolCalloutHtml + '\n' + localizedBody;
+          localizedBody = localizedToolCalloutHtml + '\n' + widgetHtml + '\n' + localizedBody;
         }
       }
 
@@ -1921,7 +2049,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       </button>
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="/${cfg.lang}/" class="tab-btn">${cfg.homeText}</a>
-        <a href="/indian-units" class="tab-btn">Indian Units</a>
+        <a href="/indian-units" class="tab-btn">${cfg.indianText}</a>
         <a href="/${cfg.lang}/time-zone" class="tab-btn">Time Zone</a>
         <a href="/${cfg.lang}/currency" class="tab-btn">Currency</a>
         <a href="/${cfg.lang}/length" class="tab-btn">Length</a>
@@ -1956,7 +2084,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">${cfg.badgePrefix} ${cfg.data.title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${cfg.data.title}</h1>
-      <img src="${imageUrl}" alt="${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${imageUrl}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${localizedBody}
     </article>
     ${crossLinksHtmlLocalized}
@@ -1966,6 +2094,7 @@ Return ONLY valid JSON matching this exact structure (no markdown fences, no ext
       <p>${cfg.footerRights}</p>
     </div>
   </footer>
+  ${widgetScript}
 </body>
 </html>`;
 

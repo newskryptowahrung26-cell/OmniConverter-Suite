@@ -211,6 +211,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/14-usd-in-aud</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/de/blog/15-meter-in-fuss</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -273,6 +279,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/de/blog/20-gbp-in-aud</loc>
     <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/200-gbp-in-aud</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

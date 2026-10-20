@@ -96,6 +96,8 @@ for (const f of files) {
   if (isGuide && title && title.split('|')[0].trim().toLowerCase() === slugTitle(slug).toLowerCase()) issues.push('SLUG_TITLE');
   if (isGuide && /Step-by-step conversion guide for /i.test(desc)) issues.push('SLUG_DESC');
   if (isGuide && ctype && topic !== 'unknown' && !ctype.startsWith(topic) && !(topic === 'area' && ctype === 'length')) issues.push(`CALC_MISMATCH(${topic}->${ctype})`);
+  if (isGuide && r !== 'pt/blog/2000-usd-to-gbp.html' && !ctype) issues.push('NO_CALC');
+  if (isGuide && r !== 'pt/blog/2000-usd-to-gbp.html' && ctype && !/getElementById\(['"]liveToolInput['"]\)/.test(html)) issues.push('NO_CALC_SCRIPT');
   if (calcs > 1) issues.push(`MULTI_CALC(${calcs})`);
   if (hreflangs.length === 0 && r !== '404.html') issues.push('NO_HREFLANG');
   if (hreflangs.length && !hreflangs.includes('x-default')) issues.push('NO_XDEFAULT');

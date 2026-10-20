@@ -110,7 +110,7 @@
       </button>
       <nav class="nav-tabs" aria-label="Converter category navigation">
         <a href="/pt/" class="tab-btn">Início</a>
-        <a href="/indian-units" class="tab-btn">Indian Units</a>
+        <a href="/indian-units" class="tab-btn">Unidades Indianas (EN)</a>
         <a href="/pt/time-zone" class="tab-btn">Time Zone</a>
         <a href="/pt/currency" class="tab-btn">Currency</a>
         <a href="/pt/length" class="tab-btn">Length</a>
@@ -145,7 +145,7 @@
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">Guia de Conversão: 150 USD para AUD: Fórmula Exata e Conversor Ao Vivo</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">150 USD para AUD: Fórmula Exata e Conversor Ao Vivo</h1>
-      <img src="https://images.unsplash.com/photo-1593672740624-38a34ff53d5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8MTUwJTIwdXNkJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkxOTM3MjMxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="150 USD para AUD: Fórmula Exata e Conversor Ao Vivo" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="https://images.unsplash.com/photo-1593672740624-38a34ff53d5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8MTUwJTIwdXNkJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkxOTM3MjMxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Conversion chart and visual reference guide for 150 USD para AUD: Fórmula Exata e Conversor Ao Vivo" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
 <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
         <span>✍️ <strong>Autor:</strong> Equipe Editorial OmniConverter</span>
         <span>🔬 <strong>Revisado por:</strong> Conselho Editorial Financeiro</span>
@@ -163,6 +163,69 @@
     Nota: Os mercados de câmbio flutuam 24 horas por dia, de segunda a sexta-feira. Os valores reais de transação de portadores de cartões via Visa ou Mastercard normalmente incluem uma margem de taxa de serviço cambial de 1% a 3%.
   </p>
 </div>
+
+      <!-- Embedded Live Interactive In-Page Calculator -->
+      <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Calculadora de Câmbio e Moedas</h3>
+          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Câmbio Comercial</span>
+        </div>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Digite um valor para converter entre as principais moedas globais:</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
+          <div>
+            <label for="liveToolInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Digite o Valor</label>
+            <input type="number" id="liveToolInput" value="100" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Da Unidade</label>
+            <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              <option value="USD" selected>USD - US Dollar ($)</option>
+              <option value="EUR">EUR - Euro (€)</option>
+              <option value="GBP">GBP - British Pound (£)</option>
+              <option value="AUD">AUD - Australian Dollar (A$)</option>
+              <option value="JPY">JPY - Japanese Yen (¥)</option>
+              <option value="INR">INR - Indian Rupee (₹)</option>
+              <option value="IDR">IDR - Indonesian Rupiah (Rp)</option>
+              <option value="KRW">KRW - South Korean Won (₩)</option>
+              <option value="TRY">TRY - Turkish Lira (₺)</option>
+              <option value="CAD">CAD - Canadian Dollar (C$)</option>
+              <option value="VND">VND - Vietnamese Dong (₫)</option>
+            </select>
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center;">
+            <button type="button" id="liveToolSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Inverter</button>
+          </div>
+          <div>
+            <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Para Unidade</label>
+            <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              <option value="USD">USD - US Dollar ($)</option>
+              <option value="EUR" selected>EUR - Euro (€)</option>
+              <option value="GBP">GBP - British Pound (£)</option>
+              <option value="AUD">AUD - Australian Dollar (A$)</option>
+              <option value="JPY">JPY - Japanese Yen (¥)</option>
+              <option value="INR">INR - Indian Rupee (₹)</option>
+              <option value="IDR">IDR - Indonesian Rupiah (Rp)</option>
+              <option value="KRW">KRW - South Korean Won (₩)</option>
+              <option value="TRY">TRY - Turkish Lira (₺)</option>
+              <option value="CAD">CAD - Canadian Dollar (C$)</option>
+              <option value="VND">VND - Vietnamese Dong (₫)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Resultado Convertido</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">92.00 EUR</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">1 USD = 0.9200 EUR</div>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copiar</button>
+            <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Imprimir Tabela</button>
+          </div>
+        </div>
+      </div>
 
 <h2>A Fórmula Matemática de Conversão Exata</h2>
 

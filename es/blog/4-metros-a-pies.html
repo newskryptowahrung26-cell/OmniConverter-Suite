@@ -130,6 +130,60 @@
   </p>
 </div>
 
+      <!-- Embedded Live Interactive In-Page Calculator -->
+      <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Calculadora de Longitud y Distancia</h3>
+          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">SI Exact</span>
+        </div>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Convierta metros en pies, pulgadas, centímetros y kilómetros al instante:</p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
+          <div>
+            <label for="liveToolInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Ingrese Valor</label>
+            <input type="number" id="liveToolInput" value="4" step="any" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1.1rem; font-weight:700; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">De Unidad</label>
+            <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              <option value="m" selected>Meters (m)</option>
+              <option value="ft">Feet (ft)</option>
+              <option value="in">Inches (in)</option>
+              <option value="cm">Centimeters (cm)</option>
+              <option value="km">Kilometers (km)</option>
+              <option value="mi">Miles (mi)</option>
+            </select>
+          </div>
+          <div style="display:flex; justify-content:center; align-items:center;">
+            <button type="button" id="liveToolSwapBtn" title="Swap Units" style="width:100%; padding:0.75rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); cursor:pointer; font-weight:700;">⇄ Invertir</button>
+          </div>
+          <div>
+            <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">A Unidad</label>
+            <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
+              <option value="m">Meters (m)</option>
+              <option value="ft" selected>Feet (ft)</option>
+              <option value="in">Inches (in)</option>
+              <option value="cm">Centimeters (cm)</option>
+              <option value="km">Kilometers (km)</option>
+              <option value="mi">Miles (mi)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem; padding:1.25rem; background:var(--bg-surface); border-radius:var(--radius-lg); border:1px solid var(--card-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="font-size:0.82rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted);">Resultado Convertido</div>
+            <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">13.1234 ft</div>
+            <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">4 m = 13.1234 ft</div>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copiar</button>
+            <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Imprimir Tabla</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
 <h2>La fórmula de conversión matemática exacta</h2>
 
 <p>Para convertir cualquier medida de metros a pies, debes aplicar el acuerdo internacional de yardas y libras de 1959, que definió oficialmente el pie internacional como exactamente 0,3048 metros. En consecuencia, para encontrar el valor equivalente en pies, divides el valor en metros entre 0,3048, o lo que es equivalente, multiplicas por su valor recíproco.</p>

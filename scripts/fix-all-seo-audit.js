@@ -461,6 +461,40 @@ function buildCalculatorHtml(lang, topic, slug) {
     toOpts = optHtml(fList, 'gb');
     initRes = '0.4883 gb';
     initFormula = '500 mb = 0.4883 gb';
+  } else if (topic === 'length') {
+    heading = lang === 'es' ? '⚡ Calculadora de Longitud y Distancia' : lang === 'de' ? '⚡ Längen- & Distanz-Umrechner' : lang === 'pt' ? '⚡ Calculadora de Comprimento e Distância' : '⚡ Instant Length & Distance Calculator';
+    badge = 'SI Exact';
+    sub = lang === 'es' ? 'Convierta metros en pies, pulgadas, centímetros y kilómetros al instante:' : lang === 'de' ? 'Rechnen Sie Meter in Fuß, Zoll, Zentimeter und Kilometer sofort um:' : lang === 'pt' ? 'Converta metros em pés, polegadas, centímetros e quilômetros instantaneamente:' : 'Convert between meters, feet, inches, centimeters, and kilometers instantly:';
+    const lList = [
+      ['m', 'Meters (m)'],
+      ['ft', 'Feet (ft)'],
+      ['in', 'Inches (in)'],
+      ['cm', 'Centimeters (cm)'],
+      ['km', 'Kilometers (km)'],
+      ['mi', 'Miles (mi)']
+    ];
+    const numM = s.match(/^(\d+)/);
+    val = numM ? numM[1] : '4';
+    fromOpts = optHtml(lList, 'm');
+    toOpts = optHtml(lList, 'ft');
+    const resNum = (parseFloat(val) / 0.3048).toFixed(4);
+    initRes = `${resNum} ft`;
+    initFormula = `${val} m = ${resNum} ft`;
+  } else if (topic === 'temperature') {
+    heading = lang === 'es' ? '⚡ Calculadora de Escalas de Temperatura' : lang === 'de' ? '⚡ Temperatur-Umrechner' : lang === 'pt' ? '⚡ Calculadora de Temperatura' : '⚡ Instant Temperature Live Calculator';
+    badge = 'Exact Formula';
+    sub = lang === 'es' ? 'Convierta grados Fahrenheit, Celsius y Kelvin al instante:' : lang === 'de' ? 'Rechnen Sie zwischen Fahrenheit, Celsius und Kelvin um:' : lang === 'pt' ? 'Converta graus Fahrenheit, Celsius e Kelvin instantaneamente:' : 'Convert between Fahrenheit, Celsius, Kelvin, and Rankine instantly:';
+    const tempList = [
+      ['F', 'Fahrenheit (°F)'],
+      ['C', 'Celsius (°C)'],
+      ['K', 'Kelvin (K)'],
+      ['R', 'Rankine (°R)']
+    ];
+    val = '50';
+    fromOpts = optHtml(tempList, 'F');
+    toOpts = optHtml(tempList, 'C');
+    initRes = '10 °C';
+    initFormula = '50 F = 10.00 C';
   }
 
   return `<!-- Embedded Live Interactive In-Page Calculator -->
@@ -698,19 +732,32 @@ for (const f of files) {
     html = html.replace(/<!-- Live Calculator Logic[\s\S]*?<\/script>\s*(?=<script>)/, '');
   }
 
-  // 3. Fix CALC_MISMATCH on any guide page
-  if (isGuide) {
+  // 3. Fix CALC_MISMATCH or missing calculator/script on any guide page
+  if (isGuide && r !== 'pt/blog/2000-usd-to-gbp.html') {
     const currentCtype = calcType(html);
     if (currentCtype && topic !== 'unknown' && !currentCtype.startsWith(topic)) {
-      const calcRegex = /<!-- Embedded Live Interactive In-Page Calculator -->[\s\S]*?<button type="button" class="printCheatSheetBtn[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/;
+      const calcRegex = /<!-- Embedded Live Interactive In-Page Calculator -->[\s\S]*?(?:<button type="button" class="printCheatSheetBtn[\s\S]*?<\/div>\s*<\/div>\s*<\/div>|<button type="button" id="liveToolCopyBtn"[\s\S]*?<\/div>\s*<\/div>)/;
       if (calcRegex.test(html)) {
         html = html.replace(calcRegex, () => buildCalculatorHtml(lang, topic, slug));
       }
+    } else if (!currentCtype && topic !== 'unknown') {
+      // Missing calculator on guide page: inject after callout box, or after quick summary box, or before first <h2>
+      const calloutEndRegex = /(<!-- Relevant Interactive Converter Callout Box -->\s*<div[^>]*>[\s\S]*?<\/a>\s*<\/div>)/;
+      const summaryBoxRegex = /(<div style="background:var\(--bg-elevated\);\s*border-left:4px solid var\(--accent\);[\s\S]*?<\/div>)/;
+      if (calloutEndRegex.test(html)) {
+        html = html.replace(calloutEndRegex, (m) => `${m}\n\n      ${buildCalculatorHtml(lang, topic, slug)}`);
+      } else if (summaryBoxRegex.test(html)) {
+        html = html.replace(summaryBoxRegex, (m) => `${m}\n\n      ${buildCalculatorHtml(lang, topic, slug)}`);
+      } else if (/<h2/i.test(html)) {
+        html = html.replace(/<h2/i, () => `${buildCalculatorHtml(lang, topic, slug)}\n\n      <h2`);
+      }
     }
-    // Upgrade inline calculator script on every guide page so all units & currencies work
+    // Upgrade or inject inline calculator script on every guide page so all units & currencies work
     const scriptRegex = /<script>\s*\(function\(\)\s*\{\s*(?:var|const) input = document\.getElementById\('liveToolInput'\);[\s\S]*?<\/script>/;
     if (scriptRegex.test(html)) {
       html = html.replace(scriptRegex, () => universalCalcScript);
+    } else if (html.includes('id="liveToolInput"')) {
+      html = html.replace('</body>', () => `  ${universalCalcScript}\n</body>`);
     }
 
     // Update Callout Box if its link doesn't match the guide's topic
@@ -1050,11 +1097,11 @@ for (const f of files) {
 
   // Mark Indian Units nav tab with (EN) on localized pages (/es/, /de/, /pt/)
   if (lang === 'es') {
-    html = html.replace(/<a href="\/indian-units" class="tab-btn">Unidades Indias<\/a>/g, '<a href="/indian-units" class="tab-btn">Unidades Indias (EN)</a>');
+    html = html.replace(/<a href="\/indian-units" class="tab-btn">(?:Unidades Indias|Indian Units)<\/a>/g, '<a href="/indian-units" class="tab-btn">Unidades Indias (EN)</a>');
   } else if (lang === 'de') {
-    html = html.replace(/<a href="\/indian-units" class="tab-btn">Indische Einheiten<\/a>/g, '<a href="/indian-units" class="tab-btn">Indische Einheiten (EN)</a>');
+    html = html.replace(/<a href="\/indian-units" class="tab-btn">(?:Indische Einheiten|Indian Units)<\/a>/g, '<a href="/indian-units" class="tab-btn">Indische Einheiten (EN)</a>');
   } else if (lang === 'pt') {
-    html = html.replace(/<a href="\/indian-units" class="tab-btn">Unidades Indianas<\/a>/g, '<a href="/indian-units" class="tab-btn">Unidades Indianas (EN)</a>');
+    html = html.replace(/<a href="\/indian-units" class="tab-btn">(?:Unidades Indianas|Indian Units)<\/a>/g, '<a href="/indian-units" class="tab-btn">Unidades Indianas (EN)</a>');
   }
 
   // 6. Fix UNVERIFIABLE_BYLINE across HTML and JSON-LD
@@ -1109,7 +1156,9 @@ for (const f of files) {
     const st = slugTitle(slug).toLowerCase();
     const h1Clean = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [,''])[1].replace(/<[^>]+>/g, '').replace(/"/g, '&quot;').trim();
     html = html.replace(/<img([^>]+)alt="([^"]*)"([^>]*)>/gi, (full, pre, altVal, post) => {
-      if (altVal.trim().toLowerCase() === st) {
+      if (pre.includes('logo.png')) return full;
+      const al = altVal.trim().toLowerCase();
+      if (al === st || (h1Clean && al === h1Clean.toLowerCase())) {
         return `<img${pre}alt="Conversion chart and visual reference guide for ${h1Clean || altVal}"${post}>`;
       }
       return full;
@@ -1122,13 +1171,14 @@ for (const f of files) {
     html = html.replace(boilerplateRegex, '');
   }
 
-  // Update index.html meta description and guide count to 68
+  // Update index.html meta description and dynamic guide count
   if (r === 'index.html') {
+    const enGuideCount = fs.readdirSync(path.join(ROOT, 'blog')).filter(x => x.endsWith('.html')).length;
     const newIndexDesc = 'Free online unit, currency, world time zone, Indian traditional units (Bigha, Gaj, Tola, Lakh, Crore), and local browser file converter. Convert length, weight, temperature, volume, area, speed, and 45+ currencies instantly.';
     html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="description" content="${newIndexDesc}">`);
     html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:description" content="${newIndexDesc}">`);
     html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${newIndexDesc}">`);
-    html = html.replace(/\(All 61 Guides\)/g, '(All 68 Guides)');
+    html = html.replace(/\(All \d+ Guides\)/g, `(All ${enGuideCount} Guides)`);
   }
 
   // Update currency.html quick cards to link to actual guides where they exist
