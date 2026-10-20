@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (70 Articles)
+## Published Articles & Guides Directory (71 Articles)
+- [1000 USD to GBP: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1000-usd-to-gbp): Convert 1000 USD to GBP with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [200 GBP to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/200-gbp-to-aud): Convert 200 gbp to aud with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.
 - [14 USD to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/14-usd-to-aud): Convert 14 usd to aud with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.
 - [$100 USD in Australian Dollars: Travel Cash, Credit Card Fees &amp; ATM Guide](https://www.omniconverter.co.uk/blog/100-usd-in-australian): See how much $100 US Dollars is worth in Australian Dollars after airport kiosk spreads, 3% credit card foreign transaction fees, and Australian ATM withdrawals.
