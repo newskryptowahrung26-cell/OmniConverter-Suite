@@ -8,7 +8,7 @@ const rootDir = path.resolve(__dirname, '..');
 function renderCard(item) {
   const targetUrl = item.slug.startsWith('/') ? item.slug : `/blog/${item.slug}`;
   const imgHtml = item.image 
-    ? `<a href="${targetUrl}"><img src="${item.image}" alt="${item.title.replace(/"/g, '&quot;')}" style="width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: 0.85rem; border: 1px solid var(--card-border);" loading="lazy"></a>`
+    ? `<a href="${targetUrl}"><img src="${item.image}" alt="${item.title.replace(/"/g, '&quot;')}" style="width: 100%; aspect-ratio: 1200 / 630; height: auto; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: 0.85rem; border: 1px solid var(--card-border);" loading="lazy"></a>`
     : '';
 
   return `      <article class="blog-card" style="padding: 1.25rem;">

@@ -15,6 +15,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const http = require('http');
+const { generateArticleHeroImage } = require('./blog-image-generator');
 
 // Global Date & Year - available across all functions and template scopes permanently
 const today = new Date().toISOString().split('T')[0];
@@ -217,7 +218,6 @@ function getUnsplashPhoto(query, accessKey, usedPhotoIds = new Set()) {
   return new Promise((resolve) => {
     // Curated high-res unique backup photos across multiple domains
     const fallbackList = [
-      'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
@@ -466,9 +466,10 @@ function rebuildBlogData() {
         exactTimestamp = `${cleanDisplayDate}T00:00:00Z`;
       }
 
+      const articleImgMatch = raw.match(/<article[\s\S]*?<img[^>]+src="([^"]+)"/i);
       const ogImgMatch = raw.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i);
-      const bodyImgMatch = raw.match(/<img[^>]+src="(https:\/\/images\.unsplash[^"]+)"/i);
-      const image = (ogImgMatch && ogImgMatch[1]) || (bodyImgMatch && bodyImgMatch[1]) || 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80';
+      const ogUrl = ogImgMatch && ogImgMatch[1] && !ogImgMatch[1].endsWith('/logo.png') ? ogImgMatch[1] : null;
+      const image = (articleImgMatch && articleImgMatch[1]) || ogUrl || `/assets/blog/${lang}/${slug}.png`;
 
       const { categoryKey, icon } = getCategoryInfo(slug, fullTitle);
       const localizedCategory = (CATEGORY_TRANSLATIONS[lang] && CATEGORY_TRANSLATIONS[lang][categoryKey]) || categoryKey;
@@ -1661,6 +1662,22 @@ Return ONLY valid JSON matching this exact structure:
     }
   }
 
+  // Generate bespoke 1200x630 PNG hero image for English article
+  const enHeroSrc = `/assets/blog/en/${selectedTarget.slug}.png`;
+  const enOgImg = `https://www.omniconverter.co.uk${enHeroSrc}`;
+  try {
+    await generateArticleHeroImage({
+      enSlug: selectedTarget.slug,
+      localSlug: selectedTarget.slug,
+      title,
+      lang: 'en',
+      outFile: path.join('assets', 'blog', 'en', `${selectedTarget.slug}.png`)
+    });
+    console.log(`[OK] Generated bespoke EN hero image: ${enHeroSrc}`);
+  } catch (imgErr) {
+    console.warn(`[WARN] Could not generate EN hero PNG: ${imgErr.message}`);
+  }
+
   const jsonLdSchemas = [
     {
       "@context": "https://schema.org",
@@ -1670,7 +1687,7 @@ Return ONLY valid JSON matching this exact structure:
       "url": `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}`,
       "datePublished": today,
       "dateModified": today,
-      "image": [imageUrl],
+      "image": [enOgImg],
       "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
       "publisher": {
         "@type": "Organization",
@@ -1751,11 +1768,11 @@ Return ONLY valid JSON matching this exact structure:
   <meta property="og:title" content="${title} | OmniConverter">
   <meta property="og:description" content="${metaDesc}">
   <meta property="og:site_name" content="OmniConverter">
-  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta property="og:image" content="${enOgImg}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title} | OmniConverter">
   <meta name="twitter:description" content="${metaDesc}">
-  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta name="twitter:image" content="${enOgImg}">
 
   <script type="application/ld+json">
   ${JSON.stringify(jsonLdSchemas, null, 2)}
@@ -1810,7 +1827,7 @@ Return ONLY valid JSON matching this exact structure:
       <span class="formula-badge">${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
 
-      <img src="${imageUrl}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${enHeroSrc}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
     </article>
     ${crossLinksHtmlEn}
@@ -1948,6 +1965,21 @@ Return ONLY valid JSON matching this exact structure:
         }
       }
 
+      const locHeroSrc = `/assets/blog/${cfg.lang}/${cfg.data.slug}.png`;
+      const locOgImg = `https://www.omniconverter.co.uk${locHeroSrc}`;
+      try {
+        await generateArticleHeroImage({
+          enSlug: selectedTarget.slug,
+          localSlug: cfg.data.slug,
+          title: cfg.data.title,
+          lang: cfg.lang,
+          outFile: path.join('assets', 'blog', cfg.lang, `${cfg.data.slug}.png`)
+        });
+        console.log(`[OK] Generated bespoke ${cfg.lang.toUpperCase()} hero image: ${locHeroSrc}`);
+      } catch (locImgErr) {
+        console.warn(`[WARN] Could not generate ${cfg.lang} hero PNG: ${locImgErr.message}`);
+      }
+
       const langSchemas = [
         {
           "@context": "https://schema.org",
@@ -1957,7 +1989,7 @@ Return ONLY valid JSON matching this exact structure:
           "url": `https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}`,
           "datePublished": today,
           "dateModified": today,
-          "image": [imageUrl],
+          "image": [locOgImg],
           "author": { "@type": "Organization", "name": "OmniConverter Editorial Team" },
           "publisher": {
             "@type": "Organization",
@@ -2026,11 +2058,11 @@ Return ONLY valid JSON matching this exact structure:
   <meta property="og:title" content="${cfg.data.title} | OmniConverter">
   <meta property="og:description" content="${cfg.data.description}">
   <meta property="og:site_name" content="OmniConverter">
-  <meta property="og:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta property="og:image" content="${locOgImg}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${cfg.data.title} | OmniConverter">
   <meta name="twitter:description" content="${cfg.data.description}">
-  <meta name="twitter:image" content="${imageUrl || 'https://www.omniconverter.co.uk/logo.png'}">
+  <meta name="twitter:image" content="${locOgImg}">
 
   <script type="application/ld+json">
   ${JSON.stringify(langSchemas, null, 2)}
@@ -2084,7 +2116,7 @@ Return ONLY valid JSON matching this exact structure:
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">${cfg.badgePrefix} ${cfg.data.title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${cfg.data.title}</h1>
-      <img src="${imageUrl}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${locHeroSrc}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${localizedBody}
     </article>
     ${crossLinksHtmlLocalized}

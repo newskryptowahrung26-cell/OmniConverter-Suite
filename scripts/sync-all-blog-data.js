@@ -177,9 +177,10 @@ function processBlogDirectory(lang) {
       exactTimestamp = `${cleanDisplayDate}T00:00:00Z`;
     }
 
+    const articleImgMatch = raw.match(/<article[\s\S]*?<img[^>]+src="([^"]+)"/i);
     const ogImgMatch = raw.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i);
-    const bodyImgMatch = raw.match(/<img[^>]+src="(https:\/\/images\.unsplash[^"]+)"/i);
-    const image = (ogImgMatch && ogImgMatch[1]) || (bodyImgMatch && bodyImgMatch[1]) || 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80';
+    const ogUrl = ogImgMatch && ogImgMatch[1] && !ogImgMatch[1].endsWith('/logo.png') ? ogImgMatch[1] : null;
+    const image = (articleImgMatch && articleImgMatch[1]) || ogUrl || `/assets/blog/${lang}/${slug}.png`;
 
     const { categoryKey, icon } = getCategoryInfo(slug, fullTitle);
     const localizedCategory = (CATEGORY_TRANSLATIONS[lang] && CATEGORY_TRANSLATIONS[lang][categoryKey]) || categoryKey;

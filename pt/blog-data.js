@@ -11,7 +11,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1000-usd-para-gbp.png",
     "summary": "Converta 1000 USD para GBP com fórmulas exatas, cálculo mental rápido, tabelas de referência e cotação em tempo real. Veja o valor final aqui.",
     "order": 0
   },
@@ -26,7 +26,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1703868672572-44740ef2e8f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MjAwJTIwZ2JwJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkyMzc5MDUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/200-gbp-para-aud.png",
     "summary": "Converta 200 gbp para aud com 100% de precisão usando fórmulas, atalhos mentais, tabelas de referência e calculadora em tempo real.",
     "order": 1
   },
@@ -41,7 +41,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/14-usd-para-aud.png",
     "summary": "Converta 14 USD para AUD com 100% de precisão usando fórmulas, atalhos mentais, tabelas completas e calculadora instantânea. Confira a cotação!",
     "order": 2
   },
@@ -56,7 +56,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1581315679433-59bc164ac09e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTAwJTIwdXNkJTIwaW4lMjBhdXN0cmFsaWFufGVufDB8fHx8MTc5MjIwNTM0OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/100-usd-em-dolar-australiano.png",
     "summary": "Converta 100 USD em dólar australiano com precisão usando fórmulas exatas, atalhos mentais, tabelas de referência e calculadora em tempo real.",
     "order": 3
   },
@@ -71,7 +71,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1609152490680-74583ad665b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MjAlMjBnYnAlMjBhdWR8ZW58MHx8fHwxNzkyMTA5ODc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/20-gbp-para-aud.png",
     "summary": "Converta 20 GBP em AUD com precisão total. Confira a fórmula exata, atalhos de cálculo mental, tabela de conversão e conversor em tempo real.",
     "order": 4
   },
@@ -86,7 +86,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1608731433809-149763562571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MSUyMGF1ZCUyMHRvJTIwdm5kfGVufDB8fHx8MTc4OTY0NzQ5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/1-aud-para-vnd.png",
     "summary": "Guia completo para 1 AUD para VND (Dólar Australiano para Dong Vietnamita). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 5
   },
@@ -101,7 +101,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/67-usd-para-gbp.png",
     "summary": "Converta 67 usd para gbp com 100% de precisão usando fórmulas, atalhos mentais, tabelas de referência e conversor instantâneo. Veja a cotação em tempo real.",
     "order": 6
   },
@@ -116,7 +116,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📁",
-    "image": "https://images.unsplash.com/photo-1631651693480-97f1132e333d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMHBkZiUyMGZvcm18ZW58MHx8fHwxNzg5OTAxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/converter-formulario-pdf.png",
     "summary": "Guia completo para Converter Formulário PDF. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 7
   },
@@ -131,7 +131,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📁",
-    "image": "https://images.unsplash.com/photo-1596299786121-66852dfb4b61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMGZpbGUlMjB0eXBlJTIwdG8lMjBwZGZ8ZW58MHx8fHwxNzg5ODYzMzI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/converter-tipo-de-arquivo-para-pdf.png",
     "summary": "Guia completo para Converter Tipo de Arquivo para PDF. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 8
   },
@@ -146,7 +146,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1593672740624-38a34ff53d5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8MTUwJTIwdXNkJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzkxOTM3MjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/150-usd-para-aud.png",
     "summary": "Converta 150 USD para AUD com 100% de precisão usando fórmulas exatas, atalhos mentais, tabela de referência completa e conversor instantâneo.",
     "order": 9
   },
@@ -161,7 +161,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/5-libras-para-kg.png",
     "summary": "Converta 5 lbs em kg com exatidão. Descubra a fórmula matemática oficial, atalhos mentais práticos, tabela de referência e conversor instantâneo.",
     "order": 10
   },
@@ -176,7 +176,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1620914695139-9507be60a425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzBrZyUyMGluJTIwc3RvbmV8ZW58MHx8fHwxNzkxNTkxMjAxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/70kg-em-stone.png",
     "summary": "Converta 70 kg em stones com precisão usando fórmulas matemáticas passo a passo, atalhos de cálculo mental e tabelas de conversão.",
     "order": 11
   },
@@ -191,7 +191,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "/logo.png",
+    "image": "/assets/blog/pt/2000-usd-para-aud.png",
     "summary": "Converta 2000 USD para AUD com cotações de câmbio interbancárias reais, fórmulas matemáticas, taxas e calculadora em tempo real.",
     "order": 12
   },
@@ -206,7 +206,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📏",
-    "image": "https://images.unsplash.com/photo-1606120312321-d65083a14576?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NCUyMG1ldGVycyUyMHRvJTIwZmVldHxlbnwwfHx8fDE3OTE0MTgzMzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/4-metros-para-pes.png",
     "summary": "Converta 4 metros para pés com precisão usando fórmulas matemáticas, atalhos de cálculo mental, tabelas de conversão e calculadora online.",
     "order": 13
   },
@@ -221,7 +221,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1517232117795-40c9d8212a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8NXx8MjAwMCUyMHVzZCUyMHRvJTIwZ2JwfGVufDB8fHx8MTc5MTMzMjAwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/2000-usd-para-gbp.png",
     "summary": "Converta 2000 USD para GBP com precisão usando fórmulas matemáticas passo a passo, atalhos mentais, tabelas e conversor ao vivo.",
     "order": 14
   },
@@ -236,7 +236,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1500-usd-para-gbp.png",
     "summary": "Converta $1.500 dólares americanos (USD) para libras esterlinas (GBP) (~£1.185 GBP) com nossa calculadora de câmbio interativa, fórmula e tabela de conversão.",
     "order": 15
   },
@@ -251,7 +251,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/95-usd-para-gbp.png",
     "summary": "Converta $95 dólares (USD) para libras esterlinas (GBP) (~£75,05 GBP). Confira a taxa de câmbio comercial, calculadora ao vivo e tabela de referência.",
     "order": 16
   },
@@ -266,7 +266,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1670071479248-cc25dfd919a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUwMCUyMHVzZCUyMHRvJTIwYXVkfGVufDB8fHx8MTc5MTE1OTE2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/1500-usd-para-aud.png",
     "summary": "Guia completo para 1500 Dólares USD para AUD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 17
   },
@@ -281,7 +281,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1664352603314-6047584b3e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8M3x8NjUlMjBrZyUyMHBvdW5kc3xlbnwwfHx8fDE3OTEwODMxNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/65-kg-para-libras.png",
     "summary": "Guia completo para 65 Quilos para Libras. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 18
   },
@@ -296,7 +296,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1689514226761-336eaf77e311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MTY1JTIwbGJzJTIwdG8lMjBrZ3xlbnwwfHx8fDE3OTA5ODYzMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/165-libras-para-kg.png",
     "summary": "Guia completo para 165 Libras para Quilos. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 19
   },
@@ -311,7 +311,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1592899436433-8abe4656570c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTQlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc5MDg5OTk0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/14-stone-em-libras.png",
     "summary": "Guia completo para 14 Stone em Libras (lbs). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 20
   },
@@ -326,7 +326,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📏",
-    "image": "https://images.unsplash.com/photo-1600518386631-1deefa2dc398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTUlMjBtZXRlcnMlMjB0byUyMGZlZXR8ZW58MHx8fHwxNzkwODQxMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/15-metros-para-pes.png",
     "summary": "Guia completo para 15 Metros para Pés. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 21
   },
@@ -341,7 +341,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🧪",
-    "image": "https://images.unsplash.com/photo-1523621509625-54893aa665ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTYlMjBvdW5jZXMlMjB0byUyMG1pbGxpbGl0ZXJzfGVufDB8fHx8MTc5MDgxMzU3Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/16-oncas-para-mililitros.png",
     "summary": "Guia completo para 16 Onças Fluidas para Mililitros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 22
   },
@@ -356,7 +356,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1629878734837-9506604e605a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTgwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTA3MjcxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/180-libras-em-stone.png",
     "summary": "Guia completo para 180 Libras em Stone. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 23
   },
@@ -371,7 +371,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🇮🇳",
-    "image": "https://images.unsplash.com/photo-1593672715438-d88a70629abe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydCUyMGxha2glMjB0byUyMHVzZHxlbnwwfHx8fDE3OTA2NDA3Nzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/converter-lakh-para-usd.png",
     "summary": "Guia completo para Converter Lakh para USD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 24
   },
@@ -386,7 +386,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/5-usd-para-aud.png",
     "summary": "Guia completo para 5 Dólares USD para AUD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 25
   },
@@ -401,7 +401,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1570784331625-907b0c979f63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MyUyMGN1cHMlMjBpbiUyMG1sfGVufDB8fHx8MTc5MDUxMjc4OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/3-xicaras-em-ml.png",
     "summary": "Guia completo para 3 Xícaras em Mililitros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 26
   },
@@ -416,7 +416,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/moeda-jpy-para-inr.png",
     "summary": "Guia completo para Iene Japonês para Rúpia Indiana (JPY para INR). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 27
   },
@@ -431,7 +431,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1579807102908-396b3b737800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y3VycmVuY3klMjBmb3IlMjB0dXJraXNoJTIwbGlyYXxlbnwwfHx8fDE3OTAyMDkwNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/moeda-lira-turca.png",
     "summary": "Guia completo para Moeda Lira Turca (TRY). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 28
   },
@@ -446,7 +446,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📊",
-    "image": "https://images.unsplash.com/photo-1595428316411-9e9669619c4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydG9yJTIwb3IlMjBjb252ZXJ0ZXJ8ZW58MHx8fHwxNzkwMTIyNDUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/convertor-ou-converter.png",
     "summary": "Guia completo para Convertor ou Converter? Grafia Correta. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 29
   },
@@ -461,7 +461,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🌡️",
-    "image": "https://images.unsplash.com/photo-1740560516658-5a94b0b715ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTIlMjBkZWdyZWVzJTIwY2Vsc2l1cyUyMHRvJTIwZmFocmVuaGVpdHxlbnwwfHx8fDE3OTAwNTc2NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/12-graus-celsius-para-fahrenheit.png",
     "summary": "Guia completo para 12 Graus Celsius para Fahrenheit. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 30
   },
@@ -476,7 +476,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1709247389603-ba5c59e86199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTcwbGJzJTIwaW4lMjBzdG9uZXxlbnwwfHx8fDE3OTAwNzkyMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/170-libras-em-stone.png",
     "summary": "Guia completo para 170 Libras em Stone. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 31
   },
@@ -491,7 +491,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/20-libras-em-dolares-australianos.png",
     "summary": "Guia completo para 20 Libras Esterlinas em Dólares Australianos (AUD). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 32
   },
@@ -506,7 +506,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1593672755342-741a7f868732?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTk5JTIwdXNkJTIwaW4lMjBhdWR8ZW58MHx8fHwxNzg5OTkyNzc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/199-usd-em-aud.png",
     "summary": "Guia completo para 199 Dólares USD em AUD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 33
   },
@@ -521,7 +521,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1607166602071-847b7d110781?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MjAwMCUyMGRvbGxhcnMlMjBpbiUyMHBvdW5kc3xlbnwwfHx8fDE3OTAwMTQzNDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/2000-dolares-em-libras.png",
     "summary": "Guia completo para 2000 Dólares em Libras Esterlinas (GBP). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 34
   },
@@ -536,7 +536,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ODAlMjBraWxvJTIwbGJzfGVufDB8fHx8MTc4OTk0OTcwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/80-quilos-para-libras.png",
     "summary": "Guia completo para 80 Quilos para Libras. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 35
   },
@@ -551,7 +551,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1589758438368-0ad531db3366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8bWFzdGVyY2FyZCUyMGZvcmVpZ24lMjBleGNoYW5nZSUyMHJhdGV8ZW58MHx8fHwxNzg5OTcxMzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/taxa-de-cambio-mastercard.png",
     "summary": "Guia completo para Taxas de Câmbio e Tarifas Mastercard. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 36
   },
@@ -566,7 +566,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1703319953489-996cf05b6958?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTAlMjBiaWxsaW9uJTIwd29uJTIwdG8lMjBnYnB8ZW58MHx8fHwxNzg5ODg0NzkwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/10-bilhoes-de-won-para-gbp.png",
     "summary": "Guia completo para 10 Bilhões de Won para Libras (GBP). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 37
   },
@@ -581,7 +581,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1703437874457-560d410f82fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzIlMjB1c2QlMjB0byUyMGdicHxlbnwwfHx8fDE3ODk5Mjc5MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/32-usd-para-gbp.png",
     "summary": "Guia completo para 32 Dólares USD para Libras (GBP). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 38
   },
@@ -596,7 +596,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1648201637025-1c77b9be3013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8d2Vla3MlMjBjYWxjdWxhdG9yfGVufDB8fHx8MTc4OTkwNjM3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/calculadora-de-semanas.png",
     "summary": "Guia completo para Calculadora de Semanas e Dias. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 39
   },
@@ -611,7 +611,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aW5kb25lc2lhJTIwY3V8ZW58MHx8fHwxNzg5NjkwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/guia-moeda-indonesia.png",
     "summary": "Guia completo para Guia da Moeda da Indonésia (Rúpia IDR). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 40
   },
@@ -626,7 +626,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1646829873498-e874cfa27933?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8MTMlMjBzdG9uZSUyMGluJTIwcG91bmRzfGVufDB8fHx8MTc4OTg0MTQ5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/13-stone-em-libras.png",
     "summary": "Guia completo para 13 Stone em Libras (lbs). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 41
   },
@@ -641,7 +641,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1559724087-a45f6a7a35d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8NzElMjBwb3VuZHMlMjB0byUyMGtnfGVufDB8fHx8MTc4OTc3Njg2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/71-libras-para-kg.png",
     "summary": "Guia completo para 71 Libras para Quilos. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 42
   },
@@ -656,7 +656,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📁",
-    "image": "https://images.unsplash.com/photo-1569235186275-626cb53b83ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8ZmlsZSUyMGNoYW5nZXJ8ZW58MHx8fHwxNzg5ODE5OTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/modificador-de-arquivos.png",
     "summary": "Guia completo para Modificador de Formato de Arquivos. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 43
   },
@@ -671,7 +671,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1619149808494-d9a0a7eba166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8cnVwaWFoJTIwdG8lMjBhdWR8ZW58MHx8fHwxNzg5Nzk4Mzk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/rupia-para-aud.png",
     "summary": "Guia completo para Rúpia Indonésia para AUD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 44
   },
@@ -686,7 +686,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1703925153970-0e2e3a899e66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8Mnx8MzAwJTIwZG9sbGFycyUyMGluJTIwZ2JwfGVufDB8fHx8MTc4OTcxMzUyOHww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/300-dolares-em-gbp.png",
     "summary": "Guia completo para 300 Dólares em Libras (GBP). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 45
   },
@@ -701,7 +701,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📊",
-    "image": "https://images.unsplash.com/photo-1663124178703-d2d6a333e6c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8Y29udmVydGVyJTIwYXBwbGljYXRpb24lMjBkb3dubG9hZHxlbnwwfHx8fDE3ODk3NTUxMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/baixar-aplicativo-conversor.png",
     "summary": "Guia completo para Baixar Aplicativo de Conversão. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 46
   },
@@ -716,7 +716,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/won-sul-coreano-para-aud.png",
     "summary": "Guia completo para Won Sul-Coreano para Dólares Australianos (AUD). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 47
   },
@@ -731,7 +731,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-bilhao-de-won-para-gbp.png",
     "summary": "Guia completo para 1 Bilhão de Won para Libras (GBP). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 48
   },
@@ -746,7 +746,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "📁",
-    "image": "https://images.unsplash.com/photo-1699275303864-67b6e1e11706?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8MXx8aG93JTIwdG8lMjBjaGFuZ2UlMjBmaWxlJTIwZm9ybWF0fGVufDB8fHx8MTc4OTY2ODc5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    "image": "/assets/blog/pt/como-mudar-formato-de-arquivo.png",
     "summary": "Guia completo para Como Mudar o Formato de um Arquivo. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 49
   },
@@ -761,7 +761,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-colher-de-cha-em-ml.png",
     "summary": "Guia completo para 1 Colher de Chá em Mililitros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 50
   },
@@ -776,7 +776,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🧪",
-    "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-galao-em-litros.png",
     "summary": "Guia completo para 1 Galão em Litros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 51
   },
@@ -791,7 +791,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-stone-em-kg.png",
     "summary": "Guia completo para 1 Stone em Quilos. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 52
   },
@@ -806,7 +806,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🌡️",
-    "image": "https://images.unsplash.com/photo-1516431883659-655d41c09bf9?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/10-celsius-para-fahrenheit.png",
     "summary": "Guia completo para 10 Graus Celsius para Fahrenheit. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 53
   },
@@ -821,7 +821,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚖️",
-    "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/100-kg-para-libras.png",
     "summary": "Guia completo para 100 Quilos para Libras (lbs). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 54
   },
@@ -836,7 +836,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🌡️",
-    "image": "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/50-fahrenheit-para-celsius.png",
     "summary": "Guia completo para 50 Graus Fahrenheit para Celsius. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 55
   },
@@ -851,7 +851,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/500-ml-para-xicaras.png",
     "summary": "Guia completo para 500 Mililitros para Xícaras. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 56
   },
@@ -866,7 +866,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "⚡",
-    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/60-mph-para-kmh.png",
     "summary": "Guia completo para 60 MPH para KM/H. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 57
   },
@@ -881,7 +881,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1588467850695-a898367ce465?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-3-xicara-em-gramas.png",
     "summary": "Guia completo para 1/3 de Xícara em Gramas. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 58
   },
@@ -896,7 +896,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-4-xicara-em-ml.png",
     "summary": "Guia completo para 1/4 de Xícara em Mililitros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 59
   },
@@ -911,7 +911,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🧪",
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-bar-para-psi.png",
     "summary": "Guia completo para 1 Bar para PSI (Conversão de Pressão). Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 60
   },
@@ -926,7 +926,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🍳",
-    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/1-xicara-de-leite-em-ml.png",
     "summary": "Guia completo para 1 Xícara de Leite em Mililitros. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 61
   },
@@ -941,7 +941,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "🌡️",
-    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/100-fahrenheit-para-celsius.png",
     "summary": "Guia completo para 100 Graus Fahrenheit para Celsius. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 62
   },
@@ -956,7 +956,7 @@ const BLOG_POSTS = [
     "author": "Equipe Editorial OmniConverter",
     "readTime": "4 min de leitura",
     "icon": "💱",
-    "image": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1200&q=80",
+    "image": "/assets/blog/pt/100-usd-para-aud.png",
     "summary": "Guia completo para 100 Dólares USD para AUD. Fórmulas matemáticas certificadas, tabelas de referência e conversor online.",
     "order": 63
   }
