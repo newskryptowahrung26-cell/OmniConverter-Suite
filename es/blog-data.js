@@ -1,5 +1,20 @@
-// Datos sincronizados del blog en Español (Total: 65 artículos)
+// Datos sincronizados del blog en Español (Total: 66 artículos)
 const BLOG_POSTS = [
+  {
+    "id": "200-usd-a-aud",
+    "slug": "/es/blog/200-usd-a-aud",
+    "title": "200 USD a AUD: Fórmula Exacta y Conversor en Vivo",
+    "date": "2026-10-23",
+    "publicationDate": "2026-10-23T00:00:00Z",
+    "category": "Divisas y Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "Equipo Editorial OmniConverter",
+    "readTime": "4 min de lectura",
+    "icon": "💱",
+    "image": "/assets/blog/es/200-usd-a-aud.png",
+    "summary": "Convierte 200 USD a AUD con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
+    "order": 0
+  },
   {
     "id": "210-kg-a-libras",
     "slug": "/es/blog/210-kg-a-libras",
@@ -13,7 +28,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/210-kg-a-libras.png",
     "summary": "Convierte 210 kg a libras con fórmula exacta, trucos mentales, tablas de referencia y una calculadora interactiva instantánea. ¡Descúbrelo!",
-    "order": 0
+    "order": 1
   },
   {
     "id": "300-metros-a-pies",
@@ -28,7 +43,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/300-metros-a-pies.png",
     "summary": "Convierte 300 metros a pies con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
-    "order": 1
+    "order": 2
   },
   {
     "id": "1000-usd-a-gbp",
@@ -43,7 +58,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1000-usd-a-gbp.png?v=2",
     "summary": "Convierte 1000 USD a GBP con fórmulas exactas, cálculo mental rápido, tablas de referencia y nuestra calculadora de cambio de divisas en tiempo real.",
-    "order": 2
+    "order": 3
   },
   {
     "id": "200-gbp-a-aud",
@@ -58,7 +73,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/200-gbp-a-aud.png?v=2",
     "summary": "Convierte 200 GBP a AUD con total precisión. Incluye fórmula exacta, atajo de cálculo mental, tabla de equivalencias y calculadora en vivo.",
-    "order": 3
+    "order": 4
   },
   {
     "id": "14-usd-a-aud",
@@ -73,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/14-usd-a-aud.png?v=2",
     "summary": "Convierte 14 usd a aud con 100% de precisión usando fórmulas matemáticas, atajos mentales, tablas de referencia y calculadora en tiempo real.",
-    "order": 4
+    "order": 5
   },
   {
     "id": "100-usd-a-aud",
@@ -88,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/100-usd-a-aud.png?v=2",
     "summary": "Convierte 100 USD a dólares australianos (AUD) con total precisión. Descubre la fórmula matemática, atajos mentales y calculadora en vivo.",
-    "order": 5
+    "order": 6
   },
   {
     "id": "20-gbp-a-aud",
@@ -103,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/20-gbp-a-aud.png?v=2",
     "summary": "Convierte 20 gbp a aud con 100% de precisión usando fórmulas matemáticas, atajos de cálculo mental, tablas de referencia y calculadora en vivo.",
-    "order": 6
+    "order": 7
   },
   {
     "id": "1-aud-a-vnd",
@@ -118,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1-aud-a-vnd.png?v=2",
     "summary": "Guía oficial para 1 AUD a VND (Dólar Australiano a Dong Vietnamita). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 7
+    "order": 8
   },
   {
     "id": "67-usd-a-gbp",
@@ -133,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/67-usd-a-gbp.png?v=2",
     "summary": "Convierte 67 usd a gbp con total precisión usando fórmulas, calculadora en vivo y tablas de referencia actualizadas. ¡Evita comisiones ocultas!",
-    "order": 8
+    "order": 9
   },
   {
     "id": "convertir-formulario-pdf",
@@ -148,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/convertir-formulario-pdf.png?v=2",
     "summary": "Guía oficial para Convertir Formulario PDF. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 9
+    "order": 10
   },
   {
     "id": "convertir-tipo-de-archivo-a-pdf",
@@ -163,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/convertir-tipo-de-archivo-a-pdf.png?v=2",
     "summary": "Guía oficial para Convertir Tipo de Archivo a PDF. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 10
+    "order": 11
   },
   {
     "id": "150-usd-a-aud",
@@ -178,7 +193,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/150-usd-a-aud.png?v=2",
     "summary": "Convierte 150 usd a aud con 100% de precisión usando fórmulas matemáticas, atajos mentales, tablas de referencia y calculadora en tiempo real.",
-    "order": 11
+    "order": 12
   },
   {
     "id": "5-libras-a-kg",
@@ -193,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/5-libras-a-kg.png?v=2",
     "summary": "Convierte 5 lbs a kg con precisión usando fórmulas matemáticas exactas, atajos mentales, tablas de referencia y calculadora en línea.",
-    "order": 12
+    "order": 13
   },
   {
     "id": "70kg-en-stone",
@@ -208,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/70kg-en-stone.png?v=2",
     "summary": "Convierte 70 kg a stones con precisión: fórmulas paso a paso, atajos de cálculo mental, tablas de conversión completas y ejemplos prácticos.",
-    "order": 13
+    "order": 14
   },
   {
     "id": "2000-usd-a-aud",
@@ -223,7 +238,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-usd-a-aud.png?v=2",
     "summary": "Convierte 2000 USD a AUD con tipos de cambio reales interbancarios, fórmulas matemáticas, tablas de conversión y calculadora en vivo.",
-    "order": 14
+    "order": 15
   },
   {
     "id": "4-metros-a-pies",
@@ -238,7 +253,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/4-metros-a-pies.png?v=2",
     "summary": "4 metros equivalen exactamente a 13.1234 pies (13 pies y 1.48 pulgadas). Consulte la fórmula paso a paso, calculadora interactiva y tabla de conversión de metros a pies.",
-    "order": 15
+    "order": 16
   },
   {
     "id": "2000-usd-a-gbp",
@@ -253,7 +268,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-usd-a-gbp.png?v=2",
     "summary": "Convierte 2000 USD a GBP con precisión usando fórmulas matemáticas, atajos mentales, tablas de conversión y calculadora en vivo.",
-    "order": 16
+    "order": 17
   },
   {
     "id": "1500-usd-a-gbp",
@@ -268,7 +283,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-usd-a-gbp.png?v=2",
     "summary": "Convierta $1,500 dólares estadounidenses (USD) a libras esterlinas (GBP) (~£1,185 GBP) con nuestra calculadora de divisas, fórmula y tabla de referencia.",
-    "order": 17
+    "order": 18
   },
   {
     "id": "95-usd-a-gbp",
@@ -283,7 +298,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/95-usd-a-gbp.png?v=2",
     "summary": "Convierta $95 dólares (USD) a libras esterlinas (GBP) (~£75.05 GBP). Incluye calculadora interactiva de tipo de cambio, comisiones de tarjeta y tabla de referencia.",
-    "order": 18
+    "order": 19
   },
   {
     "id": "1500-usd-a-aud",
@@ -298,7 +313,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-usd-a-aud.png?v=2",
     "summary": "Guía oficial para 1500 Dólares USD a AUD. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 19
+    "order": 20
   },
   {
     "id": "65-kg-a-libras",
@@ -313,7 +328,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/65-kg-a-libras.png?v=2",
     "summary": "¿Cuánto es 65 kg a libras? 65 kilogramos equivalen exactamente a 143.3 libras (143.3005 lbs). Descubre la fórmula, tabla de peso corporal y calculadora instantánea.",
-    "order": 20
+    "order": 21
   },
   {
     "id": "165-libras-a-kg",
@@ -328,7 +343,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/165-libras-a-kg.png?v=2",
     "summary": "Guía oficial para 165 Libras a Kilogramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 21
+    "order": 22
   },
   {
     "id": "14-stone-en-libras",
@@ -343,7 +358,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/14-stone-en-libras.png?v=2",
     "summary": "Guía oficial para 14 Stone en Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 22
+    "order": 23
   },
   {
     "id": "15-metros-a-pies",
@@ -358,7 +373,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/15-metros-a-pies.png?v=2",
     "summary": "Guía oficial para 15 Metros a Pies. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 23
+    "order": 24
   },
   {
     "id": "16-onzas-a-mililitros",
@@ -373,7 +388,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/16-onzas-a-mililitros.png?v=2",
     "summary": "Guía oficial para 16 Onzas Líquidas a Mililitros. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 24
+    "order": 25
   },
   {
     "id": "180-libras-en-stone",
@@ -388,7 +403,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/180-libras-en-stone.png?v=2",
     "summary": "Guía oficial para 180 Libras en Stone. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 25
+    "order": 26
   },
   {
     "id": "convertir-lakh-a-usd",
@@ -403,7 +418,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "/assets/blog/es/convertir-lakh-a-usd.png?v=2",
     "summary": "Guía oficial para Convertir Lakh a Dólares USD. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 26
+    "order": 27
   },
   {
     "id": "5-usd-a-aud",
@@ -418,7 +433,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/5-usd-a-aud.png?v=2",
     "summary": "Guía oficial para 5 Dólares USD a AUD. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 27
+    "order": 28
   },
   {
     "id": "3-tazas-en-ml",
@@ -433,7 +448,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/3-tazas-en-ml.png?v=2",
     "summary": "Guía oficial para 3 Tazas en Mililitros. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 28
+    "order": 29
   },
   {
     "id": "divisa-jpy-a-inr",
@@ -448,7 +463,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/divisa-jpy-a-inr.png?v=2",
     "summary": "Guía oficial para Yen Japonés a Rupia India (JPY a INR). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 29
+    "order": 30
   },
   {
     "id": "moneda-lira-turca",
@@ -463,7 +478,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/moneda-lira-turca.png?v=2",
     "summary": "Guía oficial para Moneda de Turquía: Lira Turca (TRY). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 30
+    "order": 31
   },
   {
     "id": "convertor-o-converter",
@@ -478,7 +493,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/convertor-o-converter.png?v=2",
     "summary": "Guía oficial para ¿Convertor o Converter? Ortografía Correcta. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 31
+    "order": 32
   },
   {
     "id": "12-grados-celsius-a-fahrenheit",
@@ -493,7 +508,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/12-grados-celsius-a-fahrenheit.png?v=2",
     "summary": "Guía oficial para 12 Grados Celsius a Fahrenheit. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 32
+    "order": 33
   },
   {
     "id": "170-libras-en-stone",
@@ -508,7 +523,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/170-libras-en-stone.png?v=2",
     "summary": "Guía oficial para 170 Libras en Stone. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 33
+    "order": 34
   },
   {
     "id": "20-libras-en-dolares-australianos",
@@ -523,7 +538,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/20-libras-en-dolares-australianos.png?v=2",
     "summary": "Guía oficial para 20 Libras Esterlinas en Dólares Australianos (AUD). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 34
+    "order": 35
   },
   {
     "id": "199-usd-en-aud",
@@ -538,7 +553,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/199-usd-en-aud.png?v=2",
     "summary": "Guía oficial para 199 Dólares USD en AUD. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 35
+    "order": 36
   },
   {
     "id": "2000-dolares-en-libras",
@@ -553,7 +568,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-dolares-en-libras.png?v=2",
     "summary": "Guía oficial para 2000 Dólares en Libras Esterlinas (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 36
+    "order": 37
   },
   {
     "id": "80-kilos-a-libras",
@@ -568,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/80-kilos-a-libras.png?v=2",
     "summary": "Guía oficial para 80 Kilos a Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "tasa-de-cambio-mastercard",
@@ -583,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/tasa-de-cambio-mastercard.png?v=2",
     "summary": "Guía oficial para Tipos de Cambio y Comisiones Mastercard. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "10-mil-millones-won-a-gbp",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/10-mil-millones-won-a-gbp.png?v=2",
     "summary": "Guía oficial para 10 Mil Millones de Won a Libras (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "32-usd-a-gbp",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/32-usd-a-gbp.png?v=2",
     "summary": "Guía oficial para 32 Dólares USD a Libras (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "calculadora-de-semanas",
@@ -628,7 +643,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/calculadora-de-semanas.png?v=2",
     "summary": "Guía oficial para Calculadora de Semanas y Días. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "guia-moneda-indonesia",
@@ -643,7 +658,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/guia-moneda-indonesia.png?v=2",
     "summary": "Guía oficial para Guía de la Moneda de Indonesia (Rupia IDR). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 42
+    "order": 43
   },
   {
     "id": "13-stone-en-libras",
@@ -658,7 +673,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/13-stone-en-libras.png?v=2",
     "summary": "Guía oficial para 13 Stone en Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 43
+    "order": 44
   },
   {
     "id": "71-libras-a-kg",
@@ -673,7 +688,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/71-libras-a-kg.png?v=2",
     "summary": "Guía oficial para 71 Libras a Kilogramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 44
+    "order": 45
   },
   {
     "id": "cambiador-de-archivos",
@@ -688,7 +703,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/cambiador-de-archivos.png?v=2",
     "summary": "Guía oficial para Cambiador de Formato de Archivos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 45
+    "order": 46
   },
   {
     "id": "rupia-indonesia-a-aud",
@@ -703,7 +718,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/rupia-indonesia-a-aud.png?v=2",
     "summary": "Guía oficial para Rupia Indonesia a Dólar Australiano (IDR a AUD). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 46
+    "order": 47
   },
   {
     "id": "300-dolares-en-gbp",
@@ -718,7 +733,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/300-dolares-en-gbp.png?v=2",
     "summary": "Guía oficial para 300 Dólares en Libras Esterlinas (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 47
+    "order": 48
   },
   {
     "id": "descargar-aplicacion-convertidor",
@@ -733,7 +748,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/descargar-aplicacion-convertidor.png?v=2",
     "summary": "Guía oficial para Descargar Aplicación de Conversión. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 48
+    "order": 49
   },
   {
     "id": "won-coreano-a-aud",
@@ -748,7 +763,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/won-coreano-a-aud.png?v=2",
     "summary": "Guía oficial para Won Surcoreano a Dólares Australianos (AUD). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 49
+    "order": 50
   },
   {
     "id": "1-mil-millones-won-a-gbp",
@@ -763,7 +778,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1-mil-millones-won-a-gbp.png?v=2",
     "summary": "Guía oficial para 1 Mil Millones de Won a Libras Esterlinas (GBP). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 50
+    "order": 51
   },
   {
     "id": "como-cambiar-formato-de-archivo",
@@ -778,7 +793,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/como-cambiar-formato-de-archivo.png?v=2",
     "summary": "Guía oficial para Cómo Cambiar el Formato de un Archivo. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 51
+    "order": 52
   },
   {
     "id": "1-cucharadita-en-ml",
@@ -793,7 +808,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-cucharadita-en-ml.png?v=2",
     "summary": "Guía oficial para 1 Cucharadita en Mililitros (TSP a mL). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 52
+    "order": 53
   },
   {
     "id": "1-galon-en-litros",
@@ -808,7 +823,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/1-galon-en-litros.png?v=2",
     "summary": "Guía oficial para 1 Galón en Litros. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 53
+    "order": 54
   },
   {
     "id": "1-stone-en-kg",
@@ -823,7 +838,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/1-stone-en-kg.png?v=2",
     "summary": "Guía oficial para 1 Stone en Kilogramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 54
+    "order": 55
   },
   {
     "id": "10-celsius-a-fahrenheit",
@@ -838,7 +853,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/10-celsius-a-fahrenheit.png?v=2",
     "summary": "Guía oficial para 10 Grados Celsius a Fahrenheit. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 55
+    "order": 56
   },
   {
     "id": "100-kg-a-libras",
@@ -853,7 +868,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/100-kg-a-libras.png?v=2",
     "summary": "Guía oficial para 100 Kilogramos a Libras. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 56
+    "order": 57
   },
   {
     "id": "50-fahrenheit-a-celsius",
@@ -868,7 +883,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/50-fahrenheit-a-celsius.png?v=2",
     "summary": "Guía oficial para 50 Grados Fahrenheit a Celsius. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 57
+    "order": 58
   },
   {
     "id": "500-ml-a-tazas",
@@ -883,7 +898,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/500-ml-a-tazas.png?v=2",
     "summary": "Guía oficial para 500 Mililitros a Tazas. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 58
+    "order": 59
   },
   {
     "id": "60-mph-a-kmh",
@@ -898,7 +913,7 @@ const BLOG_POSTS = [
     "icon": "⚡",
     "image": "/assets/blog/es/60-mph-a-kmh.png?v=2",
     "summary": "Guía oficial para 60 MPH a KM/H. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 59
+    "order": 60
   },
   {
     "id": "1-3-taza-a-gramos",
@@ -913,7 +928,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-3-taza-a-gramos.png?v=2",
     "summary": "Guía oficial para 1/3 de Taza a Gramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 60
+    "order": 61
   },
   {
     "id": "1-4-taza-en-ml",
@@ -928,7 +943,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-4-taza-en-ml.png?v=2",
     "summary": "Guía oficial para 1/4 de Taza en Mililitros. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 61
+    "order": 62
   },
   {
     "id": "1-bar-a-psi",
@@ -943,7 +958,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/1-bar-a-psi.png?v=2",
     "summary": "Guía oficial para 1 Bar a PSI (Conversión de Presión). Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 62
+    "order": 63
   },
   {
     "id": "1-taza-de-leche-en-ml",
@@ -958,7 +973,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-taza-de-leche-en-ml.png?v=2",
     "summary": "Guía oficial para 1 Taza de Leche en Mililitros. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 63
+    "order": 64
   },
   {
     "id": "100-fahrenheit-a-celsius",
@@ -973,7 +988,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/100-fahrenheit-a-celsius.png?v=2",
     "summary": "Guía oficial para 100 Grados Fahrenheit a Celsius. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "order": 64
+    "order": 65
   }
 ];
 
