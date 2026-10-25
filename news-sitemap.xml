@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/2000-pounds-in-american-money</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-25</news:publication_date>
+      <news:title>2000 Pounds in American Money: Formula &amp; Calculator</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/22kg-in-stone</loc>
     <news:news>
       <news:publication>
@@ -10,17 +21,6 @@
       </news:publication>
       <news:publication_date>2026-10-24</news:publication_date>
       <news:title>22kg in Stone: Exact Formula &amp; Live Calculator</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/200-usd-to-aud</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-23</news:publication_date>
-      <news:title>200 USD to AUD: Exact Formula &amp; Live Calculator</news:title>
     </news:news>
   </url>
 </urlset>

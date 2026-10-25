@@ -349,6 +349,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/2000-pounds-in-american-money</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/2000-usd-to-aud</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -855,6 +861,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/es/blog/2000-dolares-en-libras</loc>
     <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/es/blog/2000-libras-a-dolares</loc>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1369,6 +1381,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/2000-pfund-in-us-dollar</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/de/blog/2000-usd-in-aud</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -1875,6 +1893,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/pt/blog/2000-dolares-em-libras</loc>
     <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/pt/blog/2000-libras-em-dinheiro-americano</loc>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
