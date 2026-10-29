@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (79 Articles)
+## Published Articles & Guides Directory (80 Articles)
+- [1500 Pounds to AUD Dollars: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1500-pounds-to-aud-dollars): Convert 1500 Pounds to AUD Dollars with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [85 kg Pounds: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/85-kg-pounds): Convert 85 kg Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [199 Dollars in Pounds: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/199-dollars-in-pounds): Convert 199 Dollars in Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [10 EUR to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/10-eur-to-aud): Convert 10 EUR to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
