@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (81 Articles)
+## Published Articles & Guides Directory (82 Articles)
+- [67 F Is What C: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/67-f-is-what-c): Convert 67 F Is What C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [81kg in Stone: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/81kg-in-stone): Convert 81kg in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [1500 Pounds to AUD Dollars: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1500-pounds-to-aud-dollars): Convert 1500 Pounds to AUD Dollars with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [85 kg Pounds: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/85-kg-pounds): Convert 85 kg Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.

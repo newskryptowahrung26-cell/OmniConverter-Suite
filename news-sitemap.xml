@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/67-f-is-what-c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>OmniConverter</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31</news:publication_date>
+      <news:title>67 F Is What C: Exact Formula &amp; Live Calculator</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/81kg-in-stone</loc>
     <news:news>
       <news:publication>
@@ -10,17 +21,6 @@
       </news:publication>
       <news:publication_date>2026-10-30</news:publication_date>
       <news:title>81kg in Stone: Exact Formula &amp; Live Calculator</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.omniconverter.co.uk/blog/1500-pounds-to-aud-dollars</loc>
-    <news:news>
-      <news:publication>
-        <news:name>OmniConverter</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-29</news:publication_date>
-      <news:title>1500 Pounds to AUD Dollars: Exact Formula &amp; Live Calculator</news:title>
     </news:news>
   </url>
 </urlset>
