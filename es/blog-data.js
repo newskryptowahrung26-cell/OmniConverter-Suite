@@ -1,5 +1,20 @@
-// Datos sincronizados del blog en Español (Total: 75 artículos)
+// Datos sincronizados del blog en Español (Total: 76 artículos)
 const BLOG_POSTS = [
+  {
+    "id": "4-usd-a-aud",
+    "slug": "/es/blog/4-usd-a-aud",
+    "title": "4 USD a AUD: Fórmula Exacta y Calculadora",
+    "date": "2026-11-02",
+    "publicationDate": "2026-11-02T00:00:00Z",
+    "category": "Divisas y Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "Equipo Editorial OmniConverter",
+    "readTime": "4 min de lectura",
+    "icon": "💱",
+    "image": "/assets/blog/es/4-usd-a-aud.png",
+    "summary": "Convierte 4 USD a AUD con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
+    "order": 0
+  },
   {
     "id": "260-libras-a-stones",
     "slug": "/es/blog/260-libras-a-stones",
@@ -13,7 +28,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/260-libras-a-stones.png",
     "summary": "Convierte 260 libras en stones con fórmula exacta, trucos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
-    "order": 0
+    "order": 1
   },
   {
     "id": "67-f-a-c",
@@ -28,7 +43,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/67-f-a-c.png",
     "summary": "Descubre cuánto es 67 °F en °C. Aprende la fórmula exacta, trucos de cálculo mental, tabla comparativa y usa nuestra calculadora al instante.",
-    "order": 1
+    "order": 2
   },
   {
     "id": "81-kg-a-stone",
@@ -43,7 +58,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/81-kg-a-stone.png",
     "summary": "Descubre cuánto es 81 kg en stone con la fórmula matemática exacta, cálculo mental rápido, tabla de referencia y desglose en piedras y libras.",
-    "order": 2
+    "order": 3
   },
   {
     "id": "1500-libras-a-dolares-aud",
@@ -58,7 +73,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-libras-a-dolares-aud.png",
     "summary": "Convierte 1500 libras a dólares australianos (AUD) al tipo de cambio exacto. Fórmula, atajos mentales, tablas y calculadora interactiva.",
-    "order": 3
+    "order": 4
   },
   {
     "id": "85-kg-a-libras",
@@ -73,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/85-kg-a-libras.png",
     "summary": "Convierte 85 kg a libras con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
-    "order": 4
+    "order": 5
   },
   {
     "id": "199-dolares-en-libras",
@@ -88,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/199-dolares-en-libras.png",
     "summary": "Convierte 199 dólares en libras con fórmulas exactas, atajos mentales, tablas de referencia y una calculadora interactiva en tiempo real.",
-    "order": 5
+    "order": 6
   },
   {
     "id": "10-eur-a-aud",
@@ -103,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/10-eur-a-aud.png",
     "summary": "Convierte 10 EUR a AUD con fórmulas exactas, atajos mentales, tablas de referencia y una calculadora interactiva en tiempo real hoy mismo.",
-    "order": 6
+    "order": 7
   },
   {
     "id": "2000-libras-a-dolares",
@@ -118,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-libras-a-dolares.png",
     "summary": "Convierte 2000 libras esterlinas a dólares estadounidenses con la fórmula exacta, cálculo mental rápido y tablas de conversión actualizadas.",
-    "order": 7
+    "order": 8
   },
   {
     "id": "22-kg-a-stone",
@@ -133,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/22-kg-a-stone.png",
     "summary": "Convierte 22 kg a stone con la fórmula exacta, cálculo mental rápido, tablas completas de equivalencias y ejemplos prácticos del mundo real.",
-    "order": 8
+    "order": 9
   },
   {
     "id": "200-usd-a-aud",
@@ -148,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/200-usd-a-aud.png",
     "summary": "Convierte 200 USD a AUD con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
-    "order": 9
+    "order": 10
   },
   {
     "id": "210-kg-a-libras",
@@ -163,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/210-kg-a-libras.png",
     "summary": "Convierte 210 kg a libras con fórmula exacta, trucos mentales, tablas de referencia y una calculadora interactiva instantánea. ¡Descúbrelo!",
-    "order": 10
+    "order": 11
   },
   {
     "id": "300-metros-a-pies",
@@ -178,7 +193,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/300-metros-a-pies.png",
     "summary": "Convierte 300 metros a pies con fórmulas exactas, atajos mentales, tablas de referencia completas y una calculadora interactiva instantánea.",
-    "order": 11
+    "order": 12
   },
   {
     "id": "1000-usd-a-gbp",
@@ -193,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1000-usd-a-gbp.png?v=2",
     "summary": "Convierte 1000 USD a GBP con fórmulas exactas, cálculo mental rápido, tablas de referencia y nuestra calculadora de cambio de divisas en tiempo real.",
-    "order": 12
+    "order": 13
   },
   {
     "id": "200-gbp-a-aud",
@@ -208,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/200-gbp-a-aud.png?v=2",
     "summary": "Convierte 200 GBP a AUD con total precisión. Incluye fórmula exacta, atajo de cálculo mental, tabla de equivalencias y calculadora en vivo.",
-    "order": 13
+    "order": 14
   },
   {
     "id": "14-usd-a-aud",
@@ -223,21 +238,6 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/14-usd-a-aud.png?v=2",
     "summary": "Convierte 14 usd a aud con 100% de precisión usando fórmulas matemáticas, atajos mentales, tablas de referencia y calculadora en tiempo real.",
-    "order": 14
-  },
-  {
-    "id": "100-usd-a-aud",
-    "slug": "/es/blog/100-usd-a-aud",
-    "title": "100 USD a AUD: Fórmula Exacta y Conversor en Vivo",
-    "date": "2026-10-17",
-    "publicationDate": "2026-10-17T00:00:00Z",
-    "category": "Divisas y Forex",
-    "categoryKey": "Currency & Forex",
-    "author": "Equipo Editorial OmniConverter",
-    "readTime": "4 min de lectura",
-    "icon": "💱",
-    "image": "/assets/blog/es/100-usd-a-aud.png?v=2",
-    "summary": "Convierte 100 USD a dólares australianos (AUD) con total precisión. Descubre la fórmula matemática, atajos mentales y calculadora en vivo.",
     "order": 15
   },
   {
@@ -1124,6 +1124,21 @@ const BLOG_POSTS = [
     "image": "/assets/blog/es/100-fahrenheit-a-celsius.png?v=2",
     "summary": "Guía oficial para 100 Grados Fahrenheit a Celsius. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
     "order": 74
+  },
+  {
+    "id": "100-usd-a-aud",
+    "slug": "/es/blog/100-usd-a-aud",
+    "title": "100 USD a AUD: Fórmula Exacta y Conversor en Vivo",
+    "date": "2026-09-15",
+    "publicationDate": "2026-09-15T00:00:00Z",
+    "category": "Divisas y Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "Equipo Editorial OmniConverter",
+    "readTime": "4 min de lectura",
+    "icon": "💱",
+    "image": "/assets/blog/es/100-usd-a-aud.png?v=2",
+    "summary": "Convierte 100 USD a dólares australianos (AUD) con total precisión. Descubre la fórmula matemática, atajos mentales y calculadora en vivo.",
+    "order": 75
   }
 ];
 

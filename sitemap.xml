@@ -439,6 +439,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/4-usd-to-aud</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/5-lbs-in-kg</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1003,6 +1009,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/es/blog/4-usd-a-aud</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/es/blog/5-libras-a-kg</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1561,6 +1573,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/4-usd-in-aud</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/de/blog/5-pfund-in-kg</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -2115,6 +2133,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/pt/blog/4-metros-para-pes</loc>
     <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/pt/blog/4-usd-para-aud</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
