@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (86 Articles)
+## Published Articles & Guides Directory (87 Articles)
+- [1 Ounce to Grams: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1-ounce-to-grams): Convert 1 Ounce to Grams with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [4 USD to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/4-usd-to-aud): Convert 4 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [260lbs in Stone: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/260lbs-in-stone): Convert 260lbs in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [67 F Is What C: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/67-f-is-what-c): Convert 67 F Is What C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
