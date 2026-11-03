@@ -34,60 +34,7 @@
   <link rel="stylesheet" href="/styles.css">
 
   <!-- Schema.org BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.omniconverter.co.uk/es/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://www.omniconverter.co.uk/es/blog"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "1/3 de Taza a Gramos",
-        "item": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos"
-      }
-    ]
-  }
-  </script>
-
   <!-- Schema.org Article -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "1/3 de Taza a Gramos",
-    "description": "Guía oficial para 1/3 de Taza a Gramos. Fórmulas matemáticas certificadas, tablas de cálculo rápido y convertidor en línea.",
-    "inLanguage": "es",
-    "url": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos",
-    "image": "https://www.omniconverter.co.uk/assets/blog/es/1-3-taza-a-gramos.png?v=2",
-    "datePublished": "2026-09-15",
-    "dateModified": "2026-09-15",
-    "author": {
-      "@type": "Organization",
-      "name": "Equipo Editorial OmniConverter"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "OmniConverter",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.omniconverter.co.uk/logo.png"
-      }
-    }
-  }
-  </script>
-
   <!-- OpenGraph & Social Cards -->
   <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="article">
@@ -111,38 +58,69 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#4f46e5">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Cuántos gramos es 1/3 de taza?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Depende del ingrediente. 1/3 taza de harina = 80g. Azúcar = 67g. Agua = 80ml/80g. Mantequilla = 76g."
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.omniconverter.co.uk/#organization",
+        "name": "OmniConverter",
+        "alternateName": "Omni Converter",
+        "url": "https://www.omniconverter.co.uk/",
+        "logo": { "@type": "ImageObject", "url": "https://www.omniconverter.co.uk/logo.png", "width": 512, "height": 512 },
+        "description": "Free online unit, currency, time zone and browser-based file converters.",
+        "sameAs": ["https://github.com/newskryptowahrung26-cell/OmniConverter-Suite"],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://www.omniconverter.co.uk/contact", "availableLanguage": ["en","es","de","pt"] }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.omniconverter.co.uk/#website",
+        "url": "https://www.omniconverter.co.uk/",
+        "name": "OmniConverter",
+        "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
+        "inLanguage": "en-GB"
       }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto es 1/3 de taza en mililitros?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "1/3 de taza estadounidense = 78.9ml. 1/3 de taza métrica (Reino Unido/Australia) = 83.3ml."
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos#article",
+        "mainEntityOfPage": { "@id": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos#webpage" },
+        "headline": "1/3 de Taza en Gramos: ~80g Harina [Cocina]",
+        "description": "1/3 taza = 80g (harina), 67g (azúcar), 80ml (agua). Tabla por ingrediente. Calculadora gratis →",
+        "image": "https://www.omniconverter.co.uk/logo.png",
+        "datePublished": "2026-09-15",
+        "dateModified": "2026-11-03",
+        "author": { "@type": "Organization", "@id": "https://www.omniconverter.co.uk/#organization", "name": "OmniConverter Editorial Team", "url": "https://www.omniconverter.co.uk/about" },
+        "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
+        "inLanguage": "es"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos#webpage",
+        "url": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos",
+        "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
+        "inLanguage": "es",
+        "dateModified": "2026-11-03"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.omniconverter.co.uk/es/blog/1-3-taza-a-gramos#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.omniconverter.co.uk/es/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.omniconverter.co.uk/es/blog" },
+          { "@type": "ListItem", "position": 3, "name": "1/3 de Taza en Gramos: ~80g Harina [Cocina]" }
+        ]
       }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Es 1/3 de taza lo mismo que 5 cucharadas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, 1/3 de taza equivale exactamente a 5 cucharadas soperas y 1 cucharadita (5 tbsp + 1 tsp)."
-      }
-    }
-  ]
-}
-</script>
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>

@@ -36,22 +36,30 @@
   <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#4f46e5">
-  <script type="application/ld+json">
+    <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "OmniConverter Einheiten- und Währungsrechner",
-    "url": "https://www.omniconverter.co.uk/de/",
-    "inLanguage": "de",
-    "description": "Kostenlose universelle Online-Suite zur Umrechnung von Einheiten, Währungen, Zeitzonen und Dateien.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "OmniConverter",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.omniconverter.co.uk/logo.png"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.omniconverter.co.uk/#organization",
+        "name": "OmniConverter",
+        "alternateName": "Omni Converter",
+        "url": "https://www.omniconverter.co.uk/",
+        "logo": { "@type": "ImageObject", "url": "https://www.omniconverter.co.uk/logo.png", "width": 512, "height": 512 },
+        "description": "Free online unit, currency, time zone and browser-based file converters.",
+        "sameAs": ["https://github.com/newskryptowahrung26-cell/OmniConverter-Suite"],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": "https://www.omniconverter.co.uk/contact", "availableLanguage": ["en","es","de","pt"] }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.omniconverter.co.uk/#website",
+        "url": "https://www.omniconverter.co.uk/",
+        "name": "OmniConverter",
+        "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
+        "inLanguage": "en-GB"
       }
-    }
+    ]
   }
   </script>
 </head>
@@ -188,7 +196,7 @@
     </section>
   
     <article class="content-section" style="margin-top:2.5rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:2rem 1.75rem;">
-      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">OmniConverter Suite: Die universelle Plattform für Einheiten- und Währungsberechnungen</h2>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">OmniConverter: Die universelle Plattform für Einheiten- und Währungsberechnungen</h2>
       <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1.25rem;">
         OmniConverter ist eine moderne, hochpräzise und datenschutzfreundliche Webplattform für wissenschaftliche, geschäftliche und alltägliche Einheitenumrechnungen. Entwickelt für Ingenieure, Schüler, Reisende, Köche und Finanzanalysten, liefert unsere Suite sofortige Ergebnisse mit geprüften mathematischen Formeln.
       </p>
