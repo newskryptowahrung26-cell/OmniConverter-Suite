@@ -27,33 +27,6 @@
   <link rel="stylesheet" href="/styles.css">
 
   <!-- Schema.org BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.omniconverter.co.uk/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://www.omniconverter.co.uk/blog"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "71 Pounds To Kg",
-        "item": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg"
-      }
-    ]
-  }
-  </script>
-
   <!-- OpenGraph & Social Cards -->
   <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="article">
@@ -79,33 +52,72 @@
   <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/71-libras-para-kg">
   <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/71-pounds-to-kg">
 
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4f46e5">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "71 lbs to kg: How Many Kilograms Is 71 Pounds? (Exact 32.21 kg)",
-    "description": "71 pounds equals 32.2051 kilograms (32.21 kg or 5 stone 1 lb). Check the exact 71 lbs to kg formula, luggage and freight weight limits, and conversion table.",
-    "url": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg",
-    "datePublished": "2026-09-20",
-    "dateModified": "2026-10-15",
-    "author": {
-      "@type": "Organization", "name": "OmniConverter Editorial Team"
-    },
-    "editor": {
-      "@type": "Organization", "name": "OmniConverter Technical Review Board"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "OmniConverter",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.omniconverter.co.uk/logo.png"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.omniconverter.co.uk/#organization",
+        "name": "OmniConverter",
+        "url": "https://www.omniconverter.co.uk/",
+        "logo": { "@type": "ImageObject", "url": "https://www.omniconverter.co.uk/logo.png", "width": 512, "height": 512 }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.omniconverter.co.uk/#website",
+        "url": "https://www.omniconverter.co.uk/",
+        "name": "OmniConverter",
+        "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
+        "inLanguage": "en-GB"
       }
-    }
+    ]
   }
   </script>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#4f46e5">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg#article",
+        "mainEntityOfPage": { "@id": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg#webpage" },
+        "headline": "71 lbs to kg: How Many Kilograms Is 71 Pounds? (Exact 32.21 kg)",
+        "description": "71 pounds equals 32.2051 kilograms (32.21 kg or 5 stone 1 lb). Check the exact 71 lbs to kg formula, luggage and freight weight limits, and conversion table.",
+        "image": "https://www.omniconverter.co.uk/logo.png",
+        "datePublished": "2026-09-20",
+        "dateModified": "2026-11-03",
+        "author": {
+          "@type": "Organization",
+          "@id": "https://www.omniconverter.co.uk/#organization",
+          "name": "OmniConverter Editorial Team",
+          "url": "https://www.omniconverter.co.uk/about"
+        },
+        "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
+        "inLanguage": "en-GB"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg#webpage",
+        "url": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg",
+        "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
+        "inLanguage": "en-GB",
+        "dateModified": "2026-11-03"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.omniconverter.co.uk/blog/71-pounds-to-kg#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.omniconverter.co.uk/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.omniconverter.co.uk/blog" },
+          { "@type": "ListItem", "position": 3, "name": "71 lbs to kg: How Many Kilograms Is 71 Pounds? (Exact 32.21 kg)" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -449,7 +461,7 @@
   </main>
   <footer class="footer">
     <div class="footer-container">
-      <p>&copy; 2026 OmniConverter Suite. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
+      <p>&copy; 2026 OmniConverter. All rights reserved. | <a href="/sitemap">Sitemap</a> | <a href="/about">About</a> | <a href="/methodology" style="color:#4f46e5;">Methodology</a> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms</a> | <a href="/contact">Contact</a></p>
     </div>
   </footer>
 
