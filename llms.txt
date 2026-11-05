@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (88 Articles)
+## Published Articles & Guides Directory (89 Articles)
+- [1400 USD to GBP: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1400-usd-to-gbp): Convert 1400 USD to GBP with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [69kg in Stone: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/69kg-in-stone): Convert 69kg in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [1 Ounce to Grams: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1-ounce-to-grams): Convert 1 Ounce to Grams with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [4 USD to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/4-usd-to-aud): Convert 4 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
@@ -111,8 +112,8 @@
 - [1 Cup of Milk in mL: Exactly 240ml [Baking Guide]](https://www.omniconverter.co.uk/blog/1-cup-milk-in-milliliters): 1 cup of milk = 240ml (US) or 250ml (UK metric). Baking conversion table + density chart. Free calculator →
 - [100°F to Celsius: Exactly 37.78°C [Fever Guide]](https://www.omniconverter.co.uk/blog/100-fahrenheit-to-celsius): 100°F = 37.78°C. Is 100°F a fever? Medical temperature guide + formula. Free temperature converter →
 - [100 USD to AUD Exchange Rate: Convert $100 US Dollars to Australian Dollars](https://www.omniconverter.co.uk/blog/100-usd-to-aud): <meta name=
-- [22 kg in Stone: 3 st 6.6 lb — Quick UK Answer](https://www.omniconverter.co.uk/blog/22-kg-in-stone): 22 kg = 3 stone 6.6 lb (48.50 lbs). Full 18–26 kg reference table. BMI guide. Free UK weight calculator →
-- [700 GBP to AUD: How Much in Australian Dollars? [2026]](https://www.omniconverter.co.uk/blog/700-gbp-to-aud): £700 GBP = approx A$1,341 AUD today. Live exchange rate. Bank vs Wise comparison. Free converter →
+- [22 kg in Stone: 3 st 6.6 lb — Exact Formula &amp; UK Calculator](https://www.omniconverter.co.uk/blog/22-kg-in-stone): 22 kg = 3 stone 6.6 lb (48.50 lbs). Convert 22 kilograms to British stone and pounds with exact formula, 18-26 kg lookup table, and free weight converter.
+- [700 GBP to AUD: How Much in Australian Dollars? [2026]](https://www.omniconverter.co.uk/blog/700-gbp-to-aud): &pound;700 GBP = approx A$1,341 AUD today. Live exchange rate, bank fee comparison, full conversion table, and free online currency converter.
 
 ## Core Conversion Formulas Summary
 
