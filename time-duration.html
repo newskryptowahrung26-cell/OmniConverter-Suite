@@ -282,6 +282,100 @@
       </article>
     </div>
   
+    
+    <!-- EXCEL KEYWORDS CONSOLIDATED LOOKUP SECTION -->
+    <article class="content-section" style="margin-top:2rem;">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Work Hours, Shift Durations &amp; Decimal Time Conversion</h2>
+      <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
+        Payroll accounting, project billing, shift scheduling, and time management frequently require converting <strong>hours and minutes</strong> into <strong>decimal hours</strong>, <strong>seconds</strong>, or <strong>total work weeks</strong>. Below is the quick reference chart:
+      </p>
+
+      <div style="overflow-x:auto; margin-bottom:1.5rem;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.92rem; text-align:left;">
+          <thead>
+            <tr style="background:var(--bg-elevated); border-bottom:2px solid var(--card-border);">
+              <th style="padding:0.6rem;">Clock Duration</th>
+              <th style="padding:0.6rem;">Decimal Hours</th>
+              <th style="padding:0.6rem;">Minutes</th>
+              <th style="padding:0.6rem;">Seconds</th>
+              <th style="padding:0.6rem;">Standard Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">15 minutes</td>
+              <td style="padding:0.6rem; font-weight:700; color:var(--primary-600);">0.25 hrs</td>
+              <td style="padding:0.6rem;">15 min</td>
+              <td style="padding:0.6rem;">900 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Quarter-hour billing increment</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">30 minutes</td>
+              <td style="padding:0.6rem; font-weight:700; color:var(--primary-600);">0.50 hrs</td>
+              <td style="padding:0.6rem;">30 min</td>
+              <td style="padding:0.6rem;">1,800 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Half-hour meeting / legal unit</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">45 minutes</td>
+              <td style="padding:0.6rem; font-weight:700; color:var(--primary-600);">0.75 hrs</td>
+              <td style="padding:0.6rem;">45 min</td>
+              <td style="padding:0.6rem;">2,700 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Three-quarter hour mark</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">1 Hour</td>
+              <td style="padding:0.6rem;">1.00 hrs</td>
+              <td style="padding:0.6rem;">60 min</td>
+              <td style="padding:0.6rem;">3,600 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Standard hourly labor baseline</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">8 Hours</td>
+              <td style="padding:0.6rem;">8.00 hrs</td>
+              <td style="padding:0.6rem;">480 min</td>
+              <td style="padding:0.6rem;">28,800 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Full-time working day shift</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color);">
+              <td style="padding:0.6rem; font-weight:700;">40 Hours</td>
+              <td style="padding:0.6rem;">40.00 hrs</td>
+              <td style="padding:0.6rem;">2,400 min</td>
+              <td style="padding:0.6rem;">144,000 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Standard full-time work week (5 days)</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem; font-weight:700;">1 Year (365 days)</td>
+              <td style="padding:0.6rem;">8,760 hrs</td>
+              <td style="padding:0.6rem;">525,600 min</td>
+              <td style="padding:0.6rem;">31,536,000 sec</td>
+              <td style="padding:0.6rem; color:var(--text-muted);">Standard non-leap astronomical year</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:1.2rem; font-weight:700; margin:1.5rem 0 0.75rem 0;">Exact Time Conversion Formulas</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
+        <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:10px; padding:1.25rem;">
+          <h4 style="margin:0 0 0.5rem 0; color:var(--primary-600);">Minutes to Decimal Hours</h4>
+          <p style="font-size:1.1rem; font-weight:800; margin:0 0 0.5rem 0;">Decimal = Minutes &divide; 60</p>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Divide minutes by 60. Example: 36 minutes = 36 &divide; 60 = 0.60 hours.</p>
+        </div>
+        <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:10px; padding:1.25rem;">
+          <h4 style="margin:0 0 0.5rem 0; color:var(--primary-600);">Hours to Seconds</h4>
+          <p style="font-size:1.1rem; font-weight:800; margin:0 0 0.5rem 0;">Seconds = Hours &times; 3,600</p>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Multiply hours by 3,600. Example: 2.5 hours &times; 3,600 = 9,000 seconds.</p>
+        </div>
+        <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:10px; padding:1.25rem;">
+          <h4 style="margin:0 0 0.5rem 0; color:var(--primary-600);">Days to Hours &amp; Minutes</h4>
+          <p style="font-size:1.1rem; font-weight:800; margin:0 0 0.5rem 0;">Hours = Days &times; 24</p>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Multiply calendar days by 24. Example: 7 days &times; 24 = 168 hours.</p>
+        </div>
+      </div>
+    </article>
+
+
     <article class="content-section" style="margin-top:2rem;">
       <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">Time & Duration Conversion Guide</h2>
       <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1rem;">
