@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (91 Articles)
+## Published Articles & Guides Directory (92 Articles)
+- [380f to C: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/380f-to-c): Convert 380f to C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [170 lbs En kg: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/170-lbs-en-kg): Convert 170 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [245 kg to Pounds: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/245-kg-to-pounds): Convert 245 kg to Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [1400 USD to GBP: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1400-usd-to-gbp): Convert 1400 USD to GBP with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
