@@ -253,6 +253,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/1000-meters-to-feet</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/1000-usd-to-gbp</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -883,6 +889,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/es/blog/1000-metros-a-pies</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/es/blog/1000-usd-a-gbp</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1495,6 +1507,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/1000-meter-in-fuss</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/de/blog/1000-usd-in-gbp</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -2103,6 +2121,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/pt/blog/100-usd-para-aud</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/pt/blog/1000-metros-para-pes</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
