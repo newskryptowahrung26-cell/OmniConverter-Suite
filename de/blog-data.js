@@ -1,21 +1,6 @@
 // Synchronisierte Blogdaten auf Deutsch (Gesamt: 85 Artikel)
 const BLOG_POSTS = [
   {
-    "id": "250-lbs-in-kg",
-    "slug": "/de/blog/250-lbs-in-kg",
-    "title": "250 lbs in kg: Exakte Formel & Umrechnung",
-    "date": "2026-11-11",
-    "publicationDate": "2026-11-11T00:00:00Z",
-    "category": "Gewicht & Masse",
-    "categoryKey": "Weight & Mass",
-    "author": "OmniConverter Redaktionsteam",
-    "readTime": "4 Min. Lesezeit",
-    "icon": "⚖️",
-    "image": "/assets/blog/de/250-lbs-in-kg.png",
-    "summary": "250 lbs in kg exakt umrechnen: 250 Pfund entsprechen genau 113,40 kg. Mit Berechnungsformel, Kopfrechentrick, Praxistipps und Tabelle.",
-    "order": 0
-  },
-  {
     "id": "1000-meter-in-fuss",
     "slug": "/de/blog/1000-meter-in-fuss",
     "title": "1000 Meter in Fuß: Exakte Formel & Live-Rechner",
@@ -28,6 +13,21 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/1000-meter-in-fuss.png",
     "summary": "Rechne 1000 Meter in Fuß um mit exakten Formeln, Kopfrechen-Tricks und Tabellen. Nutze unseren interaktiven Rechner für sofortige Ergebnisse.",
+    "order": 0
+  },
+  {
+    "id": "250-lbs-in-kg",
+    "slug": "/de/blog/250-lbs-in-kg",
+    "title": "250 lbs in kg: Exakte Formel & Rechner",
+    "date": "2026-11-09",
+    "publicationDate": "2026-11-09T00:00:00Z",
+    "category": "Gewicht & Masse",
+    "categoryKey": "Weight & Mass",
+    "author": "OmniConverter Redaktionsteam",
+    "readTime": "4 Min. Lesezeit",
+    "icon": "⚖️",
+    "image": "/assets/blog/de/250-lbs-in-kg.png",
+    "summary": "Rechnen Sie 250 lbs in kg um. Exakte Formel, mentale Rechentricks, vollständige Tabellen und interaktiver Sofort-Rechner für 250 Pfund in kg.",
     "order": 1
   },
   {
