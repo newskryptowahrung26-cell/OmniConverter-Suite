@@ -130,7 +130,7 @@ function getTopicSignature(text) {
   s = s.replace(/([0-9]+)([a-z]+)/g, '$1 $2').replace(/([a-z]+)([0-9]+)/g, '$1 $2');
 
   // Strip filler words, articles, and generic converter suffixes
-  s = s.replace(/\b(a|an|the|of|for|to|in|into|is|as|at|by|per|from|and|or|how|many|much|what|is what|equal|equals|conversion|converter|calculator|calculate|converting|converted|guide|steps|formula|difference|today|now)\b/g, ' ');
+  s = s.replace(/\b(a|an|the|of|for|to|in|into|is|as|at|by|per|from|and|or|how|many|much|what|is what|equal|equals|conversion|converter|calculator|calculate|converting|converted|guide|steps|formula|difference|today|now|en|para|em|de|von|zu|auf|im)\b/g, ' ');
 
   // Standardize number words
   s = s.replace(/\bone\b/g, '1')
