@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (94 Articles)
+## Published Articles & Guides Directory (95 Articles)
+- [250 lbs to kg: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/250-lbs-to-kg): Convert 250 lbs to kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [1000 Meters to Feet: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1000-meters-to-feet): Convert 1000 Meters to Feet with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [250 lbs En kg: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/250-lbs-en-kg): Convert 250 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [380f to C: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/380f-to-c): Convert 380f to C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
