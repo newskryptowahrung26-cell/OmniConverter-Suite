@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (97 Articles)
+## Published Articles & Guides Directory (98 Articles)
+- [1 Pound to 1 Turkish Lira: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/1-pound-to-1-turkish-lira): Convert 1 Pound to 1 Turkish Lira with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [100 Meters to Yards: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/100-meters-to-yards): Convert 100 Meters to Yards with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [3 lbs En kg: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/3-lbs-en-kg): Convert 3 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [69 kg to lbs: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/69-kg-to-lbs): Convert 69 kg to lbs with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
