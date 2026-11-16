@@ -1827,6 +1827,19 @@ Return ONLY valid JSON matching this exact structure:
       <span class="formula-badge">${title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${title}</h1>
 
+<!-- Title ads -->
+<div style="margin: 1.25rem 0; text-align: center; overflow: hidden; min-height: 90px;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4766868021895107"
+       data-ad-slot="8769430001"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
       <img src="${enHeroSrc}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${articleBodyHtml}
     </article>
@@ -2116,6 +2129,19 @@ Return ONLY valid JSON matching this exact structure:
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">${cfg.badgePrefix} ${cfg.data.title}</span>
       <h1 style="font-size:2.1rem;font-weight:800;margin:0.75rem 0 1rem 0;">${cfg.data.title}</h1>
+
+<!-- Title ads -->
+<div style="margin: 1.25rem 0; text-align: center; overflow: hidden; min-height: 90px;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4766868021895107"
+       data-ad-slot="8769430001"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
       <img src="${locHeroSrc}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
       ${localizedBody}
     </article>
