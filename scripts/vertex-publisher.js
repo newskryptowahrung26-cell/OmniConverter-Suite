@@ -1600,6 +1600,32 @@ Return ONLY valid JSON matching this exact structure:
   // Generate in-page live converter widget
   const { widgetHtml, widgetScript } = getInteractiveWidget(selectedTarget.rawKw, category, toolLink);
 
+  const perahAdSnippet = `
+<!-- Perah Ads -->
+<div style="margin: 2rem 0; text-align: center; overflow: hidden; min-height: 90px;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4766868021895107"
+       data-ad-slot="1078642244"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>`;
+
+  const injectPerahAd = (html) => {
+    const h2Matches = [...html.matchAll(/<h2[\s\S]*?<\/h2>/gi)];
+    if (h2Matches.length >= 2) {
+      const pos = h2Matches[1].index;
+      return html.slice(0, pos) + perahAdSnippet + '\n' + html.slice(pos);
+    } else if (h2Matches.length === 1) {
+      const pos = h2Matches[0].index;
+      return html.slice(0, pos) + perahAdSnippet + '\n' + html.slice(pos);
+    }
+    return html + '\n' + perahAdSnippet;
+  };
+
   const toolCalloutHtml = `
       <!-- Relevant Interactive Converter Callout Box -->
       <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
@@ -1642,6 +1668,7 @@ Return ONLY valid JSON matching this exact structure:
   } else {
     articleBodyHtml = toolCalloutHtml + '\n' + widgetHtml + '\n' + articleBodyHtml;
   }
+  articleBodyHtml = injectPerahAd(articleBodyHtml);
 
   // Extract FAQs for Schema.org FAQPage
   const faqList = [];
@@ -1977,6 +2004,7 @@ Return ONLY valid JSON matching this exact structure:
           localizedBody = localizedToolCalloutHtml + '\n' + widgetHtml + '\n' + localizedBody;
         }
       }
+      localizedBody = injectPerahAd(localizedBody);
 
       const locHeroSrc = `/assets/blog/${cfg.lang}/${cfg.data.slug}.png`;
       const locOgImg = `https://www.omniconverter.co.uk${locHeroSrc}`;
