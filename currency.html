@@ -50,14 +50,14 @@
   <meta name="twitter:description" content="Free real-time currency converter calculator. Convert USD, EUR, GBP, AUD, CAD, JPY, and 35+ world currencies with live mid-market rates, Visa/Mastercard cardholder fee estimators, and ECB reference rates.">
   <meta name="twitter:image" content="https://www.omniconverter.co.uk/logo.png">
 
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#4f46e5">
 
@@ -220,7 +220,7 @@
         <a href="/pt/currency" title="Português">PT</a>
       </div>
 
-      
+
 
           </div>
   </header>
@@ -258,9 +258,12 @@
           <div id="rateStatusBadge" style="display:inline-flex; flex-direction:column; align-items:flex-end; gap:0.25rem;">
             <div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.75rem; background:rgba(16, 185, 129, 0.1); color:#059669; border:1px solid rgba(16, 185, 129, 0.25); border-radius:9999px; font-size:0.82rem; font-weight:600;">
               <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; animation: pulse 2s infinite;"></span>
-              <span id="rateStatusText">Live Mid-Market Rates (open.er-api.com)</span>
+              <span id="rateStatusText">Indicative Exchange Rates</span>
             </div>
-            <span id="rateTimestampSubtitle" style="font-size:0.75rem; color:var(--text-muted);">Source: Open Exchange Feed (Updated hourly)</span>
+            <span id="rateTimestampSubtitle" style="font-size:0.75rem; color:var(--text-muted); display:block;">Updated indicative exchange-rate data. Check the displayed timestamp for the latest available update.</span>
+            <div style="margin-top:0.35rem; font-size:0.78rem;">
+              <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener" style="color:var(--brand); text-decoration:underline; font-weight:600;">Rates By Exchange Rate API</a>
+            </div>
           </div>
         </div>
 
@@ -400,7 +403,7 @@
       <!-- Trending In-Depth Currency Guides (High-Impact Internal Links) -->
       <section class="content-section" style="margin-top:2rem; background:linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(16, 185, 129, 0.04)); border:1px solid var(--card-border); border-left:4px solid var(--primary-600); border-radius:var(--radius-xl); padding:1.5rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
-          
+
 <!-- Perah Ads -->
 <div style="margin: 2rem 0; text-align: center; overflow: hidden; min-height: 90px;">
   <ins class="adsbygoogle"
@@ -420,7 +423,7 @@
           <span style="font-size:0.8rem; background:var(--bg-elevated); padding:0.25rem 0.65rem; border-radius:999px; border:1px solid var(--card-border); font-weight:600; color:var(--primary-600);">Live Bank Rates & Fees</span>
         </div>
         <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Explore our verified currency exchange tutorials with live bank fee comparisons, PayPal spreads, and worked formulas:</p>
-        
+
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:0.85rem;">
           <a href="/blog/32-usd-to-gbp" style="display:block; padding:1rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); text-decoration:none; color:var(--text-main); transition:transform 0.15s ease, border-color 0.15s ease;" onmouseover="this.style.borderColor='var(--primary-600)'" onmouseout="this.style.borderColor='var(--card-border)'">
             <div style="font-weight:700; font-size:1rem; color:var(--text-main); margin-bottom:0.25rem;">32 USD to GBP (£24.18 - £25.00)</div>
@@ -537,7 +540,7 @@
     <!-- ================= COMPREHENSIVE COMPETITOR-BEATING EDITORIAL GUIDE ================= -->
     <article class="content-section" style="margin-top:2rem;">
       <h2 style="font-size:1.75rem; font-weight:800; margin-bottom:1rem;">Complete Foreign Exchange, Interbank Rates & Card Fee Guide</h2>
-      
+
       <p style="line-height:1.75; color:var(--text-muted); margin-bottom:1.25rem;">
         The global currency market (Forex or FX) connects commercial banks, central banks, retail brokers, multinational corporations, and private travelers. With daily trading turnover exceeding <strong>$7.5 trillion USD</strong> across financial capitals from London and New York to Tokyo, Zurich, and Sydney, understanding how exchange rates are quoted, calculated, and adjusted with bank markups is critical to saving money on international payments.
       </p>
@@ -758,15 +761,15 @@
         </p>
       </div>
     </article>
-  
+
     <!-- Bottom Monetization Section -->
     <section class="bottom-monetization" style="margin: 3rem auto 1.5rem auto; max-width: 900px;">
 
       <!-- Sponsored Deals Box -->
-      
 
 
-      
+
+
 
     </section>
 </main>
@@ -931,15 +934,15 @@
         if (res && res.rates) {
           liveRates = res.rates;
           if (rateStatusText) {
-            rateStatusText.textContent = res.isLive 
-              ? `Live Mid-Market Rates`
-              : 'Reliable Reference Rates';
+            rateStatusText.textContent = res.isLive
+              ? 'Indicative Exchange Rates'
+              : 'Indicative Reference Rates';
           }
           const subEl = document.getElementById('rateTimestampSubtitle');
           if (subEl) {
-            subEl.textContent = res.isLive 
-              ? `Feed: open.er-api.com • Last synced: ${res.lastUpdate}`
-              : 'Offline Mode: High-precision baseline rates active';
+            subEl.textContent = res.isLive
+              ? `Updated indicative exchange-rate data. Latest provider update: ${res.lastUpdate}`
+              : 'Offline Mode: Baseline indicative reference rates active';
           }
           performConversion();
         }
@@ -998,9 +1001,9 @@
     });
   </script>
 
-  
 
-  
+
+
   <script src="/pwa-installer.js" defer></script>
   <script src="/problem-solvers.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
