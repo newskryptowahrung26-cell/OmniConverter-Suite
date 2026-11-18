@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (101 Articles)
+## Published Articles & Guides Directory (102 Articles)
+- [215 Pounds in Stone: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/215-pounds-in-stone): Convert 215 Pounds in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [10 USD to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/10-usd-to-aud): Convert 10 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [128kg to lbs: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/128kg-to-lbs): Convert 128kg to lbs with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
 - [700 USD to AUD: Exact Formula & Live Calculator](https://www.omniconverter.co.uk/blog/700-usd-to-aud): Convert 700 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.
