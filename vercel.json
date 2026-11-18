@@ -1,7 +1,18 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/blog/2000-usd-to-gbp",
+      "destination": "/blog/2000-dollars-in-pounds",
+      "permanent": true
+    },
+    {
+      "source": "/pt/blog/2000-usd-to-gbp",
+      "destination": "/pt/blog/2000-usd-para-gbp",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/feed.xml",
