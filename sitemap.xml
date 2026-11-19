@@ -553,6 +553,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/blog/50-meters-to-feet</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/blog/500-ml-to-cups</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1225,6 +1231,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/es/blog/50-metros-a-pies</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/es/blog/500-ml-a-tazas</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -1891,6 +1903,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/50-meter-in-fuss</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.omniconverter.co.uk/de/blog/500-ml-in-tassen</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -2553,6 +2571,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/pt/blog/50-fahrenheit-para-celsius</loc>
     <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/pt/blog/50-metros-para-pes</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
