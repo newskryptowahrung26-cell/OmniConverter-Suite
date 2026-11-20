@@ -88,7 +88,7 @@
         "description": "Convert South Korean Won (KRW / ₩) to Australian Dollars (AUD). 10,000 KRW equals ~A$11.05 AUD. Includes Seoul travel money tips, ATM advice, and KRW/AUD conversion tables.",
         "image": "https://www.omniconverter.co.uk/logo.png",
         "datePublished": "2026-09-20",
-        "dateModified": "2026-11-03",
+        "dateModified": "2026-11-20",
         "author": {
           "@type": "Organization",
           "@id": "https://www.omniconverter.co.uk/#organization",
@@ -104,7 +104,7 @@
         "url": "https://www.omniconverter.co.uk/blog/korean-to-aud",
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "inLanguage": "en-GB",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "BreadcrumbList",
@@ -204,7 +204,7 @@
       <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
         <div style="max-width: 680px;">
           <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">Interactive Foreign Exchange & Currency Converter</h3>
-          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Compare live mid-market exchange rates across 45+ global currencies instantly.</p>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Compare mid-market benchmark exchange rates across 45+ global currencies instantly.</p>
         </div>
         <a href="/currency" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">Open Currency Converter &rarr;</a>
       </div>
@@ -212,12 +212,16 @@
 
 
       <!-- Embedded Live Interactive In-Page Calculator -->
+            <!-- Standardized Foreign Exchange & Rate Freshness Disclaimer -->
+      <div data-currency-disclaimer="true" style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary-600); border-radius:6px; padding:0.9rem 1.15rem; margin:1.5rem 0; font-size:0.9rem; line-height:1.6; color:var(--text-main);">
+        <strong>Foreign Exchange &amp; Rate Freshness Disclaimer:</strong> Currency calculations presented on this page reflect illustrative mid-market interbank benchmark rates. Global FX markets fluctuate continuously. Commercial retail banks, remittance services, and card issuers typically incorporate exchange rate margins (spreads) and foreign transaction fees that differ from wholesale rates.
+      </div>
       <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Instant Currency Exchange Live Calculator</h3>
-          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Live Market Rate</span>
+          <span style="font-size:0.8rem; background:rgba(99,102,241,0.12); color:var(--primary-600); padding:0.25rem 0.65rem; border-radius:999px; font-weight:700;">Benchmark Reference Rate</span>
         </div>
-        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Enter foreign exchange amounts to calculate estimated conversions with live mid-market ratios:</p>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 1.25rem 0;">Enter foreign exchange amounts to calculate estimated conversions with benchmark interbank ratios:</p>
 
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; align-items:flex-end;">
           <div>
@@ -295,7 +299,7 @@
 
 <h2>How to Calculate Korean to AUD Conversions</h2>
 
-<p>Calculating your currency conversion manually is straightforward once you know the live mid-market exchange rate. The mid-market rate is the midpoint between the buying and selling prices of the two currencies in global financial markets—essentially the "real" exchange rate without retail markups.</p>
+<p>Calculating your currency conversion manually is straightforward once you know the benchmark mid-market exchange rate. The mid-market rate is the midpoint between the buying and selling prices of the two currencies in global financial markets—essentially the "real" exchange rate without retail markups.</p>
 
 <div style="background:var(--bg-elevated); padding:1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0; font-size: 0.95rem;">
 Formula (Per Single Won):<br>
@@ -304,7 +308,7 @@ Formula (Per 1,000 Won - Easier for scaling):<br>
 Total AUD = (Total KRW ÷ 1,000) × Rate per 1,000 KRW
 </div>
 
-<p>For example, suppose the live exchange rate indicates that 1,000 KRW is equal to 1.15 AUD. If you want to convert 500,000 Korean Won into Australian Dollars, the math looks like this:</p>
+<p>For example, suppose the reference benchmark rate indicates that 1,000 KRW is equal to 1.15 AUD. If you want to convert 500,000 Korean Won into Australian Dollars, the math looks like this:</p>
 
 <div style="background:var(--bg-elevated); padding:1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0; font-size: 0.95rem;">
 Step 1: Divide your KRW amount by 1,000<br>
