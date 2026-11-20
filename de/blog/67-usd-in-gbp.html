@@ -81,7 +81,7 @@
         "description": "Konvertieren Sie 67 USD in GBP präzise mit Live-Mittelkursen, exakten Formeln, praktischen Umrechnungstabellen und einem schnellen Rechner.",
         "image": "https://www.omniconverter.co.uk/logo.png",
         "datePublished": "2026-10-15",
-        "dateModified": "2026-11-03",
+        "dateModified": "2026-11-20",
         "author": { "@type": "Organization", "@id": "https://www.omniconverter.co.uk/#organization", "name": "OmniConverter Editorial Team", "url": "https://www.omniconverter.co.uk/about" },
         "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
         "inLanguage": "de"
@@ -92,7 +92,7 @@
         "url": "https://www.omniconverter.co.uk/de/blog/67-usd-in-gbp",
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "inLanguage": "de",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "BreadcrumbList",
@@ -202,6 +202,11 @@
 
 
       <!-- Embedded Live Interactive In-Page Calculator -->
+
+      <!-- Standardisierter Devisenmittelkurs-Hinweis -->
+      <div data-currency-disclaimer="true" style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary-600); border-radius:6px; padding:0.9rem 1.15rem; margin:1.5rem 0; font-size:0.9rem; line-height:1.6; color:var(--text-main);">
+        <strong>Hinweis zu Wechselkursen &amp; Volatilität:</strong> Bei den hier angegebenen Umrechnungswerten handelt es sich um mathematische Berechnungen auf Basis repräsentativer Devisenmittelkurse (Interbanken-Referenzkurse). Wechselkurse im Devisenmarkt unterliegen kontinuierlichen Kursschwankungen. Reale Auszahlungsbeträge bei Banken, Zahlungsdienstleistern oder Kreditkartenabrechnungen weichen durch individuelle Wechselkursspannen (Spreads) und Fremdwährungsentgelte ab.
+      </div>
       <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Live Interaktiver Umrechner</h3>
@@ -216,7 +221,7 @@
           <div>
             <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Von</label>
             <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
+
           <option value="USD" selected>US Dollar ($ USD)</option>
           <option value="EUR">Euro (€ EUR)</option>
           <option value="GBP">British Pound (£ GBP)</option>
@@ -224,7 +229,7 @@
           <option value="CAD">Canadian Dollar ($ CAD)</option>
           <option value="INR">Indian Rupee (₹ INR)</option>
           <option value="VND">Vietnamese Dong (₫ VND)</option>
-        
+
             </select>
           </div>
           <div style="display:flex; justify-content:center; align-items:center;">
@@ -233,7 +238,7 @@
           <div>
             <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Nach</label>
             <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
+
           <option value="EUR" selected>Euro (€ EUR)</option>
           <option value="USD">US Dollar ($ USD)</option>
           <option value="GBP">British Pound (£ GBP)</option>
@@ -241,7 +246,7 @@
           <option value="CAD">Canadian Dollar ($ CAD)</option>
           <option value="INR">Indian Rupee (₹ INR)</option>
           <option value="VND">Vietnamese Dong (₫ VND)</option>
-        
+
             </select>
           </div>
         </div>
@@ -252,14 +257,14 @@
             <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">€87.84 EUR</div>
             <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">100 USD × 0.8784 = €87.84 EUR (Live Benchmark)</div>
           </div>
-          
+
           <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
             <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
             <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Print Cheat Sheet</button>
           </div>
         </div>
       </div>
-  
+
 <h2>Die exakte mathematische Umrechnungsformel</h2>
 
 <p>Um einen beliebigen USD-Betrag genau in britische Pfund umzurechnen, müssen Sie den USD-Hauptbetrag mit dem aktuellen Wechselkurs multiplizieren (oft als GBP/USD oder USD/GBP-Kehrwert bezeichnet). Der Mittelkurs stellt den Großhandelspreis dar, zu dem Banken ohne Einzelhandelsaufschlag untereinander Währungen handeln.</p>
@@ -394,7 +399,7 @@
 <h2>Häufig gestellte Fragen (FAQ)</h2>
 
 <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:1.25rem 1.5rem; margin:1.5rem 0;">
-  
+
   <h4 style="margin:0 0 0.5rem 0; font-size:1.05rem; color:var(--text-primary);">Was ist der genaue Unterschied zwischen dem Mittelkurs und den Einzelhandels-Wechselkursen?</h4>
   <p style="margin:0 0 1.25rem 0; font-size:0.95rem; color:var(--text-secondary);">
     Der Mittelkurs ist der Mittelpunkt zwischen globalem Angebot und Nachfrage für den Währungshandel großer Finanzinstitute. Einzelhandelskurse – die Kursangebote für normale Verbraucher von Banken und Wechselstuben – enthalten einen versteckten Aufschlag oder eine Provisionsmarge, die dem Finanzdienstleister Gewinn einbringen soll.
@@ -419,11 +424,11 @@
 
 <p>Die Umrechnung von 67 USD in GBP ergibt unter Standard-Mittelkursbedingungen etwa 52,99 GBP, wobei die tatsächlichen Beträge je nach Aufschlag Ihres Finanzdienstleisters variieren können. Setzen Sie ein Lesezeichen für diesen Leitfaden und nutzen Sie unsere interaktiven Währungstools, um bei jeder internationalen Transaktion Präzision sicherzustellen.</p>
     </article>
-    
+
     <!-- CROSS_LINKS_BLOCK -->
     <div style="margin:2rem 0; padding:1.25rem 1.5rem; background:var(--bg-elevated); border-radius:var(--radius-lg); border:1px solid var(--card-border);">
       <p style="color:var(--text-muted); font-size:0.95rem; margin:0;">
-        <strong>Verwandte Umrechnungsratgeber:</strong> 
+        <strong>Verwandte Umrechnungsratgeber:</strong>
         <a href="/de/blog/95-usd-in-gbp" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">95 USD in GBP: US-Dollar in Britische Pfund Umrechnung</a> &bull; <a href="/de/blog/1-milliarde-won-in-gbp" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">1 milliarde won in gbp</a> &bull; <a href="/de/blog/10-milliarden-won-in-gbp" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">10 milliarden won in gbp</a> &bull; <a href="/de/blog/199-dollar-in-pfund" style="color:var(--primary-600); font-weight:600; margin:0 0.5rem;">199 Dollar in Pfund (USD in GBP)</a>
       </p>
     </div>
@@ -530,7 +535,7 @@
     calculate();
   })();
   </script>
-  
+
   <script src="/pwa-installer.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
   <script src="/embed-share-engine.js" defer></script>

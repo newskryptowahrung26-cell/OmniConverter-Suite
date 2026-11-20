@@ -95,7 +95,7 @@
         "description": "Genaue Anleitung für Indonesische Rupiah in Australische Dollar (IDR in AUD). Mathematische Formeln, Referenztabellen und Umrechnungsrechner.",
         "image": "https://www.omniconverter.co.uk/logo.png",
         "datePublished": "2026-09-19",
-        "dateModified": "2026-11-03",
+        "dateModified": "2026-11-20",
         "author": { "@type": "Organization", "@id": "https://www.omniconverter.co.uk/#organization", "name": "OmniConverter Editorial Team", "url": "https://www.omniconverter.co.uk/about" },
         "publisher": { "@id": "https://www.omniconverter.co.uk/#organization" },
         "inLanguage": "de"
@@ -106,7 +106,7 @@
         "url": "https://www.omniconverter.co.uk/de/blog/rupiah-in-aud",
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "inLanguage": "de",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "BreadcrumbList",
@@ -189,9 +189,9 @@
   </script>
 </div>
 
-      
 
-      
+
+
       <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
         <span>✍️ <strong>Autor:</strong> OmniConverter Redaktionsteam</span>
         <span>🔬 <strong>Geprüft von:</strong> Finanzredaktionsteam</span>
@@ -217,8 +217,13 @@
         <a href="/de/currency" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">Währungsrechner öffnen &rarr;</a>
       </div>
 
-      
+
       <!-- Embedded Live Interactive In-Page Calculator -->
+
+      <!-- Standardisierter Devisenmittelkurs-Hinweis -->
+      <div data-currency-disclaimer="true" style="background:rgba(99,102,241,0.06); border-left:4px solid var(--primary-600); border-radius:6px; padding:0.9rem 1.15rem; margin:1.5rem 0; font-size:0.9rem; line-height:1.6; color:var(--text-main);">
+        <strong>Hinweis zu Wechselkursen &amp; Volatilität:</strong> Bei den hier angegebenen Umrechnungswerten handelt es sich um mathematische Berechnungen auf Basis repräsentativer Devisenmittelkurse (Interbanken-Referenzkurse). Wechselkurse im Devisenmarkt unterliegen kontinuierlichen Kursschwankungen. Reale Auszahlungsbeträge bei Banken, Zahlungsdienstleistern oder Kreditkartenabrechnungen weichen durch individuelle Wechselkursspannen (Spreads) und Fremdwährungsentgelte ab.
+      </div>
       <div style="background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.5rem; margin:2rem 0; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
           <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--text-main);">⚡ Live Interaktiver Umrechner</h3>
@@ -233,7 +238,7 @@
           <div>
             <label for="liveToolFromUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Von</label>
             <select id="liveToolFromUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
+
           <option value="USD" selected>US Dollar ($ USD)</option>
           <option value="EUR">Euro (€ EUR)</option>
           <option value="GBP">British Pound (£ GBP)</option>
@@ -241,7 +246,7 @@
           <option value="CAD">Canadian Dollar ($ CAD)</option>
           <option value="INR">Indian Rupee (₹ INR)</option>
           <option value="VND">Vietnamese Dong (₫ VND)</option>
-        
+
             </select>
           </div>
           <div style="display:flex; justify-content:center; align-items:center;">
@@ -250,7 +255,7 @@
           <div>
             <label for="liveToolToUnit" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-muted);">Nach</label>
             <select id="liveToolToUnit" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--card-border); border-radius:var(--radius-md); background:var(--bg-surface); color:var(--text-main); font-size:1rem; font-weight:600; box-sizing:border-box;">
-              
+
           <option value="EUR" selected>Euro (€ EUR)</option>
           <option value="USD">US Dollar ($ USD)</option>
           <option value="GBP">British Pound (£ GBP)</option>
@@ -258,7 +263,7 @@
           <option value="CAD">Canadian Dollar ($ CAD)</option>
           <option value="INR">Indian Rupee (₹ INR)</option>
           <option value="VND">Vietnamese Dong (₫ VND)</option>
-        
+
             </select>
           </div>
         </div>
@@ -269,23 +274,23 @@
             <div id="liveToolResultVal" style="font-size:1.8rem; font-weight:800; color:var(--primary-600); margin-top:0.2rem;">€87.84 EUR</div>
             <div id="liveToolFormulaText" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">100 USD × 0.8784 = €87.84 EUR (Live Benchmark)</div>
           </div>
-          
+
           <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
             <button type="button" id="liveToolCopyBtn" class="tab-btn active" style="padding:0.6rem 1rem; font-weight:700; border:none; cursor:pointer;">📋 Copy Result</button>
             <button type="button" class="printCheatSheetBtn tab-btn" onclick="window.print();" style="padding:0.6rem 1rem; font-weight:700; border:1px solid var(--card-border); background:var(--bg-elevated); cursor:pointer;" title="Print or save as PDF cheat sheet">🖨️ Print Cheat Sheet</button>
           </div>
         </div>
       </div>
-  
+
 <h2>Zertifizierte Mathematische Formel</h2>
       <div style="background:var(--bg-elevated); padding:1rem 1.25rem; border-radius:var(--radius-md); font-family:monospace; margin:1rem 0; font-size:1.05rem;">
         AUD = IDR × Wechselkurs
       </div>
       <p style="color:var(--text-muted);">Diese Formel basiert auf den offiziellen NIST- und SI-Umrechnungsstandards.</p>
 
-      
 
-      
+
+
 <!-- Perah Ads -->
 <div style="margin: 2rem 0; text-align: center; overflow: hidden; min-height: 90px;">
   <ins class="adsbygoogle"
@@ -313,7 +318,7 @@
           </tbody>
         </table>
       </div>
-    
+
         <h2>Detaillierte mathematische Erklärung & Praxisbeispiele</h2>
         <p>Die präzise Umrechnung physikalischer und wissenschaftlicher Maßeinheiten basiert auf weltweit vereinbarten metrischen und imperialen Multiplikatoren. Bei der täglichen Arbeit in Gewerbe, Reise oder Küche verhindert eine exakte Nachkommastellen-Genauigkeit kostspielige Rundungsfehler.</p>
         <h3>Häufige Anwendungsbereiche</h3>
@@ -325,13 +330,13 @@
         <h3>Häufig gestellte Fragen (FAQ)</h3>
         <p><strong>Warum weichen manche Tabellen leicht ab?</strong><br>Historische Unterschiede zwischen dem US-Customary- und dem britischen Imperial-System führen bei manchen Flüssigkeitsmaßen zu geringfügigen Abweichungen.</p>
         <p><strong>Wie vermeide ich Rundungsfehler?</strong><br>Behalten Sie in Zwischenschritten stets mindestens 4 Nachkommastellen bei und runden Sie erst das Endergebnis.</p>
-        
-    
-      
-        
+
+
+
+
       </div>
 
-      
+
 </article>
 
     <!-- Related In-Depth Conversion Guides -->
@@ -359,7 +364,7 @@
         </a>
       </div>
     </section>
-  
+
     <section class="deep-dive-section" style="margin-top:2rem; background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.75rem 1.5rem; line-height:1.8;">
       <h3 style="color:var(--text-main); font-size:1.25rem; margin-top:0;">Praxisnahe Berechnung, Praxistipps und Häufige Fragen</h3>
       <p style="color:var(--text-muted);">
@@ -379,7 +384,7 @@
   <footer>
     <p>&copy; 2026 OmniConverter. Alle Rechte vorbehalten. | <a href="/de/blog" style="color:var(--primary-600);">Blog</a> | <a href="/de/sitemap" style="color:var(--primary-600);">Sitemap</a> | <a href="/de/privacy-policy" style="color:var(--primary-600);">Datenschutz</a> | <a href="/de/terms" style="color:var(--primary-600);">AGB</a> | <a href="/de/about" style="color:var(--primary-600);">Über uns</a> | <a href="/de/contact" style="color:var(--primary-600);">Kontakt</a></p>
   </footer>
-  
+
 
   <script>
   (function() {
@@ -477,7 +482,7 @@
     calculate();
   })();
   </script>
-  
+
   <script src="/pwa-installer.js" defer></script>
   <script src="/quick-convert-bar.js" defer></script>
   <script src="/embed-share-engine.js" defer></script>
