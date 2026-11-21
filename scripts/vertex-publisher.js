@@ -1943,6 +1943,12 @@ function getInteractiveWidget(rawKw, category, toolLink) {
 async function main() {
   console.log('=== OmniConverter Auto-Publisher ===');
 
+  // RELEASE GATE KILL SWITCH: Prevent scheduled or unauthorized automated publishing in production
+  if (process.env.ENABLE_AUTO_PUBLISH !== 'true') {
+    console.log('[AUTO-PUBLISHER DISABLED] Scheduled auto-publishing is disabled per production release gate.');
+    return;
+  }
+
   // Step 0 (PRE_GENERATION): Take trusted baseline snapshot and locale-aware slug sets BEFORE any source mutation
   const protectedHashesBefore = snapshotProtectedFiles(process.cwd(), {
     trustedBaseline: TRUSTED_PROTECTED_BASELINE_HASHES
