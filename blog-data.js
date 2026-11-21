@@ -1,9 +1,9 @@
-// Automatically synchronized blog data (Total: 105 articles)
+// Automatically synchronized blog data (Total: 106 articles)
 const BLOG_POSTS = [
   {
     "id": "98-kg-pounds",
     "slug": "/blog/98-kg-pounds",
-    "title": "98 kg Pounds: Exact Formula & Live Calculator",
+    "title": "98 kg to Pounds: Convert 216.05 lbs Now",
     "date": "2026-11-21",
     "publicationDate": "2026-11-21T00:00:00Z",
     "category": "Weight & Mass",
@@ -12,13 +12,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/98-kg-pounds.png",
-    "summary": "Convert 98 kg Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 98 kg to pounds (216.05 lbs) instantly. See step-by-step conversion formulas, weight comparison tables, and an interactive online tool.",
     "order": 0
   },
   {
     "id": "140-kg-pounds",
     "slug": "/blog/140-kg-pounds",
-    "title": "140 kg Pounds: Exact Formula & Live Calculator",
+    "title": "140 kg Pounds Fast Online Guide | Full Conversion Chart",
     "date": "2026-11-20",
     "publicationDate": "2026-11-20T00:00:00Z",
     "category": "Weight & Mass",
@@ -27,13 +27,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/140-kg-pounds.png",
-    "summary": "Convert 140 kg Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Understand 140 kg Pounds without guesswork. Follow the exact conversion math and quick lookup table. Clear reference values and. Free online.",
     "order": 1
   },
   {
     "id": "50-meters-to-feet",
     "slug": "/blog/50-meters-to-feet",
-    "title": "50 Meters to Feet: Exact Formula & Live Calculator",
+    "title": "50 Meters to Feet Step-by-Step Ref | Step-by-Step Guide",
     "date": "2026-11-19",
     "publicationDate": "2026-11-19T00:00:00Z",
     "category": "Length & Distance",
@@ -42,13 +42,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/50-meters-to-feet.png",
-    "summary": "Convert 50 Meters to Feet with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Turn 50 Meters to Feet into clear, usable numbers in seconds. Review the underlying formula, typical amounts, and handy reference rows right.",
     "order": 2
   },
   {
     "id": "215-pounds-in-stone",
     "slug": "/blog/215-pounds-in-stone",
-    "title": "215 Pounds in Stone: Exact Formula & Live Calculator",
+    "title": "215 Pounds in Stone Step-by-Step Ref | Conversion Chart",
     "date": "2026-11-18",
     "publicationDate": "2026-11-18T00:00:00Z",
     "category": "Weight & Mass",
@@ -57,13 +57,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/215-pounds-in-stone.png",
-    "summary": "Convert 215 Pounds in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Checking 215 Pounds in Stone today? Follow the exact conversion math and quick lookup table. Review common values and step-by-step details in.",
     "order": 3
   },
   {
     "id": "10-usd-to-aud",
     "slug": "/blog/10-usd-to-aud",
-    "title": "10 USD to AUD: Exact Formula & Live Calculator",
+    "title": "10 USD to AUD: Convert 10 US Dollars to A$ | Live Rates",
     "date": "2026-11-17",
     "publicationDate": "2026-11-17T00:00:00Z",
     "category": "Currency & Forex",
@@ -72,13 +72,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/10-usd-to-aud.png",
-    "summary": "Convert 10 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 10 USD to AUD with live exchange rates. See current US Dollar to Australian Dollar calculations, bank fees, and currency lookup tables.",
     "order": 4
   },
   {
     "id": "128kg-to-lbs",
     "slug": "/blog/128kg-to-lbs",
-    "title": "128kg to lbs: Exact Formula & Live Calculator",
+    "title": "128 kg to Pounds: Convert 282.19 lbs Now | Free Online!",
     "date": "2026-11-16",
     "publicationDate": "2026-11-16T00:00:00Z",
     "category": "Weight & Mass",
@@ -87,13 +87,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/128kg-to-lbs.png",
-    "summary": "Convert 128kg to lbs with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 128 kg to pounds: 128 kilograms equals exactly 282.19 lbs (20 st 2.2 lbs). Clear weight conversion formulas, charts, and online tools.",
     "order": 5
   },
   {
     "id": "700-usd-to-aud",
     "slug": "/blog/700-usd-to-aud",
-    "title": "700 USD to AUD: Exact Formula & Live Calculator",
+    "title": "700 USD to AUD Fast Online Guide | Fast Rate Calculator",
     "date": "2026-11-15",
     "publicationDate": "2026-11-15T00:00:00Z",
     "category": "Currency & Forex",
@@ -102,13 +102,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/700-usd-to-aud.png",
-    "summary": "Convert 700 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Get dependable numbers for 700 USD to AUD without searching multiple sites. Includes stepwise math, everyday benchmarks, and instant browser.",
     "order": 6
   },
   {
     "id": "1-pound-to-1-turkish-lira",
     "slug": "/blog/1-pound-to-1-turkish-lira",
-    "title": "1 Pound to 1 Turkish Lira: Exact Formula & Live Calculator",
+    "title": "1 Pound to Turkish Lira: GBP to TRY Rates | Live Online",
     "date": "2026-11-14",
     "publicationDate": "2026-11-14T00:00:00Z",
     "category": "Currency & Forex",
@@ -117,13 +117,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1-pound-to-1-turkish-lira.png",
-    "summary": "Convert 1 Pound to 1 Turkish Lira with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 1 British Pound to Turkish Lira (GBP to TRY) with live exchange rates. Compare bank fees, travel money margins, and historical trends.",
     "order": 7
   },
   {
     "id": "100-meters-to-yards",
     "slug": "/blog/100-meters-to-yards",
-    "title": "100 Meters to Yards: Exact Formula & Live Calculator",
+    "title": "100 Meters to Yards Step-by-Step Ref | Conversion Chart",
     "date": "2026-11-13",
     "publicationDate": "2026-11-13T00:00:00Z",
     "category": "Length & Distance",
@@ -132,13 +132,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/100-meters-to-yards.png",
-    "summary": "Convert 100 Meters to Yards with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "See how 100 Meters to Yards works in practice. Follow the exact conversion math and quick lookup table. Built for quick, accurate. Free online.",
     "order": 8
   },
   {
     "id": "3-lbs-en-kg",
     "slug": "/blog/3-lbs-en-kg",
-    "title": "3 lbs En kg: Exact Formula & Live Calculator",
+    "title": "3 lbs En kg — Conversion Guide, Formula",
     "date": "2026-11-12",
     "publicationDate": "2026-11-12T00:00:00Z",
     "category": "Weight & Mass",
@@ -147,13 +147,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/3-lbs-en-kg.png",
-    "summary": "Convert 3 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Planning a budget around 3 lbs En kg? Review exact figures, practical spending examples, and a clean reference sheet directly in your browser.",
     "order": 9
   },
   {
     "id": "69-kg-to-lbs",
     "slug": "/blog/69-kg-to-lbs",
-    "title": "69 kg to lbs: Exact Formula & Live Calculator",
+    "title": "69 kg to Pounds: Convert 152.12 lbs Now",
     "date": "2026-11-11",
     "publicationDate": "2026-11-11T00:00:00Z",
     "category": "Weight & Mass",
@@ -162,13 +162,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/69-kg-to-lbs.png",
-    "summary": "Convert 69 kg to lbs with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 69 kg to pounds: 69 kilograms equals exactly 152.12 lbs (10 st 12.1 lbs). Clear weight conversion math, stone tables, and calculators.",
     "order": 10
   },
   {
     "id": "1000-meters-to-feet",
     "slug": "/blog/1000-meters-to-feet",
-    "title": "1000 Meters to Feet: Exact Formula & Live Calculator",
+    "title": "1000 Meters to Feet Step-by-Step Ref | Conversion Chart",
     "date": "2026-11-10",
     "publicationDate": "2026-11-10T00:00:00Z",
     "category": "Length & Distance",
@@ -177,13 +177,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/1000-meters-to-feet.png",
-    "summary": "Convert 1000 Meters to Feet with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Understand 1000 Meters to Feet without guesswork. Follow the exact conversion math and quick lookup table. Clear reference values and practical.",
     "order": 11
   },
   {
     "id": "250-lbs-en-kg",
     "slug": "/blog/250-lbs-en-kg",
-    "title": "250 lbs En kg: Exact Formula & Live Calculator",
+    "title": "250 lbs En kg Fast Online Guide | Full Conversion Chart",
     "date": "2026-11-09",
     "publicationDate": "2026-11-09T00:00:00Z",
     "category": "Weight & Mass",
@@ -192,13 +192,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/250-lbs-en-kg.png",
-    "summary": "Convert 250 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Understand the exact value behind 250 lbs En kg. Features clear explanations, common conversion tiers, and private client-side calculation tools.",
     "order": 12
   },
   {
     "id": "380f-to-c",
     "slug": "/blog/380f-to-c",
-    "title": "380f to C: Exact Formula & Live Calculator",
+    "title": "380 F to C: Convert 380°F to 193.33°C Now | Baking Tips",
     "date": "2026-11-08",
     "publicationDate": "2026-11-08T00:00:00Z",
     "category": "Conversion Guide",
@@ -207,13 +207,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📊",
     "image": "/assets/blog/en/380f-to-c.png",
-    "summary": "Convert 380f to C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 380 degrees Fahrenheit to Celsius: 380°F equals exactly 193.33°C. Perfect oven temperature guide for baking, roasting, and cooking now.",
     "order": 13
   },
   {
     "id": "170-lbs-en-kg",
     "slug": "/blog/170-lbs-en-kg",
-    "title": "170 lbs En kg: Exact Formula & Live Calculator",
+    "title": "170 lbs En kg Fast Online Guide | Full Conversion Chart",
     "date": "2026-11-07",
     "publicationDate": "2026-11-07T00:00:00Z",
     "category": "Weight & Mass",
@@ -222,13 +222,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/170-lbs-en-kg.png",
-    "summary": "Convert 170 lbs En kg with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Get fast clarity on 170 lbs En kg. Follow the exact conversion math and quick lookup table. Compare common amounts and verify results right.",
     "order": 14
   },
   {
     "id": "245-kg-to-pounds",
     "slug": "/blog/245-kg-to-pounds",
-    "title": "245 kg to Pounds: Exact Formula & Live Calculator",
+    "title": "245 kg to Pounds Fast Online Guide | Step-by-Step Guide",
     "date": "2026-11-06",
     "publicationDate": "2026-11-06T00:00:00Z",
     "category": "Weight & Mass",
@@ -237,13 +237,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/245-kg-to-pounds.png",
-    "summary": "Convert 245 kg to Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Make sense of 245 kg to Pounds in moments. Follow the exact conversion math and quick lookup table. Practical breakdown designed for everyday.",
     "order": 15
   },
   {
     "id": "1400-usd-to-gbp",
     "slug": "/blog/1400-usd-to-gbp",
-    "title": "1400 USD to GBP: Exact Formula & Live Calculator",
+    "title": "1400 USD to GBP Fast Online Guide | Exchange Rate Guide",
     "date": "2026-11-05",
     "publicationDate": "2026-11-05T00:00:00Z",
     "category": "Currency & Forex",
@@ -252,13 +252,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1400-usd-to-gbp.png",
-    "summary": "Convert 1400 USD to GBP with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Get dependable numbers for 1400 USD to GBP without searching multiple sites. Includes stepwise math, everyday benchmarks, and instant browser.",
     "order": 16
   },
   {
     "id": "69kg-in-stone",
     "slug": "/blog/69kg-in-stone",
-    "title": "69kg in Stone: Exact Formula & Live Calculator",
+    "title": "69kg in Stone Fast Online Guide | Full Conversion Chart",
     "date": "2026-11-04",
     "publicationDate": "2026-11-04T00:00:00Z",
     "category": "Weight & Mass",
@@ -267,13 +267,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/69kg-in-stone.png",
-    "summary": "Convert 69kg in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Planning a budget around 69kg in Stone? Review exact figures, practical spending examples, and a clean reference sheet directly in your browser.",
     "order": 17
   },
   {
     "id": "1-ounce-to-grams",
     "slug": "/blog/1-ounce-to-grams",
-    "title": "1 Ounce to Grams: Exact Formula & Live Calculator",
+    "title": "1 Ounce to Grams Fast Online Guide | Step-by-Step Guide",
     "date": "2026-11-03",
     "publicationDate": "2026-11-03T00:00:00Z",
     "category": "Weight & Mass",
@@ -282,13 +282,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/1-ounce-to-grams.png",
-    "summary": "Convert 1 Ounce to Grams with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Looking up 1 Ounce to Grams? Follow the exact conversion math and quick lookup table. Follow straightforward steps and check accurate reference.",
     "order": 18
   },
   {
     "id": "4-usd-to-aud",
     "slug": "/blog/4-usd-to-aud",
-    "title": "4 USD to AUD: Exact Formula & Live Calculator",
+    "title": "4 USD to AUD: Convert 4 US Dollars to AUD | Live Rates!",
     "date": "2026-11-02",
     "publicationDate": "2026-11-02T00:00:00Z",
     "category": "Currency & Forex",
@@ -297,13 +297,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/4-usd-to-aud.png",
-    "summary": "Convert 4 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 4 USD to AUD with real-time exchange rates. See current US Dollar to Australian Dollar conversions, transaction fees, and rate tables.",
     "order": 19
   },
   {
     "id": "260lbs-in-stone",
     "slug": "/blog/260lbs-in-stone",
-    "title": "260lbs in Stone: Exact Formula & Live Calculator",
+    "title": "260 lbs in Stone: Exactly 18 st 8 lbs!",
     "date": "2026-11-01",
     "publicationDate": "2026-11-01T00:00:00Z",
     "category": "Weight & Mass",
@@ -312,13 +312,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/260lbs-in-stone.png",
-    "summary": "Convert 260lbs in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 260 lbs to stone and pounds: 260 pounds equals exactly 18 st 8 lbs (18.57 st). See verified body weight math, stone charts, and tools.",
     "order": 20
   },
   {
     "id": "67-f-is-what-c",
     "slug": "/blog/67-f-is-what-c",
-    "title": "67 F Is What C: Exact Formula & Live Calculator",
+    "title": "67 F Is What C Step-by-Step Ref | Full Conversion Chart",
     "date": "2026-10-31",
     "publicationDate": "2026-10-31T00:00:00Z",
     "category": "Conversion Guide",
@@ -327,13 +327,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📊",
     "image": "/assets/blog/en/67-f-is-what-c.png",
-    "summary": "Convert 67 F Is What C with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Need reliable figures for 67 F Is What C? Inspect exact equivalents, practical rounding tips, and quick lookup values from any desktop or phone.",
     "order": 21
   },
   {
     "id": "81kg-in-stone",
     "slug": "/blog/81kg-in-stone",
-    "title": "81kg in Stone: Exact Formula & Live Calculator",
+    "title": "81kg in Stone Fast Online Guide | Full Conversion Chart",
     "date": "2026-10-30",
     "publicationDate": "2026-10-30T00:00:00Z",
     "category": "Weight & Mass",
@@ -342,13 +342,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/81kg-in-stone.png",
-    "summary": "Convert 81kg in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Break down 81kg in Stone with transparent math and real-world context. Designed for travelers, shoppers, and students needing fast, accurate.",
     "order": 22
   },
   {
     "id": "1500-pounds-to-aud-dollars",
     "slug": "/blog/1500-pounds-to-aud-dollars",
-    "title": "1500 Pounds to AUD Dollars: Exact Formula & Live Calculator",
+    "title": "1500 Pounds to AUD Dollars Tool | Full Conversion Chart",
     "date": "2026-10-29",
     "publicationDate": "2026-10-29T00:00:00Z",
     "category": "Currency & Forex",
@@ -357,13 +357,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1500-pounds-to-aud-dollars.png",
-    "summary": "Convert 1500 Pounds to AUD Dollars with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Need 1500 Pounds to AUD Dollars? Follow the exact conversion math and quick lookup table. Get clear, reliable numbers right in your browser with.",
     "order": 23
   },
   {
     "id": "85-kg-pounds",
     "slug": "/blog/85-kg-pounds",
-    "title": "85 kg Pounds: Exact Formula & Live Calculator",
+    "title": "85 kg to Pounds: Convert 187.39 lbs Now",
     "date": "2026-10-28",
     "publicationDate": "2026-10-28T00:00:00Z",
     "category": "Weight & Mass",
@@ -372,13 +372,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/85-kg-pounds.png",
-    "summary": "Convert 85 kg Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 85 kg to pounds: 85 kilograms equals exactly 187.39 lbs (13 st 5.4 lbs). See step-by-step conversion math and quick reference charts.",
     "order": 24
   },
   {
     "id": "199-dollars-in-pounds",
     "slug": "/blog/199-dollars-in-pounds",
-    "title": "199 Dollars in Pounds: Exact Formula & Live Calculator",
+    "title": "199 Dollars in Pounds Fast Online Guide | Formula Guide",
     "date": "2026-10-27",
     "publicationDate": "2026-10-27T00:00:00Z",
     "category": "Currency & Forex",
@@ -387,13 +387,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/199-dollars-in-pounds.png",
-    "summary": "Convert 199 Dollars in Pounds with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Turn 199 Dollars in Pounds into clear, usable numbers in seconds. Review the underlying formula, typical amounts, and handy reference rows right.",
     "order": 25
   },
   {
     "id": "10-eur-to-aud",
     "slug": "/blog/10-eur-to-aud",
-    "title": "10 EUR to AUD: Exact Formula & Live Calculator",
+    "title": "10 EUR to AUD: Convert 10 Euros to Aussie | Live Rates!",
     "date": "2026-10-26",
     "publicationDate": "2026-10-26T00:00:00Z",
     "category": "Currency & Forex",
@@ -402,13 +402,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/10-eur-to-aud.png",
-    "summary": "Convert 10 EUR to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 10 EUR to AUD with live exchange rates. Check exact Euro to Australian Dollar rates, travel money conversions, and bank transfer tables.",
     "order": 26
   },
   {
     "id": "2000-pounds-in-american-money",
     "slug": "/blog/2000-pounds-in-american-money",
-    "title": "2000 Pounds in American Money: Formula & Calculator",
+    "title": "2000 Pounds in American Money: £2,000 to $ | Rate Guide",
     "date": "2026-10-25",
     "publicationDate": "2026-10-25T00:00:00Z",
     "category": "Currency & Forex",
@@ -417,13 +417,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/2000-pounds-in-american-money.png",
-    "summary": "Convert 2000 Pounds in American Money with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 2000 British Pounds to US Dollars (£2000 to USD). Check real-time exchange rates, international bank wire comparisons, and fee tables.",
     "order": 27
   },
   {
     "id": "22kg-in-stone",
     "slug": "/blog/22kg-in-stone",
-    "title": "22kg in Stone: Exact Formula & Live Calculator",
+    "title": "22kg in Stone Fast Online Guide | Full Conversion Chart",
     "date": "2026-10-24",
     "publicationDate": "2026-10-24T00:00:00Z",
     "category": "Weight & Mass",
@@ -432,13 +432,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/22kg-in-stone.png",
-    "summary": "Convert 22kg in Stone with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Need reliable figures for 22kg in Stone? Inspect exact equivalents, practical rounding tips, and quick lookup values from any desktop or phone.",
     "order": 28
   },
   {
     "id": "200-usd-to-aud",
     "slug": "/blog/200-usd-to-aud",
-    "title": "200 USD to AUD: Exact Formula & Live Calculator",
+    "title": "200 USD to AUD Fast Online Guide | Fast Rate Calculator",
     "date": "2026-10-23",
     "publicationDate": "2026-10-23T00:00:00Z",
     "category": "Currency & Forex",
@@ -447,13 +447,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/200-usd-to-aud.png",
-    "summary": "Convert 200 USD to AUD with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Break down 200 USD to AUD with transparent math and real-world context. Designed for travelers, shoppers, and students needing fast, accurate.",
     "order": 29
   },
   {
     "id": "210-kg-in-pounds",
     "slug": "/blog/210-kg-in-pounds",
-    "title": "210 kg to lbs: Exactly 462.97 lbs [Heavy Reference]",
+    "title": "210 kg in Pounds Fast Online Guide | Step-by-Step Guide",
     "date": "2026-10-22",
     "publicationDate": "2026-10-22T00:00:00Z",
     "category": "Weight & Mass",
@@ -462,13 +462,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/210-kg-in-pounds.png",
-    "summary": "210 kg = 462.97 pounds (462 lbs 15.5 oz). Full 200–220 kg reference table. Free calculator →",
+    "summary": "Explore 210 kg in Pounds with practical examples and clear math. Follow the exact conversion math and quick lookup table. Fast, private browser.",
     "order": 30
   },
   {
     "id": "300-meters-to-feet",
     "slug": "/blog/300-meters-to-feet",
-    "title": "300 Meters to Feet: Exactly 984.25 ft [Instant Answer]",
+    "title": "300 Meters to Feet: 984.252 Feet Online",
     "date": "2026-10-21",
     "publicationDate": "2026-10-21T00:00:00Z",
     "category": "Length & Distance",
@@ -477,13 +477,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/300-meters-to-feet.png",
-    "summary": "300 meters = 984.25 feet (984 ft 3 in). Sports distance guide + 50–500m reference table. Free converter →",
+    "summary": "Convert 300 meters to feet: 300 m equals exactly 984.252 feet (984 ft 3 in). Check exact conversion math, distance benchmarks, and calculator.",
     "order": 31
   },
   {
     "id": "1000-usd-to-gbp",
     "slug": "/blog/1000-usd-to-gbp",
-    "title": "1000 USD to GBP: Exact Formula & Live Calculator",
+    "title": "1000 USD to GBP Fast Online Guide | Exchange Rate Guide",
     "date": "2026-10-20",
     "publicationDate": "2026-10-20T00:00:00Z",
     "category": "Currency & Forex",
@@ -492,13 +492,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1000-usd-to-gbp.png?v=2",
-    "summary": "Convert 1000 USD to GBP with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Get fast clarity on 1000 USD to GBP. Compare current exchange figures and common transfer amounts. Compare common amounts and verify results.",
     "order": 32
   },
   {
     "id": "200-gbp-to-aud",
     "slug": "/blog/200-gbp-to-aud",
-    "title": "200 GBP to AUD: Exact Formula & Live Calculator",
+    "title": "200 GBP to AUD Fast Online Guide | Fast Rate Calculator",
     "date": "2026-10-19",
     "publicationDate": "2026-10-19T00:00:00Z",
     "category": "Currency & Forex",
@@ -507,13 +507,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/200-gbp-to-aud.png?v=2",
-    "summary": "Convert 200 gbp to aud with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "summary": "Understand 200 GBP to AUD without guesswork. Compare current exchange figures and common transfer amounts. Clear reference values and practical.",
     "order": 33
   },
   {
     "id": "14-usd-to-aud",
     "slug": "/blog/14-usd-to-aud",
-    "title": "14 USD to AUD: Exact Formula & Live Calculator",
+    "title": "14 USD to AUD: Convert 14 US Dollars to A$ | Live Rates",
     "date": "2026-10-18",
     "publicationDate": "2026-10-18T00:00:00Z",
     "category": "Currency & Forex",
@@ -522,13 +522,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/14-usd-to-aud.png?v=2",
-    "summary": "Convert 14 usd to aud with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "summary": "Convert 14 USD to AUD with real-time exchange rates. See exact US Dollar to Australian Dollar conversions, payment fees, and reference tables.",
     "order": 34
   },
   {
     "id": "100-usd-in-australian",
     "slug": "/blog/100-usd-in-australian",
-    "title": "$100 USD in Australian Dollars: Travel Cash, Credit Card Fees &amp; ATM Guide",
+    "title": "100 USD in AUD: Australian Dollar Payout | Travel Tips!",
     "date": "2026-10-17",
     "publicationDate": "2026-10-17T00:00:00Z",
     "category": "Currency & Forex",
@@ -537,13 +537,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/100-usd-in-australian.png?v=2",
-    "summary": "See how much $100 US Dollars is worth in Australian Dollars after airport kiosk spreads, 3% credit card foreign transaction fees, and Australian ATM withdrawals.",
+    "summary": "Convert $100 USD to Australian Dollars. Find out how much you actually receive after bank ATM fees, credit card margins, and exchange spreads.",
     "order": 35
   },
   {
     "id": "20-gbp-aud",
     "slug": "/blog/20-gbp-aud",
-    "title": "20 GBP to AUD Exchange Rate: Live £20 British Pound to Australian Dollar Calculator",
+    "title": "20 GBP to AUD: Convert £20 British Pounds | Live Rates!",
     "date": "2026-10-16",
     "publicationDate": "2026-10-16T00:00:00Z",
     "category": "Currency & Forex",
@@ -552,13 +552,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/20-gbp-aud.png?v=2",
-    "summary": "Live 20 GBP to AUD currency conversion calculator (~A$38.61 AUD). Check mid-market GBP/AUD exchange rates, historical volatility ranges, and quick conversion increments.",
+    "summary": "Convert 20 GBP to AUD with live currency rates. See exact British Pound to Australian Dollar conversions, tourist exchange fees, and charts.",
     "order": 36
   },
   {
     "id": "1-aud-to-vnd",
     "slug": "/blog/1-aud-to-vnd",
-    "title": "1 AUD to VND: Australian Dollar to Vietnamese Dong Exchange Rate &amp; Travel Guide",
+    "title": "1 AUD to VND: Australian Dollar to Dong Rate | Rates UK",
     "date": "2026-10-15",
     "publicationDate": "2026-10-15T00:00:00Z",
     "category": "Currency & Forex",
@@ -567,13 +567,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1-aud-to-vnd.png?v=2",
-    "summary": "Convert 1 AUD to VND (~16,650 Vietnamese Dong) with our live exchange rate calculator, travel cash reference table, ATM withdrawal tips, and VND mental math shortcuts.",
+    "summary": "Convert 1 Australian Dollar to Vietnamese Dong (AUD to VND). Compare live mid-market exchange rates, bank transfer fees, and travel charts now.",
     "order": 37
   },
   {
     "id": "67-usd-to-gbp",
     "slug": "/blog/67-usd-to-gbp",
-    "title": "67 USD to GBP: Exact Formula & Live Calculator",
+    "title": "67 USD to GBP: Convert 67 Dollars to Pounds | Live Rate",
     "date": "2026-10-15",
     "publicationDate": "2026-10-15T00:00:00Z",
     "category": "Currency & Forex",
@@ -582,13 +582,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/67-usd-to-gbp.png?v=2",
-    "summary": "Convert 67 usd to gbp with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "summary": "Convert 67 US Dollars to British Pounds ($67 to £). Check live mid-market exchange rates, bank fee breakdowns, and currency conversion charts.",
     "order": 38
   },
   {
     "id": "convert-file-type-to-pdf",
     "slug": "/blog/convert-file-type-to-pdf",
-    "title": "How to Convert Any File Type to PDF: Images, Docs &amp; Spreadsheets Guide",
+    "title": "How to Convert Any File to PDF: Easy Guide | Free Tools",
     "date": "2026-10-15",
     "publicationDate": "2026-10-15T00:00:00Z",
     "category": "File & Media Tools",
@@ -597,13 +597,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📁",
     "image": "/assets/blog/en/convert-file-type-to-pdf.png?v=2",
-    "summary": "Learn how to convert Word documents, JPG/PNG images, spreadsheets, and text files into universally compatible PDF documents using built-in OS tools and browser converters.",
+    "summary": "Learn how to convert Word documents, images, Excel sheets, and text files to PDF safely in your browser. Simple, secure, and private methods.",
     "order": 39
   },
   {
     "id": "convert-pdf-form",
     "slug": "/blog/convert-pdf-form",
-    "title": "How to Convert &amp; Flatten Interactive PDF Forms for Printing and Archiving",
+    "title": "How to Flatten and Convert PDF Forms Safely | PDF Guide",
     "date": "2026-10-15",
     "publicationDate": "2026-10-15T00:00:00Z",
     "category": "File & Media Tools",
@@ -612,13 +612,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📁",
     "image": "/assets/blog/en/convert-pdf-form.png?v=2",
-    "summary": "Step-by-step guide to converting fillable XFA and AcroForm PDF forms into flat, read-only PDFs or image formats while preserving entered form data and digital signatures.",
+    "summary": "Learn how to fill, convert, and flatten interactive PDF forms securely. Prevent unwanted form edits and protect sensitive document information.",
     "order": 40
   },
   {
     "id": "150-usd-to-aud",
     "slug": "/blog/150-usd-to-aud",
-    "title": "150 USD to AUD: Exact Formula & Live Calculator",
+    "title": "150 USD to AUD Fast Online Guide | Fast Rate Calculator",
     "date": "2026-10-14",
     "publicationDate": "2026-10-14T00:00:00Z",
     "category": "Currency & Forex",
@@ -627,13 +627,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/150-usd-to-aud.png?v=2",
-    "summary": "Convert 150 usd to aud with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "summary": "Make sense of 150 USD to AUD in moments. Compare current exchange figures and common transfer amounts. Practical breakdown designed for everyday.",
     "order": 41
   },
   {
     "id": "5-lbs-in-kg",
     "slug": "/blog/5-lbs-in-kg",
-    "title": "5 lbs in kg: Exact Formula & Live Calculator",
+    "title": "5 lbs in kg — Conversion Guide, Formula",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
     "category": "Weight & Mass",
@@ -642,13 +642,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/5-lbs-in-kg.png?v=2",
-    "summary": "Convert 5 lbs in kg with 100% accuracy using standard mathematical formulas, mental math shortcuts, full reference tables, and instant calculator.",
+    "summary": "Explore 5 lbs in kg with practical examples and clear math. Follow the exact conversion math and quick lookup table. Fast, private. Free online.",
     "order": 42
   },
   {
     "id": "700-pounds-to-aud",
     "slug": "/blog/700-pounds-to-aud",
-    "title": "700 GBP to AUD: Convert £700 British Pounds to Australian Dollars",
+    "title": "700 Pounds to AUD: Convert £700 to AUD | Live Rates UK!",
     "date": "2026-10-13",
     "publicationDate": "2026-10-13T00:00:00Z",
     "category": "Currency & Forex",
@@ -657,13 +657,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/700-pounds-to-aud.png?v=2",
-    "summary": "Convert £700 British Pounds Sterling to Australian Dollars (~A$1,351.27 AUD). Compare UK-to-Australia transfer spreads, travel money rates, and GBP/AUD conversion tables.",
+    "summary": "Convert £700 British Pounds to Australian Dollars. Compare live mid-market exchange rates, international transfer costs, and bank margins online.",
     "order": 43
   },
   {
     "id": "220-pounds-in-stone",
     "slug": "/blog/220-pounds-in-stone",
-    "title": "220 lbs in Stone: 15 st 10 lb — Quick UK Answer",
+    "title": "220 lbs in Stone: Exactly 15 st 10 lbs!",
     "date": "2026-10-12",
     "publicationDate": "2026-10-12T00:00:00Z",
     "category": "Weight & Mass",
@@ -672,13 +672,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/220-pounds-in-stone.png?v=2",
-    "summary": "220 lbs = 15 stone 10 lb (99.79 kg). Full 200–240 lbs table. BMI guide included. Free UK weight converter →",
+    "summary": "Convert 220 lbs to stone and pounds: 220 pounds equals exactly 15 st 10 lbs (15.71 st). See full step-by-step math and bodyweight conversion.",
     "order": 44
   },
   {
     "id": "104-kg-pounds",
     "slug": "/blog/104-kg-pounds",
-    "title": "104 kg to lbs: How Many Pounds Is 104 Kilograms? (229.28 lbs &amp; 16 st 5 lb)",
+    "title": "104 kg to Pounds: Convert 229.28 lb Now",
     "date": "2026-10-11",
     "publicationDate": "2026-10-11T00:00:00Z",
     "category": "Weight & Mass",
@@ -687,13 +687,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/104-kg-pounds.png?v=2",
-    "summary": "104 kilograms equals 229.28 pounds (229 lbs 4.5 oz or 16 stone 5.3 lbs). View the exact 104 kg to lbs formula, fractional stone breakdown, and gym weight conversion chart.",
+    "summary": "Convert 104 kg to lbs: 104 kilograms equals exactly 229.28 pounds (16 st 5.3 lbs). See verified conversion formulas and weight charts online.",
     "order": 45
   },
   {
     "id": "70kg-in-stone",
     "slug": "/blog/70kg-in-stone",
-    "title": "70 kg in Stone &amp; Pounds: How Much Is 70 Kilograms in Stone? (11 st 0.3 lb)",
+    "title": "70 kg in Stone: Convert 11 st 0.3 lbs Now | Weight Tool",
     "date": "2026-10-10",
     "publicationDate": "2026-10-10T00:00:00Z",
     "category": "Weight & Mass",
@@ -702,13 +702,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/70kg-in-stone.png?v=2",
-    "summary": "70 kilograms equals 11 stone 0.32 pounds (11.02 stone or 154.32 lbs). Learn how to convert 70 kg to stone and pounds with our interactive calculator and UK weight chart.",
+    "summary": "Convert 70 kg to stone and pounds: 70 kilograms equals exactly 11 st 0.3 lbs (154.32 lbs). View verified body weight formulas and stone charts.",
     "order": 46
   },
   {
     "id": "2000-usd-to-aud",
     "slug": "/blog/2000-usd-to-aud",
-    "title": "2000 USD to AUD: Convert $2,000 US Dollars to Australian Dollars",
+    "title": "2000 USD to AUD Rate | Convert $2,000 US Dollars to AUD",
     "date": "2026-10-09",
     "publicationDate": "2026-10-09T00:00:00Z",
     "category": "Currency & Forex",
@@ -717,13 +717,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/2000-usd-to-aud.png?v=2",
-    "summary": "Convert $2,000 USD to AUD (~A$3,050 Australian Dollars). Compare international wire transfer fees, SWIFT vs fintech spreads, and full USD/AUD conversion tables.",
+    "summary": "Need 2000 USD to AUD: Convert $2,000 US Dollars to Australian Dollars? Compare current exchange figures and common transfer amounts. Get clear.",
     "order": 47
   },
   {
     "id": "4-meters-to-feet",
     "slug": "/blog/4-meters-to-feet",
-    "title": "4 Meters to Feet (4 m to ft): How Many Feet Is 4 Meters? (13 ft 1.48 in)",
+    "title": "4 Meters to Feet (4 m to ft): Exact Guide | Quick Guide",
     "date": "2026-10-08",
     "publicationDate": "2026-10-08T00:00:00Z",
     "category": "Length & Distance",
@@ -732,13 +732,28 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/4-meters-to-feet.png?v=2",
-    "summary": "4 meters equals 13.1234 feet (13 feet 1.48 inches). Learn the exact 4 m to ft multiplication formula, room dimension comparisons, and meters-to-feet conversion table.",
+    "summary": "Need 4 Meters to Feet (4 m to ft): Exact Conversion (13.12 Feet / 13 ft 1.5 in)? Follow the exact conversion math and quick lookup table. Get.",
     "order": 48
+  },
+  {
+    "id": "2000-usd-to-gbp",
+    "slug": "/blog/2000-usd-to-gbp",
+    "title": "2000 USD to GBP Exchange Rate: Convert | Exchange Guide",
+    "date": "2026-10-07",
+    "publicationDate": "2026-10-07T00:00:00Z",
+    "category": "Currency & Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "OmniConverter Editorial Team",
+    "readTime": "4 min read",
+    "icon": "💱",
+    "image": "https://images.unsplash.com/photo-1517232117795-40c9d8212a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMDY4OTMyfDB8MXxzZWFyY2h8NXx8MjAwMCUyMHVzZCUyMHRvJTIwZ2JwfGVufDB8fHx8MTc5MTMzMjAwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+    "summary": "See how 2000 USD to GBP Exchange Rate: Convert $2,000 USD to £ GBP Instantly works in practice. Compare current exchange figures and common.",
+    "order": 49
   },
   {
     "id": "1500-usd-to-gbp",
     "slug": "/blog/1500-usd-to-gbp",
-    "title": "1500 USD to GBP: Convert $1,500 US Dollars to British Pounds (£1,185 Guide)",
+    "title": "1500 USD to GBP Rate | Convert $1,500 to British Pounds",
     "date": "2026-10-06",
     "publicationDate": "2026-10-06T00:00:00Z",
     "category": "Currency & Forex",
@@ -747,13 +762,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1500-usd-to-gbp.png?v=2",
-    "summary": "Convert $1,500 USD to GBP (~£1,185 British Pounds). Compare mid-market exchange rates against bank transfer spreads, card markups, and USD to GBP conversion tables.",
-    "order": 49
+    "summary": "Explore 1500 USD to GBP: Convert $1,500 US Dollars to British Pounds (£) with practical examples and clear math. Compare current. Free online.",
+    "order": 50
   },
   {
     "id": "95-usd-to-gbp",
     "slug": "/blog/95-usd-to-gbp",
-    "title": "95 USD to GBP: Convert $95 US Dollars to British Pounds (£75.05 Guide)",
+    "title": "95 USD to GBP: Convert 95 Dollars to Pounds | Live Rate",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T12:07:34Z",
     "category": "Currency & Forex",
@@ -762,13 +777,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/95-usd-to-gbp.png?v=2",
-    "summary": "Convert $95 USD to GBP (~£75.05 British Pounds). Ideal for checking UK e-commerce checkout totals, credit card FX fees, and exact USD to GBP exchange rates.",
-    "order": 50
+    "summary": "Convert 95 US Dollars to British Pounds ($95 to £). Check current exchange rates, international payment costs, and practical currency tables.",
+    "order": 51
   },
   {
     "id": "1500-usd-to-aud",
     "slug": "/blog/1500-usd-to-aud",
-    "title": "1500 USD to AUD: Convert $1,500 US Dollars to Australian Dollars",
+    "title": "1500 USD to AUD Rate | Convert $1,500 US Dollars to AUD",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:16:47Z",
     "category": "Currency & Forex",
@@ -777,13 +792,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1500-usd-to-aud.png?v=2",
-    "summary": "Convert $1,500 USD to AUD (~A$2,287.50 Australian Dollars) with our interactive FX calculator, bank wire markup comparison table, and USD/AUD exchange rate guide.",
-    "order": 51
+    "summary": "See how 1500 USD to AUD: Convert $1,500 US Dollars to Australian Dollars works in practice. Compare current exchange figures and common transfer.",
+    "order": 52
   },
   {
     "id": "1-bigha-in-square-feet",
     "slug": "/blog/1-bigha-in-square-feet",
-    "title": "1 Bigha in Square Feet (Land Guide)",
+    "title": "1 Bigha in Square Feet (State-Wise Land | Formula Guide",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:05:00Z",
     "category": "Indian Units & Land",
@@ -792,13 +807,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/1-bigha-in-square-feet.png?v=2",
-    "summary": "How many square feet are in 1 Bigha? Complete verified state-wise conversion table for UP, Bihar, Punjab, Haryana, Rajasthan, West Bengal, and MP.",
-    "order": 52
+    "summary": "Make sense of 1 Bigha in Square Feet (State-Wise Land Measurement Guide) in moments. Follow the exact conversion math and quick lookup table.",
+    "order": 53
   },
   {
     "id": "1-crore-in-millions",
     "slug": "/blog/1-crore-in-millions",
-    "title": "1 Crore in Millions (Number Guide)",
+    "title": "1 Crore in Millions and Billions: Indian to | Live Rate",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:04:00Z",
     "category": "Indian Units & Land",
@@ -807,13 +822,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/1-crore-in-millions.png?v=2",
-    "summary": "Convert 1 Crore to Millions and Billions. Learn the exact zeros, commas, and currency value of Crore in USD, EUR, and international banking.",
-    "order": 53
+    "summary": "See how 1 Crore in Millions and Billions: Indian to Western Numbers Guide works in practice. Compare current exchange figures and. Free online.",
+    "order": 54
   },
   {
     "id": "1-gaj-in-square-feet",
     "slug": "/blog/1-gaj-in-square-feet",
-    "title": "1 Gaj in Square Feet (Land Guide)",
+    "title": "1 Gaj in Square Feet and Square Yards | Quick Reference",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:03:00Z",
     "category": "Indian Units & Land",
@@ -822,13 +837,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/1-gaj-in-square-feet.png?v=2",
-    "summary": "Convert 1 Gaj to square feet and square meters. Learn why 1 Gaj equals exactly 9 square feet (1 square yard) in Indian property deeds.",
-    "order": 54
+    "summary": "Checking 1 Gaj in Square Feet and Square Yards Guide today? Follow the exact conversion math and quick lookup table. Review common values and.",
+    "order": 55
   },
   {
     "id": "1-guntha-in-sq-ft",
     "slug": "/blog/1-guntha-in-sq-ft",
-    "title": "1 Guntha in Sq Ft (Land Guide)",
+    "title": "1 Guntha in Square Feet (Land Measurement | Quick Guide",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:02:00Z",
     "category": "Indian Units & Land",
@@ -837,13 +852,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/1-guntha-in-sq-ft.png?v=2",
-    "summary": "How many square feet are in 1 Guntha? Convert Guntha to Sq Ft, Square Yards, Bigha, and Acres for Maharashtra, Karnataka, Gujarat, and Telangana.",
-    "order": 55
+    "summary": "Get fast clarity on 1 Guntha in Square Feet (Land Measurement Guide). Follow the exact conversion math and quick lookup table. Compare common.",
+    "order": 56
   },
   {
     "id": "1-tola-in-grams",
     "slug": "/blog/1-tola-in-grams",
-    "title": "1 Tola in Grams (Gold Weight Guide)",
+    "title": "1 Tola in Grams: Gold and Jewellery Guide | Free Tools!",
     "date": "2026-10-05",
     "publicationDate": "2026-10-05T00:01:00Z",
     "category": "Indian Units & Land",
@@ -852,13 +867,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/1-tola-in-grams.png?v=2",
-    "summary": "How many grams are in 1 Tola? Learn the exact difference between the 10-gram modern metric Tola and 11.6638-gram traditional Vedic Tola for gold purchase.",
-    "order": 56
+    "summary": "Convert 1 tola to grams: 1 tola equals exactly 11.6638 grams for gold and silver jewellery. See traditional Indian and South Asian weight charts.",
+    "order": 57
   },
   {
     "id": "65-kg-pounds",
     "slug": "/blog/65-kg-pounds",
-    "title": "65 kg to lbs: How Many Pounds Is 65 Kilograms? (143.30 lbs / 10 st 3 lb)",
+    "title": "65 kg to Pounds: Convert 143.30 lbs Now",
     "date": "2026-10-04",
     "publicationDate": "2026-10-04T00:00:00Z",
     "category": "Weight & Mass",
@@ -867,13 +882,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/65-kg-pounds.png?v=2",
-    "summary": "65 kilograms equals 143.30 pounds (143 lbs 4.8 oz or 10 stone 3.3 lbs). View the exact 65 kg to lbs formula, incremental 65.1–65.9 kg table, and fitness weight equivalents.",
-    "order": 57
+    "summary": "Convert 65 kg to pounds: 65 kilograms equals exactly 143.30 lbs (10 st 3.3 lbs). See step-by-step conversion formulas and body weight tables.",
+    "order": 58
   },
   {
     "id": "165-lbs-to-kg",
     "slug": "/blog/165-lbs-to-kg",
-    "title": "165 lbs to kg: How Many Kilograms Is 165 Pounds? (Exact 74.84 kg)",
+    "title": "165 lbs to kg: Convert 165 Pounds to | Conversion Chart",
     "date": "2026-10-03",
     "publicationDate": "2026-10-03T00:00:00Z",
     "category": "Weight & Mass",
@@ -882,13 +897,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/165-lbs-to-kg.png?v=2",
-    "summary": "165 pounds equals 74.8427 kilograms (74.84 kg or 11 stone 11 lbs). Use our interactive 165 lbs to kg converter, step-by-step division formula, and fitness weight chart.",
-    "order": 58
+    "summary": "Understand 165 lbs to kg: Convert 165 Pounds to Kilograms (74.84 kg) without guesswork. Follow the exact conversion math and quick lookup table.",
+    "order": 59
   },
   {
     "id": "14-stone-in-pounds",
     "slug": "/blog/14-stone-in-pounds",
-    "title": "14 Stone in Pounds &amp; kg: How Much Is 14 st in lbs? (196 lbs / 88.90 kg)",
+    "title": "14 Stone in Pounds: Exactly 196 lbs Net | Weight Guide!",
     "date": "2026-10-02",
     "publicationDate": "2026-10-02T00:00:00Z",
     "category": "Weight & Mass",
@@ -897,13 +912,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/14-stone-in-pounds.png?v=2",
-    "summary": "14 stone equals exactly 196 pounds (196 lbs) or 88.90 kilograms (88.9 kg). Explore the complete 14 st 0 lb to 14 st 13 lb body weight conversion chart and formula.",
-    "order": 59
+    "summary": "Convert 14 stone to pounds: 14 st equals exactly 196 lbs (88.90 kg). Explore step-by-step body weight math, comparison tables, and calculators.",
+    "order": 60
   },
   {
     "id": "15-meters-to-feet",
     "slug": "/blog/15-meters-to-feet",
-    "title": "15 Meters to Feet (15 m to ft): Exact Conversion (49.21 ft / 49 ft 2.55 in)",
+    "title": "15 Meters to Feet (15 m to ft): Exact | Quick Reference",
     "date": "2026-10-01",
     "publicationDate": "2026-10-01T00:00:00Z",
     "category": "Length & Distance",
@@ -912,13 +927,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📏",
     "image": "/assets/blog/en/15-meters-to-feet.png?v=2",
-    "summary": "15 meters equals 49.2126 feet (49 feet 2.55 inches). Learn how to convert 15 m to ft using the official 3.28084 multiplier, with architectural and pool length comparisons.",
-    "order": 60
+    "summary": "Looking up 15 Meters to Feet (15 m to ft): Exact Conversion (49.21 Feet)? Follow the exact conversion math and quick lookup table. Free online.",
+    "order": 61
   },
   {
     "id": "16-ounces-to-milliliters",
     "slug": "/blog/16-ounces-to-milliliters",
-    "title": "16 oz to mL: How Many Milliliters in 16 Fluid Ounces? (473.18 mL / 1 US Pint)",
+    "title": "16 oz to mL: How Many Milliliters Are in | Step-by-Step",
     "date": "2026-10-01",
     "publicationDate": "2026-10-01T00:00:00Z",
     "category": "Volume & Geometry",
@@ -927,13 +942,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🧪",
     "image": "/assets/blog/en/16-ounces-to-milliliters.png?v=2",
-    "summary": "16 US fluid ounces equals 473.18 milliliters (1 US liquid pint), while 16 UK Imperial fluid ounces equals 454.61 mL. View the full oz to mL drinkware and kitchen conversion chart.",
-    "order": 61
+    "summary": "Checking 16 oz to mL: How Many Milliliters Are in 16 Fluid Ounces? (473.18 mL) today? Follow the exact conversion math and quick lookup table.",
+    "order": 62
   },
   {
     "id": "180lbs-in-stone",
     "slug": "/blog/180lbs-in-stone",
-    "title": "180 lbs in Stone: 12 st 12 lb — Instant UK Answer",
+    "title": "180 lbs in Stone: Exactly 12 st 12 lbs!",
     "date": "2026-09-30",
     "publicationDate": "2026-09-30T00:00:00Z",
     "category": "Weight & Mass",
@@ -942,13 +957,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/180lbs-in-stone.png?v=2",
-    "summary": "180 lbs = 12 stone 12 lb (81.65 kg). Free instant table: 160–200 lbs. BMI chart included. UK standard weight converter →",
-    "order": 62
+    "summary": "Convert 180 lbs in stone and pounds: 180 pounds equals exactly 12 st 12 lbs (12.86 st). See full step-by-step math and quick reference tables.",
+    "order": 63
   },
   {
     "id": "convert-lakh-to-usd",
     "slug": "/blog/convert-lakh-to-usd",
-    "title": "Convert Lakh to USD: How Much Is 1 Lakh INR (₹1,00,000) in US Dollars?",
+    "title": "Convert Lakh to USD | How Much Is 1 Lakh INR in Dollars",
     "date": "2026-09-29",
     "publicationDate": "2026-09-29T00:00:00Z",
     "category": "Indian Units & Land",
@@ -957,13 +972,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🇮🇳",
     "image": "/assets/blog/en/convert-lakh-to-usd.png?v=2",
-    "summary": "1 Lakh Indian Rupees (₹1,00,000 INR) equals approximately $1,190 USD. Learn how the Indian numbering system (Lakhs and Crores) maps to thousands, millions, and US Dollars.",
-    "order": 63
+    "summary": "Make sense of Convert Lakh to USD: Indian Rupee (₹1,00,000 INR) to US Dollar Exchange Guide in moments. Compare current exchange figures and.",
+    "order": 64
   },
   {
     "id": "5-usd-to-aud",
     "slug": "/blog/5-usd-to-aud",
-    "title": "5 USD to AUD: Today's Rate (~A$7.60) [Live 2026]",
+    "title": "5 USD to AUD: Convert 5 US Dollars to AUD | Live Rates!",
     "date": "2026-09-28",
     "publicationDate": "2026-09-28T00:00:00Z",
     "category": "Currency & Forex",
@@ -972,13 +987,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/5-usd-to-aud.png?v=2",
-    "summary": "$5 USD = approx A$7.60 AUD today. Live exchange rate. Free instant currency converter. Updated daily →",
-    "order": 64
+    "summary": "Convert 5 USD to AUD with real-time exchange rates. Explore current US Dollar to Australian Dollar figures, bank margins, and lookup tables.",
+    "order": 65
   },
   {
     "id": "3-cups-in-ml",
     "slug": "/blog/3-cups-in-ml",
-    "title": "3 Cups in mL: How Many Milliliters Are in 3 Cups? (710 mL US / 750 mL Metric)",
+    "title": "3 Cups in mL: Exact US Customary (709.76 | Step-by-Step",
     "date": "2026-09-27",
     "publicationDate": "2026-09-27T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -987,13 +1002,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/3-cups-in-ml.png?v=2",
-    "summary": "3 US Customary cups equals 709.76 mL (commonly rounded to 710 mL), while 3 Metric cups equals 750 mL. Compare US, UK, Metric, and Legal cup conversions for baking and cooking.",
-    "order": 65
+    "summary": "Explore 3 Cups in mL: Exact US Customary (709.76 mL) vs Metric Cup (750 mL) Guide with practical examples and clear math. Follow. Free online.",
+    "order": 66
   },
   {
     "id": "currency-for-turkish-lira",
     "slug": "/blog/currency-for-turkish-lira",
-    "title": "Turkish Lira (TRY / ₺) Currency Guide: Exchange Rates, Notes &amp; Travel Tips",
+    "title": "Turkish Lira Currency Guide: TRY Money Tips | Rates UK!",
     "date": "2026-09-24",
     "publicationDate": "2026-09-24T00:00:00Z",
     "category": "Currency & Forex",
@@ -1002,13 +1017,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/currency-for-turkish-lira.png?v=2",
-    "summary": "Complete guide to Turkey's official currency, the Turkish Lira (TRY / ₺): banknote denominations, USD/EUR/GBP to TRY exchange rates, ATM tips, and paying in Istanbul.",
-    "order": 66
+    "summary": "Complete guide to the Turkish Lira (TRY). Learn about banknotes, exchange rates, tourist card payments, ATM withdrawal fees, and travel tips.",
+    "order": 67
   },
   {
     "id": "currency-jpy-to-inr",
     "slug": "/blog/currency-jpy-to-inr",
-    "title": "JPY to INR Currency Guide: Convert Japanese Yen (¥) to Indian Rupees (₹)",
+    "title": "JPY to INR Currency Guide: Japanese Yen (¥) | Live Rate",
     "date": "2026-09-24",
     "publicationDate": "2026-09-24T00:00:00Z",
     "category": "Currency & Forex",
@@ -1017,13 +1032,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/currency-jpy-to-inr.png?v=2",
-    "summary": "Convert Japanese Yen to Indian Rupees (1 JPY ≈ ₹0.54 INR / 1,000 JPY ≈ ₹544 INR). Includes a JPY to INR travel table, remittance tips, and live currency calculator.",
-    "order": 67
+    "summary": "Understand JPY to INR Currency Guide: Japanese Yen (¥) to Indian Rupee (₹) Exchange Rates without guesswork. Compare current exchange figures.",
+    "order": 68
   },
   {
     "id": "convertor-or-converter",
     "slug": "/blog/convertor-or-converter",
-    "title": "Convertor vs. Converter: Which Spelling Is Correct in English &amp; Engineering?",
+    "title": "Convertor vs Converter: Correct Spelling | Language Tip",
     "date": "2026-09-23",
     "publicationDate": "2026-09-23T00:00:00Z",
     "category": "Conversion Guide",
@@ -1032,13 +1047,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📊",
     "image": "/assets/blog/en/convertor-or-converter.png?v=2",
-    "summary": "Is it spelled converter or convertor? Discover why &quot;converter&quot; is the standard spelling across 95% of general English while &quot;convertor&quot; appears in specific UK electrical standards.",
-    "order": 68
+    "summary": "Discover whether to write convertor or converter. Explore English spelling origins, technical industry usage, and official dictionary rules.",
+    "order": 69
   },
   {
     "id": "12-degrees-celsius-to-fahrenheit",
     "slug": "/blog/12-degrees-celsius-to-fahrenheit",
-    "title": "12°C to °F: What Is 12 Degrees Celsius in Fahrenheit? (53.6°F Weather Guide)",
+    "title": "12°C to °F: What Is 12 Degrees Celsius in | Quick Chart",
     "date": "2026-09-22",
     "publicationDate": "2026-09-22T00:00:00Z",
     "category": "Temperature & Cooking",
@@ -1047,13 +1062,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🌡️",
     "image": "/assets/blog/en/12-degrees-celsius-to-fahrenheit.png?v=2",
-    "summary": "12 degrees Celsius equals exactly 53.6 degrees Fahrenheit (53.6°F). Learn the step-by-step °C to °F formula, what to wear in 12°C weather, and view our temperature reference chart.",
-    "order": 69
+    "summary": "Make sense of 12°C to °F: What Is 12 Degrees Celsius in Fahrenheit? (Exact 53.6°F) in moments. Check the scale formula and everyday temperature.",
+    "order": 70
   },
   {
     "id": "170lbs-in-stone",
     "slug": "/blog/170lbs-in-stone",
-    "title": "170 lbs in Stone &amp; kg: What Is 170 Pounds in Stone? (12 st 2 lb / 77.11 kg)",
+    "title": "170 lbs in Stone: Exact 12 st 2 lbs Guide | OmniConvert",
     "date": "2026-09-22",
     "publicationDate": "2026-09-22T00:00:00Z",
     "category": "Weight & Mass",
@@ -1062,13 +1077,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/170lbs-in-stone.png?v=2",
-    "summary": "170 pounds equals 12 stone 2 pounds (12.14 stone) or 77.11 kilograms. See the complete 170 lbs to stone and kg formula, remainder math, and UK/US body weight table.",
-    "order": 70
+    "summary": "Convert 170 lbs to stone and pounds: 170 pounds equals exactly 12 st 2 lbs (12.14 st). Check step-by-step conversion steps and stone tables.",
+    "order": 71
   },
   {
     "id": "20-pounds-sterling-in-australian-dollars",
     "slug": "/blog/20-pounds-sterling-in-australian-dollars",
-    "title": "£20 Pounds Sterling in Australian Dollars (GBP to AUD Purchasing Power &amp; Chart)",
+    "title": "£20 Pounds Sterling in Australian Dollars | Rate Guide!",
     "date": "2026-09-22",
     "publicationDate": "2026-09-22T00:00:00Z",
     "category": "Currency & Forex",
@@ -1077,13 +1092,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/20-pounds-sterling-in-australian-dollars.png?v=2",
-    "summary": "Find out how much £20 British Pounds Sterling is worth in Australian Dollars (~A$38.61 AUD), including UK-to-Australia gift remittances, tourist card spreads, and banknote equivalents.",
-    "order": 71
+    "summary": "Convert £20 British Pounds to Australian Dollars. Practical travel money guide covering cash exchanges, airport kiosks, ATM fees, and card rates.",
+    "order": 72
   },
   {
     "id": "199-usd-in-aud",
     "slug": "/blog/199-usd-in-aud",
-    "title": "199 USD to AUD: How Much Is $199 US Dollars in Australian Dollars?",
+    "title": "199 USD to AUD: Convert $199 US Dollars | Shopping Tips",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
     "category": "Currency & Forex",
@@ -1092,13 +1107,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/199-usd-in-aud.png?v=2",
-    "summary": "Convert $199 USD to AUD (~A$303.48 Australian Dollars). Ideal for Australians calculating the true AUD cost of $199 USD software subscriptions, gadgets, and foreign card fees.",
-    "order": 72
+    "summary": "Convert 199 USD to Australian Dollars for online shopping and SaaS subscriptions. Compare bank exchange margins, card fees, and live rates today.",
+    "order": 73
   },
   {
     "id": "2000-dollars-in-pounds",
     "slug": "/blog/2000-dollars-in-pounds",
-    "title": "$2,000 Dollars in Pounds (£): UK Bank Wire Costs, Spreads &amp; Purchasing Power",
+    "title": "2000 Dollars in Pounds: $2,000 USD to GBP | Live Rates!",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
     "category": "Currency & Forex",
@@ -1107,13 +1122,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/2000-dollars-in-pounds.png?v=2",
-    "summary": "How much is $2,000 dollars in pounds after bank fees? Compare what £1,580 GBP buys in the UK and how to avoid 3%–5% wire transfer markups when sending $2,000 to Britain.",
-    "order": 73
+    "summary": "Convert 2000 US Dollars to British Pounds (£). See live mid-market exchange rates, bank transfer fees, wire payment tips, and currency charts.",
+    "order": 74
   },
   {
     "id": "80-kilo-lbs",
     "slug": "/blog/80-kilo-lbs",
-    "title": "80 kg to lbs: How Many Pounds Is 80 Kilos? (Exact 176.37 lbs / 12 st 8 lb)",
+    "title": "80 kg to lbs: Convert 80 Kilograms | Step-by-Step Guide",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
     "category": "Weight & Mass",
@@ -1122,13 +1137,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/80-kilo-lbs.png?v=2",
-    "summary": "80 kilos (80 kg) equals 176.37 pounds (176 lbs 5.9 oz or 12 stone 8.4 lbs). Use our live 80 kg to lbs converter, mental math trick, and gym plate conversion chart.",
-    "order": 74
+    "summary": "Explore 80 kg to lbs: Convert 80 Kilograms (Kilos) to Pounds (176.37 lbs) with practical examples and clear math. Follow the exact conversion.",
+    "order": 75
   },
   {
     "id": "mastercard-foreign-exchange-rate",
     "slug": "/blog/mastercard-foreign-exchange-rate",
-    "title": "Mastercard Foreign Exchange Rates Explained: How Card FX Markups Work",
+    "title": "Mastercard Foreign Exchange Rates | Exchange Rate Guide",
     "date": "2026-09-21",
     "publicationDate": "2026-09-21T00:00:00Z",
     "category": "Currency & Forex",
@@ -1137,13 +1152,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/mastercard-foreign-exchange-rate.png?v=2",
-    "summary": "Understand how Mastercard calculates foreign exchange rates, when transaction settlement dates lock in your rate, and how to avoid 3% bank foreign transaction fees and DCC.",
-    "order": 75
+    "summary": "See how Mastercard Foreign Exchange Rates Explained: Network Base Rates vs Bank Fees works in practice. Compare current exchange figures and.",
+    "order": 76
   },
   {
     "id": "10-billion-won-to-gbp",
     "slug": "/blog/10-billion-won-to-gbp",
-    "title": "10 Billion Won to GBP (₩10B KRW to £): Korean Won to British Pounds Conversion",
+    "title": "10 Billion Won to GBP (₩10,000,000,000 KRW | Rate Guide",
     "date": "2026-09-20",
     "publicationDate": "2026-09-20T00:00:00Z",
     "category": "Currency & Forex",
@@ -1152,13 +1167,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/10-billion-won-to-gbp.png?v=2",
-    "summary": "Convert 10 Billion South Korean Won (₩10,000,000,000 KRW) to British Pounds (~£5.72 Million GBP). Includes corporate FX transfer tables, KRW/GBP formulas, and purchasing power context.",
-    "order": 76
+    "summary": "Checking 10 Billion Won to GBP (₩10,000,000,000 KRW to £): Korean Won to British Pounds Guide today? Compare current exchange figures and common.",
+    "order": 77
   },
   {
     "id": "32-usd-to-gbp",
     "slug": "/blog/32-usd-to-gbp",
-    "title": "32 USD to GBP: Today's Rate (~£25) [Live 2026]",
+    "title": "32 USD to GBP: Live Dollar to Pound Rates | OmniConvert",
     "date": "2026-09-20",
     "publicationDate": "2026-09-20T00:00:00Z",
     "category": "Currency & Forex",
@@ -1167,13 +1182,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/32-usd-to-gbp.png?v=2",
-    "summary": "$32 USD = approx £25.20 GBP today. Compare bank vs Wise rates. Free instant currency converter. Updated daily →",
-    "order": 77
+    "summary": "Convert 32 USD to GBP with live mid-market exchange rates. See exact dollar to British pound conversions, bank fee breakdowns, and rate tables.",
+    "order": 78
   },
   {
     "id": "indonesia-cu",
     "slug": "/blog/indonesia-cu",
-    "title": "Indonesia Currency Guide: Indonesian Rupiah (IDR) Exchange Rates &amp; Denominations",
+    "title": "Indonesian Rupiah Guide: IDR Travel Money | Currency UK",
     "date": "2026-09-20",
     "publicationDate": "2026-09-20T00:00:00Z",
     "category": "Currency & Forex",
@@ -1182,13 +1197,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/indonesia-cu.png?v=2",
-    "summary": "Complete Indonesia currency guide: learn about the Indonesian Rupiah (IDR), banknote denominations, IDR to USD/AUD/EUR/GBP exchange rates, ATM tips, and QRIS digital payments.",
-    "order": 78
+    "summary": "Complete Indonesian Rupiah (IDR) currency guide. Understand denominations, exchange rates, Bali holiday money tips, and ATM fees in Indonesia.",
+    "order": 79
   },
   {
     "id": "weeks-calculator",
     "slug": "/blog/weeks-calculator",
-    "title": "Weeks Calculator: Convert Weeks to Days, Hours, Months &amp; Years",
+    "title": "Weeks Calculator: Days, Hours & Months | Fast Web Tool!",
     "date": "2026-09-20",
     "publicationDate": "2026-09-20T00:00:00Z",
     "category": "Currency & Forex",
@@ -1197,13 +1212,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/weeks-calculator.png?v=2",
-    "summary": "Calculate exact time durations between weeks, days, hours, minutes, and calendar months (1 week = 7 days = 168 hours; 1 year = 52.1775 weeks) for pregnancy, payroll, and project planning.",
-    "order": 79
+    "summary": "Calculate how many days, hours, and months are in any number of weeks. Accurate calendar duration tools, pregnancy timelines, and work charts.",
+    "order": 80
   },
   {
     "id": "13-stone-in-pounds",
     "slug": "/blog/13-stone-in-pounds",
-    "title": "13 Stone in Pounds: Exactly 182 lbs [13 × 14]",
+    "title": "13 Stone in Pounds: Exactly 182 lbs Net",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
     "category": "Weight & Mass",
@@ -1212,13 +1227,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/13-stone-in-pounds.png?v=2",
-    "summary": "13 stone = 182 pounds exactly (82.55 kg). Full 1–20 stone reference table. BMI guide. Free UK weight calculator →",
-    "order": 80
+    "summary": "Convert 13 stone in pounds: 13 st equals exactly 182 lbs (82.55 kg). Explore detailed conversion formulas, stone-to-lb charts, and calculator.",
+    "order": 81
   },
   {
     "id": "71-pounds-to-kg",
     "slug": "/blog/71-pounds-to-kg",
-    "title": "71 lbs to kg: How Many Kilograms Is 71 Pounds? (Exact 32.21 kg)",
+    "title": "71 lbs to kg: Convert 71 Pounds to 32.21 kg | Free Tool",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
     "category": "Weight & Mass",
@@ -1227,13 +1242,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/71-pounds-to-kg.png?v=2",
-    "summary": "71 pounds equals 32.2051 kilograms (32.21 kg or 5 stone 1 lb). Check the exact 71 lbs to kg formula, luggage and freight weight limits, and conversion table.",
-    "order": 81
+    "summary": "Convert 71 pounds to kilograms: 71 lbs equals exactly 32.21 kg (5 st 1 lb). Check step-by-step conversion formulas, charts, and calculations.",
+    "order": 82
   },
   {
     "id": "file-changer",
     "slug": "/blog/file-changer",
-    "title": "Online File Format &amp; Extension Changer: Convert Images, Audio &amp; Docs in Browser",
+    "title": "Online File Format & Extension Changer | Fast Web Tools",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
     "category": "File & Media Tools",
@@ -1242,13 +1257,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📁",
     "image": "/assets/blog/en/file-changer.png?v=2",
-    "summary": "Understand the difference between changing a file extension and true container transcoding. Convert images (WebP, PNG, JPG), audio, and documents locally in your browser.",
-    "order": 82
+    "summary": "Change image and document file formats safely in your web browser. Free in-browser file extension converter with zero server uploads required.",
+    "order": 83
   },
   {
     "id": "rupiah-to-aud",
     "slug": "/blog/rupiah-to-aud",
-    "title": "Rupiah to AUD (IDR to A$): Bali &amp; Indonesia Travel Money Conversion Guide",
+    "title": "Rupiah to AUD: Bali Travel Money Calculator | Live Rate",
     "date": "2026-09-19",
     "publicationDate": "2026-09-19T00:00:00Z",
     "category": "Currency & Forex",
@@ -1257,13 +1272,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/rupiah-to-aud.png?v=2",
-    "summary": "Convert Indonesian Rupiah (IDR) to Australian Dollars (AUD) using the 4-zero mental math shortcut (Rp 100,000 ≈ A$9.65 AUD). Includes Bali ATM and money changer tips.",
-    "order": 83
+    "summary": "Convert Indonesian Rupiah to Australian Dollars (IDR to AUD). Easy Bali holiday money conversion shortcuts, quick lookup charts, and live rates.",
+    "order": 84
   },
   {
     "id": "300-dollars-in-gbp",
     "slug": "/blog/300-dollars-in-gbp",
-    "title": "300 Dollars in GBP ($300 USD to £): Convert 300 US Dollars to British Pounds",
+    "title": "300 Dollars in GBP: Convert $300 to Pounds | Live Rates",
     "date": "2026-09-18",
     "publicationDate": "2026-09-18T00:00:00Z",
     "category": "Currency & Forex",
@@ -1272,13 +1287,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/300-dollars-in-gbp.png?v=2",
-    "summary": "Convert $300 US Dollars to British Pounds (~£237 GBP). Includes UK customs VAT duty thresholds on $300 orders, card conversion fees, and a USD to GBP reference chart.",
-    "order": 84
+    "summary": "Convert 300 US Dollars to British Pounds ($300 to £). See exact mid-market exchange rates, bank transfer charges, and shopping checkout tips.",
+    "order": 85
   },
   {
     "id": "converter-application-download",
     "slug": "/blog/converter-application-download",
-    "title": "How to Install OmniConverter as an Offline Web App (PWA) on Phone &amp; PC",
+    "title": "How to Install OmniConverter Offline Web | Format Guide",
     "date": "2026-09-18",
     "publicationDate": "2026-09-18T00:00:00Z",
     "category": "Conversion Guide",
@@ -1287,13 +1302,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📊",
     "image": "/assets/blog/en/converter-application-download.png?v=2",
-    "summary": "Learn how to install OmniConverter as a lightweight Progressive Web App (PWA) on iOS, Android, Windows, and macOS for offline unit conversions and file size calculations.",
-    "order": 85
+    "summary": "See how How to Install OmniConverter Offline Web Application (PWA) on Any Device works in practice. Keep files private locally while following.",
+    "order": 86
   },
   {
     "id": "korean-to-aud",
     "slug": "/blog/korean-to-aud",
-    "title": "Korean Won to AUD (KRW to A$): Convert South Korean Won to Australian Dollars",
+    "title": "Korean Won to AUD: KRW to A$ Currency Rates | Live Rate",
     "date": "2026-09-18",
     "publicationDate": "2026-09-18T00:00:00Z",
     "category": "Currency & Forex",
@@ -1302,13 +1317,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/korean-to-aud.png?v=2",
-    "summary": "Convert South Korean Won (KRW / ₩) to Australian Dollars (AUD). 10,000 KRW equals ~A$11.05 AUD. Includes Seoul travel money tips, ATM advice, and KRW/AUD conversion tables.",
-    "order": 86
+    "summary": "Convert Korean Won to Australian Dollars (KRW to AUD). Live mid-market exchange rates, Seoul travel budget tables, and bank margin comparisons.",
+    "order": 87
   },
   {
     "id": "1-billion-korean-won-to-gbp",
     "slug": "/blog/1-billion-korean-won-to-gbp",
-    "title": "1 Billion Korean Won to GBP (KRW to £): How Much Is ₩1,000,000,000 in Pounds?",
+    "title": "1 Billion Korean Won to GBP (KRW to £): How | Live Rate",
     "date": "2026-09-17",
     "publicationDate": "2026-09-17T00:00:00Z",
     "category": "Currency & Forex",
@@ -1317,13 +1332,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/1-billion-korean-won-to-gbp.png?v=2",
-    "summary": "Find out exactly how much 1 Billion South Korean Won (₩1,000,000,000 KRW) is worth in British Pounds (£572,460 GBP), with K-drama cultural context and wire transfer breakdowns.",
-    "order": 87
+    "summary": "Need 1 Billion Korean Won to GBP (KRW to £): How Much Is ₩1,000,000,000 in British Pounds?? Compare current exchange figures and common transfer.",
+    "order": 88
   },
   {
     "id": "how-to-change-file-format",
     "slug": "/blog/how-to-change-file-format",
-    "title": "How to Change a File Format on Windows, Mac, iPhone &amp; Android",
+    "title": "How to Change a File Format Safely on PC | Free Guides!",
     "date": "2026-09-17",
     "publicationDate": "2026-09-17T00:00:00Z",
     "category": "File & Media Tools",
@@ -1332,13 +1347,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "📁",
     "image": "/assets/blog/en/how-to-change-file-format.png?v=2",
-    "summary": "Learn how to show file extensions on Windows File Explorer and macOS Finder, and how to properly convert image, audio, video, and document formats without corrupting data.",
-    "order": 88
+    "summary": "Learn how to change file extensions and formats safely across Windows, macOS, iOS, and Android. Avoid file corruption with verified methods.",
+    "order": 89
   },
   {
     "id": "1-gallon-in-litres",
     "slug": "/blog/1-gallon-in-litres",
-    "title": "1 Gallon in Litres: US=3.785L, UK=4.546L [Guide]",
+    "title": "1 Gallon in Litres: US and Imperial Guide | Free Online",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Volume & Geometry",
@@ -1347,13 +1362,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🧪",
     "image": "/assets/blog/en/1-gallon-in-litres.png?v=2",
-    "summary": "1 US gallon = 3.785 litres. 1 UK gallon = 4.546 litres. Fuel & cooking guide. Full table. Free converter →",
-    "order": 89
+    "summary": "Convert 1 gallon to litres: 1 US gallon is 3.785 L and 1 Imperial gallon is 4.546 L. See exact liquid volume calculations and reference tables.",
+    "order": 90
   },
   {
     "id": "1-stone-in-kg",
     "slug": "/blog/1-stone-in-kg",
-    "title": "1 Stone in KG Guide",
+    "title": "1 Stone in KG: Convert Exact 6.35 kg Now | OmniConvert!",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Weight & Mass",
@@ -1362,13 +1377,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/1-stone-in-kg.png?v=2",
-    "summary": "Convert 1 stone to kg accurately. Complete body weight conversion guide with step-by-step formulas and reference charts for stone, kg, pounds, and ounces.",
-    "order": 90
+    "summary": "Convert 1 stone to kilograms: 1 st equals exactly 6.35029 kg (14 lbs). View verified body weight formulas, conversion tables, and online math.",
+    "order": 91
   },
   {
     "id": "1-tsp-is-ml",
     "slug": "/blog/1-tsp-is-ml",
-    "title": "1 Teaspoon in mL: Exactly 5ml [US, UK & Medical]",
+    "title": "How Many mL in a Teaspoon? 1 tsp in mL | Kitchen Guide!",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -1377,13 +1392,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/1-tsp-is-ml.png?v=2",
-    "summary": "1 tsp = 5ml (US/metric). UK = 5.9ml. Medical = exactly 5ml. Full comparison table. Safe dosing guide →",
-    "order": 91
+    "summary": "Convert teaspoons to millilitres: 1 US teaspoon equals 4.93 mL (5 mL metric). Clear kitchen baking tables, liquid medicine math, and charts.",
+    "order": 92
   },
   {
     "id": "10-celsius-is-what-fahrenheit",
     "slug": "/blog/10-celsius-is-what-fahrenheit",
-    "title": "10 Celsius in Fahrenheit",
+    "title": "10 Celsius to Fahrenheit: 10°C is 50°F | Temp Guide UK!",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Temperature & Cooking",
@@ -1392,13 +1407,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🌡️",
     "image": "/assets/blog/en/10-celsius-is-what-fahrenheit.png?v=2",
-    "summary": "Convert 10 degrees Celsius to Fahrenheit accurately. Step-by-step mathematical conversion formula, weather reference charts, and temperature benchmarks.",
-    "order": 92
+    "summary": "Convert 10 degrees Celsius to Fahrenheit: 10°C equals exactly 50°F. Step-by-step temperature conversion formula, weather benchmarks, and charts.",
+    "order": 93
   },
   {
     "id": "100-kg-to-lbs",
     "slug": "/blog/100-kg-to-lbs",
-    "title": "100 kg to lbs: Exactly 220.46 lbs [Gym Reference]",
+    "title": "100 KG to LBS: Kilograms to Pounds Guide | Step-by-Step",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Weight & Mass",
@@ -1407,13 +1422,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/100-kg-to-lbs.png?v=2",
-    "summary": "100 kg = 220.46 pounds. Full 80–120 kg gym reference table. Stone conversion included. Free calculator →",
-    "order": 93
+    "summary": "Need 100 KG to LBS: Kilograms to Pounds Guide? Follow the exact conversion math and quick lookup table. Get clear, reliable numbers right in.",
+    "order": 94
   },
   {
     "id": "50-fahrenheit-to-celsius",
     "slug": "/blog/50-fahrenheit-to-celsius",
-    "title": "50°F to Celsius: Exactly 10°C [Weather Guide 2026]",
+    "title": "50 Fahrenheit to Celsius: 50°F is 10 °C",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Temperature & Cooking",
@@ -1422,13 +1437,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🌡️",
     "image": "/assets/blog/en/50-fahrenheit-to-celsius.png?v=2",
-    "summary": "50°F = 10°C exactly. What to wear at 10°C? Full weather & clothing guide. Formula included. Free temperature converter →",
-    "order": 94
+    "summary": "Convert 50 degrees Fahrenheit to Celsius: 50°F equals exactly 10°C. Check the step-by-step temperature formula, weather chart, and converter.",
+    "order": 95
   },
   {
     "id": "500-ml-to-cups",
     "slug": "/blog/500-ml-to-cups",
-    "title": "500ml to Cups: Exactly 2 UK Cups / 2.11 US Cups",
+    "title": "500 mL to Cups: How Many Cups is 500 | Conversion Chart",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -1437,13 +1452,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/500-ml-to-cups.png?v=2",
-    "summary": "500ml = 2.00 UK metric cups or 2.11 US cups. Full ml to cups table. Liquid measuring guide. Free converter →",
-    "order": 95
+    "summary": "Looking up 500 mL to Cups: How Many Cups is 500 mL?? Follow the exact conversion math and quick lookup table. Follow straightforward steps and.",
+    "order": 96
   },
   {
     "id": "60-mph-to-kmh",
     "slug": "/blog/60-mph-to-kmh",
-    "title": "60 mph to km/h: Exactly 96.56 km/h [UK Speed Guide]",
+    "title": "60 MPH to KM/H: Speed Conversion Guide UK | Quick Guide",
     "date": "2026-09-16",
     "publicationDate": "2026-09-16T00:00:00Z",
     "category": "Product & Tech",
@@ -1452,13 +1467,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚡",
     "image": "/assets/blog/en/60-mph-to-kmh.png?v=2",
-    "summary": "60 mph = 96.56 km/h. UK speed limit guide: 30/60/70 mph in km/h. Full table. Free speed converter →",
-    "order": 96
+    "summary": "Make sense of 60 MPH to KM/H: Speed Conversion Guide in moments. Follow the exact conversion math and quick lookup table. Practical breakdown.",
+    "order": 97
   },
   {
     "id": "1-3-cup-to-grams",
     "slug": "/blog/1-3-cup-to-grams",
-    "title": "1/3 Cup to Grams: Kitchen & Baking Weight Guide",
+    "title": "1/3 Cup to Grams: Kitchen and Baking Guide | Easy Tools",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -1467,13 +1482,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/1-3-cup-to-grams.png?v=2",
-    "summary": "Calculate 1/3 cup to grams for flour, sugar, butter, oats, and liquids with exact kitchen conversion tables and formulas.",
-    "order": 97
+    "summary": "Convert 1/3 cup to grams for flour, sugar, butter, and liquids accurately. Kitchen baking conversion tables, weight formulas, and tips online.",
+    "order": 98
   },
   {
     "id": "1-4-cup-is-ml",
     "slug": "/blog/1-4-cup-is-ml",
-    "title": "1/4 Cup in mL: Exactly 59ml [Baking & Cooking]",
+    "title": "1/4 Cup in mL: 59.15 mL (US) Easy Guide",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -1482,13 +1497,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/1-4-cup-is-ml.png?v=2",
-    "summary": "1/4 cup = 59.15ml (US) or 62.5ml (UK metric). Per-ingredient density table. Free converter →",
-    "order": 98
+    "summary": "Convert 1/4 cup in mL: a quarter cup equals exactly 59.15 mL (US) or 60 mL (Metric). See kitchen baking tables, liquid recipes, and conversions.",
+    "order": 99
   },
   {
     "id": "1-bar-to-psi-conversion",
     "slug": "/blog/1-bar-to-psi-conversion",
-    "title": "1 Bar to PSI: Exactly 14.5038 psi [Tyre Pressure Guide]",
+    "title": "1 Bar to PSI: Convert 14.5038 PSI Exact",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Volume & Geometry",
@@ -1497,13 +1512,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🧪",
     "image": "/assets/blog/en/1-bar-to-psi-conversion.png?v=2",
-    "summary": "1 bar = 14.5038 psi. Car tyre pressure: 2.0–2.5 bar = 29–36 psi. Full pressure table. Free converter →",
-    "order": 99
+    "summary": "Convert 1 bar to PSI: 1 bar equals exactly 14.5038 PSI. Check automotive tyre pressure charts, metric-to-imperial pressure math, and formulas.",
+    "order": 100
   },
   {
     "id": "1-cup-milk-in-milliliters",
     "slug": "/blog/1-cup-milk-in-milliliters",
-    "title": "1 Cup of Milk in mL: Exactly 240ml [Baking Guide]",
+    "title": "1 Cup Milk in Milliliters: Exact Fluid UK | Quick Guide",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Kitchen & Culinary",
@@ -1512,13 +1527,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🍳",
     "image": "/assets/blog/en/1-cup-milk-in-milliliters.png?v=2",
-    "summary": "1 cup of milk = 240ml (US) or 250ml (UK metric). Baking conversion table + density chart. Free calculator →",
-    "order": 100
+    "summary": "Explore 1 Cup Milk in Milliliters: Exact Fluid Volume Guide with practical examples and clear math. Follow the exact conversion math and quick.",
+    "order": 101
   },
   {
     "id": "100-fahrenheit-to-celsius",
     "slug": "/blog/100-fahrenheit-to-celsius",
-    "title": "100°F to Celsius: Exactly 37.78°C [Fever Guide]",
+    "title": "100 Fahrenheit to Celsius: 100°F is 37.8°C | Temp Guide",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Temperature & Cooking",
@@ -1527,13 +1542,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "🌡️",
     "image": "/assets/blog/en/100-fahrenheit-to-celsius.png?v=2",
-    "summary": "100°F = 37.78°C. Is 100°F a fever? Medical temperature guide + formula. Free temperature converter →",
-    "order": 101
+    "summary": "Convert 100 degrees Fahrenheit to Celsius: 100°F equals exactly 37.78°C. See human body temperature fever benchmarks, formulas, and converters.",
+    "order": 102
   },
   {
     "id": "100-usd-to-aud",
     "slug": "/blog/100-usd-to-aud",
-    "title": "100 USD to AUD Exchange Rate: Convert $100 US Dollars to Australian Dollars",
+    "title": "100 USD to AUD: Live Exchange Rate Guide | Free Online!",
     "date": "2026-09-15",
     "publicationDate": "2026-09-15T00:00:00Z",
     "category": "Currency & Forex",
@@ -1542,13 +1557,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/100-usd-to-aud.png?v=2",
-    "summary": "<meta name=",
-    "order": 102
+    "summary": "Convert 100 US Dollars to Australian Dollars instantly. Compare mid-market exchange rates, bank transfer costs, and historical currency tables.",
+    "order": 103
   },
   {
     "id": "22-kg-in-stone",
     "slug": "/blog/22-kg-in-stone",
-    "title": "22 kg in Stone: 3 st 6.6 lb — Exact Formula &amp; UK Calculator",
+    "title": "22 kg in Stone: Convert 3 st 6.5 lbs Now | Online Guide",
     "date": "2026-09-01",
     "publicationDate": "2026-09-01T00:00:00Z",
     "category": "Weight & Mass",
@@ -1557,13 +1572,13 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/22-kg-in-stone.png",
-    "summary": "22 kg = 3 stone 6.6 lb (48.50 lbs). Convert 22 kilograms to British stone and pounds with exact formula, 18-26 kg lookup table, and free weight converter.",
-    "order": 103
+    "summary": "Convert 22 kg to stone and pounds: 22 kilograms equals exactly 3 st 6.5 lbs (48.50 lbs). Complete UK weight breakdown formulas and clear tables.",
+    "order": 104
   },
   {
     "id": "700-gbp-to-aud",
     "slug": "/blog/700-gbp-to-aud",
-    "title": "700 GBP to AUD: How Much in Australian Dollars? [2026]",
+    "title": "700 GBP to AUD: Convert £700 British Pounds | Rates UK!",
     "date": "2026-09-01",
     "publicationDate": "2026-09-01T00:00:00Z",
     "category": "Currency & Forex",
@@ -1572,8 +1587,8 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "💱",
     "image": "/assets/blog/en/700-gbp-to-aud.png",
-    "summary": "&pound;700 GBP = approx A$1,341 AUD today. Live exchange rate, bank fee comparison, full conversion table, and free online currency converter.",
-    "order": 104
+    "summary": "Convert 700 GBP to AUD with live currency rates. See exact British Pound to Australian Dollar transfers, bank fees, and exchange rate tables.",
+    "order": 105
   }
 ];
 
