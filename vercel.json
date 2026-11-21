@@ -5,12 +5,12 @@
     {
       "source": "/pt/blog/2000-usd-to-gbp.html",
       "destination": "/pt/blog/2000-usd-para-gbp",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/pt/blog/2000-usd-to-gbp",
       "destination": "/pt/blog/2000-usd-para-gbp",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "headers": [
