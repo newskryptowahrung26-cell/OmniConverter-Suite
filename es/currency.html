@@ -13,17 +13,17 @@
   <meta name="google-adsense-account" content="ca-pub-4766868021895107">
   <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convertidor de Divisas: Tipos de Cambio en Vivo (USD, EUR, GBP) | OmniConverter</title>
-  <meta name="description" content="Calcula tipos de cambio entre USD, EUR, GBP, AUD al instante. Cotizaciones interbancarias sin comisión oculta y calculadora gratis. Pruébalo ahora →">
+  <title>Convertidor de Divisas: Tipos de Cambio y Calculadora FX | OmniConverter</title>
+  <meta name="description" content="Calcula tipos de cambio entre USD, EUR, GBP, AUD, MXN y 35 divisas mundiales. Cotizaciones de referencia orientativas y cálculo de comisiones bancarias.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/es/currency">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Convertidor de Divisas y Calculadora de Tipos de Cambio">
-  <meta name="twitter:description" content="Tipos de cambio interbancarios en tiempo real con estimación de comisiones de bancos, Visa y Mastercard.">
+  <meta name="twitter:title" content="Convertidor de Divisas: Tipos de Cambio y Calculadora FX | OmniConverter">
+  <meta name="twitter:description" content="Calcula tipos de cambio entre USD, EUR, GBP, AUD, MXN y más de 150 monedas. Cotizaciones de referencia transparentes sin comisiones ocultas.">
   <meta name="twitter:image" content="https://www.omniconverter.co.uk/logo.png">
-  <meta property="og:title" content="Convertidor de Divisas y Calculadora de Tipos de Cambio">
-  <meta property="og:description" content="Tipos de cambio interbancarios en tiempo real con estimación de comisiones de bancos, Visa y Mastercard.">
+  <meta property="og:title" content="Convertidor de Divisas: Tipos de Cambio y Calculadora FX | OmniConverter">
+  <meta property="og:description" content="Calcula tipos de cambio entre USD, EUR, GBP, AUD, MXN y más de 150 monedas. Cotizaciones de referencia transparentes sin comisiones ocultas.">
   <meta property="og:url" content="https://www.omniconverter.co.uk/es/currency">
   <meta property="og:image" content="https://www.omniconverter.co.uk/logo.png">
   <meta property="og:type" content="website">
@@ -76,7 +76,7 @@
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "mainEntity": { "@id": "https://www.omniconverter.co.uk/es/currency#app" },
         "inLanguage": "es",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "WebApplication",
@@ -121,10 +121,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
   <header>
     <div class="header-container">
       <a href="/es/" class="logo" aria-label="OmniConverter">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
 
@@ -161,7 +162,7 @@
     </div>
   </header>
 
-  <main style="max-width: 1150px; width: 100%;">
+  <main id="main-content" style="max-width: 1150px; width: 100%;">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/es/">OmniConverter</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -172,7 +173,7 @@
       <section class="converter-card" style="box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
           <div>
-            <h1 class="converter-title" style="margin:0;">Convertidor de Divisas y Calculadora de Tipos de Cambio</h1>
+            <h1 class="converter-title" style="margin:0;">Convertidor de Divisas: Calculadora de Tipos de Cambio</h1>
 
 <!-- Title ads -->
 <div style="margin: 1.25rem 0; text-align: center; overflow: hidden; min-height: 90px;">
@@ -191,7 +192,7 @@
           </div>
           <div id="rateStatusBadge" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.75rem; background:rgba(16, 185, 129, 0.1); color:#059669; border:1px solid rgba(16, 185, 129, 0.25); border-radius:9999px; font-size:0.82rem; font-weight:600;">
             <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%;"></span>
-            <span id="rateStatusText">Tipos Interbancarios en Vivo</span>
+            <span id="rateStatusText">Tipos de Referencia Orientativos (sin fechar)</span>
           </div>
         </div>
 
@@ -215,14 +216,14 @@
           <div class="input-group" style="grid-column: 1 / -1; margin-top: 0.25rem;">
             <label for="bankFeeSelect" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
               <span>Margen / Comisión Bancaria y de Tarjetas (Opcional)</span>
-              <span id="bankFeeLabel" style="color:var(--primary-600); font-size:0.85rem; font-weight:700;">0% — Pure Interbank Rate</span>
+              <span id="bankFeeLabel" style="color:var(--primary-600); font-size:0.85rem; font-weight:700;">0% — Tipo de referencia sin comisión</span>
             </label>
             <select id="bankFeeSelect" class="select-field" aria-label="Bank Fee Markup">
-              <option value="0" selected>0% — Interbank Rate (Google & XE Baseline)</option>
-              <option value="1">1% — Wise / Revolut spread</option>
-              <option value="2">2% — Standard Debit Card Cross-Border Rate</option>
-              <option value="3">3% — Typical Credit Card FX Rate (Visa / Mastercard)</option>
-              <option value="4">4% — Commercial Bank Wire Transfer</option>
+              <option value="0" selected>0% — Tipo de referencia sin margen bancario</option>
+              <option value="1">1% — Cuenta multidivisa digital (margen aprox. 1 %)</option>
+              <option value="2">2% — Tarjeta de débito estándar en el extranjero (2 %)</option>
+              <option value="3">3% — Comisión habitual de tarjeta de crédito (3 %)</option>
+              <option value="4">4% — Transferencia bancaria tradicional (4 %)</option>
             </select>
           </div>
         </div>
@@ -383,10 +384,13 @@
     </div>
   
     <article class="content-section" style="margin-top:2.5rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:2rem 1.75rem;">
-      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">Conversor de Divisas en Vivo: Tipos de Cambio Interbancarios</h2>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">Conversor de Divisas: Tipos de Cambio Orientativos</h2>
       <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1.25rem;">
         Calcule conversiones exactas entre el Dólar estadounidense (USD), el Euro (EUR), la Libra esterlina (GBP), el Peso mexicano (MXN), el Peso colombiano (COP) y más de 35 monedas mundiales con cotizaciones en tiempo real sin comisiones ocultas.
       </p>
+      <div style="margin-bottom:1.5rem; padding:0.85rem 1rem; background:rgba(0,0,0,0.03); border-left:3px solid var(--primary-600); border-radius:4px; font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+        <strong style="color:var(--text-main);">Fuentes de Datos y Tipos de Referencia:</strong> Las cotizaciones utilizadas en esta calculadora regional son estimaciones estáticas sin fecha (<code>DEFAULT_RATES</code>) con fines ilustrativos; esta página no consulta una API en vivo. Para consultar tipos indicativos actualizados diariamente, utilice nuestra calculadora principal en inglés. Entidades como el <strong>Banco Central Europeo (BCE)</strong> y el <strong>Banco de España</strong> publican tipos oficiales de referencia diarios con fines contables e informativos; no constituyen precios minoristas de compraventa garantizados por entidades comerciales.
+      </div>
     </article>
   
     <article class="content-section" style="margin-top:2rem; background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.75rem 1.5rem;">
@@ -504,7 +508,7 @@
       toSelect.addEventListener('change', calculate);
       feeSelect.addEventListener('change', () => {
         const v = feeSelect.value;
-        feeLabel.textContent = v === '0' ? '0% — Pure Interbank Rate' : `${v}% Bank Margin Applied`;
+        feeLabel.textContent = v === '0' ? '0% — Tipo de referencia sin comisión' : `${v}% Bank Margin Applied`;
         calculate();
       });
 

@@ -217,10 +217,10 @@ window.initTravelAtmFeeCalculator = function() {
 
   btn.addEventListener('click', calculateTravelLoss);
   spendInput.addEventListener('input', calculateTravelLoss);
-  baseCurr.addEventListener('change', calculateTravelLoss);
-  foreignCurr.addEventListener('change', calculateTravelLoss);
-  bankMarkup.addEventListener('change', calculateTravelLoss);
-  atmFee.addEventListener('input', calculateTravelLoss);
+  if (baseCurr) baseCurr.addEventListener('change', calculateTravelLoss);
+  if (foreignCurr) foreignCurr.addEventListener('change', calculateTravelLoss);
+  if (bankMarkup) bankMarkup.addEventListener('change', calculateTravelLoss);
+  if (atmFee) atmFee.addEventListener('input', calculateTravelLoss);
 
   // Initial run
   calculateTravelLoss();

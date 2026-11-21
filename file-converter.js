@@ -1,6 +1,6 @@
 /**
  * Browser-native Client-side File & Media Converter Engine
- * Performs image conversions via Canvas API, text/data transformations, and client-side ZIP packaging.
+ * Performs image conversions via Canvas API (PNG, JPEG, WebP, BMP) and client-side text/data transformations (JSON, CSV, TXT to HTML).
  */
 
 // Convert Image File (PNG, JPEG, WebP, BMP) in-browser

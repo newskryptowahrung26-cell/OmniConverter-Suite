@@ -90,10 +90,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
   <header>
     <div class="header-container">
       <a href="/es/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -126,7 +127,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/es/">Inicio</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -151,7 +152,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/es/380-f-a-c.png" alt="Conversion chart and visual reference guide for 380°F a °C: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/es/380-f-a-c.png" alt="Conversion chart and visual reference guide for 380°F a °C: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Para convertir <strong>380°F a °C</strong>, se aplica la fórmula estándar de conversión °C = (°F - 32) × 5/9, lo que da un resultado exacto de <strong>193.33°C</strong> (o <strong>193.3°C</strong> redondeado a un decimal). La escala Fahrenheit se utiliza principalmente en el sistema anglosajón en Estados Unidos, mientras que el grado Celsius (antiguamente centígrado) es la norma internacional del sistema métrico, empleada globalmente en entornos científicos, culinarios e industriales.</p><p>Ya sea que estés adaptando una receta extranjera, calibrando electrodomésticos de cocina o programando una freidora de aire, puedes obtener conversiones al instante con nuestra <a href="/temperature" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">herramienta interactiva de conversión de temperatura</a>. A continuación, encontrarás el desglose matemático paso a paso, métodos de cálculo mental rápido, equivalencias en marcas de gas europeas y referencias culinarias clave para 380 grados Fahrenheit.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Resumen Rápido</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">380°F = 193.33°C</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Fracción exacta: 193 <sup>1</sup>/<sub>3</sub>°C | Kelvin: 466.48 K | Gas Mark (UK): 5 a 5.5 | Ajuste práctico en horno: 190°C a 195°C (Horno convencional) o 175°C (Horno con ventilador / Convección)</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -262,7 +263,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -335,5 +336,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

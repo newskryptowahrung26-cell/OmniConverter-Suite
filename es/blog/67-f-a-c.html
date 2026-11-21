@@ -101,10 +101,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
   <header>
     <div class="header-container">
       <a href="/es/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -137,7 +138,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/es/">Inicio</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -162,7 +163,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/es/67-f-a-c.png" alt="Conversion chart and visual reference guide for 67 F a C: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/es/67-f-a-c.png" alt="Conversion chart and visual reference guide for 67 F a C: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Convertir <strong>67 Fahrenheit a Celsius</strong> es una necesidad habitual, ya sea para analizar pronósticos meteorológicos internacionales, ajustar recetas de repostería o regular el termostato de casa. Las escalas de temperatura suelen generar dudas porque el grado Fahrenheit (utilizado comúnmente en Estados Unidos y varias naciones del Caribe) y el grado Celsius (el estándar internacional del sistema métrico adoptado en casi todo el mundo) tienen puntos de congelación y tasas de incremento muy diferentes. Para simplificar tus cálculos o explorar otras unidades, puedes utilizar nuestra <a href="/temperature" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">herramienta de conversión de temperatura en línea</a>, diseñada para ofrecer resultados rápidos y precisos.</p><p>Para una referencia inmediata al consultar el clima o ajustar el aire acondicionado, 67 grados Fahrenheit equivalen exactamente a <strong>19.44 grados Celsius</strong> (redondeado a dos decimales). A continuación, encontrarás el desglose matemático completo, métodos de cálculo mental rápido, tablas de referencia y el contexto práctico de cómo se siente esta temperatura en la vida diaria.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Respuesta Rápida</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">67 Fahrenheit (°F) = 19.444... Celsius (°C)</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Expresado en fracción estándar, esto equivale aproximadamente a 19 4/9 °C, o bien 19.4 °C redondeado para la mayoría de los usos meteorológicos prácticos.</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -273,7 +274,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -346,5 +347,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

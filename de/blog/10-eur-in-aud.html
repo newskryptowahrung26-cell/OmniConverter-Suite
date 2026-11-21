@@ -101,10 +101,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
   <header>
     <div class="header-container">
       <a href="/de/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -137,7 +138,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/de/">Startseite</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -162,7 +163,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/de/10-eur-in-aud.png" alt="Conversion chart and visual reference guide for 10 EUR in AUD: Exakte Formel & Live-Rechner" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/de/10-eur-in-aud.png" alt="Conversion chart and visual reference guide for 10 EUR in AUD: Exakte Formel & Live-Rechner" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Die Umrechnung von 10 Euro in Australische Dollar ist ein alltäglicher Vorgang für internationale Reisende, Online-Shopper auf europäischen Plattformen sowie Devisenanleger, die tägliche Forex-Bewegungen verfolgen. Aktuell liegt der mittlere Interbanken-Wechselkurs bei etwa 1 EUR = 1,65 AUD. Das bedeutet, dass 10 EUR rechnerisch rund 16,50 AUD entsprechen, bevor Händlermargen oder Kartengebühren durch Bankinstitute anfallen. Bei tatsächlichen grenzüberschreitenden Zahlungen berechnen Geschäftsbanken, Kreditkartenanbieter wie Visa und Mastercard sowie Zahlungsdienstleister wie Wise oder PayPal üblicherweise eine Spanne von 0,5 % bis 3,0 % auf den Devisenmittelkurs. Um sekundenaktuelle Live-Kurse direkt von den Weltmärkten abzurufen, nutzen Sie unser professionelles <a href="/currency" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">Währungsrechner- und Devisenkurs-Tool</a>.</p><p>Ein fundiertes Verständnis von Währungsumrechnungen erfordert mehr als bloße Arithmetik: Es verlangt einen Blick darauf, wie frei handelbare Währungen anhand makroökonomischer Indikatoren, Leitzinsdifferenzen der Europäischen Zentralbank sowie der Reserve Bank of Australia und der allgemeinen Marktstimmung schwanken. Ob Sie eine Reise nach Australien planen, eine Euro-Rechnung von einem australischen Konto begleichen oder im Ausland studieren – ein solides Wissen über die Umrechnungsmetriken schützt Sie zuverlässig vor versteckten Gebühren.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Schnellübersicht</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">10 EUR = 16,50 AUD (Ungefährer Devisenmittelkurs)</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Basierend auf einem Referenzkurs von 1 EUR = 1,65 AUD. Reale Endabrechnungsbeträge variieren je nach Bearbeitungsgebühren, Wochenendschließungen der Devisenmärkte und Aufschlägen des jeweiligen Anbieters.</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -286,7 +287,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -359,5 +360,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

@@ -90,35 +90,40 @@ export const DEFAULT_RATES = {
 };
 
 let activeRates = { ...DEFAULT_RATES };
-let lastUpdateTimestamp = 'Cached Reference Rates';
+let lastUpdateTimestamp = 'Undated Fallback Estimate';
 let isLiveSynced = false;
+let activeSource = 'fallback';
 
 const CACHE_KEY = 'omniconverter_fx_rates';
 const CACHE_TIME_KEY = 'omniconverter_fx_time';
+const CACHE_PROVIDER_TIME_KEY = 'omniconverter_fx_provider_time';
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 export async function fetchLiveRates() {
   if (typeof window === 'undefined') {
-    return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: false };
+    return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: false, source: 'fallback' };
   }
 
   try {
     const cachedRatesStr = localStorage.getItem(CACHE_KEY);
     const cachedTimeStr = localStorage.getItem(CACHE_TIME_KEY);
+    const cachedProviderTime = localStorage.getItem(CACHE_PROVIDER_TIME_KEY);
     const now = Date.now();
 
     if (cachedRatesStr && cachedTimeStr && (now - Number(cachedTimeStr) < CACHE_TTL_MS)) {
       const parsed = JSON.parse(cachedRatesStr);
       activeRates = { ...DEFAULT_RATES, ...parsed };
       isLiveSynced = true;
-      lastUpdateTimestamp = new Date(Number(cachedTimeStr)).toLocaleDateString('en-GB', {
+      activeSource = 'cached';
+      const fetchedAt = new Date(Number(cachedTimeStr)).toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'short',
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
       });
-      return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: true };
+      lastUpdateTimestamp = cachedProviderTime || fetchedAt;
+      return { rates: activeRates, lastUpdate: lastUpdateTimestamp, cachedAt: fetchedAt, isLive: true, source: 'cached' };
     }
 
     const response = await fetch('https://open.er-api.com/v6/latest/USD');
@@ -127,7 +132,8 @@ export async function fetchLiveRates() {
       if (data && data.rates) {
         activeRates = { ...DEFAULT_RATES, ...data.rates };
         isLiveSynced = true;
-        lastUpdateTimestamp = data.time_last_update_utc 
+        activeSource = 'live';
+        lastUpdateTimestamp = data.time_last_update_utc
           ? new Date(data.time_last_update_utc).toLocaleDateString('en-GB', {
               day: 'numeric',
               month: 'short',
@@ -141,17 +147,21 @@ export async function fetchLiveRates() {
         try {
           localStorage.setItem(CACHE_KEY, JSON.stringify(data.rates));
           localStorage.setItem(CACHE_TIME_KEY, String(now));
+          localStorage.setItem(CACHE_PROVIDER_TIME_KEY, lastUpdateTimestamp);
         } catch (e) {
           // LocalStorage may fail in private mode
         }
-        return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: true };
+        return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: true, source: 'live' };
       }
     }
   } catch (err) {
-    console.warn('Currency API sync unavailable, utilizing high-precision offline fallback rates.', err);
+    console.warn('Currency API sync unavailable, utilizing undated static fallback estimates.', err);
   }
 
-  return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: isLiveSynced };
+  activeSource = 'fallback';
+  isLiveSynced = false;
+  lastUpdateTimestamp = 'Undated Fallback Estimate';
+  return { rates: activeRates, lastUpdate: lastUpdateTimestamp, isLive: false, source: 'fallback' };
 }
 
 export function getActiveRates() {

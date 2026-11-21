@@ -13,17 +13,17 @@
   <meta name="google-adsense-account" content="ca-pub-4766868021895107">
   <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Währungsrechner: Live-Wechselkurse (EUR, USD, CHF, GBP) | OmniConverter</title>
-  <meta name="description" content="Wechselkurse zwischen EUR, USD, CHF, GBP sekundenschnell berechnen. Interbanken-Mittelkurse ohne versteckte Bankgebühren. Jetzt testen →">
+  <title>Währungsrechner: Devisenkurse & Wechselkurs-Rechner | OmniConverter</title>
+  <meta name="description" content="Wechselkurse zwischen EUR, USD, CHF, GBP und 35 Weltwährungen berechnen. Transparente Richtwerte und Rechner für versteckte Bankgebühren.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/de/currency">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Währungsumrechner & Wechselkurs-Rechner | Live Devisenkurse">
-  <meta name="twitter:description" content="Echtzeit-Interbankenkurse mit Gebührenrechner für Banken, Visa und Mastercard. Schnelle Währungsumrechnung.">
+  <meta name="twitter:title" content="Währungsrechner: Devisenkurse & Wechselkurs-Rechner | OmniConverter">
+  <meta name="twitter:description" content="Wechselkurse zwischen EUR, USD, CHF, GBP und über 150 Währungen berechnen. Transparente Devisenkurse ohne versteckte Bankgebühren oder Aufschläge.">
   <meta name="twitter:image" content="https://www.omniconverter.co.uk/logo.png">
-  <meta property="og:title" content="Währungsumrechner & Wechselkurs-Rechner | Live Devisenkurse">
-  <meta property="og:description" content="Echtzeit-Interbankenkurse mit Gebührenrechner für Banken, Visa und Mastercard. Schnelle Währungsumrechnung.">
+  <meta property="og:title" content="Währungsrechner: Devisenkurse & Wechselkurs-Rechner | OmniConverter">
+  <meta property="og:description" content="Wechselkurse zwischen EUR, USD, CHF, GBP und über 150 Währungen berechnen. Transparente Devisenkurse ohne versteckte Bankgebühren oder Aufschläge.">
   <meta property="og:url" content="https://www.omniconverter.co.uk/de/currency">
   <meta property="og:image" content="https://www.omniconverter.co.uk/logo.png">
   <meta property="og:type" content="website">
@@ -76,7 +76,7 @@
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "mainEntity": { "@id": "https://www.omniconverter.co.uk/de/currency#app" },
         "inLanguage": "de",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "WebApplication",
@@ -121,10 +121,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
   <header>
     <div class="header-container">
       <a href="/de/" class="logo" aria-label="OmniConverter">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
 
@@ -161,7 +162,7 @@
     </div>
   </header>
 
-  <main style="max-width: 1150px; width: 100%;">
+  <main id="main-content" style="max-width: 1150px; width: 100%;">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/de/">OmniConverter</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -172,7 +173,7 @@
       <section class="converter-card" style="box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
           <div>
-            <h1 class="converter-title" style="margin:0;">Währungsumrechner & Wechselkurs-Rechner</h1>
+            <h1 class="converter-title" style="margin:0;">Währungsrechner: Devisenkurse & Wechselkursrechner</h1>
 
 <!-- Title ads -->
 <div style="margin: 1.25rem 0; text-align: center; overflow: hidden; min-height: 90px;">
@@ -191,7 +192,7 @@
           </div>
           <div id="rateStatusBadge" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.75rem; background:rgba(16, 185, 129, 0.1); color:#059669; border:1px solid rgba(16, 185, 129, 0.25); border-radius:9999px; font-size:0.82rem; font-weight:600;">
             <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%;"></span>
-            <span id="rateStatusText">Live-Interbankenkurse</span>
+            <span id="rateStatusText">Richtwert-Referenzkurse (undatiert)</span>
           </div>
         </div>
 
@@ -215,14 +216,14 @@
           <div class="input-group" style="grid-column: 1 / -1; margin-top: 0.25rem;">
             <label for="bankFeeSelect" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
               <span>Bankaufschlag & Kartengebühren (Optional)</span>
-              <span id="bankFeeLabel" style="color:var(--primary-600); font-size:0.85rem; font-weight:700;">0% — Pure Interbank Rate</span>
+              <span id="bankFeeLabel" style="color:var(--primary-600); font-size:0.85rem; font-weight:700;">0% — Reiner Referenzkurs (ohne Aufschlag)</span>
             </label>
             <select id="bankFeeSelect" class="select-field" aria-label="Bank Fee Markup">
-              <option value="0" selected>0% — Interbank Rate (Google & XE Baseline)</option>
-              <option value="1">1% — Wise / Revolut spread</option>
-              <option value="2">2% — Standard Debit Card Cross-Border Rate</option>
-              <option value="3">3% — Typical Credit Card FX Rate (Visa / Mastercard)</option>
-              <option value="4">4% — Commercial Bank Wire Transfer</option>
+              <option value="0" selected>0% — Referenzkurs ohne Bankaufschlag</option>
+              <option value="1">1% — Digitales Fremdwährungskonto (ca. 1 % Aufschlag)</option>
+              <option value="2">2% — Standard-Debitkarte im Ausland (ca. 2 %)</option>
+              <option value="3">3% — Typische Kreditkarten-Auslandsgebühr (ca. 3 %)</option>
+              <option value="4">4% — Klassische Banküberweisung / Filialbank (ca. 4 %)</option>
             </select>
           </div>
         </div>
@@ -377,7 +378,7 @@
     </div>
   
     <article class="content-section" style="margin-top:2.5rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:2rem 1.75rem;">
-      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">Echtzeit-Währungsrechner: Live-Mittelkurse für über 35 Weltwährungen</h2>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">Währungsumrechner: Richtwerte für über 35 Weltwährungen</h2>
       <p style="line-height:1.7; color:var(--text-muted); margin-bottom:1.25rem;">
         Unser Währungsrechner berechnet sekundengenaue Devisenkurse für Auslandsreisen, E-Commerce, internationales Banking und Geschäftsrechnungen. Konvertieren Sie Euro (EUR), US-Dollar (USD), britisches Pfund (GBP), Schweizer Franken (CHF), japanischen Yen (JPY) und australischen Dollar (AUD) mit tagesaktuellen Interbanken-Raten.
       </p>
@@ -385,6 +386,9 @@
       <p style="line-height:1.7; color:var(--text-muted);">
         Der hier angezeigte Mittelkurs (Interbanken-Rate) ist der fairste globale Referenzkurs, den Großbanken untereinander handeln. Traditionelle Filialbanken und Geldwechselstuben an Flughäfen berechnen oft verdeckte Margenaufschläge von 2% bis 6%. Mit unserem Tool sehen Sie den echten Rechnungsbetrag vor Bankgebühren.
       </p>
+      <div style="margin-top:1rem; padding:0.85rem 1rem; background:rgba(0,0,0,0.03); border-left:3px solid var(--primary-600); border-radius:4px; font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+        <strong style="color:var(--text-main);">Datenquellen & Referenzhinweis:</strong> Die in diesem regionalen Rechner verwendeten Kurse sind undatierte statische Referenzwerte (<code>DEFAULT_RATES</code>) für illustrative Berechnungen und Kostenvergleiche; diese Seite ruft keine Live-API ab. Für täglich aktualisierte indikative Kurse nutzen Sie bitte unseren englischen Hauptrechner. Offizielle Institutionen wie die <strong>Europäische Zentralbank (EZB)</strong> und die <strong>Deutsche Bundesbank</strong> veröffentlichen tägliche Referenzkurse zu Bilanzierungs- und Informationszwecken; diese stellen jedoch keine garantierten Ankauf- oder Verkaufskurse von Geschäftsbanken dar.
+      </div>
     </article>
 
     <section class="content-section" style="margin-top:2rem; background:var(--bg-elevated); border:1px solid var(--card-border); border-radius:var(--radius-xl); padding:1.75rem 1.5rem;">
@@ -514,7 +518,7 @@
       toSelect.addEventListener('change', calculate);
       feeSelect.addEventListener('change', () => {
         const v = feeSelect.value;
-        feeLabel.textContent = v === '0' ? '0% — Pure Interbank Rate' : `${v}% Bank Margin Applied`;
+        feeLabel.textContent = v === '0' ? '0% — Reiner Referenzkurs (ohne Aufschlag)' : `${v}% Bank Margin Applied`;
         calculate();
       });
 

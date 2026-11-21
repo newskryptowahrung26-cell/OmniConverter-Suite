@@ -90,10 +90,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
   <header>
     <div class="header-container">
       <a href="/es/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -126,7 +127,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/es/">Inicio</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -151,7 +152,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/es/245-kg-a-libras.png" alt="Conversion chart and visual reference guide for 245 kg a Libras: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/es/245-kg-a-libras.png" alt="Conversion chart and visual reference guide for 245 kg a Libras: Fórmula Exacta y Calculadora" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Convertir 245 kg a libras equivale exactamente a <strong>540,1325 libras (lbs)</strong>, estableciendo una equivalencia estándar basada en el sistema internacional de masa avoirdupois. Ya sea que estés calculando tarifas de flete de transporte, registrando cargas de levantamiento en barra o revisando especificaciones de maquinaria industrial, la conversión entre el sistema métrico (kilogramos del SI) y las unidades tradicionales estadounidenses exige una precisión absoluta. Para conversiones rápidas entre otras unidades de masa, puedes probar diferentes valores en nuestra <a href="/weight-mass" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">herramienta de conversión de masa</a> oficial.</p><p>Un kilogramo se define legalmente como exactamente 2,2046226218487757 libras según el Acuerdo Internacional de Yardas y Libras de 1959. Al trabajar con cargas considerables como 245 kilogramos, las pequeñas discrepancias por redondeo pueden acumular rápidamente varias libras de diferencia, por lo que el rigor matemático resulta indispensable en el comercio, el deporte y la logística.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Resumen Rápido</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">245 kg = 540,1325 lbs (redondeado a 540,13 lbs)</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Equivalente a 38 stones y 8,13 libras, 8.642,12 onzas avoirdupois o aproximadamente 0,27 toneladas cortas estadounidenses (54,0% del umbral de media tonelada).</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -264,7 +265,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -337,5 +338,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

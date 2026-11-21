@@ -101,10 +101,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
   <header>
     <div class="header-container">
       <a href="/pt/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -137,7 +138,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/pt/">Início</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -162,7 +163,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/pt/10-eur-para-aud.png" alt="Conversion chart and visual reference guide for 10 EUR para AUD: Fórmula Exata e Conversor" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/pt/10-eur-para-aud.png" alt="Conversion chart and visual reference guide for 10 EUR para AUD: Fórmula Exata e Conversor" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Converter 10 Euros em Dólares Australianos é uma transação frequente para viajantes internacionais, compradores online que adquirem produtos de comerciantes europeus e investidores em câmbio que acompanham os movimentos diários do forex. Atualmente, a taxa de câmbio interbancária de referência situa-se em aproximadamente 1 EUR = 1.65 AUD, o que significa que 10 EUR equivalem diretamente a cerca de 16.50 AUD, antes de serem aplicadas quaisquer margens de lucro de varejo ou taxas de processamento de cartões pelas instituições financeiras. Ao realizar transações transfronteiriças no mundo real, bancos comerciais, redes de cartões de crédito como Visa e Mastercard, e provedores de remessa como Wise ou PayPal frequentemente aplicam spreads de varejo dinâmicos que variam de 0.5% a 3.0% sobre a taxa de câmbio de mercado. Para verificar instantaneamente as taxas ao vivo atualizadas segundo a segundo em relação aos mercados globais de moedas, utilize a nossa ferramenta profissional de <a href="/currency" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">conversão de moedas e rastreamento de taxas de câmbio</a>.</p><p>Compreender a mecânica exata do câmbio exige olhar além da matemática básica para examinar como as moedas fiduciárias flutuam umas em relação às outras com base em indicadores macroeconômicos, diferenciais de taxa de juros definidos pelo Banco Central Europeu e pelo Banco da Reserva da Austrália, e no sentimento do mercado global. Quer esteja a planear o orçamento para umas férias na Oceania, a pagar uma fatura em EUR a partir de uma conta bancária australiana ou a estudar no estrangeiro, dominar as métricas de conversão garante que nunca paga em excesso em taxas de câmbio.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Resposta Rápida</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">10 EUR = 16.50 AUD (Taxa de Mercado Aproximada)</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Com base numa taxa de câmbio de referência de 1 EUR = 1.65 AUD. Os valores reais das transações no varejo variam dependendo das taxas de processamento intermediárias, fechos de mercado de fim de semana e spreads do provedor.</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -285,7 +286,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -358,5 +359,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

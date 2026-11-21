@@ -13,17 +13,17 @@
   <meta name="google-adsense-account" content="ca-pub-4766868021895107">
   <script src="/ahrefs-analytics.js" data-key="i4l/B5Lec0bODmBnYEF+kw" async></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gewichts- &amp; Masse-Umrechner: kg in Pfund, Stone in kg | OmniConverter</title>
-  <meta name="description" content="Kilogramm in Pfund, 100 kg in Stone, Gramm in Unzen sekundenschnell umrechnen. Exakte Formeln, BMI-Referenz & kostenloser Rechner. Jetzt testen →">
+  <title>Gewichts-Umrechner: kg in Pfund, Stone in kg & Gramm | OmniConverter</title>
+  <meta name="description" content="Kilogramm in Pfund (lbs), Stone in kg und Gramm in Unzen umrechnen. Mit Körpergewicht-Referenztabellen, BMI-Kontext und amtlichen Berechnungsformeln.">
   <link rel="canonical" href="https://www.omniconverter.co.uk/de/weight-mass">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gewichts- & Masse-Umrechner | kg, Pfund, Stone, Gramm">
-  <meta name="twitter:description" content="Rechnen Sie Kilogramm in Pfund, Stone, Gramm und Unzen sekundenschnell um.">
+  <meta name="twitter:title" content="Gewichts-Umrechner: kg in Pfund, Stone in kg & Gramm | OmniConverter">
+  <meta name="twitter:description" content="Kilogramm in Pfund (lbs), Stone in kg und Gramm in Unzen umrechnen. Mit Körpergewicht-Referenztabellen, BMI-Kontext und amtlichen Berechnungsformeln.">
   <meta name="twitter:image" content="https://www.omniconverter.co.uk/logo.png">
-  <meta property="og:title" content="Gewichts- & Masse-Umrechner | kg, Pfund, Stone, Gramm">
-  <meta property="og:description" content="Rechnen Sie Kilogramm in Pfund, Stone, Gramm und Unzen sekundenschnell um.">
+  <meta property="og:title" content="Gewichts-Umrechner: kg in Pfund, Stone in kg & Gramm | OmniConverter">
+  <meta property="og:description" content="Kilogramm in Pfund (lbs), Stone in kg und Gramm in Unzen umrechnen. Mit Körpergewicht-Referenztabellen, BMI-Kontext und amtlichen Berechnungsformeln.">
   <meta property="og:url" content="https://www.omniconverter.co.uk/de/weight-mass">
   <meta property="og:image" content="https://www.omniconverter.co.uk/logo.png">
   <meta property="og:type" content="website">
@@ -76,7 +76,7 @@
         "isPartOf": { "@id": "https://www.omniconverter.co.uk/#website" },
         "mainEntity": { "@id": "https://www.omniconverter.co.uk/de/weight-mass#app" },
         "inLanguage": "de",
-        "dateModified": "2026-11-03"
+        "dateModified": "2026-11-20"
       },
       {
         "@type": "WebApplication",
@@ -129,10 +129,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
   <header>
     <div class="header-container">
       <a href="/de/" class="logo" aria-label="OmniConverter">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
 
@@ -169,7 +170,7 @@
     </div>
   </header>
 
-  <main style="max-width: 1150px; width: 100%;">
+  <main id="main-content" style="max-width: 1150px; width: 100%;">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/de/">OmniConverter</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -178,7 +179,7 @@
 
     <div id="contentWeight" class="tool-tab-content active">
       <section class="converter-card" style="box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);">
-        <h1 class="converter-title">Gewichts- & Masse-Umrechner</h1>
+        <h1 class="converter-title">Gewichts- & Masse-Umrechner: Kilogramm, Pfund & Stone</h1>
 
 <!-- Title ads -->
 <div style="margin: 1.25rem 0; text-align: center; overflow: hidden; min-height: 90px;">
@@ -245,7 +246,7 @@
             <label for="bmiHeightInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Körpergröße</label>
             <div style="display:flex; gap:0.5rem;">
               <input type="number" id="bmiHeightInput" class="input-field" value="175" step="any" style="flex:1;">
-              <select id="bmiHeightUnit" class="select-field" style="width:90px;">
+              <select id="bmiHeightUnit" class="select-field" aria-label="Größeneinheit" style="width:90px;">
                 <option value="cm" selected>cm</option>
                 <option value="m">m</option>
                 <option value="in">inches</option>
@@ -257,7 +258,7 @@
             <label for="bmiWeightInput" style="display:block; font-size:0.85rem; font-weight:700; margin-bottom:0.4rem; color:var(--text-main);">Aktuelles Gewicht</label>
             <div style="display:flex; gap:0.5rem;">
               <input type="number" id="bmiWeightInput" class="input-field" value="75" step="any" style="flex:1;">
-              <select id="bmiWeightUnit" class="select-field" style="width:90px;">
+              <select id="bmiWeightUnit" class="select-field" aria-label="Gewichtseinheit" style="width:90px;">
                 <option value="kg" selected>kg</option>
                 <option value="lb">lbs</option>
                 <option value="st">stone</option>

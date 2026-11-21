@@ -108,10 +108,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="header-container">
       <a href="/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -145,7 +146,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -171,7 +172,7 @@
 </div>
 
 
-      <img src="/assets/blog/en/100-usd-in-australian.png?v=2" alt="100 Usd In Australian: Exact Formula & Live Calculator" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/en/100-usd-in-australian.png?v=2" alt="100 Usd In Australian: Exact Formula & Live Calculator" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Converting foreign currency accurately requires understanding both raw financial market rates and real-world banking markups. At a standard baseline spot market rate of 1 USD = 1.5250 AUD, converting <strong>100 United States Dollars (USD)</strong> yields exactly <strong>152.50 Australian Dollars (AUD)</strong>. To check live real-time rate shifts or compute customized commercial spreads, utilize our interactive <a href="/currency" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">live exchange rate calculator</a> before finalizing foreign payments or wire transfers.</p>
 
 <p>When executing international purchases, point-of-sale terminal transactions, or bank conversions, card issuers like Visa and Mastercard typically apply a foreign exchange retail margin between 1.5% and 3.0% over the interbank mid-market rate. Consequently, an international consumer converting $100 USD into Australian currency through a standard credit card or retail currency kiosk will net approximately <strong>147.93 AUD to 148.69 AUD</strong> after standard administrative spreads.</p>
@@ -477,7 +478,7 @@ Using a card that charges an underlying foreign transaction fee (typically 3%) o
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;

@@ -102,10 +102,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="header-container">
       <a href="/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -139,7 +140,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -165,7 +166,7 @@
 </div>
 
 
-      <img src="/assets/blog/en/2000-pounds-in-american-money.png" alt="Conversion chart and visual reference guide for 2000 Pounds in American Money: Formula & Calculator" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/en/2000-pounds-in-american-money.png" alt="Conversion chart and visual reference guide for 2000 Pounds in American Money: Formula & Calculator" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Converting British Pounds Sterling (GBP, £) into United States Dollars (USD, ) requires calculating the exchange between the official currency of the United Kingdom and the primary global reserve currency used in American commerce. At a standard baseline mid-market exchange rate where <strong>1 GBP = 1.27 USD</strong> as of today, exchanging <strong>2,000 pounds</strong> yields exactly <strong>2,540.00 in American money</strong>. However, because foreign exchange rates fluctuate continuously on the interbank market, using a live <a href="/currency" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">foreign currency exchange calculator</a> ensures you capture real-time market movements, retail bank spreads, and cardholder payment processor fees.</p>
 
 <div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;">
@@ -468,7 +469,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -541,5 +542,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

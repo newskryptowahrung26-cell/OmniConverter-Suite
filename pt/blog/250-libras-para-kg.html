@@ -90,10 +90,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
   <header>
     <div class="header-container">
       <a href="/pt/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -126,7 +127,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/pt/">Início</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -151,7 +152,7 @@
   </script>
 </div>
 
-      <img src="/assets/blog/pt/250-libras-para-kg.png" alt="Conversion chart and visual reference guide for 250 lbs em kg: Fórmula Exata e Conversor" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/pt/250-libras-para-kg.png" alt="Conversion chart and visual reference guide for 250 lbs em kg: Fórmula Exata e Conversor" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       <p>Para converter <strong>250 lbs em kg</strong> (libras para quilogramas), 250 libras equivalem exatamente a <strong>113,3980925 quilogramas</strong>, o que é convencionalmente arredondado para <strong>113,40 kg</strong> para aplicações comerciais, médicas e atléticas. Esta conversão une duas tradições distintas de medição: o sistema imperial/avoirdupois anglo-americano (onde a libra é padrão) e o Sistema Internacional de Unidades (sistema métrico SI, que utiliza o quilograma como sua unidade base primária de massa).</p><p>Se você está calculando metas de peso corporal pessoal, ajustando cargas de barras internacionais em uma academia, preparando manifestos de frete aéreo ou revisando regimes de dosagem médica através de fronteiras internacionais, você pode verificar instantaneamente qualquer conversão de peso usando nossa <a href="/weight-mass" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">ferramenta conversora de peso e massa</a> especializada.</p><div style="background:var(--bg-elevated); border-left:4px solid var(--accent); padding:1.25rem 1.5rem; border-radius:var(--radius-lg); margin:1.5rem 0;"><h3 style="margin:0 0 0.5rem 0; font-size:1.1rem; color:var(--text-primary);">Resposta Rápida em Resumo</h3><p style="margin:0; font-size:1.2rem; font-weight:700; color:var(--text-primary);">250 lbs = 113,398 kg (arredondado para 113,40 kg)</p><p style="margin:0.5rem 0 0 0; font-size:0.95rem; color:var(--text-secondary);">Equivalente a 17 pedras e 12 libras (17,86 st), 113.398 gramas ou 4.000 onças. Referência: Massa típica de jogo competitivo de um linebacker de elite da NFL ou de um atleta de combate superpesado olímpico.</p></div>
 
       <!-- Relevant Interactive Converter Callout Box -->
@@ -264,7 +265,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -337,5 +338,6 @@
     calculate();
   })();
   </script>
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>

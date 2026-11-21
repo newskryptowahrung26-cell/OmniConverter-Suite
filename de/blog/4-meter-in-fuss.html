@@ -109,9 +109,10 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
   <header>
     <div class="header-container">
-      <a href="/de/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;"><span>OmniConverter</span></a>
+      <a href="/de/" class="logo" aria-label="OmniConverter"><img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024"><span>OmniConverter</span></a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu"><span>Menü</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
       <nav class="nav-tabs" aria-label="Kategorie-Navigation">
         <a href="/de/" class="tab-btn">Startseite</a><a href="/indian-units" class="tab-btn">Indische Einheiten (EN)</a><a href="/de/time-zone" class="tab-btn">Zeitzone</a><a href="/de/currency" class="tab-btn">Währung</a><a href="/de/length" class="tab-btn">Länge</a><a href="/de/temperature" class="tab-btn">Temperatur</a><a href="/de/weight-mass" class="tab-btn">Gewicht</a><a href="/de/volume-capacity" class="tab-btn">Volumen</a><a href="/de/time-duration" class="tab-btn">Zeit</a><a href="/de/area" class="tab-btn">Fläche</a><a href="/de/speed" class="tab-btn">Geschwindigkeit</a>
@@ -122,7 +123,7 @@
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main id="main-content" class="main-container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="/de/">Startseite</a><span class="breadcrumb-separator">&rsaquo;</span><a href="/de/blog">Blog</a><span class="breadcrumb-separator">&rsaquo;</span><span class="breadcrumb-current" aria-current="page">4 Meter in Fuß</span></nav>
     <article class="content-section" style="margin-top:0.75rem;">
       <span class="formula-badge">Umrechnungsratgeber: 4 Meter in Fuß</span>
@@ -143,7 +144,7 @@
 
       
 
-      <img src="/assets/blog/de/4-meter-in-fuss.png?v=2" alt="Conversion chart and visual reference guide for 4 Meter in Fuß" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/de/4-meter-in-fuss.png?v=2" alt="Conversion chart and visual reference guide for 4 Meter in Fuß" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
 <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; background:var(--bg-elevated); padding:0.6rem 1rem; border-radius:var(--radius-md); border:1px solid var(--card-border); font-size:0.85rem; color:var(--text-muted); margin:0.5rem 0 1.25rem 0;">
         <span>✍️ <strong>Autor:</strong> OmniConverter Redaktionsteam</span>
         <span>🔬 <strong>Geprüft von:</strong> Technischer Beirat von OmniConverter</span>
@@ -439,7 +440,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;

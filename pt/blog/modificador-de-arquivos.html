@@ -122,10 +122,11 @@
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
   <header>
     <div class="header-container">
       <a href="/pt/" class="logo" aria-label="OmniConverter">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px; height:32px; border-radius:6px; object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
 
@@ -163,7 +164,7 @@
     </div>
   </header>
 
-  <main style="max-width: 950px; width: 100%;">
+  <main id="main-content" style="max-width: 950px; width: 100%;">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/pt/">OmniConverter</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -199,7 +200,7 @@
         <span>⏱️ 4 min de leitura</span>
       </div>
 
-      <img src="/assets/blog/pt/modificador-de-arquivos.png?v=2" alt="Conversion chart and visual reference guide for Modificador de Formato de Arquivos" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager">
+      <img src="/assets/blog/pt/modificador-de-arquivos.png?v=2" alt="Conversion chart and visual reference guide for Modificador de Formato de Arquivos" style="width:100%; max-height:360px; object-fit:cover; border-radius:var(--radius-xl); margin:0.5rem 0 1.5rem 0; border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
 
       <p>Conversão e cálculo de <strong>Modificador de Formato de Arquivos</strong> com máxima precisão matemática de acordo com os padrões internacionais oficiais. Para realizar cálculos em tempo real, acesse nossa <a href="/pt/currency" style="color:var(--primary-600);font-weight:700;text-decoration:underline;">calculadora de conversão interativa</a>.</p>
 
@@ -212,7 +213,7 @@
       <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
         <div style="max-width: 680px;">
           <h3 style="margin: 0 0 0.35rem 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">Conversor de Arquivos, Imagens e PDF no Navegador</h3>
-          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Converta imagens, áudio, documentos e calcule tamanhos de arquivo localmente.</p>
+          <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">Converta imagens (PNG, JPG, WebP), dados de texto (JSON, CSV, TXT) e calcule tamanhos de ficheiro localmente.</p>
         </div>
         <a href="/pt/file-media" class="tab-btn active" style="text-decoration: none; padding: 0.65rem 1.25rem; font-weight: 700; white-space: nowrap;">Abrir Conversor de Arquivos &rarr;</a>
       </div>
@@ -379,7 +380,7 @@
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;

@@ -1,0 +1,10 @@
+# Vercel Deployment Exclusions
+service-account.json
+*.pem
+*.key
+.env
+.env.*
+audit_reports/
+scratch/
+node_modules/
+.git/
