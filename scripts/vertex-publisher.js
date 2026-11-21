@@ -273,7 +273,17 @@ function getUnsplashPhoto(query, accessKey, usedPhotoIds = new Set()) {
 
 // ─── REBUILD blog-data.js AND sitemap.xml INLINE ─────────────────────────────
 
-function rebuildBlogData() {
+function rebuildBlogData(protectedHashesBefore = undefined) {
+  let activeSnapshot = protectedHashesBefore;
+  if (activeSnapshot === undefined) {
+    activeSnapshot = snapshotProtectedFiles(process.cwd(), {
+      trustedBaseline: TRUSTED_PROTECTED_BASELINE_HASHES
+    });
+  } else if (!(activeSnapshot instanceof Map) || activeSnapshot.size < 61) {
+    throw new Error('[P0_INVALID_PROTECTED_SNAPSHOT] rebuildBlogData requires a verified protected-file snapshot Map (>= 61 entries) or undefined to auto-create one.');
+  }
+  verifyProtectedFilesIntact(activeSnapshot, process.cwd(), 'REBUILD_BLOG_DATA_ENTRY');
+
   const today = new Date().toISOString().split('T')[0];
   const year = new Date().getFullYear();
 
@@ -547,56 +557,6 @@ function rebuildBlogData() {
   updateHubDirectory('de/blog.html', dePosts, 'de');
   updateHubDirectory('pt/blog.html', ptPosts, 'pt');
 
-  // English-only sitemap generation
-  function generateUrlSet(urls) {
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    for (const u of urls) {
-      let prio = '0.8';
-      let freq = 'weekly';
-      if (u === 'https://www.omniconverter.co.uk/') {
-        prio = '1.0';
-        freq = 'daily';
-      } else if (u.includes('/privacy-policy') || u.includes('/terms') || u.includes('/sitemap') || u.includes('/about') || u.includes('/contact')) {
-        prio = '0.5';
-        freq = 'monthly';
-      }
-      xml += `  <url><loc>${u}</loc><lastmod>${today}</lastmod><changefreq>${freq}</changefreq><priority>${prio}</priority></url>\n`;
-    }
-    xml += `</urlset>\n`;
-    return xml;
-  }
-
-  const allSiteUrls = new Set();
-  const rootFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== '404.html');
-  rootFiles.forEach(f => {
-    const p = f === 'index.html' ? '/' : `/${f.replace('.html', '')}`;
-    allSiteUrls.add(`https://www.omniconverter.co.uk${p}`);
-  });
-  if (fs.existsSync('blog')) {
-    fs.readdirSync('blog').filter(f => f.endsWith('.html')).forEach(f => {
-      allSiteUrls.add(`https://www.omniconverter.co.uk/blog/${f.replace('.html', '')}`);
-    });
-  }
-  ['es', 'de', 'pt'].forEach(lang => {
-    if (fs.existsSync(lang)) {
-      fs.readdirSync(lang).filter(f => f.endsWith('.html') && f !== '404.html' && f !== 'blog.html').forEach(f => {
-        const p = f === 'index.html' ? `/${lang}/` : `/${lang}/${f.replace('.html', '')}`;
-        allSiteUrls.add(`https://www.omniconverter.co.uk${p}`);
-      });
-      const langBlogDir = path.join(lang, 'blog');
-      if (fs.existsSync(langBlogDir)) {
-        fs.readdirSync(langBlogDir).filter(f => f.endsWith('.html')).forEach(f => {
-          const raw = fs.readFileSync(path.join(langBlogDir, f), 'utf8');
-          if (raw.includes('http-equiv="refresh"')) return;
-          allSiteUrls.add(`https://www.omniconverter.co.uk/${lang}/blog/${f.replace('.html', '')}`);
-        });
-      }
-    }
-  });
-
-  fs.writeFileSync('sitemap.xml', generateUrlSet(allSiteUrls), 'utf8');
-  console.log(`[OK] Master sitemap.xml generated with ${allSiteUrls.size} URLs.`);
-
   // Update sitemap.html blog list if file exists
   if (fs.existsSync('sitemap.html')) {
     try {
@@ -739,25 +699,995 @@ ${articlesList}
     console.warn(`Could not sync llms.txt: ${e.message}`);
   }
 
-  // Run permanent SEO audit normalizer, blog-data sync, pre-rendered cards, and per-page lastmod sitemaps
+  // Run blog-data sync, pre-rendered cards, and journaled recoverable sitemap transaction (fail-closed)
+  const { execFileSync } = require('child_process');
+  const postScripts = [
+    'scripts/sync-all-blog-data.js',
+    'scripts/prerender-blog-cards.js'
+  ];
+  for (const sc of postScripts) {
+    if (!fs.existsSync(sc)) {
+      throw new Error(`[P0_POSTSCRIPT_MISSING] Required post-publish script missing: ${sc}`);
+    }
+    execFileSync(process.execPath, [sc], { stdio: 'inherit' });
+  }
+  verifyProtectedFilesIntact(activeSnapshot, process.cwd(), 'POST_HUB_GENERATION');
+  generateSitemapsAtomically(process.cwd());
+  verifyProtectedFilesIntact(activeSnapshot, process.cwd(), 'POST_SITEMAP_GENERATION');
+  console.log('[OK] Post-publish blog-data sync, pre-renderer, and journaled multilingual sitemaps verified.');
+}
+
+// ─── JOURNALED RECOVERABLE MULTILINGUAL SITEMAP TRANSACTION ───────────────────
+function verifySitemapTransactionBackups(journal, rootDir, backupDir, sitemaps = ['sitemap-en.xml', 'sitemap-es.xml', 'sitemap-de.xml', 'sitemap-pt.xml', 'sitemap.xml']) {
+  const crypto = require('crypto');
+  const sha256Buf = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
+
+  if (!journal || typeof journal !== 'object' || !journal.originals || typeof journal.originals !== 'object') {
+    throw new Error('[P0_SITEMAP_RECOVERY_INVALID_JOURNAL] Transaction journal is missing or malformed.');
+  }
+  const origKeys = Object.keys(journal.originals);
+  if (origKeys.length !== sitemaps.length) {
+    throw new Error(`[P0_SITEMAP_RECOVERY_INVALID_JOURNAL] Expected ${sitemaps.length} original sitemap entries in journal, found ${origKeys.length}.`);
+  }
+
+  const resolvedRoot = path.resolve(rootDir);
+  const resolvedBackupDir = path.resolve(backupDir);
+
+  for (const s of sitemaps) {
+    const origInfo = journal.originals[s];
+    if (!origInfo || typeof origInfo !== 'object' || !origInfo.livePath || !origInfo.backupPath || !origInfo.sha256) {
+      throw new Error(`[P0_SITEMAP_RECOVERY_INVALID_JOURNAL] Incomplete journal entry for ${s}.`);
+    }
+
+    const resLive = path.resolve(origInfo.livePath);
+    const resBak = path.resolve(origInfo.backupPath);
+
+    // Prevent path traversal outside rootDir / backupDir
+    const relLive = path.relative(resolvedRoot, resLive);
+    const relBak = path.relative(resolvedBackupDir, resBak);
+    if (
+      relLive.startsWith('..') || path.isAbsolute(relLive) || relLive !== s ||
+      relBak.startsWith('..') || path.isAbsolute(relBak) || relBak !== `${s}.bak`
+    ) {
+      throw new Error(`[P0_SITEMAP_RECOVERY_PATH_TRAVERSAL] Rejected unsafe path in transaction journal for ${s}: live=${origInfo.livePath}, backup=${origInfo.backupPath}`);
+    }
+
+    if (!fs.existsSync(resBak)) {
+      throw new Error(`[P0_SITEMAP_RECOVERY_BACKUP_MISSING] Missing backup file for ${s} at ${resBak}`);
+    }
+
+    const bakBuf = fs.readFileSync(resBak);
+    const bakSha = sha256Buf(bakBuf);
+    if (bakSha !== origInfo.sha256) {
+      throw new Error(`[P0_SITEMAP_RECOVERY_BACKUP_CORRUPT] Backup SHA-256 mismatch for ${s} BEFORE restoration (expected ${origInfo.sha256}, got ${bakSha})`);
+    }
+  }
+  return true;
+}
+
+function recoverSitemapTransaction(rootDir = process.cwd(), opts = {}) {
+  const crypto = require('crypto');
+  const sitemaps = ['sitemap-en.xml', 'sitemap-es.xml', 'sitemap-de.xml', 'sitemap-pt.xml', 'sitemap.xml'];
+  const txDir = opts.txDir || path.join(rootDir, '.sitemap-tx');
+  const backupDir = path.join(txDir, 'backup');
+  const journalPath = path.join(txDir, 'transaction-journal.json');
+  const sha256Buf = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
+
+  if (!fs.existsSync(journalPath)) {
+    throw new Error(`[P0_SITEMAP_RECOVERY_NO_JOURNAL] No transaction journal found at ${journalPath}`);
+  }
+
+  let journal = null;
   try {
-    const { execFileSync } = require('child_process');
-    const postScripts = [
-      'scripts/fix-all-seo-audit.js',
-      'scripts/sync-all-blog-data.js',
-      'scripts/prerender-blog-cards.js',
-      'scripts/generate-separate-sitemaps.js',
-      'scripts/generate-unified-sitemap.js'
+    journal = JSON.parse(fs.readFileSync(journalPath, 'utf8'));
+  } catch (parseErr) {
+    throw new Error(`[P0_SITEMAP_RECOVERY_INVALID_JOURNAL] Failed to parse transaction journal JSON: ${parseErr.message}`);
+  }
+
+  const writeJournal = () => {
+    try {
+      fs.writeFileSync(journalPath, JSON.stringify(journal, null, 2), 'utf8');
+    } catch (_) {}
+  };
+
+  try {
+    // 1. Validate journal, prevent path traversal, and verify all 5 .bak SHA-256 hashes BEFORE copying any file
+    verifySitemapTransactionBackups(journal, rootDir, backupDir, sitemaps);
+
+    // 2. Only after all 5 backups pass pre-copy SHA-256 verification, copy each backup to its live path
+    for (const s of sitemaps) {
+      const origInfo = journal.originals[s];
+      const resBak = path.resolve(origInfo.backupPath);
+      const resLive = path.resolve(origInfo.livePath);
+      fs.copyFileSync(resBak, resLive);
+    }
+
+    // 3. Re-read all 5 restored live sitemaps and verify post-copy SHA-256
+    const restoredHashes = {};
+    for (const s of sitemaps) {
+      const origInfo = journal.originals[s];
+      const resLive = path.resolve(origInfo.livePath);
+      const liveSha = sha256Buf(fs.readFileSync(resLive));
+      if (liveSha !== origInfo.sha256) {
+        throw new Error(`[P0_SITEMAP_RECOVERY_POST_COPY_MISMATCH] Restored live sitemap ${s} SHA-256 mismatch (expected ${origInfo.sha256}, got ${liveSha})`);
+      }
+      restoredHashes[s] = liveSha;
+    }
+
+    journal.status = 'RECOVERED';
+    journal.recoveredAt = new Date().toISOString();
+    writeJournal();
+
+    // 4. Clean up transaction directory after 5/5 restored files are verified
+    fs.rmSync(txDir, { recursive: true, force: true });
+    return {
+      recovered: true,
+      transactionId: journal.transactionId,
+      previousStatus: journal.status,
+      restoredFiles: sitemaps.length,
+      restoredHashes
+    };
+  } catch (recErr) {
+    if (journal && typeof journal === 'object') {
+      journal.status = 'CRITICAL_RECOVERY_REQUIRED';
+      journal.recoveryError = recErr.message;
+      writeJournal();
+    }
+    throw new Error(`[P0_SITEMAP_RECOVERY_VALIDATION_FAILED] ${recErr.message}`);
+  }
+}
+
+function generateSitemapsAtomically(rootDir = process.cwd(), opts = {}) {
+  const crypto = require('crypto');
+  const sitemaps = ['sitemap-en.xml', 'sitemap-es.xml', 'sitemap-de.xml', 'sitemap-pt.xml', 'sitemap.xml'];
+  const txDir = opts.txDir || path.join(rootDir, '.sitemap-tx');
+  const backupDir = path.join(txDir, 'backup');
+  const stagedDir = path.join(txDir, 'staged');
+  const journalPath = path.join(txDir, 'transaction-journal.json');
+
+  const sha256Buf = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
+
+  // 1. Startup recovery detection: refuse to proceed if an incomplete transaction journal exists
+  if (fs.existsSync(journalPath)) {
+    throw new Error(`[P0_SITEMAP_TX_INCOMPLETE_RECOVERY_REQUIRED] Incomplete sitemap transaction journal exists at ${journalPath}. Verified recovery is required before running.`);
+  }
+
+  // 2. Verify all 5 original sitemaps exist and are readable BEFORE starting transaction
+  for (const s of sitemaps) {
+    const livePath = path.join(rootDir, s);
+    if (!fs.existsSync(livePath) || fs.statSync(livePath).size === 0) {
+      throw new Error(`[P0_SITEMAP_ORIGINAL_MISSING] Required original sitemap is missing or empty: ${s}`);
+    }
+  }
+
+  // 3. Initialize isolated transaction directories, backup all 5 original sitemaps, and write journal
+  fs.mkdirSync(backupDir, { recursive: true });
+  fs.mkdirSync(stagedDir, { recursive: true });
+
+  const journal = {
+    transactionId: `tx_${Date.now()}`,
+    startedAt: new Date().toISOString(),
+    status: 'STAGING',
+    originals: {},
+    staged: {},
+    replacedFiles: []
+  };
+
+  for (const s of sitemaps) {
+    const livePath = path.join(rootDir, s);
+    const bakPath = path.join(backupDir, `${s}.bak`);
+    const buf = fs.readFileSync(livePath);
+    const expectedSha = sha256Buf(buf);
+    fs.writeFileSync(bakPath, buf);
+    const diskBakSha = sha256Buf(fs.readFileSync(bakPath));
+    if (diskBakSha !== expectedSha) {
+      throw new Error(`[P0_SITEMAP_BACKUP_WRITE_MISMATCH] Backup write checksum mismatch on ${s}.bak`);
+    }
+    journal.originals[s] = {
+      livePath,
+      backupPath: bakPath,
+      sha256: expectedSha,
+      size: buf.length
+    };
+  }
+  fs.writeFileSync(journalPath, JSON.stringify(journal, null, 2), 'utf8');
+
+  const writeJournal = () => {
+    fs.writeFileSync(journalPath, JSON.stringify(journal, null, 2), 'utf8');
+  };
+
+  try {
+    function getLastModFromFile(filePath, defaultDate = '2026-10-12') {
+      try {
+        const raw = fs.readFileSync(filePath, 'utf8');
+        const pubMatch = raw.match(/<meta\s+(?:name|property)="article:published_time"\s+content="([^"]+)"/i);
+        if (pubMatch && pubMatch[1]) return pubMatch[1].split('T')[0];
+        const modMatch = raw.match(/"dateModified":\s*"([^"]+)"/);
+        if (modMatch && modMatch[1]) return modMatch[1].split('T')[0];
+        const datePubMatch = raw.match(/"datePublished":\s*"([^"]+)"/);
+        if (datePubMatch && datePubMatch[1]) return datePubMatch[1].split('T')[0];
+      } catch (_) {}
+      return defaultDate;
+    }
+
+    function isIndexable(filePath) {
+      const base = path.basename(filePath);
+      if (base === '404.html') return false;
+      const raw = fs.readFileSync(filePath, 'utf8');
+      if (/http-equiv="refresh"/i.test(raw)) return false;
+      if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(raw)) return false;
+      return true;
+    }
+
+    function buildUrlSet(entries) {
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+      for (const { url, lastmod } of entries) {
+        let prio = '0.8';
+        let freq = 'weekly';
+        if (url === 'https://www.omniconverter.co.uk/' || url.endsWith('/es/') || url.endsWith('/de/') || url.endsWith('/pt/')) {
+          prio = '1.0';
+          freq = 'daily';
+        } else if (url.endsWith('/blog')) {
+          prio = '0.9';
+          freq = 'daily';
+        } else if (url.includes('/privacy-policy') || url.includes('/terms') || url.includes('/sitemap') || url.includes('/about') || url.includes('/contact')) {
+          prio = '0.5';
+          freq = 'monthly';
+        }
+        xml += `  <url>\n    <loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>\n`;
+      }
+      xml += `</urlset>\n`;
+      return xml;
+    }
+
+    function collectLocaleEntries(localePrefix, dirRel, blogDirRel) {
+      const entries = [];
+      const seen = new Set();
+      const fullDir = path.join(rootDir, dirRel);
+      const htmls = fs.readdirSync(fullDir).filter(f => f.endsWith('.html'));
+      for (const f of htmls) {
+        const fp = path.join(fullDir, f);
+        if (!isIndexable(fp)) continue;
+        const p = f === 'index.html'
+          ? (localePrefix ? `/${localePrefix}/` : '/')
+          : (localePrefix ? `/${localePrefix}/${f.replace('.html', '')}` : `/${f.replace('.html', '')}`);
+        const url = `https://www.omniconverter.co.uk${p}`;
+        if (!seen.has(url)) {
+          seen.add(url);
+          const isStaticPolicy = /privacy-policy|terms|about|contact|sitemap/.test(f);
+          const defDate = f === 'index.html' || f === 'currency.html' || f === 'blog.html' ? '2026-10-16' : isStaticPolicy ? '2026-09-25' : '2026-10-14';
+          entries.push({ url, lastmod: getLastModFromFile(fp, defDate) });
+        }
+      }
+      const fullBlogDir = path.join(rootDir, blogDirRel);
+      if (fs.existsSync(fullBlogDir)) {
+        const blogHtmls = fs.readdirSync(fullBlogDir).filter(f => f.endsWith('.html'));
+        for (const f of blogHtmls) {
+          const fp = path.join(fullBlogDir, f);
+          if (!isIndexable(fp)) continue;
+          const p = localePrefix ? `/${localePrefix}/blog/${f.replace('.html', '')}` : `/blog/${f.replace('.html', '')}`;
+          const url = `https://www.omniconverter.co.uk${p}`;
+          if (!seen.has(url)) {
+            seen.add(url);
+            entries.push({ url, lastmod: getLastModFromFile(fp, '2026-10-08') });
+          }
+        }
+      }
+      return entries;
+    }
+
+    const localeSpecs = [
+      { file: 'sitemap-en.xml', prefix: '', dir: '.', blogDir: 'blog' },
+      { file: 'sitemap-es.xml', prefix: 'es', dir: 'es', blogDir: 'es/blog' },
+      { file: 'sitemap-de.xml', prefix: 'de', dir: 'de', blogDir: 'de/blog' },
+      { file: 'sitemap-pt.xml', prefix: 'pt', dir: 'pt', blogDir: 'pt/blog' }
     ];
-    for (const sc of postScripts) {
-      if (fs.existsSync(sc)) {
-        execFileSync(process.execPath, [sc], { stdio: 'inherit' });
+
+    const allUnifiedBlocks = [];
+    const localeUrlSets = new Set();
+    for (const spec of localeSpecs) {
+      const entries = collectLocaleEntries(spec.prefix, spec.dir, spec.blogDir);
+      const minLocCount = opts.simulateIncompleteLocale === spec.file ? 99999 : 100;
+      if (entries.length < minLocCount) {
+        throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] ${spec.file} has too few URLs (${entries.length} < ${minLocCount})`);
+      }
+      let xml = buildUrlSet(entries);
+      if (opts.simulateInvalidXml === spec.file) {
+        xml = xml.replace('</urlset>', '<!-- broken xml without closing tag');
+      }
+      if (opts.testMarker) {
+        xml = xml.replace('</urlset>', `<!-- ${opts.testMarker} -->\n</urlset>`);
+      }
+      const stagedPath = path.join(stagedDir, `${spec.file}.staged`);
+      fs.writeFileSync(stagedPath, xml, 'utf8');
+      journal.staged[spec.file] = { stagedPath, sha256: sha256Buf(Buffer.from(xml, 'utf8')) };
+      const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) || [];
+      allUnifiedBlocks.push(...blocks.map(b => b.trim()));
+      for (const e of entries) localeUrlSets.add(e.url);
+    }
+
+    if (opts.simulateChildFailure) {
+      throw new Error('[P0_SITEMAP_ATOMIC_FAILURE] Simulated child sitemap failure before unified sitemap completion');
+    }
+
+    let unifiedXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    for (const block of allUnifiedBlocks) {
+      unifiedXml += `  ${block}\n`;
+    }
+    if (opts.testMarker) {
+      unifiedXml += `<!-- ${opts.testMarker} -->\n`;
+    }
+    unifiedXml += `</urlset>\n`;
+    if (opts.simulateInvalidXml === 'sitemap.xml') {
+      unifiedXml = unifiedXml.replace('</urlset>', '');
+    }
+    const unifiedStagedPath = path.join(stagedDir, 'sitemap.xml.staged');
+    fs.writeFileSync(unifiedStagedPath, unifiedXml, 'utf8');
+    journal.staged['sitemap.xml'] = { stagedPath: unifiedStagedPath, sha256: sha256Buf(Buffer.from(unifiedXml, 'utf8')) };
+    writeJournal();
+
+    // 4. Validate all 5 staged XML files before touching any live file
+    for (const s of sitemaps) {
+      const sf = journal.staged[s].stagedPath;
+      const content = fs.readFileSync(sf, 'utf8');
+      if (!content.startsWith('<?xml version="1.0" encoding="UTF-8"?>') || !content.includes('<urlset ') || !content.trim().endsWith('</urlset>')) {
+        throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] Malformed XML in staged ${s}`);
+      }
+      if (content.includes('/404<') || content.includes('/2000-usd-to-gbp<')) {
+        throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] Forbidden noindex/redirect URL found in staged ${s}`);
       }
     }
-    console.log('[OK] Post-publish SEO normalizer, pre-renderer, and sitemaps synchronized.');
-  } catch (postErr) {
-    console.warn(`[WARN] Post-publish sync script warning: ${postErr.message}`);
+
+    const masterLocs = [...unifiedXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+    const minUrls = opts.minExpectedUrls || 462;
+    if (masterLocs.length < minUrls) {
+      throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] Unified sitemap.xml URL count (${masterLocs.length}) below minimum (${minUrls})`);
+    }
+    if (!masterLocs.some(u => u.includes('/es/')) || !masterLocs.some(u => u.includes('/de/')) || !masterLocs.some(u => u.includes('/pt/'))) {
+      throw new Error('[P0_SITEMAP_ATOMIC_FAILURE] Unified sitemap.xml is missing localized URLs');
+    }
+    if (masterLocs.length !== localeUrlSets.size || !masterLocs.every(u => localeUrlSets.has(u))) {
+      throw new Error('[P0_SITEMAP_ATOMIC_FAILURE] Master sitemap.xml and 4 locale sitemaps do not represent the exact same URL generation');
+    }
+
+    journal.status = 'REPLACING';
+    writeJournal();
+
+    // 5. Replace live files sequentially with full journal tracking
+    for (let idx = 0; idx < sitemaps.length; idx++) {
+      const s = sitemaps[idx];
+      if (opts.failAtReplacement === idx + 1) {
+        throw new Error(`[P0_SITEMAP_REPLACEMENT_FAILURE] Simulated replacement failure at step #${idx + 1} (${s})`);
+      }
+      const stagedPath = journal.staged[s].stagedPath;
+      const livePath = journal.originals[s].livePath;
+      fs.copyFileSync(stagedPath, livePath);
+      const writtenHash = sha256Buf(fs.readFileSync(livePath));
+      if (writtenHash !== journal.staged[s].sha256) {
+        throw new Error(`[P0_SITEMAP_REPLACEMENT_FAILURE] Post-write checksum mismatch on ${s}`);
+      }
+      journal.replacedFiles.push(s);
+      writeJournal();
+    }
+
+    journal.status = 'COMMITTED';
+    writeJournal();
+    fs.rmSync(txDir, { recursive: true, force: true });
+    return { totalUrls: masterLocs.length };
+  } catch (err) {
+    // 6. Automatic Rollback from Backup + SHA-256 Verification
+    journal.status = 'ROLLING_BACK';
+    journal.failureReason = err.message;
+    try { writeJournal(); } catch (_) {}
+
+    try {
+      if (opts.simulateRollbackFailure) {
+        throw new Error('Simulated disk I/O error during rollback restoration');
+      }
+      // Verify all 5 .bak files exist and match journal SHA-256 BEFORE overwriting even the first live sitemap
+      verifySitemapTransactionBackups(journal, rootDir, backupDir, sitemaps);
+
+      for (const s of sitemaps) {
+        const origInfo = journal.originals[s];
+        fs.copyFileSync(origInfo.backupPath, origInfo.livePath);
+      }
+      for (const s of sitemaps) {
+        const origInfo = journal.originals[s];
+        const restoredSha = sha256Buf(fs.readFileSync(origInfo.livePath));
+        if (restoredSha !== origInfo.sha256) {
+          throw new Error(`Restored SHA-256 mismatch on ${s} (expected ${origInfo.sha256}, got ${restoredSha})`);
+        }
+      }
+      // Remove only staged files and clean up transaction dir after 5/5 rollback hashes are verified
+      fs.rmSync(txDir, { recursive: true, force: true });
+    } catch (rollbackErr) {
+      // CRITICAL: Preserve backup directory and journal so original copies are never lost!
+      journal.status = 'CRITICAL_RECOVERY_REQUIRED';
+      journal.rollbackError = rollbackErr.message;
+      try { writeJournal(); } catch (_) {}
+      throw new Error(`[P0_SITEMAP_CRITICAL_ROLLBACK_FAILURE] Primary failure (${err.message}) followed by rollback failure (${rollbackErr.message}). Backup and journal preserved at ${txDir}`);
+    }
+
+    throw new Error(`[P0_SITEMAP_TX_ROLLED_BACK] ${err.message} (All 5 original sitemaps restored and SHA-256 verified)`);
   }
+}
+
+// ─── P0 FAIL-CLOSED CONTENT QUALITY GATES & TRUSTED BASELINE ──────────────────
+const PROTECTED_61_FILES = Object.freeze([
+  'blog/1-aud-to-vnd.html', 'blog/1-billion-korean-won-to-gbp.html', 'blog/10-billion-won-to-gbp.html',
+  'blog/100-usd-in-australian.html', 'blog/100-usd-to-aud.html', 'blog/104-kg-pounds.html',
+  'blog/12-degrees-celsius-to-fahrenheit.html', 'blog/14-stone-in-pounds.html', 'blog/15-meters-to-feet.html',
+  'blog/1500-usd-to-aud.html', 'blog/1500-usd-to-gbp.html', 'blog/16-ounces-to-milliliters.html',
+  'blog/165-lbs-to-kg.html', 'blog/170lbs-in-stone.html', 'blog/199-usd-in-aud.html',
+  'blog/20-gbp-aud.html', 'blog/20-pounds-sterling-in-australian-dollars.html', 'blog/2000-dollars-in-pounds.html',
+  'blog/2000-usd-to-aud.html', 'blog/3-cups-in-ml.html', 'blog/300-dollars-in-gbp.html',
+  'blog/4-meters-to-feet.html', 'blog/65-kg-pounds.html', 'blog/700-pounds-to-aud.html',
+  'blog/70kg-in-stone.html', 'blog/71-pounds-to-kg.html', 'blog/80-kilo-lbs.html',
+  'blog/95-usd-to-gbp.html', 'blog/convert-file-type-to-pdf.html', 'blog/convert-lakh-to-usd.html',
+  'blog/convert-pdf-form.html', 'blog/converter-application-download.html', 'blog/convertor-or-converter.html',
+  'blog/currency-for-turkish-lira.html', 'blog/currency-jpy-to-inr.html', 'blog/file-changer.html',
+  'blog/how-to-change-file-format.html', 'es/blog/cambiador-de-archivos.html', 'blog/korean-to-aud.html',
+  'blog/mastercard-foreign-exchange-rate.html', 'blog/rupiah-to-aud.html', 'blog/weeks-calculator.html',
+  'de/blog/1500-usd-in-gbp.html', 'de/blog/95-usd-in-gbp.html', 'de/blog/dateiformat-aendern-anleitung.html',
+  'de/blog/dateityp-in-pdf-umwandeln.html', 'de/blog/dateiumwandler.html', 'de/blog/pdf-formular-umwandeln.html',
+  'es/blog/1500-usd-a-gbp.html', 'es/blog/4-metros-a-pies.html', 'es/blog/95-usd-a-gbp.html',
+  'es/blog/como-cambiar-formato-de-archivo.html', 'es/blog/convertir-formulario-pdf.html',
+  'es/blog/convertir-tipo-de-archivo-a-pdf.html', 'index.html', 'pt/blog/1500-usd-para-gbp.html',
+  'pt/blog/95-usd-para-gbp.html', 'pt/blog/como-mudar-formato-de-arquivo.html',
+  'pt/blog/converter-formulario-pdf.html', 'pt/blog/converter-tipo-de-arquivo-para-pdf.html',
+  'pt/blog/modificador-de-arquivos.html'
+]);
+
+const TRUSTED_PROTECTED_BASELINE_HASHES = Object.freeze({
+  'blog/1-aud-to-vnd.html': '21bc28c32eabd3752fb3d3126f569344afea154a8c6c9cf0e8cbbc47255967e2',
+  'blog/1-billion-korean-won-to-gbp.html': '72e9f897441f54dd26b53ce1253b186c7421b7697f853c5fd39f7b2462f3ce7a',
+  'blog/10-billion-won-to-gbp.html': 'ccdca80cfa3b8dcfc8d636acbdde7786d138cf7859a870970877f9dfad6bd3e1',
+  'blog/100-usd-in-australian.html': '37027b0b0d07dd59dff00ac845f54f8de5902e460a2cf5d9def7e1b036f26331',
+  'blog/100-usd-to-aud.html': '8d80747dfa12fefb73cf591fdb6bf8cc62979ddae0336f9f8097af62f6abd282',
+  'blog/104-kg-pounds.html': '727045644c702cd5bb26c811d737df728721409b3bf83480307e356c3e002797',
+  'blog/12-degrees-celsius-to-fahrenheit.html': '86af0bfbd31d914a219e3030ff18c28d10fc536013eefff088dce4087192b1d5',
+  'blog/14-stone-in-pounds.html': 'e09ed434feee83ee5df1bcd8ea3b9df1de50710dbf8ff7508d984f38901e4881',
+  'blog/15-meters-to-feet.html': 'db86da8b4c5e7c4105f962c18b5c8c322b3c55f953861fb3ff9e85a2467d3ca3',
+  'blog/1500-usd-to-aud.html': '7f47c9f06623fd94bca5d4cd81a8b41745e475fb88a9d3e5835043178c608c9c',
+  'blog/1500-usd-to-gbp.html': '2fce67c4619431ef3564f61b4514e9c5a81c8af2ce3bc1a46beccb6f183643fa',
+  'blog/16-ounces-to-milliliters.html': '54b3b4eb26935a5cad4d23e4721c853469da6d46d0aacb192fb7317d06a7c4d3',
+  'blog/165-lbs-to-kg.html': '4783ec3a195cda5acda671229f2e0395bc967c0847f4ab161d9451ff9f6d0077',
+  'blog/170lbs-in-stone.html': 'db1cd7bb572ae87dbc9117aeea85ef9a874ccf4f82a6496fbf19ea4cbfccd358',
+  'blog/199-usd-in-aud.html': '3c3f15ee116d94c5e5a41c8011f995a1cd6fddf3fd86427348f4c46e2f371723',
+  'blog/20-gbp-aud.html': '234ee7eb54628b982059b6ba675b7ab9054191d7637d75816c0eb9a4885fc67c',
+  'blog/20-pounds-sterling-in-australian-dollars.html': '210686bf4f90561f2d08366884e22dbe5e0110519186f9e0e666e7045f88f61e',
+  'blog/2000-dollars-in-pounds.html': 'a29265d47597bddb6839ee94f6dc7c2d6373db20fcb0b34691746bd36d56068b',
+  'blog/2000-usd-to-aud.html': 'a8ab7be2e31c16ded241ef3d2b90228815aae618bf75caee8541a7984a8d8562',
+  'blog/3-cups-in-ml.html': '9917bb2de6e8cbf5ca32762125f4825f26decb27e354f87b5fc508ce302099cf',
+  'blog/300-dollars-in-gbp.html': 'dd507f51bea4298f3569c0b9e62f1957a6d83622de3d68ca367e978284683a3e',
+  'blog/4-meters-to-feet.html': '3489ceeed6d03f93c8f076382a15196047bd84dbdcb9c6db58512e310c22b96d',
+  'blog/65-kg-pounds.html': 'b48e3e9a3100ec8a30bc29517bd01c0be4fa9ef39cd0948785e2138b80fb82f4',
+  'blog/700-pounds-to-aud.html': 'ea0bedb3e01b7a6c774bf56b62d6f396faa4af3bce479438615f8fff18d465ba',
+  'blog/70kg-in-stone.html': 'cc3fad4b0441dad884cb645520a45da94b27baddf3aae0f8091f0afd5817dc97',
+  'blog/71-pounds-to-kg.html': 'b0a99d5244d312408ef6b16518b375063c099d387e5ca935cc60b8ca1ece183f',
+  'blog/80-kilo-lbs.html': 'd85e92b6a32e0ae791a371a18077c394c92056d7a58c152512f2a10d27841676',
+  'blog/95-usd-to-gbp.html': '8ae63441924092ade572e10b728cb22dea8e05756328b09c651e9c9379edeac4',
+  'blog/convert-file-type-to-pdf.html': '5e59ca314a4b1067e93ff52fc49fc7c0fc6c7e1822baa161fc3f83d0f9096d3d',
+  'blog/convert-lakh-to-usd.html': '5c99cb55abde5a12731f9079c4194c6901ffd10df40b5d4c812f1e63b29ecaf2',
+  'blog/convert-pdf-form.html': '8c417a225c401b2aa61be989002e279e36fdf21477973354453615c707d736cd',
+  'blog/converter-application-download.html': '16dbe4e3cb6e698f203ef57ca251033cd68358f2fc65a7c7234e51c86dad3386',
+  'blog/convertor-or-converter.html': 'b089597c0111e4b02885078cec9b04a3879ae594bdc886f61079afb32a139ea4',
+  'blog/currency-for-turkish-lira.html': 'fdb58148c1022e8cdbc53eb1b14a477d6dac1d32a15cc89cc6b6d86d2df52f4f',
+  'blog/currency-jpy-to-inr.html': '033ef529f0afabd6ec3bbfb8d21ee2d2a08061b89a91be500375eb74dc7c0900',
+  'blog/file-changer.html': '192168adf9391ff9c3316d2eaf5e4fdc19842d59cd0f3e6b32c2f4c8bbfb68a6',
+  'blog/how-to-change-file-format.html': '0dd628385e5eaf4532c5fcf9ed4ee667a9650e64d0bcf3ab9687faf8085df77c',
+  'es/blog/cambiador-de-archivos.html': '61fb71c212e9556ef69ee2852c222fca5c1fad65947a84d33dace6444469113e',
+  'blog/korean-to-aud.html': '31ad83cad325dad8ec1d1a4ec328b2695e3b8c37dc34e53c863ec90b0b6f7d81',
+  'blog/mastercard-foreign-exchange-rate.html': '8752b5e66491b359e3864dcdd7fff8de5177ab620ad657d5144dc9dadc555031',
+  'blog/rupiah-to-aud.html': 'f8e205d778e80d6fe711f47b9046a3670b079082bbcf080a5b39e8d0a5ab0554',
+  'blog/weeks-calculator.html': '762960aeb1273f96bee2af14b8a860041c63160324547c41146df9d3cd9862d0',
+  'de/blog/1500-usd-in-gbp.html': '5cfa6aaa2df62fcb37d90a94fadb40edefb82f80e97a7dd59f5c59f8b441350b',
+  'de/blog/95-usd-in-gbp.html': 'b77bbb26ca45de0ae51e9da2328fa87de7779ea2adb5991a8128adb0ce1f2c7a',
+  'de/blog/dateiformat-aendern-anleitung.html': 'e5a99d556aa61690870773c20aaa1820ba52a9ff7c6299eac2d1aeab7e1b47bb',
+  'de/blog/dateityp-in-pdf-umwandeln.html': '131d8e509665c34d0a6e15c0306215d86aedd7ee8497cb19ac683c843cf2c8d7',
+  'de/blog/dateiumwandler.html': 'b2788f1865ee6d1fc25b67f9da8cbb05a074f28c4733d7330ce16231bbc2571a',
+  'de/blog/pdf-formular-umwandeln.html': '9f397981b861a4ea26135ae1731605468b729be34f9ece044178b71fad3f89eb',
+  'es/blog/1500-usd-a-gbp.html': 'a5e0b3bd0f188cd5de2f45be0868ff36a62f22e57253522ac6065ac1eeb697b7',
+  'es/blog/4-metros-a-pies.html': 'c21d68d4e80c74c9e004648e3ffac9be7e80be60c10fa7cc18872e1345f2b071',
+  'es/blog/95-usd-a-gbp.html': 'f61418f6631aeb7786f7a8ab2d0174711f0e7c99d2091a98bdc644b52623116d',
+  'es/blog/como-cambiar-formato-de-archivo.html': 'bebcd567688f0bee9d5dc29d1985eabe643f85d9cd33af04d20766d2644cc515',
+  'es/blog/convertir-formulario-pdf.html': '158e9e38e3e5f368c34d7f67157217fab55904802f97e7ae28248136dfc848fb',
+  'es/blog/convertir-tipo-de-archivo-a-pdf.html': 'b29fcb13bc8ee4224a541c724e8dd899090739d928268b1dfa3174c15c444521',
+  'index.html': '907048501f1953dd1b9736406e7acf841677c8ae856bfb4da7d6cd55c4123a29',
+  'pt/blog/1500-usd-para-gbp.html': '6338018a5f440194e06aa43a57ea6d8ffd8005ec97e23d3c007ecb13637c0959',
+  'pt/blog/95-usd-para-gbp.html': 'd9ded0866e87ed8d0adfbaf0cecc4a3517c68629a31bdcce29233b3fafa11d33',
+  'pt/blog/como-mudar-formato-de-arquivo.html': '079916c94334976542e0ca0a0d5888f693ed32364527e8c9d5a68e08c6cd36c2',
+  'pt/blog/converter-formulario-pdf.html': '1eb1002a1c9e52cb7908b29d28fa3f3023c88854fa8e7cd9cf4846b68bfc2a36',
+  'pt/blog/converter-tipo-de-arquivo-para-pdf.html': 'caba8cbad2cc730d3e8d669cfb86647df78ba9ccdcca9c216ea9277254cfdbd3',
+  'pt/blog/modificador-de-arquivos.html': 'd6a189767a1767f98e5d4f5fe1fad329f5dd44610dc882f66e5a2daa56570d07',
+  'de/blog/1-3-tasse-in-gramm.html': '2a4accd0dfa68d5ef79b12726c1d29cc54683444b81b0545f603533a88ecbf5e',
+  'pt/blog/1-3-xicara-em-gramas.html': '78099914cb57019a7b253833e9f12b1cc8f21640aa716b831a6b58ab30ef1d21'
+});
+
+/**
+ * Computes canonical UTF-8 LF-normalized SHA-256 hash.
+ * Normalizes only CRLF (\r\n) to LF (\n) so Windows checkouts and Linux checkouts/Git blobs
+ * produce identical SHA-256 digests without trimming whitespace, altering encoding,
+ * normalizing Unicode, or removing final newlines.
+ */
+function computeCanonicalSha256(bufOrStr) {
+  const crypto = require('crypto');
+  const text = Buffer.isBuffer(bufOrStr) ? bufOrStr.toString('utf8') : String(bufOrStr);
+  const normalizedLf = text.replace(/\r\n/g, '\n');
+  return crypto.createHash('sha256').update(Buffer.from(normalizedLf, 'utf8')).digest('hex');
+}
+
+function collectExistingSlugsByLocale(rootDir = process.cwd()) {
+  const result = { en: new Set(), es: new Set(), de: new Set(), pt: new Set() };
+  const dirs = [
+    { lang: 'en', rel: 'blog' },
+    { lang: 'es', rel: 'es/blog' },
+    { lang: 'de', rel: 'de/blog' },
+    { lang: 'pt', rel: 'pt/blog' }
+  ];
+  for (const d of dirs) {
+    const full = path.join(rootDir, d.rel);
+    if (fs.existsSync(full)) {
+      for (const f of fs.readdirSync(full)) {
+        if (f.endsWith('.html')) result[d.lang].add(f.replace(/\.html$/, ''));
+      }
+    }
+  }
+  return result;
+}
+
+function snapshotProtectedFiles(rootDir = process.cwd(), opts = {}) {
+  if (opts === null || typeof opts !== 'object' || Array.isArray(opts)) {
+    throw new Error('[P0_PROTECTED_BASELINE_REQUIRED] snapshotProtectedFiles options must be a non-null object.');
+  }
+  const requiredList = opts.requiredFiles !== undefined ? opts.requiredFiles : [
+    ...PROTECTED_61_FILES,
+    'de/blog/1-3-tasse-in-gramm.html',
+    'pt/blog/1-3-xicara-em-gramas.html'
+  ];
+  if (!Array.isArray(requiredList) || requiredList.length < 61) {
+    throw new Error('[P0_PROTECTED_BASELINE_REQUIRED] snapshotProtectedFiles requires a valid requiredFiles manifest of at least 61 files.');
+  }
+
+  const trustedBaseline = opts.trustedBaseline === undefined
+    ? TRUSTED_PROTECTED_BASELINE_HASHES
+    : opts.trustedBaseline;
+
+  if (!trustedBaseline || typeof trustedBaseline !== 'object' || Array.isArray(trustedBaseline) || Object.keys(trustedBaseline).length < 61) {
+    throw new Error('[P0_PROTECTED_BASELINE_REQUIRED] snapshotProtectedFiles requires a valid trustedBaseline map (>= 61 entries) and cannot run unverified.');
+  }
+
+  const map = new Map();
+
+  for (const rel of requiredList) {
+    if (!trustedBaseline[rel] || typeof trustedBaseline[rel] !== 'string' || !/^[a-f0-9]{64}$/i.test(trustedBaseline[rel])) {
+      throw new Error(`[P0_PROTECTED_BASELINE_MISSING_ENTRY] Protected manifest file ${rel} does not have a valid SHA-256 entry in trustedBaseline.`);
+    }
+    const fp = path.join(rootDir, rel);
+    if (!fs.existsSync(fp)) {
+      throw new Error(`[P0_PROTECTED_FILE_MISSING] Required protected file does not exist on disk: ${rel}`);
+    }
+    const hash = computeCanonicalSha256(fs.readFileSync(fp));
+    if (hash !== trustedBaseline[rel]) {
+      throw new Error(`[P0_PROTECTED_BASELINE_TAMPERED] Protected file ${rel} already differs from trusted immutable baseline before snapshot creation`);
+    }
+    map.set(rel, hash);
+  }
+  return map;
+}
+
+function verifyProtectedFilesIntact(protectedHashesBefore, rootDir = process.cwd(), stageName = 'CHECKPOINT') {
+  if (!(protectedHashesBefore instanceof Map) || protectedHashesBefore.size < 61) {
+    throw new Error(`[P0_GATE_FAILURE] Missing or incomplete protectedHashesBefore map at ${stageName} (expected >= 61 entries)`);
+  }
+  for (const [rel, expectedHash] of protectedHashesBefore.entries()) {
+    const fp = path.join(rootDir, rel);
+    if (!fs.existsSync(fp)) {
+      throw new Error(`[P0_GATE_FAILURE] [${stageName}] Protected file deleted: ${rel}`);
+    }
+    const actualHash = computeCanonicalSha256(fs.readFileSync(fp));
+    if (actualHash !== expectedHash) {
+      throw new Error(`[P0_GATE_FAILURE] [${stageName}] Protected SEO file was unexpectedly modified: ${rel}`);
+    }
+  }
+  return true;
+}
+
+const UNSUPPORTED_CLAIM_PATTERNS = [
+  { id: 'ZERO_ADS_CLAIM', regex: /\b(zero ads|ad-free|sin anuncios|ohne werbung|sem anúncios)\b/i },
+  { id: 'EN_PDF_AUDIO_TOOL_CLAIM', regex: /Local Browser File,\s*Image\s*(?:&|&amp;)\s*PDF Converter|Interactive File,\s*Image\s*(?:&|&amp;)\s*PDF Format Converter|Convert images,\s*(?:documents,\s*audio|audio,\s*and documents)/i },
+  { id: 'ES_PDF_AUDIO_TOOL_CLAIM', regex: /Conversor de Archivos,\s*Imágenes y PDF|Convierta imágenes,\s*audio,\s*(?:y\s*)?documentos/i },
+  { id: 'DE_PDF_AUDIO_TOOL_CLAIM', regex: /Datei-,\s*Bild-\s*(?:&|&amp;|und)\s*PDF-Umwandler|Wandeln Sie Bilder,\s*Audio und Dokumente/i },
+  { id: 'PT_PDF_AUDIO_TOOL_CLAIM', regex: /Conversor de Arquivos,\s*Imagens e PDF|Converta imagens,\s*áudio,\s*(?:e\s*)?documentos/i },
+  { id: 'EN_ZIP_VIDEO_TOOL_CLAIM', regex: /(?:Convert|Transform)\s+(?:ZIP\s+archives?,\s*videos?(?:\s*(?:,|and)\s*(?:and\s+)?PDF)?|videos?,\s*ZIP\s+archives?)\s+(?:directly\s+)?in\s+(?:your|the)\s+browser|(?:Local\s+Browser|Interactive)\s+(?:ZIP|Video)(?:\s*(?:,|&|&amp;|and)\s*(?:Video|ZIP|PDF|Audio))*\s+Converter/i },
+  { id: 'ES_ZIP_VIDEO_TOOL_CLAIM', regex: /Conviert[ae]\s+(?:archivos\s+ZIP,\s*videos?(?:\s*(?:,|y)\s*PDF)?|videos?,\s*archivos\s+ZIP)\s+(?:directamente\s+)?en\s+(?:su|el|tu)\s+navegador|Conversor\s+de\s+(?:Archivos\s+ZIP|Videos?)(?:\s*(?:,|y)\s*(?:Videos?|ZIP|PDF|Audio))*\s+en\s+el\s+Navegador/i },
+  { id: 'DE_ZIP_VIDEO_TOOL_CLAIM', regex: /Wandeln\s+Sie\s+(?:ZIP-Archive,\s*Videos?(?:\s*(?:,|und)\s*PDF)?|Videos?,\s*ZIP-Archive)\s+(?:direkt\s+)?im\s+Browser\s+um|(?:Lokaler\s+)?(?:ZIP-|Video-)(?:,\s*(?:Video-|ZIP-|PDF-|Audio-))*Umwandler\s+im\s+Browser/i },
+  { id: 'PT_ZIP_VIDEO_TOOL_CLAIM', regex: /Converta\s+(?:arquivos\s+ZIP,\s*vídeos?(?:\s*(?:,|e)\s*PDF)?|vídeos?,\s*arquivos\s+ZIP)\s+(?:diretamente\s+)?no\s+(?:seu\s+)?navegador|Conversor\s+de\s+(?:Arquivos\s+ZIP|Vídeos?)(?:\s*(?:,|e)\s*(?:Vídeos?|ZIP|PDF|Áudio))*\s+no\s+Navegador/i }
+];
+
+function parseHtmlTagAttributes(tagStr) {
+  const attrs = {};
+  const attrRegex = /([a-zA-Z0-9_:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+  let m;
+  while ((m = attrRegex.exec(tagStr)) !== null) {
+    const key = m[1].toLowerCase();
+    const val = m[2] !== undefined ? m[2] : m[3];
+    attrs[key] = val;
+  }
+  return attrs;
+}
+
+function extractLinkTagsFromHead(headHtml) {
+  const tags = [];
+  const linkRegex = /<link\b[^>]*>/gi;
+  let m;
+  while ((m = linkRegex.exec(headHtml)) !== null) {
+    tags.push(parseHtmlTagAttributes(m[0]));
+  }
+  return tags;
+}
+
+async function runPrePublishQualityGates({
+  articles,
+  protectedHashesBefore,
+  existingSlugsBefore = new Set(),
+  rootDir = process.cwd(),
+  checkHubs = true,
+  hubOverrides = null,
+  skipReciprocityDiskCheck = false,
+  stageName = 'PRE_COMMIT'
+}) {
+  const sharp = require(path.resolve(rootDir, 'node_modules/sharp'));
+
+  if (!Array.isArray(articles) || articles.length === 0) {
+    throw new Error('[P0_GATE_FAILURE] No articles provided to quality gate validator.');
+  }
+
+  // [BATCH 24E] Permanent Fail-Closed High-CTR SEO Metadata Quality Gate
+  const _b24eDecode = (s) => String(s || '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
+  const _b24eEmojiRx = /\p{Extended_Pictographic}/u;
+  const _b24eBoilerRx = /(Exact Formula\s*&\s*Live Calculator|mental math shortcuts,\s*full reference tables,\s*and an instant interactive calculator)/i;
+  const _seenTitles = new Set();
+  const _seenDescs = new Set();
+  for (const _art of articles) {
+    const _html = _art && (_art.html || _art.content);
+    if (typeof _html === 'string' && !/<meta[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(_html)) {
+      const _tMatch = _html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i);
+      const _dMatch = _html.match(/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i) || _html.match(/<meta\b[^>]*content=["']([^"']*)["'][^>]*name=["']description["'][^>]*>/i);
+      const _ogTMatch = _html.match(/<meta\b[^>]*property=["']og:title["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+      const _ogDMatch = _html.match(/<meta\b[^>]*property=["']og:description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+      const _twTMatch = _html.match(/<meta\b[^>]*name=["']twitter:title["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+      const _twDMatch = _html.match(/<meta\b[^>]*name=["']twitter:description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+      const _t = _tMatch ? _b24eDecode(_tMatch[1].replace(/<[^>]+>/g, ' ')) : '';
+      const _d = _dMatch ? _b24eDecode(_dMatch[1]) : '';
+      if (!_t || !_d) {
+        throw new Error('[P0_MISSING_METADATA] Meta title and meta description are required.');
+      }
+      if (_t.length !== 55) {
+        throw new Error(`[P0_META_TITLE_LENGTH_INVALID] Meta title must be exactly 55 rendered chars (got ${_t.length}): ${_t}`);
+      }
+      if (_d.length < 140 || _d.length > 145) {
+        throw new Error(`[P0_META_DESC_LENGTH_INVALID] Meta description must be 140-145 rendered chars (got ${_d.length})`);
+      }
+      if (_b24eEmojiRx.test(_t) || _b24eEmojiRx.test(_d)) {
+        throw new Error('[P0_META_EMOJI_PROHIBITED] Emojis or decorative pictographs are prohibited in Meta Title and Meta Description.');
+      }
+      if (_b24eBoilerRx.test(_t) || _b24eBoilerRx.test(_d)) {
+        throw new Error('[P0_GENERIC_BOILERPLATE_META] Generic formula/shortcut boilerplate is prohibited in metadata.');
+      }
+      if (_seenTitles.has(_t)) {
+        throw new Error(`[P0_DUPLICATE_META_TITLE] Duplicate meta title detected: ${_t}`);
+      }
+      if (_seenDescs.has(_d)) {
+        throw new Error('[P0_DUPLICATE_META_DESC] Duplicate meta description detected.');
+      }
+      const _ogT = _ogTMatch ? _b24eDecode(_ogTMatch[1]) : '';
+      const _ogD = _ogDMatch ? _b24eDecode(_ogDMatch[1]) : '';
+      const _twT = _twTMatch ? _b24eDecode(_twTMatch[1]) : '';
+      const _twD = _twDMatch ? _b24eDecode(_twDMatch[1]) : '';
+      if (_ogT !== _t || _ogD !== _d || _twT !== _t || _twD !== _d) {
+        throw new Error('[P0_SOCIAL_META_MISMATCH] OG and Twitter titles/descriptions must exactly match Meta Title and Meta Description.');
+      }
+      _seenTitles.add(_t);
+      _seenDescs.add(_d);
+    }
+  }
+
+  // 1. Check all protected files are unmodified and present
+  if (protectedHashesBefore instanceof Map) {
+    verifyProtectedFilesIntact(protectedHashesBefore, rootDir, stageName);
+  }
+
+  // Map in-batch articles by canonical URL so multi-locale batches can cross-verify
+  const batchByCanonical = new Map();
+  for (const a of articles) {
+    if (a.expectedCanonical) batchByCanonical.set(a.expectedCanonical, a);
+  }
+
+  // 2. Validate each generated article
+  for (const art of articles) {
+    const fp = path.isAbsolute(art.filePath) ? art.filePath : path.join(rootDir, art.filePath);
+    if (!fs.existsSync(fp)) {
+      throw new Error(`[P0_GATE_FAILURE] Article file does not exist: ${art.filePath}`);
+    }
+
+    const relNorm = path.relative(rootDir, fp).replace(/\\/g, '/');
+    const inferredLang = art.lang || (relNorm.startsWith('es/') ? 'es' : relNorm.startsWith('de/') ? 'de' : relNorm.startsWith('pt/') ? 'pt' : 'en');
+
+    // Locale-aware duplicate slug check
+    if (art.slug) {
+      const slugSet = existingSlugsBefore instanceof Set
+        ? existingSlugsBefore
+        : (existingSlugsBefore && existingSlugsBefore[inferredLang]);
+      if (slugSet instanceof Set && slugSet.has(art.slug)) {
+        throw new Error(`[P0_GATE_FAILURE] Duplicate article slug detected for locale '${inferredLang}': ${art.slug}`);
+      }
+    }
+
+    const html = fs.readFileSync(fp, 'utf8');
+
+    // HTML structure, root <html lang="...">, & <head> integrity
+    if (!/^<!DOCTYPE html>/i.test(html.trim())) {
+      throw new Error(`[P0_GATE_FAILURE] Missing <!DOCTYPE html> in ${art.filePath}`);
+    }
+    const htmlTagMatch = html.match(/<html\b[^>]*>/i);
+    if (!htmlTagMatch) {
+      throw new Error(`[P0_GATE_FAILURE] Missing <html> root tag in ${art.filePath}`);
+    }
+    const htmlRootAttrs = parseHtmlTagAttributes(htmlTagMatch[0]);
+    const htmlRootLang = (htmlRootAttrs.lang || '').toLowerCase().split('-')[0];
+    if (!htmlRootLang || htmlRootLang !== inferredLang) {
+      throw new Error(`[P0_GATE_FAILURE] Root <html lang="${htmlRootAttrs.lang || ''}"> does not match expected locale '${inferredLang}' in ${art.filePath}`);
+    }
+    const headMatches = html.match(/<head>[\s\S]*?<\/head>/gi) || [];
+    if (headMatches.length !== 1) {
+      throw new Error(`[P0_GATE_FAILURE] Missing or duplicate <head> in ${art.filePath}`);
+    }
+    const head = headMatches[0];
+    if (/>>/.test(head)) {
+      throw new Error(`[P0_GATE_FAILURE] Stray '>>' detected inside <head> of ${art.filePath}`);
+    }
+
+    // Title, meta description, H1
+    const titleM = head.match(/<title>([^<]+)<\/title>/i);
+    const descM = head.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+    const h1Matches = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+    if (!titleM || !titleM[1].trim() || !descM || !descM[1].trim() || h1Matches.length !== 1 || !h1Matches[0][1].trim()) {
+      throw new Error(`[P0_GATE_FAILURE] Invalid or missing <title>, <meta name="description">, or <h1> in ${art.filePath}`);
+    }
+
+    // Order-independent <link> extraction for Canonical and Hreflang (GATE-04)
+    const headLinks = extractLinkTagsFromHead(head);
+    const canonicalLinks = headLinks.filter(l => (l.rel || '').toLowerCase() === 'canonical');
+    if (canonicalLinks.length !== 1 || !canonicalLinks[0].href || (art.expectedCanonical && canonicalLinks[0].href !== art.expectedCanonical)) {
+      const foundCan = canonicalLinks.length > 0 ? canonicalLinks[0].href : 'NONE';
+      throw new Error(`[P0_GATE_FAILURE] Invalid canonical (${foundCan}) in ${art.filePath}; expected ${art.expectedCanonical}`);
+    }
+    const pageCanonical = canonicalLinks[0].href;
+
+    // GATE-04: Hardened Order-Independent Reciprocal Localized Hreflang Validation
+    const alternateHlLinks = headLinks.filter(l => (l.rel || '').toLowerCase() === 'alternate' && l.hreflang !== undefined);
+    const requiredHlLangs = ['en', 'es', 'de', 'pt', 'x-default'];
+    const hlMap = new Map();
+    for (const l of alternateHlLinks) {
+      const code = l.hreflang;
+      const url = l.href || '';
+      if (!url) {
+        throw new Error(`[P0_GATE_FAILURE] Missing href attribute on hreflang='${code}' in ${art.filePath}`);
+      }
+      if (!requiredHlLangs.includes(code)) {
+        throw new Error(`[P0_GATE_FAILURE] Unsupported hreflang locale code '${code}' in ${art.filePath}`);
+      }
+      if (hlMap.has(code)) {
+        throw new Error(`[P0_GATE_FAILURE] Duplicate hreflang='${code}' detected in ${art.filePath}`);
+      }
+      hlMap.set(code, url);
+    }
+    for (const reqLang of requiredHlLangs) {
+      if (!hlMap.has(reqLang)) {
+        throw new Error(`[P0_GATE_FAILURE] Missing hreflang="${reqLang}" in ${art.filePath}`);
+      }
+    }
+    if (hlMap.get('x-default') !== hlMap.get('en')) {
+      throw new Error(`[P0_GATE_FAILURE] hreflang x-default (${hlMap.get('x-default')}) does not match en (${hlMap.get('en')}) in ${art.filePath}`);
+    }
+    if (hlMap.get(inferredLang) !== pageCanonical) {
+      throw new Error(`[P0_GATE_FAILURE] Self hreflang[${inferredLang}] (${hlMap.get(inferredLang)}) does not match canonical (${pageCanonical}) in ${art.filePath}`);
+    }
+
+    const expectedPrefixByLang = {
+      en: 'https://www.omniconverter.co.uk/blog/',
+      es: 'https://www.omniconverter.co.uk/es/blog/',
+      de: 'https://www.omniconverter.co.uk/de/blog/',
+      pt: 'https://www.omniconverter.co.uk/pt/blog/'
+    };
+    for (const lCode of ['en', 'es', 'de', 'pt']) {
+      const targetUrl = hlMap.get(lCode);
+      if (!targetUrl.startsWith(expectedPrefixByLang[lCode])) {
+        throw new Error(`[P0_GATE_FAILURE] Incorrect locale target URL '${targetUrl}' for hreflang="${lCode}" in ${art.filePath}`);
+      }
+      if (!skipReciprocityDiskCheck) {
+        const relTarget = targetUrl.replace('https://www.omniconverter.co.uk/', '') + '.html';
+        const batchEntry = batchByCanonical.get(targetUrl);
+        const targetDiskPath = batchEntry
+          ? (path.isAbsolute(batchEntry.filePath) ? batchEntry.filePath : path.join(rootDir, batchEntry.filePath))
+          : path.join(rootDir, relTarget);
+        if (!fs.existsSync(targetDiskPath)) {
+          throw new Error(`[P0_GATE_FAILURE] Hreflang target file does not exist on disk for ${lCode}: ${relTarget} (referenced in ${art.filePath})`);
+        }
+        const targetHtml = fs.readFileSync(targetDiskPath, 'utf8');
+        const targetHtmlTagM = targetHtml.match(/<html\b[^>]*>/i);
+        const targetRootLang = targetHtmlTagM ? (parseHtmlTagAttributes(targetHtmlTagM[0]).lang || '').toLowerCase().split('-')[0] : '';
+        if (targetRootLang !== lCode) {
+          throw new Error(`[P0_GATE_FAILURE] Hreflang target ${relTarget} root <html lang="${targetRootLang}"> does not match target locale '${lCode}'`);
+        }
+        const targetHead = (targetHtml.match(/<head>[\s\S]*?<\/head>/i) || [''])[0];
+        const targetLinks = extractLinkTagsFromHead(targetHead);
+        const targetCans = targetLinks.filter(l => (l.rel || '').toLowerCase() === 'canonical');
+        if (targetCans.length !== 1 || targetCans[0].href !== targetUrl) {
+          const foundTCan = targetCans.length > 0 ? targetCans[0].href : 'NONE';
+          throw new Error(`[P0_GATE_FAILURE] Hreflang target ${relTarget} canonical (${foundTCan}) does not match hreflang URL (${targetUrl})`);
+        }
+        const targetHls = new Map();
+        for (const tl of targetLinks) {
+          if ((tl.rel || '').toLowerCase() === 'alternate' && tl.hreflang !== undefined) {
+            if (targetHls.has(tl.hreflang)) {
+              throw new Error(`[P0_GATE_FAILURE] Duplicate hreflang='${tl.hreflang}' in target ${relTarget}`);
+            }
+            targetHls.set(tl.hreflang, tl.href || '');
+          }
+        }
+        for (const [k, v] of hlMap.entries()) {
+          if (targetHls.get(k) !== v) {
+            throw new Error(`[P0_GATE_FAILURE] Non-reciprocal hreflang="${k}" in ${relTarget}: expected '${v}', found '${targetHls.get(k) || 'MISSING'}'`);
+          }
+        }
+      }
+    }
+
+    // JSON-LD validity
+    const ldMatches = [...head.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
+    if (ldMatches.length === 0) {
+      throw new Error(`[P0_GATE_FAILURE] Missing application/ld+json in ${art.filePath}`);
+    }
+    for (const m of ldMatches) {
+      try {
+        JSON.parse(m[1]);
+      } catch (e) {
+        throw new Error(`[P0_GATE_FAILURE] Invalid JSON-LD in ${art.filePath}: ${e.message}`);
+      }
+    }
+
+    // Skip link, main#main-content, and /pwa-installer.js
+    const skipMatches = html.match(/<a\s+href="#main-content"\s+class="skip-link">/gi) || [];
+    const mainMatches = html.match(/<main\b[^>]*\bid="main-content"[^>]*>/gi) || [];
+    const pwaMatches = html.match(/<script\s+src="\/pwa-installer\.js"\s+defer><\/script>/gi) || [];
+    if (skipMatches.length !== 1 || mainMatches.length !== 1 || pwaMatches.length !== 1) {
+      throw new Error(`[P0_GATE_FAILURE] Accessibility/PWA gate failed in ${art.filePath} (skip=${skipMatches.length}, mainId=${mainMatches.length}, pwa=${pwaMatches.length})`);
+    }
+
+    // AdSense publisher ID and ad containers
+    if (!html.includes('ca-pub-4766868021895107') || (html.match(/<ins\s+class="adsbygoogle"/gi) || []).length < 2) {
+      throw new Error(`[P0_GATE_FAILURE] Missing AdSense publisher ID or ad slots in ${art.filePath}`);
+    }
+
+    // Calculator elements
+    for (const reqId of ['liveToolInput', 'liveToolFromUnit', 'liveToolToUnit', 'liveToolSwapBtn', 'liveToolResultVal']) {
+      if (!html.includes(`id="${reqId}"`)) {
+        throw new Error(`[P0_GATE_FAILURE] Missing calculator element #${reqId} in ${art.filePath}`);
+      }
+    }
+
+    // GATE-15: Multilingual Unsupported Claims Check (EN, DE, ES, PT)
+    for (const pat of UNSUPPORTED_CLAIM_PATTERNS) {
+      if (pat.regex.test(html)) {
+        throw new Error(`[P0_GATE_FAILURE] Unsupported product/converter claim (${pat.id}) detected in ${art.filePath}`);
+      }
+    }
+
+    // Images existence & intrinsic dimensions match via sharp
+    const imgTags = [...html.matchAll(/<img\b([^>]*)>/gi)];
+    if (imgTags.length < 2) {
+      throw new Error(`[P0_GATE_FAILURE] Missing logo or hero <img> in ${art.filePath}`);
+    }
+    for (const im of imgTags) {
+      const attrs = im[1];
+      const srcM = attrs.match(/\bsrc="([^"]+)"/i);
+      const wM = attrs.match(/\bwidth="(\d+)"/i);
+      const hM = attrs.match(/\bheight="(\d+)"/i);
+      if (!srcM || !wM || !hM) {
+        throw new Error(`[P0_GATE_FAILURE] <img> missing src, width, or height in ${art.filePath}`);
+      }
+      const diskImg = path.join(rootDir, srcM[1].replace(/^\//, '').split('?')[0]);
+      if (!fs.existsSync(diskImg)) {
+        throw new Error(`[P0_GATE_FAILURE] Referenced image file does not exist on disk: ${srcM[1]} in ${art.filePath}`);
+      }
+      const meta = await sharp(diskImg).metadata();
+      if (meta.width !== Number(wM[1]) || meta.height !== Number(hM[1])) {
+        throw new Error(`[P0_GATE_FAILURE] Image dimension mismatch for ${srcM[1]} in ${art.filePath}: HTML=${wM[1]}x${hM[1]} vs intrinsic=${meta.width}x${meta.height}`);
+      }
+    }
+
+    // Internal links existence check
+    const internalHrefs = [...html.matchAll(/\bhref="(\/[^"#?]*)"/gi)].map(m => m[1]);
+    for (const href of internalHrefs) {
+      if (href === '/' || href === '/es/' || href === '/de/' || href === '/pt/') continue;
+      if (href.endsWith('.xml') || href.endsWith('.ico') || href.endsWith('.css') || href.endsWith('.js') || href.endsWith('.png') || href.endsWith('.json') || href.endsWith('.svg') || href.endsWith('.webp') || href.endsWith('.txt')) {
+        const assetP = path.join(rootDir, href.replace(/^\//, ''));
+        if (!fs.existsSync(assetP)) {
+          throw new Error(`[P0_GATE_FAILURE] Broken internal asset link ${href} in ${art.filePath}`);
+        }
+        continue;
+      }
+      const htmlCandidate = path.join(rootDir, `${href.replace(/^\//, '')}.html`);
+      const indexCandidate = path.join(rootDir, href.replace(/^\//, ''), 'index.html');
+      if (!fs.existsSync(htmlCandidate) && !fs.existsSync(indexCandidate)) {
+        throw new Error(`[P0_GATE_FAILURE] Broken internal link ${href} in ${art.filePath}`);
+      }
+    }
+  }
+
+  // 3. GATE-14 & GATE-15 on all 4 localized blog hubs (#blogGrid + DIRECTORY_BLOCK + unsupported claims)
+  if (checkHubs) {
+    const hubSpecs = [
+      { rel: 'blog.html', prefix: '/blog/' },
+      { rel: 'es/blog.html', prefix: '/es/blog/' },
+      { rel: 'de/blog.html', prefix: '/de/blog/' },
+      { rel: 'pt/blog.html', prefix: '/pt/blog/' }
+    ];
+    for (const hs of hubSpecs) {
+      const hubPath = (hubOverrides && hubOverrides[hs.rel]) || path.join(rootDir, hs.rel);
+      if (fs.existsSync(hubPath)) {
+        const hubHtml = fs.readFileSync(hubPath, 'utf8');
+        for (const pat of UNSUPPORTED_CLAIM_PATTERNS) {
+          if (pat.regex.test(hubHtml)) {
+            throw new Error(`[P0_GATE_FAILURE] Unsupported claim (${pat.id}) detected in ${hs.rel}`);
+          }
+        }
+        const gridM = hubHtml.match(/<section class="blog-cards-grid" id="blogGrid">[\s\S]*?<\/section>/);
+        if (gridM) {
+          const cardBlocks = [...gridM[0].matchAll(/<article class="blog-card"[\s\S]*?<\/article>/gi)].map(m => m[0]);
+          const cardCanonicalHrefs = [];
+          for (let cIdx = 0; cIdx < cardBlocks.length; cIdx++) {
+            const cardHtml = cardBlocks[cIdx];
+            const cardAnchors = [...cardHtml.matchAll(/<a\b[^>]*>/gi)]
+              .map(m => parseHtmlTagAttributes(m[0]).href)
+              .filter(Boolean);
+            if (cardAnchors.length === 0) {
+              throw new Error(`[P0_GATE_FAILURE] Blog card #${cIdx + 1} in ${hs.rel} #blogGrid has no anchor links`);
+            }
+            const primaryHref = cardAnchors[0];
+            for (const aHref of cardAnchors) {
+              if (!aHref.startsWith(hs.prefix)) {
+                throw new Error(`[P0_GATE_FAILURE] Cross-locale card link '${aHref}' in ${hs.rel} #blogGrid (card #${cIdx + 1})`);
+              }
+              if (aHref !== primaryHref) {
+                throw new Error(`[P0_GATE_FAILURE] Mismatched internal anchor links inside card #${cIdx + 1} in ${hs.rel} #blogGrid ('${primaryHref}' vs '${aHref}')`);
+              }
+            }
+            cardCanonicalHrefs.push(primaryHref);
+          }
+          if (cardCanonicalHrefs.length !== new Set(cardCanonicalHrefs).size) {
+            throw new Error(`[P0_GATE_FAILURE] Duplicate article cards detected in ${hs.rel} #blogGrid`);
+          }
+        }
+        const dirM = hubHtml.match(/<!-- DIRECTORY_BLOCK -->[\s\S]*?<\/section>/);
+        if (dirM) {
+          const dirHrefs = [...dirM[0].matchAll(/<li><a href="([^"]+)"/g)].map(m => m[1]);
+          if (dirHrefs.length !== new Set(dirHrefs).size) {
+            throw new Error(`[P0_GATE_FAILURE] Duplicate article links detected in ${hs.rel} DIRECTORY_BLOCK`);
+          }
+          for (const dh of dirHrefs) {
+            if (!dh.startsWith(hs.prefix)) {
+              throw new Error(`[P0_GATE_FAILURE] Cross-locale directory link '${dh}' in ${hs.rel} DIRECTORY_BLOCK`);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return { passed: true, checkedArticles: articles.length };
 }
 
 // ─── INTERACTIVE IN-PAGE CONVERTER GENERATOR ──────────────────────────────────
@@ -958,7 +1888,7 @@ function getInteractiveWidget(rawKw, category, toolLink) {
         result = convertTemp(val, from, to);
         formulaText.textContent = val + ' ' + from + ' = ' + result.toFixed(2) + ' ' + to;
       } else if (['USD','AUD','EUR','GBP','CAD','JPY','INR','VND'].includes(from) && ['USD','AUD','EUR','GBP','CAD','JPY','INR','VND'].includes(to)) {
-        const fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.49, INR: 95.93, VND: 25936.55 };
+        const fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
         const rate = fx[to] / fx[from];
         result = val * rate;
         formulaText.textContent = '1 ' + from + ' = ' + (rate >= 1 ? rate.toFixed(4) : rate.toPrecision(4)) + ' ' + to;
@@ -1012,6 +1942,13 @@ function getInteractiveWidget(rawKw, category, toolLink) {
 
 async function main() {
   console.log('=== OmniConverter Auto-Publisher ===');
+
+  // Step 0 (PRE_GENERATION): Take trusted baseline snapshot and locale-aware slug sets BEFORE any source mutation
+  const protectedHashesBefore = snapshotProtectedFiles(process.cwd(), {
+    trustedBaseline: TRUSTED_PROTECTED_BASELINE_HASHES
+  });
+  verifyProtectedFilesIntact(protectedHashesBefore, process.cwd(), 'PRE_GENERATION');
+  const existingSlugsByLocale = collectExistingSlugsByLocale(process.cwd());
 
   const today = new Date().toISOString().split('T')[0];
   const year = new Date().getFullYear();
@@ -1353,7 +2290,7 @@ ${selectedTarget.snippetStrategy ? `
     .replace(/\bIn\b/g, 'in');
 
   const rawTitle = formatDisplayKw(selectedTarget.rawKw);
-  let title = `${rawTitle}: Exact Formula & Live Calculator`;
+  let title = `${rawTitle}: Clear Guide & Converter`;
   if (title.length > 60) {
     title = `${rawTitle}: Formula & Calculator`;
   }
@@ -1689,21 +2626,21 @@ Return ONLY valid JSON matching this exact structure:
     }
   }
 
-  // Generate bespoke 1200x630 PNG hero image for English article
+  // Generate bespoke 1200x630 PNG hero image for English article (fail-closed P0 requirement)
   const enHeroSrc = `/assets/blog/en/${selectedTarget.slug}.png`;
+  const enHeroOutFile = path.join('assets', 'blog', 'en', `${selectedTarget.slug}.png`);
   const enOgImg = `https://www.omniconverter.co.uk${enHeroSrc}`;
-  try {
-    await generateArticleHeroImage({
-      enSlug: selectedTarget.slug,
-      localSlug: selectedTarget.slug,
-      title,
-      lang: 'en',
-      outFile: path.join('assets', 'blog', 'en', `${selectedTarget.slug}.png`)
-    });
-    console.log(`[OK] Generated bespoke EN hero image: ${enHeroSrc}`);
-  } catch (imgErr) {
-    console.warn(`[WARN] Could not generate EN hero PNG: ${imgErr.message}`);
+  await generateArticleHeroImage({
+    enSlug: selectedTarget.slug,
+    localSlug: selectedTarget.slug,
+    title,
+    lang: 'en',
+    outFile: enHeroOutFile
+  });
+  if (!fs.existsSync(enHeroOutFile) || fs.statSync(enHeroOutFile).size === 0) {
+    throw new Error(`[P0_HERO_IMAGE_FAILURE] EN hero PNG was not created: ${enHeroOutFile}`);
   }
+  console.log(`[OK] Generated bespoke EN hero image: ${enHeroSrc}`);
 
   const jsonLdSchemas = [
     {
@@ -1806,10 +2743,11 @@ Return ONLY valid JSON matching this exact structure:
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="header-container">
       <a href="/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -1828,6 +2766,7 @@ Return ONLY valid JSON matching this exact structure:
         <a href="/time-duration" class="tab-btn">Time</a>
         <a href="/area" class="tab-btn">Area</a>
         <a href="/speed" class="tab-btn">Speed</a>
+        <a href="/pressure" class="tab-btn">Pressure</a>
         <a href="/file-media" class="tab-btn">Files</a>
         <a href="/blog" class="tab-btn active">Blog</a>
       </nav>
@@ -1842,7 +2781,7 @@ Return ONLY valid JSON matching this exact structure:
       </div>` : ''}
     </div>
   </header>
-  <main class="main-container">
+  <main class="main-container" id="main-content">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -1867,7 +2806,7 @@ Return ONLY valid JSON matching this exact structure:
   </script>
 </div>
 
-      <img src="${enHeroSrc}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${enHeroSrc}" alt="Conversion chart and visual reference guide for ${title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       ${articleBodyHtml}
     </article>
     ${crossLinksHtmlEn}
@@ -1878,6 +2817,7 @@ Return ONLY valid JSON matching this exact structure:
     </div>
   </footer>
   ${widgetScript}
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>`;
 
@@ -2007,19 +2947,19 @@ Return ONLY valid JSON matching this exact structure:
       localizedBody = injectPerahAd(localizedBody);
 
       const locHeroSrc = `/assets/blog/${cfg.lang}/${cfg.data.slug}.png`;
+      const locHeroOutFile = path.join('assets', 'blog', cfg.lang, `${cfg.data.slug}.png`);
       const locOgImg = `https://www.omniconverter.co.uk${locHeroSrc}`;
-      try {
-        await generateArticleHeroImage({
-          enSlug: selectedTarget.slug,
-          localSlug: cfg.data.slug,
-          title: cfg.data.title,
-          lang: cfg.lang,
-          outFile: path.join('assets', 'blog', cfg.lang, `${cfg.data.slug}.png`)
-        });
-        console.log(`[OK] Generated bespoke ${cfg.lang.toUpperCase()} hero image: ${locHeroSrc}`);
-      } catch (locImgErr) {
-        console.warn(`[WARN] Could not generate ${cfg.lang} hero PNG: ${locImgErr.message}`);
+      await generateArticleHeroImage({
+        enSlug: selectedTarget.slug,
+        localSlug: cfg.data.slug,
+        title: cfg.data.title,
+        lang: cfg.lang,
+        outFile: locHeroOutFile
+      });
+      if (!fs.existsSync(locHeroOutFile) || fs.statSync(locHeroOutFile).size === 0) {
+        throw new Error(`[P0_HERO_IMAGE_FAILURE] ${cfg.lang.toUpperCase()} hero PNG was not created: ${locHeroOutFile}`);
       }
+      console.log(`[OK] Generated bespoke ${cfg.lang.toUpperCase()} hero image: ${locHeroSrc}`);
 
       const langSchemas = [
         {
@@ -2110,10 +3050,11 @@ Return ONLY valid JSON matching this exact structure:
   </script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">${cfg.lang === 'es' ? 'Saltar al contenido principal' : cfg.lang === 'de' ? 'Zum Hauptinhalt springen' : 'Ir para o conteúdo principal'}</a>
   <header>
     <div class="header-container">
       <a href="/${cfg.lang}/" class="logo" aria-label="OmniConverter Home">
-        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;">
+        <img src="/logo.png" alt="OmniConverter Logo" style="width:32px;height:32px;border-radius:6px;object-fit:cover;" width="1024" height="1024">
         <span>OmniConverter</span>
       </a>
       <button type="button" class="mobile-menu-btn" onclick="const n=this.nextElementSibling||document.querySelector('.nav-tabs');if(n)n.classList.toggle('is-open');" aria-label="Toggle navigation menu">
@@ -2132,6 +3073,7 @@ Return ONLY valid JSON matching this exact structure:
         <a href="/${cfg.lang}/time-duration" class="tab-btn">Time</a>
         <a href="/${cfg.lang}/area" class="tab-btn">Area</a>
         <a href="/${cfg.lang}/speed" class="tab-btn">Speed</a>
+        <a href="/${cfg.lang}/pressure" class="tab-btn">Pressure</a>
         <a href="/${cfg.lang}/file-media" class="tab-btn">Files</a>
         <a href="/${cfg.lang}/blog" class="tab-btn active">Blog</a>
       </nav>
@@ -2146,7 +3088,7 @@ Return ONLY valid JSON matching this exact structure:
       </div>
     </div>
   </header>
-  <main class="main-container">
+  <main class="main-container" id="main-content">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <a href="/${cfg.lang}/">${cfg.homeText}</a>
       <span class="breadcrumb-separator">&rsaquo;</span>
@@ -2170,7 +3112,7 @@ Return ONLY valid JSON matching this exact structure:
        (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 </div>
-      <img src="${locHeroSrc}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager">
+      <img src="${locHeroSrc}" alt="Conversion chart and visual reference guide for ${cfg.data.title}" style="width:100%;max-height:360px;object-fit:cover;border-radius:var(--radius-xl);margin:0.5rem 0 1.5rem 0;border:1px solid var(--card-border);" loading="eager" width="1200" height="630">
       ${localizedBody}
     </article>
     ${crossLinksHtmlLocalized}
@@ -2181,6 +3123,7 @@ Return ONLY valid JSON matching this exact structure:
     </div>
   </footer>
   ${widgetScript}
+  <script src="/pwa-installer.js" defer></script>
 </body>
 </html>`;
 
@@ -2190,8 +3133,43 @@ Return ONLY valid JSON matching this exact structure:
     }
   }
 
-  // 6. Rebuild blog-data.js + sitemap.xml inline
-  rebuildBlogData();
+  // 6. Verify POST_ARTICLE_GENERATION quality gates BEFORE mutating any shared blog hub, blog-data.js, or sitemap
+  verifyProtectedFilesIntact(protectedHashesBefore, process.cwd(), 'POST_ARTICLE_GENERATION');
+
+  const generatedArticlesForGate = [
+    { filePath: outPath, slug: selectedTarget.slug, lang: 'en', expectedCanonical: `https://www.omniconverter.co.uk/blog/${selectedTarget.slug}` }
+  ];
+  if (hasAllTranslations) {
+    generatedArticlesForGate.push(
+      { filePath: path.join('es', 'blog', `${esArticle.slug}.html`), slug: esArticle.slug, lang: 'es', expectedCanonical: `https://www.omniconverter.co.uk/es/blog/${esArticle.slug}` },
+      { filePath: path.join('de', 'blog', `${deArticle.slug}.html`), slug: deArticle.slug, lang: 'de', expectedCanonical: `https://www.omniconverter.co.uk/de/blog/${deArticle.slug}` },
+      { filePath: path.join('pt', 'blog', `${ptArticle.slug}.html`), slug: ptArticle.slug, lang: 'pt', expectedCanonical: `https://www.omniconverter.co.uk/pt/blog/${ptArticle.slug}` }
+    );
+  }
+  await runPrePublishQualityGates({
+    articles: generatedArticlesForGate,
+    protectedHashesBefore,
+    existingSlugsBefore: existingSlugsByLocale,
+    rootDir: process.cwd(),
+    checkHubs: false,
+    stageName: 'POST_ARTICLE_GENERATION'
+  });
+
+  // Rebuild blog-data.js, blog hubs, and journaled sitemaps (verifies POST_HUB_GENERATION and POST_SITEMAP_GENERATION)
+  rebuildBlogData(protectedHashesBefore);
+
+  // Verify PRE_GIT_STAGING and PRE_COMMIT_PUSH_AUTH quality gates across articles and hubs
+  verifyProtectedFilesIntact(protectedHashesBefore, process.cwd(), 'PRE_GIT_STAGING');
+  await runPrePublishQualityGates({
+    articles: generatedArticlesForGate,
+    protectedHashesBefore,
+    existingSlugsBefore: existingSlugsByLocale,
+    rootDir: process.cwd(),
+    checkHubs: true,
+    stageName: 'PRE_COMMIT_PUSH_AUTH'
+  });
+  verifyProtectedFilesIntact(protectedHashesBefore, process.cwd(), 'PRE_COMMIT_PUSH_AUTH');
+  console.log('[OK] All P0 pre-publish content quality gates and 6-checkpoint protected-file assertions passed.');
 
   // 7. Auto-Notify Google Indexing API for Instant Crawling
   try {
@@ -2250,7 +3228,23 @@ Return ONLY valid JSON matching this exact structure:
   console.log('=== Auto-Publisher complete! ===');
 }
 
-module.exports = { rebuildBlogData, main };
+module.exports = {
+  rebuildBlogData,
+  generateSitemapsAtomically,
+  recoverSitemapTransaction,
+  verifySitemapTransactionBackups,
+  runPrePublishQualityGates,
+  snapshotProtectedFiles,
+  verifyProtectedFilesIntact,
+  computeCanonicalSha256,
+  parseHtmlTagAttributes,
+  extractLinkTagsFromHead,
+  collectExistingSlugsByLocale,
+  PROTECTED_61_FILES,
+  TRUSTED_PROTECTED_BASELINE_HASHES,
+  UNSUPPORTED_CLAIM_PATTERNS,
+  main
+};
 
 if (require.main === module) {
   main().catch(err => {

@@ -150,11 +150,6 @@ const titleDescMap = {
     h1: '2000 USD to AUD: Convert $2,000 US Dollars to Australian Dollars',
     desc: 'Convert $2,000 USD to AUD (~A$3,050 Australian Dollars). Compare international wire transfer fees, SWIFT vs fintech spreads, and full USD/AUD conversion tables.'
   },
-  'blog/2000-usd-to-gbp.html': {
-    title: '2000 USD to GBP Exchange Rate: Convert $2,000 US Dollars to British Pounds (£1,580) | OmniConverter',
-    h1: '2000 USD to GBP Exchange Rate: Convert $2,000 USD to £ GBP Instantly',
-    desc: 'Convert 2000 USD to GBP (~£1,580 British Pounds) with our interactive FX calculator, mid-market exchange rate formula, and incremental USD to GBP lookup table.'
-  },
   'blog/2000-dollars-in-pounds.html': {
     title: '$2,000 Dollars in Pounds (£): UK Bank Wire Costs, Spreads & Purchasing Power | OmniConverter',
     h1: '$2,000 Dollars in Pounds (£): Real-World UK Value & Transfer Fee Breakdown',
@@ -241,9 +236,9 @@ const titleDescMap = {
     desc: 'Convert Japanese Yen to Indian Rupees (1 JPY ≈ ₹0.54 INR / 1,000 JPY ≈ ₹544 INR). Includes a JPY to INR travel table, remittance tips, and live currency calculator.'
   },
   'blog/file-changer.html': {
-    title: 'Online File Format & Extension Changer: Convert Images, Audio & Docs in Browser | OmniConverter',
+    title: 'File Changer Guide: Convert Images & Text Formats Safely | OmniConverter',
     h1: 'Online File Format & Extension Changer: Why Renaming Extensions Corrupts Files',
-    desc: 'Understand the difference between changing a file extension and true container transcoding. Convert images (WebP, PNG, JPG), audio, and documents locally in your browser.'
+    desc: 'Safely convert file formats online without corrupting data. Learn why renaming extensions breaks files and how to convert images (PNG, JPG, WebP) and text data locally.'
   },
   'blog/how-to-change-file-format.html': {
     title: 'How to Change a File Format on Windows, Mac, iPhone & Android | OmniConverter',
@@ -564,7 +559,7 @@ const universalCalcScript = `<script>
       kb: 1, mb: 1024, gb: 1048576, tb: 1073741824
     };
 
-    var fx = { USD: 1, AUD: 1.525, EUR: 0.92, GBP: 0.79, CAD: 1.38, JPY: 154.5, INR: 84.0, VND: 25400, IDR: 15800, KRW: 1380, TRY: 34.2 };
+    var fx = { USD: 1, AUD: 1.4258, EUR: 0.8784, GBP: 0.7556, CAD: 1.4149, JPY: 157.489, INR: 95.9279, VND: 25936.55, IDR: 17921.04, KRW: 1356.04, TRY: 48.9485 };
 
     function convertTemp(val, from, to) {
       var k;
@@ -650,15 +645,90 @@ function getCalloutData(lang, topic) {
     area: { url: `${pre}/area`, h3: 'Interactive Land & Area Measurement Converter', p: 'Convert between square feet, square meters, acres, hectares, Bigha, Gaj, and Guntha.', btn: 'Open Area Converter &rarr;' },
     speed: { url: `${pre}/speed`, h3: lang === 'es' ? 'Conversor de Velocidad (MPH, KM/H, Nudos)' : lang === 'de' ? 'Interaktiver Geschwindigkeitsrechner' : lang === 'pt' ? 'Conversor de Velocidade (MPH, KM/H, Nós)' : 'Interactive Speed & Velocity Converter', p: lang === 'es' ? 'Convierta entre mph, km/h, metros por segundo y nudos náuticos.' : lang === 'de' ? 'Rechnen Sie zwischen mph, km/h, m/s und Knoten um.' : lang === 'pt' ? 'Converta entre mph, km/h, m/s e nós náuticos.' : 'Convert between miles per hour (mph), km/h, meters per second (m/s), and knots.', btn: lang === 'es' ? 'Abrir Conversor de Velocidad &rarr;' : lang === 'de' ? 'Geschwindigkeitsrechner öffnen &rarr;' : lang === 'pt' ? 'Abrir Conversor de Velocidade &rarr;' : 'Open Speed Converter &rarr;' },
     time: { url: `${pre}/time-duration`, h3: lang === 'es' ? 'Conversor de Tiempo, Semanas y Duración' : lang === 'de' ? 'Interaktiver Zeit- & Dauerrechner' : lang === 'pt' ? 'Conversor de Tempo, Semanas e Duração' : 'Interactive Time & Duration Calculator', p: lang === 'es' ? 'Calcule semanas, días, horas, minutos y segundos al instante.' : lang === 'de' ? 'Berechnen Sie Wochen, Tage, Stunden, Minuten und Sekunden sofort.' : lang === 'pt' ? 'Calcule semanas, dias, horas, minutos e segundos instantaneamente.' : 'Convert between weeks, days, hours, minutes, and seconds instantly.', btn: lang === 'es' ? 'Abrir Conversor de Tiempo &rarr;' : lang === 'de' ? 'Zeitrechner öffnen &rarr;' : lang === 'pt' ? 'Abrir Conversor de Tempo &rarr;' : 'Open Time Converter &rarr;' },
-    file: { url: `${pre}/file-media`, h3: lang === 'es' ? 'Conversor de Archivos, Imágenes y PDF en el Navegador' : lang === 'de' ? 'Lokaler Datei-, Bild- & PDF-Umwandler im Browser' : lang === 'pt' ? 'Conversor de Arquivos, Imagens e PDF no Navegador' : 'Interactive File, Image & PDF Format Converter', p: lang === 'es' ? 'Convierta imágenes, audio, documentos y calcule tamaños de archivo localmente.' : lang === 'de' ? 'Wandeln Sie Bilder, Audio und Dokumente lokal in Ihrem Browser um.' : lang === 'pt' ? 'Converta imagens, áudio, documentos e calcule tamanhos de arquivo localmente.' : 'Convert images, documents, audio, and calculate digital storage sizes locally in your browser.', btn: lang === 'es' ? 'Abrir Conversor de Archivos &rarr;' : lang === 'de' ? 'Dateiumwandler öffnen &rarr;' : lang === 'pt' ? 'Abrir Conversor de Arquivos &rarr;' : 'Open File & Media Converter &rarr;' }
+    file: { url: `${pre}/file-media`, h3: lang === 'es' ? 'Conversor de Imágenes y Datos de Texto en el Navegador' : lang === 'de' ? 'Lokaler Bild- & Textdaten-Umwandler im Browser' : lang === 'pt' ? 'Conversor de Imagens e Dados de Texto no Navegador' : 'Interactive Image & Text Data Format Converter', p: lang === 'es' ? 'Convierta imágenes (PNG, JPG, WebP), datos de texto (JSON, CSV, TXT) y calcule tamaños de almacenamiento digital localmente.' : lang === 'de' ? 'Wandeln Sie Bilder (PNG, JPG, WebP) und Textdaten (JSON, CSV, TXT) lokal im Browser um und berechnen Sie Speichergrößen.' : lang === 'pt' ? 'Converta imagens (PNG, JPG, WebP), dados de texto (JSON, CSV, TXT) e calcule tamanhos de armazenamento digital localmente.' : 'Convert images (PNG, JPG, WebP), text data (JSON, CSV, TXT), and calculate digital storage sizes locally in your browser.', btn: lang === 'es' ? 'Abrir Conversor de Archivos &rarr;' : lang === 'de' ? 'Dateiumwandler öffnen &rarr;' : lang === 'pt' ? 'Abrir Conversor de Arquivos &rarr;' : 'Open File & Media Converter &rarr;' }
   };
   return map[topic] || map.volume;
 }
 
-const files = walk(ROOT);
-let modifiedCount = 0;
+const {
+  PROTECTED_61_FILES,
+  TRUSTED_PROTECTED_BASELINE_HASHES,
+  snapshotProtectedFiles,
+  verifyProtectedFilesIntact
+} = require('./vertex-publisher');
 
-for (const f of files) {
+const PROTECTED_63_SET = new Set([
+  ...PROTECTED_61_FILES,
+  'de/blog/1-3-tasse-in-gramm.html',
+  'pt/blog/1-3-xicara-em-gramas.html'
+]);
+
+function validateAndResolveTargets(rootDir, rawArgs) {
+  const targetArgs = rawArgs.filter(a => !a.startsWith('--'));
+  if (targetArgs.length === 0) {
+    throw new Error('[FATAL P0 GUARD] Refusing broad sitewide walk in fix-all-seo-audit.js. Pass explicit target HTML file paths.');
+  }
+
+  const realRoot = fs.realpathSync(rootDir);
+  const resolvedTargets = [];
+
+  for (const rawArg of targetArgs) {
+    if (path.isAbsolute(rawArg)) {
+      const relAbs = path.relative(realRoot, path.resolve(rawArg));
+      if (relAbs.startsWith('..') || path.isAbsolute(relAbs)) {
+        throw new Error(`[P0_PATH_TRAVERSAL_REFUSED] Absolute path outside repository root refused: ${rawArg}`);
+      }
+    }
+
+    const candidate = path.resolve(realRoot, rawArg);
+    const relCandidate = path.relative(realRoot, candidate).replace(/\\/g, '/');
+    if (relCandidate.startsWith('..') || path.isAbsolute(relCandidate)) {
+      throw new Error(`[P0_PATH_TRAVERSAL_REFUSED] Relative path traversal outside repository root refused: ${rawArg}`);
+    }
+
+    if (!fs.existsSync(candidate)) {
+      throw new Error(`[P0_TARGET_MISSING] Explicit target file does not exist: ${rawArg}`);
+    }
+
+    const realTarget = fs.realpathSync(candidate);
+    const relReal = path.relative(realRoot, realTarget).replace(/\\/g, '/');
+    if (relReal.startsWith('..') || path.isAbsolute(relReal)) {
+      throw new Error(`[P0_PATH_TRAVERSAL_REFUSED] Symlink escape outside repository root refused: ${rawArg} -> ${realTarget}`);
+    }
+
+    if (!fs.statSync(realTarget).isFile() || !realTarget.toLowerCase().endsWith('.html')) {
+      throw new Error(`[P0_NON_HTML_TARGET_REFUSED] Explicit target must be an existing .html file: ${rawArg}`);
+    }
+
+    if (PROTECTED_63_SET.has(relReal)) {
+      throw new Error(`[P0_PROTECTED_FILE_REFUSED] Refusing to modify protected SEO file via legacy fixer: ${relReal}`);
+    }
+
+    resolvedTargets.push(realTarget);
+  }
+
+  return resolvedTargets;
+}
+
+function runLegacyFixer({ rootDir = ROOT, args = process.argv.slice(2), trustedBaseline = TRUSTED_PROTECTED_BASELINE_HASHES } = {}) {
+  const files = validateAndResolveTargets(rootDir, args);
+
+  let protectedSnapBefore;
+  try {
+    protectedSnapBefore = snapshotProtectedFiles(rootDir, { trustedBaseline });
+  } catch (snapErr) {
+    if (snapErr.message && snapErr.message.includes('[P0_PROTECTED_BASELINE_TAMPERED]')) {
+      throw snapErr;
+    }
+    throw new Error(`[P0_INVALID_PROTECTED_SNAPSHOT] ${snapErr.message}`);
+  }
+  if (!(protectedSnapBefore instanceof Map) || protectedSnapBefore.size < 63) {
+    throw new Error('[P0_INVALID_PROTECTED_SNAPSHOT] Pre-execution protected snapshot is invalid or incomplete.');
+  }
+
+  let modifiedCount = 0;
+
+  for (const f of files) {
   let html = fs.readFileSync(f, 'utf8');
   const orig = html;
   const r = rel(f);
@@ -762,7 +832,7 @@ for (const f of files) {
 
     // Update Callout Box if its link doesn't match the guide's topic
     const calloutRegex = /<!-- Relevant Interactive Converter Callout Box -->\s*<div[^>]*>[\s\S]*?<\/a>\s*<\/div>/;
-    if (calloutRegex.test(html) && topic !== 'unknown' && topic !== 'pressure') {
+    if (calloutRegex.test(html) && topic !== 'unknown' && topic !== 'pressure' && topic !== 'file') {
       const cd = getCalloutData(lang, topic);
       const newCallout = `<!-- Relevant Interactive Converter Callout Box -->
       <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.08)); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
@@ -830,7 +900,7 @@ for (const f of files) {
           ['/speed', '🚗 Speed & Velocity Converter']
         ],
         file: [
-          ['/file-media', '📁 Local Browser File, Image & PDF Converter'],
+          ['/file-media', '📁 Local Browser Image & Text Data Converter'],
           ['/blog/how-to-change-file-format', 'How to Change a File Format Safely'],
           ['/blog/convert-file-type-to-pdf', 'How to Convert Any File Type to PDF'],
           ['/blog/convert-pdf-form', 'How to Convert & Flatten Interactive PDF Forms']
@@ -880,7 +950,7 @@ for (const f of files) {
           ['/es/speed', '🚗 Conversor de Velocidad']
         ],
         file: [
-          ['/es/file-media', '📁 Conversor de Archivos, Imágenes y PDF'],
+          ['/es/file-media', '📁 Conversor de Imágenes y Datos de Texto'],
           ['/es/blog/como-cambiar-formato-de-archivo', 'Cómo Cambiar el Formato de un Archivo'],
           ['/es/blog/convertir-tipo-de-archivo-a-pdf', 'Convertir Tipo de Archivo a PDF'],
           ['/es/blog/convertir-formulario-pdf', 'Convertir Formulario PDF']
@@ -930,7 +1000,7 @@ for (const f of files) {
           ['/de/speed', '🚗 Geschwindigkeitsrechner']
         ],
         file: [
-          ['/de/file-media', '📁 Datei-, Bild- & PDF-Umwandler'],
+          ['/de/file-media', '📁 Lokaler Bild- & Textdaten-Umwandler'],
           ['/de/blog/dateiformat-aendern-anleitung', 'Dateiformat ändern: Anleitung'],
           ['/de/blog/dateityp-in-pdf-umwandeln', 'Dateityp in PDF umwandeln'],
           ['/de/blog/pdf-formular-umwandeln', 'PDF-Formular umwandeln']
@@ -980,7 +1050,7 @@ for (const f of files) {
           ['/pt/speed', '🚗 Conversor de Velocidade']
         ],
         file: [
-          ['/pt/file-media', '📁 Conversor de Arquivos, Imagens e PDF'],
+          ['/pt/file-media', '📁 Conversor de Imagens e Dados de Texto'],
           ['/pt/blog/como-mudar-formato-de-arquivo', 'Como Mudar o Formato de um Arquivo'],
           ['/pt/blog/converter-tipo-de-arquivo-para-pdf', 'Converter Tipo de Arquivo para PDF'],
           ['/pt/blog/converter-formulario-pdf', 'Converter Formulário PDF']
@@ -989,7 +1059,7 @@ for (const f of files) {
     };
 
     const langGuides = (relGuidesByLang[lang] && relGuidesByLang[lang][topic]) || (relGuidesByLang[lang] && relGuidesByLang[lang].volume);
-    if (langGuides && /<section class="related-guides-section"[\s\S]*?<\/section>/.test(html)) {
+    if (topic !== 'file' && langGuides && /<section class="related-guides-section"[\s\S]*?<\/section>/.test(html)) {
       const curPath = '/' + r.replace(/\.html$/, '');
       const cards = langGuides.filter(([u]) => u !== curPath).slice(0, 4).map(([u, t]) => `        <a href="${u}" style="display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.15rem; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.92rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
           <span>${t}</span>
@@ -1004,8 +1074,8 @@ for (const f of files) {
     html = html.replace(/>10 Billion Won To Gbp</g, '>10 Billion Won to GBP<');
   }
 
-  // 4. Fix SLUG_TITLE, SLUG_DESC, and overlapping titles/descriptions
-  if (titleDescMap[r]) {
+  // 4. Disabled legacy titleDescMap overwrites so existing human-approved SEO metadata is never overwritten
+  if (false && titleDescMap[r]) {
     const { title, h1, desc } = titleDescMap[r];
     const cleanHeadline = title.split('|')[0].trim();
     html = html.replace(/<title>[^<]*<\/title>/i, () => `<title>${title.replace(/&/g, '&amp;')}</title>`);
@@ -1081,7 +1151,7 @@ for (const f of files) {
       const tags = `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/indian-units">\n  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/indian-units">\n</head>`;
       html = html.replace('</head>', tags);
     } else if (r === 'pt/blog/2000-usd-to-gbp.html') {
-      const tags = `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/2000-usd-to-gbp">\n  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/2000-usd-a-gbp">\n  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/2000-usd-in-gbp">\n  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/2000-usd-para-gbp">\n  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/2000-usd-to-gbp">\n</head>`;
+      const tags = `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/2000-dollars-in-pounds">\n  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/2000-usd-a-gbp">\n  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/2000-usd-in-gbp">\n  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/2000-usd-para-gbp">\n  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/2000-dollars-in-pounds">\n</head>`;
       html = html.replace('</head>', tags);
     } else if (isGuide && lang === 'en') {
       const url = `https://www.omniconverter.co.uk/blog/${slug}`;
@@ -1171,13 +1241,9 @@ for (const f of files) {
     html = html.replace(boilerplateRegex, '');
   }
 
-  // Update index.html meta description and dynamic guide count
+  // Update index.html dynamic guide count only (never overwrite approved index.html meta description)
   if (r === 'index.html') {
     const enGuideCount = fs.readdirSync(path.join(ROOT, 'blog')).filter(x => x.endsWith('.html')).length;
-    const newIndexDesc = 'Free online unit, currency, world time zone, Indian traditional units (Bigha, Gaj, Tola, Lakh, Crore), and local browser file converter. Convert length, weight, temperature, volume, area, speed, and 45+ currencies instantly.';
-    html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="description" content="${newIndexDesc}">`);
-    html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta property="og:description" content="${newIndexDesc}">`);
-    html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i, () => `<meta name="twitter:description" content="${newIndexDesc}">`);
     html = html.replace(/\(All \d+ Guides\)/g, `(All ${enGuideCount} Guides)`);
   }
 
@@ -1193,10 +1259,64 @@ for (const f of files) {
   // Fix broken link /pt/blog/65-kg-em-libras -> /pt/blog/65-kg-para-libras
   html = html.replace(/\/pt\/blog\/65-kg-em-libras/g, '/pt/blog/65-kg-para-libras');
 
-  if (html !== orig) {
-    fs.writeFileSync(f, html, 'utf8');
-    modifiedCount++;
+  // 11. Permanent Batch 22A/22D Guards for all future & existing pages:
+  // a) Sanitize any accidental stray >> inside <head>...</head>
+  html = html.replace(/<head[\s\S]*?<\/head>/i, (headBlock) => headBlock.replace(/>>+/g, '>'));
+
+  // b) Ensure localized .skip-link and <main id="main-content"> on all content pages with <main>
+  if (/<main\b/i.test(html) && !/http-equiv=["']refresh["']/i.test(html)) {
+    if (!/class=["'][^"']*skip-link/i.test(html)) {
+      const skipText = lang === 'es'
+        ? 'Saltar al contenido principal'
+        : lang === 'de'
+        ? 'Zum Hauptinhalt springen'
+        : lang === 'pt'
+        ? 'Ir para o conteúdo principal'
+        : 'Skip to main content';
+      html = html.replace(/<body([^>]*)>/i, `<body$1>\n  <a href="#main-content" class="skip-link">${skipText}</a>`);
+    }
+    if (!/<main[^>]*\bid=["']main-content["']/i.test(html)) {
+      html = html.replace(/<main(\b[^>]*)>/i, '<main$1 id="main-content">');
+    }
   }
+
+  // c) Ensure /pwa-installer.js is loaded before </body>
+  if (!/pwa-installer\.js/i.test(html) && /<\/body>/i.test(html)) {
+    html = html.replace(/<\/body>/i, '  <script src="/pwa-installer.js" defer></script>\n</body>');
+  }
+
+  // d) Ensure intrinsic width/height on logo.png and /assets/blog/ hero images
+  html = html.replace(/<img\b([^>]*\bsrc=["'][^"']*logo\.png["'][^>]*)>/gi, (full, attrs) => {
+    if (/\bwidth=/i.test(attrs) && /\bheight=/i.test(attrs)) return full;
+    return `<img${attrs} width="1024" height="1024">`;
+  });
+  html = html.replace(/<img\b([^>]*\bsrc=["']\/?assets\/blog\/[^"']+\.png[^"']*["'][^>]*)>/gi, (full, attrs) => {
+    if (/\bwidth=/i.test(attrs) && /\bheight=/i.test(attrs)) return full;
+    return `<img${attrs} width="1200" height="630">`;
+  });
+
+    if (html !== orig) {
+      fs.writeFileSync(f, html, 'utf8');
+      modifiedCount++;
+    }
+  }
+
+  verifyProtectedFilesIntact(protectedSnapBefore, rootDir, 'FIX_ALL_SEO_AUDIT_POST');
+  console.log(`Successfully updated ${modifiedCount} HTML files across the site!`);
+  return { modifiedCount, checkedProtectedFiles: protectedSnapBefore.size };
 }
 
-console.log(`Successfully updated ${modifiedCount} HTML files across the site!`);
+module.exports = {
+  runLegacyFixer,
+  validateAndResolveTargets,
+  PROTECTED_63_SET
+};
+
+if (require.main === module) {
+  try {
+    runLegacyFixer();
+  } catch (err) {
+    console.error(err.message || String(err));
+    process.exit(1);
+  }
+}
