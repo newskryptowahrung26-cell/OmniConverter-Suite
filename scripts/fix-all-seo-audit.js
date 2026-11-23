@@ -150,11 +150,6 @@ const titleDescMap = {
     h1: '2000 USD to AUD: Convert $2,000 US Dollars to Australian Dollars',
     desc: 'Convert $2,000 USD to AUD (~A$3,050 Australian Dollars). Compare international wire transfer fees, SWIFT vs fintech spreads, and full USD/AUD conversion tables.'
   },
-  'blog/2000-dollars-in-pounds.html': {
-    title: '$2,000 Dollars in Pounds (£): UK Bank Wire Costs, Spreads & Purchasing Power | OmniConverter',
-    h1: '$2,000 Dollars in Pounds (£): Real-World UK Value & Transfer Fee Breakdown',
-    desc: 'How much is $2,000 dollars in pounds after bank fees? Compare what £1,580 GBP buys in the UK and how to avoid 3%–5% wire transfer markups when sending $2,000 to Britain.'
-  },
   'blog/3-cups-in-ml.html': {
     title: '3 Cups in mL: How Many Milliliters Are in 3 Cups? (710 mL US / 750 mL Metric) | OmniConverter',
     h1: '3 Cups in mL: Exact US Customary (709.76 mL) vs Metric Cup (750 mL) Guide',
@@ -1150,9 +1145,7 @@ function runLegacyFixer({ rootDir = ROOT, args = process.argv.slice(2), trustedB
     if (r === 'indian-units.html') {
       const tags = `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/indian-units">\n  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/indian-units">\n</head>`;
       html = html.replace('</head>', tags);
-    } else if (r === 'pt/blog/2000-usd-to-gbp.html') {
-      const tags = `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/2000-dollars-in-pounds">\n  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/blog/2000-usd-a-gbp">\n  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/blog/2000-usd-in-gbp">\n  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/blog/2000-usd-para-gbp">\n  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/blog/2000-dollars-in-pounds">\n</head>`;
-      html = html.replace('</head>', tags);
+
     } else if (isGuide && lang === 'en') {
       const url = `https://www.omniconverter.co.uk/blog/${slug}`;
       const tags = `  <link rel="alternate" hreflang="en" href="${url}">\n  <link rel="alternate" hreflang="x-default" href="${url}">\n</head>`;
