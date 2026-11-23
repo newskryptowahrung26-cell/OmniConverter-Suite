@@ -2294,117 +2294,412 @@ ${selectedTarget.snippetStrategy ? `
     .replace(/^```html\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
   articleBodyHtml = sanitizeLatexMath(articleBodyHtml);
 
-  // 5. Build HTML page with High-CTR Title & Description and proper unit/currency casing
-  const formatDisplayKw = (str) => str
-    .replace(/\b\w/g, l => l.toUpperCase())
-    .replace(/\b(Usd|Gbp|Aud|Eur|Vnd|Jpy|Inr|Krw|Idr|Try|Cad)\b/g, m => m.toUpperCase())
-    .replace(/\bKg\b/g, 'kg')
-    .replace(/\bLbs\b/g, 'lbs')
-    .replace(/\bMl\b/g, 'mL')
-    .replace(/\bTo\b/g, 'to')
-    .replace(/\bIn\b/g, 'in');
+  // 5. Build HTML page with High-CTR Direct-Answer Title & Description across all locales
+  function normalizeKeyword(rawKw) {
+    let kw = (rawKw || '').trim();
+    kw = kw.replace(/^(\d+(?:\.\d+)?|\d+\/\d+)\s+([a-zA-Z°]+)\s+([a-zA-Z°]+)$/i, '$1 $2 to $3');
+    kw = kw
+      .replace(/\bkg\b/gi, 'kg')
+      .replace(/\blbs\b/gi, 'lbs')
+      .replace(/\bpounds?\b/gi, 'lbs')
+      .replace(/\bml\b/gi, 'mL')
+      .replace(/\bto\b/gi, 'to')
+      .replace(/\bin\b/gi, 'in')
+      .replace(/\busd\b/gi, 'USD')
+      .replace(/\bgbp\b/gi, 'GBP')
+      .replace(/\baud\b/gi, 'AUD')
+      .replace(/\beur\b/gi, 'EUR')
+      .replace(/\bvnd\b/gi, 'VND')
+      .replace(/\bjpy\b/gi, 'JPY')
+      .replace(/\binr\b/gi, 'INR')
+      .replace(/\bkrw\b/gi, 'KRW')
+      .replace(/\bcm\b/gi, 'cm')
+      .replace(/\bmm\b/gi, 'mm')
+      .replace(/\bkm\b/gi, 'km')
+      .replace(/\bpsi\b/gi, 'PSI')
+      .replace(/\bbar\b/gi, 'bar');
+    return kw;
+  }
 
-  function buildSeoTitle(rawKw, brandSuffix = ' | OmniConverter') {
-    const brandLen = brandSuffix.length; // 17
-    const maxTitleLen = 60;
-    const minTitleLen = 50;
-    const targetLen = 55;
+  function calculateConversion(rawKw) {
+    const kw = (rawKw || '').toLowerCase();
+    const numMatch = kw.match(/^(\d+\/\d+|\d+(?:\.\d+)?)/);
+    if (!numMatch) return null;
 
-    const patterns = [
-      `${rawKw}: Complete Guide & Converter`,
-      `${rawKw}: Clear Guide & Calculator`,
-      `${rawKw}: Complete Conversion Guide`,
-      `${rawKw}: Formulas & Converter`,
-      `${rawKw}: Guide & Calculator`,
-      `${rawKw}: Conversion Guide`,
-      `${rawKw}: Complete Guide`,
-      `${rawKw} Calculator & Guide`,
-      `${rawKw} Conversion Calculator`,
-      `${rawKw} Calculator`,
-      `${rawKw} Converter`
-    ];
-
-    let bestTitle = '';
-    let bestScore = Infinity;
-
-    for (const p of patterns) {
-      const full = p + brandSuffix;
-      if (full.length >= minTitleLen && full.length <= maxTitleLen) {
-        const score = Math.abs(full.length - targetLen);
-        if (score < bestScore) {
-          bestScore = score;
-          bestTitle = p;
-        }
-      }
+    const rawNumStr = numMatch[1];
+    let val = 0;
+    if (rawNumStr.includes('/')) {
+      const parts = rawNumStr.split('/');
+      val = parseFloat(parts[0]) / parseFloat(parts[1]);
+    } else {
+      val = parseFloat(rawNumStr);
     }
 
-    if (!bestTitle) {
-      for (const p of patterns) {
-        const full = p + brandSuffix;
-        if (full.length <= maxTitleLen) {
-          bestTitle = p;
-          break;
-        }
-      }
-    }
-
-    if (!bestTitle) {
-      const maxP = maxTitleLen - brandLen;
-      if (rawKw.length <= maxP) {
-        bestTitle = rawKw;
+    // Weight: kg <-> lbs
+    if ((kw.includes('kg') || kw.includes('kilo')) && (kw.includes('lb') || kw.includes('pound'))) {
+      if (kw.indexOf('kg') < (kw.indexOf('lb') !== -1 ? kw.indexOf('lb') : kw.indexOf('pound'))) {
+        const lbs = val * 2.20462262;
+        const stones = Math.floor(lbs / 14);
+        const remLbs = (lbs % 14).toFixed(1);
+        const lbsStr = lbs.toFixed(2).replace(/\.00$/, '');
+        return {
+          val: rawNumStr,
+          from: 'kg',
+          fromName: 'kilograms',
+          fromNameEs: 'kilogramos',
+          fromNameDe: 'Kilogramm',
+          fromNamePt: 'quilos',
+          to: 'lbs',
+          toName: 'pounds',
+          ans: `${lbsStr} lbs`,
+          stoneAns: `${stones} stone ${remLbs} lbs`,
+          cat: 'weight'
+        };
       } else {
-        bestTitle = rawKw.slice(0, maxP - 3).trim() + '...';
+        const kg = val * 0.45359237;
+        const kgStr = kg.toFixed(2).replace(/\.00$/, '');
+        return {
+          val: rawNumStr,
+          from: 'lbs',
+          fromName: 'pounds',
+          fromNameEs: 'libras',
+          fromNameDe: 'Pfund',
+          fromNamePt: 'libras',
+          to: 'kg',
+          toName: 'kilograms',
+          ans: `${kgStr} kg`,
+          cat: 'weight'
+        };
       }
     }
 
-    return bestTitle;
+    // Weight: g <-> lbs
+    if ((kw.includes(' g ') || kw.startsWith('1g ') || kw.includes('gram')) && (kw.includes('lb') || kw.includes('pound'))) {
+      const lbs = val * 0.00220462;
+      const lbsStr = lbs < 0.01 ? lbs.toPrecision(2) : lbs.toFixed(4).replace(/0+$/, '');
+      return {
+        val: rawNumStr,
+        from: 'g',
+        fromName: 'grams',
+        fromNameEs: 'gramos',
+        fromNameDe: 'Gramm',
+        fromNamePt: 'gramas',
+        to: 'lbs',
+        toName: 'pounds',
+        ans: `${lbsStr} lbs`,
+        cat: 'weight'
+      };
+    }
+
+    // Temperature: celsius <-> fahrenheit
+    if (kw.includes('celsius') && kw.includes('fahrenheit')) {
+      if (kw.indexOf('celsius') < kw.indexOf('fahrenheit')) {
+        const f = (val * 9/5) + 32;
+        const fStr = f.toFixed(1).replace(/\.0$/, '');
+        return {
+          val: rawNumStr,
+          from: '°C',
+          fromName: 'Celsius',
+          fromNameEs: 'grados Celsius',
+          fromNameDe: 'Grad Celsius',
+          fromNamePt: 'graus Celsius',
+          to: '°F',
+          toName: 'Fahrenheit',
+          ans: `${fStr}°F`,
+          cat: 'temperature'
+        };
+      } else {
+        const c = (val - 32) * 5/9;
+        const cStr = c.toFixed(1).replace(/\.0$/, '');
+        return {
+          val: rawNumStr,
+          from: '°F',
+          fromName: 'Fahrenheit',
+          fromNameEs: 'grados Fahrenheit',
+          fromNameDe: 'Grad Fahrenheit',
+          fromNamePt: 'graus Fahrenheit',
+          to: '°C',
+          toName: 'Celsius',
+          ans: `${cStr}°C`,
+          cat: 'temperature'
+        };
+      }
+    }
+
+    // Volume: gallon <-> liters
+    if (kw.includes('gallon') && (kw.includes('liter') || kw.includes('litre'))) {
+      const l = val * 3.785411784;
+      const lStr = l.toFixed(2).replace(/\.00$/, '');
+      return {
+        val: rawNumStr,
+        from: 'gallon',
+        fromName: 'US gallons',
+        fromNameEs: 'galones',
+        fromNameDe: 'Gallonen',
+        fromNamePt: 'galões',
+        to: 'L',
+        toName: 'liters',
+        ans: `${lStr} L`,
+        cat: 'volume'
+      };
+    }
+
+    // Volume: cup <-> ml
+    if (kw.includes('cup') && (kw.includes('ml') || kw.includes('milliliter'))) {
+      const ml = val * 236.5882365;
+      const mlStr = Math.round(ml);
+      return {
+        val: rawNumStr,
+        from: 'cup',
+        fromName: 'US cups',
+        fromNameEs: 'tazas',
+        fromNameDe: 'Tassen',
+        fromNamePt: 'xícaras',
+        to: 'mL',
+        toName: 'milliliters',
+        ans: `${mlStr} mL`,
+        cat: 'volume'
+      };
+    }
+
+    // Volume: quart <-> ml
+    if (kw.includes('quart') && (kw.includes('ml') || kw.includes('milliliter'))) {
+      const ml = val * 946.352946;
+      const mlStr = Math.round(ml);
+      return {
+        val: rawNumStr,
+        from: 'quart',
+        fromName: 'US quarts',
+        fromNameEs: 'cuartos',
+        fromNameDe: 'Quarts',
+        fromNamePt: 'quartos',
+        to: 'mL',
+        toName: 'milliliters',
+        ans: `${mlStr} mL`,
+        cat: 'volume'
+      };
+    }
+
+    // Volume: oz <-> ml
+    if ((kw.includes('ounce') || kw.includes('oz')) && (kw.includes('ml') || kw.includes('milliliter'))) {
+      const ml = val * 29.5735296;
+      const mlStr = ml.toFixed(1).replace(/\.0$/, '');
+      return {
+        val: rawNumStr,
+        from: 'fl oz',
+        fromName: 'fluid ounces',
+        fromNameEs: 'onzas fluidas',
+        fromNameDe: 'Flüssigunzen',
+        fromNamePt: 'onças fluidas',
+        to: 'mL',
+        toName: 'milliliters',
+        ans: `${mlStr} mL`,
+        cat: 'volume'
+      };
+    }
+
+    // Length: meter <-> cm
+    if (kw.includes('meter') && kw.includes('cm')) {
+      const cm = val * 100;
+      return {
+        val: rawNumStr,
+        from: 'm',
+        fromName: 'meters',
+        fromNameEs: 'metros',
+        fromNameDe: 'Meter',
+        fromNamePt: 'metros',
+        to: 'cm',
+        toName: 'centimeters',
+        ans: `${cm} cm`,
+        cat: 'length'
+      };
+    }
+
+    // Pressure: bar <-> psi
+    if (kw.includes('bar') && kw.includes('psi')) {
+      const psi = val * 14.50377377;
+      const psiStr = psi.toFixed(2).replace(/\.00$/, '');
+      return {
+        val: rawNumStr,
+        from: 'bar',
+        fromName: 'bar',
+        fromNameEs: 'bar',
+        fromNameDe: 'Bar',
+        fromNamePt: 'bar',
+        to: 'PSI',
+        toName: 'PSI',
+        ans: `${psiStr} PSI`,
+        cat: 'pressure'
+      };
+    }
+
+    return null;
   }
 
-  function buildSeoMetaDesc(rawKw) {
-    const targetLen = 143;
-    const candidates = [
-      `Convert ${rawKw} with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.`,
-      `Convert ${rawKw} accurately with step-by-step formulas, complete reference tables, and an instant interactive conversion calculator.`,
-      `Convert ${rawKw} instantly with exact formulas, reference tables, mental math rules, and our free interactive calculator.`,
-      `Convert ${rawKw} accurately with step-by-step formulas, reference charts, and an instant interactive conversion calculator.`,
-      `Convert ${rawKw} with exact formulas, mental math shortcuts, full reference tables, and an easy interactive conversion calculator.`,
-      `Convert ${rawKw} with exact formulas, complete reference tables, and an interactive conversion calculator on OmniConverter.`,
-      `Convert ${rawKw} with exact formulas, conversion tables, and an easy interactive calculator. Accurate, fast, and free.`
-    ];
+  function buildLockedMeta(rawKw) {
+    const enKw = normalizeKeyword(rawKw);
+    const calc = calculateConversion(enKw);
+    const cat = calc ? calc.cat : (enKw.includes('USD') || enKw.includes('GBP') || enKw.includes('EUR') || enKw.includes('AUD') || enKw.includes('KRW') ? 'currency' : 'general');
 
-    let bestDesc = candidates[0];
-    let bestScore = Infinity;
+    const guideNames = {
+      weight: { en: 'Weight Guide', es: 'Guía de Peso', de: 'Gewichtsratgeber', pt: 'Guia de Peso' },
+      volume: { en: 'Kitchen Guide', es: 'Guía de Cocina', de: 'Volumenratgeber', pt: 'Guia de Volume' },
+      temperature: { en: 'Temperature Guide', es: 'Guía de Temperatura', de: 'Temperaturratgeber', pt: 'Guia de Temperatura' },
+      length: { en: 'Length Guide', es: 'Guía de Medidas', de: 'Längenratgeber', pt: 'Guia de Medidas' },
+      pressure: { en: 'Pressure Guide', es: 'Guía de Presión', de: 'Druckratgeber', pt: 'Guia de Pressão' },
+      currency: { en: 'Rate Guide', es: 'Guía de Cambio', de: 'Kurs-Ratgeber', pt: 'Guia de Câmbio' },
+      general: { en: 'Conversion Guide', es: 'Guía de Conversión', de: 'Umrechnungsratgeber', pt: 'Guia de Conversão' }
+    };
 
-    for (const c of candidates) {
-      if (c.length >= 130 && c.length <= 155) {
-        const score = Math.abs(c.length - targetLen);
-        if (score < bestScore) {
-          bestScore = score;
-          bestDesc = c;
-        }
-      }
-    }
+    const g = guideNames[cat] || guideNames.general;
 
-    if (bestScore === Infinity) {
+    function selectBestTitle(candidates) {
+      // 1. Strict sweet spot 50-60
       for (const c of candidates) {
-        const score = Math.abs(c.length - targetLen);
-        if (score < bestScore) {
-          bestScore = score;
-          bestDesc = c;
+        if (c.length >= 50 && c.length <= 60) return c;
+      }
+      // 2. Fallback closest to 55 without exceeding 60
+      let best = '';
+      let minDiff = Infinity;
+      for (const c of candidates) {
+        if (c.length <= 60) {
+          const diff = Math.abs(c.length - 55);
+          if (diff < minDiff) {
+            minDiff = diff;
+            best = c;
+          }
         }
       }
+      if (best) return best;
+      // 3. Last resort: truncate first candidate to 57 chars
+      return candidates[0].slice(0, 57).replace(/[\s,;:-]+$/, '') + '...';
     }
 
-    if (bestDesc.length > 155) {
-      bestDesc = bestDesc.slice(0, 152).trim().replace(/[\s,;.-]+$/, '') + '...';
+    function trimDesc(d) {
+      if (d.length > 155) return d.slice(0, 152).replace(/[\s,;.-]+$/, '') + '...';
+      if (d.length < 130) {
+        return (d + ' Includes conversion formulas, calculation steps, and interactive converter.').slice(0, 152);
+      }
+      return d;
     }
 
-    return bestDesc;
+    // 1. ENGLISH
+    let enTitle = '';
+    let enDesc = '';
+    if (calc) {
+      if (calc.cat === 'weight' && calc.stoneAns) {
+        enTitle = selectBestTitle([
+          `${enKw}: Exactly ${calc.ans} | Quick ${g.en}`,
+          `${enKw}: Exactly ${calc.ans} | Complete ${g.en}`,
+          `${enKw}: Exactly ${calc.ans} | OmniConverter Guide`,
+          `${enKw}: Exactly ${calc.ans} | Quick Conversion Guide`
+        ]);
+        enDesc = trimDesc(`Convert ${enKw}: ${calc.val} ${calc.fromName} equals exactly ${calc.ans} (${calc.stoneAns}). Step-by-step conversion formulas, quick charts, and easy calculation.`);
+      } else if (calc.cat === 'temperature') {
+        enTitle = selectBestTitle([
+          `${enKw}: ${calc.val}${calc.from} is ${calc.ans} | ${g.en}`,
+          `${enKw}: Exactly ${calc.ans} | Complete ${g.en}`,
+          `${enKw}: ${calc.val}${calc.from} is ${calc.ans} | Quick Guide`,
+          `${enKw}: Exactly ${calc.ans} | Quick Temperature Guide`
+        ]);
+        enDesc = trimDesc(`Convert ${calc.val} degrees ${calc.fromName} to ${calc.toName}: ${calc.val}${calc.from} equals exactly ${calc.ans}. Step-by-step conversion formulas, benchmarks, and charts.`);
+      } else {
+        enTitle = selectBestTitle([
+          `${enKw}: Exactly ${calc.ans} | Complete ${g.en}`,
+          `${enKw}: Exactly ${calc.ans} | Quick ${g.en}`,
+          `${enKw}: Exactly ${calc.ans} | OmniConverter Guide`,
+          `${enKw}: Exactly ${calc.ans} | Quick Conversion Guide`
+        ]);
+        enDesc = trimDesc(`Convert ${enKw}: ${calc.val} ${calc.fromName} equals exactly ${calc.ans}. Step-by-step mathematical conversion formulas, reference tables, and interactive calculator.`);
+      }
+    } else {
+      enTitle = selectBestTitle([
+        `${enKw}: Rate Formula & Transfer Tips | OmniConverter`,
+        `${enKw}: Real-World Value & Calculation Guide`,
+        `${enKw}: Live Value, Calculation & ${g.en}`
+      ]);
+      enDesc = trimDesc(`Convert ${enKw} with accurate calculation formulas, practical conversion tables, bank transfer fee comparisons, and an instant interactive converter.`);
+    }
+
+    // 2. SPANISH
+    const esKw = enKw.replace(/\bto\b/g, 'a').replace(/\bin\b/g, 'en').replace(/\blbs\b/g, 'libras').replace(/\bgallon\b/g, 'galón').replace(/\bliters?\b/g, 'litros').replace(/\bcup\b/g, 'taza').replace(/\bquart\b/g, 'cuarto');
+    let esTitle = '';
+    let esDesc = '';
+    if (calc) {
+      esTitle = selectBestTitle([
+        `${esKw}: Exactamente ${calc.ans} | ${g.es}`,
+        `${esKw}: Exactamente ${calc.ans} | Guía de Conversión`,
+        `${esKw}: Exactamente ${calc.ans} | Conversión Rápida`,
+        `${esKw}: Exactamente ${calc.ans} | OmniConverter Guía`,
+        `${esKw}: Exactamente ${calc.ans} | OmniConverter`
+      ]);
+      esDesc = trimDesc(`Convierta ${esKw}: ${calc.val} ${calc.fromNameEs || 'unidades'} equivalen exactamente a ${calc.ans}. Fórmula matemática paso a paso, tabla rápida y calculadora interactiva.`);
+    } else {
+      esTitle = selectBestTitle([
+        `${esKw}: Fórmula de Cambio y Guía | OmniConverter`,
+        `${esKw}: Tasa de Cambio y Guía de Transferencia`,
+        `${esKw}: Conversión y Cálculo en Línea`
+      ]);
+      esDesc = trimDesc(`Convierta ${esKw} con fórmulas de cambio exactas, tablas de referencia prácticas, comparación de tarifas bancarias y calculadora interactiva en línea.`);
+    }
+
+    // 3. GERMAN
+    const deKw = enKw.replace(/\bto\b/g, 'in').replace(/\bin\b/g, 'in').replace(/\blbs\b/g, 'Pfund').replace(/\bgallon\b/g, 'Gallone').replace(/\bliters?\b/g, 'Liter').replace(/\bcup\b/g, 'Tasse').replace(/\bquart\b/g, 'Quart');
+    let deTitle = '';
+    let deDesc = '';
+    if (calc) {
+      deTitle = selectBestTitle([
+        `${deKw}: Genau ${calc.ans} | OmniConverter Umrechner`,
+        `${deKw}: Genau ${calc.ans} | Schneller Ratgeber`,
+        `${deKw}: Genau ${calc.ans} | ${g.de}`,
+        `${deKw}: Genau ${calc.ans} | Schnelle Umrechnung`,
+        `${deKw}: Genau ${calc.ans} | OmniConverter Guide`
+      ]);
+      deDesc = trimDesc(`${deKw} umrechnen: ${calc.val} ${calc.fromNameDe || 'Einheiten'} entsprechen genau ${calc.ans}. Exakte mathematische Formeln, praktische Referenztabelle und schneller Rechner.`);
+    } else {
+      deTitle = selectBestTitle([
+        `${deKw}: Umrechnung & Kurs-Ratgeber | OmniConverter`,
+        `${deKw}: Wechselkurs & Banküberweisung Ratgeber`,
+        `${deKw}: Exakte Formel & Berechnung im Web`
+      ]);
+      deDesc = trimDesc(`${deKw} umrechnen mit exakten Wechselkursformeln, praktischen Vergleichstabellen, Bankgebühren-Tipps und einem interaktiven Währungsrechner im Browser.`);
+    }
+
+    // 4. PORTUGUESE
+    const ptKw = enKw.replace(/\bto\b/g, 'para').replace(/\bin\b/g, 'em').replace(/\blbs\b/g, 'libras').replace(/\bgallon\b/g, 'galão').replace(/\bliters?\b/g, 'litros').replace(/\bcup\b/g, 'xícara').replace(/\bquart\b/g, 'quarto');
+    let ptTitle = '';
+    let ptDesc = '';
+    if (calc) {
+      ptTitle = selectBestTitle([
+        `${ptKw}: Exatamente ${calc.ans} | ${g.pt}`,
+        `${ptKw}: Exatamente ${calc.ans} | Guia de Conversão`,
+        `${ptKw}: Exatamente ${calc.ans} | Conversão Rápida`,
+        `${ptKw}: Exatamente ${calc.ans} | OmniConverter Guia`,
+        `${ptKw}: Exatamente ${calc.ans} | OmniConverter`
+      ]);
+      ptDesc = trimDesc(`Converta ${ptKw}: ${calc.val} ${calc.fromNamePt || 'unidades'} equivalem exactamente a ${calc.ans}. Fórmula matemática passo a passo, tabela rápida e calculadora interactiva.`);
+    } else {
+      ptTitle = selectBestTitle([
+        `${ptKw}: Fórmula de Câmbio e Guia | OmniConverter`,
+        `${ptKw}: Taxa de Câmbio e Guia de Transferência`,
+        `${ptKw}: Conversão Exata e Cálculo Online`
+      ]);
+      ptDesc = trimDesc(`Converta ${ptKw} com fórmulas de conversão exatas, tabelas de referência práticas, taxas bancárias e calculadora interativa de câmbio online gratuita.`);
+    }
+
+    return {
+      cleanKw: enKw,
+      en: { title: enTitle, desc: enDesc },
+      es: { title: esTitle, desc: esDesc },
+      de: { title: deTitle, desc: deDesc },
+      pt: { title: ptTitle, desc: ptDesc }
+    };
   }
 
-  const rawTitle = formatDisplayKw(selectedTarget.rawKw);
-  const title = buildSeoTitle(rawTitle);
-  const metaDesc = buildSeoMetaDesc(rawTitle);
+  const lockedMeta = buildLockedMeta(selectedTarget.rawKw);
+  const rawTitle = lockedMeta.cleanKw;
+  const title = lockedMeta.en.title;
+  const metaDesc = lockedMeta.en.desc;
 
   // 5b. Localized Articles Translation via Gemini (ES, DE, PT) with Structured JSON + Resilient Recovery + Never-Null Fallback
   let esArticle = null, deArticle = null, ptArticle = null;
@@ -2427,20 +2722,11 @@ ${selectedTarget.snippetStrategy ? `
 
   function buildFallbackTranslation(langCode) {
     const fbSlug = buildLocalizedFallbackSlug(selectedTarget.slug, langCode);
-    const fbTitle = langCode === 'es'
-      ? `${rawTitle}: Fórmula Exacta y Calculadora`
-      : langCode === 'de'
-      ? `${rawTitle}: Exakte Formel & Rechner`
-      : `${rawTitle}: Fórmula Exata e Calculadora`;
-    const fbDesc = langCode === 'es'
-      ? `Convierta ${rawTitle} al instante con nuestra calculadora interactiva, fórmula matemática exacta y tabla de conversión completa y gratuita.`
-      : langCode === 'de'
-      ? `Rechnen Sie ${rawTitle} sofort um: interaktiver Rechner, exakte mathematische Formeln und eine vollständige praktische Referenztabelle.`
-      : `Converta ${rawTitle} instantaneamente com nossa calculadora interativa, fórmula matemática exata e tabela de conversão completa e prática.`;
+    const m = lockedMeta[langCode] || lockedMeta.en;
     return {
-      title: fbTitle,
+      title: m.title,
       slug: fbSlug,
-      description: fbDesc,
+      description: m.desc,
       bodyHtml: articleBodyHtml
     };
   }
@@ -2536,23 +2822,10 @@ Return ONLY valid JSON matching this exact structure:
             parsed.slug = localizedSlug;
             parsed.bodyHtml = sanitizeLatexMath(parsed.bodyHtml);
 
-            // Normalize title: strip any brand suffix, enforce 50-60 chars with brand
-            let cleanTitle = (parsed.title || '').replace(/\s*\|\s*OmniConverter.*$/i, '').trim();
-            if ((cleanTitle + ' | OmniConverter').length > 60) {
-              const maxClean = 60 - 17; // 43 chars
-              cleanTitle = cleanTitle.slice(0, maxClean - 3).trim().replace(/[\s,;:-]+$/, '') + '...';
-            }
-            parsed.title = cleanTitle;
-
-            // Normalize meta description: eliminate live claims, enforce 130-155 chars
-            let cleanDesc = (parsed.description || '').replace(/\b(?:live\s*rates?|live-rechner)\b/gi, 'calculator').trim();
-            if (cleanDesc.length > 155) {
-              cleanDesc = cleanDesc.slice(0, 152).trim().replace(/[\s,;.-]+$/, '') + '...';
-            } else if (cleanDesc.length < 130) {
-              const fb = buildFallbackTranslation(langCode);
-              cleanDesc = fb.description;
-            }
-            parsed.description = cleanDesc;
+            // Lock High-CTR title & description from deterministic mathematical engine across all locales
+            const m = lockedMeta[langCode] || lockedMeta.en;
+            parsed.title = m.title;
+            parsed.description = m.desc;
 
             return parsed;
           }
@@ -2837,7 +3110,7 @@ Return ONLY valid JSON matching this exact structure:
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KPY6T7PFD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | OmniConverter</title>
+  <title>${title}</title>
   <meta name="description" content="${metaDesc}">
   <link rel="canonical" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
   ${hasAllTranslations ? `  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
@@ -2854,12 +3127,12 @@ Return ONLY valid JSON matching this exact structure:
   <!-- OpenGraph & Social Cards -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
-  <meta property="og:title" content="${title} | OmniConverter">
+  <meta property="og:title" content="${title}">
   <meta property="og:description" content="${metaDesc}">
   <meta property="og:site_name" content="OmniConverter">
   <meta property="og:image" content="${enOgImg}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${title} | OmniConverter">
+  <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${metaDesc}">
   <meta name="twitter:image" content="${enOgImg}">
 
@@ -3145,7 +3418,7 @@ Return ONLY valid JSON matching this exact structure:
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KPY6T7PFD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0KPY6T7PFD');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${cfg.data.title} | OmniConverter</title>
+  <title>${cfg.data.title}</title>
   <meta name="description" content="${cfg.data.description}">
   <link rel="canonical" href="https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}">
   <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/blog/${selectedTarget.slug}">
@@ -3161,12 +3434,12 @@ Return ONLY valid JSON matching this exact structure:
   <!-- OpenGraph & Social Cards -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.omniconverter.co.uk/${cfg.lang}/blog/${cfg.data.slug}">
-  <meta property="og:title" content="${cfg.data.title} | OmniConverter">
+  <meta property="og:title" content="${cfg.data.title}">
   <meta property="og:description" content="${cfg.data.description}">
   <meta property="og:site_name" content="OmniConverter">
   <meta property="og:image" content="${locOgImg}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${cfg.data.title} | OmniConverter">
+  <meta name="twitter:title" content="${cfg.data.title}">
   <meta name="twitter:description" content="${cfg.data.description}">
   <meta name="twitter:image" content="${locOgImg}">
 
