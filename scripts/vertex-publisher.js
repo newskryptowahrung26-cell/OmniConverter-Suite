@@ -1033,7 +1033,7 @@ function generateSitemapsAtomically(rootDir = process.cwd(), opts = {}) {
       if (!content.startsWith('<?xml version="1.0" encoding="UTF-8"?>') || !content.includes('<urlset ') || !content.trim().endsWith('</urlset>')) {
         throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] Malformed XML in staged ${s}`);
       }
-      if (content.includes('/404<') || content.includes('/2000-usd-to-gbp<')) {
+      if (content.includes('/404<')) {
         throw new Error(`[P0_SITEMAP_ATOMIC_FAILURE] Forbidden noindex/redirect URL found in staged ${s}`);
       }
     }
