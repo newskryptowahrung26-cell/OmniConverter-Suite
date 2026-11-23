@@ -3,7 +3,7 @@ const BLOG_POSTS = [
   {
     "id": "77-kg-para-lbs",
     "slug": "/pt/blog/77-kg-para-lbs",
-    "title": "77 kg para lbs: Fórmula Exata",
+    "title": "77 kg para libras: Exatamente 169.76 lbs | Guia de Peso",
     "date": "2026-11-23",
     "publicationDate": "2026-11-23T00:00:00Z",
     "category": "Peso & Massa",
@@ -12,7 +12,7 @@ const BLOG_POSTS = [
     "readTime": "4 min de leitura",
     "icon": "⚖️",
     "image": "/assets/blog/pt/77-kg-para-lbs.png",
-    "summary": "Converta 77 kg para lbs com fórmula matemática exata, atalhos de cálculo mental, tabelas de referência completas e conversor instantâneo online.",
+    "summary": "Converta 77 kg para libras: 77 quilos equivalem exactamente a 169.76 lbs. Fórmula matemática passo a passo, tabela rápida e calculadora interactiva.",
     "order": 0
   },
   {

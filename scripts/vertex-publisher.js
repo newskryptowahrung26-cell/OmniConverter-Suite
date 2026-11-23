@@ -2649,11 +2649,11 @@ ${selectedTarget.snippetStrategy ? `
     let deDesc = '';
     if (calc) {
       deTitle = selectBestTitle([
-        `${deKw}: Genau ${calc.ans} | OmniConverter Umrechner`,
+        `${deKw}: Genau ${calc.ans} | Praktischer Ratgeber`,
+        `${deKw}: Genau ${calc.ans} | Umrechnungsratgeber`,
         `${deKw}: Genau ${calc.ans} | Schneller Ratgeber`,
         `${deKw}: Genau ${calc.ans} | ${g.de}`,
-        `${deKw}: Genau ${calc.ans} | Schnelle Umrechnung`,
-        `${deKw}: Genau ${calc.ans} | OmniConverter Guide`
+        `${deKw}: Genau ${calc.ans} | Schnelle Umrechnung`
       ]);
       deDesc = trimDesc(`${deKw} umrechnen: ${calc.val} ${calc.fromNameDe || 'Einheiten'} entsprechen genau ${calc.ans}. Exakte mathematische Formeln, praktische Referenztabelle und schneller Rechner.`);
     } else {

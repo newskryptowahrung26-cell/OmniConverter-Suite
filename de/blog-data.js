@@ -3,7 +3,7 @@ const BLOG_POSTS = [
   {
     "id": "77-kg-in-pfund",
     "slug": "/de/blog/77-kg-in-pfund",
-    "title": "77 kg in lbs: Formel & Rechner",
+    "title": "77 kg in Pfund: Genau 169.76 lbs | Praktischer Ratgeber",
     "date": "2026-11-23",
     "publicationDate": "2026-11-23T00:00:00Z",
     "category": "Gewicht & Masse",
@@ -12,7 +12,7 @@ const BLOG_POSTS = [
     "readTime": "4 Min. Lesezeit",
     "icon": "⚖️",
     "image": "/assets/blog/de/77-kg-in-pfund.png",
-    "summary": "77 kg in lbs umrechnen: Exakte Formel, Kopfrechentricks, praktische Umrechnungstabellen und interaktiver Rechner für sofortige Ergebnisse.",
+    "summary": "77 kg in Pfund umrechnen: 77 Kilogramm entsprechen genau 169.76 lbs. Exakte mathematische Formeln, praktische Referenztabelle und schneller Rechner.",
     "order": 0
   },
   {

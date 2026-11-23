@@ -3,7 +3,7 @@ const BLOG_POSTS = [
   {
     "id": "77-kg-lbs",
     "slug": "/blog/77-kg-lbs",
-    "title": "77 kg lbs: Complete Guide & Converter",
+    "title": "77 kg to lbs: Exactly 169.76 lbs | Quick Weight Guide",
     "date": "2026-11-23",
     "publicationDate": "2026-11-23T00:00:00Z",
     "category": "Weight & Mass",
@@ -12,7 +12,7 @@ const BLOG_POSTS = [
     "readTime": "4 min read",
     "icon": "⚖️",
     "image": "/assets/blog/en/77-kg-lbs.png",
-    "summary": "Convert 77 kg lbs with exact mathematical formulas, mental math shortcuts, full reference tables, and an instant interactive calculator.",
+    "summary": "Convert 77 kg to lbs: 77 kilograms equals exactly 169.76 lbs (12 stone 1.8 lbs). Step-by-step conversion formulas, quick charts, and easy calculation.",
     "order": 0
   },
   {
