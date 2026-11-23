@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/area</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -26,13 +26,13 @@
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/currency</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/file-media</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -44,13 +44,13 @@
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/length</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/pressure</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -68,13 +68,13 @@
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/speed</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/temperature</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -86,25 +86,25 @@
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/time-duration</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/time-zone</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/volume-capacity</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omniconverter.co.uk/de/weight-mass</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -567,6 +567,12 @@
   <url>
     <loc>https://www.omniconverter.co.uk/de/blog/71-pfund-in-kg</loc>
     <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.omniconverter.co.uk/de/blog/77-kg-in-pfund</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
