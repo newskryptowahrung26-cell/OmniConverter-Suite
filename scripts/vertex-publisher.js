@@ -2163,6 +2163,7 @@ function parseKeywordPlanCsv(csvText) {
         name.includes('gemini') &&
         !name.includes('embedding') &&
         !name.includes('imagen') &&
+        !name.includes('image') &&
         !name.includes('tts') &&
         !name.includes('realtime') &&
         !name.includes('aqa') &&
@@ -2295,6 +2296,15 @@ ${selectedTarget.snippetStrategy ? `
   articleBodyHtml = sanitizeLatexMath(articleBodyHtml);
 
   // 5. Build HTML page with High-CTR Direct-Answer Title & Description across all locales
+  const formatDisplayKw = (str) => (str || '')
+    .replace(/\b\w/g, l => l.toUpperCase())
+    .replace(/\b(Usd|Gbp|Aud|Eur|Vnd|Jpy|Inr|Krw|Idr|Try|Cad)\b/g, m => m.toUpperCase())
+    .replace(/\bKg\b/g, 'kg')
+    .replace(/\bLbs\b/g, 'lbs')
+    .replace(/\bMl\b/g, 'mL')
+    .replace(/\bTo\b/g, 'to')
+    .replace(/\bIn\b/g, 'in');
+
   function normalizeKeyword(rawKw) {
     let kw = (rawKw || '').trim();
     kw = kw.replace(/^(\d+(?:\.\d+)?|\d+\/\d+)\s+([a-zA-Z°]+)\s+([a-zA-Z°]+)$/i, '$1 $2 to $3');
