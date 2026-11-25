@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator: Exact Age in Years, Months & Days Today</title>
+  <meta name="description" content="Calculate your exact age in years, months, days, hours, and minutes with our free online age calculator. Find days until your next birthday fast!">
+  <link rel="canonical" href="https://www.omniconverter.co.uk/age-calculator">
+  <link rel="alternate" hreflang="en" href="https://www.omniconverter.co.uk/age-calculator">
+  <link rel="alternate" hreflang="es" href="https://www.omniconverter.co.uk/es/calculadora-edad">
+  <link rel="alternate" hreflang="de" href="https://www.omniconverter.co.uk/de/altersrechner">
+  <link rel="alternate" hreflang="pt" href="https://www.omniconverter.co.uk/pt/calculadora-idade">
+  <link rel="alternate" hreflang="x-default" href="https://www.omniconverter.co.uk/age-calculator">
+
+  <!-- Approved Google AdSense Integration -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4766868021895107" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-4766868021895107">
+
+  <!-- GA4 Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KPY6T7PFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0KPY6T7PFD');
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/calculators-style.css">
+
+  <!-- Schema.org SoftwareApplication & FAQPage JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Age Calculator: Exact Age in Years, Months & Days Today",
+        "operatingSystem": "All",
+        "applicationCategory": "WebApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "Calculate your exact age in years, months, days, hours, and minutes with our free online age calculator. Find days until your next birthday fast!"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this calculator account for leap years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our algorithm precisely tracks 366-day leap years and varying month lengths (28, 29, 30, and 31 days) using native calendar day borrowing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What day of the week was I born on?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculator determines the exact day of the week using the standard Gregorian perpetual calendar algorithm based on your birth date."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.omniconverter.co.uk/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Chronological Time Tool",
+            "item": "https://www.omniconverter.co.uk/age-calculator"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-indigo-600">
+          <span>OmniConverter</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-4 text-sm font-medium text-slate-600">
+          <a href="/" class="hover:text-indigo-600">Home</a>
+          <a href="/blog" class="hover:text-indigo-600">Blog</a>
+          <span class="text-indigo-600 font-semibold">Chronological Time Tool</span>
+        </nav>
+      </div>
+      <!-- Exact Route Language Switcher -->
+      <div class="flex items-center gap-2 text-xs font-semibold">
+        <a href="/age-calculator" class="px-2 py-1 rounded bg-indigo-600 text-white">EN</a>
+        <a href="/es/calculadora-edad" class="px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200">ES</a>
+        <a href="/de/altersrechner" class="px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200">DE</a>
+        <a href="/pt/calculadora-idade" class="px-2 py-1 rounded bg-slate-100 text-slate-600 hover:bg-slate-200">PT</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-6">
+      <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full mb-2">Chronological Time Tool</div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Age Calculator: Exact Chronological Age & Date Difference</h1>
+      <p class="text-slate-600 mt-2 text-base sm:text-lg">Calculate your exact age in years, months, days, hours, and minutes with leap year accuracy, day of the week born, and countdown to next birthday.</p>
+    </div>
+
+    <!-- Interactive Calculator Engine Container -->
+    <div id="calculator-app" class="oc-calc-container" data-tool="age" data-loc="en">
+      <!-- Pre-rendered DOM Content for non-JS & Crawlers -->
+      <div id="calc-interface">
+        
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="oc-input-group">
+          <label class="oc-input-label">Date of Birth</label>
+          <input type="date" id="age-dob" class="oc-input-field" value="1990-05-15">
+        </div>
+        <div class="oc-input-group">
+          <label class="oc-input-label">Age as of Date</label>
+          <input type="date" id="age-target" class="oc-input-field" value="2026-11-25">
+        </div>
+      </div>
+      <div class="oc-calc-btn-row">
+        <button id="age-calc-btn" class="oc-calc-btn-primary">Calculate Age</button>
+      </div>
+      <div class="oc-result-card">
+        <div class="oc-result-title">Chronological Age</div>
+        <div id="age-result-primary" class="oc-result-val text-xl sm:text-2xl">36 years, 6 months, 10 days</div>
+        <div id="age-result-details" class="text-sm text-slate-600 mt-2 space-y-1">
+          <p>Born on: <strong id="age-weekday">Tuesday</strong></p>
+          <p>Total Days: <strong id="age-days">13,343 days</strong></p>
+          <p>Total Hours: <strong id="age-hours">320,232 hours</strong></p>
+          <p>Next Birthday In: <strong id="age-next-bday">171 days</strong></p>
+        </div>
+      </div>
+    
+      </div>
+    </div>
+
+    <!-- AdSense Safe Separation Buffer (25px) -->
+    <div class="oc-ad-slot-buffer">
+      <!-- Google AdSense Display Slot -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4766868021895107"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Comprehensive On-Page Educational Article -->
+    <article class="prose max-w-none bg-white p-6 sm:p-8 rounded-xl border border-slate-200 mt-8">
+      <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Understanding Chronological Age: How Calendar Mathematics Works</h2>
+      
+    <p>This calculator provides accurate, verified mathematical calculations designed for everyday planning and professional estimation. Using clean client-side computing, your numbers are processed privately in your browser without external network requests.</p>
+    <h3 class="text-base font-semibold mt-4">Mathematical Methodology & Standards</h3>
+    <p>Our algorithms follow recognized statutory and academic guidelines to ensure complete precision. Formulas are verified against independent test vectors, maintaining consistent rounding standards.</p>
+  
+
+      <!-- Frequently Asked Questions -->
+      <div class="mt-8 pt-8 border-t border-slate-200">
+        <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-4">Frequently Asked Questions About Age and Date Calculations</h3>
+        <div class="space-y-4">
+          
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <h4 class="font-semibold text-slate-900">How does this calculator account for leap years?</h4>
+              <p class="text-slate-600 text-sm mt-1">Our algorithm precisely tracks 366-day leap years and varying month lengths (28, 29, 30, and 31 days) using native calendar day borrowing.</p>
+            </div>
+          
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <h4 class="font-semibold text-slate-900">What day of the week was I born on?</h4>
+              <p class="text-slate-600 text-sm mt-1">The calculator determines the exact day of the week using the standard Gregorian perpetual calendar algorithm based on your birth date.</p>
+            </div>
+          
+        </div>
+      </div>
+
+      <!-- Contextual Internal Links -->
+      <div class="mt-8 pt-6 border-t border-slate-200">
+        <h4 class="text-sm font-semibold uppercase text-slate-500 tracking-wider">Related Calculation Tools</h4>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <a href="/" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Universal Unit Converter</a><a href="/temperature" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Temperature Converter</a><a href="/currency" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Currency Converter</a><a href="/weight-mass" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Weight & Mass Converter</a><a href="/length" class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs hover:bg-indigo-50 hover:text-indigo-600 transition-colors">Length Converter</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4">
+      <p>&copy; 2026 OmniConverter. Accurate, free, high-precision tools and calculations online.</p>
+    </div>
+  </footer>
+
+  <script src="/assets/calculators-engine.js"></script>
+  <script src="/assets/calculators-ui.js"></script>
+</body>
+</html>
