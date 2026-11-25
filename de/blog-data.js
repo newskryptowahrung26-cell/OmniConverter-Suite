@@ -1,5 +1,20 @@
-// Synchronisierte Blogdaten auf Deutsch (Gesamt: 98 Artikel)
+// Synchronisierte Blogdaten auf Deutsch (Gesamt: 99 Artikel)
 const BLOG_POSTS = [
+  {
+    "id": "83-kg-in-stone",
+    "slug": "/de/blog/83-kg-in-stone",
+    "title": "83kg in stone: Umrechnung & Kurs-Ratgeber",
+    "date": "2026-11-25",
+    "publicationDate": "2026-11-25T00:00:00Z",
+    "category": "Gewicht & Masse",
+    "categoryKey": "Weight & Mass",
+    "author": "OmniConverter Redaktionsteam",
+    "readTime": "4 Min. Lesezeit",
+    "icon": "⚖️",
+    "image": "/assets/blog/de/83-kg-in-stone.png",
+    "summary": "83kg in stone umrechnen mit exakten Wechselkursformeln, praktischen Vergleichstabellen, Bankgebühren-Tipps und einem interaktiven Währungsrechner im Bro...",
+    "order": 0
+  },
   {
     "id": "95-dollar-in-englische-pfund",
     "slug": "/de/blog/95-dollar-in-englische-pfund",
@@ -13,7 +28,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/95-dollar-in-englische-pfund.png",
     "summary": "95 dollars in english Pfund umrechnen mit exakten Wechselkursformeln, praktischen Vergleichstabellen, Bankgebühren-Tipps und einem interaktiven Währungs...",
-    "order": 0
+    "order": 1
   },
   {
     "id": "77-kg-in-pfund",
@@ -28,7 +43,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/77-kg-in-pfund.png",
     "summary": "77 kg in Pfund umrechnen: 77 Kilogramm entsprechen genau 169.76 lbs. Exakte mathematische Formeln, praktische Referenztabelle und schneller Rechner.",
-    "order": 1
+    "order": 2
   },
   {
     "id": "98-kg-in-lbs",
@@ -43,7 +58,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/98-kg-in-lbs.png",
     "summary": "98 kg in lbs umrechnen: 98 Kilogramm entsprechen exakt 216,05 Pfund. Entdecken Sie die Umrechnung, praktische Tabellen und den Live-Rechner.",
-    "order": 2
+    "order": 3
   },
   {
     "id": "140-kg-in-pfund",
@@ -58,7 +73,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/140-kg-in-pfund.png",
     "summary": "140 kg in Pfund umrechnen: 140 Kilogramm entsprechen exakt 308,65 lbs (22 st 0,6 lbs). Formeln, Umrechnungstabellen und Rechner im Internet.",
-    "order": 3
+    "order": 4
   },
   {
     "id": "50-meter-in-fuss",
@@ -73,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/50-meter-in-fuss.png",
     "summary": "Wie viel entspricht 50 Meter in Fuß genau? Entdecken Sie transparente Formeln, häufige Betragsstufen und hilfreiche Hinweise für den schnellen.",
-    "order": 4
+    "order": 5
   },
   {
     "id": "215-pfund-in-stone",
@@ -88,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/215-pfund-in-stone.png",
     "summary": "Rechnen Sie 215 Pfund in Stone um: 215 lbs entsprechen genau 15 st 5 lbs (97,52 kg). Übersichtliche Gewichtstabellen und Rechner bei uns im Web.",
-    "order": 5
+    "order": 6
   },
   {
     "id": "10-usd-in-aud",
@@ -103,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/10-usd-in-aud.png",
     "summary": "Rechnen Sie 10 US-Dollar in Australische Dollar um. Vergleichen Sie Live-Wechselkurse, Auslandsgebühren und praktische Währungstabellen im Web.",
-    "order": 6
+    "order": 7
   },
   {
     "id": "128-kg-in-lbs",
@@ -118,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/128-kg-in-lbs.png",
     "summary": "128 kg in Pfund umrechnen: 128 Kilogramm entsprechen exakt 282,19 lbs (20 st 2,2 lbs). Formeln, Gewichtstabellen und Rechner bei OmniConverter.",
-    "order": 7
+    "order": 8
   },
   {
     "id": "700-usd-in-aud",
@@ -133,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/700-usd-in-aud.png",
     "summary": "Rechnen Sie 700 US-Dollar in Australische Dollar um. Live-Devisenkurse, Überweisungskosten und Devisentabellen bei OmniConverter im Internet.",
-    "order": 8
+    "order": 9
   },
   {
     "id": "1-pfund-in-tuerkische-lira",
@@ -148,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1-pfund-in-tuerkische-lira.png",
     "summary": "Rechnen Sie 1 Britisches Pfund in Türkische Lira um. Aktuelle Wechselkurse, Bankgebühren und Währungstabellen direkt bei OmniConverter online.",
-    "order": 9
+    "order": 10
   },
   {
     "id": "100-meter-in-yards",
@@ -163,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/100-meter-in-yards.png",
     "summary": "Kompakter Überblick zu 100 Meter in Yards. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Direkte Orientierung mit. Direkt online.",
-    "order": 10
+    "order": 11
   },
   {
     "id": "3-lbs-in-kg",
@@ -178,7 +193,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/3-lbs-in-kg.png",
     "summary": "3 lbs in kg umrechnen: 3 Pfund entsprechen genau 1,36 Kilogramm. Formel, Rechenweg, praktische Tabellen und Rechner direkt bei OmniConverter.",
-    "order": 11
+    "order": 12
   },
   {
     "id": "69-kg-in-lbs",
@@ -193,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/69-kg-in-lbs.png",
     "summary": "69 kg in Pfund umrechnen: 69 Kilogramm entsprechen exakt 152,12 lbs (10 st 12,1 lbs). Formeln, Tabellen und Rechner direkt bei OmniConverter.",
-    "order": 12
+    "order": 13
   },
   {
     "id": "1000-meter-in-fuss",
@@ -208,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/1000-meter-in-fuss.png",
     "summary": "So funktioniert 1000 Meter in Fuß im Alltag. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Schnell, präzise und ohne Anmeldung.",
-    "order": 13
+    "order": 14
   },
   {
     "id": "250-lbs-in-kg",
@@ -223,7 +238,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/250-lbs-in-kg.png",
     "summary": "250 lbs in kg umrechnen: 250 Pfund entsprechen exakt 113,40 kg (17 st 12 lbs). Detaillierte Rechenwege, Tabellen und Rechner bei OmniConverter.",
-    "order": 14
+    "order": 15
   },
   {
     "id": "380-f-in-c",
@@ -238,7 +253,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/de/380-f-in-c.png",
     "summary": "380 Grad Fahrenheit in Celsius umrechnen: 380°F entsprechen exakt 193,33°C. Perfekt für Backofen-Temperaturen, Kochen und Rezepte im Internet.",
-    "order": 15
+    "order": 16
   },
   {
     "id": "170-lbs-in-kg",
@@ -253,7 +268,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/170-lbs-in-kg.png",
     "summary": "170 lbs in kg umrechnen: 170 Pfund entsprechen exakt 77,11 Kilogramm (12 st 2 lbs). Praktische Formeln, Tabellen und Rechner bei OmniConverter.",
-    "order": 16
+    "order": 17
   },
   {
     "id": "245-kg-in-pfund",
@@ -268,7 +283,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/245-kg-in-pfund.png",
     "summary": "245 kg in Pfund umrechnen: 245 Kilogramm entsprechen exakt 540,13 lbs (38 st 8,1 lbs). Formeln, Tabellen und Rechner direkt bei OmniConverter.",
-    "order": 17
+    "order": 18
   },
   {
     "id": "1400-usd-in-gbp",
@@ -283,7 +298,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1400-usd-in-gbp.png",
     "summary": "Rechnen Sie 1400 US-Dollar in Britische Pfund um. Aktuelle Wechselkurse, internationale Banküberweisungsgebühren und Währungstabellen online.",
-    "order": 18
+    "order": 19
   },
   {
     "id": "69-kg-in-stone",
@@ -298,7 +313,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/69-kg-in-stone.png",
     "summary": "69 kg in Stone umrechnen: 69 Kilogramm entsprechen genau 10 st 12,1 lbs (152,12 lbs). Gewichtstabellen und Rechner bei OmniConverter online.",
-    "order": 19
+    "order": 20
   },
   {
     "id": "1-unze-in-gramm",
@@ -313,7 +328,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/1-unze-in-gramm.png",
     "summary": "Prüfen Sie 1 Unze in Gramm auf einen Blick. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Verständlicher Rechenweg für schnelle.",
-    "order": 20
+    "order": 21
   },
   {
     "id": "4-usd-in-aud",
@@ -328,7 +343,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/4-usd-in-aud.png",
     "summary": "Rechnen Sie 4 US-Dollar in Australische Dollar um. Aktuelle Devisenkurse, Transaktionsgebühren und Währungstabellen direkt bei OmniConverter.",
-    "order": 21
+    "order": 22
   },
   {
     "id": "260-lbs-in-stone",
@@ -343,7 +358,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/260-lbs-in-stone.png",
     "summary": "Rechnen Sie 260 lbs in Stone um: 260 Pfund entsprechen genau 18 st 8 lbs (117,93 kg). Körpergewichtstabellen und Rechner bei OmniConverter DE.",
-    "order": 22
+    "order": 23
   },
   {
     "id": "67-fahrenheit-in-celsius",
@@ -358,7 +373,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/de/67-fahrenheit-in-celsius.png",
     "summary": "Zerlegen Sie 67 Fahrenheit in Celsius in klare, sofort nutzbare Werte. Ideal für Reisen, Einkäufe und schnelle Kontrollen am Smartphone oder.",
-    "order": 23
+    "order": 24
   },
   {
     "id": "81-kg-in-stone",
@@ -373,7 +388,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/81-kg-in-stone.png",
     "summary": "81 kg in Stone umrechnen: 81 Kilogramm entsprechen genau 12 st 10,6 lbs (178,57 lbs). Gewichtstabellen und Rechner bei OmniConverter online.",
-    "order": 24
+    "order": 25
   },
   {
     "id": "1500-pfund-in-aud-dollar",
@@ -388,7 +403,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1500-pfund-in-aud-dollar.png",
     "summary": "Rechnen Sie 1500 Britische Pfund in Australische Dollar um. Aktuelle Wechselkurse, Überweisungskosten und Devisentabellen bei OmniConverter.",
-    "order": 25
+    "order": 26
   },
   {
     "id": "85-kg-in-pfund",
@@ -403,7 +418,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/85-kg-in-pfund.png",
     "summary": "85 kg in Pfund umrechnen: 85 Kilogramm entsprechen exakt 187,39 lbs (13 st 5,4 lbs). Formeln, Tabellen und Rechner direkt bei OmniConverter.",
-    "order": 26
+    "order": 27
   },
   {
     "id": "199-dollar-in-pfund",
@@ -418,7 +433,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/199-dollar-in-pfund.png",
     "summary": "Rechnen Sie 199 US-Dollar in Britische Pfund um. Perfekt für Online-Shopping und Software-Abos mit aktuellen Wechselkursen bei OmniConverter.",
-    "order": 27
+    "order": 28
   },
   {
     "id": "10-eur-in-aud",
@@ -433,7 +448,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/10-eur-in-aud.png",
     "summary": "Rechnen Sie 10 Euro in Australische Dollar um. Aktuelle Devisenkurse, Wechselgebühren und praktische Devisentabellen bei OmniConverter online.",
-    "order": 28
+    "order": 29
   },
   {
     "id": "2000-pfund-in-us-dollar",
@@ -448,7 +463,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/2000-pfund-in-us-dollar.png",
     "summary": "Rechnen Sie 2000 Britische Pfund in US-Dollar um. Live-Devisenkurse, internationale Überweisungsgebühren und Tabellen bei OmniConverter im Web.",
-    "order": 29
+    "order": 30
   },
   {
     "id": "22kg-in-stone",
@@ -463,7 +478,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/22kg-in-stone.png",
     "summary": "22 kg in Stone umrechnen: 22 Kilogramm entsprechen exakt 3 st 6,5 lbs (48,50 lbs). Detaillierte Formeln und Tabellen bei OmniConverter online.",
-    "order": 30
+    "order": 31
   },
   {
     "id": "200-usd-in-aud",
@@ -478,7 +493,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/200-usd-in-aud.png",
     "summary": "Rechnen Sie 200 US-Dollar in Australische Dollar um. Aktuelle Devisenkurse, Bankgebühren und Währungstabellen direkt bei OmniConverter online.",
-    "order": 31
+    "order": 32
   },
   {
     "id": "210-kg-in-pfund",
@@ -493,7 +508,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/210-kg-in-pfund.png",
     "summary": "210 kg in Pfund umrechnen: 210 Kilogramm entsprechen exakt 462,97 lbs (33 st 1 lb). Formeln, Umrechnungstabellen und Rechner bei OmniConverter.",
-    "order": 32
+    "order": 33
   },
   {
     "id": "300-meter-in-fuss",
@@ -508,7 +523,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/300-meter-in-fuss.png",
     "summary": "300 Meter in Fuß umrechnen: 300 m entsprechen exakt 984,252 Fuß (984 ft 3 in). Detaillierte Formeln, Tabellen und Rechner bei OmniConverter.",
-    "order": 33
+    "order": 34
   },
   {
     "id": "1000-usd-in-gbp",
@@ -523,7 +538,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1000-usd-in-gbp.png?v=2",
     "summary": "Alle wichtigen Fakten zu 1000 USD in GBP. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Praktische Beispiele und übersichtliche.",
-    "order": 34
+    "order": 35
   },
   {
     "id": "200-gbp-in-aud",
@@ -538,7 +553,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/200-gbp-in-aud.png?v=2",
     "summary": "Rechnen Sie 200 GBP in Australische Dollar um. Live-Devisenkurse, Überweisungsgebühren und Devisentabellen direkt bei OmniConverter online heute.",
-    "order": 35
+    "order": 36
   },
   {
     "id": "14-usd-in-aud",
@@ -553,7 +568,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/14-usd-in-aud.png?v=2",
     "summary": "Rechnen Sie 14 US-Dollar in Australische Dollar um. Aktuelle Wechselkurse, Kartengebühren und Devisentabellen bei OmniConverter online im Web.",
-    "order": 36
+    "order": 37
   },
   {
     "id": "100-usd-in-australische-dollar",
@@ -568,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/100-usd-in-australische-dollar.png?v=2",
     "summary": "Rechnen Sie 100 US-Dollar in Australische Dollar um. Erfahren Sie, wie viel Geld nach Bankgebühren und Kartengebühren tatsächlich bar ankommt.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "20-gbp-in-aud",
@@ -583,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/20-gbp-in-aud.png?v=2",
     "summary": "Rechnen Sie 20 GBP in Australische Dollar um. Aktuelle Wechselkurse, Auslandsgebühren und praktische Devisentabellen bei OmniConverter online.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "1-aud-in-vnd",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1-aud-in-vnd.png?v=2",
     "summary": "So funktioniert 1 AUD in VND (Australischer Dollar in Vietnamesische Dong) im Alltag. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "67-usd-in-gbp",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/67-usd-in-gbp.png?v=2",
     "summary": "Rechnen Sie 67 US-Dollar in Britische Pfund um. Aktuelle Devisenkurse, Bankgebühren und Währungstabellen direkt bei OmniConverter im Internet.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "dateityp-in-pdf-umwandeln",
@@ -628,7 +643,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/de/dateityp-in-pdf-umwandeln.png?v=2",
     "summary": "Kompakter Überblick zu Dateityp in PDF umwandeln. Behalten Sie Dateien lokal und folgen Sie klaren Schritten. Direkte Orientierung mit klaren.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "pdf-formular-umwandeln",
@@ -643,7 +658,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/de/pdf-formular-umwandeln.png?v=2",
     "summary": "Planen Sie ein Budget für PDF-Formular umwandeln? Prüfen Sie genaue Beträge, alltagsnahe Beispiele und eine kompakte Übersicht direkt in Ihrem.",
-    "order": 42
+    "order": 43
   },
   {
     "id": "150-usd-in-aud",
@@ -658,7 +673,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/150-usd-in-aud.png?v=2",
     "summary": "Rechnen Sie 150 US-Dollar in Australische Dollar um. Live-Devisenkurse, Bankgebühren und praktische Währungstabellen bei OmniConverter online.",
-    "order": 43
+    "order": 44
   },
   {
     "id": "5-pfund-in-kg",
@@ -673,7 +688,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/5-pfund-in-kg.png?v=2",
     "summary": "5 lbs in kg umrechnen: 5 Pfund entsprechen genau 2,27 Kilogramm. Formeln, Schritt-für-Schritt-Rechnungen und Tabellen bei OmniConverter online.",
-    "order": 44
+    "order": 45
   },
   {
     "id": "70kg-in-stone",
@@ -688,7 +703,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/70kg-in-stone.png?v=2",
     "summary": "Alle wichtigen Fakten zu 70 kg in Stone umrechnen. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Praktische. Ohne Anmeldung.",
-    "order": 45
+    "order": 46
   },
   {
     "id": "2000-usd-in-aud",
@@ -703,7 +718,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/2000-usd-in-aud.png?v=2",
     "summary": "Kompakter Überblick zu 2000 US-Dollar in Australische Dollar (AUD). Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Direkt online.",
-    "order": 46
+    "order": 47
   },
   {
     "id": "4-meter-in-fuss",
@@ -718,7 +733,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/4-meter-in-fuss.png?v=2",
     "summary": "Rechnen Sie 4 Meter in Fuß um: 4 m entsprechen genau 13,1234 Fuß (13 ft 1,5 in). Praktische Formeln, Tabellen und Rechner bei OmniConverter DE.",
-    "order": 47
+    "order": 48
   },
   {
     "id": "2000-usd-in-gbp",
@@ -733,7 +748,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/2000-usd-in-gbp.png?v=2",
     "summary": "Verstehen Sie 2000 USD in GBP Umrechnen ohne Umwege. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Genau erklärt für den täglichen.",
-    "order": 48
+    "order": 49
   },
   {
     "id": "1500-usd-in-gbp",
@@ -748,7 +763,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1500-usd-in-gbp.png?v=2",
     "summary": "Alle wichtigen Fakten zu 1500 USD in GBP umrechnen: 1.500 US-Dollar in Britische Pfund (£). Vergleichen Sie aktuelle Kurse und häufige Beträge.",
-    "order": 49
+    "order": 50
   },
   {
     "id": "95-usd-in-gbp",
@@ -763,7 +778,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/95-usd-in-gbp.png?v=2",
     "summary": "Rechnen Sie 95 US-Dollar in Britische Pfund um. Aktuelle Wechselkurse, Kartengebühren und Umrechnungstabellen direkt bei OmniConverter online.",
-    "order": 50
+    "order": 51
   },
   {
     "id": "1500-usd-in-aud",
@@ -778,7 +793,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1500-usd-in-aud.png?v=2",
     "summary": "So funktioniert 1500 US-Dollar in Australische Dollar (AUD) im Alltag. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Direkt online.",
-    "order": 51
+    "order": 52
   },
   {
     "id": "65-kg-in-pfund",
@@ -793,7 +808,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/65-kg-in-pfund.png?v=2",
     "summary": "Sparen Sie Zeit bei der Prüfung von 65 Kilogramm in Pfund (lbs). Nutzen Sie geprüfte Gegenwerte, übersichtliche Zeilen und praxisnahe Tipps ganz.",
-    "order": 52
+    "order": 53
   },
   {
     "id": "165-pfund-in-kg",
@@ -808,7 +823,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/165-pfund-in-kg.png?v=2",
     "summary": "Kompakter Überblick zu 165 Pfund (lbs) in Kilogramm. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Direkte Orientierung mit.",
-    "order": 53
+    "order": 54
   },
   {
     "id": "14-stone-in-pfund",
@@ -823,7 +838,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/14-stone-in-pfund.png?v=2",
     "summary": "Rechnen Sie 14 Stone in Pfund um: 14 st entsprechen genau 196 lbs (88,90 kg). Tabellen, Körpergewichtsformeln und Rechner bei OmniConverter.",
-    "order": 54
+    "order": 55
   },
   {
     "id": "15-meter-in-fuss",
@@ -838,7 +853,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/de/15-meter-in-fuss.png?v=2",
     "summary": "Wie viel entspricht 15 Meter in Fuß genau? Entdecken Sie transparente Formeln, häufige Betragsstufen und hilfreiche Hinweise für den schnellen.",
-    "order": 55
+    "order": 56
   },
   {
     "id": "16-unzen-in-milliliter",
@@ -853,7 +868,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/de/16-unzen-in-milliliter.png?v=2",
     "summary": "Rechnen Sie 16 Unzen in Milliliter um: 16 fl oz entsprechen exakt 473,18 ml (US). Küchenmaße, Getränkevolumen und Tabellen bei OmniConverter.",
-    "order": 56
+    "order": 57
   },
   {
     "id": "180-pfund-in-stone",
@@ -868,7 +883,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/180-pfund-in-stone.png?v=2",
     "summary": "So funktioniert 180 Pfund (lbs) in Stone im Alltag. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Schnell, präzise und ohne.",
-    "order": 57
+    "order": 58
   },
   {
     "id": "lakh-in-usd-umrechnen",
@@ -883,7 +898,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "/assets/blog/de/lakh-in-usd-umrechnen.png?v=2",
     "summary": "Alle wichtigen Fakten zu Lakh in US-Dollar umrechnen. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Praktische. Ohne Anmeldung.",
-    "order": 58
+    "order": 59
   },
   {
     "id": "5-usd-in-aud",
@@ -898,7 +913,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/5-usd-in-aud.png?v=2",
     "summary": "Planen Sie ein Budget für 5 US-Dollar in Australische Dollar (AUD)? Prüfen Sie genaue Beträge, alltagsnahe Beispiele und eine kompakte Übersicht.",
-    "order": 59
+    "order": 60
   },
   {
     "id": "3-tassen-in-ml",
@@ -913,7 +928,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/3-tassen-in-ml.png?v=2",
     "summary": "So funktioniert 3 Tassen in Milliliter im Alltag. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Schnell, präzise. Direkt online.",
-    "order": 60
+    "order": 61
   },
   {
     "id": "waehrung-jpy-in-inr",
@@ -928,7 +943,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/waehrung-jpy-in-inr.png?v=2",
     "summary": "So funktioniert Japanischer Yen in Indische Rupien (JPY in INR) im Alltag. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Schnell.",
-    "order": 61
+    "order": 62
   },
   {
     "id": "waehrung-tuerkische-lira",
@@ -943,7 +958,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/waehrung-tuerkische-lira.png?v=2",
     "summary": "Alle wichtigen Fakten zu Währung Türkische Lira (TRY). Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Praktische. Direkt online.",
-    "order": 62
+    "order": 63
   },
   {
     "id": "convertor-oder-converter",
@@ -958,7 +973,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/de/convertor-oder-converter.png?v=2",
     "summary": "Alle wichtigen Fakten zu Convertor oder Converter? Richtige Schreibweise. Behalten Sie Dateien lokal und folgen Sie klaren Schritten. Praktische.",
-    "order": 63
+    "order": 64
   },
   {
     "id": "12-grad-celsius-in-fahrenheit",
@@ -973,7 +988,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/de/12-grad-celsius-in-fahrenheit.png?v=2",
     "summary": "Prüfen Sie 12 Grad Celsius in Fahrenheit auf einen Blick. Prüfen Sie Skalenformel und typische Temperaturwerte. Verständlicher Rechenweg für.",
-    "order": 64
+    "order": 65
   },
   {
     "id": "170-pfund-in-stone",
@@ -988,7 +1003,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/170-pfund-in-stone.png?v=2",
     "summary": "Erhalten Sie verlässliche Zahlen für 170 Pfund (lbs) in Stone auf einen Blick. Mit klarem Rechenweg, typischen Vergleichswerten und direkter.",
-    "order": 65
+    "order": 66
   },
   {
     "id": "20-britische-pfund-in-australische-dollar",
@@ -1003,7 +1018,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/20-britische-pfund-in-australische-dollar.png?v=2",
     "summary": "Kompakter Überblick zu 20 Britische Pfund in Australische Dollar (GBP in AUD). Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle.",
-    "order": 66
+    "order": 67
   },
   {
     "id": "199-usd-in-aud",
@@ -1018,7 +1033,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/199-usd-in-aud.png?v=2",
     "summary": "Prüfen Sie 199 US-Dollar in Australische Dollar (AUD) auf einen Blick. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Verständlicher.",
-    "order": 67
+    "order": 68
   },
   {
     "id": "2000-dollar-in-pfund",
@@ -1033,7 +1048,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/2000-dollar-in-pfund.png?v=2",
     "summary": "Alle wichtigen Fakten zu 2000 US-Dollar in Britische Pfund (GBP). Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Direkt online.",
-    "order": 68
+    "order": 69
   },
   {
     "id": "80-kilo-in-pfund",
@@ -1048,7 +1063,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/80-kilo-in-pfund.png?v=2",
     "summary": "Sparen Sie Zeit bei der Prüfung von 80 Kilo in Pfund (lbs). Nutzen Sie geprüfte Gegenwerte, übersichtliche Zeilen und praxisnahe Tipps ganz ohne.",
-    "order": 69
+    "order": 70
   },
   {
     "id": "mastercard-wechselkurse",
@@ -1063,7 +1078,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/mastercard-wechselkurse.png?v=2",
     "summary": "Prüfen Sie Mastercard Wechselkurse und Auslandsgebühren auf einen Blick. Vergleichen Sie aktuelle Kurse und häufige Beträge. Ohne Anmeldung.",
-    "order": 70
+    "order": 71
   },
   {
     "id": "10-milliarden-won-in-gbp",
@@ -1078,7 +1093,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/10-milliarden-won-in-gbp.png?v=2",
     "summary": "Sie suchen 10 Milliarden Won in Britische Pfund (GBP)? Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Klare Werte und verständliche.",
-    "order": 71
+    "order": 72
   },
   {
     "id": "32-usd-in-gbp",
@@ -1093,7 +1108,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/32-usd-in-gbp.png?v=2",
     "summary": "Planen Sie ein Budget für 32 US-Dollar in Britische Pfund (GBP)? Prüfen Sie genaue Beträge, alltagsnahe Beispiele und eine kompakte Übersicht.",
-    "order": 72
+    "order": 73
   },
   {
     "id": "indonesische-waehrung-ratgeber",
@@ -1108,7 +1123,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/indonesische-waehrung-ratgeber.png?v=2",
     "summary": "Vollständiger Ratgeber zur Indonesischen Rupiah (IDR). Wechselkurse, Banknoten, Geldautomaten und praktische Reisegeld-Tipps für den Urlaub.",
-    "order": 73
+    "order": 74
   },
   {
     "id": "wochenrechner",
@@ -1123,7 +1138,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/de/wochenrechner.png?v=2",
     "summary": "Prüfen Sie Wochenrechner: Wochen und Tage berechnen auf einen Blick. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Direkt online.",
-    "order": 74
+    "order": 75
   },
   {
     "id": "13-stone-in-pfund",
@@ -1138,7 +1153,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/13-stone-in-pfund.png?v=2",
     "summary": "Verstehen Sie den exakten Gegenwert von 13 Stone in Pfund (lbs). Mit verständlicher Erklärung, gängigen Abstufungen und sicherer Berechnung.",
-    "order": 75
+    "order": 76
   },
   {
     "id": "71-pfund-in-kg",
@@ -1153,7 +1168,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/71-pfund-in-kg.png?v=2",
     "summary": "Wie viel entspricht 71 Pfund (lbs) in Kilogramm genau? Entdecken Sie transparente Formeln, häufige Betragsstufen und hilfreiche Hinweise für den.",
-    "order": 76
+    "order": 77
   },
   {
     "id": "dateiumwandler",
@@ -1168,7 +1183,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/de/dateiumwandler.png?v=2",
     "summary": "Verstehen Sie Dateiumwandler und Formatwechsler ohne Umwege. Behalten Sie Dateien lokal und folgen Sie klaren Schritten. Genau erklärt für den.",
-    "order": 77
+    "order": 78
   },
   {
     "id": "rupiah-in-aud",
@@ -1183,7 +1198,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/rupiah-in-aud.png?v=2",
     "summary": "Verstehen Sie Indonesische Rupiah in Australische Dollar (IDR in AUD) ohne Umwege. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt.",
-    "order": 78
+    "order": 79
   },
   {
     "id": "300-dollar-in-gbp",
@@ -1198,7 +1213,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/300-dollar-in-gbp.png?v=2",
     "summary": "Alle wichtigen Fakten zu 300 US-Dollar in Britische Pfund (GBP). Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Praktische Beispiele.",
-    "order": 79
+    "order": 80
   },
   {
     "id": "koreanischer-won-in-aud",
@@ -1213,7 +1228,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/koreanischer-won-in-aud.png?v=2",
     "summary": "So funktioniert Koreanischer Won in Australische Dollar (AUD) im Alltag. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Schnell.",
-    "order": 80
+    "order": 81
   },
   {
     "id": "umrechner-app-herunterladen",
@@ -1228,7 +1243,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/de/umrechner-app-herunterladen.png?v=2",
     "summary": "Sie suchen Umrechner-App herunterladen? Behalten Sie Dateien lokal und folgen Sie klaren Schritten. Klare Werte und verständliche. Direkt online.",
-    "order": 81
+    "order": 82
   },
   {
     "id": "1-milliarde-won-in-gbp",
@@ -1243,7 +1258,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/1-milliarde-won-in-gbp.png?v=2",
     "summary": "Kompakter Überblick zu 1 Milliarde Won in Britische Pfund (GBP). Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Direkte Orientierung.",
-    "order": 82
+    "order": 83
   },
   {
     "id": "dateiformat-aendern-anleitung",
@@ -1258,7 +1273,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/de/dateiformat-aendern-anleitung.png?v=2",
     "summary": "Prüfen Sie Dateiformat ändern: Anleitung Schritt für Schritt auf einen Blick. Behalten Sie Dateien lokal und folgen Sie klaren. Direkt online.",
-    "order": 83
+    "order": 84
   },
   {
     "id": "1-gallone-in-liter",
@@ -1273,7 +1288,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/de/1-gallone-in-liter.png?v=2",
     "summary": "Prüfen Sie 1 Gallone in Liter auf einen Blick. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Verständlicher. Ohne Anmeldung.",
-    "order": 84
+    "order": 85
   },
   {
     "id": "1-stone-in-kg",
@@ -1288,7 +1303,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/1-stone-in-kg.png?v=2",
     "summary": "Rechnen Sie 1 Stone in Kilogramm um: 1 st entspricht exakt 6,35029 kg (14 Pfund). Formeln, praktische Gewichtstabellen und Rechner im Internet.",
-    "order": 85
+    "order": 86
   },
   {
     "id": "1-teeloeffel-in-ml",
@@ -1303,7 +1318,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/1-teeloeffel-in-ml.png?v=2",
     "summary": "Wie viel Milliliter sind 1 Teelöffel? 1 TL entspricht ca. 5 ml (4,93 ml US). Praktische Küchenmaße, Rezepte und exakte Umrechnungstabellen heute.",
-    "order": 86
+    "order": 87
   },
   {
     "id": "10-celsius-in-fahrenheit",
@@ -1318,7 +1333,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/de/10-celsius-in-fahrenheit.png?v=2",
     "summary": "Kompakter Überblick zu 10 Grad Celsius in Fahrenheit. Prüfen Sie Skalenformel und typische Temperaturwerte. Direkte Orientierung mit klaren.",
-    "order": 87
+    "order": 88
   },
   {
     "id": "100-kg-in-pfund",
@@ -1333,7 +1348,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/de/100-kg-in-pfund.png?v=2",
     "summary": "Prüfen Sie 100 Kilogramm in Pfund (lbs) auf einen Blick. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Verständlicher Rechenweg.",
-    "order": 88
+    "order": 89
   },
   {
     "id": "50-fahrenheit-in-celsius",
@@ -1348,7 +1363,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/de/50-fahrenheit-in-celsius.png?v=2",
     "summary": "50 Grad Fahrenheit in Celsius umrechnen: 50°F entsprechen exakt 10°C. Formel, Schritt-für-Schritt-Erklärung und Tabellen bei OmniConverter heute.",
-    "order": 89
+    "order": 90
   },
   {
     "id": "500-ml-in-tassen",
@@ -1363,7 +1378,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/500-ml-in-tassen.png?v=2",
     "summary": "Wie viel entspricht 500 Milliliter in Tassen genau? Entdecken Sie transparente Formeln, häufige Betragsstufen und hilfreiche Hinweise für den.",
-    "order": 90
+    "order": 91
   },
   {
     "id": "60-mph-in-kmh",
@@ -1378,7 +1393,7 @@ const BLOG_POSTS = [
     "icon": "⚡",
     "image": "/assets/blog/de/60-mph-in-kmh.png?v=2",
     "summary": "60 Meilen pro Stunde in km/h umrechnen: 60 MPH entsprechen genau 96,5606 km/h. Tempo-Tabellen, Geschwindigkeitsformeln und Rechner im Internet.",
-    "order": 91
+    "order": 92
   },
   {
     "id": "1-3-tasse-in-gramm",
@@ -1393,7 +1408,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/1-3-tasse-in-gramm.png?v=2",
     "summary": "Verstehen Sie 1/3 Tasse in Gramm ohne Umwege. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Genau erklärt für den täglichen.",
-    "order": 92
+    "order": 93
   },
   {
     "id": "1-4-tasse-in-ml",
@@ -1408,7 +1423,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/1-4-tasse-in-ml.png?v=2",
     "summary": "Sie suchen 1/4 Tasse in Milliliter? Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Klare Werte und verständliche Schritte direkt.",
-    "order": 93
+    "order": 94
   },
   {
     "id": "1-bar-in-psi",
@@ -1423,7 +1438,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/de/1-bar-in-psi.png?v=2",
     "summary": "1 Bar in PSI umrechnen: 1 Bar entspricht exakt 14,5038 PSI. Reifendruck-Tabellen, bar-in-psi-Formel und praktische Umrechnung online im Browser.",
-    "order": 94
+    "order": 95
   },
   {
     "id": "1-tasse-milch-in-ml",
@@ -1438,7 +1453,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/de/1-tasse-milch-in-ml.png?v=2",
     "summary": "So funktioniert 1 Tasse Milch in Milliliter im Alltag. Nutzen Sie die genaue Formel und kompakte Umrechnungstabelle. Schnell, präzise und ohne.",
-    "order": 95
+    "order": 96
   },
   {
     "id": "100-fahrenheit-in-celsius",
@@ -1453,7 +1468,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/de/100-fahrenheit-in-celsius.png?v=2",
     "summary": "Alle wichtigen Fakten zu 100 Grad Fahrenheit in Celsius. Prüfen Sie Skalenformel und typische Temperaturwerte. Praktische. Praxisnah erklärt.",
-    "order": 96
+    "order": 97
   },
   {
     "id": "100-usd-in-aud",
@@ -1468,7 +1483,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/de/100-usd-in-aud.png?v=2",
     "summary": "Verstehen Sie 100 US-Dollar in Australische Dollar (AUD) ohne Umwege. Vergleichen Sie aktuelle Kurse und häufige Beträge direkt. Genau erklärt.",
-    "order": 97
+    "order": 98
   }
 ];
 
