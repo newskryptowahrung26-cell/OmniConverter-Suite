@@ -1,5 +1,20 @@
-// Datos sincronizados del blog en Español (Total: 99 artículos)
+// Datos sincronizados del blog en Español (Total: 100 artículos)
 const BLOG_POSTS = [
+  {
+    "id": "1000-usd-a-aud",
+    "slug": "/es/blog/1000-usd-a-aud",
+    "title": "1000 USD a AUD: Fórmula de Cambio y Guía",
+    "date": "2026-11-27",
+    "publicationDate": "2026-11-27T00:00:00Z",
+    "category": "Divisas y Forex",
+    "categoryKey": "Currency & Forex",
+    "author": "Equipo Editorial OmniConverter",
+    "readTime": "4 min de lectura",
+    "icon": "💱",
+    "image": "/assets/blog/es/1000-usd-a-aud.png",
+    "summary": "Convierta 1000 USD a AUD con fórmulas de cambio exactas, tablas de referencia prácticas, comparación de tarifas bancarias y calculadora interactiva en l...",
+    "order": 0
+  },
   {
     "id": "67-kg-a-stone",
     "slug": "/es/blog/67-kg-a-stone",
@@ -13,7 +28,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/67-kg-a-stone.png",
     "summary": "Convierta 67kg en stone con fórmulas de cambio exactas, tablas de referencia prácticas, comparación de tarifas bancarias y calculadora interactiva en lí...",
-    "order": 0
+    "order": 1
   },
   {
     "id": "83-kg-a-stone",
@@ -28,7 +43,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/83-kg-a-stone.png",
     "summary": "Convierta 83kg en stone con fórmulas de cambio exactas, tablas de referencia prácticas, comparación de tarifas bancarias y calculadora interactiva en lí...",
-    "order": 1
+    "order": 2
   },
   {
     "id": "95-dolares-a-libras-esterlinas",
@@ -43,7 +58,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/95-dolares-a-libras-esterlinas.png",
     "summary": "Convierta 95 dollars en english libras con fórmulas de cambio exactas, tablas de referencia prácticas, comparación de tarifas bancarias y calculadora in...",
-    "order": 2
+    "order": 3
   },
   {
     "id": "77-kg-a-lbs",
@@ -58,7 +73,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/77-kg-a-lbs.png",
     "summary": "Convierta 77 kg a libras: 77 kilogramos equivalen exactamente a 169.76 lbs. Fórmula matemática paso a paso, tabla rápida y calculadora interactiva.",
-    "order": 3
+    "order": 4
   },
   {
     "id": "98-kg-a-libras",
@@ -73,7 +88,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/98-kg-a-libras.png",
     "summary": "Descubre cuántas libras son 98 kg (216,05 lb). Consulta la fórmula matemática paso a paso, tabla de equivalencias y la calculadora en línea.",
-    "order": 4
+    "order": 5
   },
   {
     "id": "140-kg-a-libras",
@@ -88,7 +103,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/140-kg-a-libras.png",
     "summary": "¿A cuánto equivale 140 kg a Libras exactamente? Explora cálculos transparentes, montos habituales y consejos útiles pensados para tu rutina.",
-    "order": 5
+    "order": 6
   },
   {
     "id": "50-metros-a-pies",
@@ -103,7 +118,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/50-metros-a-pies.png",
     "summary": "Obtén números confiables para 50 Metros a Pies en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida.",
-    "order": 6
+    "order": 7
   },
   {
     "id": "215-libras-a-stone",
@@ -118,7 +133,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/215-libras-a-stone.png",
     "summary": "Desglosa 215 Libras a Stone con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al.",
-    "order": 7
+    "order": 8
   },
   {
     "id": "10-usd-a-aud",
@@ -133,7 +148,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/10-usd-a-aud.png",
     "summary": "¿Buscas 10 USD a AUD? Compara tasas de cambio actuales y montos frecuentes. Consulta datos claros y pasos directos desde tu navegador. Gratis.",
-    "order": 8
+    "order": 9
   },
   {
     "id": "128-kg-a-lbs",
@@ -148,7 +163,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/128-kg-a-lbs.png",
     "summary": "Todo lo esencial sobre 128 kg a lbs. Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para obtener resultados precisos.",
-    "order": 9
+    "order": 10
   },
   {
     "id": "700-usd-a-aud",
@@ -163,7 +178,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/700-usd-a-aud.png",
     "summary": "Convierte 700 USD a AUD en datos claros y útiles al instante. Consulta la relación exacta, tramos comunes y referencias prácticas desde tu móvil.",
-    "order": 10
+    "order": 11
   },
   {
     "id": "1-libra-a-lira-turca",
@@ -178,7 +193,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1-libra-a-lira-turca.png",
     "summary": "Comprende 1 Libra a Lira Turca sin complicaciones. Compara tasas de cambio actuales y montos frecuentes. Guía directa pensada para el uso diario.",
-    "order": 11
+    "order": 12
   },
   {
     "id": "100-metros-a-yardas",
@@ -193,7 +208,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/100-metros-a-yardas.png",
     "summary": "Revisa 100 Metros a Yardas en pocos segundos. Sigue la fórmula exacta y la tabla de consulta rápida. Cálculo transparente y valores comunes al.",
-    "order": 12
+    "order": 13
   },
   {
     "id": "3-lbs-a-kg",
@@ -208,7 +223,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/3-lbs-a-kg.png",
     "summary": "Convierte 3 libras a kilogramos: 3 lb equivalen exactamente a 1,36 kg. Consulta la fórmula paso a paso, tabla de conversión y el cálculo online.",
-    "order": 13
+    "order": 14
   },
   {
     "id": "69-kg-a-libras",
@@ -223,7 +238,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/69-kg-a-libras.png",
     "summary": "Ahorra tiempo al verificar 69 kg a Libras. Recorre equivalentes comprobados, filas comparativas y notas prácticas sin crear cuentas ni registros.",
-    "order": 14
+    "order": 15
   },
   {
     "id": "1000-metros-a-pies",
@@ -238,7 +253,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/1000-metros-a-pies.png",
     "summary": "Consulta 1000 Metros a Pies con total claridad. Sigue la fórmula exacta y la tabla de consulta rápida. Pasos sencillos y tabla práctica siempre.",
-    "order": 15
+    "order": 16
   },
   {
     "id": "250-lbs-a-kg",
@@ -253,7 +268,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/250-lbs-a-kg.png",
     "summary": "Todo lo esencial sobre 250 lbs en kg. Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para obtener. Gratis online.",
-    "order": 16
+    "order": 17
   },
   {
     "id": "380-f-a-c",
@@ -268,7 +283,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/380-f-a-c.png",
     "summary": "Convierte 380 grados Fahrenheit a Celsius: 380°F equivalen a 193,33°C para cocina y horno. Consulta la fórmula exacta, tabla y conversor online.",
-    "order": 17
+    "order": 18
   },
   {
     "id": "170-lbs-a-kg",
@@ -283,7 +298,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/170-lbs-a-kg.png",
     "summary": "Revisa 170 lbs a kg en pocos segundos. Sigue la fórmula exacta y la tabla de consulta rápida. Cálculo transparente y valores comunes al instante.",
-    "order": 18
+    "order": 19
   },
   {
     "id": "245-kg-a-libras",
@@ -298,7 +313,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/245-kg-a-libras.png",
     "summary": "Descubre cómo funciona 245 kg a Libras hoy. Sigue la fórmula exacta y la tabla de consulta rápida. Ejemplos útiles y tabla clara sin registro.",
-    "order": 19
+    "order": 20
   },
   {
     "id": "1400-usd-a-gbp",
@@ -313,7 +328,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1400-usd-a-gbp.png",
     "summary": "Descubre cómo funciona 1400 USD a GBP hoy. Compara tasas de cambio actuales y montos frecuentes. Ejemplos útiles y tabla clara sin registro.",
-    "order": 20
+    "order": 21
   },
   {
     "id": "69-kg-en-stone",
@@ -328,7 +343,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/69-kg-en-stone.png",
     "summary": "Desglosa 69 kg en Stone con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al momento.",
-    "order": 21
+    "order": 22
   },
   {
     "id": "1-onza-a-gramos",
@@ -343,7 +358,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/1-onza-a-gramos.png",
     "summary": "¿Buscas 1 Onza a Gramos? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y pasos directos desde tu navegador. Claro.",
-    "order": 22
+    "order": 23
   },
   {
     "id": "4-usd-a-aud",
@@ -358,7 +373,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/4-usd-a-aud.png",
     "summary": "¿A cuánto equivale 4 USD a AUD exactamente? Explora cálculos transparentes, montos habituales y consejos útiles pensados para tu rutina diaria.",
-    "order": 23
+    "order": 24
   },
   {
     "id": "260-libras-a-stones",
@@ -373,7 +388,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/260-libras-a-stones.png",
     "summary": "Desglosa 260 Libras en Stone con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al.",
-    "order": 24
+    "order": 25
   },
   {
     "id": "67-f-a-c",
@@ -388,7 +403,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/67-f-a-c.png",
     "summary": "Convierte 67 grados Fahrenheit a Celsius: 67°F equivalen a 19,44°C de temperatura ambiente. Revisa la fórmula exacta, tablas y conversor online.",
-    "order": 25
+    "order": 26
   },
   {
     "id": "81-kg-a-stone",
@@ -403,7 +418,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/81-kg-a-stone.png",
     "summary": "¿A cuánto equivale 81 kg a Stone exactamente? Explora cálculos transparentes, montos habituales y consejos útiles pensados para tu rutina diaria.",
-    "order": 26
+    "order": 27
   },
   {
     "id": "1500-libras-a-dolares-aud",
@@ -418,7 +433,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-libras-a-dolares-aud.png",
     "summary": "Convierte 1500 Libras a AUD en datos claros y útiles al instante. Consulta la relación exacta, tramos comunes y referencias prácticas desde tu.",
-    "order": 27
+    "order": 28
   },
   {
     "id": "85-kg-a-libras",
@@ -433,7 +448,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/85-kg-a-libras.png",
     "summary": "Ahorra tiempo al verificar 85 kg a Libras. Recorre equivalentes comprobados, filas comparativas y notas prácticas sin crear cuentas ni registros.",
-    "order": 28
+    "order": 29
   },
   {
     "id": "199-dolares-en-libras",
@@ -448,7 +463,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/199-dolares-en-libras.png",
     "summary": "Ahorra tiempo al verificar 199 Dolares en Libras. Recorre equivalentes comprobados, filas comparativas y notas prácticas sin crear cuentas ni.",
-    "order": 29
+    "order": 30
   },
   {
     "id": "10-eur-a-aud",
@@ -463,7 +478,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/10-eur-a-aud.png",
     "summary": "Comprende 10 EUR a AUD sin complicaciones. Compara tasas de cambio actuales y montos frecuentes. Guía directa pensada para el uso diario. Gratis.",
-    "order": 30
+    "order": 31
   },
   {
     "id": "2000-libras-a-dolares",
@@ -478,7 +493,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-libras-a-dolares.png",
     "summary": "Descubre cómo funciona 2000 Libras a Dólares hoy. Sigue la fórmula exacta y la tabla de consulta rápida. Ejemplos útiles y tabla. Gratis online.",
-    "order": 31
+    "order": 32
   },
   {
     "id": "22-kg-a-stone",
@@ -493,7 +508,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/22-kg-a-stone.png",
     "summary": "¿Buscas 22 kg en Stone? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y pasos directos desde tu navegador. Gratis.",
-    "order": 32
+    "order": 33
   },
   {
     "id": "200-usd-a-aud",
@@ -508,7 +523,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/200-usd-a-aud.png",
     "summary": "Obtén números confiables para 200 USD a AUD en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida online.",
-    "order": 33
+    "order": 34
   },
   {
     "id": "210-kg-a-libras",
@@ -523,7 +538,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/210-kg-a-libras.png",
     "summary": "¿A cuánto equivale 210 kg a Libras exactamente? Explora cálculos transparentes, montos habituales y consejos útiles pensados para tu rutina.",
-    "order": 34
+    "order": 35
   },
   {
     "id": "300-metros-a-pies",
@@ -538,7 +553,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/300-metros-a-pies.png",
     "summary": "Obtén números confiables para 300 Metros a Pies en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida.",
-    "order": 35
+    "order": 36
   },
   {
     "id": "1000-usd-a-gbp",
@@ -553,7 +568,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1000-usd-a-gbp.png?v=2",
     "summary": "Ahorra tiempo al verificar 1000 USD a GBP. Recorre equivalentes comprobados, filas comparativas y notas prácticas sin crear cuentas ni registros.",
-    "order": 36
+    "order": 37
   },
   {
     "id": "200-gbp-a-aud",
@@ -568,7 +583,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/200-gbp-a-aud.png?v=2",
     "summary": "¿Organizas un presupuesto con 200 GBP a AUD? Revisa cifras exactas, ejemplos de gasto cotidiano y una hoja de referencia limpia en tu navegador.",
-    "order": 37
+    "order": 38
   },
   {
     "id": "14-usd-a-aud",
@@ -583,7 +598,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/14-usd-a-aud.png?v=2",
     "summary": "Consulta 14 USD a AUD con total claridad. Compara tasas de cambio actuales y montos frecuentes. Pasos sencillos y tabla práctica siempre gratis.",
-    "order": 38
+    "order": 39
   },
   {
     "id": "20-gbp-a-aud",
@@ -598,7 +613,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/20-gbp-a-aud.png?v=2",
     "summary": "Todo lo esencial sobre 20 GBP a AUD. Compara tasas de cambio actuales y montos frecuentes. Referencia práctica para obtener resultados precisos.",
-    "order": 39
+    "order": 40
   },
   {
     "id": "1-aud-a-vnd",
@@ -613,7 +628,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1-aud-a-vnd.png?v=2",
     "summary": "¿Buscas 1 AUD a VND (Dólar Australiano a Dong Vietnamita)? Compara tasas de cambio actuales y montos frecuentes. Consulta datos claros y pasos.",
-    "order": 40
+    "order": 41
   },
   {
     "id": "67-usd-a-gbp",
@@ -628,7 +643,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/67-usd-a-gbp.png?v=2",
     "summary": "¿A cuánto equivale 67 USD a GBP exactamente? Explora cálculos transparentes, montos habituales y consejos útiles pensados para tu rutina diaria.",
-    "order": 41
+    "order": 42
   },
   {
     "id": "convertir-formulario-pdf",
@@ -643,7 +658,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/convertir-formulario-pdf.png?v=2",
     "summary": "Revisa Convertir Formulario PDF en pocos segundos. Mantén tus archivos locales con pasos claros de formato. Cálculo transparente y. Sin registro.",
-    "order": 42
+    "order": 43
   },
   {
     "id": "convertir-tipo-de-archivo-a-pdf",
@@ -658,7 +673,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/convertir-tipo-de-archivo-a-pdf.png?v=2",
     "summary": "Consulta Convertir Tipo de Archivo a PDF con total claridad. Mantén tus archivos locales con pasos claros de formato. Pasos sencillos y tabla.",
-    "order": 43
+    "order": 44
   },
   {
     "id": "150-usd-a-aud",
@@ -673,7 +688,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/150-usd-a-aud.png?v=2",
     "summary": "Revisa 150 USD a AUD en pocos segundos. Compara tasas de cambio actuales y montos frecuentes. Cálculo transparente y valores comunes al instante.",
-    "order": 44
+    "order": 45
   },
   {
     "id": "5-libras-a-kg",
@@ -688,7 +703,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/5-libras-a-kg.png?v=2",
     "summary": "Convierte 5 libras a kilogramos: 5 lb equivalen exactamente a 2,27 kg. Consulta la fórmula matemática paso a paso, tablas y el conversor online.",
-    "order": 45
+    "order": 46
   },
   {
     "id": "70kg-en-stone",
@@ -703,7 +718,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/70kg-en-stone.png?v=2",
     "summary": "¿Buscas 70 kg en stones: Guía de conversión, fórmula y tabla? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y.",
-    "order": 46
+    "order": 47
   },
   {
     "id": "2000-usd-a-aud",
@@ -718,7 +733,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-usd-a-aud.png?v=2",
     "summary": "Todo lo esencial sobre 2000 Dólares USD a Dólares Australianos (AUD). Compara tasas de cambio actuales y montos frecuentes. Referencia práctica.",
-    "order": 47
+    "order": 48
   },
   {
     "id": "4-metros-a-pies",
@@ -733,7 +748,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/4-metros-a-pies.png?v=2",
     "summary": "Comprende 4 Metros a Pies: Exactamente 13,12 pies (13 ft 1,5 in) sin complicaciones. Sigue la fórmula exacta y la tabla de consulta rápida. Guía.",
-    "order": 48
+    "order": 49
   },
   {
     "id": "2000-usd-a-gbp",
@@ -748,7 +763,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-usd-a-gbp.png?v=2",
     "summary": "Revisa 2000 Dólares a Libras Esterlinas (USD a GBP) en pocos segundos. Compara tasas de cambio actuales y montos frecuentes. Claro y rápido.",
-    "order": 49
+    "order": 50
   },
   {
     "id": "1500-usd-a-gbp",
@@ -763,7 +778,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-usd-a-gbp.png?v=2",
     "summary": "¿Buscas 1500 USD a GBP: Convertir $1,500 Dólares Estadounidenses a Libras Esterlinas? Compara tasas de cambio actuales y montos. Gratis online.",
-    "order": 50
+    "order": 51
   },
   {
     "id": "95-usd-a-gbp",
@@ -778,7 +793,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/95-usd-a-gbp.png?v=2",
     "summary": "Consulta 95 USD a GBP: Convertir $95 Dólares Estadounidenses a Libras Esterlinas (£) con total claridad. Compara tasas de cambio actuales y.",
-    "order": 51
+    "order": 52
   },
   {
     "id": "1500-usd-a-aud",
@@ -793,7 +808,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1500-usd-a-aud.png?v=2",
     "summary": "Desglosa 1500 Dólares USD a AUD con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al.",
-    "order": 52
+    "order": 53
   },
   {
     "id": "65-kg-a-libras",
@@ -808,7 +823,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/65-kg-a-libras.png?v=2",
     "summary": "¿Buscas 65 kg a Libras: Exactamente 143,30 lbs (10 st 3,3 lb)? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y.",
-    "order": 53
+    "order": 54
   },
   {
     "id": "165-libras-a-kg",
@@ -823,7 +838,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/165-libras-a-kg.png?v=2",
     "summary": "Convierte 165 libras a kilogramos: 165 lb equivalen exactamente a 74,84 kg. Consulta la fórmula paso a paso, tablas y calculadora interactiva.",
-    "order": 54
+    "order": 55
   },
   {
     "id": "14-stone-en-libras",
@@ -838,7 +853,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/14-stone-en-libras.png?v=2",
     "summary": "Comprende 14 Stone en Libras sin complicaciones. Sigue la fórmula exacta y la tabla de consulta rápida. Guía directa pensada para el uso diario.",
-    "order": 55
+    "order": 56
   },
   {
     "id": "15-metros-a-pies",
@@ -853,7 +868,7 @@ const BLOG_POSTS = [
     "icon": "📏",
     "image": "/assets/blog/es/15-metros-a-pies.png?v=2",
     "summary": "Todo lo esencial sobre 15 Metros a Pies. Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para obtener resultados.",
-    "order": 56
+    "order": 57
   },
   {
     "id": "16-onzas-a-mililitros",
@@ -868,7 +883,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/16-onzas-a-mililitros.png?v=2",
     "summary": "Descubre cómo funciona 16 Onzas Líquidas a Mililitros hoy. Sigue la fórmula exacta y la tabla de consulta rápida. Ejemplos útiles y tabla clara.",
-    "order": 57
+    "order": 58
   },
   {
     "id": "180-libras-en-stone",
@@ -883,7 +898,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/180-libras-en-stone.png?v=2",
     "summary": "Consulta 180 Libras en Stone con total claridad. Sigue la fórmula exacta y la tabla de consulta rápida. Pasos sencillos y tabla práctica siempre.",
-    "order": 58
+    "order": 59
   },
   {
     "id": "convertir-lakh-a-usd",
@@ -898,7 +913,7 @@ const BLOG_POSTS = [
     "icon": "🇮🇳",
     "image": "/assets/blog/es/convertir-lakh-a-usd.png?v=2",
     "summary": "Comprende Convertir Lakh a Dólares USD sin complicaciones. Compara tasas de cambio actuales y montos frecuentes. Guía directa pensada para el.",
-    "order": 59
+    "order": 60
   },
   {
     "id": "5-usd-a-aud",
@@ -913,7 +928,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/5-usd-a-aud.png?v=2",
     "summary": "Desglosa 5 Dólares USD a AUD con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al.",
-    "order": 60
+    "order": 61
   },
   {
     "id": "3-tazas-en-ml",
@@ -928,7 +943,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/3-tazas-en-ml.png?v=2",
     "summary": "Consulta 3 Tazas en Mililitros con total claridad. Sigue la fórmula exacta y la tabla de consulta rápida. Pasos sencillos y tabla. Gratis online.",
-    "order": 61
+    "order": 62
   },
   {
     "id": "divisa-jpy-a-inr",
@@ -943,7 +958,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/divisa-jpy-a-inr.png?v=2",
     "summary": "Todo lo esencial sobre Yen Japonés a Rupia India (JPY a INR). Compara tasas de cambio actuales y montos frecuentes. Referencia práctica para.",
-    "order": 62
+    "order": 63
   },
   {
     "id": "moneda-lira-turca",
@@ -958,7 +973,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/moneda-lira-turca.png?v=2",
     "summary": "Comprende Moneda de Turquía: Lira Turca (TRY) sin complicaciones. Compara tasas de cambio actuales y montos frecuentes. Guía directa pensada.",
-    "order": 63
+    "order": 64
   },
   {
     "id": "convertor-o-converter",
@@ -973,7 +988,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/convertor-o-converter.png?v=2",
     "summary": "¿Buscas ¿Convertor o Converter? Ortografía Correcta? Mantén tus archivos locales con pasos claros de formato. Consulta datos claros y pasos.",
-    "order": 64
+    "order": 65
   },
   {
     "id": "12-grados-celsius-a-fahrenheit",
@@ -988,7 +1003,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/12-grados-celsius-a-fahrenheit.png?v=2",
     "summary": "Ahorra tiempo al verificar 12 Grados Celsius a Fahrenheit. Recorre equivalentes comprobados, filas comparativas y notas prácticas sin crear.",
-    "order": 65
+    "order": 66
   },
   {
     "id": "170-libras-en-stone",
@@ -1003,7 +1018,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/170-libras-en-stone.png?v=2",
     "summary": "Obtén números confiables para 170 Libras en Stone en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida.",
-    "order": 66
+    "order": 67
   },
   {
     "id": "20-libras-en-dolares-australianos",
@@ -1018,7 +1033,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/20-libras-en-dolares-australianos.png?v=2",
     "summary": "Revisa 20 Libras Esterlinas en Dólares Australianos (AUD) en pocos segundos. Sigue la fórmula exacta y la tabla de consulta rápida. Cálculo.",
-    "order": 67
+    "order": 68
   },
   {
     "id": "199-usd-en-aud",
@@ -1033,7 +1048,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/199-usd-en-aud.png?v=2",
     "summary": "Descubre cómo funciona 199 Dólares USD en AUD hoy. Compara tasas de cambio actuales y montos frecuentes. Ejemplos útiles y tabla. Gratis online.",
-    "order": 68
+    "order": 69
   },
   {
     "id": "2000-dolares-en-libras",
@@ -1048,7 +1063,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/2000-dolares-en-libras.png?v=2",
     "summary": "¿Buscas 2000 Dólares en Libras Esterlinas (GBP)? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y pasos directos.",
-    "order": 69
+    "order": 70
   },
   {
     "id": "80-kilos-a-libras",
@@ -1063,7 +1078,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/80-kilos-a-libras.png?v=2",
     "summary": "Obtén números confiables para 80 Kilos a Libras en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida.",
-    "order": 70
+    "order": 71
   },
   {
     "id": "tasa-de-cambio-mastercard",
@@ -1078,7 +1093,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/tasa-de-cambio-mastercard.png?v=2",
     "summary": "¿Buscas Tipos de Cambio y Comisiones Mastercard? Compara tasas de cambio actuales y montos frecuentes. Consulta datos claros y pasos directos.",
-    "order": 71
+    "order": 72
   },
   {
     "id": "10-mil-millones-won-a-gbp",
@@ -1093,7 +1108,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/10-mil-millones-won-a-gbp.png?v=2",
     "summary": "Consulta 10 Mil Millones de Won a Libras (GBP) con total claridad. Compara tasas de cambio actuales y montos frecuentes. Pasos sencillos y tabla.",
-    "order": 72
+    "order": 73
   },
   {
     "id": "32-usd-a-gbp",
@@ -1108,7 +1123,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/32-usd-a-gbp.png?v=2",
     "summary": "Todo lo esencial sobre 32 Dólares USD a Libras (GBP). Compara tasas de cambio actuales y montos frecuentes. Referencia práctica para obtener.",
-    "order": 73
+    "order": 74
   },
   {
     "id": "calculadora-de-semanas",
@@ -1123,7 +1138,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/calculadora-de-semanas.png?v=2",
     "summary": "¿Buscas Calculadora de Semanas y Días? Sigue la fórmula exacta y la tabla de consulta rápida. Consulta datos claros y pasos directos desde tu.",
-    "order": 74
+    "order": 75
   },
   {
     "id": "guia-moneda-indonesia",
@@ -1138,7 +1153,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/guia-moneda-indonesia.png?v=2",
     "summary": "Revisa Guía de la Moneda de Indonesia (Rupia IDR) en pocos segundos. Compara tasas de cambio actuales y montos frecuentes. Cálculo transparente.",
-    "order": 75
+    "order": 76
   },
   {
     "id": "13-stone-en-libras",
@@ -1153,7 +1168,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/13-stone-en-libras.png?v=2",
     "summary": "Desglosa 13 Stone en Libras con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas exactas al.",
-    "order": 76
+    "order": 77
   },
   {
     "id": "71-libras-a-kg",
@@ -1168,7 +1183,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/71-libras-a-kg.png?v=2",
     "summary": "¿Organizas un presupuesto con 71 Libras a Kilogramos? Revisa cifras exactas, ejemplos de gasto cotidiano y una hoja de referencia limpia en tu.",
-    "order": 77
+    "order": 78
   },
   {
     "id": "cambiador-de-archivos",
@@ -1183,7 +1198,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/cambiador-de-archivos.png?v=2",
     "summary": "Descubre cómo funciona Cambiador de Formato de Archivos hoy. Mantén tus archivos locales con pasos claros de formato. Ejemplos útiles y tabla.",
-    "order": 78
+    "order": 79
   },
   {
     "id": "rupia-indonesia-a-aud",
@@ -1198,7 +1213,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/rupia-indonesia-a-aud.png?v=2",
     "summary": "Consulta Rupia Indonesia a Dólar Australiano (IDR a AUD) con total claridad. Compara tasas de cambio actuales y montos frecuentes. Gratis online.",
-    "order": 79
+    "order": 80
   },
   {
     "id": "300-dolares-en-gbp",
@@ -1213,7 +1228,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/300-dolares-en-gbp.png?v=2",
     "summary": "¿Buscas 300 Dólares en Libras Esterlinas (GBP)? Compara tasas de cambio actuales y montos frecuentes. Consulta datos claros y pasos directos.",
-    "order": 80
+    "order": 81
   },
   {
     "id": "descargar-aplicacion-convertidor",
@@ -1228,7 +1243,7 @@ const BLOG_POSTS = [
     "icon": "📊",
     "image": "/assets/blog/es/descargar-aplicacion-convertidor.png?v=2",
     "summary": "Desglosa Descargar Aplicación de Conversión con claridad y contexto real. Pensado para viajeros, compradores y estudiantes que buscan respuestas.",
-    "order": 81
+    "order": 82
   },
   {
     "id": "won-coreano-a-aud",
@@ -1243,7 +1258,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/won-coreano-a-aud.png?v=2",
     "summary": "Descubre cómo funciona Won Surcoreano a Dólares Australianos (AUD) hoy. Compara tasas de cambio actuales y montos frecuentes. Ejemplos útiles y.",
-    "order": 82
+    "order": 83
   },
   {
     "id": "1-mil-millones-won-a-gbp",
@@ -1258,7 +1273,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/1-mil-millones-won-a-gbp.png?v=2",
     "summary": "Consulta 1 Mil Millones de Won a Libras Esterlinas (GBP) con total claridad. Compara tasas de cambio actuales y montos frecuentes. Gratis online.",
-    "order": 83
+    "order": 84
   },
   {
     "id": "como-cambiar-formato-de-archivo",
@@ -1273,7 +1288,7 @@ const BLOG_POSTS = [
     "icon": "📁",
     "image": "/assets/blog/es/como-cambiar-formato-de-archivo.png?v=2",
     "summary": "Todo lo esencial sobre Cómo Cambiar el Formato de un Archivo sin Dañar sus Datos. Mantén tus archivos locales con pasos claros de. Gratis online.",
-    "order": 84
+    "order": 85
   },
   {
     "id": "1-cucharadita-en-ml",
@@ -1288,7 +1303,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-cucharadita-en-ml.png?v=2",
     "summary": "Todo lo esencial sobre 1 Cucharadita en Mililitros (TSP a mL). Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para.",
-    "order": 85
+    "order": 86
   },
   {
     "id": "1-galon-en-litros",
@@ -1303,7 +1318,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/1-galon-en-litros.png?v=2",
     "summary": "Revisa 1 Galón en Litros en pocos segundos. Sigue la fórmula exacta y la tabla de consulta rápida. Cálculo transparente y valores comunes al.",
-    "order": 86
+    "order": 87
   },
   {
     "id": "1-stone-en-kg",
@@ -1318,7 +1333,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/1-stone-en-kg.png?v=2",
     "summary": "Descubre cómo funciona 1 Stone en Kilogramos hoy. Sigue la fórmula exacta y la tabla de consulta rápida. Ejemplos útiles y tabla. Gratis online.",
-    "order": 87
+    "order": 88
   },
   {
     "id": "10-celsius-a-fahrenheit",
@@ -1333,7 +1348,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/10-celsius-a-fahrenheit.png?v=2",
     "summary": "Revisa 10 Grados Celsius a Fahrenheit en pocos segundos. Revisa la fórmula térmica y referencias cotidianas. Cálculo transparente y valores.",
-    "order": 88
+    "order": 89
   },
   {
     "id": "100-kg-a-libras",
@@ -1348,7 +1363,7 @@ const BLOG_POSTS = [
     "icon": "⚖️",
     "image": "/assets/blog/es/100-kg-a-libras.png?v=2",
     "summary": "Todo lo esencial sobre 100 Kilogramos a Libras. Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para. Gratis online.",
-    "order": 89
+    "order": 90
   },
   {
     "id": "50-fahrenheit-a-celsius",
@@ -1363,7 +1378,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/50-fahrenheit-a-celsius.png?v=2",
     "summary": "Todo lo esencial sobre 50 Grados Fahrenheit a Celsius. Revisa la fórmula térmica y referencias cotidianas. Referencia práctica para obtener.",
-    "order": 90
+    "order": 91
   },
   {
     "id": "500-ml-a-tazas",
@@ -1378,7 +1393,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/500-ml-a-tazas.png?v=2",
     "summary": "Comprende 500 Mililitros a Tazas sin complicaciones. Sigue la fórmula exacta y la tabla de consulta rápida. Guía directa pensada para el uso.",
-    "order": 91
+    "order": 92
   },
   {
     "id": "60-mph-a-kmh",
@@ -1393,7 +1408,7 @@ const BLOG_POSTS = [
     "icon": "⚡",
     "image": "/assets/blog/es/60-mph-a-kmh.png?v=2",
     "summary": "Consulta 60 MPH a KM/H con total claridad. Sigue la fórmula exacta y la tabla de consulta rápida. Pasos sencillos y tabla práctica. Sin registro.",
-    "order": 92
+    "order": 93
   },
   {
     "id": "1-3-taza-a-gramos",
@@ -1408,7 +1423,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-3-taza-a-gramos.png?v=2",
     "summary": "Comprende 1/3 de Taza a Gramos sin complicaciones. Sigue la fórmula exacta y la tabla de consulta rápida. Guía directa pensada. Gratis online.",
-    "order": 93
+    "order": 94
   },
   {
     "id": "1-4-taza-en-ml",
@@ -1423,7 +1438,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-4-taza-en-ml.png?v=2",
     "summary": "Consulta 1/4 de Taza en Mililitros con total claridad. Sigue la fórmula exacta y la tabla de consulta rápida. Pasos sencillos y tabla práctica.",
-    "order": 94
+    "order": 95
   },
   {
     "id": "1-bar-a-psi",
@@ -1438,7 +1453,7 @@ const BLOG_POSTS = [
     "icon": "🧪",
     "image": "/assets/blog/es/1-bar-a-psi.png?v=2",
     "summary": "Descubre cómo funciona 1 Bar a PSI (Conversión de Presión) hoy. Sigue la fórmula exacta y la tabla de consulta rápida. Ejemplos útiles y tabla.",
-    "order": 95
+    "order": 96
   },
   {
     "id": "1-taza-de-leche-en-ml",
@@ -1453,7 +1468,7 @@ const BLOG_POSTS = [
     "icon": "🍳",
     "image": "/assets/blog/es/1-taza-de-leche-en-ml.png?v=2",
     "summary": "Todo lo esencial sobre 1 Taza de Leche en Mililitros. Sigue la fórmula exacta y la tabla de consulta rápida. Referencia práctica para obtener.",
-    "order": 96
+    "order": 97
   },
   {
     "id": "100-fahrenheit-a-celsius",
@@ -1468,7 +1483,7 @@ const BLOG_POSTS = [
     "icon": "🌡️",
     "image": "/assets/blog/es/100-fahrenheit-a-celsius.png?v=2",
     "summary": "Descubre cómo funciona 100 Grados Fahrenheit a Celsius hoy. Revisa la fórmula térmica y referencias cotidianas. Ejemplos útiles y tabla clara.",
-    "order": 97
+    "order": 98
   },
   {
     "id": "100-usd-a-aud",
@@ -1483,7 +1498,7 @@ const BLOG_POSTS = [
     "icon": "💱",
     "image": "/assets/blog/es/100-usd-a-aud.png?v=2",
     "summary": "Obtén números confiables para 100 USD a AUD en un solo lugar. Incluye matemática paso a paso, equivalencias frecuentes y consulta rápida online.",
-    "order": 98
+    "order": 99
   }
 ];
 
