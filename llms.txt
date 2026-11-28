@@ -24,7 +24,8 @@
 - [/feed.xml](https://www.omniconverter.co.uk/feed.xml): RSS 2.0 / Atom feed for Google News.
 - [/llms-full.txt](https://www.omniconverter.co.uk/llms-full.txt): Complete, exhaustive technical reference of mathematical pivot formulas and unit definitions.
 
-## Published Articles & Guides Directory (111 Articles)
+## Published Articles & Guides Directory (112 Articles)
+- [20kg to lbs: Exactly 44.09 lbs | Quick Weight Guide](https://www.omniconverter.co.uk/blog/20kg-to-lbs): Convert 20kg to lbs: 20 kilograms equals exactly 44.09 lbs (3 stone 2.1 lbs). Step-by-step conversion formulas, quick charts, and easy calculation.
 - [1000 USD to AUD: Real-World Value & Calculation Guide](https://www.omniconverter.co.uk/blog/1000-usd-to-aud): Convert 1000 USD to AUD with accurate calculation formulas, practical conversion tables, bank transfer fee comparisons, and an instant interactive conve...
 - [67kg in stone: Rate Formula & Transfer Tips](https://www.omniconverter.co.uk/blog/67kg-in-stone): Convert 67kg in stone with accurate calculation formulas, practical conversion tables, bank transfer fee comparisons, and an instant interactive converter.
 - [83kg in stone: Rate Formula & Transfer Tips](https://www.omniconverter.co.uk/blog/83kg-in-stone): Convert 83kg in stone with accurate calculation formulas, practical conversion tables, bank transfer fee comparisons, and an instant interactive converter.
